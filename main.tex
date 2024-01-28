@@ -65,6 +65,7 @@
 
 \newcommand{\bbar}[1]{\overline{#1}} % a bar that covers the entire expression
 \newcommand{\de}{\partial}
+\newcommand{\acts}{\,\rotatebox[origin=c]{-90}{$\circlearrowright$}\,}
 
 \DeclareMathOperator{\grad}{grad}
 \DeclareMathOperator{\Hess}{Hess}
@@ -76,6 +77,7 @@
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\Vect}{Vect}
 \DeclareMathOperator{\Ab}{Ab}
+\DeclareMathOperator{\AbGrp}{AbGrp}
 \DeclareMathOperator{\Alg}{Alg}
 \DeclareMathOperator{\nCob}{nCob}
 \DeclareMathOperator{\Bordn}{Bord_{n,n-1}}
@@ -2120,29 +2122,31 @@ A monoidal category generalizes this structure with respect to objects \emph{and
 \begin{defn}
     Let $\cat$ be a category. A monoidal structure on $\cat$ is
     \begin{itemize}
-        \item (O) an object $\mathbb{1}_\cat \in \cat$ \hfill called the \textit{unit}
-        \item (M) bifunctor $\otimes: \cat \times \cat \to \cat$ \hfill 
- called the \textit{tensor product}
+        \item (O) an object $\mathbb{1}_\cat \in \cat$,
+            \hfill the \textit{unit}
+        \item (M) bifunctor $\otimes: \cat \times \cat \to \cat$, 
+            \hfill the \textit{tensor product}
         
-        \item (A) a natural isomorphism $\alpha:- \otimes (- \otimes -)\Rightarrow(- \otimes -) \otimes -$ % % https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXG1hdGhzY3J7Q31cXHRpbWVzXFxtYXRoc2Nye0N9XFx0aW1lc1xcbWF0aHNjcntDfSJdLFsxLDAsIlxcYWxwaGEiXSxbMiwwLCJcXG1hdGhzY3J7Q30iXSxbMCwyLCIoLVxcb3RpbWVzLSlcXG90aW1lcy0iLDIseyJjdXJ2ZSI6M31dLFswLDIsIi1cXG90aW1lcygtXFxvdGltZXMtKSIsMCx7ImN1cnZlIjotM31dLFs0LDMsIiIsMix7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XV0=
-\[\begin{tikzcd}
-	{\mathscr{C}\times\mathscr{C}\times\mathscr{C}} & \alpha & {\mathscr{C}}
-	\arrow[""{name=0, anchor=center, inner sep=0}, "{(-\otimes-)\otimes-}"', curve={height=18pt}, from=1-1, to=1-3]
-	\arrow[""{name=1, anchor=center, inner sep=0}, "{-\otimes(-\otimes-)}", curve={height=-18pt}, from=1-1, to=1-3]
-	\arrow[shorten <=5pt, shorten >=5pt, Rightarrow, from=1, to=0]
-\end{tikzcd}\]
-\hfill called the \textit{associator} (i.e. something that witnesses associativity)
-        \item (U) natural isomorphisms $\lambda:\mathbb{1}_\cat \otimes(-)\Rightarrow\id_\cat=(-)$ and $\rho:- \otimes\mathbb{1}_\cat\Rightarrow\id\cat=(-)$ % https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXG1hdGhzY3J7Q30iXSxbMSwwLCJcXG1hdGhzY3J7Q30iXSxbMiwwLCJcXG1hdGhzY3J7Q30iXSxbMywwLCJcXG1hdGhzY3J7Q30iXSxbMCwxLCJcXG1hdGhiYnsxfVxcb3RpbWVzIC0iLDAseyJjdXJ2ZSI6LTJ9XSxbMCwxLCJpZF9cXG1hdGhzY3J7Q309KC0pIiwyLHsiY3VydmUiOjJ9XSxbMiwzLCJpZF9cXG1hdGhzY3J7Q309KC0pIiwyLHsiY3VydmUiOjJ9XSxbMiwzLCItXFxvdGltZXMgXFxtYXRoYmJ7MX0iLDAseyJjdXJ2ZSI6LTJ9XSxbNCw1LCJcXGxhbWJkYSIsMix7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XSxbNyw2LCJcXHJobyIsMix7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XV0=
-\[\begin{tikzcd}
-	{\mathscr{C}} & {\mathscr{C}} & {\mathscr{C}} & {\mathscr{C}}
-	\arrow[""{name=0, anchor=center, inner sep=0}, "{\mathbb{1}\otimes -}", curve={height=-12pt}, from=1-1, to=1-2]
-	\arrow[""{name=1, anchor=center, inner sep=0}, "{id_\mathscr{C}=(-)}"', curve={height=12pt}, from=1-1, to=1-2]
-	\arrow[""{name=2, anchor=center, inner sep=0}, "{id_\mathscr{C}=(-)}"', curve={height=12pt}, from=1-3, to=1-4]
-	\arrow[""{name=3, anchor=center, inner sep=0}, "{-\otimes \mathbb{1}}", curve={height=-12pt}, from=1-3, to=1-4]
-	\arrow["\lambda"', shorten <=3pt, shorten >=3pt, Rightarrow, from=0, to=1]
-	\arrow["\rho"', shorten <=3pt, shorten >=3pt, Rightarrow, from=3, to=2]
-\end{tikzcd}\]
-        \hfill called respectively the \textit{left and right unitors}
+        \item (A) a natural isomorphism $\alpha:- \otimes (- \otimes -)\Rightarrow(- \otimes -) \otimes -$ that witnesses associativity:
+        % % https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXG1hdGhzY3J7Q31cXHRpbWVzXFxtYXRoc2Nye0N9XFx0aW1lc1xcbWF0aHNjcntDfSJdLFsxLDAsIlxcYWxwaGEiXSxbMiwwLCJcXG1hdGhzY3J7Q30iXSxbMCwyLCIoLVxcb3RpbWVzLSlcXG90aW1lcy0iLDIseyJjdXJ2ZSI6M31dLFswLDIsIi1cXG90aW1lcygtXFxvdGltZXMtKSIsMCx7ImN1cnZlIjotM31dLFs0LDMsIiIsMix7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XV0=
+            \[\begin{tikzcd}
+            	{\mathscr{C}\times\mathscr{C}\times\mathscr{C}} & \alpha & {\mathscr{C}}
+            	\arrow[""{name=0, anchor=center, inner sep=0}, "{(-\otimes-)\otimes-}"', curve={height=18pt}, from=1-1, to=1-3]
+            	\arrow[""{name=1, anchor=center, inner sep=0}, "{-\otimes(-\otimes-)}", curve={height=-18pt}, from=1-1, to=1-3]
+            	\arrow[shorten <=5pt, shorten >=5pt, Rightarrow, from=1, to=0]
+            \end{tikzcd}\]
+            \hfill the \textit{associator}
+        \item (U) natural isomorphisms $\lambda:\mathbb{1}_\cat \otimes(-)\Rightarrow\id_\cat=(-)$ and $\rho:- \otimes\mathbb{1}_\cat\Rightarrow\id\cat=(-)$ witnessing unitality: % https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXG1hdGhzY3J7Q30iXSxbMSwwLCJcXG1hdGhzY3J7Q30iXSxbMiwwLCJcXG1hdGhzY3J7Q30iXSxbMywwLCJcXG1hdGhzY3J7Q30iXSxbMCwxLCJcXG1hdGhiYnsxfVxcb3RpbWVzIC0iLDAseyJjdXJ2ZSI6LTJ9XSxbMCwxLCJpZF9cXG1hdGhzY3J7Q309KC0pIiwyLHsiY3VydmUiOjJ9XSxbMiwzLCJpZF9cXG1hdGhzY3J7Q309KC0pIiwyLHsiY3VydmUiOjJ9XSxbMiwzLCItXFxvdGltZXMgXFxtYXRoYmJ7MX0iLDAseyJjdXJ2ZSI6LTJ9XSxbNCw1LCJcXGxhbWJkYSIsMix7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XSxbNyw2LCJcXHJobyIsMix7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XV0=
+            \[\begin{tikzcd}
+            	{\mathscr{C}} & {\mathscr{C}} & {\mathscr{C}} & {\mathscr{C}}
+            	\arrow[""{name=0, anchor=center, inner sep=0}, "{\mathbb{1}\otimes -}", curve={height=-12pt}, from=1-1, to=1-2]
+            	\arrow[""{name=1, anchor=center, inner sep=0}, "{id_\mathscr{C}=(-)}"', curve={height=12pt}, from=1-1, to=1-2]
+            	\arrow[""{name=2, anchor=center, inner sep=0}, "{id_\mathscr{C}=(-)}"', curve={height=12pt}, from=1-3, to=1-4]
+            	\arrow[""{name=3, anchor=center, inner sep=0}, "{-\otimes \mathbb{1}}", curve={height=-12pt}, from=1-3, to=1-4]
+            	\arrow["\lambda"', shorten <=3pt, shorten >=3pt, Rightarrow, from=0, to=1]
+            	\arrow["\rho"', shorten <=3pt, shorten >=3pt, Rightarrow, from=3, to=2]
+            \end{tikzcd}\]
+            \hfill respectively the \textit{left and right unitors}
     \end{itemize}
     such that
     \begin{itemize}
@@ -2169,11 +2173,12 @@ A monoidal category generalizes this structure with respect to objects \emph{and
         The latter diagram is called Mac Lane's pentagon. It pins down the associativity of more than 3 objects.
     \end{itemize}
 \end{defn}
+
 \begin{notat}
     As we usually abuse notation and denote monoids $(M,\cdot)$ just with $M$, although a monoid is a set \emph{equipped with} a binary operation; we will denote monoidal categories $(\cat,\otimes,\unit_\cat)$ just with $\cat$, although a monoidal category is a category \emph{equipped with} a monoidal structure.
 \end{notat}
 \begin{defn}[Strict Monoidal Category]
-    A strict monoidal category is a monoidal category where objects and morphisms are associative and unital strictly, not up to specific natural isomorphisms, i.e. the associatior and the left/right unitors. This means that for every $f:A,B,C\in\cat$ and every $f:A\to B,g:B\to C,h:C\to D\in\cat$ where $\cat$ is a strict monoidal category: \begin{itemize}
+    A strict monoidal category is a monoidal category where objects and morphisms are associative and unital strictly, not up to specific natural isomorphisms, i.e. the associator and the left/right unitors. This means that for every $f:A,B,C\in\cat$ and every $f:A\to B,g:B\to C,h:C\to D\in\cat$ where $\cat$ is a strict monoidal category: \begin{itemize}
         \item $A\otimes(B\otimes C)=(A\otimes B)\otimes C$
         \item $A\otimes \mathbb{1}_\cat=A=\mathbb{1}_\cat\otimes A$
         \item $f\otimes(g\otimes h)=(f\otimes g)\otimes h$
@@ -2181,8 +2186,9 @@ A monoidal category generalizes this structure with respect to objects \emph{and
     \end{itemize}
 \end{defn}
 \begin{ex}[Examples of \emph{strict} monoidal categories]
+\hfill
     \begin{itemize}
-        \item Given an arbitrary category $\cat$, the set\footnote{A set and not a larger collection since we defined categories to be locally small.} of its endofunctors $End(\cat,\cat)=Hom_{\Cat}(\cat,\cat)$ are the objects of a monoidal category with and the natural transformations between them their morphisms. The tensor product is given by composition and it is associative since composition of functors is associative. The monoidal unit is $id_\cat$ and is indeed left and right unital. Note however that this is an example of \emph{strict} monoidal category since functors compose strictly and not up to some associator and unitors.
+        \item Given an arbitrary category $\cat$, the set\footnote{A set and not a larger collection since we defined categories to be locally small.} of its endofunctors $\End(\cat,\cat)=\Hom_{\Cat}(\cat,\cat)$ are the objects of a monoidal category with and the natural transformations between them their morphisms. The tensor product is given by composition and it is associative since composition of functors is associative. The monoidal unit is $id_\cat$ and is indeed left and right unital. Note however that this is an example of \emph{strict} monoidal category since functors compose strictly and not up to some associator and unitors.
         \item A monoid $(M,\cdot,e)$ is a discrete strict monoidal categories. A discrete category is a category where there are only identity morphisms. So, $(M,\cdot,e)=(\mathcal{M},\otimes,\mathbb{1}_\mathcal{M})$ where $ob(\mathcal{M})=M$ and $\mathbb{1}_\mathcal{M}=e$.
     \end{itemize} 
 \end{ex}
@@ -2256,7 +2262,7 @@ Hence, we see how any category with finite cartesian products is a monoidal cate
 \paragraph{Noncartesian Monoidal Categories}
 
 \begin{notat}
-    We denote the category of abelian groups $AbGrp$ also with Ab.
+    We denote the category of abelian groups $\AbGrp$ also with Ab.
 \end{notat}
 In the previous paragraph, we have talked about cartesian monoidal categories and left out some examples of \emph{noncartesian} monoidal categories like $(AbGrp,\otimes)$ and $(\Vect_k,\otimes)$. We now encounter some examples of noncartesian monoidal categories, which will be central in this class. They will be all similar to $(AbGrp,\otimes)$, so we will first explain this category and then draw parallels with the others. To introduce the tensor product between abelian groups we first have to define what is a bilinear map
 
@@ -3595,6 +3601,9 @@ Now we will get a \textit{modular tensor category}, where \textit{tensor} stands
     \item composition is bilinear $\Hom_\cat (X,Y) \otimes \Hom_\cat (Y,Z) \mapsto \Hom_\cat (X,Z)$
 \end{itemize}
 
+\subsubsection{The Yang-Baxter equation} % (fold)
+\label{ssub:the_yang_baxter_equation}
+
 \begin{thm}
     Let \cat be a  braided (strict, i.e.\ omit $\alpha$) monoidal category. Then, for $U,V,W \in \cat$ we have
     \begin{equation}
@@ -3664,16 +3673,28 @@ This comes from representation theory!
     This gives rise to the category of representations of $G$, $\Rep_G$.
 \end{defn}
 \begin{ex}
-    Symmetries of a polygon: $G=D_n$ dihedral group and $\rho: D_n \to \Aut(\R^2)$, where $D_n acts* \R^2$ with reflections and rotations.
+    Symmetries of a polygon: $G=D_n$ dihedral group and $\rho: D_n \to \Aut(\R^2)$, where $D_n \acts \R^2$ with reflections and rotations.
 \end{ex}
 
 Solutions of YBE give representations of the braid group, which we now recall.
+
+\subsubsection{The braid group and the Braid category} % (fold)
+\label{ssub:the_braid_group}
+
 \begin{defn}\label{defn:braid_group}
     Let $k\geq 3$. The braid group $B_k$ with $k$ strands has $k-1$ generators $\sigma_1, \dots, \sigma_{k-1}$ and 2 relations:
-    \begin{enumerate}
-        \item $\sigma_i \sigma_j = \sigma_j \sigma_i$ if $|i-j|>1$
-        \item $\sigma_i \sigma_{i+1} \sigma_i = \sigma_{i+1} \sigma_i \sigma_{i+1}$ for $1\leq i<k-1$
-    \end{enumerate}
+    \begin{flalign}
+        \label{eq:braid_relations}
+        \quad
+        \begin{matrix*}[l]
+            1.\;\sigma_i \sigma_j  = \sigma_j \sigma_i &\text{if} \quad |i-j|>1 \\
+            2.\;\sigma_i \sigma_{i+1} \sigma_i = \sigma_{i+1} \sigma_i \sigma_{i+1} &\text{if}\quad 1\leq i<k-1 \\
+        \end{matrix*}&&
+    \end{flalign}
+    % \begin{enumerate}
+    %     \item $\sigma_i \sigma_j = \sigma_j \sigma_i$ if $|i-j|>1$
+    %     \item $\sigma_i \sigma_{i+1} \sigma_i = \sigma_{i+1} \sigma_i \sigma_{i+1}$ for $1\leq i<k-1$
+    % \end{enumerate}
     In addition $B_2$ is the free group on one generator $\sigma$, i.e. it is isomorphic to $\Z$ and $B_1 = B_0 = {e}$.
 \end{defn}
 The reason we call $B_k$ the braid group with $k$ strands is that we can picture the elements $\sigma_i$ in the following way:
@@ -3722,9 +3743,10 @@ The reason we call $B_k$ the braid group with $k$ strands is that we can picture
 % ---------------------- LECTURE 17 10/1 ----------------------
 % -------------------------------------------------------------
 
+%TODO check reference for names...
 \begin{defn}
     Let $\uConf_k(\R^2) \subset (\R^2)^k$ (the ordered configuration space of $\R^2$) be the subspace of $k$-tuples $(x_1, \dots, x_k)$ such that $x_i \neq x_j$ for $i\neq j$.
-    Then we have an action $S_k acts* \uConf_k(\R^2)$ acts on it. 
+    Then we have an action $S_k \acts \uConf_k(\R^2)$. 
     The \textit{unordered} configuration space is $\Conf_k(\R^2) := \uConf_k(\R^2)/S_k$.
 \end{defn}
 
@@ -3739,11 +3761,11 @@ We have a homomorphism $B \to \pi_1(\Conf_k(\R^2), p)$ which sends $\sigma_i \ma
 \end{align}
 this indeed induces a loop in $\Conf_k (\R^2)$.
 
-For it to be a homomorphism we need to check that the images of $\sigma_i$ satisfy the relations of the $B_k$ group.
+For it to be a homomorphism we need to check that the images of $\sigma_i$ satisfy the relations \ref{eq:braid_relations} of the $B_k$ group.
 \begin{enumerate}
     \item $\hat\sigma_i \hat\sigma_j = \hat\sigma_j \hat\sigma_i$ for $|i-j|>1$
     %TODO drawing and explanation
-    \item $\hat\sigma_i \hat\sigma_{i+1} \hat\sigma_i = \hat\sigma_{i+1} \hat\sigma_i \hat\sigma_{i+1}$
+    \item $\hat\sigma_i \hat\sigma_{i+1} \hat\sigma_i = \hat\sigma_{i+1} \hat\sigma_i \hat\sigma_{i+1}$ for $1\leq i<k-1$
 \end{enumerate}
 
 The following important result can be found in "The theory of braids", by Artin in 1947. %TODO put it as reference
@@ -3766,28 +3788,34 @@ Note now that
     %DRAWING
 \end{enumerate}
 
-We can now define the category $\Braid$:
-\begin{itemize}
-    \item objects: natural numbers $0, 1, \dots, k, \dots$
-    \item morphisms: 
-    \begin{equation}
-         \Hom_{\Braid}(k,l) = 
-         \begin{cases}
-             \emptyset & \text{if } k \neq l \\
-             \text{isotopy classes of "braids" from $k$ to $k$} & \text{if } k = k
-         \end{cases}
-         %& \emptyset\quad \text{if } k \neq l\\
-         %& \text{isotopy classes of "braids" from $k$ to $k$}
-     \end{equation} 
-     and composition is "stacking the pictures", i.e. composition of bordisms plus stacking embeddings (using $[0,1] \cup_{1=0} [0,1] \cong [0,1]$)
-\end{itemize}
-where by braids we mean a "permutation 1 bordism together with an embedding" $\bigcup_{\{1, \dots, k\}} [0,1] \hookrightarrow [0,1] \times \R^2$ such that 1 and 2 hold.
-
-\noindent In addition the category is braided monoidal, in which the monoidal structure is simply given by stacking $\R^2$s next to each other (using embedding $\R^2 \amalg \R^2 \cong [0,1]^2 \amalg [0,1]^2 \hookrightarrow \R^2 \cong [0,1]^2$).
+This allows us to define the following category:
+We can now define the category :
+\begin{defn}
+    The $\Braid$ category is given by:
+    \begin{itemize}
+        \item objects: natural numbers $0, 1, \dots, k, \dots$
+        \item morphisms: 
+            \begin{equation}
+                 \Hom_{\Braid}(k,l) = 
+                 \begin{cases}
+                     \emptyset & \text{if } k \neq l \\
+                     \text{isotopy classes of "braids" from $k$ to $k$} & \text{if } k = l
+                 \end{cases}
+                 %& \emptyset\quad \text{if } k \neq l\\
+                 %& \text{isotopy classes of "braids" from $k$ to $k$}
+             \end{equation} 
+             By braids we mean a "permutation 1 bordism together with an embedding" $\bigcup_{\{1, \dots, k\}} [0,1] \hookrightarrow [0,1] \times \R^2$ such that 1 and 2 hold.
+         \item composition is "stacking the pictures", i.e. composition of bordisms plus stacking embeddings (using $[0,1] \cup_{1=0} [0,1] \cong [0,1]$). 
+         \item braided monoidal structure given by stacking $\R^2$s next to each other (using embedding $\R^2 \amalg \R^2 \cong [0,1]^2 \amalg [0,1]^2 \hookrightarrow \R^2 \cong [0,1]^2$).
+    \end{itemize}
+\end{defn}
 
 \begin{exercise}
-    One could now prove that $\Braid \simeq \amalg_{k\geq 0} B_k$, where $\amalg_{k\geq 0} B_k$ was in one of the exercise sheets. %TODO find how to do a big amalg
+    One could now prove that $\Braid \simeq \coprod_{k\geq 0} B_k$, where $\coprod_{k\geq 0} B_k$ was in one of the exercise sheets. 
 \end{exercise}
+
+\subsubsection{Expanding the Braid category: the Tangle category} % (fold)
+\label{ssub:expanding_the_braid_category_the_tangle_category}
 
 Next step: allow more morphisms, namely all bordisms, together with suitable embeddings.
 \begin{defn}
@@ -3861,7 +3889,7 @@ In fact, on the line segment as a bordism between two points we have \Z many non
 
 We noted last time that $\Tang_1$ has left and right duals, one can check now that $\Tang_1^{fr}$ also does. We see that the framed tangle category is very similar but it has \Z many morphisms between two points, instead of just one. This idea can be generalized with the concept of a ribbon category:
 \begin{defn}
-    A ribbon category is a braided monoidal category \cat with
+    A ribbon category is a braided monoidal category \cat in which:
     \begin{enumerate}
         \item every object $X$ has a right dual $X^\vee$, thus satisfying  $$ev_X : X^\vee \otimes X \to 1$$ $$coev_X: 1 \to X \otimes X^\vee$$ which satisfies the snake relations/triangle identities, (\textit{right rigid category})
         \item there is a pivotal structure, that is a  monoidal isomorphism
@@ -3884,23 +3912,19 @@ Here we're using an abuse of notation, by identifying $X^{\vee \vee}$ with $X$.
 %TODO diagram
 
 \begin{ex}
-    $\Tang_1^{fr}$, $\vartheta$ is exactly the picture with the blackboard framing. It remains to check property 3.
+    In $\Tang_1^{fr}$, the $\vartheta$ is exactly the picture with the blackboard framing. It remains to check property 3.
 \end{ex}
 
-Let us recall what is meant by the dual of a map:
-\begin{defn}
-    $f: X \to Y$ morphism, $X,Y$ have right duals. Then $f^*: Y^\vee \to X^\vee$ is defined as
-
-        $$f^\vee:Y^\vee\xrightarrow{id_{Y^\vee} \otimes coev_X}Y^\vee\otimes X \otimes X^\vee\xrightarrow{id_Y^\vee\otimes f\otimes id_{X^\vee}}Y^\vee\otimes Y\otimes X^\vee\xrightarrow{ev_Y\otimes id_{X^\vee}}X^\vee$$
-        See \ref{DualMorph}.ov
-\end{defn}
+The definition of the dual of a map $f: X \to Y$ was given in \ref{DualMorph} and is given by the following composition:
+$$f^\vee:Y^\vee\xrightarrow{id_{Y^\vee} \otimes coev_X}Y^\vee\otimes X \otimes X^\vee\xrightarrow{id_Y^\vee\otimes f\otimes id_{X^\vee}}Y^\vee\otimes Y\otimes X^\vee\xrightarrow{ev_Y\otimes id_{X^\vee}}X^\vee$$
 
 \begin{ex}
+\hfill
     \begin{itemize}
         \item $\Vect_k^{finite dim}$ is a ribbon category with the usual tensor product and braiding.
         \item $\Mod_R^{fpp}$ is a ribbon category, where $fpp$ stands for finitely presented and projective and $R$ is a ring or $k$ algebra.
     \end{itemize}
-    we would then also like some more examples, which are \textit{not} symmetric.
+    we would then also like some more examples, which are braided but \textit{not} symmetric.
 \end{ex}
 
 Given an algebra $A$, then $A-\Mod$ is a category. Now, which extra structure on $A$ guarantees that $A-\Mod^{f.d.}$ is ribbon?
@@ -3917,15 +3941,14 @@ We now consider a variation of a tangle category.
     Let \cat be a ribbon category. $\Tang_1^{fr}(\cat)$ is the following ribbon category, in which we "decorate with objects in \cat".
     \begin{itemize}
         \item objects: finite sequences
-        \begin{equation}
-            (V_1, \epsilon_1), \dots, (V_k, \epsilon_k)
-        \end{equation}
-        where $V_i \in \cat$ and $\epsilon_i = \pm 1$. This corresponds to $k$ points in $\Tang_1^{fr, or}$ in which $\epsilon$ gives us the orientation of each point.
+            \begin{equation}
+                (V_1, \epsilon_1), \dots, (V_k, \epsilon_k)
+            \end{equation}
+            where $V_i \in \cat$ and $\epsilon_i = \pm 1$. This corresponds to $k$ points in $\Tang_1^{fr, or}$ in which $\epsilon$ gives us the orientation of each point.
         \item morphisms: has underlying (isotopy classes of) framed oriented tangles + each component is labelled by $V \in \cat$ such that the source and target are labelled by $(V, \pm 1)$.
+        \item Composition is stacking pictures but only if the labels match up.
     \end{itemize}
     The "correspondence" above is actually a forgetful functor $\Tang_1^{fr}(\cat) \to \Tang_1^{fr, or}$, which $or$ means adding an orientation to the bordism.
-
-    Composition is stacking pictures but only if the labels match up.
 \end{defn}
 
 \begin{prop}
@@ -4072,7 +4095,7 @@ Now we would like to fix the problem with the Kauffmann bracket.
 \end{lem}
 
 \begin{defn}
-    For any link $L$, define $\chi (L) = (-A^3)^{-w(p(L))} <p(L)> \in \Z[A^{-1},A]$
+    For any link $L$, define $\chi (L) = (-A^3)^{-w(p(L))} \langle p(L)\rangle \in \Z[A^{-1},A]$
 \end{defn}
 \begin{thm}
     This is a link invariant.
@@ -4106,7 +4129,10 @@ Observe
     \item skain relation: if $L_+, L_-, L_0$ are the same link except for at one crossing, according to the following picture
     %DRAWING
 
-    then $t^{-1}V(L_+) -tV(L_-) + (t^{-1/2} - t^{1/2}) V(L_0) = 0$
+    then 
+    \begin{equation}
+        t^{-1}V(L_+) -tV(L_-) + (t^{-1/2} - t^{1/2}) V(L_0) = 0
+    \end{equation}
 \end{itemize}
 
 Explanation of problem of the Kauffmann bracket with R1:
@@ -4127,7 +4153,7 @@ Explanation of problem of the Kauffmann bracket with R1:
 \begin{thm}
     The Kauffmann bracket is a framed link invariant.
 \end{thm}
-Recall we had $\Tang_1^{or,fr}(\cat) \to \cat$ where \cat is a ribbon category. Now, fix a $V \in \cat$, we get an injection $\Link^{or,fr} \hookrightarrow \Tang_1^{or,fr}(\cat)$ in which we decorate each strand (component) by $V$. The goal is then to find a specific ribbon category \cat such that we get back the Jones polynomial. We'll find $\cat = Uqsl_2 -Mod^{f.d.}$.
+Recall we had $\Tang_1^{or,fr}(\cat) \to \cat$ where \cat is a ribbon category. Now, fix a $V \in \cat$, we get an injection $\Link^{or,fr} \hookrightarrow \Tang_1^{or,fr}(\cat)$ in which we decorate each strand (component) by $V$. The goal is then to find a specific ribbon category \cat such that we get back the Jones polynomial. We'll find $\cat = U_q\sl_2 -Mod^{f.d.}$.
 
 Back to algebra: How to get a ribbon category?
 \begin{defn}
@@ -4153,8 +4179,8 @@ Back to algebra: How to get a ribbon category?
     \item Take $H = k[G]$, 
     \begin{equation}
         \begin{matrix}
-            \mu(g,h) = gh & \eta(1) = 1 & \\
-            \Delta(g) = g \otimes g & \epsilon(g) = 1 & s(g)  = g^{-1} 
+            \mu(g,h) = gh\quad & \eta(1) = 1\quad & \\
+            \Delta(g) = g \otimes g\quad & \epsilon(g) = 1 & s(g)\quad  = g^{-1} 
         \end{matrix}
     \end{equation}
     \item for Lie algebra \g, let $U\g$ be its universal enveloping algebra, which we will define shortly. We then have
