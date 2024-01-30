@@ -4255,7 +4255,26 @@ Explanation of problem of the Kauffmann bracket with R1:
 \end{thm}
 Recall we had $\Tang_1^{or,fr}(\cat) \to \cat$ where \cat is a ribbon category. Now, fix a $V \in \cat$, we get an injection $\Link^{or,fr} \hookrightarrow \Tang_1^{or,fr}(\cat)$ in which we decorate each strand (component) by $V$. The goal is then to find a specific ribbon category \cat such that we get back the Jones polynomial. We'll find $\cat = U_q\sl_2 -Mod^{f.d.}$.
 
-Back to algebra: How to get a ribbon category?
+
+\subsubsection{Making \texorpdfstring{$A-\Mod^{f.d.}$}{A-Mod f.d.} into a ribbon category} % (fold)
+\label{ssub:making_}
+
+%Back to algebra: How to get a ribbon category?
+We now want to add additional structures on an algebra $A$ in such a way that $A-\Mod^{f.d.}$ becomes a ribbon category.
+%why do we want to do this?
+We therefore need $A-\Mod^{f.d.}$ to have the following structures:
+\begin{itemize}
+    \item monoidal structure,
+    \item existence of (right) duals (right rigidity),
+    \item braiding,
+    \item pivotal structure,
+    \item twist,
+\end{itemize}
+which we gradually construct in this order. 
+
+\subsubsection*{Monoidal structure} % (fold)
+
+In order to do this, we will need additional structures on $A$, starting with the following.
 \begin{defn}
     A Hopf algebra in a braided strict monoidal category \cat is 
     \begin{itemize}
@@ -4285,11 +4304,12 @@ Back to algebra: How to get a ribbon category?
     \end{equation}
     \item for Lie algebra \g, let $U\g$ be its universal enveloping algebra, which we will define shortly. We then have
     \begin{equation}
-        \Rep^{f.d.} G \simeq U\g-\mod^{f.d.}
+        \Rep^{f.d.} G \simeq U\g-\Mod^{f.d.}
     \end{equation}
     we will then "deform" this in one of the exercises.
 \end{ex}
 
+Recall that a Lie algebra is defined as follows.
 \begin{defn}
     A Lie algebra is a vector space with a bilinear map $[-,-]: \g \otimes \g \to \g$, sending $x \otimes y \mapsto [x,y]$, called the Lie bracket, satisfying:
     \begin{itemize}
@@ -4315,7 +4335,7 @@ Back to algebra: How to get a ribbon category?
 \end{ex}
 Outlook: in physics we like to look at Lie groups, a smooth manifold with a group structure (i.e. a group object in the category of smooth manifolds). Since it's a manifold, we can look at its tangent space. The Lie algebra $\g$ of $G$ is defined as $T_e G$. %left invariant vector fields....
 
-Fix \g a Lie algebra.
+Now, fix \g a Lie algebra.
 \begin{defn}
     The tensor algebra of \g is the (graded) algebra given by:
     \begin{equation}
@@ -4363,14 +4383,18 @@ In general, we'll now see that if $A$ is a Hopf algebra, then $A-\Mod^{f.d.}$ is
     \item associators and unitors are those from $\Vect$.
 \end{itemize}
 
+\subsubsection*{Rigidity} % (fold)
+
+%Schweigert cor 2.5.17 says kind of the opposite, I ALWAYS have a right dual and only have a left dual if S is invertible
 \begin{prop}\label{prop:Hopf2}
     Let $H$ be a Hopf algebra and $M$ an $H-$module, then $M^\vee:=\Hom(M,k)$ has an $H$ action via the transpose of $S$, i.e. given $\phi \in \Hom(M,k),\,a \in H$ we get $a \cdot \phi \in \Hom(M,k)$ given by
-    \begin{equation}
+    \begin{equation}\label{eq:dual_mod_struct}
         (a \cdot \phi) (m):= \phi(s(a) \cdot m)
     \end{equation}
     This is a left dual if $M$ is finite dimensional.
     Now, if $S$ is invertible, ${}^\vee M = \Hom(M,k)$ with $(a \cdot \phi)(m) := \phi(s^{-1}(a)\cdot m)$ is a right dual if $M$ is finite dimensional.
 \end{prop}
+
 \begin{cor}
     If $H$ is a Hopf algebra with $S$ invertible, then $H-\Mod^{f.d.}$ is rigid monoidal.
 \end{cor}
@@ -4378,18 +4402,21 @@ In general, we'll now see that if $A$ is a Hopf algebra, then $A-\Mod^{f.d.}$ is
     Check that $ev_M, coev_M$ exhibiting dual in $\Vect$ are $H-$module maps.
 \end{proof}
 
-Outlook: To get a ribbon category we need:
-\begin{itemize}
-    \item braiding
-    \item pivotal structure
-    \item twist
-\end{itemize}
+% Outlook: To get a ribbon category we need:
+% \begin{itemize}
+%     \item braiding
+%     \item pivotal structure
+%     \item twist
+% \end{itemize}
 
 % -------------------------------------------------------------
 % ---------------------- LECTURE 21 29/1 ----------------------
 % -------------------------------------------------------------
 
+\subsubsection*{Braiding} 
 Recall: we want a ribbon category and we had a Hopf algebra, so we had a monoidal category with duals.
+
+We're now using \cite{SchwHopfQuantumTFT} as a reference.
 
 \begin{defn}
     A quasi-triangular structure on a bi/Hopf algebra is a "universal $R$-matrix", i.e. an invertible element $R \in A \otimes A$ such that $\forall x \in A$ with 
@@ -4417,13 +4444,17 @@ Recall: we want a ribbon category and we had a Hopf algebra, so we had a monoida
     Any cocommutative bi/Hopf algebra has a canonical $R$ matrix, $R = 1\otimes 1$, since the first relation simply becomes $\Delta = \Delta^{coop}$, which is exactly the cocommutativity.
 \end{ex}
 
-\begin{prop}[4.2.3. in Schweigert]
+\begin{prop}[4.2.3. in \cite{SchwHopfQuantumTFT}]
     Let $A$ be a bialgebra. Then a braiding on $A-\Mod^{(f.d.)}$ uniquely determines a quasitriangular structure on $A$ and viceversa. 
     % This is what we're trying to do: add structures on A so that A-Mod has more structure.
 \end{prop}
 
 \begin{proof}[Proof strategy: ]
-    Given a braiding $\beta$, define the universal $R$ matrix to be $R:=\tau_{A,A}(\beta_{A,A}(1_A \otimes 1_A))$, in which $\tau_{A,A}$ is the flip and $\beta_{A,A}$ is the braiding. Then one can check properties 1. 2. and 3. above. 
+    Given a braiding $\beta$, define the universal $R$ matrix to be
+    \begin{equation}
+        R:=\tau_{A,A}(\beta_{A,A}(1_A \otimes 1_A))
+    \end{equation}
+    in which $\tau_{A,A}$ is the flip and $\beta_{A,A}$ is the braiding. Then one can check properties 1. 2. and 3. above. 
 
     Now, the following is also true:
     \begin{clm}
@@ -4435,50 +4466,50 @@ Recall: we want a ribbon category and we had a Hopf algebra, so we had a monoida
 Main example: $U_q\sl_2$, Hopf algebra, not cocommutative but has a universal $R$ matrix. Therefore $U_q\sl_2 - \Mod$ is braided monoidal. We get $U_q\sl_2$ from the cocommutative Hopf algebra $U\sl_2$ by "deforming" it.
 
 $U_q\sl_2$ is a $\C(q)$-algebra generators $E,F,K,K^{-1}$ with relations:
-\begin{align}
-    KK^{-1} = K^{-1}K = 1 \\
-    KEK^{-1} = q^2 E \\
-    KFK^{-1} = q^{-2}F \\
-    [E,F] = \frac{K - K^{-1}}{q - q^{-1}}
-\end{align}
+\begin{align*}
+    KK^{-1} &= K^{-1}K = 1 \\
+    KEK^{-1} &= q^2 E \\
+    KFK^{-1} &= q^{-2}F \\
+    [E,F] &= \frac{K - K^{-1}}{q - q^{-1}}
+\end{align*}
 We have an important 2 dimensional module ("representation") for $U_q\sl_2$: $V_1 \cong \C^2$ with basis $V_1, V_{-1}$. Now, how does $U_q\sl_2$ act? In this basis we write:
-\begin{align}
-    E =
+\begin{align*}
+    E &=
     \begin{pmatrix}
         0 & 1 \\
         0 & 0 
     \end{pmatrix} \\
-    F = 
+    F &= 
     \begin{pmatrix}
         0 & 0 \\
         1 & 0 
     \end{pmatrix} \\
-    K = 
+    K &= 
     \begin{pmatrix}
         q & 0 \\
         0 & q^{-1} 
-    \end{pmatrix} \\
-\end{align}
+    \end{pmatrix} 
+\end{align*}
 
 We also claimed there was a Hopf algebra structure, which we now make explicit. The comultiplication is given by
-\begin{align}
-    \Delta(E) = 1\otimes E + E \otimes K \\
-    \Delta(F) = K^{-1} \otimes F + F \otimes 1 \\
-    \Delta(K) = K \otimes K \\
-    \Delta(K^{-1}) = K^{-1} \otimes K^{-1}
-\end{align}
+\begin{align*}
+    \Delta(E) &= 1\otimes E + E \otimes K \\
+    \Delta(F) &= K^{-1} \otimes F + F \otimes 1 \\
+    \Delta(K) &= K \otimes K \\
+    \Delta(K^{-1}) &= K^{-1} \otimes K^{-1}
+\end{align*}
 the counit map:
-\begin{align}
-    \epsilon(E) = \epsilon(F) = 0 \\
-    \epsilon(K) = \epsilon(K^{-1}) = 1
-\end{align}
+\begin{align*}
+    \epsilon(E) &= \epsilon(F) = 0 \\
+    \epsilon(K) &= \epsilon(K^{-1}) = 1
+\end{align*}
 and we should check that these satisfy the required relations. In addition we need the antipode map:
-\begin{align}
-    S(E) = -EK^{-1}\\
-    S(F) = -KF \\
-    S(K) = K^{-1} \\
-    S(K^{-1}) = K
-\end{align}
+\begin{align*}
+    S(E) &= -EK^{-1}\\
+    S(F) &= -KF \\
+    S(K) &= K^{-1} \\
+    S(K^{-1}) &= K
+\end{align*}
 We then get the monoidal category $U_q \sl_2-\Mod$. If $U,V$ are objects in $U_q \sl_2-\Mod$, then so is $U\otimes V$ in which we have
 \begin{equation}
     E(u \otimes v) = E_U \otimes K_V + U \otimes E_V
@@ -4487,7 +4518,15 @@ It is also braided... %TODO complete
 
 From $S$ we get the dual of $V_1$: as vector space $V_1^\vee = \Hom(V_1, \C)$, in which $\hat v_1, \hat v_{-1}$ is the dual basis. This has a $U_q \sl_2-\Mod$ structure given by Equation \ref{eq:dual_mod_struct}.
 
-
+Up to now we therefore get the following correspondence between the structures on $A$ and those on $A-\Mod^{f.d.}$:
+\begin{center}
+\begin{tabular}{ccc}
+bialgebra &$\leftrightarrow$& monoidal \\
+Hopf algebra &$\leftrightarrow$& right rigid \\
+Hopf with $S$ invertible &$\leftrightarrow$& rigid \\
+quasi-triangular &$\leftrightarrow$& braiding 
+\end{tabular}
+\end{center}
 
 
 \newpage
