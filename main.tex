@@ -1,6 +1,7 @@
-\documentclass[12pt, oneside]{article}
+\documentclass[12pt, oneside]{book}
 \usepackage{geometry}           % to change size of margins
 \geometry{tmargin=0.70in, bmargin=0.70in, lmargin=1.2in, rmargin = 1.2in}
+%TODO feels a bit too full with these settings
 \usepackage{amsthm}             % for all the theorem-like environments
 \usepackage{tikz-cd}            % for commutative diagrams
 \usetikzlibrary{math}           % for some stuff with tikz drawings
@@ -15,6 +16,7 @@
 \usepackage{quiver}             % for commutative diagrams from q.uiver.app
 \usepackage{epigraph}           % for epigraphs, the quotes at the beginning of sections
 \usepackage{microtype}          % reduces the number of overfull/underfull boxes
+\usepackage{pdfpages}           % to include other pdfs (for titlepage)
 %\usepackage[all,cmtip]{xy}     % don't know what it's for
 %\usepackage{upgreek}           % don't know what it's for
 %\usepackage[normalem]{ulem}    % don't know what it's for
@@ -153,28 +155,31 @@
 \begin{document}
 %\nocite{abc} for the books/lectures notes/articles
 
-\begin{figure}[t]
-     \centering
-     \includegraphics[width=9.50cm]{images/Lecture 1/cover.png}
-     \vspace{1mm}
- \end{figure}
-\maketitle
+% all the following is to make the titlepage, but in the book format it gets screwed up
+% \begin{figure}[t]
+%      \centering
+%      \includegraphics[width=9.50cm]{images/Lecture 1/cover.png}
+%      \vspace{1mm}
+%  \end{figure}
+% \maketitle
 
-\thispagestyle{empty}
+% \thispagestyle{empty}
 
-\vspace{2mm}
-\begin{minipage}[t]{0.47\textwidth}
-	 \textnormal{\large{\bf \textcolor{black}{Tutor:\\[2mm]}}}{\large \textcolor{black}{Anja \v{S}vraka}}
-\end{minipage}
-\hfill
-\begin{minipage}[t]{0.47\textwidth}\raggedleft
-	 \textnormal{\large{\bf \textcolor{black}{Notes created by:\\[2mm]}}}
-	 {\large \textcolor{black}{Luca Ipsale}}\\
-      {\large\textcolor{black}{William Luciani}}\\
-      {\large\textcolor{black}{Andrea Sittoni}}\\
-      {\large\textcolor{black}{Üzeyir Sa\c{c}{\i}kay}}\\
-      {\large\textcolor{black}{Jacob Skarby}}
-\end{minipage}
+% \vspace{2mm}
+% \begin{minipage}[t]{0.47\textwidth}
+% 	 \textnormal{\large{\bf \textcolor{black}{Tutor:\\[2mm]}}}{\large \textcolor{black}{Anja \v{S}vraka}}
+% \end{minipage}
+% \hfill
+% \begin{minipage}[t]{0.47\textwidth}\raggedleft
+% 	 \textnormal{\large{\bf \textcolor{black}{Notes created by:\\[2mm]}}}
+% 	 {\large \textcolor{black}{Luca Ipsale}}\\
+%       {\large\textcolor{black}{William Luciani}}\\
+%       {\large\textcolor{black}{Andrea Sittoni}}\\
+%       {\large\textcolor{black}{Üzeyir Sa\c{c}{\i}kay}}\\
+%       {\large\textcolor{black}{Jacob Skarby}}
+% \end{minipage}
+
+\includepdf{titlepage}
 
 \clearpage
 \thispagestyle{empty}
@@ -196,8 +201,7 @@ $-$H. Poincaré}\\
 \end{flushright}
 \clearpage
 
-
-\section*{\huge{\textcolor{black}{For the reader}}}
+\chapter*{\huge{\textcolor{black}{For the reader}}}
 \hfill
 \vspace{0.50cm}\\
 These are the lecture notes of the course \textit{``Bordism and Topological Field Theory''} held by Prof.\hspace{1mm}Dr. Claudia Scheimbauer (\href{mailto:scheimbauer@ma.tum.de}{scheimbauer@ma.tum.de}) during the Wintersemester 2023/2024 at the \textit{Technische Universität München}. The tutorial sessions are held by Anja \v{S}vraka (\href{mailto:svr@ma.tum.de}{svr@ma.tum.de}).\hspace{1.5mm}The notes are typed by Luca Ipsale (\href{mailto:luca.ipsale@campus.lmu.de}{luca.ipsale@campus.lmu.de}), William Luciani (\href{mailto:w.luciani@campus.lmu.de}{w.luciani@campus.lmu.de}), Andrea Sittoni (\href{mailto:sittoniandrea@gmail.com}{sittoniandrea@gmail.com}) and Üzeyir Sa\c{c}{\i}kay (\href{mailto:uzeyirsacikay@gmail.com}{uzeyirsacikay@gmail.com}). Exercises are also implemented in the notes by Jacob Skarby (\href{mailto:jacob.skarby@tum.de}{jacob.skarby@tum.de}). If you find errors or if you have suggestions of any kind, please feel free to write us an e-mail.
@@ -225,24 +229,26 @@ These are the lecture notes of the course \textit{``Bordism and Topological Fiel
 % --------------------- LECTURE 1 23/10 -----------------------
 % -------------------------------------------------------------
 
-\section{\textcolor{black}{Why should you care? An informal introduction}}
-As the name suggests, this subject is two-sided: we have a physics part, namely Quantum Field Theory, and a mathematics part, more specifically topology and in particular (Co)Bordism. Let us explore the motivations and ideas behind these two subjects and how they come together. Do not worry if not everything is immediately clear, it will become so during the semester... hopefully.
-\subsection{\textcolor{black}{QFT}}
+%TODO I would label and caption the figures so they can be referenced and they can appear wherever TeX thinks best /William
+
+\chapter{Why should you care? An informal introduction}
+As the name suggests, this subject is two-sided: we have a physics part, namely Quantum Field Theory, and a mathematics part, more specifically topology and in particular (Co)Bordism. Let us explore the motivations and ideas behind these two subjects and how they come together. Do not worry if everything is not immediately clear, it will become so during the semester... hopefully.
+\section{QFT}
 \epigraph{Physics is very interesting:
 There are many, many interesting theorems.
 Unfortunately, there are no
 definitions.}{David Kazhdan}
-Start with a (smooth) manifold $M$ and, generally, some extra structure. For example:
+\noindent Start with a (smooth) manifold $M$ and, generally, some extra structure. For example:
 \begin{itemize}
-    \item $M^4=\R^4$ with a metric with signature $(+, +, +, -)$, so that we can distinguish a strictly spatial part and a temporal part $(\R^4=\R^3_{space}\times\R^1_{time})$. This is called \textit{Minkowski Spacetime} and is particularly important in QFT being the geometric foundation of Special Relativity.
-    \item $M^3=\R^3$ with the Euclidean metric.
-    \item $M^2$ with a conformal structure.
+    \item $M^4=\R^4$ with a metric with signature $(+, +, +, -)$, so that we can distinguish a strictly spatial part and a temporal part $(\R^4=\R^3_{space}\times\R^1_{time})$. This is called \textit{Minkowski Spacetime} and is particularly important in QFT being the geometric foundation of Special Relativity,
+    \item $M^3=\R^3$ with the Euclidean metric,
+    \item $M^2$ with a conformal structure,
     \item $M^{11}$ as an ``Elliptic Fibration'', something which \textit{locally} looks like $\left(S^1\times S^1\right)\times \ something$. These things are useful in areas with high-sounding names such as ``M-Theory'' or, more generically, ``String Theory''.
 \end{itemize}
 However, in general, these manifolds must be thought of with other structures, like connections, bundles...\\
 Now we can ``define'' a Quantum Field Theory on $M$ via a list of ingredients:
 \begin{enumerate}
-    \item \textbf{\textit{Fields}}. The \underbar{space} of fields $\mathcal{F}$, associated usually to a bundle $E\xrightarrow{p}M$, is defined as sections\footnote{A section of a bundle $E\xrightarrow{p}M$ is a map (in this context, smooth) $s:M\to E$ such that $p\circ s=id_M$.} of $E$ over $M$. In the case the bundle is trivial ($E\cong M\times X$), then $\mathcal{F}=\Gamma(M,E)=\text{Maps}(M\rightarrow X)$. But what is this thing? What do we mean by ``space'' here? Is it a set, a topological space, a category, a scheme, a stack...?\\
+    \item \textbf{\textit{Fields}}. The \underbar{space} of fields $\mathcal{F}$, associated usually to a bundle $E\xrightarrow{p}M$, is defined as sections\footnote{A section of a bundle $E\xrightarrow{p}M$ is a map (in this context, smooth) $s:M\to E$ such that $p\circ s=id_M$.} of $E$ over $M$. In the case the bundle is trivial ($E\cong M\times X$), then $\mathcal{F}=\Gamma(M,E)=\text{Maps}(M\rightarrow X)$. But what mathematical object are we dealing with? What do we mean by ``space'' here? Is it a set, a topological space, a category, a scheme, a stack...?\\
     \begin{figure}[!ht]
         \centering
         \includegraphics[width=8cm]{images/Lecture 1/penrose.png}
@@ -262,53 +268,56 @@ Now we can ``define'' a Quantum Field Theory on $M$ via a list of ingredients:
 \end{enumerate}
 Physicists use all sorts of techniques (Feynman Diagrams, renormalization...) to make sense of undefined measures and divergences of all kinds emerging from calculations, dealing with things like $\infty-\infty$ or $\infty/\infty$ and obtaining finite and testable results.
 
-This black box that physicists have (successfully) developed frustrates mathematicians because they do not understand why it works!
-
+\noindent This black box that physicists have (successfully) developed frustrates mathematicians because they do not understand why it works!
 Therefore, axiomatizations have been developed exploiting new tools from geometry, algebra and topology to develop a formal and rigorous framework\footnote{More specifically to the path integral, see \cite[2.1]{Carqueville_2018} for an introduction on how topological field theories can be seen as a way to axiomatize some properties of the path integral as a tool to compute correlation functions.}.
+
+\noindent The Partition Function $Z$ behaves well when ``smoothly'' changing the metric and is (in most cases) independent of most extra data of the manifold, so $Z(M)$ depends only on the smooth manifold and as such is purely topological!
 
 \bigskip
 
-The Partition Function $Z$ behaves well when ``smoothly'' changing the metric and is (in most cases) independent of most extra data of the manifold, so $Z(M)$ depends only on the smooth manifold and as such is purely topological!
-
 If someone is into mathematics for the money or the prestige\footnote{If not already sufficiently clear, we explicitly state that this is a joke.}, the field of topological field theories is the one to specialize in: \begin{itemize}
     \item René Thom, the mathematician who laid the foundation of cobordism theory\footnote{Which is at the root of TFTs: TFTs can be seen as a refinement of his work.} in his PhD thesis, received the Fields Medal for this.
+    % TODO is secondary here correct? What does it mean? Also, I would write Chern classes instead of Chern-Simons forms/William
     \item Shiing-Shen Chern and Jim Simons discovered secondary characteristic classes of 3-dimensional manifolds called Chern-Simons forms, which underpinned the necessary tools to define the earliest example we have of a TFT: 3d Chern-Simons theory. Simons went on to found an incredibily successful hedge fund and became a billionaire. Chern continued to do groundbreaking work in differential geometry and topology; so much that some years ago the International Congress of Mathematicians named a prize after him: the \hyperlink{https://en.wikipedia.org/wiki/Chern_Medal}{Chern Medal}.
     \item Edward Witten received his Fields medal mainly because he found a link between 3d-TFTs, in particular Chern-Simons theory, and knot theory, in particular with the Jones polynomial. See \cite{Witten1989} for details.
-\end{itemize} The Jones polynomial is a topological invariant of a knot, meaning that you can assign to each Knot a Jones Polynomial in such a way that if two Knots have different polynomials, then they must be different.
+\end{itemize} 
+The Jones polynomial is a topological invariant of a knot, meaning that you can assign to each knot a Jones Polynomial in such a way that if two Knots have different polynomials, then they must be different.
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=5cm]{images/Lecture 1/Jones.jpg}
-\end{figure}\\
-What the heck do TFTs and Knots have in common?! There is actually a deep connection between the two.\\
+\end{figure}
+What the heck do TFTs and knots have in common?! There is actually a deep connection between the two.
 When writing his paper, Witten drew several pictures like the following:
 %The order of the images is compiled strangely
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=10cm]{images/Lecture 1/witten.png}
 \end{figure}
-\\
- Two mathematicians, Segal and Atiyah, recognized a hidden symmetric monoidal functor and pinned down  Witten's intuitions rigorously, thereby axiomatizing TQFTs (and CFTs).
+Two mathematicians, Segal and Atiyah, recognized a hidden symmetric monoidal functor and pinned down  Witten's intuitions rigorously, thereby axiomatizing TQFTs (and CFTs).
 
-\subsection{\textcolor{black}{Topology}}
+\section{Topology}
 \begin{flushleft}
 \textit{Topology is the science of fundamental patterns\\
 and structural relationships of event constellations.\\
 -Fuller}
 \end{flushleft}
-The ideas behind cobordisms were developed already by Poincaré together with homology (and their group structure was discovered and investigated by Emmy Noether) but a proper definition was established by Pontryangin and Thom in the 20$^{\text{th}}$ century.\\
-The strategy in general in (algebraic) topology is to probe a topological space by mapping into it, a way of viewing things very reminiscent of the Yoneda Lemma.\\
-In the case of (singular) homology, we map simplices into the space of interest $S$. These maps are indexed by the dimension of the simplex as in the figure on the next page.
+The ideas behind cobordisms were developed already by Poincaré together with homology (and their group structure was discovered and investigated by Emmy Noether) but a proper definition was established by Pontryangin and Thom in the 20$^{\text{th}}$ century.
+
+The strategy in general in (algebraic) topology is to probe a topological space by mapping into it, a way of viewing things very reminiscent of the Yoneda Lemma.
+In the case of (singular) homology, we map simplices into the space of interest $S$. These maps are indexed by the dimension of the simplex as in the following figure.
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=6.5cm]{images/Lecture 1/simplex.png}
-\end{figure}\\
+\end{figure}
 We want to construct an algebraic structure around these maps $\sigma^{(n)}:\Delta^n\to S$ and so we  choose a set of coefficients, say $\R$, and construct the set of ``formal (finite) sums''  of $n$-simplices as
 $$\sum a_i\sigma^{(n)}_i  ,$$
-with $a_i\in\R$. Call this set $C_n(S)$. This is now an $\R$-Vector Space generated by the simplices. On the set of simplices we can introduce a map $\partial$, often called the differential or boundary, that takes each simplex to the alternating sum of the $n-1$ simplices that make up its boundary:
-$$\partial\sigma^{(n)}:=\sum_{i=0}^{n}(-1)^i\sigma^{(n)}|_{\small{i^{\text{th}}-boundary}} \ ,$$
-and then extend it linearly to $C_n(S)$. Calling $\partial_n:=\partial|_{C_n(S)}$, we have $\partial_n:C_n(S)\to C_{n-1}(S)$ and it can also be shown that $\partial_n \circ\partial_{n+1}=0\Leftrightarrow\partial^2=0$. This defines a chain complex structure.\\
-Given the last identity, note that $\text{im}(\partial_{n+1})\subset \text{ker}(\partial_n)$ and therefore, we can define the $n^{\text{th}}$ homology of $S$ as
-$$H_n(S)=\Big\{c^{(n)}: \ \ \partial_n c^{(n)}=0\Big\}\big{/}\Big\{f^{(n)}: \ \ f^{(n)}=\partial_{n+1} (f')^{(n+1)}\Big\}=\frac{\text{ker}(\partial_n)}{\text{im}(\partial_{n+1})},$$
+with $a_i\in\R$ and call this set $C_n(S)$. This is now an $\R$-Vector Space generated by the simplices. On the set of simplices we can introduce a map $\partial$, often called the differential or boundary, that takes each simplex to the alternating sum of the $n-1$ simplices that make up its boundary:
+$$\partial\sigma^{(n)}:=\sum_{i=0}^{n}(-1)^i\sigma^{(n)}|_{i^{\text{th}}-boundary} \ ,$$
+and then extend it linearly to $C_n(S)$. Calling $\partial_n:=\partial|_{C_n(S)}$, we have $\partial_n:C_n(S)\to C_{n-1}(S)$ and it can also be shown that $\partial_n \circ\partial_{n+1}=0$, a property which is often simply written as $\partial^2=0$. This defines a chain complex structure.
+Given this property of $\de$, note that $\text{im}(\partial_{n+1})\subset \text{ker}(\partial_n)$ and therefore, we can define the $n^{\text{th}}$ homology of $S$ as
+\begin{equation*}
+    H_n(S)=\Big\{c^{(n)}: \ \ \partial_n c^{(n)}=0\Big\}\big{/}\Big\{f^{(n)}: \ \ f^{(n)}=\partial_{n+1} (f'^{(n+1)})\Big\}=\frac{\text{ker}(\partial_n)}{\text{im}(\partial_{n+1})},
+\end{equation*}
 and this is a vector space (by construction).
 \begin{figure}[!ht]
 \centering
@@ -325,7 +334,7 @@ The elements of $H_1(S)$ and $H_2(S)$ can be characterized in different ways:
     $$\amalg \ S^1\longrightarrow S$$
     \item The elements of $H_2(S)$ can be represented by a collection of maps from closed oriented surfaces (e.g. genus $g-$surfaces) in $S$.
     $$\amalg \ \Sigma\longrightarrow S$$
-    \item Let $c\in H_1(S)$ such that $c=\sum a_i\sigma_i$. Let $\partial c=0$, then by $1.$ this is some map $c: \amalg \ S^1\to S$, which is $0 \in H_1(S)$ if and only if it extends to a map $\tilde c$ of oriented surfaces in $S$, i.e. if there is the map on the bottom right such that the following diagram commutes.
+    \item Let $c\in H_1(S)$, then $\partial c=0$. Now by $1.$ this is some map $c: \amalg \ S^1\to S$ which is $0 \in H_1(S)$ if and only if it extends to a map $\tilde c$ of oriented surfaces in $S$, i.e. if there is the map on the bottom right such that the following diagram commutes.
     $$
     \begin{tikzcd}[row sep=tiny, column sep=small]
       \amalg \ S^1 \ar[drrr, "c"] \ar[dd, hook]\\
@@ -340,8 +349,8 @@ The elements of $H_1(S)$ and $H_2(S)$ can be characterized in different ways:
     \includegraphics[width=11cm]{images/Lecture 1/extension.png}
     \end{figure}
 \end{enumerate}
-But then can we construct something like homology but characterized more like this last property?\\
-The idea is:
+Can we then construct something like homology but characterized more like this last property?
+This is exactly the idea of \textit{(co)bordism}:
 \begin{enumerate}
     \item Let $M^n$ be a $n-$dimensional smooth compact manifold generally with boundary. Now, instead of maps from simplices we consider maps
     $$\large{M^n\xrightarrow{f} S}.$$
@@ -350,25 +359,26 @@ The idea is:
     where, if $\partial M^n=\emptyset$ then define the map to be $0$.
     \item Let $H^{\text{bord}}_n(S)$ denote this ``homology theory'' of degree $n$ on the space $S$. Let $M^n$ be closed, then $\large{M^n\xrightarrow{f} S}$ is zero in $H^{\text{bord}}_n(S)$ if and only if the map $f$ extends to a $(n+1)-$dimensional smooth compact manifold $W$ such that $\partial W= M$.
 \end{enumerate}
-Using these ideas one obtains something very similar to singular homology even though different, indeed this \textit{Bordism} constitutes a generalized homology theory\footnote{There exist a list of axioms called \textit{Eilenberg–Steenrod axioms} that is used to define what a homology theory is since it may come in different flavours. A generalized homology theory is a theory that has every property required but one, generally (as in the case of Bordism as seen below) that one is the \textit{dimension axiom}.}! %could later put a comparison TFTs/Eilenberg-Steenrod as in Ayala-Francis Cobordism Hypothesis
+Using these ideas one obtains something very similar to singular homology even though different, indeed this bordism theory constitutes a generalized homology theory\footnote{There exist a list of axioms called \textit{Eilenberg–Steenrod axioms} that is used to define what a homology theory is since it may come in different flavours. A generalized homology theory is a theory that has every property required but one, generally (as in the case of Bordism as seen below) that one is the \textit{dimension axiom}.}! %could later put a comparison TFTs/Eilenberg-Steenrod as in Ayala-Francis Cobordism Hypothesis
 
 \medskip
 
-Consider as a space, a point $S=\{*\}=pt$. What is $H^{\text{bord}}_n(pt)$?
+In particular, consider the one point space $S=\{*\}=pt$. What are elements in $H^{\text{bord}}_n(pt)$?
 
-Consider a suitable (closed) manifold $M^n\to pt$, since we are considering just a point we don't have to care about how the manifolds map into it, so this is $0$ if and only if $\exists W^{n+1}$ such that $\partial W^{n+1}=M^n$
-    $$
+\noindent Consider a closed manifold $M^n$. This defines a class in $H^{\text{bord}}_n(pt)$ since $\de M^n = \emptyset$. Now, this is $0 \in H^{\text{bord}}_n(pt)$ if we can find a compact $n+1$ manifold $W^{n+1}$ and maps into $pt$ such that the following diagram commutes
+\begin{equation*}
     \begin{tikzcd}
-M_1 \arrow[dd,  hook] \arrow[rd, dashed]                         \\
-                                        & pt \\
-M_2 \arrow[ru, dashed] 
-\end{tikzcd}
-    $$
-But ``surely'' not all closed manifolds are a boundary of compact manifold! And so we can be sure that, in general, $H^{\text{bord}}_n(pt)\neq0$ for $n>0$.
+        M^n \arrow[dd,  hook] \arrow[rd, dashed]                         \\
+                                                & pt \\
+        W^{n+1} \arrow[ru, dashed] 
+    \end{tikzcd}
+\end{equation*}
+however the maps into $pt$ are trivial and carry no extra information. 
+Now, ``surely'' not all closed manifolds are a boundary of compact manifold! And so we can be sure that, in general, $H^{\text{bord}}_n(pt)\neq0$ for $n>0$.
 
 \medskip
 
-But when are two things the same in $H^{\text{bord}}_n$? If they are the boundary of the same manifold i.e. let $M_1\xrightarrow{f_1}S$ and $M_2\xrightarrow{f_2}S$ be closed manifolds, then they represent the same element in $H^{\text{bord}}_n$ if and only if $\exists W\xrightarrow{g}S$ compact manifold with boundary with the property that $\partial W= M_1 \amalg M_2$ and such that it makes the following diagram commute
+But when do two $n$ manifolds represent the same class in $H^{\text{bord}}_n(S)$? In the case of $S = pt$, they should be the boundary of the same manifold. In general, we require also that the maps into $S$ extend to the $n+1$ manifold, i.e. let $M_1$ and $M_2$ be closed $n$ manifolds, with maps $M_1\xrightarrow{f_1}S$ and $M_2\xrightarrow{f_2}S$, then they represent the same element in $H^{\text{bord}}_n(S)$ if and only if there exists a compact $n+1$ manifold with boundary $W$ with a map $ W\xrightarrow{g}S$ with the property that $\partial W= M_1 \amalg M_2$ and such that it makes the following diagram commute
     $$
     \begin{tikzcd}
 M_1 \arrow[rd, hook] \arrow[rrd, bend left, "f_1"' description]         \\
@@ -380,8 +390,10 @@ Pictorially
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=10cm]{images/Lecture 1/cobordism.png}
-\end{figure}\\
-We then say that $M_1$ and $M_2$ are \textit{cobordant} and $W$ is called a \textit{bordism} from $M_1$ to $M_2$. So we can define the \textit{Cobordism Group}
+\end{figure}
+We then say that $M_1$ and $M_2$ are \textit{cobordant} and $W$ is called a \textit{bordism} from $M_1$ to $M_2$. 
+
+Restricting to $S= pt$ allows us to define the \textit{Cobordism Group}
 $$\Omega_n=
 H^{\text{bord}}_n(pt)=
 \bigg\{\text{Closed $n-$manifold}\bigg\}
@@ -391,17 +403,15 @@ H^{\text{bord}}_n(pt)=
 %\text{Cobordant Compact}\\
 %\text{$(n+1)-$manifolds}
 %\end{array}
-\biggl\}.$$\\
-But are all these notions are actually useful? Well, classifying manifolds up to diffeomorphism is hard, dimension $0, 1$ and $2$ can be done without too much trouble but already in dimension $3$ things get complicated (think of the Poincaré Conjecture!)... so this classifications can be done (more easily) up to Bordism!
+\biggl\}.$$
+But are all these notions are actually useful? Well, classifying manifolds up to diffeomorphism is hard: dimension $0, 1$ and $2$ can be done without too much trouble but already in dimension $3$ things get complicated (think of the Poincaré Conjecture!)... so this classifications can be done (more easily) up to bordism!
 
 
-\clearpage
 
 % -------------------------------------------------------------
 % --------------------- LECTURE 2 25/10 -----------------------
 % -------------------------------------------------------------
 
-%\section{(Co)bordisms}
 %TODO find a better place for this
 \begin{notat}
   Throughout this notes we will abuse notation in the following way, denoting a monoid $(M,\cdot)$ by $M$, a metric space $(X,d)$ by $X$ etc...
@@ -410,43 +420,48 @@ But are all these notions are actually useful? Well, classifying manifolds up to
     $n-$manifold and $n-$bordism mean respectively $n$ dimensional manifold and $n$ dimensional bordism.
 \end{notat}
 
+\chapter{Manifolds and bordisms}
 
-\section{Manifolds and bordisms}
+\section{Some definitions} % (fold)
+\label{sec:some_definitions}
 
 Before venturing into a definition of cobordism, let us recall some useful definitions.
 
 This section mainly relies on \cite{Lee2012} and \cite{Hirsch1976}.
 \begin{defn}[\textit{Topological Manifold}]
-	A topological manifold of dimension $n$ is a paracompact Hausdorff topological space $X$ such that every point $x \in X$ has an open neighborhood $U$ which is homeomorphic to an open set\footnote{Equivalently to $\R^n$.} in $\R^n$. The latter property means that for each $x\in X$\begin{itemize}
-	    \item there exist an an open subset $U\subseteq X$ containing $x$, i.e. an open neighbourhood of $x$
-     \item a corresponding open subset $\tilde{U}\in\R^n$
-     \item a homeomorphism $\phi_{U} : U \to \tilde{U}=\phi(U) $ called coordinate chart, or just chart
+	A topological manifold of dimension $n$ is a paracompact Hausdorff topological space $X$ such that every point $x \in X$ has an open neighborhood $U$ which is homeomorphic to an open set\footnote{Equivalently to $\R^n$.} in $\R^n$. The latter property means that for each $x\in X$ there exist:
+    \begin{itemize}
+        \item an open subset $U\subseteq X$ containing $x$, i.e. an open neighbourhood of $x$,
+        \item a corresponding open subset $\tilde{U}\in\R^n$,
+        \item a homeomorphism $\phi_{U} : U \to \tilde{U}=\phi(U) $ called coordinate chart, or just chart (see Fig. \ref{fig:Coordinate_Chart}).
 	\end{itemize} 
  \end{defn}
- \begin{figure}
-\centering
-\captionsetup{labelformat=empty, format = hang}
-\begin{measuredfigure}
-    \includegraphics[width=12cm]{images/Lecture 2/Coordinate Chart.png} \caption{\small{The visualization of a coordinate chart map from Lee's textbook on smooth manifolds \cite{Lee2012}}}
-\end{measuredfigure}
+\begin{figure}
+    \centering
+    \captionsetup{format = hang}
+    \includegraphics[width=12cm]{images/Lecture 2/Coordinate Chart.png} 
+    \caption{\small{The visualization of a coordinate chart map from Lee's textbook on smooth manifolds \cite{Lee2012}}}
+    \label{fig:Coordinate_Chart}
 \end{figure}
-  If $(U, \phi)$, $(V, \psi)$ are two coordinate charts of a topological manifold $X$ and $U\cap V\neq\emptyset$, then $\psi \circ \phi^{-1} : \phi(U\cap V) \to \psi(U\cap V)$ is a transition function from $\phi$ to $\psi$.
-\begin{figure}[!ht]
-\centering
-\captionsetup{labelformat=empty, format = hang}
-\begin{measuredfigure}
-    \includegraphics[width=12cm]{images/Lecture 2/Lee_TransitionMap .png} \caption{\small{The picture of a transition function from \cite{Lee2012}}}
-\end{measuredfigure}
+  If $(U, \phi)$, $(V, \psi)$ are two coordinate charts of a topological manifold $X$ and $U\cap V\neq\emptyset$, then $\psi \circ \phi^{-1} : \phi(U\cap V) \to \psi(U\cap V)$ is a transition function from $\phi$ to $\psi$ (see Fig. \ref{fig:Lee_TransitionMap}).
+\begin{figure}
+    \centering
+    \captionsetup{format = hang}
+    \includegraphics[width=12cm]{images/Lecture 2/Lee_TransitionMap .png} 
+    \caption{\small{The picture of a transition function from \cite{Lee2012}}}
+    \label{fig:Lee_TransitionMap}
 \end{figure}
+
+From the introduction it's clear that we will also deal with manifolds with boundary, so we recall also this definition.
 \begin{defn}[Manifold with Boundary]
 	A manifold with boundary of dimension $n$ is a paracompact Hausdorff topological space $X$ such that every point $p \in X$ has an open neighborhood $U_p$ which is homeomorphic to an open set $V$ in $\H^n = \{ (x_1, \dots, x_n) \in \R^n : x_1 \leq 0\}$, i.e. the closed\footnote{in topological sense and not in the manifold sense we later define.} half space, via the homeomorphism $\phi$ of the coordinate chart $(U_p,\phi)$.
 \end{defn}
 \begin{figure}
-\centering
-\captionsetup{labelformat=empty, format = hang}
-\begin{measuredfigure}
-    \includegraphics[width=12cm]{images/Lecture 2/Manifold with boundary.png} \caption{\small{The picture of a 2-dimensional manifold with boundary from \cite{Lee2012}}}
-\end{measuredfigure}
+    \centering
+    \captionsetup{format = hang}
+    \includegraphics[width=12cm]{images/Lecture 2/Manifold with boundary.png} 
+    \caption{\small{The picture of a 2-dimensional manifold with boundary from \cite{Lee2012}}}
+    \label{fig:Manifold_w_boundary}
 \end{figure}
 
 \begin{defn}[Boundary of a Manifold]
@@ -454,12 +469,14 @@ This section mainly relies on \cite{Lee2012} and \cite{Hirsch1976}.
 	$$
 		\de X := \{ p \in X : x_1(p) = 0\}
 	$$
-	otherwise, $p$ is in the \textit{interior} of $X$, which we denote with Int $X$. Equivalently, this means that $p$ has neighborhood $V$ that is the domain of a coordinate chart $\psi:V\to\H^n$ such that $\psi(V)\cap\de\H^n\neq\emptyset$ and sending $p$ to $\de \H^n$.
+	otherwise, $p$ is in the \textit{interior} of $X$, which we denote with Int $X$. 
 
- Specularly, we could have defined the interior of $X$ to be the set of points $q\in X$ that have a neighourhood $U$ that is the domain of a chart $\psi:U\to\R^n$.
+    Equivalently, $p \in \de X$ means that $p$ has neighborhood $V$ that is the domain of a coordinate chart $\psi:V\to\H^n$ such that $\psi(V)\cap\de\H^n\neq\emptyset$ and sending $p$ to $\de \H^n$.
+
+    Specularly, we could have defined the interior of $X$ to be the set of points $q\in X$ that have a neighourhood $U$ that is the domain of a chart $\psi:U\to\R^n$.
 \end{defn}
 \begin{lem}
-    If $X$ is a $n$ dimensional manifold with boundary, then $\de X$ is a $n-1$ dimensional manifold.
+    If $X$ is an $n$ dimensional manifold with boundary, then $\de X$ is a $n-1$ dimensional manifold.
 \end{lem}
 \begin{proof}
     Let $p\in\de X$ be an arbitrary point on the boundary of an $n$-manifold with boundary. Hence, there is an open neighbourhood $U_p$ of $p$ which is homeomorphic to an open set $V$ in $\mathbb{H}^n$, $ \phi(U_p)\cong V$. Since $p\in\de X$ we know that $x_1(\phi(p))=0$ and $\phi(p)\in V\cap\mathbb{H}^n$. $\phi:U_p\to V$ can be restricted to a homemorphism $\phi\mid_{\phi^{-1}(V\cap\mathbb{H}^n)}:\phi^{-1}(V\cap\mathbb{H}^n)\xrightarrow{\cong}V\cap\mathbb{H}^n$. Note that $\phi^{-1}(V\cap\mathbb{H}^n)=U_p\cap\de X$ because $p$ is sent to the boundary $\de\mathbb{H}^n$ for every chart. Note also that $\de\mathbb{H}^n=\{(0,x_2, \dots, x_n)\}$ and $\de\mathbb{H}^n\cong\R^{n-1}$. Since $V\cap\mathbb{H}^n\in\de\mathbb{H}^n$ and $V\cap\mathbb{H}^n\cong U_p\cap\de X$, $U_p\cap\de X$ is homeomorphic to an open set in $\R^{n-1}$.
@@ -538,7 +555,7 @@ This definition can be generalized to maps to arbitrary smooth manifolds.
 	Come up with the natural notion of smooth map between manifolds \emph{with} boundary. 
 \end{exercise}
 
-\subsection{What is a Bordism?}
+\section{What is a Bordism?}
 
 \begin{defn}[$1^{st}$ variant of the definition of bordism: via \emph{strict equalities}]
 \label{Define Bordism}
@@ -714,7 +731,7 @@ We need to show that the relation satisfies the properties of reflexivity, symme
 \end{itemize}
 \end{proof}
 
-\subsection{Cobordism groups}\label{Cob Groups}
+\section{Cobordism groups}\label{Cob Groups}
 \begin{defn}
 \label{Defn n-th cob group}
 The $n$-th cobordism group is
@@ -750,7 +767,7 @@ There is an insidious set-theoretic issue when we define the $n$-th cobordism gr
 \end{ex}
 
 % texorpdfstring to remove the hyperref warning
-\subsubsection{The 0-th Cobordism Group, \texorpdfstring{$\Omega_{0}$}{Omega 0}}
+\subsection{The 0-th Cobordism Group, \texorpdfstring{$\Omega_{0}$}{Omega 0}}
 Consider
  $$\Omega_0 = \{\text{finite disjoint unions of points}\} / \{\text{$1$-dimensional cobordisms}\}.$$
 To compute this, consider the following classification of $1$-manifolds:
@@ -927,7 +944,7 @@ An oriented cobordism in $1$ dimension is given by $[0,1]$ or $S^1$ which comes 
     What is $\Omega_0^{or}$? Try to think about it! 
 \end{exercise}
 
-\subsubsection{The 1st cobordism group, \texorpdfstring{$\Omega_{1}$}{Omega 1}}
+\subsection{The 1st cobordism group, \texorpdfstring{$\Omega_{1}$}{Omega 1}}
 Now we have
 $$\Omega_1= \{\text{closed $1$-dimensional manifolds}\} / \{\text{$2$-dimensional cobordisms}\}.$$
 \begin{thm}
@@ -938,7 +955,7 @@ A circle is the boundary of a 2-disk, so $S^1 \sim \emptyset$. Hence, also finit
     \Omega_1 = 0
 \end{equation}
 
-\subsubsection{The 2nd cobordism group, \texorpdfstring{$\Omega_{2}$}{Omega 2}}
+\subsection{The 2nd cobordism group, \texorpdfstring{$\Omega_{2}$}{Omega 2}}
 In order to find the $2$nd cobordism group, we first need a classification of $2$-manifolds. %(Introduced before) In order to state the result we need to introduce the concept of \textit{connected sum}
 %\begin{defn}[Connected Sum]
 	%Given $n$ manifolds $M,N$, their connected sum $M\# N$ is given by
@@ -1120,8 +1137,8 @@ Prove the following.
     \end{enumerate}
 \end{exercise}
 
-\subsection{Tangential Structures}
-\subsubsection{Orientations and the tangent bundle}
+\section{Tangential Structures}
+\subsection{Orientations and the tangent bundle}
 \begin{defn}[Tangent bundle]
     $TM$ is the vector bundle over $M$ of rank $n$ is constructed as
     \begin{enumerate}
@@ -1248,7 +1265,7 @@ Again this is an equivalence relation which we call "being oriented cobordant", 
 \end{defn}
 Note that $\emptyset$ is an oriented $n$ manifold with a unique orientation.
 
-\subsubsection{Framings} % (fold) 
+\subsection{Framings} % (fold) 
 \label{sub:framings}
 
 % I added this to the previous definitions
@@ -1286,7 +1303,7 @@ Some examples of frameable manifolds are the following:
 % --------------------- LECTURE 5 6/11 ------------------------
 % -------------------------------------------------------------
 
-\subsection{Classification of 2 manifolds with boundary} % (fold) // what do you mean by '(fold)'? /andrea
+\section{Classification of 2 manifolds with boundary} % (fold) // what do you mean by '(fold)'? /andrea
 \label{sub:classification_of_2_manifolds_with_boundary}
 
 The aim of this chapter is to prove the aforementioned classification of compact 2-dimensional manifolds with the use of Morse Theory (see \ref{Classification of 2-manifolds}). We remind the reader: let $M$ be a 2-manifold with genus $g$, then \begin{itemize}
@@ -1296,7 +1313,7 @@ The aim of this chapter is to prove the aforementioned classification of compact
 
 We now want to find a classification of compact 2 manifolds with boundary (which we will simply call \textit{surface}). To do it we will need Morse theory. What is the idea? Given a surface $M$ (it works in greater generality but now we're only interested in surfaces), find a map $f: M \to \R$ which is "nice" is a way we'll specify later on.
 Then by analizing properties of $f$ we can recover the topology of the surface (i.e. the surface up to diffeomorphism). 
-\subsubsection{Introduction to Morse Theory}
+\subsection{Introduction to Morse Theory}
 \begin{figure}
     \centering
     \includegraphics[width=9.3cm]{images/Lecture on Morse Theory/TORUS MORSE THEORY.png}
@@ -1689,8 +1706,8 @@ isomorphic to the homotopy of the sphere spectrum and it is \textit{not} compute
 % -------------------------------------------------------------
 % --------------------- LECTURE 9 22/11 -----------------------
 % -------------------------------------------------------------
-\section{Topological field theories}
-\subsection{A modern perspective on cobordisms}
+\chapter{Topological field theories}
+\section{A modern perspective on cobordisms}
 In \ref{Cob Groups} we extracted an algebraic structure from bordisms by first observing that being cobordant is an equivalence relation and then studying the equivalence classes of closed $n-$manifolds. Together with disjoint unions, this resulted in an abelian group, and eventually in a \Z graded commutative ring, and this was a key tool for classifying manifolds up to cobordism. However, this algebraic structure merely records that there is a bordism between two manifolds (since two manifolds are equivalent just if there is a bordism, independently of what kind of bordism it is), thereby forgetting other properties of the bordism itself. We switch now perspective and analyze a more sophisticated structure remembering \underline{how} two manifolds are cobordant, e.g. indicating the direction of the bordism: the symmetric monoidal category $Bord_{n,n-1}$ where objects are $(n-1)-$manifolds and morphisms are $n-$cobordisms. The following table summarizes the comparison between the two perspectives:
 \begin{center}
     \begin{tabular}{||c|c||}
@@ -1724,7 +1741,7 @@ We make both these comparisons more rigorous by later (\ref{MonObj}) showing tha
     \item an associative algebra is a monoid object in the category of $k$-vector spaces $Vect_k$
     \item a (\emph{strict}) monoidal category is a monoid object in the category of small categories Cat
 \end{enumerate} The same holds for the commutative case, commutative monoids, commutative algebras and (\emph{strict}) symmetric monoidal categories are all examples of commutative monoid objects (see \ref{CommMonObj}).
-\subsection{Summary of Category Theory}
+\section{Summary of Category Theory}
 \begin{defn}
 \label{Cat}
     A locally small\footnote{A category is locally small if every hom $Hom_{\mathscr{C}}(X,Y)$ is not bigger than a set. A locally small category is small if the collection of objects is a set. A large category is a category which is not small. A category is essentially small if it is locally small and the collection of isomorphism classes (collections of isomorphic objects, i.e. objects with a morphism between them which has a left- and right-inverse) is a set. Questions of size of collections play an important role in category theory. For example, one cannot naively take the set of all sets as the collection of objects of the category of sets because of famous set-theoretic paradoxes like Cantor's, Burali-Forti's or Russell's. See \cite{shulman2008set} for an account on possible set-theoretic foundations for category theory.} category $\mathscr{C}$ consists of the following data:
@@ -2098,7 +2115,7 @@ Folloing this convention an ordinary category is a strict $(1,1)$-category, a st
         We call such categories, \emph{strict} n-categories because $(n-1)$-morphisms are strictly associative and unital, associativity and unitality hold with strict identities, on the nose. For example in Cat it holds that $\forall F:\cat\to\dat. id_\dat\circ F=F=F\circ id_\cat$ and $\forall F:\cat\to\dat;G:\dat\to\eat;H:\eat\to\bat.H\circ(G\circ F)=(H\circ G)\circ F$ 
     \end{rem}
     We will later encounter a notion of weak 2-category (see \ref{Bicategory}).
-\subsubsection{Monoidal Categories}\label{MonCat}
+\subsection{Monoidal Categories}\label{MonCat}
 Recall that a monoid is a group where not necessarily every element is invertible: a set $M$ with a distinguished object $e\in M$ called unit, also known as neutral element, and a map of sets $m: M\times M \to M$ such that $m$ is:
 \begin{itemize}
     \item associative $$
@@ -2852,7 +2869,7 @@ We now list some examples of 2-categories, to convey a more concrete intuition o
     \end{enumerate}
 \end{ex}
 
-\subsection{The Cobordism Category}\label{CobCat}
+\section{The Cobordism Category}\label{CobCat}
 We now get to the most important example of symmetric monoidal category in this course: the symmetric monoidal category of cobordisms\footnote{See chapter 14 of \cite{FreedBordism}.}.
 \begin{notat}
    Note that, if not explicitly stated we will \emph{smooth} manifold when we just write manifold.
@@ -2928,7 +2945,7 @@ We just saw that $\Bordn$ is a category. It has importantly also a symmetric mon
 \begin{rem}
     Associativity and commutativity also hold up to diffeomorphism and not strictly if one defines the disjoint union as a coproduct\footnote{A coproduct is the dual notion of (cartesian) product (see \ref{CartProd}), i.e. a coproduct in $\cat$ is a product in $\cat^{op}$.}: every coproduct is unique up to isomorphism\footnote{One can prove this in a specular way in which we proved the uniqueness of the cartesian product, see \ref{UptoIsoProds}.}, the appropriate notion of isomorphism in the category of smooth manifolds is diffeomorphism and every diffeomorphic manifold is cobordant.
 \end{rem}
-\subsubsection{Definition of Topological Field Theories}
+\subsection{Definition of Topological Field Theories}
 Recall that a group homomorphism $\Omega_n \to \Z$ or $\R$ or \C... is a bordism invariant, which is generally quite useful and interesting. Now that we have refined our tools and have a cobordism \emph{category} instead of the cobordism \emph{group}, the bordism invariants become symmetric monoidal functors into another symmetric monoidal category since symmetric monoidal functors are the appropriate notion of homomorphism of symmetric monoidal categories.
 
 In particular, that's how we get a topological field theory:
@@ -3253,7 +3270,7 @@ First of all, the triangle on the top commutes, i.e. $(id_{G(X)}\otimes\alpha_{X
 % -------------------------------------------------------------
 % flipped classroom
 
-\subsection{Classification of TFTs}\label{ClassificationOfTFTs}
+\section{Classification of TFTs}\label{ClassificationOfTFTs}
 \epigraph{
 \textbf{Existence}: Why is there something, rather than nothing?
 
@@ -3262,7 +3279,7 @@ goal may be
 
 \noindent \textbf{Classification}: Given that there’s something, what could it be?}{Jack Morava in \cite{morava2011cosmic}}
 %Sorry if too quirky XD feel free to delete it of course, was also undecided if to put it here or for classification of 2d manifolds /Andrea
-\subsubsection{Classification of 1d-TFTs}\label{ClassificationOf1dTFTs}
+\subsection{Classification of 1d-TFTs}\label{ClassificationOf1dTFTs}
 The main goal of this subsection is to prove that given an oriented 1d-TFT $Z:\Bord_{1,0}\to\cat$, $Z(\bullet)$ has a dual and conversely, given an object $X\in\cat$, in the codomain of the TFT, and its dual $(Y,ev_X,coev_X)$, we can reconstruct a 1d-TFT.
 \begin{lem}\label{Surjectivity}
     Let $X\in\cat$ be a dualizable object with $Y$ as dual. Then the following determines a 1d-TFT: $$Z(\bullet_+):=X$$ $$Z(\bullet_-):=Y$$ $$Z():=ev_X$$ $$Z():=coev_X$$
@@ -3310,7 +3327,7 @@ Recap: $\TFT_{1,0}^{or},\cat) \xrightarrow{\mathscr Ev_{\bullet+}} (\cat^{dualiz
 
 Now we classified 1 dimensional TFTs, we would now like to do the same for 2 dimensional TFTs and we will find that there is an equivalence between $\TFT_{2,1}^{or}(\cat)$ and commutative Frobenius algebras.
 
-\subsubsection{Classification of 2d-TFTs}
+\subsection{Classification of 2d-TFTs}
 As we have done for the 1-dimensional case, we now try to classify 2-dimensional TFTs. For a more detailed proof see Kock \cite{kock_2003} or the lecture notes from Schweigert \cite{SchwHopfQuantumTFT}. 
 
 We have already defined the following notions in arbitrary monoidal categories (see \ref{FrobAlg}, \ref{MonObj}, \ref{ComonObj}, \ref{CommFrobAlg}, \ref{CommBim}). However, we now explicitly state how the abstract formal definitions are instantiated in Vect$_k$.
@@ -3581,7 +3598,7 @@ but we see that this is true because the Frobenius algebra is commutative.
 \end{prop}
 In other words, $\Bord_{2,1}^{or}$  is free symmetric monoidal category with duals on one commutative Frobenius object $S^1$.
 
-\subsubsection*{Usual depictions of orientations}
+\subsection*{Usual depictions of orientations}
 \label{ssub:usual_depictions_of_orientations}
 
 %DRAWINGS
@@ -3602,7 +3619,7 @@ and the steps were the following:
     %TODO complete
 \end{rem}
 
-\subsubsection{Variants of TFTs}
+\subsection{Variants of TFTs}
 We now provide an outlook to some research programs that are tightly connected to TFTs.
 \begin{itemize}
     \item we could have used different tangential structures, such as
@@ -3636,7 +3653,7 @@ We now provide an outlook to some research programs that are tightly connected t
 % ---------------------- LECTURE 16 8/1 -----------------------
 % -------------------------------------------------------------
 
-\subsection{3d TFTs} % (fold)
+\section{3d TFTs} % (fold)
 \label{sec:3d_tfts}
 
 From now on the main reference will be \cite{KasselRossoTuraev97}.
@@ -3664,7 +3681,7 @@ The main objective of this section is to sketch how this could work and what is 
 \end{itemize}
 \end{defn}
 
-\subsubsection{The Yang-Baxter equation} 
+\subsection{The Yang-Baxter equation} 
 \label{ssub:the_yang_baxter_equation}
 
 \begin{thm}\label{thm:YB_braid}
@@ -3777,7 +3794,7 @@ This comes from representation theory!
 
 Solutions of YBE give representations of the braid group, which we now recall.
 
-\subsubsection{The braid group and the Braid category} % (fold)
+\subsection{The braid group and the Braid category} % (fold)
 \label{ssub:the_braid_group}
 
 \begin{defn}\label{defn:braid_group}
@@ -3914,7 +3931,7 @@ We can now define the category :
     One could now prove that $\Braid \simeq \coprod_{k\geq 0} B_k$, where $\coprod_{k\geq 0} B_k$ was in one of the exercise sheets. 
 \end{exercise}
 
-\subsubsection{Expanding the Braid category: the Tangle category} % (fold)
+\subsection{Expanding the Braid category: the Tangle category} % (fold)
 \label{ssub:expanding_the_braid_category_the_tangle_category}
 
 Next step: allow more morphisms, namely all bordisms, together with suitable embeddings.
@@ -4074,7 +4091,7 @@ We will use:
 % ---------------------- LECTURE 19 22/1 ----------------------
 % -------------------------------------------------------------
 
-\subsubsection{Interlude on knots, links and the Kones polynomial} % (fold)
+\subsection{Interlude on knots, links and the Kones polynomial} % (fold)
 \label{sub:interlude_on_knots_links_and_the_kones_polynomial}
 
 \begin{ex}
@@ -4256,7 +4273,7 @@ Explanation of problem of the Kauffmann bracket with R1:
 Recall we had $\Tang_1^{or,fr}(\cat) \to \cat$ where \cat is a ribbon category. Now, fix a $V \in \cat$, we get an injection $\Link^{or,fr} \hookrightarrow \Tang_1^{or,fr}(\cat)$ in which we decorate each strand (component) by $V$. The goal is then to find a specific ribbon category \cat such that we get back the Jones polynomial. We'll find $\cat = U_q\sl_2 -Mod^{f.d.}$.
 
 
-\subsubsection{Making \texorpdfstring{$A-\Mod^{f.d.}$}{A-Mod f.d.} into a ribbon category} % (fold)
+\subsection{Making \texorpdfstring{$A-\Mod^{f.d.}$}{A-Mod f.d.} into a ribbon category} % (fold)
 \label{ssub:making_}
 
 %Back to algebra: How to get a ribbon category?
@@ -4272,7 +4289,7 @@ We therefore need $A-\Mod^{f.d.}$ to have the following structures:
 \end{itemize}
 which we gradually construct in this order. 
 
-\subsubsection*{Monoidal structure} % (fold)
+\subsection*{Monoidal structure} % (fold)
 
 In order to do this, we will need additional structures on $A$, starting with the following.
 \begin{defn}
@@ -4383,7 +4400,7 @@ In general, we'll now see that if $A$ is a Hopf algebra, then $A-\Mod^{f.d.}$ is
     \item associators and unitors are those from $\Vect$.
 \end{itemize}
 
-\subsubsection*{Rigidity} % (fold)
+\subsection*{Rigidity} % (fold)
 
 %Schweigert cor 2.5.17 says kind of the opposite, I ALWAYS have a right dual and only have a left dual if S is invertible
 \begin{prop}\label{prop:Hopf2}
@@ -4413,7 +4430,7 @@ In general, we'll now see that if $A$ is a Hopf algebra, then $A-\Mod^{f.d.}$ is
 % ---------------------- LECTURE 21 29/1 ----------------------
 % -------------------------------------------------------------
 
-\subsubsection*{Braiding} 
+\subsection*{Braiding} 
 Recall: we want a ribbon category and we had a Hopf algebra, so we had a monoidal category with duals.
 
 We're now using \cite{SchwHopfQuantumTFT} as a reference.
