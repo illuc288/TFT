@@ -396,12 +396,12 @@ We then say that $M_1$ and $M_2$ are \textit{cobordant} and $W$ is called a \tex
 Restricting to $S= pt$ allows us to define the \textit{Cobordism Group}
 $$\Omega_n=
 H^{\text{bord}}_n(pt)=
-\bigg\{\text{Closed $n-$manifold}\bigg\}
+\bigg\{\text{Closed $n$ manifold}\bigg\}
 \bigg{/}
 \biggl\{(n+1)\text{ dimensional bordisms}
 %\begin{array}{l}
 %\text{Cobordant Compact}\\
-%\text{$(n+1)-$manifolds}
+%\text{$(n+1)$ manifolds}
 %\end{array}
 \biggl\}.$$
 But are all these notions are actually useful? Well, classifying manifolds up to diffeomorphism is hard: dimension $0, 1$ and $2$ can be done without too much trouble but already in dimension $3$ things get complicated (think of the Poincaré Conjecture!)... so this classifications can be done (more easily) up to bordism!
@@ -417,7 +417,7 @@ But are all these notions are actually useful? Well, classifying manifolds up to
   Throughout this notes we will abuse notation in the following way, denoting a monoid $(M,\cdot)$ by $M$, a metric space $(X,d)$ by $X$ etc...
 \end{notat}
 \begin{notat}
-    $n-$manifold and $n-$bordism mean respectively $n$ dimensional manifold and $n$ dimensional bordism.
+    $n$ manifold and $n$ bordism mean respectively $n$ dimensional manifold and $n$ dimensional bordism.
 \end{notat}
 
 \chapter{Manifolds and bordisms}
@@ -426,7 +426,6 @@ But are all these notions are actually useful? Well, classifying manifolds up to
 \label{sec:some_definitions}
 
 Before venturing into a definition of cobordism, let us recall some useful definitions.
-
 This section mainly relies on \cite{Lee2012} and \cite{Hirsch1976}.
 \begin{defn}[\textit{Topological Manifold}]
 	A topological manifold of dimension $n$ is a paracompact Hausdorff topological space $X$ such that every point $x \in X$ has an open neighborhood $U$ which is homeomorphic to an open set\footnote{Equivalently to $\R^n$.} in $\R^n$. The latter property means that for each $x\in X$ there exist:
@@ -443,7 +442,7 @@ This section mainly relies on \cite{Lee2012} and \cite{Hirsch1976}.
     \caption{\small{The visualization of a coordinate chart map from Lee's textbook on smooth manifolds \cite{Lee2012}}}
     \label{fig:Coordinate_Chart}
 \end{figure}
-  If $(U, \phi)$, $(V, \psi)$ are two coordinate charts of a topological manifold $X$ and $U\cap V\neq\emptyset$, then $\psi \circ \phi^{-1} : \phi(U\cap V) \to \psi(U\cap V)$ is a transition function from $\phi$ to $\psi$ (see Fig. \ref{fig:Lee_TransitionMap}).
+\noindent If $(U, \phi)$, $(V, \psi)$ are two coordinate charts of a topological manifold $X$ and $U\cap V\neq\emptyset$, then $\psi \circ \phi^{-1} : \phi(U\cap V) \to \psi(U\cap V)$ is a transition function from $\phi$ to $\psi$ (see Fig. \ref{fig:Lee_TransitionMap}).
 \begin{figure}
     \centering
     \captionsetup{format = hang}
@@ -452,9 +451,13 @@ This section mainly relies on \cite{Lee2012} and \cite{Hirsch1976}.
     \label{fig:Lee_TransitionMap}
 \end{figure}
 
-From the introduction it's clear that we will also deal with manifolds with boundary, so we recall also this definition.
+From the introduction it's clear that we will also deal with manifolds with boundary, so we recall also this definition. In order to do this we first introduce the following notation.
+\begin{notat}[Half-space]
+    By $\mathbb{H}^n$ we denote the $n$-dimensional upper (closed) half-space,
+    $$\mathbb{H}^n=\{(x_1,...,x_n)\in\mathbb{R}^n|x_1 \leq 0\}$$ 
+\end{notat}
 \begin{defn}[Manifold with Boundary]
-	A manifold with boundary of dimension $n$ is a paracompact Hausdorff topological space $X$ such that every point $p \in X$ has an open neighborhood $U_p$ which is homeomorphic to an open set $V$ in $\H^n = \{ (x_1, \dots, x_n) \in \R^n : x_1 \leq 0\}$, i.e. the closed\footnote{in topological sense and not in the manifold sense we later define.} half space, via the homeomorphism $\phi$ of the coordinate chart $(U_p,\phi)$.
+	A manifold with boundary of dimension $n$ is a paracompact Hausdorff topological space $X$ such that every point $p \in X$ has an open neighborhood $U_p$ which is homeomorphic to an open set $V$ in $\H^n$, i.e. the closed\footnote{in topological sense and not in the manifold sense we later define.} half space, via the homeomorphism $\phi$ of the coordinate chart $(U_p,\phi)$.
 \end{defn}
 \begin{figure}
     \centering
@@ -471,15 +474,15 @@ From the introduction it's clear that we will also deal with manifolds with boun
 	$$
 	otherwise, $p$ is in the \textit{interior} of $X$, which we denote with Int $X$. 
 
-    Equivalently, $p \in \de X$ means that $p$ has neighborhood $V$ that is the domain of a coordinate chart $\psi:V\to\H^n$ such that $\psi(V)\cap\de\H^n\neq\emptyset$ and sending $p$ to $\de \H^n$.
+    \noindent Equivalently, $p \in \de X$ means that $p$ has neighborhood $V$ that is the domain of a coordinate chart $\psi:V\to\H^n$ such that $\psi(V)\cap\de\H^n\neq\emptyset$ and sending $p$ to $\de \H^n$.
 
-    Specularly, we could have defined the interior of $X$ to be the set of points $q\in X$ that have a neighourhood $U$ that is the domain of a chart $\psi:U\to\R^n$.
+    \noindent Specularly, we could have defined the interior of $X$ to be the set of points $q\in X$ that have a neighourhood $U$ that is the domain of a chart $\psi:U\to\R^n$.
 \end{defn}
 \begin{lem}
     If $X$ is an $n$ dimensional manifold with boundary, then $\de X$ is a $n-1$ dimensional manifold.
 \end{lem}
 \begin{proof}
-    Let $p\in\de X$ be an arbitrary point on the boundary of an $n$-manifold with boundary. Hence, there is an open neighbourhood $U_p$ of $p$ which is homeomorphic to an open set $V$ in $\mathbb{H}^n$, $ \phi(U_p)\cong V$. Since $p\in\de X$ we know that $x_1(\phi(p))=0$ and $\phi(p)\in V\cap\mathbb{H}^n$. $\phi:U_p\to V$ can be restricted to a homemorphism $\phi\mid_{\phi^{-1}(V\cap\mathbb{H}^n)}:\phi^{-1}(V\cap\mathbb{H}^n)\xrightarrow{\cong}V\cap\mathbb{H}^n$. Note that $\phi^{-1}(V\cap\mathbb{H}^n)=U_p\cap\de X$ because $p$ is sent to the boundary $\de\mathbb{H}^n$ for every chart. Note also that $\de\mathbb{H}^n=\{(0,x_2, \dots, x_n)\}$ and $\de\mathbb{H}^n\cong\R^{n-1}$. Since $V\cap\mathbb{H}^n\in\de\mathbb{H}^n$ and $V\cap\mathbb{H}^n\cong U_p\cap\de X$, $U_p\cap\de X$ is homeomorphic to an open set in $\R^{n-1}$.
+    Let $p\in\de X$ be an arbitrary point on the boundary of an $n$ manifold with boundary. Hence, there is an open neighbourhood $U_p$ of $p$ which is homeomorphic to an open set $V$ in $\mathbb{H}^n$, $ \phi(U_p)\cong V$. Since $p\in\de X$ we know that $x_1(\phi(p))=0$ and $\phi(p)\in V\cap\mathbb{H}^n$. $\phi:U_p\to V$ can be restricted to a homemorphism $\phi\mid_{\phi^{-1}(V\cap\mathbb{H}^n)}:\phi^{-1}(V\cap\mathbb{H}^n)\xrightarrow{\cong}V\cap\mathbb{H}^n$. Note that $\phi^{-1}(V\cap\mathbb{H}^n)=U_p\cap\de X$ because $p$ is sent to the boundary $\de\mathbb{H}^n$ for every chart. Note also that $\de\mathbb{H}^n=\{(0,x_2, \dots, x_n)\}$ and $\de\mathbb{H}^n\cong\R^{n-1}$. Since $V\cap\mathbb{H}^n\in\de\mathbb{H}^n$ and $V\cap\mathbb{H}^n\cong U_p\cap\de X$, $U_p\cap\de X$ is homeomorphic to an open set in $\R^{n-1}$.
 \end{proof}
 \begin{defn}[Closed Manifold]
     A manifold is \textit{closed} if it is compact and without boundary, i.e. $\de X = \emptyset$. Conversely, an \textit{open} manifold is also a manifold without boundary but with no closed components, i.e. it has only non-compact components. 
@@ -489,7 +492,8 @@ In some contexts, it can be interesting to do calculus on a manifold. In order t
 \begin{defn}[Smooth Function]
     Given $X\subseteq\R^n$ and $Y\subseteq\R^m$ a function $f:X\to Y$ is smooth\footnote{Also called infinitely differentiable or $C^\infty$.} if each of its component functions has continuous partial derivatives of all order.
 \end{defn}
-The right notion of isomorphism when talking about smooth functions is diffeomorphism:
+
+\noindent The right notion of isomorphism when talking about smooth functions is that of diffeomorphism:
 \begin{defn}[Diffeomorphism]
     A smooth map $f:X\rightarrow Y$ is a diffeomorphism when it is bijective and has a smooth inverse map.
 \end{defn}
@@ -517,10 +521,10 @@ The right notion of isomorphism when talking about smooth functions is diffeomor
     In these lecture notes, manifolds are \textit{always} smooth, unless explicitly specified.
 \end{notat}
 \begin{rem}
-    The definition of smoothness does we just provided does not work for manifolds with boundary since to say that the transition functions are smooth we used the notion of smoothness of $\R^n$ and not of $\H^n$, the actual codomain of manifolds \emph{with} boundary. Hence, we characterize now smoothness for $\H^n$
+    The definition of smoothness we just provided does not work for manifolds with boundary since to say that the transition functions are smooth we used the notion of smoothness of $\R^n$ and not of $\H^n$, the actual codomain of manifolds \emph{with} boundary. Hence, we characterize now smoothness for $\H^n$.
 \end{rem}
 
-Recall that a map $f:M\to\R^m$ where $M\subseteq \R^n$ is not necessarily open is smooth if in a neighbourhood of each $x\in M$ it can be extended to a smooth function defined on an open subset in $\R^n$. 
+\noindent Recall that a map $f:M\to\R^m$, where $M\subseteq \R^n$ is not necessarily open, is smooth if in a neighbourhood of each $x\in M$ it can be extended to a smooth function defined on an open subset in $\R^n$. 
 
 \begin{defn}[Smoothness in the Half Space]\label{SmoothHalf}
     If $X$ is an open subset of $\H^n$, we define $f:X\to\R^m$ to be smooth for each $x\in X$ if $X$ can be extended to an open subset $\tilde{X}\in\R^n$, and $f$ to a smooth map $\tilde{f}:\tilde{X}\to\R^m$ such that $\tilde{f}|_{\tilde{X}\cap\H^n}=f$. 
@@ -538,19 +542,39 @@ Recall that a map $f:M\to\R^m$ where $M\subseteq \R^n$ is not necessarily open i
 \hfill 
 	\begin{enumerate} % DRAWINGS
 		\item $D^n = \{x \in \R^n \mid  \ ||x||\leq 1\}$ the $n$ dimensional disk, which has a sphere as boundary: $\de D^n = S^{n-1}$.
-		\item Consider 2 dimensional \emph{open} disks, i.e. $D^2=\{x\in\R^2\mid \ ||x||<1\}$, then $S^2 \setminus D^2_1 \amalg D_2^2 \amalg D^2_3$ 
-		\item Let $X, Y$ be $n-$manifolds with boundary, then $X \amalg Y$ is an $n$ manifold with boundary.
-		\item $T= S^1 \times S^1$ is a $2-$manifold with $\de T = \emptyset$ and $T^{\text{solid}} = D^2 \times S^1$ is a $3-$manifold with $\de T^{\text{solid}} = T$.
+		\item Consider 2 dimensional \emph{open} disks, i.e. $D^2=\{x\in\R^2\mid \ ||x||<1\}$. We can remove such shapes from the sphere and get the manifold $S^2 \setminus D^2_1 \amalg D_2^2 \amalg D^2_3$ which we can visualize in different ways.
+		\item Let $X, Y$ be $n$ manifolds with boundary, then $X \amalg Y$ is an $n$ manifold with boundary.
+		\item $T= S^1 \times S^1$ is a $2$ manifold with $\de T = \emptyset$ and $T^{\text{solid}} = D^2 \times S^1$ is a $3$ manifold with $\de T^{\text{solid}} = T$.
 	\end{enumerate}
 \end{ex}
 
 \begin{defn}[Smooth Map to $\R^n$]
-    Let $X$ be a smooth manifold. $f:X\to\R^n$ is smooth if for each $x\in X$ there is a smooth chart $(U,\phi)$ such that $f=f\circ\phi^-1$
+    Let $X$ be a smooth manifold. $f:X\to\R^n$ is smooth if for each $x\in X$ there is a smooth chart $(U,\phi)$ such that $f=f\circ\phi^{-1}$
 \end{defn}
-This definition can be generalized to maps to arbitrary smooth manifolds.
+
+\noindent This definition can be generalized to maps between smooth manifolds.
+
 \begin{defn}[Smooth Map between Manifolds]
-    Let $X$ and $Y$ be smooth manifolds and $f:X\to Y$ a function between them. $f$ is smooth if for every $x\in X$ there is a smooth chart $(U,\phi)$ of $X$ where $x\in U$ and a smooth chart $(V,\psi)$ of $Y$ where $f(x)\in V$ and $f(U)\subseteq V$ such that $\psi \circ f\phi^-1$ is smooth.
+    Let $X$ and $Y$ be smooth manifolds of dimensions $m$ and $n$ and $f:X\to Y$ a function between them. $f$ is smooth if for every $x\in X$ there is a smooth chart $(U,\phi)$ of $X$ where $x\in U$ and a smooth chart $(V,\psi)$ of $Y$ where $f(x)\in V$ and $f(U)\subseteq V$ such that $\tilde f = \psi \circ f\circ \phi^{-1}$ is smooth. $\tilde f$ can be represented as in the following diagram:
+    \begin{equation*}
+        \begin{tikzcd}
+            {X\supseteq U} &&& {V\subseteq Y} \\
+            &&& {} \\
+            {\mathbb{H}^m\supseteq\tilde{U}} &&& {\tilde{V}\subseteq\mathbb{H}^n}
+            \arrow["f|_U", from=1-1, to=1-4]
+            \arrow["{\psi_x}", from=1-4, to=3-4]
+            \arrow["{\tilde{f}}"', from=3-1, to=3-4]
+            \arrow["\cong"', from=1-4, to=3-4]
+            \arrow["{\phi_x}"', from=1-1, to=3-1]
+            \arrow["\cong", from=1-1, to=3-1]
+        \end{tikzcd}
+    \end{equation*}
 \end{defn}
+\noindent This also allows to define the natural notion of isomorphism in the category of smooth manifolds:
+\begin{defn}[Diffeomorphism of Manifolds]
+    A diffeomorphism is a smooth map with a smooth inverse, i.e. an isomorphism in the category of smooth manifolds.
+\end{defn}
+
 \begin{exercise}
 	Come up with the natural notion of smooth map between manifolds \emph{with} boundary. 
 \end{exercise}
@@ -559,11 +583,11 @@ This definition can be generalized to maps to arbitrary smooth manifolds.
 
 \begin{defn}[$1^{st}$ variant of the definition of bordism: via \emph{strict equalities}]
 \label{Define Bordism}
-	Let $Y_0, Y_1$ be closed $n$-manifolds. A bordism $(X,p)$ from $Y_0$ to $Y_1$ consists of a compact $n+1$ manifold with boundary together with a map $p: \de X \to \{0,1\}$ such that $Y_0 = p^{-1}(0)$ and $Y_1 = p^{-1}(1)$. Thus, $\de X = Y_0 \amalg Y_1$.
+	Let $Y_0, Y_1$ be closed $n$ manifolds. A bordism $(X,p)$ from $Y_0$ to $Y_1$ consists of a compact $n+1$ manifold with boundary together with a map $p: \de X \to \{0,1\}$ such that $Y_0 = p^{-1}(0)$ and $Y_1 = p^{-1}(1)$. Thus, $\de X = Y_0 \amalg Y_1$.
 
-	We say that $Y_0$ and $Y_1$ are \textit{Cobordant}.
+	\noindent We then say that $Y_0$ and $Y_1$ are \textit{cobordant}.
 \end{defn}
-We call $Y_0$ the \textit{incoming} boundary and $Y_1$ the \textit{outgoing} boundary. We sometimes write $\de_{in} X = Y_0$ and $\de_{out} X = Y_1$
+\noindent We call $Y_0$ the \textit{incoming} boundary and $Y_1$ the \textit{outgoing} boundary. We sometimes write $\de_{in} X = Y_0$ and $\de_{out} X = Y_1$.
 
 \begin{ex}
 	``pair of pants'' %DRAWING
@@ -685,7 +709,11 @@ We call $Y_0$ the \textit{incoming} boundary and $Y_1$ the \textit{outgoing} bou
     
     This shows that different bordisms can arise from the same underlying manifold. We will have a way of differentiating them when we will introduce tangential structures on a manifold, which will enable us to explain in which direction a manifold is oriented.
 
-    \item Given two $n$-manifolds $M,N$, their \textit{connected sum} is $$M\# N=M\setminus(D^{n})^{\circ}\sqcup N\setminus(D^{n})^{\circ}$$ 
+    \item Given two $n$ manifolds $M,N$, their \textit{connected sum} is 
+    \begin{equation*}
+         M\# N=M\setminus(D^{n})^{\circ}\coprod_{S^{n-1}} N\setminus(D^{n})^{\circ}
+     \end{equation*}
+     where ${}^{\circ}$ is for taking the interior and $\coprod_{S^{n-1}}$ is glueing along the new boundaries in $N$ and $M$.
     \begin{figure}[!ht]
     \centering
     \captionsetup{labelformat=empty, format = hang}
@@ -696,15 +724,15 @@ We call $Y_0$ the \textit{incoming} boundary and $Y_1$ the \textit{outgoing} bou
 \end{itemize}
 \end{ex}
 \begin{prop}
-    $M\# N$ is an n-manifold.
+    $M\# N$ is an n manifold.
 \end{prop}
 %proof to be added?
 \begin{lem}
-    There is a bordism between $M\sqcup N$ and $M\# N$.
+    There is a bordism between $M\coprod N$ and $M\# N$.
 \end{lem}
 
 \begin{proof} 
-    A bordism between $M_1\sqcup M_2$ and $M_1\#M_2$ may be constructed in the following manner (proof stolen from the \href{http://www.map.mpim-bonn.mpg.de/Bordism#Connected_sum_and_bordism}{Manifold Atlas Project}). Consider a cylinder $M_1\times I$, from which we remove an $\epsilon$-neighbourhood $U_{\epsilon}(v_{1}\times 1)$ of the point $v_{1}\times 1$. Similarly, remove the neighbourhood $U_{\epsilon}(v_{2}\times 1)$ from $M_{2}\times I$ (each of these two neighbourhoods can be identified with the half of a standard open $(n+1)$-ball). Now connect the two remainders of cylinders by a "half pipe" $\left(S_{n}\leq 0 \right)\times I$ in such a way that the half-sphere $S_{n}\leq 0$ is identified with the half-sphere on the boundary of $U_{\epsilon}(v_{1}\times 1)$, and $\left(S_{n}\leq 0 \right)\times I$ is identified with the half-sphere on the boundary of $U_{\epsilon}(v_{2}\times 1)$. Smoothening the angles we obtain a manifold with boundary $(M_1\sqcup M_2)\sqcup(M_1\#M_2)$.
+    A bordism between $M_1\coprod M_2$ and $M_1\#M_2$ may be constructed in the following manner (proof taken from the \href{http://www.map.mpim-bonn.mpg.de/Bordism#Connected_sum_and_bordism}{Manifold Atlas Project}). Consider a cylinder $M_1\times I$, from which we remove an $\epsilon$-neighbourhood $U_{\epsilon}(v_{1}\times 1)$ of the point $v_{1}\times 1$. Similarly, remove the neighbourhood $U_{\epsilon}(v_{2}\times 1)$ from $M_{2}\times I$ (each of these two neighbourhoods can be identified with the half of a standard open $(n+1)$-ball). Now connect the two remainders of cylinders by a "half pipe" $\left(S_{n}\leq 0 \right)\times I$ in such a way that the half-sphere $S_{n}\leq 0$ is identified with the half-sphere on the boundary of $U_{\epsilon}(v_{1}\times 1)$, and $\left(S_{n}\leq 0 \right)\times I$ is identified with the half-sphere on the boundary of $U_{\epsilon}(v_{2}\times 1)$. Smoothening the angles we obtain a manifold with boundary $(M_1\coprod M_2)\coprod(M_1\#M_2)$.
 \begin{figure}[H]
 \centering
 \captionsetup{labelformat=empty, format = hang}
@@ -717,12 +745,12 @@ We call $Y_0$ the \textit{incoming} boundary and $Y_1$ the \textit{outgoing} bou
 %add Drawings inspired by the Prof.'s examples?
 \begin{thm}
 \label{Cobordant Equiv}
-Being cobordant is an equivalence relation on closed $n-$manifolds. 
+Being cobordant is an equivalence relation on closed $n$ manifolds. 
 \end{thm}
 \begin{proof}
 We need to show that the relation satisfies the properties of reflexivity, symmetry and transitivity:
 \begin{itemize}
-    \item Reflexive: $Y_0 \sim Y_0$ since we can take $X = Y_0 \times [0,1]$ as 1. in the previous example. We then have $\de X = Y_0 \times \{0,1\} \xrightarrow{p} \{0,1\}$. 
+    \item Reflexive: $Y_0 \sim Y_0$ since we can take $X = Y_0 \times [0,1]$ as in the previous example. We then have $\de X = Y_0 \times \{0,1\} \xrightarrow{p} \{0,1\}$. 
     %
     \item Symmetric: assume $Y_0 \sim Y_1$. Thus, we have $(X,p)$ from $Y_0$ to $Y_1$. We can use the same manifold and compose $p$ with the $swap$ of 0 and 1 in order to get 
     $$\tilde{p}=swap \circ p:\de X\xrightarrow{p}\{0,1\}\xrightarrow{swap}\{1,0\}$$ Consequently, $(X, swap \circ p)$ is a bordism from $Y_1$ to $Y_0$.
@@ -738,28 +766,33 @@ The $n$-th cobordism group is
 $$\Omega_n = \frac{\{\text{closed $n$ manifolds}\}}{\{\text{$n+1-$cobordisms}\}}$$
 \end{defn}
 \begin{rem}
-There is an insidious set-theoretic issue when we define the $n$-th cobordism group $\Omega_n$ (\ref{Defn n-th cob group}): is the collection of all closed $n-$manifolds a set? And what about the collection of all $n+1-$bordisms? It could be the case that it is something bigger than a usual set, thus not a set and problematic since we would not know how to treat them\footnote{We are assuming to be working in ZFC. There are other set theories in which one can define collections greater than sets, e.g. Von Neumann–Bernays–Gödel set theory.}. For example, we know that the collection of all sets is strictly greater than any set\footnote{Because of famous set-theoretic paradoxes like Cantor's paradox.} and thus not a set. Similarly, also the collection of topological spaces is not a set because we can regard any set as a topological space via the discrete topology\footnote{The topology where the set of open sets is the powerset of the set in question, or in other words where any subset is open.}. One could wonder if the collection of all manifolds of a certain dimension $n$ is likewise not a set. This is fortunately for us not the case. We can prove it via the following theorem\footnote{This result is not important only in this case, but notably for the interest of this class it was used to construct an apt category of bordisms \ref{CobCat} in order to sketch a partial proof of the most important conjecture in the field of TFTs: the cobordism hypothesis; see for details on this \cite{lurie2009classification} and \cite{Calaque_2019}.} 
-\begin{thm}[Whitney Embedding theorem]
-    Any $n-$manifold can be embedded in $\R^{\infty}(=\cup_{n\in\N}\R^n)$. The space of such embeddings is contractible.\footnote{Note that there are refinements of the latter result.}
+There is an insidious set-theoretic issue when we define the $n$-th cobordism group $\Omega_n$ (\ref{Defn n-th cob group}): is the collection of all closed $n$ manifolds a set? And what about the collection of all $n+1$ bordisms? It could be the case that it is something bigger than a usual set, thus not a set and problematic since we would not know how to treat them\footnote{We are assuming to be working in ZFC. There are other set theories in which one can define collections greater than sets, e.g. Von Neumann–Bernays–Gödel set theory.}. For example, we know that the collection of all sets is strictly greater than any set\footnote{Because of famous set-theoretic paradoxes like Cantor's paradox.} and thus not a set. Similarly, also the collection of topological spaces is not a set because we can regard any set as a topological space via the discrete topology\footnote{The topology where the set of open sets is the powerset of the set in question, or in other words where any subset is open.}. One could wonder if the collection of all manifolds of a certain dimension $n$ is likewise not a set. This is fortunately for us not the case. The following theorem allows us to happily treat \{\text{closed $n$ manifolds}\} and \{\text{$n+1$ cobordisms}\} as sets by replacing abstract manifolds and cobordism by manifolds and cobordisms embedded in $\R^{\infty}$.
+\end{rem}
+\begin{thm}[Whitney Embedding theorem\footnote{This result is not important only in this case, but notably for the interest of this class it was used to construct an apt category of bordisms \ref{CobCat} in order to sketch a partial proof of the most important conjecture in the field of TFTs: the cobordism hypothesis; see for details on this \cite{lurie2009classification} and \cite{Calaque_2019}.}]
+    Any $n$ manifold can be embedded in $\R^{\infty}(=\bigcup_{n\in\N}\R^n)$. The space of such embeddings is contractible.\footnote{Note that there are refinements of the latter result.}
     %It would be better to have \bigcup instead of \cup in \R^{\infty}(=\cup_{n\in\N}\R^n$) but \bigcup does not compile
 \end{thm}
- We can thus happily treat \{\text{closed $n$ manifolds}\} and \{\text{$n+1-$cobordisms}\} as sets by replacing abstract manifolds and cobordism by manifolds and cobordisms embedded in $\R^{\infty}$.
-\begin{defn}[Space of Embeddings]
-    
-\end{defn}
-\end{rem}
+
 
 \begin{exercise}
-	Prove that the disjoint union $\amalg$ gives $\Omega_n$ an abelian group structure.
+    Prove the following statements
+    \begin{enumerate}
+        \item $(\Omega_n, \amalg)$ is an abelian group with operation given by the disjoint union $\amalg$.
+        \item In fact $[M]\amalg [M]=[\emptyset]$, i.e. the trivial element of the cobordism group\footnote{We will write $0=[\emptyset]$}
+    \end{enumerate}
 \end{exercise}
 
 \begin{rem}
-	Many important manifold invariants are ``bordism invariants'' i.e. there are homomorphisms of abelian groups $\Omega_n \to \Z$ (or $\R$, $\C$... or whatever abelian group captures that invariant). 
+    Actually $(\Omega_n,\amalg)$ is a finitely generated abelian group, but this is a hard theorem. In particular, it is a finite product of cyclic groups of order $2$ (from 2.)
+\end{rem}
+
+\begin{rem}
+	Many important manifold invariants are also ``bordism invariants'' i.e. they lead to are homomorphisms of abelian groups $\Omega_n \to \Z$ (or $\R$, $\C$... or whatever abelian group captures that invariant). 
 \end{rem}
 
 \begin{ex}
 \hfill
-\begin{itemize}
+\begin{itemize}%TODO complete
     \item $\chi$ mod 2 (the Euler characteristic)
     \item signature
     \item characteristic classes $\dots$
@@ -770,14 +803,14 @@ There is an insidious set-theoretic issue when we define the $n$-th cobordism gr
 \subsection{The 0-th Cobordism Group, \texorpdfstring{$\Omega_{0}$}{Omega 0}}
 Consider
  $$\Omega_0 = \{\text{finite disjoint unions of points}\} / \{\text{$1$-dimensional cobordisms}\}.$$
-To compute this, consider the following classification of $1$-manifolds:
+To compute this, consider the following classification of $1$ manifolds:
 
-\begin{prop}
+\begin{prop}\label{prop:classification_1d}
 Any $1$ dimensional compact manifold with boundary is diffeomorphic to a finite disjoint union of closed intervals $[0,1]$ and circles $S^1$.
 \end{prop}
 
 \begin{ex}
-An example of a $1$-dimensional cobordism is $W=[0,1]$. Here is the 3 different way of seeing it as a bordism: from $Y_0 = \{0,1\}$ to $Y_1 = \emptyset$, from $Y_0 = \{0\}$ to $Y_1 = \{1\}$ and from $Y_0 = \emptyset$ to $Y_1 = \{0,1\}$.
+An example of a $1$-dimensional cobordism is $W=[0,1]$. Here are the 3 different way of seeing it as a bordism: from $Y_0 = \{0,1\}$ to $Y_1 = \emptyset$, from $Y_0 = \{0\}$ to $Y_1 = \{1\}$ and from $Y_0 = \emptyset$ to $Y_1 = \{0,1\}$.
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
@@ -924,14 +957,18 @@ An example of a $1$-dimensional cobordism is $W=[0,1]$. Here is the 3 different 
 \end{figure}
 \end{ex}
 
-\noindent Keeping this pattern in mind, consider a disjoint union of a finite collection of points (i.e. the only closed $1$-manifolds)
+\noindent Keeping this pattern in mind, consider collection of $k$ points, with $k$ finite (i.e. the only closed 0 manifolds):
 
 \begin{itemize}
 	\item If $k$ is even, we can find a bordism to $\emptyset$
 	\item If $k$ is odd, we can find a bordism to $\{*\}$
 \end{itemize}
 
-We then have $2k$ points $\sim \emptyset$, while $2k+1$ points $\sim 1$ point. Therefore, the 0-th cobordism group is given by
+\noindent We then have 
+\begin{equation*}
+    2k \text{ points} \sim \emptyset, \quad\quad 2k+1 \text{ points} \sim \text{1 point}
+\end{equation*}
+Therefore, the 0-th cobordism group is given by
 \begin{equation}
     \Omega_0 = \{ \emptyset, \{*\}\} \cong \Z_2.
 \end{equation}
@@ -947,24 +984,25 @@ An oriented cobordism in $1$ dimension is given by $[0,1]$ or $S^1$ which comes 
 \subsection{The 1st cobordism group, \texorpdfstring{$\Omega_{1}$}{Omega 1}}
 Now we have
 $$\Omega_1= \{\text{closed $1$-dimensional manifolds}\} / \{\text{$2$-dimensional cobordisms}\}.$$
+In studying this group, the following result, which is a restriction of \ref{prop:classification_1d}:
 \begin{thm}
     Any closed $1$-dimensional manifold is a finite disjoint union of circles
 \end{thm}
-A circle is the boundary of a 2-disk, so $S^1 \sim \emptyset$. Hence, also finite disjoint unions of $S^1$ are cobordant to the empty set. Therefore, the trivial group is the $1$st cobordism group
+\noindent However, a circle is the boundary of a 2-disk, which gives a cobordism from $S^1$ to $\emptyset$, we then have $S^1 \sim \emptyset$. Hence, also finite disjoint unions of $S^1$ are cobordant to the empty set. Therefore, the $1$st cobordism group is trivial:
 \begin{equation}
     \Omega_1 = 0
 \end{equation}
 
 \subsection{The 2nd cobordism group, \texorpdfstring{$\Omega_{2}$}{Omega 2}}
-In order to find the $2$nd cobordism group, we first need a classification of $2$-manifolds. %(Introduced before) In order to state the result we need to introduce the concept of \textit{connected sum}
+In order to find the $2$nd cobordism group, we first need a classification of $2$ manifolds. %(Introduced before) In order to state the result we need to introduce the concept of \textit{connected sum}
 %\begin{defn}[Connected Sum]
 	%Given $n$ manifolds $M,N$, their connected sum $M\# N$ is given by
 	%%M\# N = M \setminus (D^n)^\circ \cup_{\de D^n \times [0,1]} N \setminus (D^n)^\circ
 	%\end{equation}
 %\end{defn}
 %DRAWING
-\begin{prop}[Classification of $2$-dimensional manifolds]\label{Classification of 2-manifolds}
-Every connected closed $2$-manifold is diffeomorphic to
+\begin{prop}[Classification of $2$-dimensional manifolds]\label{Classification of 2 manifolds}
+Every connected closed $2$ manifold is diffeomorphic to
 \begin{enumerate}
     \item $S^2$, orientable
     \begin{figure}[!ht]
@@ -995,9 +1033,9 @@ Every connected closed $2$-manifold is diffeomorphic to
 \end{enumerate}
 \end{prop}
 
-We can now use this knowledge to compute
+\noindent We can now use this knowledge to compute
 $$
-	\Omega_2^{\text{or}} = \{\text{closed oriented $2$-manifolds} \} /\{\text{$3$-dimensional oriented cobordisms}\}
+	\Omega_2^{\text{or}} = \{\text{closed oriented $2$ manifolds} \} /\{\text{$3$-dimensional oriented cobordisms}\}
 $$
 by observing that $S^2$ and $\Sigma_g$ are both cobordant to $\emptyset$ since they can simply be ``filled'' to a $3$ dimensional manifold with boundary, we get
 \begin{equation}
@@ -1009,13 +1047,14 @@ by observing that $S^2$ and $\Sigma_g$ are both cobordant to $\emptyset$ since t
 \end{ex}
 
 
-
-\newpage
 % -------------------------------------------------------------
 % --------------------- LECTURE 3 30/10 -----------------------
 % -------------------------------------------------------------
+\section{Different definitions of bordisms} % (fold)
+\label{sec:different_definitions_of_bordisms}
+
 \begin{rmnd}[Definition \ref{Define Bordism} of Bordism]
-Let $Y_0, Y_1$ be closed $n$-manifolds. A bordism $(X,p)$ from $Y_0$ to $Y_1$ consists of a compact $n+1$ manifold with boundary together with a map $p: \de X \to \{0,1\}$ such that $Y_0 \text{\colorbox{yellow}{=}} p^{-1}(0)$ and $Y_1 \text{\colorbox{yellow}{=}} p^{-1}(1)$ (hence $\de X \text{\colorbox{yellow}{=}}  Y_0 \amalg Y_1$). We say that $Y_0$ and $Y_1$ are \textit{Cobordant}.
+Let $Y_0, Y_1$ be closed $n$ manifolds. A bordism $(X,p)$ from $Y_0$ to $Y_1$ consists of a compact $n+1$ manifold with boundary together with a map $p: \de X \to \{0,1\}$ such that $Y_0 \text{\colorbox{yellow}{=}} p^{-1}(0)$ and $Y_1 \text{\colorbox{yellow}{=}} p^{-1}(1)$ (hence $\de X \text{\colorbox{yellow}{=}}  Y_0 \amalg Y_1$). We say that $Y_0$ and $Y_1$ are \textit{cobordant}.
 \end{rmnd}
 
 \noindent There was a complaint: why don't we use diffeomorphisms instead of the highlighted equalities? This question arises because even with simple examples the equality seems too strict:
@@ -1024,13 +1063,20 @@ Let $Y_0, Y_1$ be closed $n$-manifolds. A bordism $(X,p)$ from $Y_0$ to $Y_1$ co
 Being cobordant is an equivalence relation.
 \end{rmnd} 
 
-\noindent In particular, for any closed $n-$manifold $Y$ we have $Y\sim Y$. The bordism is given by the cylinder $Y\times [0,1]$, where $p:Y\times\{0,1\}\to \{0,1\}$. Then $Y\times\{0\}=p^{-1}(0)$, but $Y\neq Y\times\{0\}$! 
-It seems like our previous definition does not actually give rise to an equivalence relation. Instead, if we substitute the strict equalities with diffeomorphisms (isomorphisms in the category of smooth manifolds) things seem to work out flawlessly:
+\noindent In particular, for any closed $n$ manifold $Y$ we have $Y\sim Y$. The bordism is given by the cylinder $Y\times [0,1]$, where $p:Y\times\{0,1\}\to \{0,1\}$. Then $Y\times\{0\}=p^{-1}(0)$, but $Y\neq Y\times\{0\}$! 
+It seems like our previous definition does not actually give rise to an equivalence relation. 
+%TODO is this above what we wanted to say? /William
+Instead, if we substitute the strict equalities with diffeomorphisms (isomorphisms in the category of smooth manifolds) things seem to work out flawlessly:
 
-\begin{defn}[$2^{nd}$ variant of the definition of Bordism: via diffeomorphisms]
+\begin{defn}[$2^{nd}$ variant of the definition of bordism: via diffeomorphisms]
 \label{NewDefBord}
-    Let $Y_0, Y_1$ be closed $n$-manifolds. A bordism from $Y_0$ to $Y_1$ is a quadruple $(X,p,\phi_{0},\phi_{1})$ consisting of a compact $n+1-$manifold with boundary $\de X$ together with maps $p: \de X \to \{0,1\}$, $\phi_{0}:Y_{0}\to p^{-1}(0)$, $\phi_{1}:Y_{1}\to p^{-1}(1)$ such that $\phi_{0}:Y_{0}\xrightarrow{\cong}p^{-1}(0)$, $\phi_{1}:Y_{1}\xrightarrow{\cong}p^{-1}(1)$ and $\de X\xrightarrow{\cong} Y_0 \amalg Y_1$.
-    %TODO also here we can write "and hence X = Y_0 U Y_1", right?
+    Let $Y_0, Y_1$ be closed $n$ manifolds. A bordism from $Y_0$ to $Y_1$ is a quadruple $(X,p,\phi_{0},\phi_{1})$ consisting of a compact $n+1$ manifold with boundary $\de X$ together with maps 
+    \begin{align*}
+        p&: \de X \to \{0,1\}        \\
+        \phi_{0}&:Y_{0}\xrightarrow{\cong} p^{-1}(0) \\
+        \phi_{1}&:Y_{1}\xrightarrow{\cong} p^{-1}(1)
+    \end{align*}
+    (we therefore have $\de X \cong Y_0 \amalg Y_1$).
 \end{defn}
 
 \begin{ex}
@@ -1043,37 +1089,12 @@ It seems like our previous definition does not actually give rise to an equivale
     
     \noindent$\Rightarrow$ under the new definition, \underbar{any} two diffeomorphic manifolds are also cobordant.
 \end{ex}
-%TODO fix example: is it okay now? Didn't change much, that's why I ask
-% it's not really clear what the mapping cylinder is
+
+%TODO it's not really clear what the mapping cylinder is
 
 Why does this not change the definition of bordism?
 Because any diffeomorphism also gives a bordism in the old sense:
-Given $M\xrightarrow{\cong}N$, take the gluing $(M\times I)\underset{M\times\{1\}}{\cup_{\psi}}N$ so that $Y_1=N$ and $Y_0=M\times \{0\}"="M$ (abusing notation).
-%is there a difference between this and the example above?
-
-%TODO put this earlier or delete it
-\begin{defn}
-    Let $M^m$ and $N^n$  be smooth manifolds with boundary\footnote{The indices denote the dimensions of the manifolds.}.
-A smooth map is a continuous map $f:M\to N$ such that $\forall x\in M$ and all charts $(U_x,\phi_x)$ and $(V_{f(x)}, \psi_{f(x)})$ the map $\tilde f=\psi_{f(x)}\circ f|_{U_x}\circ \phi_x^{-1}$ is a smooth map in the usual $\R$ sense.
-\[\begin{tikzcd}
-	{M\supseteq U_x} &&& {V_{f(x)}\subseteq N} \\
-	&&& {} \\
-	{\mathbb{H}^m\supseteq\tilde{U}} &&& {\tilde{V}\subseteq\mathbb{H}^n}
-	\arrow["{f|_{U_{x}}}", from=1-1, to=1-4]
-	\arrow["{\psi_x}", from=1-4, to=3-4]
-	\arrow["{\tilde{f}}"', from=3-1, to=3-4]
-	\arrow["\cong"', from=1-4, to=3-4]
-	\arrow["{\phi_x}"', from=1-1, to=3-1]
-	\arrow["\cong", from=1-1, to=3-1]
-\end{tikzcd}\]
-\end{defn}
-\begin{notat}[Half-space]
-    By $\mathbb{H}^n$ we denote the $n$-dimensional upper (closed) half-space,
-    $$\mathbb{H}^n=\{(x_1,...,x_n)\in\mathbb{R}^n|x_n\geq 0\}$$ 
-\end{notat}
-\begin{defn}
-    A diffeomorphism is a smooth map with a smooth inverse, i.e. an isomorphism in the category of smooth manifolds.
-\end{defn}
+Given $M\xrightarrow{\cong}N$, take the gluing $(M\times I)\underset{M\times\{1\}}{\coprod_{\psi}}N$ so that $Y_1=N$ and $Y_0=M\times \{0\}"="M$ (abusing notation).
 
 \noindent Now we prove the transitivity of the relation 'being cobordant'. We do that by showing that given $X$ from $Y_0$ to $Y_1$ and $X'$ from $Y_1$ to $Y_2$, we can glue them along the boundary in common, $Y_1$, to obtain a bordism from $Y_0$ to $Y_2$. %add diagram here (?) later works as well
 In order to achieve this, we need to introduce the following notion:
@@ -1083,59 +1104,43 @@ In order to achieve this, we need to introduce the following notion:
 \begin{thm}
 	The boundary of a manifold with boundary always has a collar.
 \end{thm}
-Idea of the proof: I have a manifold with boundary, locally at $x\in\de X$ we have 
-$$(-\epsilon_x, 0]\times V_x\xrightarrow{\cong} U_x\subseteq\mathbb{H}^n$$
-where $V_x$ is an open neighbourhood of $x$ in $\de X$.
-
-\noindent Now we use a standard trick in differential geometry/topology (see \cite{Hirsch1976}): globally patch these diffemorphisms using a partition of unity. It works if $X$ is compact.
+\begin{proof}[Idea of the proof]
+    We start with a manifold with boundary, locally at $x\in\de X$ we have 
+    $$(-\epsilon_x, 0]\times V_x\xrightarrow{\cong} U_x\subseteq\mathbb{H}^n$$
+    where $V_x$ is an open neighbourhood of $x$ in $\de X$.
+    \noindent Now we use a standard trick in differential geometry/topology (see \cite{Hirsch1976}): globally patch these diffemorphisms using a partition of unity. It works if $X$ is compact.
+\end{proof}
 
 \begin{defn}[$3^{rd}$ variant of the definition of bordism: via collars]
-    Let $Y_0$ and $Y_1$ be closed n-manifolds. A bordism from $Y_0$ to $Y_1$ is a quadruple $(M, p, \phi_0, \phi_1)$ with $M$ and $p$ as before. $\phi_0, \phi_1$ are given by
+    Let $Y_0$ and $Y_1$ be closed $n$ manifolds. A bordism from $Y_0$ to $Y_1$ is a quadruple $(M, p, \phi_0, \phi_1)$ with $M$ and $p$ as before. $\phi_0, \phi_1$ are given by
     $$\phi_0:[0, \epsilon)\times Y_0\to U \supseteq p^{-1}(0)$$
     $$\phi_1:(-\epsilon, 0]\times Y_1\to V \supseteq p^{-1}(1)$$
     where $U$ and $V$ together form a collar of the boundary of $M$.
 \end{defn}
 
 \noindent Moreover, 
-$$([0, \epsilon)\times Y_0\big)\cup((-\epsilon, 0]\times Y_1)\xrightarrow{\phi_0\sqcup\phi_1}U\sqcup V\supseteq p^{-1}(0)\sqcup p^{-1}(1)=\de M$$
+$$([0, \epsilon)\times Y_0\big)\amalg((-\epsilon, 0]\times Y_1)\xrightarrow{\phi_0\amalg\phi_1}
+\big(U\amalg V\big)\supseteq 
+\Big(p^{-1}(0)\amalg p^{-1}(1)\Big)=\de M$$
+%TODO what is this for?
 
-This variant of the definition is equivalent to the other two but we would unfortunately need a lot of differential topology in order to prove this.
+\noindent This variant of the definition is equivalent to the other two but we would unfortunately need a lot of differential topology in order to prove this.
 
-\begin{proof}[Transitivity of Cobordant]\label{BordantTransitive}
+However, with the third definition we can finally prove the following claim which then is what we were missing to prove transitivity of being cobordant.
+\begin{clm}\label{GluedManifoldsBordisms}
+    $X\underset{Y_1}{\cup} X'$ admits a smooth structure.
+\end{clm}
+\begin{proof}[Transitivity of cobordant]\label{BordantTransitive}
     We need a maximal atlas with smooth transition functions. Clearly, in the interior points of $X$ and $X'$ this exists since we can use directly the charts of $X$ and $X'$. The problem is the double collar around $Y_1$. So we need to construct charts around points on $Y_1$. Take $U_1^{-}\underset{Y_1}{\cup}U_1^{+}$ in an open neigbourhood. Then via $U_1^{-}\underset{Y_1}{\cup}U_1^{+}\xrightarrow{\phi_1\cup\phi'_0}(-\epsilon,\epsilon)\times Y_0=(-\epsilon,0]\cup[0,\epsilon)\times Y_0$ which contains $(-\epsilon,\epsilon)\times V_x$ which maps to $\R^n$ via $\psi_x$ and thereby generating a maximal atlas.
-\end{proof}
-%I am confused by the directions of /phi_1,0 etc... 
-let $X$ be a bordism between $Y_0$ to $Y_1$ and $X'$ between $Y_1$ and $Y_0$.
+
+%TODO not very clear
+Let $X$ be a bordism between $Y_0$ to $Y_1$ and $X'$ between $Y_1$ and $Y_0$.
 %drawings
 $$[0, \epsilon)\times Y_0\xrightarrow{\phi_0}U$$
 $$(-\epsilon,0]\times Y_1\xrightarrow{\phi_1}U_1^{-}$$
 $$[0,\epsilon)\times Y_1\xrightarrow{\cong}(-\epsilon,0]\times Y_1\xrightarrow{\phi'_0}U_1^{+}$$
 $$(-\epsilon,0]\times Y_2\xrightarrow{\phi'_1}U_2$$
-\begin{clm}\label{GluedManifoldsBordisms}
-    $X\underset{Y_1}{\cup} X'$ admits a smooth structure.
-\end{clm}
-
-\begin{lem}
-\hfill
-	\begin{enumerate}
-            \item $(\Omega_n, \amalg)$ is an abelian group
-            \item In fact\footnote{Reminder: every group $G$ in which $\forall g\in G.g^2=e$ is abelian.}, $[M]\amalg [M]=[\emptyset]$, i.e. the trivial group containg only neutral element\footnote{We will write $0=[\emptyset]$}
-	\end{enumerate}
-\end{lem}
-\begin{ex}
-    $\Omega_0=\{\bullet,0\}\cong\Z/2\Z$ where $0\leftrightarrow 0$ and $\bullet\leftrightarrow 1$
-\end{ex}
-\begin{rem}
-	Actually $(\Omega_n,\amalg)$ is a finitely generated abelian group, but this is a hard theorem. In particular, it is a finite product of cyclic groups of order $2$ (from 2.)
- %isn't it because of the fundamental theorem of finitely generated abelian groups?
-\end{rem}
-\begin{exercise}
-Prove the following.
-    \begin{enumerate}
-        \item $\Omega_1\cong 0$
-        \item $\Omega_2\cong \Z/2\Z$, where $\R\P\leftrightarrow 1$
-    \end{enumerate}
-\end{exercise}
+\end{proof}
 
 \section{Tangential Structures}
 \subsection{Orientations and the tangent bundle}
@@ -1147,7 +1152,7 @@ Prove the following.
     \end{enumerate}
 \end{defn}
 %why does \bigcup not compile?
-It is possible to define a topology on $TM$ such that it is a smooth $2n$-manifold: $(U,\phi)$ chart of $M$, we have a chart of $TM$, $(p^{-1}(U),\tilde\phi$ by looking at preimages of $U$ under the projection map and we construct the local trivialization with the usual construction. This is summarized by the fact that the following diagram commutes:
+It is possible to define a topology on $TM$ such that it is a smooth $2n$ manifold: $(U,\phi)$ chart of $M$, we have a chart of $TM$, $(p^{-1}(U),\tilde\phi$ by looking at preimages of $U$ under the projection map and we construct the local trivialization with the usual construction. This is summarized by the fact that the following diagram commutes:
 \[\begin{tikzcd}
 	{p^{-1}(U)=TU=\bigcup_{p\in U}T_pM} && {T\tilde U=\tilde U\times\R^n} \\
 	\\
@@ -1306,7 +1311,7 @@ Some examples of frameable manifolds are the following:
 \section{Classification of 2 manifolds with boundary} % (fold) // what do you mean by '(fold)'? /andrea
 \label{sub:classification_of_2_manifolds_with_boundary}
 
-The aim of this chapter is to prove the aforementioned classification of compact 2-dimensional manifolds with the use of Morse Theory (see \ref{Classification of 2-manifolds}). We remind the reader: let $M$ be a 2-manifold with genus $g$, then \begin{itemize}
+The aim of this chapter is to prove the aforementioned classification of compact 2-dimensional manifolds with the use of Morse Theory (see \ref{Classification of 2 manifolds}). We remind the reader: let $M$ be a 2 manifold with genus $g$, then \begin{itemize}
     \item $M$ is classified by its genus $g$, if $M$ is oriented. This means that $M$ it is diffeomorphic to $\Sigma_g:=T\#...\#T$, the connected sum of $g$-tori, where in particular $\Sigma_0=S^2$
     \item whereas if $M$ is unorientable, $M$ is diffeomorphic to $g$ copies of the real projective plane, i.e.  $\R P^2\#...\#\R P^2$
 \end{itemize} every 2-dimensional manifold is  One can find a thorough covering of this result in \cite{Hirsch1976}
@@ -1708,7 +1713,7 @@ isomorphic to the homotopy of the sphere spectrum and it is \textit{not} compute
 % -------------------------------------------------------------
 \chapter{Topological field theories}
 \section{A modern perspective on cobordisms}
-In \ref{Cob Groups} we extracted an algebraic structure from bordisms by first observing that being cobordant is an equivalence relation and then studying the equivalence classes of closed $n-$manifolds. Together with disjoint unions, this resulted in an abelian group, and eventually in a \Z graded commutative ring, and this was a key tool for classifying manifolds up to cobordism. However, this algebraic structure merely records that there is a bordism between two manifolds (since two manifolds are equivalent just if there is a bordism, independently of what kind of bordism it is), thereby forgetting other properties of the bordism itself. We switch now perspective and analyze a more sophisticated structure remembering \underline{how} two manifolds are cobordant, e.g. indicating the direction of the bordism: the symmetric monoidal category $Bord_{n,n-1}$ where objects are $(n-1)-$manifolds and morphisms are $n-$cobordisms. The following table summarizes the comparison between the two perspectives:
+In \ref{Cob Groups} we extracted an algebraic structure from bordisms by first observing that being cobordant is an equivalence relation and then studying the equivalence classes of closed $n$ manifolds. Together with disjoint unions, this resulted in an abelian group, and eventually in a \Z graded commutative ring, and this was a key tool for classifying manifolds up to cobordism. However, this algebraic structure merely records that there is a bordism between two manifolds (since two manifolds are equivalent just if there is a bordism, independently of what kind of bordism it is), thereby forgetting other properties of the bordism itself. We switch now perspective and analyze a more sophisticated structure remembering \underline{how} two manifolds are cobordant, e.g. indicating the direction of the bordism: the symmetric monoidal category $Bord_{n,n-1}$ where objects are $(n-1)$ manifolds and morphisms are $n-$cobordisms. The following table summarizes the comparison between the two perspectives:
 \begin{center}
     \begin{tabular}{||c|c||}
     \hline
@@ -2211,7 +2216,7 @@ A monoidal category generalizes this structure with respect to objects \emph{and
         \item $(AbGrp, \oplus)$
         \item $(\Vect_k, \otimes)$
         \item $(\Vect_k, \oplus)$
-        \item $(Set, \sqcup)$
+        \item $(Set, \coprod)$
         \item $(Set, \times)$
         \item $(Top, \times)$
         \item $(Cat, \times)$
@@ -2921,7 +2926,7 @@ Let us explicitly state what is meant by diffeomorphism of bordisms:
 
 \begin{ex}
     We have that 
-        $$\Hom_{\nCob} (\emptyset, \emptyset) = \text{ closed $n$-manifolds}/\text{diffeomorphism}$$
+        $$\Hom_{\nCob} (\emptyset, \emptyset) = \text{ closed $n$ manifolds}/\text{diffeomorphism}$$
     For $n=2$, $\Sigma = S^2$ is a composition of
     %DRAWING
 
@@ -3571,7 +3576,7 @@ but we see that this is true because the Frobenius algebra is commutative.
 % -------------------------------------------------------------
 
 \begin{lem}
-    Every (possibly non connected) 2-cobordism is a composition of 
+    Every (possibly non connected) 2 cobordism is a composition of 
     \begin{enumerate}
         \item a "permutation bordism". i.e. given a permutation $\sigma \in S_n$, then we get a bordism $S^{1^{1\amalg_n}} \to (S^1)^{\amalg_n}$ in which the two sides have the same orientation up to interchanging components. The bordism is simply $(S^1)^{\amalg_n}$  in which on the right we use the permutation.
         %DRAWING
@@ -3634,7 +3639,7 @@ We now provide an outlook to some research programs that are tightly connected t
 
     Now, what structure does the line segment have? It's still a Frobenius algebra! But it's not necessarily commutative.
 
-    \item extended TFTs (\cite{Freed_1994},\cite{Baez_1995},\cite{lurie2009classification},\cite{Calaque_2019}): one can extend TFTs downward, e.g. in 2-dimensional TFTs one might want to include the possibility of "composing" the line segment object with itself to get $S^1$. We would therefore modify the notion of symmetric monoidal category to be able to compose objects in $\Bord_{2,1,0}$. Thereby one gets a finer structure than a usual category, a.k.a. a $1$-category: objects, morphisms between objects and morphism between morphisms. The last ones are usually called 2-morphisms and the morphisms between objects are then called 1-morphisms. Objects, 1-morphisms and 2-morphisms are in this case 0-manifolds, 1-dimensional bordisms and 2 dimensional bordisms with corners. We then no longer have the structure of a category, but rather that of a weak 2-category, or bicategory. See \ref{strict nCat} for the definition of strict categories of any finite dimension, \ref{Bicategory} for the definition of a bicategory, and \ref{RemarkExtendedTFTs} for a more detailed outlook on extended TFTs.
+    \item extended TFTs (\cite{Freed_1994},\cite{Baez_1995},\cite{lurie2009classification},\cite{Calaque_2019}): one can extend TFTs downward, e.g. in 2-dimensional TFTs one might want to include the possibility of "composing" the line segment object with itself to get $S^1$. We would therefore modify the notion of symmetric monoidal category to be able to compose objects in $\Bord_{2,1,0}$. Thereby one gets a finer structure than a usual category, a.k.a. a $1$-category: objects, morphisms between objects and morphism between morphisms. The last ones are usually called 2-morphisms and the morphisms between objects are then called 1-morphisms. Objects, 1-morphisms and 2-morphisms are in this case 0 manifolds, 1-dimensional bordisms and 2 dimensional bordisms with corners. We then no longer have the structure of a category, but rather that of a weak 2-category, or bicategory. See \ref{strict nCat} for the definition of strict categories of any finite dimension, \ref{Bicategory} for the definition of a bicategory, and \ref{RemarkExtendedTFTs} for a more detailed outlook on extended TFTs.
     %TODO monoidal category as bicategory already done by defining delooping of a monoidal category /Andrea
 
     \item cohomological TFTs (\cite{Witten:1990bs}): aka families of $(n-1)$ manifolds and families of $n$ bordisms. In practice, fix a space $X$, then objects are $M$ closed $(n-1)$ manifolds together with $M \to X$ and morphisms are bordisms $\Sigma$ together with $\Sigma \to X$.
@@ -3642,7 +3647,7 @@ We now provide an outlook to some research programs that are tightly connected t
     Often we take $X=BG$ the classifying space of a group $G$ and having maps $M \to BG$ and $\Sigma \to BG$ gives us principle bundles on $M$ and $\Sigma$. This is connected to the field of \textit{gauge theory} and is sometimes called \textit{cohomological TFT}. 
 %Unsure about adding these remarks on algebraic and arithmetic QFT and if it's BS, will ask Prof and please do check if BS /ANdrea
     
-    \item arithmetic field theories (\cite{Mazur1973NotesO},\cite{kim2016arithmetic},\cite{kapustin2007electricmagnetic}, \cite{Kapranov1995},\cite{RelativeBSVDUAL}): although still very conjectural, some envision poetic connections between number theory and physics via TFTs. The original intuition behind this connection is a mysterious analogy of Barry Mazur stating that number fields form correspond to some kind of 3-dimensional manifolds and primes in such number fields behave like knots embedded in these 3-dimensional manifolds. How this connects to TFTs will become clearer after the next section, where we will have gone through the connection between the Jones polynomial (a knot invariant) and 3d-Chern-Simons theory. For instance, the spectrum\footnote{Not in the sense of a modern abelian group, which we previously described \ref{Spectra Phases of Matter}! This is the spectrum of a ring.} of the commutative ring of the integers $\mathbb{Z}$ can be seen (roughly speaking\footnote{To make this more precise Mazur talks about exotic stuff like étale cohomological dimension.}) as a 3-dimensional manifold, and since the spectra prime fields can be canonically embedded in the spectra of the integers, they are analogous to knots since knots can be defined as embeddings of $S^1$ into some 3-dimensional manifold\footnote{Often it is sufficient to pick $\R^3$ as the manifold we embed in and it is what we will do in the next section. However, taking arbitrary 3-manifolds does also make sense and in some cases, like this one, it is what one desires.}. Mazur came up with this analogy in \cite{Mazur1973NotesO}, see this \href{https://mathoverflow.net/questions/50879/what-is-the-knot-associated-to-a-prime/50995#50995}{mathoverflow comment by Lieven Lebruyn} and the \href{https://ncatlab.org/nlab/show/Spec%28Z%29#As3dSpaceContainingKnots}{nLab entry on Spec($\Z$)} for accessible introductions to this specific correspondence. Some (\cite{kim2016arithmetic}, \href{https://shifted-project.github.io/}{Clark Barwick's SHIFTED project} and \href{https://www.youtube.com/watch?v=WXqmXKLtJrs}{this talk of his on his efforts towards geometric foundations for arithmetic field theories}) are trying to define arithmetic quantum field theories in order to apply ideas of TFTs to number theory, for example to arithmetic curves\footnote{Something from arithmetic geometry, see \cite{liu2002algebraic}}, i.e. the spectra of rings of integers in algebraic number fields. While others (\cite{Witten:1990bs},\cite{RelativeBSVDUAL}) more specifically, see a strong connection with the Langlands program. This view is summarized by the motto \emph{the Langlands program is part of the study of 4-dimensional (arithmetic, topological) quantum field theory}. For a more accessible introduction to this research program, check out these notes \cite{BenZviLanglands} by Jackson Van Dyke of a course on this topic by David Ben-Zvi.
+    \item arithmetic field theories (\cite{Mazur1973NotesO},\cite{kim2016arithmetic},\cite{kapustin2007electricmagnetic}, \cite{Kapranov1995},\cite{RelativeBSVDUAL}): although still very conjectural, some envision poetic connections between number theory and physics via TFTs. The original intuition behind this connection is a mysterious analogy of Barry Mazur stating that number fields form correspond to some kind of 3-dimensional manifolds and primes in such number fields behave like knots embedded in these 3-dimensional manifolds. How this connects to TFTs will become clearer after the next section, where we will have gone through the connection between the Jones polynomial (a knot invariant) and 3d-Chern-Simons theory. For instance, the spectrum\footnote{Not in the sense of a modern abelian group, which we previously described \ref{Spectra Phases of Matter}! This is the spectrum of a ring.} of the commutative ring of the integers $\mathbb{Z}$ can be seen (roughly speaking\footnote{To make this more precise Mazur talks about exotic stuff like étale cohomological dimension.}) as a 3-dimensional manifold, and since the spectra prime fields can be canonically embedded in the spectra of the integers, they are analogous to knots since knots can be defined as embeddings of $S^1$ into some 3-dimensional manifold\footnote{Often it is sufficient to pick $\R^3$ as the manifold we embed in and it is what we will do in the next section. However, taking arbitrary 3 manifolds does also make sense and in some cases, like this one, it is what one desires.}. Mazur came up with this analogy in \cite{Mazur1973NotesO}, see this \href{https://mathoverflow.net/questions/50879/what-is-the-knot-associated-to-a-prime/50995#50995}{mathoverflow comment by Lieven Lebruyn} and the \href{https://ncatlab.org/nlab/show/Spec%28Z%29#As3dSpaceContainingKnots}{nLab entry on Spec($\Z$)} for accessible introductions to this specific correspondence. Some (\cite{kim2016arithmetic}, \href{https://shifted-project.github.io/}{Clark Barwick's SHIFTED project} and \href{https://www.youtube.com/watch?v=WXqmXKLtJrs}{this talk of his on his efforts towards geometric foundations for arithmetic field theories}) are trying to define arithmetic quantum field theories in order to apply ideas of TFTs to number theory, for example to arithmetic curves\footnote{Something from arithmetic geometry, see \cite{liu2002algebraic}}, i.e. the spectra of rings of integers in algebraic number fields. While others (\cite{Witten:1990bs},\cite{RelativeBSVDUAL}) more specifically, see a strong connection with the Langlands program. This view is summarized by the motto \emph{the Langlands program is part of the study of 4-dimensional (arithmetic, topological) quantum field theory}. For a more accessible introduction to this research program, check out these notes \cite{BenZviLanglands} by Jackson Van Dyke of a course on this topic by David Ben-Zvi.
     \item algebraic quantum field theory (\cite{Haag:1963dh}): talking about endomorphism monoids, i.e. monoids of the form $(Hom_\cat(X,X),\circ)$ (see \ref{Delooping Monoid}) we previously mentioned operator algebras, i.e. monoids and submonoids of the form $(Hom_{TopVect_{k}}(X,X),\circ)$. They are an object of interest in themselves but importantly for us algebraic quantum field theory makes extensive use of operator algebras. Algebraic quantum field theory is very roughly a way of translating the Heisenberg picture of quantum mechanics (sometimes called matrix mechanics) to quantum field theory by providing an attempt to axiomatize QFT in a mathematically rigorous way. Given some apt operators on an apt topological vector space, meaning that the topological vector space can represent a quantum state and the selected operators on it can represent observables, an AQFT provides a formal assignment of algebras of such operators to regions of spacetime according to some axioms, e.g. the \href{https://ncatlab.org/nlab/show/Haag-Kastler+axioms}{Haag Kastler Axioms}. In this way, it pins down how observables depend of spacetime while states are being fixed, as in the Heisenberg picture. Algebraic quantum field theory can be roughly considered to be a dual to topological quantum field theory since TFTs invert the direction by assigning geometric data to algebraic ones. In fact, topological quantum field theory can be seen as a way of translating the Schrödinger picture (also called wave mechanics) to quantum field theory: states are represented by objects in the target monoidal category, the functor from $\Bord$ captures the local time evolution, and thereby a TFT shows how states are propagated through time while the observables are held fixed, as in the Schrödinger picture (see more on this at \href{https://ncatlab.org/nlab/show/functorial+field+theory#QuantumMechanicsInSchroedingerPicture}{this section of the nLab entry on TFTs}). In quantum mechanics, the Heisenberg and the Schrödinger picture are two faces of the same medal, i.e. matrix mechanics and wave mechanics are equivalent\footnote{Interestingly from a historical point of view, Schrödinger's (and Eckhart's) famous proof from 1926 that the two approaches are equivalent is faulty, but von Neumann fortunately provided a foolproof demonstration in 1932. See \cite{MULLER199735} for more on this interesting trivia.}; however, we are far from proving that AQFT and TQFT are also two faces of the same medal. One point of contact between the two is via factorization algebras (something related to $E_n$-algebras, see \ref{EAlg} for the definition of a $E_1$-algebra), see \cite{costello2023factorization} for a summary on factorization algebras and how they relate to TQFT and AQFT. 
     
     In conclusion, algebraic quantum field theory is not a variant of topological field theory, but an alternative attempt to put quantum field theory on mathematically rigorous footings. One can discover more on algebraic quantum field theory in \cite{halvorson2006algebraic} and \cite{fewster2019algebraic}.
@@ -4083,7 +4088,7 @@ Finally, what does all this have to do with 3d TFTs?
 We will use:
 \begin{itemize}
     \item every 3 manifold arises from framed 1-tangles via \textit{surgery},
-    \item two tangles giving the same 3-manifold can be related by \textit{Kirby moves},
+    \item two tangles giving the same 3 manifold can be related by \textit{Kirby moves},
     \item $F_\cat$ is invariant under Kirby moves if \cat is a \textit{modular} tensor category.
 \end{itemize}
 
