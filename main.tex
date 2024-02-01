@@ -1098,7 +1098,7 @@ Given $M\xrightarrow{\cong}N$, take the gluing $(M\times I)\underset{M\times\{1\
 
 \noindent Now we prove the transitivity of the relation 'being cobordant'. We do that by showing that given $X$ from $Y_0$ to $Y_1$ and $X'$ from $Y_1$ to $Y_2$, we can glue them along the boundary in common, $Y_1$, to obtain a bordism from $Y_0$ to $Y_2$. %add diagram here (?) later works as well
 In order to achieve this, we need to introduce the following notion:
-\begin{defn}
+\begin{defn}[Collar of a boundary]
     Let $X$ be a manifold with boundary. A collar of the boundary is an open set  $U\subseteq X$ containing $\de X$ together with a diffeomorphism  $(-\epsilon,0]\times\partial M \to U$ for some $\epsilon>0$.
 \end{defn}
 \begin{thm}
@@ -1145,32 +1145,38 @@ $$(-\epsilon,0]\times Y_2\xrightarrow{\phi'_1}U_2$$
 \section{Tangential Structures}
 \subsection{Orientations and the tangent bundle}
 \begin{defn}[Tangent bundle]
-    $TM$ is the vector bundle over $M$ of rank $n$ is constructed as
+    The tangent bundle $TM$ of a bundle $M$ is the vector bundle over $M$ of rank $n$ with
     \begin{enumerate}
-        \item Fibers are the tangent spaces $T_p M$ at each point $p \in M$: $$(TM)_p=T_pM$$
-        \item (as a set) $TM=\bigcup_{p\in M} T_p M$ with natural projection: $$TM=\bigcup_{p\in M} T_p M\xrightarrow{p}M$$ $$(p,v)\mapsto p$$
+        \item fibers given by the tangent spaces $T_p M$ at each point $p \in M$: $$(TM)_p=T_pM$$
+        \item (as a set) $TM=\coprod_{p\in M} T_p M$ with natural projection: 
+        \begin{align}
+        	TM=\coprod_{p\in M} T_p M&\xrightarrow{p}M \\
+        	(p,v)&\mapsto p
+        \end{align}
     \end{enumerate}
 \end{defn}
-%why does \bigcup not compile?
-It is possible to define a topology on $TM$ such that it is a smooth $2n$ manifold: $(U,\phi)$ chart of $M$, we have a chart of $TM$, $(p^{-1}(U),\tilde\phi$ by looking at preimages of $U$ under the projection map and we construct the local trivialization with the usual construction. This is summarized by the fact that the following diagram commutes:
+
+\noindent It is possible to define a topology on $TM$ such that it is a smooth $2n$ manifold: $(U,\phi)$ chart of $M$, we have a chart of $TM$, $(p^{-1}(U),\tilde\phi)$ by looking at preimages of $U$ under the projection map and we construct the local trivialization with the usual construction. 
+%TODO maybe say a bit more about local trivialisations
+This is summarized by the fact that the following diagram commutes:
 \[\begin{tikzcd}
-	{p^{-1}(U)=TU=\bigcup_{p\in U}T_pM} && {T\tilde U=\tilde U\times\R^n} \\
+	{p^{-1}(U)=TU=\coprod_{p\in U}T_pM} && {T\tilde U=\tilde U\times\R^n} \\
 	\\
 	U && {\tilde U\subseteq\R^n}
 	\arrow["p", from=1-1, to=3-1]
-	\arrow["{\tilde\phi=(\phi,\partial\phi)}"', from=1-1, to=1-3]
-	\arrow["pr", from=1-3, to=3-3]
+	\arrow["{\tilde\phi=(\phi,d\phi)}"', from=1-1, to=1-3]
+	\arrow["pr_{\tilde U}", from=1-3, to=3-3]
 	\arrow["\phi"', from=3-1, to=3-3]
 	\arrow["\cong", from=3-1, to=3-3]
 \end{tikzcd}\]
-This is actually an atlas with smooth structure. Transition functions are actually the jacobian (which are in $GL_n(\R)$).
+This is actually an atlas with smooth structure. Transition functions $g_{ij} = \phi_j \circ \phi_i^{-1}|_{\phi_i(U_i \cap U_j)}$ are actually the jacobian and we have $g_{ij} \in GL_n(\R)$. 
 
-\begin{defn}
-    If $TM$ has local trivializations, i.e. an open cover $(U_i)_{i\in I}$ and transition functions $\phi_{i,j}(\in GL_n(\R))$ such that the transition functions between overlapping trivializations are $\phi_{i,j}\in GL_n^+(\R)\subseteq GL_n(\R)$ then we say that $M$ is orientable.
+\begin{defn}[Orientability and admissibility of $G$ structure]
+    If $TM$ has local trivializations such that the transition functions between overlapping trivializations are in $ GL_n^+(\R)\subseteq GL_n(\R)$ then we say that $M$ is orientable.
 
-    In other words "The structure group of $TM$ can be reduced to $GL_n^+ (\R) \subset GL_n(\R)$".
+    \noindent In other words "The structure group of $TM$ can be reduced to $GL_n^+ (\R) \subset GL_n(\R)$".
     
-    Analogously, given some $G \subset GL_n(\R)$, we can say $M$ admits a $G$ structure if the local trivialisations are such that $\phi_{i,j} \in G$, i.e. "the structure group can be reduced to $G$". In this sense, being orientable is the same as admitting a $GL_n^+ (\R)$ structure.
+    \noindent Analogously, given some $G \subset GL_n(\R)$, we can say $M$ admits a $G$ structure if the local trivialisations are such that $\phi_{i,j} \in G$, i.e. "the structure group can be reduced to $G$". In this sense, being orientable is the same as admitting a $GL_n^+ (\R)$ structure.
 
 \end{defn}
 
@@ -1183,26 +1189,26 @@ This is actually an atlas with smooth structure. Transition functions are actual
 	\begin{itemize}
 		\item $\R^n$: we have $T\R^n \cong \R^n \times \R^n$, meaning the tangent bundle is a trivial bundle.
 		\item $S^1$: we again have the trivial bundle $TS^1 \cong S^1 \times \R$
-		\item $S^2$: now $TS^2 \ncong S^2 \times \R^2$, it is not a trivial bundle.
+		\item $S^2$: now $TS^2 \ncong S^2 \times \R^2$, it is not a trivial bundle. This follows from the \href{https://en.wikipedia.org/wiki/Hairy_ball_theorem}{hairy ball theorem}. 
 	\end{itemize}
 	All these are orientable. Instead examples of non orientable manifolds are the Klein bottle, the Möbius strip and $\R\P^2$.
  %drawings 
 \end{ex}
 
-\begin{defn}
-    An orientation (equivalently, a $GL^+_n(\R)$ structure) of $M$ is an equivalence class of trivialisations $\{(\tilde U, \tilde \phi)\}$ such that $\det g_{ij} > 0$ (i.e. $g_{ij} \in GL^+(n,\R)$), where $g_{ij} = \phi_j \circ \phi_i^{-1}|_{\dots}$.
+\begin{defn}[Orientation and $G$ structure]
+    An orientation (equivalently, a $GL^+_n(\R)$ structure) of $M$ is an equivalence class of trivialisations $\{(\tilde U, \tilde \phi)\}$ of $TM$ such that $\det g_{ij} > 0$ (i.e. $g_{ij} \in GL^+(n,\R)$), where $g_{ij} = \phi_j \circ \phi_i^{-1}|_{\phi_i(U_i \cap U_j)}$.
 
-    Analogously, given some $G \subset GL_n(\R)$, a $G$ structure is an equivalence class of trivialisations $\{(\tilde U, \tilde \phi)\}$ such that $g_{ij} \in G$.
+    \noindent Analogously, given some $G \subset GL_n(\R)$, a $G$ structure on $TM$ is an equivalence class of trivialisations $\{(\tilde U, \tilde \phi)\}$ such that $g_{ij} \in G$.
 \end{defn}
 
-\noindent We can now note the following lemma which we won't prove.
+\noindent We can now note the following lemma which is related to the fact that on a manifold one can always construct a Riemannian metric.
 \begin{lem}
 	A $GL_n^+ (\R)$ structure is the same as an $SO(n)$ structure.
 \end{lem}
 
-How many orientations can $M$ have? 0 if it's not orientable, 2 if it's connected and orientable, in general $2^{\# \text{ connected components}}$ if it's orientable.
+\noindent How many orientations can $M$ have? 0 if it's not orientable, 2 if it's connected and orientable, in general $2^{\# \text{ connected components}}$ if it's orientable.
 
-\begin{defn}
+\begin{defn}[Opposite orientation]
 	$M$ oriented with charts $\{(U_i, \phi_i)\}$. The opposite orientation on $M$ is given by: $\{(U_i, \bar \phi_i)\}$ in which $\bar \phi_i$ is given by the following composition
 	\begin{equation}
 		U_i \xrightarrow{\phi_i} \R^n \to \R^n %TODO write better
@@ -1214,19 +1220,18 @@ How many orientations can $M$ have? 0 if it's not orientable, 2 if it's connecte
 	$S^1$ %DRAWING
 \end{ex}
 
-\begin{defn}
+\begin{defn}[Orientation preserving and reversing diffeomorphism]
 	A diffeomorphism $\psi: M \to N$ between oriented manifolds is orientation preserving (reversing) if the orientation on $N$ induced by the one on $M$ is the (opposite) orientation on $N$.
 \end{defn}
 \begin{ex}
 	Consider maps $S^1 \to S^1$ (implicitly using the same orientation on each $S^1$). The identity is an orientation preserving map, while the map $x \mapsto \bar x$ is orientation reversing (considering $S^1 \subset \C$).
 
-	We could instead consider maps $S^1 \to \bar{S^1}$. In this case the identity is orientation reversing.
-
+	\noindent We could instead consider maps $S^1 \to \bbar{S^1}$. In this case the identity is orientation reversing.
 \end{ex}
 
 Given a manifold $M$ with boundary, its tangent bundle (how is it defined?) contains a copy of $T(\de M)$.
 %DRAWING
-This is because we can "glue another collar" $[0,\epsilon]$ onto the boundary so that the points that were on the boundary are now interior points. This allows us to define $T_x M$, the tangent bundle at the boundary. Instead, considering $\de M$ as its own manifold we have $T_x \de M$ and we have that $T_x \de M \subset T_x M$ and it has codimension 1. We can then define the quotient
+This is because we can "glue another collar" $[0,\epsilon]$ onto the boundary so that the points that were on the boundary are now interior points. This allows us to define $T_x M$ for $x \in \de M$, the tangent bundle for boundary points. Instead, considering $\de M$ as its own manifold we have $T_x \de M$ and we have that $T_x \de M \subset T_x M$ and it has codimension 1. We can then define the quotient
 $$
 	\nu_x = T_x M /T_x \de M
 $$
@@ -1238,45 +1243,41 @@ in which $i: \de M \to M$ is the inclusion and $i^*: TM$ (bundle over $M$) $\to 
 %TODO did I understand this correctly?
 If we fix a local chart with coordinates $x_1, \dots, x_n$ we have a basis $\frac{\de}{\de x_1}$ for $\nu$.
 
-This has the following consequences:
+\noindent This has the following consequences:
 \begin{enumerate}
 	\item an orientation on $M$ induces one on $\de M$
 	\item $\nu$ has two "orientations" ($\cong$ normal directions)
-	\item an orientation on $\de M$ induces one on $\de M \times (0,1)$ (if I choose an orientation on $(0,1)$) but in general we can extend this construction to all of $M$.
+	\item an orientation on $\de M$ induces one on $\de M \times (0,1)$ (if I choose an orientation on $(0,1)$) but in general we can't extend this construction to all of $M$.
+
+	\noindent More generally, note that if $M$ and $N$ are oriented, then $M\times N$ is oriented. \cite{FreedBordism}
 \end{enumerate}
 
-More generally, note that if $M$ and $N$ are oriented, then $M\times N$ is oriented. \cite{FreedBordism}
-
-
-\begin{ex}
-	Special case: 0 dimensional manifold. $M = \{x_1, \dots, x_k\}$, but $T_x M = 0$ so our definition fails! So in this case the definition does not capture what we would like, in particular the consequences we found before are 1. tautological, 3. boring. We can use 3. to construct a new definition.
-\end{ex}
+\noindent Special case: 0 dimensional manifold. $M = \{x_1, \dots, x_k\}$, but $T_x M = 0$ so our definition fails! So in this case the definition does not capture what we would like, in particular the consequences we found before are either tautological or boring. We can however use 3. to construct a new definition.
 \begin{defn}
 	An orientation on a 0 dimensional manifold is a map $M \to \{\pm 1\}$ ($\iff$ orientation of $M \times (0,1)$ if I fixed a chosen orientation of (0,1)).
+%don't understand why have to fix an orientation of the interval /William
 	%DRAWING
 \end{defn}
 
-\begin{defn}
+\begin{defn}[oriented bordism]
 	Let  $Y_0$ and $Y_1$ be oriented closed $n$ manifolds.
 	An oriented bordism from $Y_0$ to $Y_1$ is an oriented $n+1$ manifold $X$ together with $p: \de X \to \{0,1\}$ and $\psi: \de X \to \bbar Y_0 \amalg Y_1$ an orientation preserving diffeomorphism.
-	(Note: now $p$ is actually too much data $\dots$, since it basically tells us which of the $Y_i$ we're reversing, so we can get rid of it)
+	(Note: now $p$ is actually too much data $\dots$, since it basically tells us which of the $Y_i$ we're reversing, so we can get rid of it.)
+	%TODO make this comment clearer
 \end{defn}
-Again this is an equivalence relation which we call "being oriented cobordant", which allows us to give the following definition.
+\noindent Again this is an equivalence relation which we call "being oriented cobordant", which allows us to give the following definition.
 \begin{defn}
 	The oriented bordism group is:
 	\begin{equation}
 		\Omega_n^{or} = \{\text{closed oriented $n$ manifolds}\}/\{\text{oriented $n+1$ cobordisms}\}
 	\end{equation}
 \end{defn}
-Note that $\emptyset$ is an oriented $n$ manifold with a unique orientation.
+\begin{rem}
+	Note that $\emptyset$ is an oriented $n$ manifold with a unique orientation.
+\end{rem}
 
 \subsection{Framings} % (fold) 
 \label{sub:framings}
-
-% I added this to the previous definitions
-% \begin{defn}
-%     If $TM$ has local trivialisations $\dots$ $g_{ij} \in G \subseteq GL_n(\R)$, $M$ has a $G$ structure. A choice of $G$ structure is an equivalence class of such trivialisations.
-% \end{defn}
 
 Recall the definition of a $G$ structure given above. As stated previously, if $G = GL_n^+(\R)$ a $G$ structure is an orientation. Another choice is simply to take $G = \{e\}$, this gives a \textit{framing}. We can talk about \textit{frameable} or \textit{parallelizable} manifolds, meaning they admit a framing. As a consequence, for a manifold with trivial tangent bundle we have $TM \cong M \times \R^n$ and a choice of framing corresponds to a choice of isomorphism.
 
@@ -1288,19 +1289,21 @@ Some examples of frameable manifolds are the following:
         \item $S^1 \times S^1$
         %choose how many times I rotate when following the circles --> framing
         \item Any Lie group $H$ has $TH \cong H \times \R^{\dim}$
+    	\item What about $S^2$? Not frameable because of the hairy ball theorem (we would need two vector fields that are a basis at each point of $S^2$ but because of the theorem we don't even have one).
     \end{itemize}
-    What about $S^2$? Not frameable because of the hairy ball theorem (we would need two vector fields that are a basis at each point of $S^2$ but because of the theorem we don't even have one).
         %Well for any point $p \in S^1$ we have $T_p S^1 \cong \R$ and the isomorphism is given by a choice of vector. 
 \end{ex}
 
+In fact, there aren't many closed connected 2 manifolds with framing:
 \begin{fct}
 	The only closed connected 2 manifolds with framing is the torus.
 \end{fct}
+\noindent This follows from the \href{https://en.wikipedia.org/wiki/Poincar%C3%A9%E2%80%93Hopf_theorem}{Poincaré–Hopf index theorem}\footnote{This differential topology theorem relates the index of a vector field to the Euler characteristic of the manifold. In particular, it implies that a nonvanishing vector field can only exist if the Euler characteristic of the manifold is zero.}.
 
 \begin{lem}
 	Any framing on an $n$ manifold $M$ induces an orientation on $M$.
 \end{lem}
-\noindent From our definition it's immediate because $\{e\} \subseteq GL_n^+$ (however there are other definitions of orientation for which it's not immediate).
+\noindent From our definition this is immediate because $\{e\} \subseteq GL_n^+$ (however there are other definitions of orientation for which it's not immediate).
 %.... induces top form on M
 
 
@@ -1311,39 +1314,44 @@ Some examples of frameable manifolds are the following:
 \section{Classification of 2 manifolds with boundary} % (fold) // what do you mean by '(fold)'? /andrea
 \label{sub:classification_of_2_manifolds_with_boundary}
 
-The aim of this chapter is to prove the aforementioned classification of compact 2-dimensional manifolds with the use of Morse Theory (see \ref{Classification of 2 manifolds}). We remind the reader: let $M$ be a 2 manifold with genus $g$, then \begin{itemize}
-    \item $M$ is classified by its genus $g$, if $M$ is oriented. This means that $M$ it is diffeomorphic to $\Sigma_g:=T\#...\#T$, the connected sum of $g$-tori, where in particular $\Sigma_0=S^2$
-    \item whereas if $M$ is unorientable, $M$ is diffeomorphic to $g$ copies of the real projective plane, i.e.  $\R P^2\#...\#\R P^2$
-\end{itemize} every 2-dimensional manifold is  One can find a thorough covering of this result in \cite{Hirsch1976}
+The aim of this chapter is to prove the aforementioned classification of compact 2-dimensional manifolds with the use of Morse theory (see \ref{Classification of 2 manifolds}). We remind the reader: let $M$ be a 2 manifold with genus $g$, then \begin{itemize}
+    \item if $M$ is oriented, $M$ is classified by its genus $g$. In particular $M$ it is diffeomorphic to $\Sigma_g:=T\# \dots \#T$, the connected sum of $g$-tori, where in particular $\Sigma_0=S^2$.
+    \item Instead if $M$ is non orientable\footnote{see \url{https://en.wikipedia.org/wiki/Genus_(mathematics)} for what is meant by genus of a non orientable surface}, $M$ is diffeomorphic to $g$ copies of the real projective plane, i.e.  $\R P^2\# \dots \#\R P^2$.
+\end{itemize} 
+%One can find a thorough covering of this result in \cite{Hirsch1976}.
 
-We now want to find a classification of compact 2 manifolds with boundary (which we will simply call \textit{surface}). To do it we will need Morse theory. What is the idea? Given a surface $M$ (it works in greater generality but now we're only interested in surfaces), find a map $f: M \to \R$ which is "nice" is a way we'll specify later on.
+In addition, we will also find a classification of compact 2 manifolds with boundary (which we will simply call \textit{surfaces}). To do it we will need Morse theory. What is the idea? Given a surface $M$ (it works in greater generality but now we're only interested in surfaces), find a map $f: M \to \R$ which is "nice" is a way we'll specify later on.
 Then by analizing properties of $f$ we can recover the topology of the surface (i.e. the surface up to diffeomorphism). 
+
+This section is based on \cite{Hirsch1976} and \cite{kosinski2013differential}.
+
 \subsection{Introduction to Morse Theory}
+%TODO specify somewhere that we mainly concentrate on 2d but Morse theory is more general.
 \begin{figure}
     \centering
     \includegraphics[width=9.3cm]{images/Lecture on Morse Theory/TORUS MORSE THEORY.png}
     \caption{Image of the Morse function of a torus from \cite{HiroLee2022}}
     \label{TORUS MORSE}
 \end{figure}
-With the projection map from the torus, see \ref{TORUS MORSE}, we have 4 special points: the top and bottom, and then the two points in the middle. What happens in these points is that the shape of the preimage changes:
+Take as an example the projection map from the torus, see \ref{TORUS MORSE}. Here we have 4 special points: the top and bottom, and then the two points in the middle. What happens in these points is that the shape of the preimage changes:
 \begin{itemize}
 	\item the preimage of the top (and bottom) is a point
 	\item the preimage of points between the top and middle point is a circle
 	\item the preimage of the middle points is a wedge of circles
 	\item the preimage of points between the middle points is a disjoint union of circles.
 \end{itemize}
-Note that at the special points the preimage is generally not a smooth manifold. The \textit{special} points are called critical values of $f$, while the other points are regular values.
+Note that at the special points the preimage is generally not a smooth manifold. These "special" points are critical points of $f$:
 %TODO add what the strategy is
 
-\begin{defn}
+\begin{defn}[Critical point and critical value]
 	Let $M$ be a closed $n$ manifold. A critical point of $f: M \to \R$ is a point $p \in M$ such that $(df)_p: T_p M \to T_{f(p)} \R \cong \R$ is \textit{not} surjective. 
 	A critical value is the image of a critical point.
 \end{defn}
 
-The main goal then is to recover (up to diffeomorphism) $M$ from knowing the critical points and the behaviour in a neighborhood thereof. 
+\noindent The main goal then is to recover (up to diffeomorphism) $M$ from knowing the critical points and the behaviour in a neighborhood thereof. 
 
 
-Firstly we can define what a "nice" function is:
+\noindent Firstly we can define what we mean by a "nice" function:
 \begin{defn}
 	A Morse function is a smooth map $f: M \to \R$ such that all critical points are nondegenerate, that is 
 	$\Hess(f)_p := \left( \frac{\de^2 f}{\de x_i \de x_j}(p)\right)_{i,j}$
@@ -1354,62 +1362,78 @@ Firstly we can define what a "nice" function is:
 \end{rem}
 
 \begin{ex}
-	Let's start with a nonexample: %DRAWING
-
-	At every critical point the second derivative is 0:
+	Let's start with a nonexample: the parabolic cylinder.
+	%DRAWING
+	\noindent With coordinates $x_1, x_2$, the Morse function drawn can be written as $f(x_1, x_2) = -x_1^2$.
+	\noindent Then at every critical point the Hessian is given by
 	\begin{equation}
 		\Hess(f)_p = \begin{pmatrix}
 			-2 & 0 \\
 			0 & 0 
 		\end{pmatrix}	
 	\end{equation}
-	Since the function is given by $f(x_1, x_2) = -x_1^2$.
+	which is clearly singular.
 
-	Anothe nonexample is given by the function $f(x) = x^3$. Consider the map that goes from the graph of $f$ to its $y$ coordinate. Again the Hessian is 0.
+	\noindent Another nonexample is given by the function $f(x) = x^3$. Consider the map that goes from the graph of $f$ to its $y$ coordinate. Again the Hessian is singular at the critical point.
 \end{ex}
 
 %other example $f(x_1, x_2) = -x_1^2 -x_2^2$
 % hessian is -2 0, 0 -2, two negative eigenvalues -> index -2
 
-We're then interested in the local picture at a critical point.
+\noindent We're then interested in the local picture at a critical point.
 
-\begin{defn}
+\begin{defn}[Index of a critical point]
 	If $p \in M$ is a nondegenerate critical point of $f : M \to \R$, the index of $f$ at $p$ is 
 	\begin{equation}
 		\ind_f (p) = \text{index of }\Hess(f)_p = \# \text{ negative eigenvalues of} \Hess(f)_p
 	\end{equation}
 \end{defn}
 
-\begin{ex}
-	Basic examples: %DRAWINGS
-	%functions -x_1^2-x_2^2, -x_1^2+x_2^2, x_1^2-x_2^2, x_1^2+x_2^2
-	% hessians and indices ...
+\begin{ex}\label{ex:quadric}
+	Consider the following basic examples: %DRAWINGS
+	\begin{itemize}
+		\item $f(x_1, x_2) = -x_1^2-x_2^2$, this has critical point $p=(0,0)$ and there the Hessian is given by
+		$\begin{pmatrix}
+			-2 & 0 \\
+			0 & -2 
+		\end{pmatrix}$. We therefore see that $p$ is nondegenerate and that $\ind_f (p) = 2$.
+		\item $f(x_1, x_2) = -x_1^2+x_2^2$, very similar, but $\ind_f (p) = 1$,
+		\item $f(x_1, x_2) = +x_1^2-x_2^2$, again $\ind_f (p) = 1$,
+		\item $f(x_1, x_2) = +x_1^2+x_2^2$, now $\ind_f (p) = 0$.
+	\end{itemize}
 \end{ex}
 
-\begin{lem}[Morse Lemma]
-	Let $p \in M^n$ be a nondegenerate critical point of $f: M \to \R$ of index $k$. Then there is a chart $(U, \phi)$ around $p$ such that
+\noindent The examples above are very important, because locally Morse functions are always of one of those forms.
+\begin{lem}[Morse Lemma I]
+	Let $p \in M^n$ be a nondegenerate critical point of $f: M^n \to \R$ of index $k$. Then there is a chart $(U, \phi)$ around $p$ such that the map $\tilde f$ defined as
 	\begin{equation}
-		M \supset U \to \dots %TODO diagram
+		\begin{tikzcd}
+			U \ar[r, "\phi"] \ar[d, "f"]& \R^n \ar[dl, "\tilde f"] \\
+			\R
+		\end{tikzcd}
 	\end{equation}
+	is given by:
 	\begin{equation}
 		\tilde f (x_1, \dots, x_n) = f(p) - \sum_{i=1}^k x_i^2 + \sum_{j=k+1}^n x_j^2
 	\end{equation}
 \end{lem}
-%TODO sum symbol not appearing, I think again because of font
-\noindent Idea of proof: given a nondenerate critical point of index $k$ we only know that $\Hess(f)_p$ has $k$ negative eigenvalues, is nonsingular and is diagonalizable. That allows me to change the basis so that the function takes that form, essentially doing a Taylor expansion. In particular then the chart can be chosen such that the function is \textit{exactly} that expression.
 
+\begin{proof}[Idea of proof]
+	Given a nondenerate critical point of index $k$ we only know that $\Hess(f)_p$ has $k$ negative eigenvalues, is nonsingular and is diagonalizable. That allows me to change the basis so that the function takes that form, essentially doing a Taylor expansion. In particular then the chart can be chosen such that the function is \textit{exactly} that expression.
+\end{proof}
 
 % -------------------------------------------------------------
 % --------------------- LECTURE 6 13/11 -----------------------
 % -------------------------------------------------------------
 
-Immediate consequences of the lemma:
-Given a Morse function $f: M \to \R$, $p \in M$, then
+\noindent Given a Morse function $f: M \to \R$, $p \in M$, then we have the following mmediate consequences of the lemma:
 \begin{itemize}
     \item if $p$ is critical (non degenerate because of the \textit{Morse} function), because of the lemma we have a chart as above. Then the level sets $f^{-1} (f(p))$ look like a neighborhood of 0 in a quadric (locally).
-    \item if $p$ is not critical (it's regular), by the implicit function theorem there are coordinates such that $f(x_1, \dots, x_n) = x_1$. So the level sets $f^{-1} c$ look like hyperplanes in $\R^n$ (locally).
+    \item if $p$ is not critical (it's regular), by the implicit function theorem there are coordinates such that $f(x_1, \dots, x_n) = x_1$. So the level sets $f^{-1} (f(p))$ look like hyperplanes in $\R^n$ (locally).
 \end{itemize}
+This explains what we noticed initially for the example of the torus, that the level set changes when passing a critical point. In particular it always changes in one of the ways shown in \ref{ex:quadric}. This observation will be more complete after Morse Lemma II below.
 
+The following theorem justifies the use of Morse theory to study manifolds.
 \begin{thm}
     For any manifold Morse functions exist
     \label{thm:morse_exist}
@@ -1423,7 +1447,9 @@ Example of something we can prove with Morse functions:
     \end{equation}
     where $c_k$ is the number of critical points of index $k$.
 \end{thm}
+\noindent This is quite clear for the sphere and the genus $g$ surfaces with the usual Morse functions, but it's interesting that for \textit{any} Morse function we have this result.
 
+The following theorem also seems very plausible from the drawings:
 \begin{lem}[Morse Lemma II]
     Let $f: M \to \R$, $a< b \in \R$ such that $f$ does not have a critical value in $[a,b]$. Then
     \begin{equation}
@@ -1431,16 +1457,17 @@ Example of something we can prove with Morse functions:
     \end{equation}
     is a deformation retract. In particular, it induces a diffeomorphism $f^{-1}(a) \cong f^{-1}(b)$.
 \end{lem}
+\noindent Concretely this tells us that the level set \textit{only} changes when crossing a critical point.
 \begin{rem}
-    This uses flow along vector field $\frac{\grad f}{|\grad f|}$. %DRAWING...
+    The proof uses flow along vector field $\frac{\grad f}{|\grad f|}$... %DRAWING...
 \end{rem}
 
-We will restrict to 
-\begin{defn}
+We will restrict to the following class of Morse functions
+\begin{defn}[Admissibile Morse function]
     A Morse function $f: M \to [a,b]$ is admissibile if $\de M = f^{-1}(a) \cup f^{-1}(b)$ and $a,b$ are regular values.
 \end{defn}
 % but can I have im f = [a,c] with c<b and f^-1 (c) = emptyset?
-The fact that they're regular values is important, since it gives us that a neighborhood of $f^{-1}(a)$ is diffeomorphic to a cylinder $f^{-1}(a) \times [0, \epsilon]$, i.e. a collar (and the same is true for a neighborhood of $f^{-1}(b)$). So an admissible Morse function naturally equips $M$ with the structure of a cobordism from $f^{-1}(a)$ to $f^{-1}(b)$.
+\noindent The fact that they're regular values is important, since it gives us that a neighborhood of $f^{-1}(a)$ is diffeomorphic to a cylinder $f^{-1}(a) \times [0, \epsilon]$, i.e. a collar (and the same is true for a neighborhood of $f^{-1}(b)$). So an admissible Morse function naturally equips $M$ with the structure of a cobordism from $f^{-1}(a)$ to $f^{-1}(b)$.
 
 Another useful theorem, analogous to \ref{thm:morse_exist} is the following:
 \begin{thm}
@@ -1449,25 +1476,43 @@ Another useful theorem, analogous to \ref{thm:morse_exist} is the following:
 %TODO add reference to Kosinski Differentiable manifolds.
 
 %tells us how the level set changes before and after the critical point
-\begin{thm}([Hi] Theorem 3.2, p.157)
-    Let $M^n$ be compact and $f: M \to [a,b]$ an admissible Morse function. Suppose that $f$ has a unique critical value $z$ of index $k$.
+We would now like to know \textit{how} the level set changes before and after the critical point. In order to do this we first introduce the concept of handle attachment.
+\begin{defn}[Handle attachment]
+	Let $M^n$ be an $n$ manifold and let $H^j \coloneq D^j \times D^{n-j}$ for $j=0,1,\dots, n$. In addition let $f: \de D^j \times D^{n-j} \hookrightarrow \de M^n$ be an embedding and note that $\de D^j \times D^{n-j}$ also embeds into $H^j$. We can then \textit{attach a j-handle} to $M^n$ by gluing along $f$ to obtain the manifold 
+	$M^n \amalg_f H^j$.
+\end{defn}
+\noindent This concept will be studied in one of the exercises. The following claim makes the definition meaningful:
+\begin{clm}
+    $M^n \amalg_f H^j$ has a smooth structure.
+\end{clm}
+\noindent We can now see how the level sets change at a critical point.
+\begin{thm}(\cite{Hirsch1976} Theorem 3.2, p.157)
+    Let $M^n$ be compact and $f: M^n \to [a,b]$ an admissible Morse function. Suppose that $f$ has a unique critical value $z$ of index $j$.
 
-    There is an embedding $\iota: D^k \hookrightarrow M$ such that 
+    \noindent There is an embedding $\iota: D^j \hookrightarrow M^n$ such that 
     \begin{itemize}
-        \item $e^k :=  \im \iota \subset M \setminus f^{-1}(b)$, $e^k$ is also called a "belt disk";
-        \item $f^{-1}(a) \cap e^k = \de e^k = \iota (\de D^k)$, this is also called a "belt sphere";
-        \item $M$ deformation retracts onto $f^{-1}(a) \cup e^k$, this is also called a "$k$-handle".
+        \item $e^j :=  \im \iota \subset M^n \setminus f^{-1}(b)$, $e^j$ is also called a "belt disk";
+        \item $f^{-1}(a) \cap e^j = \de e^j = \iota (\de D^j)$, this is also called a "belt sphere";
+        \item $M$ deformation retracts onto $f^{-1}(a) \cup e^j$.
     \end{itemize}
-    %TODO add missing comment on 1-handle, \bar \iota ...., def of H1
+    The embedding can then be extended to $e^j \times D^{n-j}=: H^j$.
     %DRAWINGS
-    Moreover, choose an $a'$ with $a<a'< f(z)$, we then have
+    We can now choose an $a'$ with $a<a'< f(z)$ and we then have
     \begin{equation}
-        M \cong f^{-1}([a,a']) \cup_{\bbar \iota} H^1
+        M^n \cong f^{-1}([a,a']) \cup_{\bbar \iota} H^j
     \end{equation}
     (for $n=2$ this is a unique diffeomorphism up to isotopy\footnote{See \ref{Isotopy} for the definition of isotopy.}).
 \end{thm}
+This theorem explains what happens to the level sets when we meet a critical point of index $j$: we attach a $j$ handle! 
+To use the terms above: we extend the belt disk to a $j$ handle and attach it to the boundary by gluing along the belt sphere (which is also extended).
+Of course, all the drawings presented are for 2 manifolds and we will only apply these results to such manifolds, but this theorem works more in general! Since we're only interested in 2 manifolds let's make explicit what it means to attach a $j$ handle:
+\begin{itemize}%DRAWINGS
+    \item $j=0, H^0 = D^0 \times D^2\cong D^2$ and we attach along the empty set (since $\de D^0 = \emptyset$), i.e. we take the disjoint union with $D^2$.
+    \item $j=1, H^1 = D^1 \times D^1$ and we attach along $\de D^1 \times D^1$, i.e. along two segments
+    \item $j=2, H^2 = D^2 \times D^0$ and we attach along $\de D^2 \times D^0\cong S^1$, i.e. along a circle
+\end{itemize}
 \begin{ex}
-\hfill
+\hfill%TODO not very clear
     \begin{itemize}
         \item index 0: $M=S^2$ % DRAWING
         we then have $e^0 = \{z\}$, $\iota: D^0={pt} \hookrightarrow M$ and $\bbar \iota: D^0 \times D^2 \hookrightarrow M$.
@@ -1481,30 +1526,10 @@ Another useful theorem, analogous to \ref{thm:morse_exist} is the following:
     \end{itemize}
 \end{ex}
 
-%already written in beginning
-% \begin{defn}
-%     A surface is a compact manifold (possibly with boundary). 
-% \end{defn}
-
-\begin{defn}
-    Given $M$, we attach a $j$-handle ($j = 0,1,2, \dots, n = \dim M$) as follows. Let $H^j = D^j \times D^{n-j}$, so we have
-    \begin{itemize}%DRAWINGS
-        \item $j=0, H^0 = D^0 \times D^2$ and we attach along the empty set, i.e. we take the disjoint union with $D^2$.
-        \item $j=1, H^1 = D^1 \times D^1$ and we attach along $\de D^1 \times D^1$, i.e. along two segments
-        \item $j=2, H^2 = D^2 \times D^0$ and we attach along $\de D^2 \times D^0$, i.e. along a circle
-    \end{itemize}
-    Let $f: S^{j-1} \times D^{n-j} \hookrightarrow \de M$ be a smooth embedding. Then define $M[f] := M \cup_f H^j$ such that the following diagram commutes.
-    %TODO add diagram
-\end{defn}
-\begin{clm}
-    $M[f]$ has a smooth structure.
-\end{clm}
-
-\begin{prop}[VI 7.1 in Kosinski, "Handle slides"]
-    If $\tilde M := (M \cup_f H^j) \cup_g H^i$ and $i\leq j$, then $\tilde M$ can be obtained by first attaching $H^i$ and then $H^j$.
+\begin{prop}[VI 7.1 in \cite{kosinski2013differential}, "Handle slides"]
+    If $\tilde M := (M \coprod_f H^j) \coprod_g H^i$ and $i\leq j$, then $\tilde M$ can be obtained by first attaching $H^i$ and then $H^j$.
 \end{prop}
-%what are the maps f and g, how is it defined to attach first one handle and then the other
-% does the proposition just say that there are SOME other attaching maps such that attaching first H^i and then H^j we get the same?
+Note that the word \textit{can} in the proposition is important: if we were to simply commute the two attachments $(M \coprod_g H^i) \coprod_f H^j$ we would get something that in general doesn't make sense, since the map $g$ goes into $M \coprod_f H^j$, not just $M$ and $H^j$ may no longer be attached at the boundary. The proposition instead says that there exist maps $\tilde f$ and $\tilde g$ into $M$ such that $(M \coprod_f H^j) \coprod_g H^i \cong (M \coprod_{\tilde g} H^i) \coprod_{\tilde f} H^j$.
 \begin{ex} %DRAWING
 \hfill
     \begin{itemize}
@@ -1514,9 +1539,9 @@ Another useful theorem, analogous to \ref{thm:morse_exist} is the following:
     \end{itemize}
 \end{ex}
 
-What happens if $i>j$?
-\begin{prop}[VI 7.4 in Kosinski, "Handle cancellation"]
-    Let $\tilde M := (M \cup_f H^j) \cup_g H^{j+1}$, where the attaching sphere of $H^{j+1}$ intersects the belt sphere of $H^j$ "transversely" in one point. Then $\tilde M \cong M$.
+\noindent What happens if $i>j$?
+\begin{prop}[VI 7.4 in \cite{kosinski2013differential}, "Handle cancellation"]
+    Let $\tilde M := (M \coprod_f H^j) \coprod_g H^{j+1}$, where the attaching sphere of $H^{j+1}$ intersects the belt sphere of $H^j$ "transversely" in one point. Then $\tilde M \cong M$.
 \end{prop}
 %Need M different from emptyset right??
 \begin{ex}
@@ -1528,7 +1553,7 @@ What happens if $i>j$?
 % --------------------- LECTURE 7 15/11 -----------------------
 % -------------------------------------------------------------
 
-\begin{thm}[Hirsch 8.3.4, p. 187]
+\begin{thm}[\cite{Hirsch1976} 8.3.4, p. 187]
     Let $M$ be a surface admitting a Morse function that has exactly two critical points. Then
     \begin{equation}
         M \cong S^2
@@ -1540,20 +1565,20 @@ What happens if $i>j$?
 \begin{proof}
     Because of the remark it's enough to prove the homeomorphism, rather than the diffeomorphism.
 
-    Assume $p_+, p_- \in M$ are critical points. Since $M$ is compact, also $f(M)$ is compact and therefore has a maximum and a minimum, which exactly correspond to the two critical points. Now assume $p_+$ is the maximum, then $\ind p_+ = 2$. Now, because of Morse Lemma I we have $\exists U_+$ a neighborhood of $p_+$ with coordinates $x_1, x_2$ such that 
+    \noindent Assume $p_+, p_- \in M$ are critical points. Since $M$ is compact, also $f(M)$ is compact and therefore has a maximum and a minimum, which exactly correspond to the two critical points. Now assume $p_+$ is the maximum, then $\ind p_+ = 2$. Now, because of Morse Lemma I we have $\exists U_+$ a neighborhood of $p_+$ with coordinates $x_1, x_2$ such that 
     \begin{equation}
         f|_{U_+} = -x_1^2 - x_2^2 + f(p_+)
     \end{equation}
     %DRAWING
     Then we have $\exists b < f(p_+)$ such that $D_+ = f^{-1}([b, +\infty)) \cong D^2$.
 
-    Similarly, $\exists U_-$ a neighborhood of $P_-$ with coordinates $x_1, x_2$ such that 
+    \noindent Similarly, $\exists U_-$ a neighborhood of $p_-$ with coordinates $x_1, x_2$ such that 
     \begin{equation}
         f|_{U_-} = x_1^2 + x_2^2 + f(p_-)
     \end{equation}
     and now we have $\exists a > f(p_-)$ such that $D_- = f^{-1}((-\infty,a]) \cong D^2$.
 
-    Let $B_+, B_-$ be disjoint caps around the poles of $S^2$ and denote $C := S^2 \int (B_+ \amalg B_-) \cong S^1 \times [0,1]$. % there was f,x star but I didn't understand TODO
+    \noindent Let $B_+, B_-$ be disjoint caps around the poles of $S^2$ and denote $C := S^2 \int (B_+ \amalg B_-) \cong S^1 \times [0,1]$. % there was f,x star but I didn't understand TODO
     Now, notice $\de D_+ \cong S^1 \cong \de D_-$ and we have a diffeomorphism $h_0: D_+ \to B_+$ as they are both diffeomorphic to $D^2$. In addition $h_0 |_{\de D_+} \de D_+ \to \de B_+$.
     Notice that between $[a,b]$ there are no critical values, that is $f^{-1}([a,b])$ has no crtiical points
     Now, using Morse Lemma II we get:
@@ -1571,15 +1596,10 @@ What happens if $i>j$?
     $\tilde g$ can simply be defined as follows
     \begin{equation}
         \tilde g(x) = 
-        \begin{matrix}
-            ||x|| g\left(\frac{x}{||x||}\right)\\
-            0   
-        \end{matrix}
-        \begin{matrix}
-            , x\neq 0 \\
-            , x =0
-        \end{matrix}
-        % TODO write piecewise definition
+        \begin{cases}
+        	||x|| g\left(\frac{x}{||x||}\right), & \text{for} x\neq 0\\
+        	0, & \text{for} x=0
+        \end{cases}
     \end{equation}
     From the claim $h$ can be extended to a homeomorphism $M \to S^2$.
 \end{proof}
@@ -1643,6 +1663,9 @@ Question: What about the unoriented case? (\textit{Hint: enough to have one atta
 
 %TODO does this go in the proof?
 Last step: $ \de M \neq \emptyset$, oriented, connected, then $\de M = S^1 \amalg \dots \amalg S^1$. If $f$ is an admissible Morse function $f$ onto $[a,b]$ with $f^{-1}(a) \cong (S^1)^{\amalg m}$ and $f^{-1}(b) \cong (S^1)^{\amalg n}$. Now one can prove that we don't need neither 0-handles (if $m \neq 0$) nor 2-handles (if $n \neq 0$).
+
+\section{More on cobordism groups} % (fold)
+\label{sec:more_on_cobordism_groups}
 
 Back to cobordism groups.
 
