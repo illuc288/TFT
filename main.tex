@@ -228,11 +228,24 @@ These are the lecture notes of the course \textit{``Bordism and Topological Fiel
 % -------------------------------------------------------------
 % --------------------- LECTURE 1 23/10 -----------------------
 % -------------------------------------------------------------
+\section*{Notational Conventions}
+\begin{notat}
+	Throughout these notes we will abuse notation indicating a collection with some structure on it just by writing down the collection, e.g. denoting a monoid $(M,\cdot)$ by $M$, a metric space $(X,d)$ by $X$ etc...
+\end{notat}
+\begin{notat}
+	$n$-manifold and $n$-bordism mean respectively $n$ dimensional manifold and $n$ dimensional bordism.
+\end{notat}
 
 %TODO I would label and caption the figures so they can be referenced and they can appear wherever TeX thinks best /William
 
 \chapter{Why should you care? An informal introduction}
-As the name suggests, this subject is two-sided: we have a physics part, namely Quantum Field Theory, and a mathematics part, more specifically topology and in particular (Co)Bordism. Let us explore the motivations and ideas behind these two subjects and how they come together. Do not worry if everything is not immediately clear, it will become so during the semester... hopefully.
+%As the name suggests, this subject is two-sided: we have a physics part, namely Quantum Field Theory, and a mathematics part, more specifically topology and in particular (Co)Bordism. Let us explore the motivations and ideas behind these two subjects and how they come together. Do not worry if everything is not immediately clear, it will become so during the semester... hopefully. /// Andre: there is nothing wrong with this, just liked more the alternative I wrote down, feel free to change it back /AAndre
+There are two ways one can approach topological field theories:
+\begin{enumerate}
+	\item As a way to make (some\footnote{Sadly, TFTs cannot axiomatize many quantum field theories that are particularly useful in physics, e.g. the quantum field theory behind the standard model.}) quantum field theories more mathematically rigorous
+	\item As a way to refine bordism invariants, or, roughly, as a kind of homology for smooth manifolds of a certain dimension, instead of general topological spaces
+\end{enumerate}
+We now sketch how the former might make sense.
 \section{QFT}
 \epigraph{Physics is very interesting:
 There are many, many interesting theorems.
@@ -277,8 +290,8 @@ Therefore, axiomatizations have been developed exploiting new tools from geometr
 
 If someone is into mathematics for the money or the prestige\footnote{If not already sufficiently clear, we explicitly state that this is a joke.}, the field of topological field theories is the one to specialize in: \begin{itemize}
     \item René Thom, the mathematician who laid the foundation of cobordism theory\footnote{Which is at the root of TFTs: TFTs can be seen as a refinement of his work.} in his PhD thesis, received the Fields Medal for this.
-    % TODO is secondary here correct? What does it mean? Also, I would write Chern classes instead of Chern-Simons forms/William
-    \item Shiing-Shen Chern and Jim Simons discovered secondary characteristic classes of 3-dimensional manifolds called Chern-Simons forms, which underpinned the necessary tools to define the earliest example we have of a TFT: 3d Chern-Simons theory. Simons went on to found an incredibily successful hedge fund and became a billionaire. Chern continued to do groundbreaking work in differential geometry and topology; so much that some years ago the International Congress of Mathematicians named a prize after him: the \hyperlink{https://en.wikipedia.org/wiki/Chern_Medal}{Chern Medal}.
+    % TODO is secondary here correct? What does it mean? Also, I would write Chern classes instead of Chern-Simons forms/William 
+    \item Shiing-Shen Chern and Jim Simons discovered geometric invariants of 3-dimensional Riemannian manifolds called (classical) Chern-Simons invariants. They are a generalization of the total geodesic curvature, which is in turn a generalization of the curvature of a plane curve that $=0$ when the curve is a geodesic. Such invariants are the basic building blocks Witten used to define the earliest example we have of a TFT: 3d Chern-Simons theory\footnote{One can find more on this in \cite{freed2008remarks}}. Simons  then went on to found an incredibily successful hedge fund and became a billionaire. Chern continued to do groundbreaking work in differential geometry and topology; so much that some years ago the International Congress of Mathematicians named a prize after him: the \hyperlink{https://en.wikipedia.org/wiki/Chern_Medal}{Chern Medal}.
     \item Edward Witten received his Fields medal mainly because he found a link between 3d-TFTs, in particular Chern-Simons theory, and knot theory, in particular with the Jones polynomial. See \cite{Witten1989} for details.
 \end{itemize} 
 The Jones polynomial is a topological invariant of a knot, meaning that you can assign to each knot a Jones Polynomial in such a way that if two Knots have different polynomials, then they must be different.
@@ -359,7 +372,7 @@ This is exactly the idea of \textit{(co)bordism}:
     where, if $\partial M^n=\emptyset$ then define the map to be $0$.
     \item Let $H^{\text{bord}}_n(S)$ denote this ``homology theory'' of degree $n$ on the space $S$. Let $M^n$ be closed, then $\large{M^n\xrightarrow{f} S}$ is zero in $H^{\text{bord}}_n(S)$ if and only if the map $f$ extends to a $(n+1)-$dimensional smooth compact manifold $W$ such that $\partial W= M$.
 \end{enumerate}
-Using these ideas one obtains something very similar to singular homology even though different, indeed this bordism theory constitutes a generalized homology theory\footnote{There exist a list of axioms called \textit{Eilenberg–Steenrod axioms} that is used to define what a homology theory is since it may come in different flavours. A generalized homology theory is a theory that has every property required but one, generally (as in the case of Bordism as seen below) that one is the \textit{dimension axiom}.}! %could later put a comparison TFTs/Eilenberg-Steenrod as in Ayala-Francis Cobordism Hypothesis
+Using these ideas one obtains something very similar to singular homology even though different, indeed this bordism theory constitutes a generalized homology theory\footnote{There exist a list of axioms called \textit{Eilenberg–Steenrod axioms} that is used to define what a homology theory is since it may come in different flavours. A generalized homology theory is a theory that has every property required but one, generally (as in the case of Bordism as seen below) that one is the \textit{dimension axiom}.}! 
 
 \medskip
 
@@ -406,19 +419,11 @@ H^{\text{bord}}_n(pt)=
 \biggl\}.$$
 But are all these notions are actually useful? Well, classifying manifolds up to diffeomorphism is hard: dimension $0, 1$ and $2$ can be done without too much trouble but already in dimension $3$ things get complicated (think of the Poincaré Conjecture!)... so this classifications can be done (more easily) up to bordism!
 
-
+% TBD: Could be cool to restructure a bit this subsection more geared towards TFTs rather than Bordism invariants in general because  /Andrea 
 
 % -------------------------------------------------------------
 % --------------------- LECTURE 2 25/10 -----------------------
 % -------------------------------------------------------------
-
-%TODO find a better place for this
-\begin{notat}
-  Throughout this notes we will abuse notation in the following way, denoting a monoid $(M,\cdot)$ by $M$, a metric space $(X,d)$ by $X$ etc...
-\end{notat}
-\begin{notat}
-    $n$ manifold and $n$ bordism mean respectively $n$ dimensional manifold and $n$ dimensional bordism.
-\end{notat}
 
 \chapter{Manifolds and bordisms}
 
@@ -540,11 +545,32 @@ In some contexts, it can be interesting to do calculus on a manifold. In order t
 	 
 \begin{ex}% see how to go on another line for the first item. Solutions: \item[], \leavevmode, \hfill
 \hfill 
-	\begin{enumerate} % DRAWINGS
-		\item $D^n = \{x \in \R^n \mid  \ ||x||\leq 1\}$ the $n$ dimensional disk, which has a sphere as boundary: $\de D^n = S^{n-1}$.
-		\item Consider 2 dimensional \emph{open} disks, i.e. $D^2=\{x\in\R^2\mid \ ||x||<1\}$. We can remove such shapes from the sphere and get the manifold $S^2 \setminus D^2_1 \amalg D_2^2 \amalg D^2_3$ which we can visualize in different ways.
-		\item Let $X, Y$ be $n$ manifolds with boundary, then $X \amalg Y$ is an $n$ manifold with boundary.
-		\item $T= S^1 \times S^1$ is a $2$ manifold with $\de T = \emptyset$ and $T^{\text{solid}} = D^2 \times S^1$ is a $3$ manifold with $\de T^{\text{solid}} = T$.
+\begin{enumerate}
+	\item $D^n = \{x \in \R^n \mid  \ ||x||\leq 1\}$ the $n$ dimensional disk, which has a sphere as boundary: $\de D^n = S^{n-1}$
+	\item Consider 2 dimensional \emph{open} disks, i.e. $D^2=\{x\in\R^2\mid \ ||x||<1\}$. We can remove such shapes from the sphere and get the manifold $S^{2} \setminus D^{2}_{1} \amalg D_2^2 \amalg D^2_3$ which we can visualize in different ways.
+	\item Let $X, Y$ be $n$ manifolds with boundary, then $X \amalg Y$ is an $n$ manifold with boundary.
+	\item $T= S^1 \times S^1$ is a $2$ manifold with $\de T = \emptyset$ and $T^{\text{solid}} = D^2 \times S^1$ is a $3$-manifold with $\de T^{\text{solid}} = T$.
+%	I am having trouble with images but will resolve with the help of will /andrea    % DRAWINGS
+	%	\item \begin{figure}
+		%	\centering
+		%	\captionsetup{format = hang}
+		%	\includegraphics[width=7cm]{images/Lecture 2/Boundary Disk.png} 
+		%	\caption{$D^n = \{x \in \R^n \mid  \ ||x||\leq 1\}$ the $n$ dimensional disk, which has a sphere as boundary: $\de D^n = S^{n-1}$ 
+		%	}
+	%	\end{figure}
+		%\item \begin{figure}
+		%	\centering
+			%\captionsetup{format = hang}
+			%\includegraphics[width=7cm]{images/Lecture 2/Manifold3holes.png} 
+			%\caption{Consider 2 dimensional \emph{open} disks, i.e. $D^2=\{x\in\R^2\mid \ ||x||<1\}$. We can remove such shapes from the sphere and get the manifold $S^2 \setminus D^2_1 \amalg D_2^2 \amalg D^2_3$ which we can visualize in different ways.
+			%}
+		%\end{figure}
+	%	\begin{figure}
+		%	\centering
+		%	\captionsetup{format = hang}
+		%	\includegraphics[width=7cm]{images/Lecture 2/Manifold3holes.png} 
+		%	\caption{Consider 2 dimensional \emph{open} disks, i.e. $D^2=\{x\in\R^2\mid \ ||x||<1\}$. We can remove such shapes from the sphere and get the manifold $S^2 \setminus D^2_1 \amalg D_2^2 \amalg D^2_3$ which we can visualize in different ways.
+	%	}
 	\end{enumerate}
 \end{ex}
 
