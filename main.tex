@@ -17,6 +17,7 @@
 \usepackage{epigraph}           % for epigraphs, the quotes at the beginning of sections
 \usepackage{microtype}          % reduces the number of overfull/underfull boxes
 \usepackage{pdfpages}           % to include other pdfs (for titlepage)
+\usepackage{dsfont}				% special S for sphere spectrum
 %\usepackage[all,cmtip]{xy}     % don't know what it's for
 %\usepackage{upgreek}           % don't know what it's for
 %\usepackage[normalem]{ulem}    % don't know what it's for
@@ -74,24 +75,33 @@
 \DeclareMathOperator{\Bord}{Bord}
 \DeclareMathOperator{\ind}{ind}
 \DeclareMathOperator{\im}{im}
-\DeclareMathOperator{\ob}{ob}
 \DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\sign}{sign}
+
+% CATEGORY STUFF
+\DeclareMathOperator{\ob}{ob}
 \DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Set}{Set}
+\DeclareMathOperator{\Top}{Top}
 \DeclareMathOperator{\Vect}{Vect}
 \DeclareMathOperator{\Ab}{Ab}
+\DeclareMathOperator{\Mon}{Mon}
+\DeclareMathOperator{\Grp}{Grp}
 \DeclareMathOperator{\AbGrp}{AbGrp}
 \DeclareMathOperator{\Alg}{Alg}
+\DeclareMathOperator{\Ring}{Ring}
+\DeclareMathOperator{\Cat}{Cat}
+\DeclareMathOperator{\Gpd}{Gpd}
+\DeclareMathOperator{\SymmMonCat}{SymmMonCat}
 \DeclareMathOperator{\nCob}{nCob}
 \DeclareMathOperator{\Bordn}{Bord_{n,n-1}}
 \DeclareMathOperator{\Bordnor}{Bord^{or}_{n,n-1}}
 \DeclareMathOperator{\TFT}{TFT}
 \DeclareMathOperator{\Mat}{Mat}
 \DeclareMathOperator{\cFrob}{cFrob}
-\DeclareMathOperator{\tr}{tr}
 \DeclareMathOperator{\Diff}{Diff}
-\DeclareMathOperator{\Cat}{Cat}
-\DeclareMathOperator{\Set}{Set}
-\DeclareMathOperator{\SymmMonCat}{SymmMonCat}
 \DeclareMathOperator{\Conf}{Conf}
 \DeclareMathOperator{\uConf}{uConf}
 \DeclareMathOperator{\Braid}{Braid}
@@ -99,10 +109,8 @@
 \DeclareMathOperator{\Mod}{Mod}
 \DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\Fun}{Fun}
-\DeclareMathOperator{\sign}{sign}
 \DeclareMathOperator{\Link}{Link}
 \DeclareMathOperator{\Rep}{Rep}
-\DeclareMathOperator{\End}{End}
 \DeclareMathOperator{\Lie}{Lie}
 \DeclareMathOperator{\Der}{Der}
 
@@ -1487,12 +1495,13 @@ We would now like to know \textit{how} the level set changes before and after th
 \end{clm}
 \noindent We can now see how the level sets change at a critical point.
 \begin{thm}(\cite{Hirsch1976} Theorem 3.2, p.157)
-    Let $M^n$ be compact and $f: M^n \to [a,b]$ an admissible Morse function. Suppose that $f$ has a unique critical value $z$ of index $j$.
+    Let $M^n$ be compact and $f: M^n \to [a,b]$ an admissible Morse function. Suppose that $f$ has a unique critical point $z$ of index $j$.
 
-    \noindent There is an embedding $\iota: D^j \hookrightarrow M^n$ such that 
+    \noindent There is an embedding $\iota: D^j \hookrightarrow M^n$ with image $e^j :=  \im \iota$ (called "belt disk"), satisfying: 
     \begin{itemize}
-        \item $e^j :=  \im \iota \subset M^n \setminus f^{-1}(b)$, $e^j$ is also called a "belt disk";
-        \item $f^{-1}(a) \cap e^j = \de e^j = \iota (\de D^j)$, this is also called a "belt sphere";
+    	\item $z \in e^j$;
+        \item $e^j \subset M^n \setminus f^{-1}(b)$;
+        \item $f^{-1}(a) \cap e^j = \de e^j = \iota (\de D^j)$, this is also called "belt sphere";
         \item $M$ deformation retracts onto $f^{-1}(a) \cup e^j$.
     \end{itemize}
     The embedding can then be extended to $e^j \times D^{n-j}=: H^j$.
@@ -1542,6 +1551,7 @@ Note that the word \textit{can} in the proposition is important: if we were to s
 \noindent What happens if $i>j$?
 \begin{prop}[VI 7.4 in \cite{kosinski2013differential}, "Handle cancellation"]
     Let $\tilde M := (M \coprod_f H^j) \coprod_g H^{j+1}$, where the attaching sphere of $H^{j+1}$ intersects the belt sphere of $H^j$ "transversely" in one point. Then $\tilde M \cong M$.
+    %attaching sphere defined p 105 Kosinski but i don't understand how it's different from the belt sphere
 \end{prop}
 %Need M different from emptyset right??
 \begin{ex}
@@ -1593,12 +1603,12 @@ Note that the word \textit{can} in the proposition is important: if we were to s
     \begin{clm}
         If $g: S^1 \to S^1$ is a homeomorphism, then it can be extended to a homeomorphism $\tilde g: D^2 \to D^2$.
     \end{clm}
-    $\tilde g$ can simply be defined as follows
+    \noindent $\tilde g$ can simply be defined as follows
     \begin{equation}
         \tilde g(x) = 
         \begin{cases}
-        	||x|| g\left(\frac{x}{||x||}\right), & \text{for} x\neq 0\\
-        	0, & \text{for} x=0
+        	||x|| g\left(\frac{x}{||x||}\right), & \text{for } x\neq 0\\
+        	0, & \text{for } x=0
         \end{cases}
     \end{equation}
     From the claim $h$ can be extended to a homeomorphism $M \to S^2$.
@@ -1608,12 +1618,13 @@ Note that the word \textit{can} in the proposition is important: if we were to s
 \hfill
     \begin{enumerate}
         \item For any closed $n$ manifold that has two critical points, we have $M \cong S^n$ (\textit{homeomorphic}, not \textit{diffeomorphic}).
-        \item (From Milnor) There are manifolds $M$ homeomorphic to a sphere but not diffeomorphic (e.g. $S^7$), we then talk about \textit{exotic spheres}
+        \item (From Milnor) There are manifolds $M$ homeomorphic to a sphere but not diffeomorphic (e.g. $S^7$), we then talk about \textit{exotic spheres}.
     \end{enumerate}
 \end{rem}
 
 \begin{thm}[Classification of surfaces]\label{Classification of 2d manifolds}
-    Let $M^2$ be a surface (possibly with boundary)
+    Let $M^2$ be an oriented, connected, closed surface. Then it can be obtained as in the following drawing:
+    %DRAWING
 \end{thm}
 
 % -------------------------------------------------------------
@@ -1622,16 +1633,17 @@ Note that the word \textit{can} in the proposition is important: if we were to s
 
 \begin{proof}
 $ $ \newline  % to go to a new line after the word proof
+
     Step 1: Choose an admissible Morse function $f$.
     
-    \noindent Step 2a: If necessary, "perturb" $f$ to get distinct critical values. %DRAWING
+    Step 2a: If necessary, "perturb" $f$ to get distinct critical values. %DRAWING
 
-    \noindent Step 2b: Chop into pieces with exactly one critical point and apply Morse Lemma I. We then get that $f^{-1}((-\infty, a_i])$ is obtained from $f^{-1}((-\infty,a_{i-1}])$ by attaching a handle.
+    Step 2b: Chop into pieces with exactly one critical point and apply Morse Lemma I. We then get that $f^{-1}((-\infty, a_i])$ is obtained from $f^{-1}((-\infty,a_{i-1}])$ by attaching a handle.
 
-    \noindent Goal: normal form (for closed connected surfaces) %DRAWING to explain from what to what we're going
+    Goal: normal form (for closed connected surfaces) %DRAWING to explain from what to what we're going
     %why are copants still attaching a one handle??
 
-    \noindent Step 3: Claim: We can obtain $M$ by first attaching 0-handles, then 1-handles, $\dots$, in ascending order.
+    Step 3: Claim: We can obtain $M$ by first attaching 0-handles, then 1-handles, $\dots$, in ascending order.
 
     To prove this there are two strategies:
     \begin{enumerate}
@@ -1641,33 +1653,37 @@ $ $ \newline  % to go to a new line after the word proof
         This can be proven by changing the Morse function locally around a critical point (see Hirsch for more details). %TODO add ref
     \end{enumerate}
 
-    \noindent Step 4: If $\de M = \emptyset$, then either $M = \emptyset$ or I have at least two critical points.
+    Step 4: If $\de M = \emptyset$, then either $M = \emptyset$ or I have at least two critical points.
 
-    Case 1: We have exactly 2 critical points which gives us $M \cong S^2$ because of Lemma. %TODO add ref
+    \noindent Case 1: We have exactly 2 critical points which gives us $M \cong S^2$ because of Lemma. %TODO add ref
 
-    Case 2: If we have $>2$ critical points, look at minimum, then there exist a neighborhood $D_-$ of the minimum such that $D_- \cong D^2$, i.e. a 0 handle attached to $\emptyset$ (because of Morse Lemma I $f$ locally looks like a cup).
+    \noindent Case 2: If we have $>2$ critical points, look at minimum, then there exist a neighborhood $D_-$ of the minimum such that $D_- \cong D^2$, i.e. a 0 handle attached to $\emptyset$ (because of Morse Lemma I $f$ locally looks like a cup).
 
-    Starting from the minimum, attach one 0-handle. If then we attach another 0-handle, then we can use the handle slides and cancellations to get rid of all 0 handles but one.
+    \noindent Starting from the minimum, attach one 0-handle. If then we attach another 0-handle, then we can use the handle slides and cancellations to get rid of all 0 handles but one.
 
-    Next we can attach one handles and we have two options, %DRAWING
+    \noindent Next we can attach one handles and we have two options, %DRAWING
     only one of which gives an orientable manifold.
 
-    At "end", same argument as for why only one 0-handle read backwards shows that we only have one 2-handle (for example change $f$ to $-f$).
-\end{proof}
+    \noindent At "end", same argument as for why only one 0-handle read backwards shows that we only have one 2-handle (for example change $f$ to $-f$).
 
-\begin{thm}
-    If $M$ is an oriented connected closed surface, it is diffeomorphic to: %DRAWING
-\end{thm}
+    \noindent This ends the proof.
+\end{proof}
 
 Question: What about the unoriented case? (\textit{Hint: enough to have one attachment of Möbius strip})
 
-%TODO does this go in the proof?
-Last step: $ \de M \neq \emptyset$, oriented, connected, then $\de M = S^1 \amalg \dots \amalg S^1$. If $f$ is an admissible Morse function $f$ onto $[a,b]$ with $f^{-1}(a) \cong (S^1)^{\amalg m}$ and $f^{-1}(b) \cong (S^1)^{\amalg n}$. Now one can prove that we don't need neither 0-handles (if $m \neq 0$) nor 2-handles (if $n \neq 0$).
+We now consider the case with boundary:
+\begin{thm}[Classification of surfaces with boundary]
+    Let $M^2$ be an oriented, connected surface. Then it can be obtained as in the following drawing:
+    %DRAWING
+\end{thm}
+\begin{proof}
+	Now $ \de M \neq \emptyset$, then $\de M = S^1 \amalg \dots \amalg S^1$. If $f$ is an admissible Morse function $f$ onto $[a,b]$ with $f^{-1}(a) \cong (S^1)^{\amalg m}$ and $f^{-1}(b) \cong (S^1)^{\amalg n}$. Now one can prove that we need neither 0-handles (if $m \neq 0$) nor 2-handles (if $n \neq 0$).
+\end{proof}
 
 \section{More on cobordism groups} % (fold)
 \label{sec:more_on_cobordism_groups}
 
-Back to cobordism groups.
+we now go back to cobordism groups to give some important results.
 
 We had found 
 \begin{align}
@@ -1675,7 +1691,7 @@ We had found
     &\Omega_1 \cong 0    \\
     &\Omega_2 \cong \Z_2
 \end{align}
-and for the oriented case
+while for the oriented case we have
 \begin{align}
     &\Omega_0^{or} \cong \Z \\
     &\Omega_1^{or} \cong 0  \\
@@ -1684,7 +1700,7 @@ and for the oriented case
 
 \begin{defn}
     A commutative \Z graded ring $S$ is a commutative ring with a grading, i.e. as an abelian group we have $S = \bigoplus_{n \in \Z} S_n$, such that $S_n \cdot S_k \subset S_{n+k}$.
-    (elements in $S$ are called \textit{homogeneous of degree n})
+    Elements in $S$ are called \textit{homogeneous of degree n}.
 \end{defn}
 
 \begin{prop}
@@ -1693,7 +1709,7 @@ and for the oriented case
 \begin{proof}
     Firstly we need to check that the product respects the degree: this is true because $M^m \times N^n = (M \times N)^{m+n}$, so $[M\times N] \in \Omega_{m+n}$.
 
-    Then the products descends to equivalence classes: if $Y_0 \simeq Y_1$ are cobordant via cobordism $(X,p)$ ($p:\de X \to {0,1}$), $M$ any manifold, then $\de X \times M = \de X \times M \xrightarrow{p \circ pr_X} {0,1}$. Therefore $(X \times M, p \circ pr_X)$ is a cobordism from $Y_0 \times M$ to $Y_1 \times M$.
+    \noindent Then the products descends to equivalence classes: if $Y_0 \simeq Y_1$ are cobordant via cobordism $(X,p)$ ($p:\de X \to {0,1}$), $M$ any manifold, then $\de X \times M = \de X \times M \xrightarrow{p \circ pr_X} {0,1}$. Therefore $(X \times M, p \circ pr_X)$ is a cobordism from $Y_0 \times M$ to $Y_1 \times M$.
 \end{proof}
 
 \begin{thm}[Thom]
@@ -1704,7 +1720,7 @@ and for the oriented case
     and the representative of the even degrees are given by $x_{2k} = [\R\P^{2k}]$.
 \end{thm}
 \begin{rem}
-    Note that $(\deg x_2)^2 = \deg 4$ so maybe we could imagine that $\R\P^2 \times \R\P^2 \simeq \R\P^4$ however that's not true since $x_2^2 \neq x_4$.
+    Note that $(\deg x_2)^2 = \deg 4$ so maybe we could imagine that $\R\P^2 \times \R\P^2 \sim \R\P^4$ however that's not true since $x_2^2 \neq x_4$.
 \end{rem}
 
 There are versions for any "tangential structure", such as orientation or (stable) framing.
@@ -1712,23 +1728,27 @@ There are versions for any "tangential structure", such as orientation or (stabl
 \begin{thm}
     There is an isomorphism of \Z graded commutative rings:
     \begin{equation}
-        \Omega_\bullet^{or} \otimes \Q \cong \Q[y_4, y_8, y_12, \dots]
+        \Omega_\bullet^{or} \otimes \Q \cong \Q[y_4, y_8, y_{12}, \dots]
     \end{equation}
     with $y_{4k} = [\C\P^{2k}]$. We write it in this way because in this case there is nontrivial torsion. We could also write
     \begin{equation}
-        \Omega_\bullet^{or} /\text{torsion} \cong \Z[z_4, z_8, z_12, \dots]
+        \Omega_\bullet^{or} /\text{torsion} \cong \Z[z_4, z_8, z_{12}, \dots]
     \end{equation}
-    where the representatives are given by Milnor hypersurfaces.
+    where the representatives are given by Milnor hypersurfaces. This implies that the other degrees are either trivial or torsion.
     %stiefel pontryagin classes
 \end{thm}
-In particular the groups in various degrees are given by:
+\noindent In particular the groups in various degrees are given by:
+\begin{equation}
+	\Omega_\bullet^{or} = \Z, 0, 0, 0, \Z, \Z_2, 0, 0, \Z^2 \dots
+\end{equation}
+In addition all the following groups are nontrivial, i.e. $\Omega_n^{or} \neq 0, \forall n\geq 9$.
 %TODO add all groups
 
+The (stable) framed version instead is isomorphic to the homotopy of the sphere spectrum $\mathds S$, i.e. the stable homotopy groups of spheres. These are \textit{not} computed to all degrees and are studied in homotopy theory. The first 8 groups are given by:
 \begin{equation}
-    \Omega_\bullet^{fr} = \Z, \Z_2, \Z_2, \Z_{24}, 0, 0, \Z_2, \Z_{240}, \dots
+    \Omega_\bullet^{fr} \cong \pi_\bullet(\mathds S) \cong \Z, \Z_2, \Z_2, \Z_{24}, 0, 0, \Z_2, \Z_{240}, \dots
 \end{equation}
-isomorphic to the homotopy of the sphere spectrum and it is \textit{not} computed to all degrees and it is studied in homotopy theory.
-%just as Z is the unit in AbGrp, S is the unit in Spectra
+In a certain sense, $\mathds S$ is analgous to $\Z$ but in another category: \Z is the unit in Ab, while $\mathds S$ is the unit in spectra.
 
 
 % -------------------------------------------------------------
@@ -1736,7 +1756,8 @@ isomorphic to the homotopy of the sphere spectrum and it is \textit{not} compute
 % -------------------------------------------------------------
 \chapter{Topological field theories}
 \section{A modern perspective on cobordisms}
-In \ref{Cob Groups} we extracted an algebraic structure from bordisms by first observing that being cobordant is an equivalence relation and then studying the equivalence classes of closed $n$ manifolds. Together with disjoint unions, this resulted in an abelian group, and eventually in a \Z graded commutative ring, and this was a key tool for classifying manifolds up to cobordism. However, this algebraic structure merely records that there is a bordism between two manifolds (since two manifolds are equivalent just if there is a bordism, independently of what kind of bordism it is), thereby forgetting other properties of the bordism itself. We switch now perspective and analyze a more sophisticated structure remembering \underline{how} two manifolds are cobordant, e.g. indicating the direction of the bordism: the symmetric monoidal category $Bord_{n,n-1}$ where objects are $(n-1)$ manifolds and morphisms are $n-$cobordisms. The following table summarizes the comparison between the two perspectives:
+In \ref{Cob Groups} we extracted an algebraic structure from bordisms by first observing that being cobordant is an equivalence relation and then studying the equivalence classes of closed $n$ manifolds. $\Omega_n$ were at first only sets, but together with disjoint unions this resulted in an abelian group, and eventually in a \Z graded commutative ring, and this was a key tool for classifying manifolds up to cobordism. However, this algebraic structure merely records that there is a bordism between two manifolds (since two manifolds are equivalent just if there is a bordism, independently of what kind of bordism it is), thereby forgetting other properties of the bordism itself. We switch now perspective and analyze a more sophisticated structure remembering \underline{how} two manifolds are cobordant, e.g. indicating the manifold that bounds them and the direction of the bordism: the symmetric monoidal category $\Bord_{n,n-1}$ where objects are $(n-1)$ manifolds and morphisms are $n-$cobordisms. For $\Bord_{n,n-1}$ we'll follow the same procedure: we start by defining it as a category but we'll then find that it has additional structure that is somehow analogous to what we had for $\Omega_n$.
+The following table summarizes the comparison between additional structures in the two perspectives:
 \begin{center}
     \begin{tabular}{||c|c||}
     \hline
@@ -1750,11 +1771,11 @@ In \ref{Cob Groups} we extracted an algebraic structure from bordisms by first o
          \hline
     \end{tabular}
 \end{center}
-\noindent Analogously to the comparison between the set-theoretic and category-theoretic perspective, we could also have a linear-algebraic perspective. Since an associative algebra on a vector space is the parallel construction to a monoid with set, and a commutative algebra corresponds to a commutative monoid. The following table adds this perspective.
+Analogously to the comparison between the set-theoretic and category-theoretic perspective, we could also have a linear-algebraic perspective. Since an associative algebra on a vector space is the parallel construction to a monoid with set, and a commutative algebra corresponds to a commutative monoid. The following table adds this perspective.
 \begin{center}
     \begin{tabular}{||c|c||}
     \hline
-        $\Omega_n$ & $Vect_k$ \\ [0.5ex]
+        $\Omega_n$ & $\Vect_k$ \\ [0.5ex]
          \hline\hline
          set & vector space\\
          \hline
@@ -1765,92 +1786,111 @@ In \ref{Cob Groups} we extracted an algebraic structure from bordisms by first o
     \end{tabular}
 \end{center}
 We make both these comparisons more rigorous by later (\ref{MonObj}) showing that\begin{enumerate}
-    \item a monoid is a monoid object in the category of sets
-    \item an associative algebra is a monoid object in the category of $k$-vector spaces $Vect_k$
-    \item a (\emph{strict}) monoidal category is a monoid object in the category of small categories Cat
-\end{enumerate} The same holds for the commutative case, commutative monoids, commutative algebras and (\emph{strict}) symmetric monoidal categories are all examples of commutative monoid objects (see \ref{CommMonObj}).
+    \item a monoid is a monoid object in the category of sets.
+    \item an associative algebra is a monoid object in the category of $k$-vector spaces $\Vect_k$.
+    \item a (\emph{strict}) monoidal category is a monoid object in the category of small categories Cat-
+\end{enumerate} 
+The same holds for the commutative case, commutative monoids, commutative algebras and (\emph{strict}) symmetric monoidal categories are all examples of commutative monoid objects (see \ref{CommMonObj}).
+
 \section{Summary of Category Theory}
+\subsection{Cathegory theory language} % (fold)
+\label{sub:cathegory_theory_language}
+
 \begin{defn}
 \label{Cat}
-    A locally small\footnote{A category is locally small if every hom $Hom_{\mathscr{C}}(X,Y)$ is not bigger than a set. A locally small category is small if the collection of objects is a set. A large category is a category which is not small. A category is essentially small if it is locally small and the collection of isomorphism classes (collections of isomorphic objects, i.e. objects with a morphism between them which has a left- and right-inverse) is a set. Questions of size of collections play an important role in category theory. For example, one cannot naively take the set of all sets as the collection of objects of the category of sets because of famous set-theoretic paradoxes like Cantor's, Burali-Forti's or Russell's. See \cite{shulman2008set} for an account on possible set-theoretic foundations for category theory.} category $\mathscr{C}$ consists of the following data:
+    A locally small\footnote{A category is locally small if every hom $\Hom_{\mathscr{C}}(X,Y)$ is not bigger than a set. A locally small category is small if the collection of objects is also a set. A large category is a category which is not small. A category is essentially small if it is locally small and the collection of isomorphism classes (collections of isomorphic objects, i.e. objects with a morphism between them which has a left- and right-inverse) is a set. Questions of size of collections play an important role in category theory. For example, one cannot naively take the set of all sets as the collection of objects of the category of sets because of famous set-theoretic paradoxes like Cantor's, Burali-Forti's or Russell's. See \cite{shulman2008set} for an account on possible set-theoretic foundations for category theory.} category $\mathscr{C}$ consists of the following data:
     \begin{itemize}
-        \item A class $ob(\mathscr{C})$ whose elements are called the \underline{objects of $\mathscr{C}$}
-        \item For any $X, Y \in ob(\mathscr{C})$ a set $Hom_{\mathscr{C}}(X,Y)$ whose elements are called \underline{morphisms from $X$ to $Y$}
-        \item For any objects $X,Y,Z\in ob(\mathscr{C})$ a map\footnote{Note that we can simply define composition as a map between sets because we are working with a locally small category.}
+        \item A class $\ob(\mathscr{C})$ whose elements are called the \underline{objects of $\mathscr{C}$},
+        \item For any $X, Y \in \ob(\mathscr{C})$ a set $Hom_{\mathscr{C}}(X,Y)$ whose elements are called \underline{morphisms} \underline{from $X$ to $Y$},
+        \item For any objects $X,Y,Z\in \ob(\mathscr{C})$ a map\footnote{Note that we can simply define composition as a map between sets because we are working with a locally small category.}
         
         \begin{gather*}
-            Hom_{\mathscr{C}}(Y,Z)\times Hom_{\mathscr{C}}(X,Y)\xrightarrow{\circ} Hom_{\mathscr{C}}(X,Z) \\
+            \Hom_{\mathscr{C}}(Y,Z)\times \Hom_{\mathscr{C}}(X,Y)\xrightarrow{\circ} \Hom_{\mathscr{C}}(X,Z) \\
             (g,f)\mapsto g\circ f
         \end{gather*}
-        which is called \underline{composition} of morpisms
-        \item For every object $X\in ob(\mathscr{C})$ an element $id_{X}\in Hom_{\mathscr{C}}(X,X)$ called the \underline{identity} of $X$
+        which is called \underline{composition} of morpisms,
+        \item For every object $X\in \ob(\mathscr{C})$ an element $id_{X}\in \Hom_{\mathscr{C}}(X,X)$ called the \underline{identity} of $X$.
     \end{itemize}
     Such data must fulfill the following axioms: \begin{itemize}
-        \item $\forall f\in Hom_{\mathscr{C}}(X,Y).f\circ id_{X}=f=id_{Y}\circ f$ \hfill (unitality)
+        \item $\forall f\in \Hom_{\mathscr{C}}(X,Y), f\circ id_{X}=f=id_{Y}\circ f$ \hfill (unitality)
         
-        \item $\forall f\in Hom_{\mathscr{C}}(X,Y),g\in Hom_{\mathscr{C}}(Y,Z),h\in Hom_{\mathscr{C}}(W,Z).(h\circ g)\circ f=h\circ (g\circ f)$ \phantom{DDDD} \hfill (associativity)
+        \item $\forall f\in \Hom_{\mathscr{C}}(X,Y), g\in \Hom_{\mathscr{C}}(Y,Z), h\in \Hom_{\mathscr{C}}(W,Z)$:
+        \begin{equation}
+        	(h\circ g)\circ f=h\circ (g\circ f) \tag{associativity}
+        \end{equation}
         \end{itemize}
 \end{defn}
 
-
 \begin{ex}
-\hfill
+A few examples of categories are the following:
+\begin{center}
+	\begin{tabular}{l|l|l}
+	Category & ob & morphisms \\ \hline 
+	Set & class of all sets & functions between sets \\ \hline 
+	Mon & class of all monoids & monoid homomorphisms \\ \hline
+	Grp & class of all groups & group homomorphisms \\ \hline
+	AbGrp & class of all abelian groups & group homomorphisms \\ \hline
+	Ring & class of all rings & ring homomorphisms \\ \hline
+	Vect${}_k$ & class of all $k$ vector spaces & linear maps \\ \hline
+	Alg${}_k$ & class of all algebras over $k$ & algebra homomorphisms \\ \hline
+	Top & class of all topological spaces & continuous functions \\ \hline
+	FinSet & class of all finite sets & functions between sets \\ \hline
+	SmoothMfld & set of all smooth manifolds & smooth functions \\ \hline
+	\end{tabular}
+\end{center}
     \begin{enumerate}
-    %TODO looks a bit weird with the hfills
-        \item $Set$: \hfill $ob(Set)=$ class of all sets,
-          morphisms = functions between sets
-        \item $Monoids$: \hfill $ob(Monoids)=$ class of all monoids,
-          morphisms = monoid homomorphisms
-        \item $Grp$: \hfill $ob(Grp)=$ class of all groups,
-          morphisms = group homomorphisms
-        \item $AbGrp$: \hfill $ob(AbGrp)=$ class of all abelian groups, 
-          morphisms = group homomorphisms
-        \item $Ring$: \hfill $ob(Ring)=$ class of all rings, 
-          morphisms = ring homomorphisms
-        \item $Vect_{k}$: \hfill $ob(Vect_{k})=$ class of all k-vector spaces, morphisms=linear maps
-        \item $Alg_k$ \hfill $ob(Alg_k)=$ algebras over $k$,   morphisms = algebra homomorphisms.
-        \item $Top$: \hfill $ob(Top)=$ class of all topological spaces,
-          morphisms = continuous functions
-        \item $FinSet$: \hfill $ob(FinSet)=$ class of all finite sets,
-          morphisms = functions between sets
-        \item Let $(P,\leq)$ be  a set with transitive and reflexive relation $\leq$ (a preordered set).
-        Define a category $\mathbf{P}$ with: $ob(\mathbf{P})=P$ and $$ Hom_{\mathbf{P}}(X,Y)=\begin{cases}
+        \item Let $(P,\leq)$ be  a set with a transitive and reflexive relation $\leq$ (a preordered set).
+        Define a category $\mathbf{P}$ with: 
+        $$\ob(\mathbf{P})=P$$
+        $$ \Hom_{\mathbf{P}}(X,Y)=\begin{cases}
             \{\ast\} & \text{if } x\leq y \\
             \emptyset & \text{else}
         \end{cases}$$
-        \item $SmoothMfd$: \hfill $ob(SmoothMfd)=$ collection of smooth manifolds, morphisms= smooth functions
-        \item Given categories $\mathscr{C},\mathscr{D}$  $$ob(\mathscr{C}\times\mathscr{D})=ob(\mathscr{C})\times ob(\mathscr{D})$$
-        $$Hom_{\mathscr{C}\times\mathscr{D}}((X,Y),(X',Y'))=Hom_{\mathscr{C}}(X,X')\times Hom_{\mathscr{D}}(Y,Y')$$ define a category $\mathscr{C}\times\mathscr{D}$ (the product category)
+        \item Given categories $\mathscr{C},\mathscr{D}$ we can define a category $\mathscr{C}\times\mathscr{D}$ (the product category) by:
+        $$\ob(\mathscr{C}\times\mathscr{D})=\ob(\mathscr{C})\times \ob(\mathscr{D})$$
+        $$\Hom_{\mathscr{C}\times\mathscr{D}}((X,Y),(X',Y'))=\Hom_{\mathscr{C}}(X,X')\times \Hom_{\mathscr{D}}(Y,Y')$$ 
+        
         \item\label{CatOP}
         Given a category $\mathscr{C}$, define a category $\mathscr{C}^{op}$ by:
         $$ob(\mathscr{C}^{op})=ob(\mathscr{C})$$ 
-        $$Hom_{\mathscr{C}^{op}}(X,Y)=Hom_{\mathscr{C}}(Y,X)$$ $$g\circ_{\mathscr{C}^{op}}f=f\circ_{\mathscr{C}}g$$  
+        $$\Hom_{\mathscr{C}^{op}}(X,Y)=\Hom_{\mathscr{C}}(Y,X)$$ $$g\circ_{\mathscr{C}^{op}}f=f\circ_{\mathscr{C}}g$$  
         this is called the opposite category of $\mathscr{C}$.
     \end{enumerate}
 \end{ex}
 \begin{defn}
-    An isomorphism $f\in Hom(X,Y)$ is a morphism such that $\exists g \in Hom(Y,X)$ with $g\circ f=id_{X}, f\circ g=id_{Y}$.
+    An isomorphism $f\in \Hom(X,Y)$ is a morphism such that $\exists g \in \Hom(Y,X)$ with $g\circ f=id_{X}, f\circ g=id_{Y}$.
 \end{defn}
 \begin{defn}
     A groupoid is a category where each morphism is an isomorphism.
 \end{defn}
 \begin{ex}\label{Delooping Monoid}
-   Let $\mathscr{C}$ be a category with $ob(\mathscr{C})=\{\ast\}$. 
+	Let $\mathscr{C}$ be a category with $\ob(\mathscr{C})=\{\ast\}$. 
    
-  \noindent  Then, $(Hom_{\mathscr{C}}(\ast,\ast),\circ)$ is a monoid since composition is unital with respect to the identity, and hence the identity morphism $id_\ast$ is the neutral element, and associative.
+ 	\noindent  Then, $(\Hom_{\mathscr{C}}(\ast,\ast),\circ)$ is a monoid since composition is associative and unital with neutral element given by the identity morphism $id_\ast$.
   %TODO I think the notation is usually just BM, not bold--You are probably right but I prefer to put it bold because sometimes it can be confusing, e.g. a bicategory is often denoted by 'B' and then the delooping of a bicategory becomes a one-object tricategory BB. There was also a case I can't remember where one couldn't discern Bs in a topology class. It is true that we'll probably not encounter any such confusing cases but I still prefer it because it shows that it is something "special". having said this, not a big issue for me however, if we change it to just nonbold B /Andrea
-  Conversely, every monoid $(M,\cdot)$ defines a category $\mathbf{B}M$ with $$ob(\mathbf{B}M)=\{\ast\},Hom_{\mathbf{B}M}(\ast,\ast)=M,m\circ_{\mathbf{B}M} m'=m\cdot m',id_{\ast}=1_{M}$$ $\mathbf{B}M$ is called the delooping of the monoid $(M,\cdot)$.
-    The same holds for groups and one-object groupoids. Every group $(G,\cdot)$ defines a one-object groupoid $\mathbf{B}G$\footnote{We will see a generalization of such deloopings for certain categories, monoidal categories (see \ref{MonCat}) where any monoidal category $\cat$, will be a one-object \emph{bi}category $\mathbf{B}\cat$ called the delooping $\cat$ (see \ref{DeloopingMonCat}).} 
+	Conversely, every monoid $(M,\cdot)$ defines a category $\mathbf{B}M$ with 
+	$$\ob(\mathbf{B}M)=\{\ast\},\Hom_{\mathbf{B}M}(\ast,\ast)=M,m\circ_{\mathbf{B}M} m'=m\cdot m',id_{\ast}=1_{M}$$ 
+	$\mathbf{B}M$ is called the delooping of the monoid $(M,\cdot)$
+    \footnote{We will see a generalization of such deloopings for certain categories, monoidal categories (see \ref{MonCat}) where any monoidal category $\cat$, will be a one-object \emph{bi}category $\mathbf{B}\cat$ called the delooping $\cat$ (see \ref{DeloopingMonCat}).}.
+    The same holds for groups and one-object groupoids: every group $(G,\cdot)$ defines a one-object groupoid $\mathbf{B}G$ and vice versa
 
-    More generally, monoids of the form $(Hom_\cat(X,X),\circ)$ are called endomorphism monoids and an interesting example thereof is endomorphism monoids in the category $TopVect_k$ of topological vector spaces and continuous linear operators. Such endomorphism monoids $(Hom_{TopVect_{k}}(X,X),\circ)$ and submonoids thereof are called operator algebras. They are important in functonal analysis and in quantum theory.
+    More generally, monoids of the form $(\Hom_\cat(X,X),\circ)$ are called endomorphism monoids and an interesting example thereof is endomorphism monoids in the category $\Top\!\Vect_k$ of topological vector spaces and continuous linear operators. Such endomorphism monoids $(\Hom_{\Top\!\Vect_{k}}(X,X),\circ)$ and submonoids thereof are called operator algebras. They are important in functional analysis and in quantum theory.
 \end{ex}
 
 \begin{defn}
         Let $\mathscr{C}$ and $\mathscr{D}$ be categories. A functor $F:\mathscr{C}\rightarrow\mathscr{D}$ consists of the following data: \begin{itemize}
-        \item An assignment $$F:ob(\mathscr{C})\rightarrow ob(\mathscr{D})$$ $$X\mapsto F(X)$$
-        \item For every two objects $X,Y\in ob(\mathscr{C})$ a map $$Hom_{\mathscr{C}}(X,Y)\rightarrow Hom_{\mathscr{D}}(F(X),F(Y))$$
-        $$f\mapsto F(f)$$
-    \end{itemize} such that 
+        \item an assignment 
+        \begin{align}
+        	F:\ob(\mathscr{C})&\rightarrow \ob(\mathscr{D})\\
+        	X&\mapsto F(X)
+        \end{align}
+        \item for every two objects $X,Y\in \ob(\mathscr{C})$ a map 
+        \begin{align}
+        	\Hom_{\mathscr{C}}(X,Y)&\rightarrow \Hom_{\mathscr{D}}(F(X),F(Y))\\
+        	f&\mapsto F(f)
+        \end{align}
+    \end{itemize} 
+    such that 
     \begin{itemize}
         \item $F(id_{X})=id_{F(X)}$
         \item $F(g\circ f)=F(g)\circ F(f)$
@@ -1858,62 +1898,74 @@ We make both these comparisons more rigorous by later (\ref{MonObj}) showing tha
 \end{defn}
 
 \begin{ex}
-\hfill
+\label{ex:functor}
+Some examples of functors:
     \begin{enumerate}
         \item\label{ForgetfulFunctors} There are forgetful functors \begin{itemize}
-            \item $Ring\rightarrow Grp\rightarrow\ Set$
+            \item $\Ring\rightarrow \Grp\rightarrow\ \Set$
             
             \noindent $(R,+,\cdot)\mapsto(R,+)\mapsto R$
-            \item $Ring\rightarrow Monoids$ 
+            \item $\Ring\rightarrow \Mon$ 
             
             \noindent $(R,+,\cdot)\mapsto(R,\cdot)$
-            \item $Vect_{k}\rightarrow AbGrp\rightarrow Set$
+            \item $\Vect_{k}\rightarrow \AbGrp\rightarrow \Set$
 
-            \item $Alg_k\to Vect_k$ where the multiplicative structure on algebras is forgotten
+            \item $\Alg_k\to \Vect_k$ where the multiplicative structure on algebras is forgotten
         \end{itemize}
-        \item\label{Representations of Groups} An action of a group $(G,\cdot)$ on a set $X$ is a functor $\mathbf{B}G\xrightarrow{\rho} Set$ where $A(\ast)=X$ and every $g\in Hom_{\mathbf{B}G}(\ast,\ast)$ is mapped to an automorphism\footnote{It is an automorphism and not a simple endomorphism because of a very important property of functors: they preserve isomorphisms: given a functor $F:\cat\to\dat$, if $f\in Hom_\cat(X,Y)$ is an isomorphism, then $F(f)\in Hom_\dat(F(X),F(Y))$ is an isomorphism as well because $F(f^{-1})\circ F(f)=F(f^{-1}\circ f)=F(id_X)=id_{F(X)}$ and simmetrically, $F(f)\circ F(f^{-1})=id_{F(Y)}$. For example, this can be used by contraposition to show that two topological spaces are not homeomorphic by sending them (with a functor) to their non-isomorphic fundamental group(oid)s.} on $X$, $Hom_{\mathbf{B}G}(\ast,\ast)\rightarrow Hom_{Set}(X,X)$. By the same reasoning, a linear representation of a group $(G,\cdot)$ is a functor $\mathbf{B}G\rightarrow \Vect_k$ .
-        \item Given functors $F:\mathscr{C}\rightarrow\mathscr{D}$ and $G:\mathscr{D}\rightarrow\mathscr{E}$, their composite $G\circ F:\mathscr{C}\rightarrow\mathscr{E}$ is also a functor; $G\circ F(X)=G(F(X)), G\circ F(f)=G(F(f))$
-        \item $id_{\mathscr{C}}:\mathscr{C}\rightarrow\mathscr{C}$ is also a functor such that $id_{\mathscr{C}}(X)=X, id_{\mathscr{C}}(f)=f$
+        \item\label{Representations of Groups} An action of a group $(G,\cdot)$ on a set $X$ is a functor $A: \mathbf{B}G\xrightarrow{\rho} \Set$ where $A(\ast)=X$ and every $g\in \Hom_{\mathbf{B}G}(\ast,\ast)$ is mapped to an automorphism\footnote{It is an automorphism and not a simple endomorphism because of a very important property of functors: they preserve isomorphisms: given a functor $F:\cat\to\dat$, if $f\in \Hom_\cat(X,Y)$ is an isomorphism, then $F(f)\in \Hom_\dat(F(X),F(Y))$ is an isomorphism as well because $F(f^{-1})\circ F(f)=F(f^{-1}\circ f)=F(id_X)=id_{F(X)}$ and simmetrically, $F(f)\circ F(f^{-1})=id_{F(Y)}$. For example, this can be used in the converse direction to show that two topological spaces are not homeomorphic by sending them (with a functor) to their non-isomorphic fundamental group(oid)s.} on $X$, $\Hom_{\mathbf{B}G}(\ast,\ast)\rightarrow \Hom_{\Set}(X,X)$. By the same reasoning, a linear representation of a group $(G,\cdot)$ is a functor $\mathbf{B}G\rightarrow \Vect_k$ .
+        \item Given functors $F:\mathscr{C}\rightarrow\mathscr{D}$ and $G:\mathscr{D}\rightarrow\mathscr{E}$, their composite $G\circ F:\mathscr{C}\rightarrow\mathscr{E}$ is also a functor: $G\circ F(X)=G(F(X)), G\circ F(f)=G(F(f))$.
+        \item $id_{\mathscr{C}}:\mathscr{C}\rightarrow\mathscr{C}$  with $id_{\mathscr{C}}(X)=X, id_{\mathscr{C}}(f)=f$ is also a functor.
     \end{enumerate}
 \end{ex}
 \begin{rem}\label{1CatOfAllCats}
-      Since the composition of functors is associative\footnote{Try to convince yourself that it is so!} and unital there is a category of all (small\footnote{Let $\mathscr{C},\mathscr{D}$ be categories, the collection of all functors $F:\mathscr{C}\rightarrow\mathscr{D}$ is generally a class. Hence the category of all categories without any restriction would not be a locally small category and thereby not a category according to our definition \ref{Cat}.  However, if $\mathscr{C}$ is small, then the collection of all functors $F:\mathscr{C}\rightarrow\mathscr{D}$ is a set. Therefore, the category of all small categories is indeed a category according to our definition of category.}) categories $Cat$ whose objects are (small) categories and whose morphisms are functors. For the same reason we also have a category $Gpd$ of (small) groupoids.
+      Since the composition of functors is associative\footnote{Try to convince yourself that it is so!} and unital there is a category of all (small\footnote{Let $\mathscr{C},\mathscr{D}$ be categories, the collection of all functors $F:\mathscr{C}\rightarrow\mathscr{D}$ is generally a class. Hence the category of all categories without any restriction would not be a locally small category and thereby not a category according to our definition \ref{Cat}.  However, if $\mathscr{C}$ is small, then the collection of all functors $F:\mathscr{C}\rightarrow\mathscr{D}$ is a set. Therefore, the category of all small categories is indeed a category according to our definition of category.}) categories $\Cat$ whose objects are (small) categories and whose morphisms are functors. For the same reason we also have a category Gpd of (small) groupoids.
 \end{rem}
-\begin{ex}[Topological Examples]
-\hfill
+\begin{ex}
+Some more examples related to topological spaces.
     \begin{enumerate}
-    \item \label{PathConnFunct} Let $X$ be a topological space. Observe the following equivalence relation: $x\sim x'$ if and only if there is a continuous map $f:[0,1]\to X$, also known as "path", such that $f(x)=0$ and $f(x')=1$. Denote with $\pi_0(X)$ the set of equivalence classes of path-connected points, also known as the set of path-connected components, in $X$. There is a functor\footnote{There is also a functor $\pi:Top\to Set$ sending topological spaces to the sets of their connected components.} $\pi_0:Top\to Set$
-    \item Let $X$ be a topological space. Its fundamental groupoid $\pi_{\leq 1}$ is the groupoid having:\begin{itemize}
-        \item the points of $X$ as objects, $ob(\pi_{\leq 1}(X))=X$;
-        \item $Hom_{\pi_{\leq 1}(X)}(x,y)$ is given by equivalence classes of continuous paths from $x$ to $y$ that are homotopic\footnote{We later define a homotopy, see \ref{Homotopy}.} relative to their endpoints. We can spell out what this means in the following way
-    $$\frac{Hom_{\pi_{\leq 1}(X)}(x,y)=\{\gamma\in Hom_{Top}([0,1],X)|\gamma(0)=x,\gamma(1)=1\}}{\text{homotopy relative to }\de[0,1]}$$ 
-    \item For $x,y,z\in X$, composition of $[\gamma]\in Hom_{\pi_{\leq 1}(X)}(x,y)$ and $[\eta]\in Hom_{\pi_{\leq 1}(X)}(y,z)$ is given by the concatenation of paths with appropriate reparametrization, 
-    $$[\eta]\circ[\gamma]=[\gamma\ast\eta]$$
+    \item \label{PathConnFunct} Let $X$ be a topological space. Observe the following equivalence relation: $x\sim x'$ if and only if there is a continuous map $f:[0,1]\to X$, also known as "path", such that $f(x)=0$ and $f(x')=1$. Denote with $\pi_0(X)$ the set of equivalence classes of path-connected points, also known as the set of path-connected components, in $X$. This gives a functor\footnote{There is also a functor $\pi:\Top\to \Set$ sending topological spaces to the sets of their connected components.} $\pi_0:\Top\to \Set$
+    \item Let $X$ be a topological space. Its fundamental groupoid $\pi_{\leq 1}$ is the groupoid having:
+    \begin{itemize}
+        \item the points of $X$ as objects, $\ob(\pi_{\leq 1}(X))=X$;
+        \item $\Hom_{\pi_{\leq 1}(X)}(x,y)$ is given by equivalence classes of continuous paths from $x$ to $y$ that are homotopic\footnote{We later define a homotopy, see Example \ref{Homotopy} below.} relative to their endpoints. We can spell out what this means in the following way
     
-    \end{itemize} Units are constant paths, i.e. $c:[0,1]\to X$ such that $\forall t\in[0,1].c(t)=x$. Additionally, this is indeed a groupoid since inverses are given by the same paths run in the opposite direction. We have a functor $$\pi_{\leq 1}:Top\to Gpd$$ 
+    	$$\Hom_{\pi_{\leq 1}(X)}(x,y)= \frac{\{\gamma\in \Hom_{\Top}([0,1],X)|\gamma(0)=x,\gamma(1)=y\}}{\text{homotopy relative to }\de[0,1]}$$
+
+    	\item For $x,y,z\in X$, composition of $[\gamma]\in \Hom_{\pi_{\leq 1}(X)}(x,y)$ and $[\eta]\in \Hom_{\pi_{\leq 1}(X)}(y,z)$ is given by the concatenation of paths with appropriate reparametrization, 
     
-        \item Let $X$ be a topological space and $x\in X$ an arbitrary basepoint. The assignement of a fundamental group of $X$ at $x$, $\pi_1(X,x)$\footnote{\textit{Reminder}: $\pi_1(X,x)=\pi_0(\Omega_x(X))$, where $\Omega_x(X)$ is the based loop space of $X$ at $x$} is a functor $\pi_1:Top\to Grp$
+    	$$[\eta]\circ[\gamma]=[\gamma\ast\eta]$$
+    
+    \end{itemize} 
+    Units are constant paths, i.e. $c:[0,1]\to X$ such that $\forall t\in[0,1], c(t)=x$. Additionally, this is indeed a groupoid since inverses are given by the same paths run in the opposite direction. We have a functor 
+    $$\pi_{\leq 1}:\Top\to \Gpd$$ 
+    
+    \item Let $X$ be a topological space and $x\in X$ an arbitrary basepoint. The assignement of a fundamental group of $X$ at $x$, $\pi_1(X,x)$\footnote{\textit{Reminder}: $\pi_1(X,x)=\pi_0(\Omega_x(X))$, where $\Omega_x(X)$ is the based loop space of $X$ at $x$} is a functor $\pi_1:\Top\to \Grp$
     \end{enumerate}
 \end{ex}
+
+\subsection{Natural transformations} % (fold)
+\label{sub:natural_transformations}
+
+% subsection natural_transformations (end)
 
 %Topological field theory as a categorification of a symmetric monoid. Should we explain coincisely what categorifying is and tell a story about how TFTs are categorified? /Andrea
 \begin{defn}
     Given two functors $F,G: \cat \to \mathscr{D}$ a natural transformation from $F$ to $G$, $\alpha : F \Rightarrow G$ is a collection of morphisms indexed by objects in $\cat$, $\alpha_x: F(X) \to G(X)$ such that $\forall f: X\to Y$ in $\cat$ the following diagram commutes
-       \[ \begin{tikzcd}
-	{F(X)} & {F(Y)} \\
-	{G(X)} & {G(Y)}
-	\arrow["{F(f)}", from=1-1, to=1-2]
-	\arrow["{\alpha_X}"', from=1-1, to=2-1]
-	\arrow["{\alpha_Y}", from=1-2, to=2-2]
-	\arrow["{G(f)}"', from=2-1, to=2-2]
-\end{tikzcd}\]
-    If for every $ X\in ob(\cat)$, $\alpha_X$ is an isomorphism, then $\alpha$ is a natural isomorphism.
+    \[ \begin{tikzcd}
+		{F(X)} & {F(Y)} \\
+		{G(X)} & {G(Y)}
+		\arrow["{F(f)}", from=1-1, to=1-2]
+		\arrow["{\alpha_X}"', from=1-1, to=2-1]
+		\arrow["{\alpha_Y}", from=1-2, to=2-2]
+		\arrow["{G(f)}"', from=2-1, to=2-2]
+	\end{tikzcd}\]
+    If for every $ X\in \ob(\cat)$, $\alpha_X$ is an isomorphism, then $\alpha$ is a natural isomorphism.
 \end{defn}
 \begin{rem}\label{FunctorsPreserveCommut}
     Note that because of functoriality, if a diagram commutes in $\cat$, then its image under a functor $F:\cat\to\dat$ also commutes in $\dat$. Let for example $g\circ f=h\circ l$, then $F(g)\circ F(f)=F(g\circ f)=F(h\circ l)=F(h)\circ F(l)$
 \end{rem}
 \begin{notat}\label{FunCat}
-    Let $\cat$ and $\dat$ be categories. We denote with $\Fun(\cat,\dat)$ the functor category where objects are functors $\cat\to\dat$ and morphisms are natural transformations between such functors. We encounter soon an example of functor category, the category of $G$-linear representations, see \ref{Cat of representations}.
+    Let $\cat$ and $\dat$ be categories. We denote with $\Fun(\cat,\dat)$ the functor category where objects are functors $\cat\to\dat$ and morphisms are natural transformations between such functors. We encounter soon an example of functor category, the category of $G$-linear representations, see Example \ref{Cat of representations} below.
 \end{notat}
 \begin{rem}\label{FunctorGroupoids}
     Note that given a category $\cat$ and a \emph{groupoid} $\dat$, then $\Fun(\cat,\dat)$ is a groupoid since every component of any natural transformation is invertible because they are morphisms in $\dat$ and therefore any natural transformation is a natural isomorphism.
@@ -1923,22 +1975,22 @@ We make both these comparisons more rigorous by later (\ref{MonObj}) showing tha
 \begin{enumerate}
     \item
     \label{Cat of representations}
-    As we have seen in a previous example \ref{Representations of Groups}, a linear representation of a group $G$ is a functor $\mathbf{B}G\to \Vect_k$. A morphism between $G-$representations $V$ and $W$, $f:V\to W$ is a $k-$linear map which is equivariant, i.e. $\forall g\in G\forall v\in V.f(gv)=gf(v)$. Since linear representations are functors, one might wonder if a morphism between functors $V,W:\mathbf{B}G\to Vect_k$, i.e. a natural transformation, is an equivariant map. Let $f:V\Rightarrow W$ be a natural transformation. Then, for any $g\in Hom_{\mathbf{B}G}(\ast,\ast)$ the following diagram commutes
+    As we have seen in Example \ref{Representations of Groups} in \ref{ex:functor}, a linear representation of a group $G$ is a functor $\mathbf{B}G\to \Vect_k$. A morphism between $G-$representations $V$ and $W$, $f:V\to W$ is a $k-$linear map which is equivariant, i.e. $\forall g\in G, \forall v\in V$we have $f(gv)=gf(v)$. Since linear representations are functors, one might wonder if a morphism between functors $V,W:\mathbf{B}G\to \Vect_k$, i.e. a natural transformation, is an equivariant map. Let $f:V\Rightarrow W$ be a natural transformation. Then, for any $g\in \Hom_{\mathbf{B}G}(\ast,\ast)$ the following diagram commutes
     \[ \begin{tikzcd}
-	{V(\ast)} & {V(\ast)} \\
-	{W(\ast)} & {W(\ast)}
-	\arrow["{V(g)=g\cdot}", from=1-1, to=1-2]
-	\arrow["{f_\ast}"', from=1-1, to=2-1]
-	\arrow["{f_\ast}", from=1-2, to=2-2]
-	\arrow["{W(g)=g\cdot}"', from=2-1, to=2-2]
-\end{tikzcd}\]
+		{V(\ast)} & {V(\ast)} \\
+		{W(\ast)} & {W(\ast)}
+		\arrow["{V(g)=g\cdot}", from=1-1, to=1-2]
+		\arrow["{f_\ast}"', from=1-1, to=2-1]
+		\arrow["{f_\ast}", from=1-2, to=2-2]
+		\arrow["{W(g)=g\cdot}"', from=2-1, to=2-2]
+	\end{tikzcd}\]
     and hence the map is equivariant, it does not matter if we first act on the vector space and subsequently apply the map or viceversa. 
     
     Since one can compose unitally and associatively natural transformations\footnote{By composining their components.}, if we take the collection of all functors $\mathbf{B}G\to \Vect_k$ and the natural transformations between them we get the category of linear representations of the group $G$. Such categories where the objects are functors are called functor categories. 
     \item The determinant
     \item
     \label{Homotopy}
-        Let $X,Y\in Top$ and $f,g\in Hom_{Top}(X,Y)$. A homotopy from $f$ to $g$ is a continuous map $$h:[0,1]\times X\to Y$$ such that for every $x\in X$ $h(0,x)=f(x)$ and $h(1,x)=g(x)$. Two maps are homotopic if there is a homotopy between them. 
+        Let $X,Y\in \Top$ and $f,g\in \Hom_{\Top}(X,Y)$. A homotopy from $f$ to $g$ is a continuous map $$h:[0,1]\times X\to Y$$ such that for every $x\in X$ $h(0,x)=f(x)$ and $h(1,x)=g(x)$. Two maps are homotopic if there is a homotopy between them. 
     Although the homotopy seems intuitively a map between maps, like the natural transformation is, this seems still very far from a natural transformation. However, there is an equivalent formulation of natural transformation: \begin{defn}[Homotopy Analogue of Natural Transformation]
         Let $\Delta^{1}$ be the category with two objects $0,1$ and one non-identity-morphism $u:0\to1$. Given two functors $F,G:\cat\to\dat$ we can see a natural transformation $\tau:F\Rightarrow G$ as a functor $N:\cat\times\Delta^{1}\to\dat$ where $N|_{\cat\times\{0\}}=F$ and $N|_{\cat\times\{1\}}=G$ and thus for every $X\in\cat$, $N(X,0)=F(X)$ and $h(X,1)=G(X)$. This work for the following reason: let $X\xrightarrow{f} Y$ be an arbitrary arrow in $\cat$ and consider this commutative\footnote{It commutes because of unitality in both categories: $f\circ id_X=id_Y\circ f$ and $u\circ id_0=id_1\circ u$.} diagram in $\cat\times\Delta^1$
         % https://q.uiver.app/#q=WzAsNCxbMCwwLCIoWCwwKSJdLFswLDEsIihZLDApIl0sWzEsMSwiKFksMSkiXSxbMSwwLCIoWCwxKSJdLFswLDMsIihpZF9YLHUpIl0sWzAsMSwiKGYsaWRfMCkiLDJdLFszLDIsIihmLGlkXzEpIl0sWzEsMiwiKGlkX1ksdSkiLDJdXQ==
@@ -1965,10 +2017,14 @@ Hence the components of $\tau$ are just the image under $N$ of the pairs of maps
 This just shows that homotopies and natural transformations are related. We will later show a way to make this comparison more rigorous, see \ref{Homotopy2Top}.
 \end{enumerate}
 \end{ex}
+
+\subsection{Equivalence of categories} % (fold)
+\label{sub:equivalence_of_categories}
+
 \begin{defn}
     Let $F:\mathscr{C}\rightarrow\mathscr{D}$ be a functor. F is named \begin{enumerate}
-        \item faithful, if $\forall X,Y\in\mathscr{C}$ the map $Hom_{\mathscr{C}}(X,Y)\rightarrow Hom_{\mathscr{D}}(F(X),F(Y))$ is injective
-        \item full, if $\forall X,Y\in\mathscr{C}$ the map $Hom_{\mathscr{C}}(X,Y)\rightarrow Hom_{\mathscr{D}}(F(X),F(Y))$ is surjective
+        \item faithful, if $\forall X,Y\in\mathscr{C}$ the map $\Hom_{\mathscr{C}}(X,Y)\rightarrow \Hom_{\mathscr{D}}(F(X),F(Y))$ is injective
+        \item full, if $\forall X,Y\in\mathscr{C}$ the map $\Hom_{\mathscr{C}}(X,Y)\rightarrow \Hom_{\mathscr{D}}(F(X),F(Y))$ is surjective
         \item fully faithful, if $F$ is full and faithful
         \item conservative, if for $f:X\rightarrow Y$ in $\mathscr{C}$ such that if $F(f)$ is an isomorphism, then $f$ is an isomorphism
         \item an isomorphism, if $\exists G:\mathscr{D}\rightarrow\mathscr{C}$ such that $G\circ F=id_{\mathscr{C}}$ and $F\circ G=id_{\mathscr{D}}$
@@ -2067,6 +2123,10 @@ Now we just need to prove that there is a natural isomorphism $\epsilon:id_\cat\
 \end{tikzcd}\]
 The right hand square commutes because of the naturality of $\eta$. Since the right hand square commutes $F(G(F(f)))=\eta^{-1}_{F(X')}\circ F(f)\circ \eta_{F(X)}$. Since the outer square commmutes $F(\epsilon_{X'})\circ F(f)=\eta^{-1}_{F(X')}\circ F(f)\circ \eta_{F(X)}\circ F(\epsilon_X)$. Thus, the left hand square commutes because $F(\epsilon_{X'})\circ F(f)=F(G(F(f)))\circ F(\epsilon_X)$ and thereby $\epsilon$ is natural because $\epsilon_{X'}\circ f=G(F(f))\circ \epsilon_X$ thanks to the faithfulness of $F$.
 \end{proof}
+
+\subsection{Adjunction} % (fold)
+\label{sub:adjunction}
+
 \begin{defn}[Adjunction]\label{AdjFun}
     Let $F:\cat\to\dat$ and $G:\dat\to\cat$ be functors. We say that $F$ and $G$ form an adjunction if there are natural transformations $$\eta:id_{\cat}\Rightarrow G\circ F$$
     $$\epsilon:G\circ F\Rightarrow id_\dat$$
@@ -2115,7 +2175,7 @@ Equivalently, we could have asked that the following two diagrams commute, the f
     \end{notat}
 Folloing this convention an ordinary category is a strict $(1,1)$-category, a strict 2-category is a strict (2,2)-category, a groupoid is a strict (1,0) groupoid, and more generally an $n$-groupoid is an $(n,0)$-category. In order to make this more rigorous we need to loosely characterize enriched categories 
     \begin{defn}[Enriched Category]\label{loose enriched Cat}
-        Given a category $\dat$ a category $\cat$ enriched over $\dat$ is a category such that for every $X,Y\in\cat$ $$Hom_{\cat}(X,Y)\in\dat$$
+        Given a category $\dat$ a category $\cat$ enriched over $\dat$ is a category such that for every $X,Y\in\cat$ $$\Hom_{\cat}(X,Y)\in\dat$$
     \end{defn}
     \begin{rem}
         Note that this is just a loose characterization of what an enriched category is! For instance, one might wonder, how could we define the composition map, since for ordinary categories we defined it as a map of sets out of apt \emph{products} of Hom-sets. There is a way to sensibly talk about products of objects in many several other categories. We spell out the rigorous definition later on, see \ref{FullEnrichedCat}. We gave this loose characterization just to be able to characterize higher strict categories.
@@ -2130,12 +2190,12 @@ Folloing this convention an ordinary category is a strict $(1,1)$-category, a st
     
     Having loosely characterized enriched categores We can provide a definition of strict $n$-categories. Following the notational convention we previously spelled out in a previous example, they amount to $(n,n)$-categories.
     \begin{defn}\label{strict nCat}
-        We define strict n-categories inductively. A 0-category is a set. A strict $n$-category is a category $\cat$ enriched in a (small\footnote{Because of size issues, as we remarked before, we work with locally small categories and the size of the $Hom$ of any two objects cannot be greater than a set.}) strict $(n-1)$-category. This means that for any two $X,Y\in\cat$, $Hom_{\cat}(X,Y)$ is not a set as usual, but a small strict $(n-1)$-category.
+        We define strict n-categories inductively. A 0-category is a set. A strict $n$-category is a category $\cat$ enriched in a (small\footnote{Because of size issues, as we remarked before, we work with locally small categories and the size of the $\Hom$ of any two objects cannot be greater than a set.}) strict $(n-1)$-category. This means that for any two $X,Y\in\cat$, $\Hom_{\cat}(X,Y)$ is not a set as usual, but a small strict $(n-1)$-category.
     \end{defn}
     \begin{ex}
     \begin{itemize} \hfill
         \item In the case that $n=1$ we end up with our usual definition of a (locally small) category (see \ref{Cat}).
-        \item  $\Cat$ is a $2$-category, in fact for any two $\cat,\dat\in Cat$ $Hom_{\Cat}(\cat,\dat)$ is a $1-$category, more specifically a functor category, i.e. a category where objects are functors and morphisms are natural transformations. $\cat,\dat\in \Cat$ $Hom_{\Cat}(\cat,\dat)=Fun(\cat,\dat)$  
+        \item  $\Cat$ is a $2$-category, in fact for any two $\cat,\dat\in Cat$ $\Hom_{\Cat}(\cat,\dat)$ is a $1-$category, more specifically a functor category, i.e. a category where objects are functors and morphisms are natural transformations. $\cat,\dat\in \Cat$ $\Hom_{\Cat}(\cat,\dat)=Fun(\cat,\dat)$  
     \end{itemize}
     \end{ex}
 \end{rem}
@@ -2235,20 +2295,20 @@ A monoidal category generalizes this structure with respect to objects \emph{and
 \end{ex}
 \begin{ex}[Examples of monoidal categories]
     Examples of monoidal categories are \begin{itemize}
-        \item $(AbGrp, \otimes)$
-        \item $(AbGrp, \oplus)$
+        \item $(\AbGrp, \otimes)$
+        \item $(\AbGrp, \oplus)$
         \item $(\Vect_k, \otimes)$
         \item $(\Vect_k, \oplus)$
-        \item $(Set, \coprod)$
-        \item $(Set, \times)$
-        \item $(Top, \times)$
+        \item $(\Set, \coprod)$
+        \item $(\Set, \times)$
+        \item $(\Top, \times)$
         \item $(Cat, \times)$
     \end{itemize}
 \end{ex}
 \paragraph{Cartesian Categories}
 
 In particular,
- $(AbGrp, \oplus), (\Vect_k, \oplus), (Set, \times), (Top, \times), (Cat, \times)$ are all examples of special monoidal categories: cartesian monoidal categories. A cartesian monoidal category is a monoidal category where the monoidal structure is given by a suitable notion of cartesian product in such category. We can give a construction valid for every category:
+ $(\AbGrp, \oplus), (\Vect_k, \oplus), (\Set, \times), (\Top, \times), (Cat, \times)$ are all examples of special monoidal categories: cartesian monoidal categories. A cartesian monoidal category is a monoidal category where the monoidal structure is given by a suitable notion of cartesian product in such category. We can give a construction valid for every category:
 \begin{defn}[Cartesian Product]\label{CartProd}
     Given $A,B\in\cat$, their cartesian product, if it exists, is the tuple $(A\times B,pr_1,pr_2)$, where $A\times B\in ob(\cat)$ and $pr_1:A\times B\to A$  $pr_2:A\times B\to B$ such that for every other object $Y$ with morphisms $f:Y\to A$ and $g:Y\to B$ there is a unique morphism $u:Y\to A\times B$. This definition is summarised by the fact that the following commuting diagram 
     % https://q.uiver.app/#q=WzAsNSxbMSwwLCJZIl0sWzIsMSwiQiJdLFswLDBdLFswLDEsIkEiXSxbMSwxLCJBXFx0aW1lcyBCIl0sWzAsMSwiZyJdLFs0LDMsInByXzEiXSxbMCwzLCJmIiwyXSxbNCwxLCJwcl8yIiwyXSxbMCw0LCJcXGV4aXN0cyEgdSIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
@@ -2262,7 +2322,7 @@ In particular,
 	\arrow["{\exists! u}"{description}, dashed, from=1-2, to=2-2]
 \end{tikzcd}\]
 \end{defn}
-If we regard $\cat$ as a specific category such construction gives indeed rise to the expected notion of product in such a category: the cartesian product in $AbGrp$ and $\Vect_k$ is indeed the direct sum, the cartesian product of sets with its projections in $Set$, the product category in $Cat$ and the product of spaces with the product topology in $Top$. 
+If we regard $\cat$ as a specific category such construction gives indeed rise to the expected notion of product in such a category: the cartesian product in $\AbGrp$ and $\Vect_k$ is indeed the direct sum, the cartesian product of sets with its projections in $\Set$, the product category in $Cat$ and the product of spaces with the product topology in $\Top$. 
 
 \begin{lem}
 \label{UptoIsoProds}
@@ -2305,7 +2365,7 @@ Hence, we see how any category with finite cartesian products is a monoidal cate
 \begin{notat}
     We denote the category of abelian groups $\AbGrp$ also with Ab.
 \end{notat}
-In the previous paragraph, we have talked about cartesian monoidal categories and left out some examples of \emph{noncartesian} monoidal categories like $(AbGrp,\otimes)$ and $(\Vect_k,\otimes)$. We now encounter some examples of noncartesian monoidal categories, which will be central in this class. They will be all similar to $(AbGrp,\otimes)$, so we will first explain this category and then draw parallels with the others. To introduce the tensor product between abelian groups we first have to define what is a bilinear map
+In the previous paragraph, we have talked about cartesian monoidal categories and left out some examples of \emph{noncartesian} monoidal categories like $(\AbGrp,\otimes)$ and $(\Vect_k,\otimes)$. We now encounter some examples of noncartesian monoidal categories, which will be central in this class. They will be all similar to $(\AbGrp,\otimes)$, so we will first explain this category and then draw parallels with the others. To introduce the tensor product between abelian groups we first have to define what is a bilinear map
 
 \begin{defn}[Bilinear Map]
     For $A,B,C\in \Ab$, a bilinear map, aka group bihomomorphism, is a function $$f:A\times B\to C$$ which is a group homomorphism, aka linear map, in both arguments.
@@ -2333,22 +2393,22 @@ It can be equivalently defined via elements.
     For $A,B\in \Ab$ let $a,a'\in A$ and $b,b'\in B$ then consider the free abelian group on $A\times B$ by the relations $$(a+a',b)-(a,b)-(a',b)$$
     $$(a,b+b')-(a,b)-(a,b')$$ We denote such group by $R$. $A\otimes B$ is then the quotient group on such free group, i.e. $A\otimes B=\frac{A\times B}{R}$.
 \end{defn}
-Ab is very important as an enriching category. Before, we gave a loose characterization of what an enriched category is by just stating that the $Hom$s are objects of whatever category we are enriching over. However, we glossed over an essential requirement: that the category we are enriching on is actually monoidal because it is necessary to define composition. We now give a fully satisfactory definition of an enriched category
+Ab is very important as an enriching category. Before, we gave a loose characterization of what an enriched category is by just stating that the $\Hom$s are objects of whatever category we are enriching over. However, we glossed over an essential requirement: that the category we are enriching on is actually monoidal because it is necessary to define composition. We now give a fully satisfactory definition of an enriched category
 \begin{defn}[Enriched Category]\label{FullEnrichedCat}
     Given a \emph{monoidal} category $\dat$, a $\dat$-enriched category $\cat$, aka $\dat$-category or category enriched over $\dat$, is a category $\cat$ such that \begin{enumerate}
-        \item $\forall X,Y\in\cat.Hom_{\cat}(X,Y)\in\dat$ we call $Hom_\cat(X,Y)$ a Hom-object
-        \item Composition is a morphism in $\dat$: $$\circ:Hom_\cat(Y,Z)\otimes Hom_\cat(X,Y)\to\Hom_\cat(X,Z)$$ 
-        \item For any $X\in\cat$ there is $$id_X:\unit_\dat\to Hom(X,X)$$
+        \item $\forall X,Y\in\cat.\Hom_{\cat}(X,Y)\in\dat$ we call $\Hom_\cat(X,Y)$ a \Hom-object
+        \item Composition is a morphism in $\dat$: $$\circ:\Hom_\cat(Y,Z)\otimes \Hom_\cat(X,Y)\to\Hom_\cat(X,Z)$$ 
+        \item For any $X\in\cat$ there is $$id_X:\unit_\dat\to \Hom(X,X)$$
         \item There is a Mac-Lane pentagon for Hom-objects in order to specify how $\circ$ is associative and two triangle diagrams in order to pin down how $\circ$ is left and right unital with respect to composable identity morphisms. One can check the spelled out diagram at definition 1.2.34 of \cite{land2021introduction} 
     \end{enumerate}
 \end{defn}
 \begin{ex}
     \begin{enumerate}\label{Examples of enriched categories (Simplicially)}
         \item A locally small category is a category enriched over Set. Set is a category enriched over itself.
-        \item A $2$-category is a category enriched over Cat. Cat is a category enriched over itself, since Cat is a 2-category because $Hom$s are functor \emph{categories}
+        \item A $2$-category is a category enriched over Cat. Cat is a category enriched over itself, since Cat is a 2-category because $\Hom$s are functor \emph{categories}
         \item A strict $n$-category is a category enriched over a strict $(n-1)$-category
         \item A topologically enriched category is a category enriched over Top. The category of compactly generated Hausdorff spaces CGHaus, i.e. a category containing all $CW$-complexes, is a topologically enriched category, since one can take the mapping space $Map(X,Y)$ with the compact-open topology for any $X,Y\in \operatorname{CGHaus}$. Such categories can be used to define ?
-        \item A strict $(2,1)$-category is a category in which 2-morphisms are invertible and 1-morphisms not necessarily. It is a Grpd-enriched category. An example of (2,1)-category is Grpd itself, since all $Hom_{\operatorname{Grpd}}$ are indeed  groupoids (see \ref{2,1Grpd} for an explanation). 
+        \item A strict $(2,1)$-category is a category in which 2-morphisms are invertible and 1-morphisms not necessarily. It is a Grpd-enriched category. An example of (2,1)-category is Grpd itself, since all $\Hom_{\operatorname{Grpd}}$ are indeed  groupoids (see \ref{2,1Grpd} for an explanation). 
     \end{enumerate}
 \end{ex}
 There is another example of strict (2,1)-category from topology and it will let us rigorously show in which sense a homotopy is a natural transformations and why one might want to talk about $\infty$-categories.
@@ -2396,15 +2456,15 @@ Having characterized satisfactorily enriched categories we can now define what i
 An Ab-category, aka ringoid, Ab-enriched, $\cat$ is a category $\cat$ enriched over Ab. This is equivalent
 to saying that
 \begin{enumerate}
-        \item $\forall X,Y\in\cat.Hom_{\cat}(X,Y)\in\Ab$
-        \item Composition is a morphism in $\Ab$: $$+:Hom_\cat(Y,Z)\otimes_{\Ab} Hom_\cat(X,Y)\to\Hom_\cat(X,Z)$$ such that it is associative and unital with respect to composable identity morphisms; in short $Hom$-objects of $\cat$ posses an abelian structure with + as a binary operation
-        \item The composition of the underlying $Hom$-\underline{sets} is bilinear with respect to $+$, meaning that $\circ$ of $Hom$-sets distributes over $+$ of $Hom$-abelian groups i.e. $$f\circ(g+h)=(f\circ g)+(f\circ h)$$ $$(f+g)\circ h=(f\circ h)+(f\circ h)$$
+        \item $\forall X,Y\in\cat.\Hom_{\cat}(X,Y)\in\Ab$
+        \item Composition is a morphism in $\Ab$: $$+:\Hom_\cat(Y,Z)\otimes_{\Ab} \Hom_\cat(X,Y)\to\Hom_\cat(X,Z)$$ such that it is associative and unital with respect to composable identity morphisms; in short $\Hom$-objects of $\cat$ posses an abelian structure with + as a binary operation
+        \item The composition of the underlying $\Hom$-\underline{sets} is bilinear with respect to $+$, meaning that $\circ$ of $\Hom$-sets distributes over $+$ of $\Hom$-abelian groups i.e. $$f\circ(g+h)=(f\circ g)+(f\circ h)$$ $$(f+g)\circ h=(f\circ h)+(f\circ h)$$
     \end{enumerate}
 \end{defn}
 
 \begin{ex}
     \begin{itemize}
-        \item A ring is a one object ringoid. More explicitly, a ring $(R,\cdot,+)=(Hom_{\mathbf{B}R}(\ast,\ast),\circ,+)$  
+        \item A ring is a one object ringoid. More explicitly, a ring $(R,\cdot,+)=(\Hom_{\mathbf{B}R}(\ast,\ast),\circ,+)$  
         \item Ab is an Ab-category.
     \end{itemize}
 \end{ex}
@@ -2441,7 +2501,7 @@ As with Ab, $\Vect_k$ can also be used as enriching category
 \begin{ex}
     \begin{itemize}
         \item A $k$-algebra is a one object algebroid.
-        \item $\Vect_k$ is a linear category, since also $Hom_{\Vect_{k}}(X,Y)$ is a vector space
+        \item $\Vect_k$ is a linear category, since also $\Hom_{\Vect_{k}}(X,Y)$ is a vector space
     \end{itemize}
 \end{ex}
 
@@ -2459,7 +2519,7 @@ Another example of non-cartesian monoidal category, which is not algebraic in na
 \begin{ex}\label{CatOfDisks}
     The category of oriented 1-dimensional open disks Disk$^{or}_{1}$ is also an important example of symmetric monoidal category for us in the context of TFTs. Recall that $D^1\cong (0,1)\cong\R$. \begin{itemize}
         \item Its objects are finite disjoint unions of 1-dimensional open disks $$\emptyset,\qquad\R,\qquad\R\amalg\R,\qquad\dots,\qquad\R^{\amalg k}$$ with $k\in\N$ arbitrary
-        \item $Hom_{\text{Disk}^{or}_{1,0}}(X,Y)$ consists of all smooth embeddings $j:X\hookrightarrow Y$, i.e. $X$ is diffeomorphic onto its image, respecting orientations
+        \item $\Hom_{\text{Disk}^{or}_{1,0}}(X,Y)$ consists of all smooth embeddings $j:X\hookrightarrow Y$, i.e. $X$ is diffeomorphic onto its image, respecting orientations
         \item The tensor product is given by the disjoint union where given $X$ a disjoint union of $n$ oriented 1-disks and $Y$ a disjoint union of $m$ oriented 1-disks, $X\amalg Y$ is a disjoint union of $n+m$ oriented disks 
         \item The unit is the empty set since given an arbitrary disjoint union of disks $X$, $\emptyset\amalg X\cong X\cong X\amalg\emptyset$
         \item There is a diffeomorphism $X\amalg Y\cong Y\amalg X$ making Disk$^{or}_{1,0}$ a \emph{symmetric} monoidal category
@@ -2494,11 +2554,11 @@ Another example of non-cartesian monoidal category, which is not algebraic in na
 \begin{ex}\label{MonObj}
 A monoid object is a 
     \begin{itemize}
-        \item Monoid when in $(Set,\times)$
+        \item Monoid when in $(\Set,\times)$
         \item Algebra when in $(\Vect_k,\otimes)$
         \item Algebra when in $(BMod,\otimes)$
         \item \emph{Strict} monoidal category when in $(Cat,\times)$
-        \item Topological monoids in $(Top,\times)$
+        \item Topological monoids in $(\Top,\times)$
     \end{itemize}
 \end{ex}
 This example clarifies the parallel between monoids, algebras and monoidal categories we made at the start of this section. However, one could be bothered by the fact that we do not actually get a general monoidal category (i.e. not necessarily strict). To do this we will need to talk about $E_1$-algebras.
@@ -2518,7 +2578,7 @@ This example clarifies the parallel between monoids, algebras and monoidal categ
 \end{defn}
 
 \begin{defn}[$\mathbb{E}_1$-Algebra]\label{EAlg}
-    Let $Disk_{1,0}^{or}$ be the category of 1-disks (see \ref{CatOfDisks}). Then a $\mathbb{E}_1$-algebra is a symmetric monoidal functor $$Disk_{1}^{or}\to \cat$$ such that if $j,i\in Hom_{Disk_{1}^{or}}(X,Y)$ are smoothly isotopic embeddings, then  $F(j)=F(i)$, i.e. they are sent to the same morphism in $\cat$. More generally..
+    Let $Disk_{1,0}^{or}$ be the category of 1-disks (see \ref{CatOfDisks}). Then a $\mathbb{E}_1$-algebra is a symmetric monoidal functor $$Disk_{1}^{or}\to \cat$$ such that if $j,i\in \Hom_{Disk_{1}^{or}}(X,Y)$ are smoothly isotopic embeddings, then  $F(j)=F(i)$, i.e. they are sent to the same morphism in $\cat$. More generally..
 \end{defn}
 \begin{thm}
   $\mathbb{E}_1$-algebras with $\Vect_k$ as a target category correspond to $k$-algebras. Look into \cite{Tanaka_2020} for a sketch of the proof.
@@ -2670,7 +2730,7 @@ A braided monoidal category is not the category corresponding to an abelian mono
 \end{defn}
 \begin{ex}
     \begin{itemize} \hfill
-        \item All the previous examples of monoidal categories! $(\Vect, \oplus), (AbGrp, \otimes), \dots$
+        \item All the previous examples of monoidal categories! $(\Vect, \oplus), (\AbGrp, \otimes), \dots$
         \item Importantly for us the category of bimodules $BMod$
         \item The category of algebras over a module
     \end{itemize}
@@ -2698,10 +2758,10 @@ Earlier on we defined a monoid object (\ref{MonObj}), in a symmetric monoidal ob
 \begin{ex}
 A commutative monoid object is a 
     \begin{itemize}
-        \item Commutative monoid when in $(Set,\times)$
+        \item Commutative monoid when in $(\Set,\times)$
         \item Commutative algebra when in $(\Vect_k,\otimes)$
         \item \emph{Strict} symmetric monodial category when in $(Cat,\times)$
-        \item Commutative topological monoids in $(Top,\times)$
+        \item Commutative topological monoids in $(\Top,\times)$
     \end{itemize}
 \end{ex}
 \begin{defn}[Cocommutative Comonoid Object]\label{CocommComonObj}
@@ -2761,7 +2821,7 @@ finally we just need a commutative diagram for all $X,Y\in\cat$ specifying how i
 This notion will be one a central notion in this course since a TFT is just a symmetric monoidal functor with a special domain: the cobordism category (See the next subsection \ref{CobCat}).
 \begin{ex}
 \begin{enumerate}
-    \item The path-connected component functor (\ref{PathConnFunct}) $\pi_0: (Top,\times)\to (Set,\times)$ is a symmetric monoidal functor
+    \item The path-connected component functor (\ref{PathConnFunct}) $\pi_0: (\Top,\times)\to (\Set,\times)$ is a symmetric monoidal functor
     \item ...
 \end{enumerate}
 \end{ex}
@@ -2788,7 +2848,7 @@ Given monoidal functors $(F,\psi,\phi)$ and $(G,\xi,\gamma)$ from monoidal categ
 No other conditions are needed to be specified for a symmetric monoidal natural transformation, a monoidal natural transformation between symmetric monoidal functors. 
 \begin{ex}
 \begin{itemize}
-    \item Let $\Z[-]:Set\to AbGrp$ be the free functor\footnote{A free functor is a left adjoint to the forgetful functor.} generating free groups from sets. Define $\Z[-\times-]:Set\to AbGrp$, the free functor generating free groups out of cartesian products in $Set$, and $\Z[-]\otimes\Z[-]$, the free functor first generating free groups and then tensor-multiply them with the tensor product in $AbGrp$.  There is a monoidal natural isomorphism $\alpha$ between them, $\forall A,B\in Set.\Z[A\times B]\cong\Z[A]\otimes\Z[B]$. The notation $\Z[-]$ comes from the fact that abelian groups are exactly free modules on the integers, the categories of abelian groups and of modules on the integers are not just equivalent categories, but naturally isomorphic, something very rare.
+    \item Let $\Z[-]:\Set\to \AbGrp$ be the free functor\footnote{A free functor is a left adjoint to the forgetful functor.} generating free groups from sets. Define $\Z[-\times-]:\Set\to \AbGrp$, the free functor generating free groups out of cartesian products in $\Set$, and $\Z[-]\otimes\Z[-]$, the free functor first generating free groups and then tensor-multiply them with the tensor product in $\AbGrp$.  There is a monoidal natural isomorphism $\alpha$ between them, $\forall A,B\in \Set.\Z[A\times B]\cong\Z[A]\otimes\Z[B]$. The notation $\Z[-]$ comes from the fact that abelian groups are exactly free modules on the integers, the categories of abelian groups and of modules on the integers are not just equivalent categories, but naturally isomorphic, something very rare.
     \item Let $V\in\Vect_k$. Then $V\to V^{\ast\ast}$ are the components of...
     \item The determinant...
     \item There is a monoidal natural isomorphism between $id_{Grp}$ and $Grp\xrightarrow{op} Grp$, $G\mapsto G^{op}$, the functor sending every group $(G,\ast)$ to its opposite group, i.e. $(G^{op},\ast^{op})$, where $a\ast^{op}b=b\ast a$.
@@ -2804,7 +2864,7 @@ No other conditions are needed to be specified for a symmetric monoidal natural 
     There is a strict 2-category SymmMonCat similar to Cat (see \ref{2CatOfAllCats}), where 1-morphisms are symmetric monoidal functors and 2-morphisms are symmetric monoidal natural transformations. 
 \end{rem}
 \begin{notat}
-    Note that then $Hom_{\SymmMonCat}(\cat,\dat)$ is a special functor category. A functor category where objects are symmetric monoidal functors. An alternative way to denote $Hom_{\SymmMonCat}(\cat,\dat)$ is $Fun^{\otimes}(\cat,\dat)$.
+    Note that then $\Hom_{\SymmMonCat}(\cat,\dat)$ is a special functor category. A functor category where objects are symmetric monoidal functors. An alternative way to denote $\Hom_{\SymmMonCat}(\cat,\dat)$ is $Fun^{\otimes}(\cat,\dat)$.
 \end{notat}
 We have previously seen (\ref{Representations of Groups}) that a linear representation of a group $G$ is just a functor $\mathbf{B}G\rightarrow \Vect_k$. More generally, some, e.g. \cite[p. 34 ]{kock_2003}, give a definition of linear representation for symmetric monoidal categories: 
 \begin{defn}[Linear Representation]\label{LinReprCat}
@@ -2827,20 +2887,20 @@ We have previously seen (\ref{Representations of Groups}) that a linear represen
 \begin{defn}[Bicategory]\label{Bicategory}
     A bicategory $\bat$ consists of \begin{itemize}
         \item A collection of objects $ob(\bat)$, whose elements $X,Y,Z$ are also called 0-cells
-        \item For each objects $X,Y$, a 1-category $Hom_\bat(X,Y)$, whose objects $f,g,\dots$ are called 1-cells or 1-morphisms and whose morphisms $\alpha,\beta,\dots$ are called 2-cells or 2-morphisms; composition of (2-)morphisms in this category is also called vertical composition
-        \item For any three objects $X,Y,Z$ there are composition functors, also called horizontal composition $$\circ_{X,Y,Z}:Hom(Y,Z)\times Hom(X,Y)\to Hom(X,Z)$$
+        \item For each objects $X,Y$, a 1-category $\Hom_\bat(X,Y)$, whose objects $f,g,\dots$ are called 1-cells or 1-morphisms and whose morphisms $\alpha,\beta,\dots$ are called 2-cells or 2-morphisms; composition of (2-)morphisms in this category is also called vertical composition
+        \item For any three objects $X,Y,Z$ there are composition functors, also called horizontal composition $$\circ_{X,Y,Z}:\Hom(Y,Z)\times \Hom(X,Y)\to \Hom(X,Z)$$
         $$(f,g)\mapsto f\circ g$$
         $$(\alpha,\beta)\mapsto \alpha\circ\beta$$ in the context of bicategories we denote composition of functors with $\bigcirc$ instead of the usual $\circ$ in order to not get confused between a composition functor and a composition of functors
-        \item  For every object $X$ there is an identity functor from the one-object category\footnote{This is the terminal object of Cat and thereby monoidal unit of the cartesian monoidal category $(\Cat,\times,\unit_{\Cat})$ with the cartesian product as the tensor product. With $ob(\unit_{\Cat})=\{\ast\}$ and $Hom_{\Cat}(\ast,\ast)=id_{\ast}$.} $\unit_{\Cat}$
-        $$identity_X:\unit_{\text{Cat}}\to Hom(X,X)$$ $$\ast\mapsto id_X$$ we name the image of the single object the identity 1-morphism, i.e. $identity_{X}(\ast)=id_X$
+        \item  For every object $X$ there is an identity functor from the one-object category\footnote{This is the terminal object of Cat and thereby monoidal unit of the cartesian monoidal category $(\Cat,\times,\unit_{\Cat})$ with the cartesian product as the tensor product. With $ob(\unit_{\Cat})=\{\ast\}$ and $\Hom_{\Cat}(\ast,\ast)=id_{\ast}$.} $\unit_{\Cat}$
+        $$identity_X:\unit_{\text{Cat}}\to \Hom(X,X)$$ $$\ast\mapsto id_X$$ we name the image of the single object the identity 1-morphism, i.e. $identity_{X}(\ast)=id_X$
         \item There are natural isomorphisms $a,r,l$ expressing associativity and unitality of the composition functor: \begin{itemize}
-            \item associativity, as a natural isomorphism in Cat $$a:\circ_{W,X,Y}\bigcirc(\circ_{X,Y,Z}\times id_{Hom(W,X)})\xRightarrow{\cong}(id_{Hom(Y,Z)}\times id_{W,X,Y})\bigcirc \circ_{W,Y,Z}$$
+            \item associativity, as a natural isomorphism in Cat $$a:\circ_{W,X,Y}\bigcirc(\circ_{X,Y,Z}\times id_{\Hom(W,X)})\xRightarrow{\cong}(id_{\Hom(Y,Z)}\times id_{W,X,Y})\bigcirc \circ_{W,Y,Z}$$
             given $h:W\to X$, $f:X\to Y$ and $g:Y\to Z$, $a$ is a 2-isomorphism in $\bat$
             $$a_{g,f,h}:g\circ(f\circ h)\xRightarrow{\cong} (g\circ f)\circ h$$
-            \item right unitality, as a natural isomorphism in Cat\footnote{Note that $\rho^{\Cat}_{Hom(X,Y)}$ is the component of the right unitor of the monoidal category $(\Cat,\times,\unit_{\Cat})$ at $Hom(X,Y)$.} $$r:\circ_{X,Y,Y}\bigcirc(id_{Hom(X,Y)}\times identity_Y)\xRightarrow{\cong}\rho^{\Cat}_{Hom(X,Y)}$$
+            \item right unitality, as a natural isomorphism in Cat\footnote{Note that $\rho^{\Cat}_{\Hom(X,Y)}$ is the component of the right unitor of the monoidal category $(\Cat,\times,\unit_{\Cat})$ at $\Hom(X,Y)$.} $$r:\circ_{X,Y,Y}\bigcirc(id_{\Hom(X,Y)}\times identity_Y)\xRightarrow{\cong}\rho^{\Cat}_{\Hom(X,Y)}$$
             and as a 2-isomorphism in $\bat$
             $$r_f:f\circ id_Y\xRightarrow{\cong} f$$
-            \item left unitality, as a natural isomorphism in Cat\footnote{Note that $\lambda^{\Cat}_{Hom(X,Y)}$ is the component of the left unitor of the monoidal category $(\Cat,\times,\unit_{\Cat})$ at $Hom(X,Y)$.}  $$l:\circ_{X,X,Y}\bigcirc(identity_X\times id_{Hom(X,Y)})\xRightarrow{\cong}\lambda^{\Cat}_{Hom(X,Y)}$$
+            \item left unitality, as a natural isomorphism in Cat\footnote{Note that $\lambda^{\Cat}_{\Hom(X,Y)}$ is the component of the left unitor of the monoidal category $(\Cat,\times,\unit_{\Cat})$ at $\Hom(X,Y)$.}  $$l:\circ_{X,X,Y}\bigcirc(identity_X\times id_{\Hom(X,Y)})\xRightarrow{\cong}\lambda^{\Cat}_{\Hom(X,Y)}$$
             and as a 2-isomorphism in $\bat$
             $$l_f:id_X\circ f\xRightarrow{\cong} f$$
         \end{itemize}
@@ -2848,30 +2908,30 @@ We have previously seen (\ref{Representations of Groups}) that a linear represen
         Such natural isomorphisms can be more clearly visualized with the following diagrams\footnote{Note that these are homotopy coherent diagrams, meaning that they \textbf{do not} commute strictly necessarily, but only up to the indicated 2-morphisms!}
         % https://q.uiver.app/#q=WzAsNCxbMCwwLCJIb20oWSxaKVxcdGltZXMgSG9tKFgsWSlcXHRpbWVzIEhvbShXLFgpIl0sWzAsMSwiSG9tKFgsWilcXHRpbWVzIEhvbShXLFgpIl0sWzIsMSwiSG9tKFcsWikiXSxbMiwwLCJIb20oWSxaKVxcdGltZXMgSG9tKFcsWSkiXSxbMCwxLCJcXGNpcmNfe1gsWSxafVxcdGltZXMgaWRfe0hvbSgsWCl9IiwxXSxbMSwyLCJcXGNpcmNfe1csWCxafSIsMl0sWzAsMywiaWRfe0hvbShZLFopfVxcdGltZXMgaWRfe1csWCxZfSJdLFszLDIsIlxcY2lyY197VyxZLFp9Il0sWzEsMywiYV97VyxYLFksWn0iLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MTAsInRhcmdldCI6MTB9LCJsZXZlbCI6Mn1dXQ==
 \[\begin{tikzcd}
-	{Hom(Y,Z)\times Hom(X,Y)\times Hom(W,X)} && {Hom(Y,Z)\times Hom(W,Y)} \\
-	{Hom(X,Z)\times Hom(W,X)} && {Hom(W,Z)}
-	\arrow["{\circ_{X,Y,Z}\times id_{Hom(W,X)}}"{description}, from=1-1, to=2-1]
+	{\Hom(Y,Z)\times \Hom(X,Y)\times \Hom(W,X)} && {\Hom(Y,Z)\times \Hom(W,Y)} \\
+	{\Hom(X,Z)\times \Hom(W,X)} && {\Hom(W,Z)}
+	\arrow["{\circ_{X,Y,Z}\times id_{\Hom(W,X)}}"{description}, from=1-1, to=2-1]
 	\arrow["{\circ_{W,X,Z}}"', from=2-1, to=2-3]
-	\arrow["{id_{Hom(Y,Z)}\times id_{W,X,Y}}", from=1-1, to=1-3]
+	\arrow["{id_{\Hom(Y,Z)}\times id_{W,X,Y}}", from=1-1, to=1-3]
 	\arrow["{\circ_{W,Y,Z}}", from=1-3, to=2-3]
 	\arrow["{a_{W,X,Y,Z}}"{description}, shorten <=8pt, shorten >=8pt, Rightarrow, from=2-1, to=1-3]
 \end{tikzcd}\]
 % https://q.uiver.app/#q=WzAsMyxbMCwwLCJIb20oWCxZKVxcdGltZXMgXFx1bml0X1xcQ2F0Il0sWzAsMiwiSG9tKFgsWSlcXHRpbWVzIEhvbShZLFkpIl0sWzIsMiwiSG9tKFgsWSkiXSxbMCwxLCJpZF97SG9tKFgsWSl9XFx0aW1lcyBpZGVudGl0eV9ZIiwyXSxbMSwyLCJcXGNpcmNfe1gsWSxZfSIsMl0sWzAsMiwiXFxjb25nIl0sWzEsNSwicl97WCxZfSIsMSx7InNob3J0ZW4iOnsic291cmNlIjoxMCwidGFyZ2V0IjoyMH19XV0=
 \[\begin{tikzcd}
-	{Hom(X,Y)\times \unit_{\Cat}} \\
+	{\Hom(X,Y)\times \unit_{\Cat}} \\
 	\\
-	{Hom(X,Y)\times Hom(Y,Y)} && {Hom(X,Y)}
-	\arrow["{id_{Hom(X,Y)}\times identity_Y}"', from=1-1, to=3-1]
+	{\Hom(X,Y)\times \Hom(Y,Y)} && {\Hom(X,Y)}
+	\arrow["{id_{\Hom(X,Y)}\times identity_Y}"', from=1-1, to=3-1]
 	\arrow["{\circ_{X,Y,Y}}"', from=3-1, to=3-3]
 	\arrow[""{name=0, anchor=center, inner sep=0}, "\cong", from=1-1, to=3-3]
 	\arrow["{r_{X,Y}}"{description}, shorten <=4pt, shorten >=8pt, Rightarrow, from=3-1, to=0]
 \end{tikzcd}\]
 % https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXHVuaXRfXFxDYXRcXHRpbWVzIEhvbShYLFkpIl0sWzAsMiwiSG9tKFgsWClcXHRpbWVzIEhvbShYLFkpIl0sWzIsMiwiSG9tKFgsWSkiXSxbMCwxLCJpZGVudGl0eV9YXFx0aW1lcyBpZF97SG9tKFgsWSl9IiwyXSxbMSwyLCJcXGNpcmNfe1gsWCxZfSIsMl0sWzAsMiwiXFxjb25nIl0sWzEsNSwibF97WCxZfSIsMSx7InNob3J0ZW4iOnsic291cmNlIjoxMCwidGFyZ2V0IjoyMH19XV0=
 \[\begin{tikzcd}
-	{\unit_{\Cat}\times Hom(X,Y)} \\
+	{\unit_{\Cat}\times \Hom(X,Y)} \\
 	\\
-	{Hom(X,X)\times Hom(X,Y)} && {Hom(X,Y)}
-	\arrow["{identity_X\times id_{Hom(X,Y)}}"', from=1-1, to=3-1]
+	{\Hom(X,X)\times \Hom(X,Y)} && {\Hom(X,Y)}
+	\arrow["{identity_X\times id_{\Hom(X,Y)}}"', from=1-1, to=3-1]
 	\arrow["{\circ_{X,X,Y}}"', from=3-1, to=3-3]
 	\arrow[""{name=0, anchor=center, inner sep=0}, "\cong", from=1-1, to=3-3]
 	\arrow["{l_{X,Y}}"{description}, shorten <=4pt, shorten >=9pt, Rightarrow, from=3-1, to=0]
@@ -2883,7 +2943,7 @@ Note that in $\unit_{\Cat}$ there is also an identity morphism of $\ast$, $id_\a
 
 Bicategories are also known as weak 2-categories. Note that every strict 2-category is a bicategory where 1-morphisms compose strictly instead of up to associatiors and unitors; similarly to monoidal categories and strict monoidal categories
 \begin{ex}
-    A monoidal category $\cat$ is a one-object bicategory $\mathbf{B}\cat$ where $\cat=Hom(\mathbf{B}\cat)$. A strict monoidal category is a one-object strict 2-category.
+    A monoidal category $\cat$ is a one-object bicategory $\mathbf{B}\cat$ where $\cat=\Hom(\mathbf{B}\cat)$. A strict monoidal category is a one-object strict 2-category.
 \end{ex}
 We now list some examples of 2-categories, to convey a more concrete intuition of the difference between bicategories and strict 2-categories. More generally, try to think how this difference between weak and strict categories carries on in higher dimensions.
 \begin{ex}
@@ -3001,11 +3061,11 @@ In particular, that's how we get a topological field theory:
 \end{rem}
 \paragraph{Back to Usual TFTs}
 \begin{rem}
-    A TFT is a functor in a similar way that a linear representation of a group\footnote{In fact, some regard it a kind of representation, check out for instance around minute 18:00 of \hyperlink{https://www.youtube.com/watch?v=_9FxudwLWzg}{Catharina Stroppel: The beauty of braids - from knot invariants to higher categories}; or the following quote from \hyperlink{https://www.hsm.uni-bonn.de/fileadmin/hsm/pictures/TQFT_Poster_01.pdf}{a poster for a conference on TQFTs and their connections to representation theory and mathematical physics} "...a TQFT is a symmetric monoidal functor from the cobordism category to some symmetric monoidal category. It can thus be seen as a representation of a fundamental geometric category on a target category and thereby organizes interesting algebraic structures, e.g. representations of mapping class groups, in terms of cobordism categories. ..."; or this quote from Daniel Freed "An extended topological field theory is a representation of the bordism category..." \cite{freed2012cobordism}.} is (see \ref{Representations of Groups}). We can construct the category of TFTs in an analagous way to the one we used to define the category of linear representations of a group (see \ref{Cat of representations}): by constructing a functor category where the objects are TFTs (hence particular symmetric monoidal functors) and morphisms apt natural transformations between them\footnote{See \ref{SymmMonNat} for the definition of a symmetric monoidal natural transformation.}. The category of $n$-dimensional TFTs will then be $Hom_{SymmMonCat}(\nCob,\cat)$ (see \ref{CatSymmMonCat} for the definition of $SymmMonCat$, the category of all symmetric monoidal categories). Similarly as with groups, one can have linear and non-linear representations, although linear representations appear more frequenly. Typical examples of linear target categories are $(AbGrp,\otimes),(Mod_R,\otimes),(\Vect_k,\otimes)$.
+    A TFT is a functor in a similar way that a linear representation of a group\footnote{In fact, some regard it a kind of representation, check out for instance around minute 18:00 of \hyperlink{https://www.youtube.com/watch?v=_9FxudwLWzg}{Catharina Stroppel: The beauty of braids - from knot invariants to higher categories}; or the following quote from \hyperlink{https://www.hsm.uni-bonn.de/fileadmin/hsm/pictures/TQFT_Poster_01.pdf}{a poster for a conference on TQFTs and their connections to representation theory and mathematical physics} "...a TQFT is a symmetric monoidal functor from the cobordism category to some symmetric monoidal category. It can thus be seen as a representation of a fundamental geometric category on a target category and thereby organizes interesting algebraic structures, e.g. representations of mapping class groups, in terms of cobordism categories. ..."; or this quote from Daniel Freed "An extended topological field theory is a representation of the bordism category..." \cite{freed2012cobordism}.} is (see \ref{Representations of Groups}). We can construct the category of TFTs in an analagous way to the one we used to define the category of linear representations of a group (see \ref{Cat of representations}): by constructing a functor category where the objects are TFTs (hence particular symmetric monoidal functors) and morphisms apt natural transformations between them\footnote{See \ref{SymmMonNat} for the definition of a symmetric monoidal natural transformation.}. The category of $n$-dimensional TFTs will then be $\Hom_{SymmMonCat}(\nCob,\cat)$ (see \ref{CatSymmMonCat} for the definition of $SymmMonCat$, the category of all symmetric monoidal categories). Similarly as with groups, one can have linear and non-linear representations, although linear representations appear more frequenly. Typical examples of linear target categories are $(\AbGrp,\otimes),(Mod_R,\otimes),(\Vect_k,\otimes)$.
 \end{rem}
 
 \begin{notat}[Category of TFTs]
-    The category of TFTs is the functor category $$Hom_{SymmMonCat}(\nCob,\cat)=Fun^\otimes(\nCob,\cat)=\TFT_n(\cat)=nTFT(\cat)$$ This functor category is symmetric monoidal by defining the tensor product between TFTs pointwise: for $\Zf_1,\Zf_2\in\TFT_{n,n-1}(\cat)=n\TFT(\cat)$ and $M\in\nCob$ $$(\Zf_1\otimes\Zf_2)(M):=\Zf_1(M)\otimes\Zf_2(M)$$
+    The category of TFTs is the functor category $$\Hom_{SymmMonCat}(\nCob,\cat)=Fun^\otimes(\nCob,\cat)=\TFT_n(\cat)=nTFT(\cat)$$ This functor category is symmetric monoidal by defining the tensor product between TFTs pointwise: for $\Zf_1,\Zf_2\in\TFT_{n,n-1}(\cat)=n\TFT(\cat)$ and $M\in\nCob$ $$(\Zf_1\otimes\Zf_2)(M):=\Zf_1(M)\otimes\Zf_2(M)$$
 \end{notat}
 TFTs were originally defined with Vect as the target category, $\Zf: (\nCob, \amalg) \to (\Vect, \otimes) $), see \cite{Atiyah1988}. We can infer a few things about this TFT:
 \begin{enumerate}
@@ -3218,7 +3278,7 @@ and
         coev_V &: k \to V \otimes V^\vee
     \end{align}
     %TODO write what is sent to what.
-\item As an exercise try $Set, \times$
+\item As an exercise try $\Set, \times$
 \item $\cat = \Bordnor$.
 The point $\bullet_+$ is dualizable with dual $\bullet_-$.
 %DRAWING
@@ -3671,7 +3731,7 @@ We now provide an outlook to some research programs that are tightly connected t
 %Unsure about adding these remarks on algebraic and arithmetic QFT and if it's BS, will ask Prof and please do check if BS /ANdrea
     
     \item arithmetic field theories (\cite{Mazur1973NotesO},\cite{kim2016arithmetic},\cite{kapustin2007electricmagnetic}, \cite{Kapranov1995},\cite{RelativeBSVDUAL}): although still very conjectural, some envision poetic connections between number theory and physics via TFTs. The original intuition behind this connection is a mysterious analogy of Barry Mazur stating that number fields form correspond to some kind of 3-dimensional manifolds and primes in such number fields behave like knots embedded in these 3-dimensional manifolds. How this connects to TFTs will become clearer after the next section, where we will have gone through the connection between the Jones polynomial (a knot invariant) and 3d-Chern-Simons theory. For instance, the spectrum\footnote{Not in the sense of a modern abelian group, which we previously described \ref{Spectra Phases of Matter}! This is the spectrum of a ring.} of the commutative ring of the integers $\mathbb{Z}$ can be seen (roughly speaking\footnote{To make this more precise Mazur talks about exotic stuff like étale cohomological dimension.}) as a 3-dimensional manifold, and since the spectra prime fields can be canonically embedded in the spectra of the integers, they are analogous to knots since knots can be defined as embeddings of $S^1$ into some 3-dimensional manifold\footnote{Often it is sufficient to pick $\R^3$ as the manifold we embed in and it is what we will do in the next section. However, taking arbitrary 3 manifolds does also make sense and in some cases, like this one, it is what one desires.}. Mazur came up with this analogy in \cite{Mazur1973NotesO}, see this \href{https://mathoverflow.net/questions/50879/what-is-the-knot-associated-to-a-prime/50995#50995}{mathoverflow comment by Lieven Lebruyn} and the \href{https://ncatlab.org/nlab/show/Spec%28Z%29#As3dSpaceContainingKnots}{nLab entry on Spec($\Z$)} for accessible introductions to this specific correspondence. Some (\cite{kim2016arithmetic}, \href{https://shifted-project.github.io/}{Clark Barwick's SHIFTED project} and \href{https://www.youtube.com/watch?v=WXqmXKLtJrs}{this talk of his on his efforts towards geometric foundations for arithmetic field theories}) are trying to define arithmetic quantum field theories in order to apply ideas of TFTs to number theory, for example to arithmetic curves\footnote{Something from arithmetic geometry, see \cite{liu2002algebraic}}, i.e. the spectra of rings of integers in algebraic number fields. While others (\cite{Witten:1990bs},\cite{RelativeBSVDUAL}) more specifically, see a strong connection with the Langlands program. This view is summarized by the motto \emph{the Langlands program is part of the study of 4-dimensional (arithmetic, topological) quantum field theory}. For a more accessible introduction to this research program, check out these notes \cite{BenZviLanglands} by Jackson Van Dyke of a course on this topic by David Ben-Zvi.
-    \item algebraic quantum field theory (\cite{Haag:1963dh}): talking about endomorphism monoids, i.e. monoids of the form $(Hom_\cat(X,X),\circ)$ (see \ref{Delooping Monoid}) we previously mentioned operator algebras, i.e. monoids and submonoids of the form $(Hom_{TopVect_{k}}(X,X),\circ)$. They are an object of interest in themselves but importantly for us algebraic quantum field theory makes extensive use of operator algebras. Algebraic quantum field theory is very roughly a way of translating the Heisenberg picture of quantum mechanics (sometimes called matrix mechanics) to quantum field theory by providing an attempt to axiomatize QFT in a mathematically rigorous way. Given some apt operators on an apt topological vector space, meaning that the topological vector space can represent a quantum state and the selected operators on it can represent observables, an AQFT provides a formal assignment of algebras of such operators to regions of spacetime according to some axioms, e.g. the \href{https://ncatlab.org/nlab/show/Haag-Kastler+axioms}{Haag Kastler Axioms}. In this way, it pins down how observables depend of spacetime while states are being fixed, as in the Heisenberg picture. Algebraic quantum field theory can be roughly considered to be a dual to topological quantum field theory since TFTs invert the direction by assigning geometric data to algebraic ones. In fact, topological quantum field theory can be seen as a way of translating the Schrödinger picture (also called wave mechanics) to quantum field theory: states are represented by objects in the target monoidal category, the functor from $\Bord$ captures the local time evolution, and thereby a TFT shows how states are propagated through time while the observables are held fixed, as in the Schrödinger picture (see more on this at \href{https://ncatlab.org/nlab/show/functorial+field+theory#QuantumMechanicsInSchroedingerPicture}{this section of the nLab entry on TFTs}). In quantum mechanics, the Heisenberg and the Schrödinger picture are two faces of the same medal, i.e. matrix mechanics and wave mechanics are equivalent\footnote{Interestingly from a historical point of view, Schrödinger's (and Eckhart's) famous proof from 1926 that the two approaches are equivalent is faulty, but von Neumann fortunately provided a foolproof demonstration in 1932. See \cite{MULLER199735} for more on this interesting trivia.}; however, we are far from proving that AQFT and TQFT are also two faces of the same medal. One point of contact between the two is via factorization algebras (something related to $E_n$-algebras, see \ref{EAlg} for the definition of a $E_1$-algebra), see \cite{costello2023factorization} for a summary on factorization algebras and how they relate to TQFT and AQFT. 
+    \item algebraic quantum field theory (\cite{Haag:1963dh}): talking about endomorphism monoids, i.e. monoids of the form $(\Hom_\cat(X,X),\circ)$ (see \ref{Delooping Monoid}) we previously mentioned operator algebras, i.e. monoids and submonoids of the form $(\Hom_{\Top\!\Vect_{k}}(X,X),\circ)$. They are an object of interest in themselves but importantly for us algebraic quantum field theory makes extensive use of operator algebras. Algebraic quantum field theory is very roughly a way of translating the Heisenberg picture of quantum mechanics (sometimes called matrix mechanics) to quantum field theory by providing an attempt to axiomatize QFT in a mathematically rigorous way. Given some apt operators on an apt topological vector space, meaning that the topological vector space can represent a quantum state and the selected operators on it can represent observables, an AQFT provides a formal assignment of algebras of such operators to regions of spacetime according to some axioms, e.g. the \href{https://ncatlab.org/nlab/show/Haag-Kastler+axioms}{Haag Kastler Axioms}. In this way, it pins down how observables depend of spacetime while states are being fixed, as in the Heisenberg picture. Algebraic quantum field theory can be roughly considered to be a dual to topological quantum field theory since TFTs invert the direction by assigning geometric data to algebraic ones. In fact, topological quantum field theory can be seen as a way of translating the Schrödinger picture (also called wave mechanics) to quantum field theory: states are represented by objects in the target monoidal category, the functor from $\Bord$ captures the local time evolution, and thereby a TFT shows how states are propagated through time while the observables are held fixed, as in the Schrödinger picture (see more on this at \href{https://ncatlab.org/nlab/show/functorial+field+theory#QuantumMechanicsInSchroedingerPicture}{this section of the nLab entry on TFTs}). In quantum mechanics, the Heisenberg and the Schrödinger picture are two faces of the same medal, i.e. matrix mechanics and wave mechanics are equivalent\footnote{Interestingly from a historical point of view, Schrödinger's (and Eckhart's) famous proof from 1926 that the two approaches are equivalent is faulty, but von Neumann fortunately provided a foolproof demonstration in 1932. See \cite{MULLER199735} for more on this interesting trivia.}; however, we are far from proving that AQFT and TQFT are also two faces of the same medal. One point of contact between the two is via factorization algebras (something related to $E_n$-algebras, see \ref{EAlg} for the definition of a $E_1$-algebra), see \cite{costello2023factorization} for a summary on factorization algebras and how they relate to TQFT and AQFT. 
     
     In conclusion, algebraic quantum field theory is not a variant of topological field theory, but an alternative attempt to put quantum field theory on mathematically rigorous footings. One can discover more on algebraic quantum field theory in \cite{halvorson2006algebraic} and \cite{fewster2019algebraic}.
 \end{itemize}
