@@ -1,6 +1,7 @@
 \documentclass[12pt, oneside]{book}
 \usepackage{geometry}           % to change size of margins
 \geometry{tmargin=0.70in, bmargin=0.70in, lmargin=1.2in, rmargin = 1.2in}
+%TODO feels a bit too full with these settings /William
 \usepackage{amsthm}             % for all the theorem-like environments
 \usepackage{tikz-cd}            % for commutative diagrams
 \usetikzlibrary{math}           % for some stuff with tikz drawings
@@ -77,8 +78,6 @@
 \DeclareMathOperator{\ind}{ind}
 \DeclareMathOperator{\im}{im}
 \DeclareMathOperator{\orient}{or}
-\DeclareMathOperator{\ob}{ob}
-\DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\fr}{fr}
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\tr}{tr}
@@ -1934,7 +1933,7 @@ A few examples of categories are the following:
         
         \item\label{CatOP}
         Given a category $\mathscr{C}$, define a category $\mathscr{C}^{op}$ by:
-        $$ob(\mathscr{C}^{op})=ob(\mathscr{C})$$ 
+        $$\ob(\mathscr{C}^{op})=\ob(\mathscr{C})$$ 
         $$\Hom_{\mathscr{C}^{op}}(X,Y)=\Hom_{\mathscr{C}}(Y,X)$$ $$g\circ_{\mathscr{C}^{op}}f=f\circ_{\mathscr{C}}g$$  
         this is called the opposite category of $\mathscr{C}$.
     \end{enumerate}
@@ -2372,7 +2371,7 @@ A monoidal category generalizes this structure with respect to objects \emph{and
 \begin{ex}[Examples of \emph{strict} monoidal categories]
     \begin{itemize}
         \item Given an arbitrary category $\cat$, the set\footnote{A set and not a larger collection since we defined categories to be locally small.} of its endofunctors $\End(\cat,\cat)=\Hom_{\Cat}(\cat,\cat)$ are the objects of a monoidal category with and the natural transformations between them their morphisms. The tensor product is given by composition and it is associative since composition of functors is associative. The monoidal unit is $id_\cat$ and is indeed left and right unital. Note however that this is an example of \emph{strict} monoidal category since functors compose strictly and not up to some associator and unitors.
-        \item A monoid $(M,\cdot,e)$ is a discrete strict monoidal categories. A discrete category is a category where there are only identity morphisms. So, $(M,\cdot,e)=(\mathcal{M},\otimes,\mathbb{1}_\mathcal{M})$ where $ob(\mathcal{M})=M$ and $\mathbb{1}_\mathcal{M}=e$.
+        \item A monoid $(M,\cdot,e)$ is a discrete strict monoidal categories. A discrete category is a category where there are only identity morphisms. So, $(M,\cdot,e)=(\mathcal{M},\otimes,\mathbb{1}_\mathcal{M})$ where $\ob(\mathcal{M})=M$ and $\mathbb{1}_\mathcal{M}=e$.
     \end{itemize} 
 \end{ex}
 \begin{ex}[Examples of monoidal categories]
@@ -2392,7 +2391,7 @@ A monoidal category generalizes this structure with respect to objects \emph{and
 In particular,
  $(\AbGrp, \oplus), (\Vect_k, \oplus), (\Set, \times), (\Top, \times), (Cat, \times)$ are all examples of special monoidal categories: cartesian monoidal categories. A cartesian monoidal category is a monoidal category where the monoidal structure is given by a suitable notion of cartesian product in such category. We can give a construction valid for every category:
 \begin{defn}[Cartesian Product]\label{CartProd}
-    Given $A,B\in\cat$, their cartesian product, if it exists, is the tuple $(A\times B,pr_1,pr_2)$, where $A\times B\in ob(\cat)$ and $pr_1:A\times B\to A$  $pr_2:A\times B\to B$ such that for every other object $Y$ with morphisms $f:Y\to A$ and $g:Y\to B$ there is a unique morphism $u:Y\to A\times B$. This definition is summarised by the fact that the following commuting diagram 
+    Given $A,B\in\cat$, their cartesian product, if it exists, is the tuple $(A\times B,pr_1,pr_2)$, where $A\times B\in \ob(\cat)$ and $pr_1:A\times B\to A$  $pr_2:A\times B\to B$ such that for every other object $Y$ with morphisms $f:Y\to A$ and $g:Y\to B$ there is a unique morphism $u:Y\to A\times B$. This definition is summarised by the fact that the following commuting diagram 
     % https://q.uiver.app/#q=WzAsNSxbMSwwLCJZIl0sWzIsMSwiQiJdLFswLDBdLFswLDEsIkEiXSxbMSwxLCJBXFx0aW1lcyBCIl0sWzAsMSwiZyJdLFs0LDMsInByXzEiXSxbMCwzLCJmIiwyXSxbNCwxLCJwcl8yIiwyXSxbMCw0LCJcXGV4aXN0cyEgdSIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
 \[\begin{tikzcd}
 	{} & Y \\
@@ -2478,7 +2477,7 @@ It can be equivalently defined via elements.
 Ab is very important as an enriching category. Before, we gave a loose characterization of what an enriched category is by just stating that the $\Hom$s are objects of whatever category we are enriching over. However, we glossed over an essential requirement: that the category we are enriching on is actually monoidal because it is necessary to define composition. We now give a fully satisfactory definition of an enriched category
 \begin{defn}[Enriched Category]\label{FullEnrichedCat}
     Given a \emph{monoidal} category $\dat$, a $\dat$-enriched category $\cat$, aka $\dat$-category or category enriched over $\dat$, is a category $\cat$ such that \begin{enumerate}
-        \item $\forall X,Y\in\cat.\Hom_{\cat}(X,Y)\in\dat$ we call $\Hom_\cat(X,Y)$ a \Hom-object
+        \item $\forall X,Y\in\cat.\Hom_{\cat}(X,Y)\in\dat$ we call $\Hom_\cat(X,Y)$ a Hom-object
         \item Composition is a morphism in $\dat$: $$\circ:\Hom_\cat(Y,Z)\otimes \Hom_\cat(X,Y)\to\Hom_\cat(X,Z)$$ 
         \item For any $X\in\cat$ there is $$id_X:\unit_\dat\to \Hom(X,X)$$
         \item There is a Mac-Lane pentagon for Hom-objects in order to specify how $\circ$ is associative and two triangle diagrams in order to pin down how $\circ$ is left and right unital with respect to composable identity morphisms. One can check the spelled out diagram at definition 1.2.34 of \cite{land2021introduction} 
@@ -2933,7 +2932,7 @@ No other conditions are needed to be specified for a symmetric monoidal natural 
     \item Let $\Z[-]:\Set\to \AbGrp$ be the free functor\footnote{A free functor is a left adjoint to the forgetful functor.} generating free groups from sets. Define $\Z[-\times-]:\Set\to \AbGrp$, the free functor generating free groups out of cartesian products in $\Set$, and $\Z[-]\otimes\Z[-]$, the free functor first generating free groups and then tensor-multiply them with the tensor product in $\AbGrp$.  There is a monoidal natural isomorphism $\alpha$ between them, $\forall A,B\in \Set.\Z[A\times B]\cong\Z[A]\otimes\Z[B]$. The notation $\Z[-]$ comes from the fact that abelian groups are exactly free modules on the integers, the categories of abelian groups and of modules on the integers are not just equivalent categories, but naturally isomorphic, something very rare.
     \item Let $V\in\Vect_k$. Then $V\to V^{\ast\ast}$ are the components of...
     \item The determinant...
-    \item There is a monoidal natural isomorphism between $id_{Grp}$ and $Grp\xrightarrow{op} Grp$, $G\mapsto G^{op}$, the functor sending every group $(G,\ast)$ to its opposite group, i.e. $(G^{op},\ast^{op})$, where $a\ast^{op}b=b\ast a$.
+    \item There is a monoidal natural isomorphism between $id_{\Grp}$ and $\Grp\xrightarrow{op} \Grp$, $G\mapsto G^{op}$, the functor sending every group $(G,\ast)$ to its opposite group, i.e. $(G^{op},\ast^{op})$, where $a\ast^{op}b=b\ast a$.
 \end{itemize}
 \end{ex}
 \begin{rem}
@@ -2957,8 +2956,8 @@ We have previously seen (\ref{Representations of Groups}) that a linear represen
 %Also I hope it is not overkill, it all started because I wanted to define dual objects of a monoidal cat as adjunctions of 1-morphisms in the delooping, then realized that bicategory would be useful also for 2 reasons: 1-understanding better why Cat is strict and not weak, and in general picturing what weak n-categories are and 2-the extended 2-category of 2 dimensional bordisms is a bicategory. I'll ask the professor if it makes sense or it is just confusing
 \begin{defn}[Delooping of a Monoidal Category]\label{DeloopingMonCat}
     Let $\cat$ be a monoidal category. The delooping category $\mathbf{B}\cat$ is a one object $2$-category with: \begin{itemize}
-        \item $ob(\mathbf{B}\cat)=\ast$
-        \item $1-mor(\mathbf{B}\cat)=ob(\cat)$
+        \item $\ob(\mathbf{B}\cat)=\ast$
+        \item $1-mor(\mathbf{B}\cat)=\ob(\cat)$
         \item $2-mor(\mathbf{B}\cat)=mor(\cat)$
     \end{itemize}
     Composition of $2$-morphisms is given by the usual composition of morphisms between objects in $\cat$. The composition of $1$-morphisms is given by the tensor product. This makes sense since there is a monoidal unit $\mathbb{1}_\cat$ that works as the identity arrow for any object, since it is left and right unital for any object and the tensor product is associative. However, in monoidal categories associativity and unitality hold up to isomorphism and this is witnessed by the associator and left/right unitors!
@@ -2968,12 +2967,12 @@ We have previously seen (\ref{Representations of Groups}) that a linear represen
 \end{rem}
 \begin{defn}[Bicategory]\label{Bicategory}
     A bicategory $\bat$ consists of \begin{itemize}
-        \item A collection of objects $ob(\bat)$, whose elements $X,Y,Z$ are also called 0-cells
+        \item A collection of objects $\ob(\bat)$, whose elements $X,Y,Z$ are also called 0-cells
         \item For each objects $X,Y$, a 1-category $\Hom_\bat(X,Y)$, whose objects $f,g,\dots$ are called 1-cells or 1-morphisms and whose morphisms $\alpha,\beta,\dots$ are called 2-cells or 2-morphisms; composition of (2-)morphisms in this category is also called vertical composition
         \item For any three objects $X,Y,Z$ there are composition functors, also called horizontal composition $$\circ_{X,Y,Z}:\Hom(Y,Z)\times \Hom(X,Y)\to \Hom(X,Z)$$
         $$(f,g)\mapsto f\circ g$$
         $$(\alpha,\beta)\mapsto \alpha\circ\beta$$ in the context of bicategories we denote composition of functors with $\bigcirc$ instead of the usual $\circ$ in order to not get confused between a composition functor and a composition of functors
-        \item  For every object $X$ there is an identity functor from the one-object category\footnote{This is the terminal object of Cat and thereby monoidal unit of the cartesian monoidal category $(\Cat,\times,\unit_{\Cat})$ with the cartesian product as the tensor product. With $ob(\unit_{\Cat})=\{\ast\}$ and $\Hom_{\Cat}(\ast,\ast)=id_{\ast}$.} $\unit_{\Cat}$
+        \item  For every object $X$ there is an identity functor from the one-object category\footnote{This is the terminal object of Cat and thereby monoidal unit of the cartesian monoidal category $(\Cat,\times,\unit_{\Cat})$ with the cartesian product as the tensor product. With $\ob(\unit_{\Cat})=\{\ast\}$ and $\Hom_{\Cat}(\ast,\ast)=id_{\ast}$.} $\unit_{\Cat}$
         $$identity_X:\unit_{\text{Cat}}\to \Hom(X,X)$$ $$\ast\mapsto id_X$$ we name the image of the single object the identity 1-morphism, i.e. $identity_{X}(\ast)=id_X$
         \item There are natural isomorphisms $a,r,l$ expressing associativity and unitality of the composition functor: \begin{itemize}
             \item associativity, as a natural isomorphism in Cat $$a:\circ_{W,X,Y}\bigcirc(\circ_{X,Y,Z}\times id_{\Hom(W,X)})\xRightarrow{\cong}(id_{\Hom(Y,Z)}\times id_{W,X,Y})\bigcirc \circ_{W,Y,Z}$$
@@ -3061,7 +3060,7 @@ We now get to the most important example of symmetric monoidal category in this 
      The gluing of manifolds is associative. In order for this to actually be a category there must be unital identity morphisms. For an object $M$ it is given by $M \times [0,1]$. However, one could also take $M \times [0,2]$ which is diffeomorphic to $M \times [0,1]$ but \textit{not} strictly identical, on the nose. That is why we took a \textit{diffeomorphism class} of bordisms. In particular, the identity morphisms for any closed manifold $X\in\Bordn$, $X\xrightarrow{id_X}X$ is given by $[X\times [0,1]]_{\cong}$ where $\cong$ denotes isomorphisms between smooth manifolds, i.e. diffeomorphisms.
 \end{defn}
 \begin{notat}
-    $nCob=\Bordn$, meaning that objects are closed $n-1$-dimensional manifolds and morphisms are diffeomorphism classes of bordisms. Moreover, we indicate that the closed manifolds are oriented and the bordisms orientation preserving with $\Bordnor$ or equivalently $nCob^{or}$.
+    $\nCob=\Bordn$, meaning that objects are closed $n-1$-dimensional manifolds and morphisms are diffeomorphism classes of bordisms. Moreover, we indicate that the closed manifolds are oriented and the bordisms orientation preserving with $\Bordnor$ or equivalently $\nCob^{\orient}$.
 \end{notat}
 Let us explicitly state what is meant by diffeomorphism of bordisms:
 \begin{defn}
@@ -3147,7 +3146,7 @@ In particular, that's how we get a topological field theory:
 \end{rem}
 
 \begin{notat}[Category of TFTs]
-    The category of TFTs is the functor category $$\Hom_{SymmMonCat}(\nCob,\cat)=Fun^\otimes(\nCob,\cat)=\TFT_n(\cat)=nTFT(\cat)$$ This functor category is symmetric monoidal by defining the tensor product between TFTs pointwise: for $\Zf_1,\Zf_2\in\TFT_{n,n-1}(\cat)=n\TFT(\cat)$ and $M\in\nCob$ $$(\Zf_1\otimes\Zf_2)(M):=\Zf_1(M)\otimes\Zf_2(M)$$
+    The category of TFTs is the functor category $$\Hom_{SymmMonCat}(\nCob,\cat)=Fun^\otimes(\nCob,\cat)=\TFT_n(\cat)=\operatorname{nTFT}(\cat)$$ This functor category is symmetric monoidal by defining the tensor product between TFTs pointwise: for $\Zf_1,\Zf_2\in\TFT_{n,n-1}(\cat)=n\TFT(\cat)$ and $M\in\nCob$ $$(\Zf_1\otimes\Zf_2)(M):=\Zf_1(M)\otimes\Zf_2(M)$$
 \end{notat}
 TFTs were originally defined with Vect as the target category, $\Zf: (\nCob, \amalg) \to (\Vect, \otimes) $), see \cite{Atiyah1988}. We can infer a few things about this TFT:
 \begin{enumerate}
@@ -3409,7 +3408,7 @@ First of all, the triangle on the top commutes, i.e. $(id_{G(X)}\otimes\alpha_{X
     If every object in a symmetric monoidal category $\cat$ is dualizable, then any symmetric monoidal natural transformation between symmetric monoidal functors that have $\cat$ as the source category is invertible since a natural transfomation is invertible if and only if each of its components is invertible. Hence, $Fun^\otimes(\cat,\dat)$ is a groupoid for any $\dat$ when all objects in $\cat$ are dualizable.
 \end{cor}
 \begin{cor}\label{TFTsareGRPDS}
-    The category of topological field theories $TFT_{n,n-1}^{or}(\cat)$ is a groupoid.
+    The category of topological field theories $\TFT_{n,n-1}^{or}(\cat)$ is a groupoid.
 \end{cor}
 \begin{lem}\label{InvDual}
     Any invertible object is dualizable
@@ -3463,11 +3462,11 @@ The main goal of this subsection is to prove that given an oriented 1d-TFT $Z:\B
     By $(\cat^{\text{dualizable}})^{\cong}$ we denote the restriction of a symmetric monoidal category on its dualizable objects and its isomorphisms, said briefly: a restriction on the underlying Picard groupoid because in any symmetric monoidal groupoid an object is dualizable if and only if it is invertible (see \ref{PicardDualizable}).
 \end{rem}
 \begin{thm}
-    Let $\cat$ be a symmetric monoidal category. Then the map\footnote{There is unfortunately a notational clash between what we called the evaluation map for dualizable objects, denoted by $ev$, and what we also call in this case evaluation map, denoted by $\mathcal{E} V$. In the latter case, we are referring to a similar convention we use for example in topology when we call a map of this genre $Map(\ast,X)\to X$ an evaluation map. The intuition is that we feed an element of the domain into a map, a functor in our case, and see what happens, "evaluate it".} $$TFT_{1,0}^{or}=Fun(\Bord_{1,0}^{or}(\cat)\xrightarrow{\mathcal{E} V}(\cat^{\text{dualizable}})^{\cong}$$ 
+    Let $\cat$ be a symmetric monoidal category. Then the map\footnote{There is unfortunately a notational clash between what we called the evaluation map for dualizable objects, denoted by $ev$, and what we also call in this case evaluation map, denoted by $\mathcal{E} V$. In the latter case, we are referring to a similar convention we use for example in topology when we call a map of this genre $Map(\ast,X)\to X$ an evaluation map. The intuition is that we feed an element of the domain into a map, a functor in our case, and see what happens, "evaluate it".} $$\TFT_{1,0}^{or}=Fun(\Bord_{1,0}^{or}(\cat)\xrightarrow{\mathcal{E} V}(\cat^{\text{dualizable}})^{\cong}$$ 
     $$\Zf\mapsto \Zf(\bullet_+)$$ is a symmetric monoidal equivalence of groupoids. 
     % https://q.uiver.app/#q=WzAsNCxbMCwwLCJURlRfezEsMH1ee29yfSJdLFswLDIsIihcXGNhdF57ZHVhbGl6YWJsZX0pXntcXGNvbmd9Il0sWzEsMSwiXFxjYXRee2R1YWxpemFibGV9Il0sWzIsMCwiXFxjYXQiXSxbMCwxXSxbMSwyLCJpIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMCwyLCIiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMCwzLCJcXG1hdGhjYWx7RX1WIl0sWzIsMywiaiIsMix7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV1d
 \[\begin{tikzcd}
-	{TFT_{1,0}^{or}} && \cat \\
+	{\TFT_{1,0}^{or}} && \cat \\
 	& {\cat^{dualizable}} \\
 	{(\cat^{dualizable})^{\cong}}
 	\arrow[from=1-1, to=3-1]
@@ -3478,14 +3477,14 @@ The main goal of this subsection is to prove that given an oriented 1d-TFT $Z:\B
 \end{tikzcd}\]
 \end{thm}
 The image of $\mathcal{E}V$ is in $(\cat^{dualizable})^{\cong}$, since \begin{enumerate}
-    \item $TFT_{1,0}^{or}$ is a groupoid, and functors preserve isomorphisms
+    \item $\TFT_{1,0}^{or}$ is a groupoid, and functors preserve isomorphisms
     \item Every object in $\Bord_{1,0}^{or}$ is dualizable, because of functoriality, the image of a dualizable object remains a dualizable object
 \end{enumerate}
 \begin{proof}
     Thanks to the fundamental theorem of category theory we prove three things to demonstrate that $\mathcal{E}V$ is an equivalence: that is full, faithful and essentially surjective.
     \begin{enumerate}
         \item From lemma \ref{Surjectivity} it follows that $\mathcal{E}V$ is surjective, not even surjective
-        \item It is full: let $\Zf,\Zf'\in TFT_{1,0}^{or}$ and $\alpha_1,\alpha_2:\Zf\Rightarrow\Zf'$ be natural transformations between them and hence isomorphisms (see \ref{TFTsareGRPDS}). $\bullet_-=\bullet_+^\vee$ we have that for any natural isomorphism $\eta$: $\eta{\bullet_+^\vee}=(\eta{\bullet_+})^\vee$ because of functoriality and $\eta_{\bullet_-}=(\eta{\bullet_+}^\vee)^{-1}$ because of \ref{DualizableMeansInvertibleNatTrans}. From this it follows that $\alpha_{\bullet_-}=(\alpha_{\bullet_+}^\vee)^{-1}=(\beta{\bullet_+}^\vee)^{-1}=\beta_{\bullet_-}$. With a specular proof we can prove that $\alpha_{\bullet_+}=\beta_{\bullet_+}$. Since 0-dimensional compact manifolds are just finite disjoint unions of $\bullet_+$ or $\bullet_-$ and $\Zf,\Zf'$ are both symmetric \emph{monoidal} functors, it follows that for any $X\in\Bord_{1,0}^{or}$, $\alpha_X=\beta_X$. Take for example $X=\bullet_+\amalg\bullet_-$, then  $\Zf(\bullet_+\amalg\bullet_-)=\Zf(\bullet_+)\otimes\Zf(\bullet_-)$. Thus $\alpha=\beta$. This proves that $\mathcal{E}V$ is faithful because it implies that for any two equal natural transformations are mapped to equal morphisms in $\cat$
+        \item It is full: let $\Zf,\Zf'\in \TFT_{1,0}^{or}$ and $\alpha_1,\alpha_2:\Zf\Rightarrow\Zf'$ be natural transformations between them and hence isomorphisms (see \ref{TFTsareGRPDS}). $\bullet_-=\bullet_+^\vee$ we have that for any natural isomorphism $\eta$: $\eta{\bullet_+^\vee}=(\eta{\bullet_+})^\vee$ because of functoriality and $\eta_{\bullet_-}=(\eta{\bullet_+}^\vee)^{-1}$ because of \ref{DualizableMeansInvertibleNatTrans}. From this it follows that $\alpha_{\bullet_-}=(\alpha_{\bullet_+}^\vee)^{-1}=(\beta{\bullet_+}^\vee)^{-1}=\beta_{\bullet_-}$. With a specular proof we can prove that $\alpha_{\bullet_+}=\beta_{\bullet_+}$. Since 0-dimensional compact manifolds are just finite disjoint unions of $\bullet_+$ or $\bullet_-$ and $\Zf,\Zf'$ are both symmetric \emph{monoidal} functors, it follows that for any $X\in\Bord_{1,0}^{or}$, $\alpha_X=\beta_X$. Take for example $X=\bullet_+\amalg\bullet_-$, then  $\Zf(\bullet_+\amalg\bullet_-)=\Zf(\bullet_+)\otimes\Zf(\bullet_-)$. Thus $\alpha=\beta$. This proves that $\mathcal{E}V$ is faithful because it implies that for any two equal natural transformations are mapped to equal morphisms in $\cat$
         %Copied this from Freed Old/new and I am very confused, please check /Andrea
         \item $\mathcal{E}V$ is full %TBD
     \end{enumerate}
