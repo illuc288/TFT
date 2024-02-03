@@ -34,6 +34,8 @@
 %\usepackage{color}             % don't know what it's for
 %\usepackage{xcolor}            % don't know what it's for
 
+%TODO mark extra sections somehow
+
 \makeatletter %adjusting the color of the entire document
 \newcommand{\globalcolor}[1]{%
   \color{#1}\global\let\default@color\current@color
@@ -75,6 +77,10 @@
 \DeclareMathOperator{\Bord}{Bord}
 \DeclareMathOperator{\ind}{ind}
 \DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\orient}{or}
+\DeclareMathOperator{\ob}{ob}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\fr}{fr}
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\tr}{tr}
 \DeclareMathOperator{\sign}{sign}
@@ -229,18 +235,34 @@ These are the lecture notes of the course \textit{``Bordism and Topological Fiel
 
 
 \newpage
-
 \clearpage
 \pagenumbering{arabic}
+
+
 
 % -------------------------------------------------------------
 % --------------------- LECTURE 1 23/10 -----------------------
 % -------------------------------------------------------------
 
+%Just realized that it looks weird put here because of 'contents' at the top of the page, don't know how to resolve /andrea
+\section*{Notational Conventions}
+\begin{notat}
+	Throughout these notes we will abuse notation indicating a collection with some structure on it just by writing down the collection, e.g. denoting a monoid $(M,\cdot)$ by $M$, a metric space $(X,d)$ by $X$ etc...
+\end{notat}
+\begin{notat}
+	$n$-manifold and $n$-bordism mean respectively $n$ dimensional manifold and $n$ dimensional bordism.
+\end{notat}
+
 %TODO I would label and caption the figures so they can be referenced and they can appear wherever TeX thinks best /William
 
 \chapter{Why should you care? An informal introduction}
-As the name suggests, this subject is two-sided: we have a physics part, namely Quantum Field Theory, and a mathematics part, more specifically topology and in particular (Co)Bordism. Let us explore the motivations and ideas behind these two subjects and how they come together. Do not worry if everything is not immediately clear, it will become so during the semester... hopefully.
+%As the name suggests, this subject is two-sided: we have a physics part, namely Quantum Field Theory, and a mathematics part, more specifically topology and in particular (Co)Bordism. Let us explore the motivations and ideas behind these two subjects and how they come together. Do not worry if everything is not immediately clear, it will become so during the semester... hopefully. /// Andre: there is nothing wrong with this, just liked more the alternative I wrote down, feel free to change it back /AAndre
+There are two ways one can approach topological field theories:
+\begin{enumerate}
+	\item As a way to make (some\footnote{Sadly, TFTs cannot axiomatize many quantum field theories that are particularly useful in physics, e.g. the quantum field theory behind the standard model.}) quantum field theories more mathematically rigorous
+	\item As a way to refine bordism invariants, or, roughly, as a kind of homology for smooth manifolds of a certain dimension, instead of general topological spaces
+\end{enumerate}
+We now sketch how the former might make sense.
 \section{QFT}
 \epigraph{Physics is very interesting:
 There are many, many interesting theorems.
@@ -285,8 +307,8 @@ Therefore, axiomatizations have been developed exploiting new tools from geometr
 
 If someone is into mathematics for the money or the prestige\footnote{If not already sufficiently clear, we explicitly state that this is a joke.}, the field of topological field theories is the one to specialize in: \begin{itemize}
     \item René Thom, the mathematician who laid the foundation of cobordism theory\footnote{Which is at the root of TFTs: TFTs can be seen as a refinement of his work.} in his PhD thesis, received the Fields Medal for this.
-    % TODO is secondary here correct? What does it mean? Also, I would write Chern classes instead of Chern-Simons forms/William
-    \item Shiing-Shen Chern and Jim Simons discovered secondary characteristic classes of 3-dimensional manifolds called Chern-Simons forms, which underpinned the necessary tools to define the earliest example we have of a TFT: 3d Chern-Simons theory. Simons went on to found an incredibily successful hedge fund and became a billionaire. Chern continued to do groundbreaking work in differential geometry and topology; so much that some years ago the International Congress of Mathematicians named a prize after him: the \hyperlink{https://en.wikipedia.org/wiki/Chern_Medal}{Chern Medal}.
+    % TODO is secondary here correct? What does it mean? Also, I would write Chern classes instead of Chern-Simons forms/William 
+    \item Shiing-Shen Chern and Jim Simons discovered geometric invariants of 3-dimensional Riemannian manifolds called (classical) Chern-Simons invariants. They are a generalization of the total geodesic curvature, which is in turn a generalization of the curvature of a plane curve that $=0$ when the curve is a geodesic. Such invariants are the basic building blocks Witten used to define the earliest example we have of a TFT: 3d Chern-Simons theory\footnote{One can find more on this in \cite{freed2008remarks}}. Simons  then went on to found an incredibily successful hedge fund and became a billionaire. Chern continued to do groundbreaking work in differential geometry and topology; so much that some years ago the International Congress of Mathematicians named a prize after him: the \hyperlink{https://en.wikipedia.org/wiki/Chern_Medal}{Chern Medal}.
     \item Edward Witten received his Fields medal mainly because he found a link between 3d-TFTs, in particular Chern-Simons theory, and knot theory, in particular with the Jones polynomial. See \cite{Witten1989} for details.
 \end{itemize} 
 The Jones polynomial is a topological invariant of a knot, meaning that you can assign to each knot a Jones Polynomial in such a way that if two Knots have different polynomials, then they must be different.
@@ -367,7 +389,7 @@ This is exactly the idea of \textit{(co)bordism}:
     where, if $\partial M^n=\emptyset$ then define the map to be $0$.
     \item Let $H^{\text{bord}}_n(S)$ denote this ``homology theory'' of degree $n$ on the space $S$. Let $M^n$ be closed, then $\large{M^n\xrightarrow{f} S}$ is zero in $H^{\text{bord}}_n(S)$ if and only if the map $f$ extends to a $(n+1)-$dimensional smooth compact manifold $W$ such that $\partial W= M$.
 \end{enumerate}
-Using these ideas one obtains something very similar to singular homology even though different, indeed this bordism theory constitutes a generalized homology theory\footnote{There exist a list of axioms called \textit{Eilenberg–Steenrod axioms} that is used to define what a homology theory is since it may come in different flavours. A generalized homology theory is a theory that has every property required but one, generally (as in the case of Bordism as seen below) that one is the \textit{dimension axiom}.}! %could later put a comparison TFTs/Eilenberg-Steenrod as in Ayala-Francis Cobordism Hypothesis
+Using these ideas one obtains something very similar to singular homology even though different, indeed this bordism theory constitutes a generalized homology theory\footnote{There exist a list of axioms called \textit{Eilenberg–Steenrod axioms} that is used to define what a homology theory is since it may come in different flavours. A generalized homology theory is a theory that has every property required but one, generally (as in the case of Bordism as seen below) that one is the \textit{dimension axiom}.}! 
 
 \medskip
 
@@ -414,19 +436,11 @@ H^{\text{bord}}_n(pt)=
 \biggl\}.$$
 But are all these notions are actually useful? Well, classifying manifolds up to diffeomorphism is hard: dimension $0, 1$ and $2$ can be done without too much trouble but already in dimension $3$ things get complicated (think of the Poincaré Conjecture!)... so this classifications can be done (more easily) up to bordism!
 
-
+% TBD: Could be cool to restructure a bit this subsection more geared towards TFTs rather than Bordism invariants in general because  /Andrea 
 
 % -------------------------------------------------------------
 % --------------------- LECTURE 2 25/10 -----------------------
 % -------------------------------------------------------------
-
-%TODO find a better place for this
-\begin{notat}
-  Throughout this notes we will abuse notation in the following way, denoting a monoid $(M,\cdot)$ by $M$, a metric space $(X,d)$ by $X$ etc...
-\end{notat}
-\begin{notat}
-    $n$ manifold and $n$ bordism mean respectively $n$ dimensional manifold and $n$ dimensional bordism.
-\end{notat}
 
 \chapter{Manifolds and bordisms}
 
@@ -548,11 +562,32 @@ In some contexts, it can be interesting to do calculus on a manifold. In order t
 	 
 \begin{ex}% see how to go on another line for the first item. Solutions: \item[], \leavevmode, \hfill
 \hfill 
-	\begin{enumerate} % DRAWINGS
-		\item $D^n = \{x \in \R^n \mid  \ ||x||\leq 1\}$ the $n$ dimensional disk, which has a sphere as boundary: $\de D^n = S^{n-1}$.
-		\item Consider 2 dimensional \emph{open} disks, i.e. $D^2=\{x\in\R^2\mid \ ||x||<1\}$. We can remove such shapes from the sphere and get the manifold $S^2 \setminus D^2_1 \amalg D_2^2 \amalg D^2_3$ which we can visualize in different ways.
-		\item Let $X, Y$ be $n$ manifolds with boundary, then $X \amalg Y$ is an $n$ manifold with boundary.
-		\item $T= S^1 \times S^1$ is a $2$ manifold with $\de T = \emptyset$ and $T^{\text{solid}} = D^2 \times S^1$ is a $3$ manifold with $\de T^{\text{solid}} = T$.
+\begin{enumerate}
+	\item $D^n = \{x \in \R^n \mid  \ ||x||\leq 1\}$ the $n$ dimensional disk, which has a sphere as boundary: $\de D^n = S^{n-1}$
+	\item Consider 2 dimensional \emph{open} disks, i.e. $D^2=\{x\in\R^2\mid \ ||x||<1\}$. We can remove such shapes from the sphere and get the manifold $S^{2} \setminus D^{2}_{1} \amalg D_2^2 \amalg D^2_3$ which we can visualize in different ways.
+	\item Let $X, Y$ be $n$ manifolds with boundary, then $X \amalg Y$ is an $n$ manifold with boundary.
+	\item $T= S^1 \times S^1$ is a $2$ manifold with $\de T = \emptyset$ and $T^{\text{solid}} = D^2 \times S^1$ is a $3$-manifold with $\de T^{\text{solid}} = T$.
+%	I am having trouble with images but will resolve with the help of will /andrea    % DRAWINGS
+	%	\item \begin{figure}
+		%	\centering
+		%	\captionsetup{format = hang}
+		%	\includegraphics[width=7cm]{images/Lecture 2/Boundary Disk.png} 
+		%	\caption{$D^n = \{x \in \R^n \mid  \ ||x||\leq 1\}$ the $n$ dimensional disk, which has a sphere as boundary: $\de D^n = S^{n-1}$ 
+		%	}
+	%	\end{figure}
+		%\item \begin{figure}
+		%	\centering
+			%\captionsetup{format = hang}
+			%\includegraphics[width=7cm]{images/Lecture 2/Manifold3holes.png} 
+			%\caption{Consider 2 dimensional \emph{open} disks, i.e. $D^2=\{x\in\R^2\mid \ ||x||<1\}$. We can remove such shapes from the sphere and get the manifold $S^2 \setminus D^2_1 \amalg D_2^2 \amalg D^2_3$ which we can visualize in different ways.
+			%}
+		%\end{figure}
+	%	\begin{figure}
+		%	\centering
+		%	\captionsetup{format = hang}
+		%	\includegraphics[width=7cm]{images/Lecture 2/Manifold3holes.png} 
+		%	\caption{Consider 2 dimensional \emph{open} disks, i.e. $D^2=\{x\in\R^2\mid \ ||x||<1\}$. We can remove such shapes from the sphere and get the manifold $S^2 \setminus D^2_1 \amalg D_2^2 \amalg D^2_3$ which we can visualize in different ways.
+	%	}
 	\end{enumerate}
 \end{ex}
 
@@ -793,9 +828,11 @@ There is an insidious set-theoretic issue when we define the $n$-th cobordism gr
 \begin{rem}
     Actually $(\Omega_n,\amalg)$ is a finitely generated abelian group, but this is a hard theorem. In particular, it is a finite product of cyclic groups of order $2$ (from 2.)
 \end{rem}
-
+\begin{defn}[bordism invariant]
+	A bordism invariant is a homomorphism of abelian groups $$\Omega_n \to \Z$$ or $\R$, $\C$... or whatever abelian group captures that invariant
+\end{defn}
 \begin{rem}
-	Many important manifold invariants are also ``bordism invariants'' i.e. they lead to are homomorphisms of abelian groups $\Omega_n \to \Z$ (or $\R$, $\C$... or whatever abelian group captures that invariant). 
+	Many important manifold invariants are also bordism invariants
 \end{rem}
 
 \begin{ex}
@@ -1680,7 +1717,7 @@ We now consider the case with boundary:
 	Now $ \de M \neq \emptyset$, then $\de M = S^1 \amalg \dots \amalg S^1$. If $f$ is an admissible Morse function $f$ onto $[a,b]$ with $f^{-1}(a) \cong (S^1)^{\amalg m}$ and $f^{-1}(b) \cong (S^1)^{\amalg n}$. Now one can prove that we need neither 0-handles (if $m \neq 0$) nor 2-handles (if $n \neq 0$).
 \end{proof}
 
-\section{More on cobordism groups} % (fold)
+\section{More on cobordism groups}
 \label{sec:more_on_cobordism_groups}
 
 we now go back to cobordism groups to give some important results.
@@ -1717,47 +1754,89 @@ while for the oriented case we have
     \begin{equation}
         \Omega_\bullet \cong \Z_2[x_2, x_4, x_5, x_6, x_8, \dots], \text{ with } \deg x_k = k, k \neq 2^i-1
     \end{equation}
-    and the representative of the even degrees are given by $x_{2k} = [\R\P^{2k}]$.
+    and the generators of the even degrees are given by $x_{2k} = [\R\P^{2k}]$.
 \end{thm}
 \begin{rem}
     Note that $(\deg x_2)^2 = \deg 4$ so maybe we could imagine that $\R\P^2 \times \R\P^2 \sim \R\P^4$ however that's not true since $x_2^2 \neq x_4$.
 \end{rem}
 
-There are versions for any "tangential structure", such as orientation or (stable) framing.
+There are versions for any tangential structure, such as orientation or stable framing.
 
 \begin{thm}
     There is an isomorphism of \Z graded commutative rings:
-    \begin{equation}
+    
+    %TODO flip arrow
+    \begin{equation*}
         \Omega_\bullet^{or} \otimes \Q \cong \Q[y_4, y_8, y_{12}, \dots]
-    \end{equation}
-    with $y_{4k} = [\C\P^{2k}]$. We write it in this way because in this case there is nontrivial torsion. We could also write
-    \begin{equation}
-        \Omega_\bullet^{or} /\text{torsion} \cong \Z[z_4, z_8, z_{12}, \dots]
-    \end{equation}
-    where the representatives are given by Milnor hypersurfaces. This implies that the other degrees are either trivial or torsion.
-    %stiefel pontryagin classes
+    \end{equation*}
+     $$  y_{4k}\mapsto [\C\P^{2k}]$$
+     We write it in this way because in this case there is nontrivial torsion. We could also write
+       $$ \Omega_\bullet^{or} /\text{torsion} \cong \Z[z_4, z_8, z_12, \dots]$$
+    where the generators are given by Milnor hypersurfaces.
 \end{thm}
-\noindent In particular the groups in various degrees are given by:
-\begin{equation}
-	\Omega_\bullet^{or} = \Z, 0, 0, 0, \Z, \Z_2, 0, 0, \Z^2 \dots
-\end{equation}
-In addition all the following groups are nontrivial, i.e. $\Omega_n^{or} \neq 0, \forall n\geq 9$.
-%TODO add all groups
-
-The (stable) framed version instead is isomorphic to the homotopy of the sphere spectrum $\mathds S$, i.e. the stable homotopy groups of spheres. These are \textit{not} computed to all degrees and are studied in homotopy theory. The first 8 groups are given by:
-\begin{equation}
-    \Omega_\bullet^{fr} \cong \pi_\bullet(\mathds S) \cong \Z, \Z_2, \Z_2, \Z_{24}, 0, 0, \Z_2, \Z_{240}, \dots
-\end{equation}
+%Now we have Stiefel-Whitney and Pontryagin numbers, which are cobordism invariants and hence determine classes of cobordisms.  % It is not clear to me what they are and what we are referring to just copied from the script, maybe should add explication /Andrea
+%TODO maybe say more
+\begin{ex}
+In particular, the groups in various degrees are given by the following list:
+$$ \Omega_{0}^{\orient}=\Z$$
+$$ \Omega_{1}^{\orient}=0$$
+$$ \Omega_{2}^{\orient}=0$$
+$$ \Omega_{3}^{\orient}=0$$
+$$ \Omega_{4}^{\orient}=\Z$$
+$$ \Omega_{5}^{\orient}=\Z_2$$
+$$ \Omega_{6}^{\orient}=0$$
+$$ \Omega_{7}^{\orient}=0$$
+$$ \Omega_{8}^{\orient}=\Z\oplus\Z$$
+$$ \Omega_{n\geq 9}^{\orient}\neq 0$$
+For the latter see \cite[p. 203]{MilnorS05}.
+%TODO maybe torsion comments
+\end{ex}
+%would be cool to write something why these are the case, but mysterious to me for now TBD /ANdrea
+Very interestingly, the (stable) framed version is isomorphic to the stable homotopy groups of the sphere and it is \textit{not} computed to all degrees. This is one way to phrase a theorem named after Thom. It is fascinating because the stable homotopy groups of the sphere are central objects in stable homotopy theory. They are equivalently the homotopy groups of the sphere spectrum.
+%just as Z is the unit in AbGrp, S is the unit in Spectra, add definition of sphere spectrum and maybe intro to spectra since it will be useful later also. TBD /ANder
+\begin{thm}[Thom's theorem]
+	$\Omega_{n}^{\fr}\cong\pi_n(\mathds{S})$
+\end{thm}
+\begin{ex}
+ We list some examples of such groups
+ $$    \Omega^{fr}_0 \cong\Z$$
+  $$\Omega^{fr}_1 \cong\Z_2$$
+  $$\Omega^{fr}_2 \cong \Z_2 $$
+  $$\Omega^{fr}_3 \cong\Z_{24}$$
+  $$\Omega^{fr}_4 \cong 0$$
+  $$\Omega^{fr}_5 \cong 0$$
+  $$\Omega^{fr}_6 \cong\Z_2$$
+  $$\Omega^{fr}_7 \cong \Z_{240},$$
+  $$\Omega^{fr}_11 \cong\Z_{504}$$
+  $$\Omega^{fr}_15 \cong\Z_{480}\oplus\Z_2$$
+\end{ex}
 In a certain sense, $\mathds S$ is analgous to $\Z$ but in another category: \Z is the unit in Ab, while $\mathds S$ is the unit in spectra.
-
 
 % -------------------------------------------------------------
 % --------------------- LECTURE 9 22/11 -----------------------
 % -------------------------------------------------------------
 \chapter{Topological field theories}
 \section{A modern perspective on cobordisms}
-In \ref{Cob Groups} we extracted an algebraic structure from bordisms by first observing that being cobordant is an equivalence relation and then studying the equivalence classes of closed $n$ manifolds. $\Omega_n$ were at first only sets, but together with disjoint unions this resulted in an abelian group, and eventually in a \Z graded commutative ring, and this was a key tool for classifying manifolds up to cobordism. However, this algebraic structure merely records that there is a bordism between two manifolds (since two manifolds are equivalent just if there is a bordism, independently of what kind of bordism it is), thereby forgetting other properties of the bordism itself. We switch now perspective and analyze a more sophisticated structure remembering \underline{how} two manifolds are cobordant, e.g. indicating the manifold that bounds them and the direction of the bordism: the symmetric monoidal category $\Bord_{n,n-1}$ where objects are $(n-1)$ manifolds and morphisms are $n-$cobordisms. For $\Bord_{n,n-1}$ we'll follow the same procedure: we start by defining it as a category but we'll then find that it has additional structure that is somehow analogous to what we had for $\Omega_n$.
+
+A bordism invariant was characterized as a homomorphism from the cobordism group to some other abelian group. 
+To extract the cobordism group from bordism we took the following steps
+\begin{enumerate}
+	\item observed that being cobordant is an equivalence relation,
+	\item considered the equivalence classes of closed $n$ manifolds up to $n+1$ cobordisms, obtaining the \textit{sets} $\Omega_n$,
+	\item took such equivalence classes together with disjoint unions, this resulted in an abelian group\footnote{And eventually in a \Z graded commutative ring, but this will not be as important for us from now on.}.
+\end{enumerate} 
+This strategy was the key for classifying manifolds up to cobordism. 
+However, the cobordism groups merely record that \emph{there is} a bordism between two manifolds (since two manifolds are equivalent just if there is a bordism, independently of what kind of bordism it is), 
+thereby forgetting other properties of the bordism itself. 
+We swich now perspective and analyze a more sophisticated structure remembering \underline{how} two manifolds are cobordant, 
+e.g. indicating the manifold that bounds them and the direction of the bordism: the symmetric monoidal category $\Bord_{n,n-1}$ where objects are $(n-1)$ manifolds and morphisms are $n-$cobordisms. We will do this via a process called categorification\footnote{Sometimes, e.g. in the nLab, also called vertical categorification.}: adding categorical structure to things, 
+e.g.\footnote{Note that although this way of categorifying is the most prominent one, it is strictly speaking not the only instance of categorifying, one could also go from category theory to higher category theory.} 
+passing from set-theoretic notions like set or function  categorical ones like category or functor. 
+The invariants will become in turn functors from $\Bord_{n,n-1}$ to categories of algebraic nature like $\Vect_k$, the category of vector spaces on a field $k$. 
+Such categorified cobordism invariants are exactly topological field theories (TFTs). 
+
 The following table summarizes the comparison between additional structures in the two perspectives:
+
 \begin{center}
     \begin{tabular}{||c|c||}
     \hline
@@ -1765,9 +1844,11 @@ The following table summarizes the comparison between additional structures in t
          \hline\hline
          set & category \\
          \hline
-         monoid/group & monoidal category \\
+         monoid & monoidal category \\
          \hline
-         commutative monoid/abelian group & symmetric monoidal category \\
+         commutative monoid & symmetric monoidal category \\
+         \hline
+         abelian group & Picard groupoid \\
          \hline
     \end{tabular}
 \end{center}
@@ -1779,18 +1860,20 @@ Analogously to the comparison between the set-theoretic and category-theoretic p
          \hline\hline
          set & vector space\\
          \hline
-         monoid/group & associative algebra \\
+         monoid & associative algebra \\
          \hline
-         commutative monoid/abelian group & commutative algebra \\
+         commutative monoid & commutative algebra \\
          \hline
     \end{tabular}
 \end{center}
-We make both these comparisons more rigorous by later (\ref{MonObj}) showing that\begin{enumerate}
+We make both these comparisons more rigorous by later (\ref{MonObj}) showing that
+\begin{enumerate}
     \item a monoid is a monoid object in the category of sets.
-    \item an associative algebra is a monoid object in the category of $k$-vector spaces $\Vect_k$.
-    \item a (\emph{strict}) monoidal category is a monoid object in the category of small categories Cat-
+    \item an associative algebra is a monoid object in the category of $k$-vector spaces $Vect_k$
+    \item a (\emph{strict}) monoidal category is a monoid object in the category of small categories Cat
 \end{enumerate} 
-The same holds for the commutative case, commutative monoids, commutative algebras and (\emph{strict}) symmetric monoidal categories are all examples of commutative monoid objects (see \ref{CommMonObj}).
+The same holds for the commutative case, commutative monoids, commutative algebras and (\emph{strict}\footnote{We will also sketch a way how to get general symmetric monoidal categories, i.e. not necessarily strict. See \ref{EAlg}.}) 
+symmetric monoidal categories are all examples of commutative monoid objects (see \ref{CommMonObj}).
 
 \section{Summary of Category Theory}
 \subsection{Cathegory theory language} % (fold)
@@ -2525,7 +2608,7 @@ Another example of non-cartesian monoidal category, which is not algebraic in na
         \item There is a diffeomorphism $X\amalg Y\cong Y\amalg X$ making Disk$^{or}_{1,0}$ a \emph{symmetric} monoidal category
     \end{itemize}  We will use it to give an equivalent definition of $k$-algebra (see \ref{EAlg}), but in general they can be used to define factorization algebras, a very important tool in the field of TFTs, see \cite{Tanaka_2020}.
 \end{ex}
-\paragraph{Objects Internal to a Monoidal Category}
+\subsubsection{Objects Internal to a Monoidal Category}
 \begin{defn}[Monoid Object]
     A monoid object in a monoidal category $\cat$ is an object $M\in\cat$ equipped with two distinguished morphisms, $\mu:M\otimes M\to M$ and $\eta:\mathbb{1}_\cat\to M$ called respectively multiplication and unit such that the following diagram commutes, so that the binary operation associative 
     % https://q.uiver.app/#q=WzAsNSxbMCwwLCIoTVxcb3RpbWVzIE0pXFxvdGltZXMgTSJdLFsxLDAsIk1cXG90aW1lcyhNXFxvdGltZXMgTSkiXSxbMiwwLCJNXFxvdGltZXMgTSJdLFswLDEsIk1cXG90aW1lcyBNIl0sWzIsMSwiTSJdLFswLDEsIlxcYWxwaGFfe00sTSxNfSJdLFsxLDIsImlkX01cXG90aW1lc1xcbXUiXSxbMCwzLCJcXG11XFxvdGltZXMgaWRfTSIsMl0sWzMsNCwiXFxtdSIsMl0sWzIsNCwiXFxtdSJdXQ==
