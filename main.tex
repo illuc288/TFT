@@ -74,8 +74,10 @@
 \DeclareMathOperator{\Bord}{Bord}
 \DeclareMathOperator{\ind}{ind}
 \DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\orient}{or}
 \DeclareMathOperator{\ob}{ob}
 \DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\fr}{fr}
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\Vect}{Vect}
 \DeclareMathOperator{\Ab}{Ab}
@@ -221,13 +223,16 @@ These are the lecture notes of the course \textit{``Bordism and Topological Fiel
 
 
 \newpage
-
 \clearpage
 \pagenumbering{arabic}
+
+
 
 % -------------------------------------------------------------
 % --------------------- LECTURE 1 23/10 -----------------------
 % -------------------------------------------------------------
+
+%Just realized that it looks weird put here because of 'contents' at the top of the page, don't know how to resolve /andrea
 \section*{Notational Conventions}
 \begin{notat}
 	Throughout these notes we will abuse notation indicating a collection with some structure on it just by writing down the collection, e.g. denoting a monoid $(M,\cdot)$ by $M$, a metric space $(X,d)$ by $X$ etc...
@@ -811,9 +816,11 @@ There is an insidious set-theoretic issue when we define the $n$-th cobordism gr
 \begin{rem}
     Actually $(\Omega_n,\amalg)$ is a finitely generated abelian group, but this is a hard theorem. In particular, it is a finite product of cyclic groups of order $2$ (from 2.)
 \end{rem}
-
+\begin{defn}[bordism invariant]
+	A bordism invariant is a homomorphism of abelian groups $$\Omega_n \to \Z$$ or $\R$, $\C$... or whatever abelian group captures that invariant
+\end{defn}
 \begin{rem}
-	Many important manifold invariants are also ``bordism invariants'' i.e. they lead to are homomorphisms of abelian groups $\Omega_n \to \Z$ (or $\R$, $\C$... or whatever abelian group captures that invariant). 
+	Many important manifold invariants are also bordism invariants
 \end{rem}
 
 \begin{ex}
@@ -1670,7 +1677,7 @@ Question: What about the unoriented case? (\textit{Hint: enough to have one atta
 %TODO does this go in the proof?
 Last step: $ \de M \neq \emptyset$, oriented, connected, then $\de M = S^1 \amalg \dots \amalg S^1$. If $f$ is an admissible Morse function $f$ onto $[a,b]$ with $f^{-1}(a) \cong (S^1)^{\amalg m}$ and $f^{-1}(b) \cong (S^1)^{\amalg n}$. Now one can prove that we don't need neither 0-handles (if $m \neq 0$) nor 2-handles (if $n \neq 0$).
 
-Back to cobordism groups.
+\section{Back to cobordism groups: bordism invariants}
 
 We had found 
 \begin{align}
@@ -1704,34 +1711,59 @@ and for the oriented case
     \begin{equation}
         \Omega_\bullet \cong \Z_2[x_2, x_4, x_5, x_6, x_8, \dots], \text{ with } \deg x_k = k, k \neq 2^i-1
     \end{equation}
-    and the representative of the even degrees are given by $x_{2k} = [\R\P^{2k}]$.
+    and the generators of the even degrees are given by $x_{2k} = [\R\P^{2k}]$.
 \end{thm}
 \begin{rem}
     Note that $(\deg x_2)^2 = \deg 4$ so maybe we could imagine that $\R\P^2 \times \R\P^2 \simeq \R\P^4$ however that's not true since $x_2^2 \neq x_4$.
 \end{rem}
 
-There are versions for any "tangential structure", such as orientation or (stable) framing.
+There are versions for any tangential structure, such as orientation or stable framing.
 
 \begin{thm}
     There is an isomorphism of \Z graded commutative rings:
-    \begin{equation}
-        \Omega_\bullet^{or} \otimes \Q \cong \Q[y_4, y_8, y_12, \dots]
-    \end{equation}
-    with $y_{4k} = [\C\P^{2k}]$. We write it in this way because in this case there is nontrivial torsion. We could also write
-    \begin{equation}
-        \Omega_\bullet^{or} /\text{torsion} \cong \Z[z_4, z_8, z_12, \dots]
-    \end{equation}
-    where the representatives are given by Milnor hypersurfaces.
-    %stiefel pontryagin classes
+    $$\Q[y_4, y_8, y_12, \dots] \cong \Omega_\bullet^{or} \otimes \Q$$
+     $$  y_{4k}\mapsto [\C\P^{2k}]$$
+     We write it in this way because in this case there is nontrivial torsion. We could also write
+       $$ \Omega_\bullet^{or} /\text{torsion} \cong \Z[z_4, z_8, z_12, \dots]$$
+    where the generators are given by Milnor hypersurfaces.
 \end{thm}
-In particular the groups in various degrees are given by:
-%TODO add all groups
+Now we have Stiefel-Whitney and Pontryagin numbers, which are cobordism invariants and hence determine classes of cobordisms  % It is not clear to me what they are and what we are referring to just copied from the script, maybe should add explication /Andrea
+\begin{ex}
+The groups in various degrees are given by the following list:
+$$ \Omega_{0}^{\orient}=\Z$$
+$$ \Omega_{1}^{\orient}=0$$
+$$ \Omega_{2}^{\orient}=0$$
+$$ \Omega_{3}^{\orient}=0$$
+$$ \Omega_{4}^{\orient}=\Z$$
+$$ \Omega_{5}^{\orient}=0$$
+$$ \Omega_{6}^{\orient}=0$$
+$$ \Omega_{7}^{\orient}=0$$
+$$ \Omega_{8}^{\orient}=\Z\oplus\Z$$
+$$ \Omega_{n\geq 9}^{\orient}\neq 0$$
+For the latter see \cite[p. 203]{MilnorS05}
+\end{ex}
+%would be cool to write something why these are the case, but mysterious to me for now TBD /ANdrea
+Very interestingly, the framed version is isomorphic to the stable homotopy groups of the sphere and it is \textit{not} computed to all degrees. This is one way to phrase a theorem named after Thom. It is fascinating because the stable homotopy groups of the sphere are central objects in stable homotopy theory. They are equivalently the homotopy groups of the sphere spectrum.
+%just as Z is the unit in AbGrp, S is the unit in Spectra, add definition of sphere spectrum and maybe intro to spectra since it will be useful later also. TBD /ANder
+\begin{thm}[Thom's theorem]
+	$\Omega_{n}^{\fr}\cong\pi_n(\mathbb{S})$
+\end{thm}
+\begin{ex}
+ We list some examples of such groups
+ $$    \Omega^{fr}_0 \cong\Z$$
+  $$\Omega^{fr}_1 \cong\Z_2$$
+  $$\Omega^{fr}_2 \cong \Z_2 $$
+  $$\Omega^{fr}_3 \cong\Z_{24}$$
+  $$\Omega^{fr}_4 \cong 0$$
+  $$\Omega^{fr}_5 \cong 0$$
+  $$\Omega^{fr}_6 \cong\Z_2$$
+  $$\Omega^{fr}_7 \cong \Z_{240},$$
+  $$\Omega^{fr}_11 \cong\Z_{504}$$
+  $$\Omega^{fr}_15 \cong\Z_{480}\oplus\Z_2$$
+\end{ex}
 
-\begin{equation}
-    \Omega_\bullet^{fr} = \Z, \Z_2, \Z_2, \Z_{24}, 0, 0, \Z_2, \Z_{240}, \dots
-\end{equation}
-isomorphic to the homotopy of the sphere spectrum and it is \textit{not} computed to all degrees and it is studied in homotopy theory.
-%just as Z is the unit in AbGrp, S is the unit in Spectra
+
+
 
 
 % -------------------------------------------------------------
@@ -1739,7 +1771,12 @@ isomorphic to the homotopy of the sphere spectrum and it is \textit{not} compute
 % -------------------------------------------------------------
 \chapter{Topological field theories}
 \section{A modern perspective on cobordisms}
-In \ref{Cob Groups} we extracted an algebraic structure from bordisms by first observing that being cobordant is an equivalence relation and then studying the equivalence classes of closed $n$ manifolds. Together with disjoint unions, this resulted in an abelian group, and eventually in a \Z graded commutative ring, and this was a key tool for classifying manifolds up to cobordism. However, this algebraic structure merely records that there is a bordism between two manifolds (since two manifolds are equivalent just if there is a bordism, independently of what kind of bordism it is), thereby forgetting other properties of the bordism itself. We switch now perspective and analyze a more sophisticated structure remembering \underline{how} two manifolds are cobordant, e.g. indicating the direction of the bordism: the symmetric monoidal category $Bord_{n,n-1}$ where objects are $(n-1)$ manifolds and morphisms are $n-$cobordisms. The following table summarizes the comparison between the two perspectives:
+A bordism invariant was characterized as a homomorphism from the cobordism group to some other abelian group. To extract the cobordism group from bordism we\begin{enumerate}
+	\item observed that being cobordant is an equivalence relation
+	\item considered the equivalence classes of closed $n$ manifolds
+	\item took such equivalence classes together with disjoint unions, this resulted in an abelian group\footnote{And eventually in a \Z graded commutative ring, but this will be not as important for us from now on.}
+\end{enumerate} 
+This strategy was the key for classifying manifolds up to cobordism. However, this algebraic structure merely records that \emph{there is} a bordism between two manifolds (since two manifolds are equivalent just if there is a bordism, independently of what kind of bordism it is), thereby forgetting other properties of the bordism itself. We swich now perspective and analyze a more sophisticated structure remembering \underline{how} two manifolds are cobordant, e.g. indicating the direction of the bordism. We will do this via a process call categorification\footnote{Sometimes, e.g. in the nLab, also called vertical categorification.}: adding categorical structure to things, e.g.\footnote{Note that although this way of categorifying is the most prominent one, it is strictly speaking this is not the only instance of categorifying, one could also go from category theory to higher category or from higher category theory.} passing from set-theoretic notions like set or function  categorical ones like category or functor. We will upgrade the algebraic description of cobordisms from the cobordism group to the symmetric monoidal category $\Bord_{n,n-1}$ where objects are $(n-1)$ manifolds and morphisms are $n-$bordisms. The invariants will become in turn functors from $\Bord_{n,n-1}$ to categories of algebraic nature like $\Vect_k$, the category of vector spaces on a field $k$. Such categorified cobordism invariants are exactly topological field theories. The following table summarizes the comparison between the two perspectives:
 \begin{center}
     \begin{tabular}{||c|c||}
     \hline
@@ -1747,9 +1784,11 @@ In \ref{Cob Groups} we extracted an algebraic structure from bordisms by first o
          \hline\hline
          set & category \\
          \hline
-         monoid/group & monoidal category \\
+         monoid & monoidal category \\
          \hline
-         commutative monoid/abelian group & symmetric monoidal category \\
+         commutative monoid & symmetric monoidal category \\
+         \hline
+         abelian group & Picard groupoid \\
          \hline
     \end{tabular}
 \end{center}
@@ -1761,9 +1800,9 @@ In \ref{Cob Groups} we extracted an algebraic structure from bordisms by first o
          \hline\hline
          set & vector space\\
          \hline
-         monoid/group & associative algebra \\
+         monoid & associative algebra \\
          \hline
-         commutative monoid/abelian group & commutative algebra \\
+         commutative monoid & commutative algebra \\
          \hline
     \end{tabular}
 \end{center}
@@ -1771,7 +1810,7 @@ We make both these comparisons more rigorous by later (\ref{MonObj}) showing tha
     \item a monoid is a monoid object in the category of sets
     \item an associative algebra is a monoid object in the category of $k$-vector spaces $Vect_k$
     \item a (\emph{strict}) monoidal category is a monoid object in the category of small categories Cat
-\end{enumerate} The same holds for the commutative case, commutative monoids, commutative algebras and (\emph{strict}) symmetric monoidal categories are all examples of commutative monoid objects (see \ref{CommMonObj}).
+\end{enumerate} The same holds for the commutative case, commutative monoids, commutative algebras and (\emph{strict}\footnote{We will also sketch a way how to get general, i.e. not necessarily strict, symmetric monoidal categories. See \ref{EAlg}.}) symmetric monoidal categories are all examples of commutative monoid objects (see \ref{CommMonObj}).
 \section{Summary of Category Theory}
 \begin{defn}
 \label{Cat}
@@ -2468,7 +2507,7 @@ Another example of non-cartesian monoidal category, which is not algebraic in na
         \item There is a diffeomorphism $X\amalg Y\cong Y\amalg X$ making Disk$^{or}_{1,0}$ a \emph{symmetric} monoidal category
     \end{itemize}  We will use it to give an equivalent definition of $k$-algebra (see \ref{EAlg}), but in general they can be used to define factorization algebras, a very important tool in the field of TFTs, see \cite{Tanaka_2020}.
 \end{ex}
-\paragraph{Objects Internal to a Monoidal Category}
+\subsubsection{Objects Internal to a Monoidal Category}
 \begin{defn}[Monoid Object]
     A monoid object in a monoidal category $\cat$ is an object $M\in\cat$ equipped with two distinguished morphisms, $\mu:M\otimes M\to M$ and $\eta:\mathbb{1}_\cat\to M$ called respectively multiplication and unit such that the following diagram commutes, so that the binary operation associative 
     % https://q.uiver.app/#q=WzAsNSxbMCwwLCIoTVxcb3RpbWVzIE0pXFxvdGltZXMgTSJdLFsxLDAsIk1cXG90aW1lcyhNXFxvdGltZXMgTSkiXSxbMiwwLCJNXFxvdGltZXMgTSJdLFswLDEsIk1cXG90aW1lcyBNIl0sWzIsMSwiTSJdLFswLDEsIlxcYWxwaGFfe00sTSxNfSJdLFsxLDIsImlkX01cXG90aW1lc1xcbXUiXSxbMCwzLCJcXG11XFxvdGltZXMgaWRfTSIsMl0sWzMsNCwiXFxtdSIsMl0sWzIsNCwiXFxtdSJdXQ==
