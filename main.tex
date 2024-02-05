@@ -4029,7 +4029,7 @@ Now, what happens if we take $U=V=W$? Let $\beta:= \beta_{V,V}$, we now get
     (\beta \otimes id)\circ (id \otimes \beta)\circ (\beta \otimes id)= (id \otimes \beta) \circ (\beta \otimes id) \circ (id \otimes \beta)
 \end{equation}
 which is reminiscent of the Yang-Baxter equation (YBE):
-\begin{defn}
+\begin{defn}[Yang-Baxter Equation and $R$-matrix]
     Let $V$ be a vector space, $c \in \Aut(V \otimes V)$. The YBE for $c$ is 
     \begin{equation}
         (c \otimes id)\circ (id \otimes c)\circ (c \otimes id)= (id \otimes c) \circ (c \otimes id) \circ (id \otimes c)
@@ -4081,7 +4081,8 @@ Solutions of YBE give representations of the braid group, which we now recall.
 \subsection{The braid group and the Braid category} % (fold)
 \label{ssub:the_braid_group}
 
-\begin{defn}\label{defn:braid_group}
+\begin{defn}[Braid groups]
+\label{defn:braid_group}
     Let $k\geq 3$. The braid group $B_k$ with $k$ strands has $k-1$ generators $\sigma_1, \dots, \sigma_{k-1}$ and 2 relations:
     \begin{flalign}
         \label{eq:braid_relations}
@@ -4097,18 +4098,21 @@ Solutions of YBE give representations of the braid group, which we now recall.
     % \end{enumerate}
     In addition $B_2$ is the free group on one generator $\sigma$, i.e. it is isomorphic to $\Z$ and $B_1 = B_0 = {e}$.
 \end{defn}
-The reason we call $B_k$ the braid group with $k$ strands is that we can picture the elements $\sigma_i$ in the following way:
+\noindent The reason we call $B_k$ the braid group with $k$ strands is that we can picture the elements $\sigma_i$ in the following way:
 %DRAWING
 
 \begin{rem}
-    There is a surjective homomorphism
+    There is a surjective homomorphism to the symmetric group
     \begin{equation}
-        B_k \to S_k
+        \begin{tikzcd}[row sep=tiny, column sep=small]
+            B_k \ar[r] & S_k \\
+            \sigma_k \ar[r, mapsto] & s_k
+        \end{tikzcd}
     \end{equation}
-    which is clear since $S_k$ has the same generators and relations with in addition $\sigma_i^2=e$.
+    which is clear since $S_k$ has the same generators and relations with in addition $s_i^2=e$.
 \end{rem}
 
-\begin{prop}
+\begin{prop}\label{prop:Rmatrix_reptheory}
     Let $c \in \Aut(V \otimes V)$ be an $R$ matrix (i.e. a solution of the YBE). Then, for any $k >0$, there is a unique homomorphism $\rho_k^c: B_k \to \Aut(V^{\otimes k})$ (i.e. a representation of $B_k$ on $\Aut(V^{\otimes k})$) such that
     \begin{equation}
         \rho_k^c (\sigma_i):= c_i, \quad i=1, \dots, k-1
@@ -4118,10 +4122,11 @@ The reason we call $B_k$ the braid group with $k$ strands is that we can picture
         c_i := 
         \begin{cases}
             c \otimes id_{V^{\otimes(k-2)}}, &i=1 \\
-            id_{V^{\otimes(i-1)}} \otimes c \otimes id_{V^{\otimes(...)}}, & 1<i<k-1 \\
+            id_{V^{\otimes(i-1)}} \otimes c \otimes id_{V^{\otimes(k-i-1)}}, & 1<i<k-1 \\
             id_{V^{\otimes(k-2)}} \otimes c, & i=k-1    
         \end{cases}
     \end{equation}
+    (the second expression alone is enough is we forget about the identity when we have $id_{V^{\otimes 0}}$)
 \end{prop}
 % so R matrices give us representations of the Braid groups, is the converse also true?
 \begin{rem}
@@ -4129,58 +4134,87 @@ The reason we call $B_k$ the braid group with $k$ strands is that we can picture
     \begin{equation}
         c_1 c_2 c_1 = c_2 c_1 c_2
     \end{equation}
+    since the extra identities have no relevant effect. Equivalently then the YBE can also be written as 
+    \begin{equation}
+        c_i c_{i+1} c_i = c_{i+1} c_i c_{i+1}
+    \end{equation}
 \end{rem}
 
 \begin{proof}
     Define $\rho_k^c (\sigma_i):= c_i$ and check that the $c_i$ satisfy the relations in Definition \ref{defn:braid_group}. 
 
-    For (1)...
+    \noindent For 1. we would like
+    \begin{equation}
+        c_j c_i
+        = 
+        c_i c_j 
+    \end{equation}
+    for $i > j+1$. This follows from the fact that $c_i$ and $c_j$ don't "interact":
+    \begin{align*}
+        &
+        (id_{V^{\otimes(j-1)}} \otimes c \otimes id_{V^{\otimes(k-j-1)}})
+        (id_{V^{\otimes(i-1)}} \otimes c \otimes id_{V^{\otimes(k-i-1)}}) 
+        \\
+        =&
+        (id_{V^{\otimes(j-1)}} \otimes c \otimes id_{V^{\otimes(i-j-2)}}\otimes id_{V^{\otimes 2}} \otimes id_{V^{\otimes(k-i-1)}}) 
+        (id_{V^{\otimes(i-1)}} \otimes c \otimes id_{V^{\otimes(k-i-1)}})
+        \\
+        =&(id_{V^{\otimes(j-1)}} \otimes c \otimes id_{V^{\otimes(i-j-2)}} \otimes c \otimes id_{V^{\otimes(k-i-1)}} )\\
+        =&
+        (id_{V^{\otimes(i-1)}} \otimes c \otimes id_{V^{\otimes(k-i-1)}}) 
+        (id_{V^{\otimes(j-1)}} \otimes c \otimes id_{V^{\otimes(k-j-1)}})
+    \end{align*}
 
-    Then (2) follows from the YBE written in terms of $c_1$ and $c_2$.
-    %TODO complete
+    \noindent 2. simply follows from the remark above.
 \end{proof}
 
 % -------------------------------------------------------------
 % ---------------------- LECTURE 17 10/1 ----------------------
 % -------------------------------------------------------------
 
+The braid group is also connected to the concept of configuration space.
 %TODO check reference for names...
-\begin{defn}
+\begin{defn}[Unordered configuration space]
     Let $\uConf_k(\R^2) \subset (\R^2)^k$ (the ordered configuration space of $\R^2$) be the subspace of $k$-tuples $(x_1, \dots, x_k)$ such that $x_i \neq x_j$ for $i\neq j$.
     Then we have an action $S_k \acts \uConf_k(\R^2)$. 
     The \textit{unordered} configuration space is $\Conf_k(\R^2) := \uConf_k(\R^2)/S_k$.
 \end{defn}
 
-Distinguished configuration... %TODO complete
-
-We have a homomorphism $B \to \pi_1(\Conf_k(\R^2), p)$ which sends $\sigma_i \mapsto \hat \sigma_i = [f_i]$ where $f^i$ is a loop at $p = [(1, 2, )]$ in $(\R^2)^k$, given by:
+% Distinguished configuration... %TODO complete, was this just the choice of p or what /William
+\noindent We would like to talk about the fundamental group of $\Conf_k(\R^2)$, but for that we need to pick a basepoint. Let us indicate coordinates by working in \C rather than in $\R^2$. Then let $p = [(1, 2, \dots, k)] \in \C^k$, that is to say that all points are placed on the $x$-axis in steps of 1 (and the square brackets are to indicate the class under the quotient by $S_k$).
+\noindent We then have a homomorphism $B \to \pi_1(\Conf_k(\R^2), p)$ which sends $\sigma_i \mapsto \hat \sigma_i = [f_i]$ where $f^i$ is a loop at $p$, defined in $(\R^2)^k$ by:
+\begin{equation}
+    f^i = (f_1^i, \dots, f_k^i): [0,1] \to (\R^2)^k \cong \C^k
+\end{equation}
 \begin{align}
-    f^i &= (f_1^i, \dots, f_k^i): [0,1] \to (\R^2)^k \cong \C^k\\
     f^i_j(s) &= j, \quad \text{if } j \neq i, i+1 \\
     f^i_i(s) &= \frac{1}{2} (2i+1 - e^{\pi i s}) \\
     f^i_{i+1}(s) &= \frac{1}{2} (2i+1 - e^{\pi i s}) 
 \end{align}
 this indeed induces a loop in $\Conf_k (\R^2)$.
 
-For it to be a homomorphism we need to check that the images of $\sigma_i$ satisfy the relations \ref{eq:braid_relations} of the $B_k$ group.
+\noindent For it to be a homomorphism we need to check that the images of $\sigma_i$ satisfy the relations \ref{eq:braid_relations} of the $B_k$ group.
 \begin{enumerate}
     \item $\hat\sigma_i \hat\sigma_j = \hat\sigma_j \hat\sigma_i$ for $|i-j|>1$
-    %TODO drawing and explanation
     \item $\hat\sigma_i \hat\sigma_{i+1} \hat\sigma_i = \hat\sigma_{i+1} \hat\sigma_i \hat\sigma_{i+1}$ for $1\leq i<k-1$
 \end{enumerate}
+For 1. one finds the same result as in the proof of Proposition \ref{prop:Rmatrix_reptheory} above, i.e. for $|i-j|>1$, $\hat\sigma_i$ and $ \hat\sigma_j$ don't "interact" with one another. Instead 2. can be checked visually.
+%DRAWING
 
-The following important result can be found in "The theory of braids", by Artin in 1947. %TODO put it as reference
+\noindent The following important result can be found in \cite{Artin1950}. 
 \begin{thm}
     This homomorphism $\phi: B_k \to \pi_1 (\Conf_k(\R^2),p)$ is an isomorphism.
 \end{thm}
 
-Given a representative $f = (f_1, \dots, f_k): [0,1] \to (\R^2)^k$ of an element in $\pi_1(\Conf_k(\R^2),p)$
+The drawings above may give us the idea to construct a category in which morphisms are given by the paths $f$ which are morphisms between sets $k$ points. This will be the Braid category.
+\noindent More in detail, given a representative $f = (f_1, \dots, f_k): [0,1] \to (\R^2)^k$ of an element in $\pi_1(\Conf_k(\R^2),p)$ we can define the following subset of $[0,1] \times \R^2$:
 \begin{equation}
-    L_f = \bigcup_{j=1}^k \{(s, f_i(s): s \in [0,1]\} \subseteq [0,1] \times \R^2
+    L_f = \bigcup_{j=1}^k \{(s, f_j(s)): s \in [0,1]\}
 \end{equation}
+which is pretty much what we were drawing above, the graph of the path considered. It is therefore simply the union of disjoint line segments.
 Note now that
 \begin{enumerate}
-    \item $\de L_f = \{0,1\} \times \{1,2, \dots, k\}$
+    \item $\de L_f = \{0,1\} \times \{1,2, \dots, k\}$ since the path starts and ends at $p=[(1, 2, \dots, k)]$.
     \item $\forall s \in [0,1]$ we have that $L_f \cap (\{s\} \times \R^2) = k$ points.
     \item $L_f$ is a bordism from $\{1,\dots, k\}$ to itself. Where in addition we can add an orientation by "flowing" from 0 to 1.
     \item group structure gives the composition of bordisms.
@@ -4189,12 +4223,11 @@ Note now that
     %DRAWING
 \end{enumerate}
 
-This allows us to define the following category:
-We can now define the category :
+\noindent This allows us to define the following category:
 \begin{defn}
     The $\Braid$ category is given by:
     \begin{itemize}
-        \item objects: natural numbers $0, 1, \dots, k, \dots$
+        \item objects: natural numbers $0, 1, \dots, k, \dots$, which we think of as sets of $k$ points,
         \item morphisms: 
             \begin{equation}
                  \Hom_{\Braid}(k,l) = 
@@ -4205,14 +4238,17 @@ We can now define the category :
                  %& \emptyset\quad \text{if } k \neq l\\
                  %& \text{isotopy classes of "braids" from $k$ to $k$}
              \end{equation} 
-             By braids we mean a "permutation 1 bordism together with an embedding" $\bigcup_{\{1, \dots, k\}} [0,1] \hookrightarrow [0,1] \times \R^2$ such that 1 and 2 hold.
+             By braids we mean a "permutation 1 bordism together with an embedding" $\bigcup_{\{1, \dots, k\}} [0,1] \hookrightarrow [0,1] \times \R^2$ such that 1. and 2. hold.
+             %I think 1. is implied and we only need 2 /William
          \item composition is "stacking the pictures", i.e. composition of bordisms plus stacking embeddings (using $[0,1] \cup_{1=0} [0,1] \cong [0,1]$). 
-         \item braided monoidal structure given by stacking $\R^2$s next to each other (using embedding $\R^2 \amalg \R^2 \cong [0,1]^2 \amalg [0,1]^2 \hookrightarrow \R^2 \cong [0,1]^2$).
+         \item braided monoidal structure given pictorially by stacking $\R^2$s next to each other, in the sense that $k \otimes l = k+l$ in which the additional $l$ points are simply stacked next to the initial $k$ points. 
+         %(using embedding $\R^2 \amalg \R^2 \cong [0,1]^2 \amalg [0,1]^2 \hookrightarrow \R^2 \cong [0,1]^2$).
     \end{itemize}
 \end{defn}
 
 \begin{exercise}
     One could now prove that $\Braid \simeq \coprod_{k\geq 0} B_k$, where $\coprod_{k\geq 0} B_k$ was in one of the exercise sheets. 
+    %Isomorphism or equivalence of categories? /William
 \end{exercise}
 
 \subsection{Expanding the Braid category: the Tangle category} % (fold)
@@ -4228,21 +4264,23 @@ Next step: allow more morphisms, namely all bordisms, together with suitable emb
 \end{defn}
 %DRAWING example
 
-We can now define the tangle category, of which $\Braid$ will be a (braided monoidal) subcategory.
+\noindent We can now define the tangle category, of which $\Braid$ will be a (braided monoidal) subcategory.
 \begin{defn}
     The tangle category $\Tang_1$ has:
     \begin{itemize}
         \item objects: natural numbers
         \item morphisms: 
         \begin{equation}
-            \Hom_{\Tang}(k,l) = \{\text{isotopy classes of tangles from $k$ to $l$ points}\}
+            \Hom_{\Tang_1}(k,l) = \{\text{isotopy classes of tangles from $k$ to $l$ points}\}
             %TODO specify somewhere what we mean by isotopy
         \end{equation}
         \item composition of underlying bordisms and stacking embeddings using $[0,1] \cup_{1=0} [0,1] \hookrightarrow [0,1]$
         \item braided monoidal structure as before
     \end{itemize}
 \end{defn}
+\noindent Note that we also have $\Braid \subset \Tang_1$.
 
+%I think we already have this def /William
 \begin{defn}
     Let $(\cat, \otimes)$ be a monoidal category and $X \in \cat$. We say that $Y$ is a right dual of $X$ if there is 
     \begin{align}
@@ -4264,38 +4302,38 @@ We can now define the tangle category, of which $\Braid$ will be a (braided mono
 % -------------------------------------------------------------
 
 %TODO probably already written
-\begin{defn}
-    A tangle with $k$ inputs and $l$ outputs is a one dimensional bordism $\Sigma$ from $k$ points to $l$ points together with a smooth embedding $\Sigma \hookrightarrow [0,1] \times \R^2$ such that
-    \begin{itemize}
-        \item $\de_{in} \Sigma = \{(0,1), (0,2), \dots , (0,k)\}$
-        \item $\de_{out} \Sigma = \{(1,1), (1,2), \dots , (1,l)\}$
-    \end{itemize}
-    This gives a braided monoidal category $\Tang_1 \supset \Braid$.
-\end{defn}
+% \begin{defn}
+%     A tangle with $k$ inputs and $l$ outputs is a one dimensional bordism $\Sigma$ from $k$ points to $l$ points together with a smooth embedding $\Sigma \hookrightarrow [0,1] \times \R^2$ such that
+%     \begin{itemize}
+%         \item $\de_{in} \Sigma = \{(0,1), (0,2), \dots , (0,k)\}$
+%         \item $\de_{out} \Sigma = \{(1,1), (1,2), \dots , (1,l)\}$
+%     \end{itemize}
+%     This gives a braided monoidal category $\Tang_1 \supset \Braid$.
+% \end{defn}
 % DRAWING
 
 We can now define the concept of a framing on a tangle, which is different from what we previously meant as framing.
 \begin{defn}
     A framing on a tangle  is a nonvanishing normal vector field on the tangle such that at the in-boundary and at the out-boundary it "points up".
 \end{defn}
-This definition is made clearer through examples:
+\noindent This definition is made clearer through examples:
 \begin{ex}
     ...
     %DRAWING
 \end{ex}
 
-If we add a framing to the definition above we then get the \textit{framed} tangle category $\Tang_1^{fr}$.
+Considering framed tangles leads to the \textit{framed} tangle category $\Tang_1^{fr}$.
 
-In fact, on the line segment as a bordism between two points we have \Z many non isotopic framings corresponding to the \textit{winding number} of normal vector fields. Similarly, $S^1$ has \Z many framings. 
+\noindent In fact, on the line segment as a bordism between two points we have \Z many non isotopic framings corresponding to the \textit{winding number} of normal vector fields. Similarly, $S^1$ also has \Z many framings. 
 
-We noted last time that $\Tang_1$ has left and right duals, one can check now that $\Tang_1^{fr}$ also does. We see that the framed tangle category is very similar but it has \Z many morphisms between two points, instead of just one. This idea can be generalized with the concept of a ribbon category:
+\noindent We noted last time that $\Tang_1$ has left and right duals, one can check now that $\Tang_1^{fr}$ also does. We see that the framed tangle category is very similar but it has \Z many morphisms between two points, instead of just one. This idea can be generalized with the concept of a ribbon category:
 \begin{defn}
     A ribbon category is a braided monoidal category \cat in which:
     \begin{enumerate}
-        \item every object $X$ has a right dual $X^\vee$, thus satisfying  $$ev_X : X^\vee \otimes X \to 1$$ $$coev_X: 1 \to X \otimes X^\vee$$ which satisfies the snake relations/triangle identities, (\textit{right rigid category})
+        \item every object $X$ has a right dual $X^\vee$, thus satisfying  $$ev_X : X^\vee \otimes X \to 1$$ $$coev_X: 1 \to X \otimes X^\vee$$ which satisfies the snake relations/triangle identities (\textit{right rigid category}),
         \item there is a pivotal structure, that is a  monoidal isomorphism
         \begin{equation}
-            w: id_\cat \to ( \enskip)^{\vee\vee}
+            w: id_\cat \implies ( -)^{\vee\vee}
         \end{equation}
         (these two properties are the defining ones for a \textit{pivotal category})
         \item For any object $X$, we have a "twist"
@@ -4304,13 +4342,13 @@ We noted last time that $\Tang_1$ has left and right duals, one can check now th
         \end{equation}
         This satisfies 
         \begin{equation}
-            ((\vartheta_X)^\ast ) = \vartheta_{X^\vee}
+            ((\vartheta_X)^\vee  = \vartheta_{X^\vee}
         \end{equation}
+        %this an extra condition right? not just a fact /William
     \end{enumerate}
-\end{defn}
-
-Here we're using an abuse of notation, by identifying $X^{\vee \vee}$ with $X$.
+    Here we're using an abuse of notation, by identifying $X^{\vee \vee}$ with $X$.
 %TODO diagram
+\end{defn}
 
 \begin{ex}
     In $\Tang_1^{fr}$, the $\vartheta$ is exactly the picture with the blackboard framing. It remains to check property 3.
@@ -4319,25 +4357,41 @@ Here we're using an abuse of notation, by identifying $X^{\vee \vee}$ with $X$.
 The definition of the dual of a map $f: X \to Y$ was given in \ref{DualMorph} and is given by the following composition:
 $$f^\vee:Y^\vee\xrightarrow{id_{Y^\vee} \otimes coev_X}Y^\vee\otimes X \otimes X^\vee\xrightarrow{id_Y^\vee\otimes f\otimes id_{X^\vee}}Y^\vee\otimes Y\otimes X^\vee\xrightarrow{ev_Y\otimes id_{X^\vee}}X^\vee$$
 
-\begin{ex}
-\hfill
-    \begin{itemize}
-        \item $\Vect_k^{finite dim}$ is a ribbon category with the usual tensor product and braiding.
-        \item $\Mod_R^{fpp}$ is a ribbon category, where $fpp$ stands for finitely presented and projective and $R$ is a ring or $k$ algebra.
-    \end{itemize}
-    we would then also like some more examples, which are braided but \textit{not} symmetric.
-\end{ex}
-
-Given an algebra $A$, then $A-\Mod$ is a category. Now, which extra structure on $A$ guarantees that $A-\Mod^{f.d.}$ is ribbon?
+%TODO maybe add explicit calculation /William
 
 \begin{lem}
-    Let \cat be a pivotal category. Then every object has a left dual $({}^\vee X, \tilde{ev}_X, \tilde{coev}_X)$, the twist is invertible and natural in $X$ and $\vartheta_1 = id_1$ and
+    Let \cat be a braided pivotal category. Then every object has a left dual, the twist is invertible and natural in $X$ and $\vartheta_\unit = id_\unit$ and
     \begin{equation}
         \vartheta_{X \otimes Y} = \beta_{Y,X} \circ \beta_{X,Y} \circ \vartheta_X \otimes \vartheta_Y
     \end{equation}
 \end{lem}
+%I don't know if this was said in class but it was in the script /William
+\begin{notat}
+    We denote the left dual of $X$ by $({}^\vee X, \tilde{ev_X}, \tilde{coev_x})$.
+\end{notat}
 
-We now consider a variation of a tangle category. 
+\begin{ex}
+\hfill
+    \begin{itemize}
+        \item $\Vect_k^{finite dim}$ is a ribbon category with the usual tensor product and braiding.
+        \item $\Mod_R^{fpp} = R-\Mod^{fpp}$ is a ribbon category, where $fpp$ stands for finitely presented and projective and $R$ is a ring or $k$ algebra.
+    \end{itemize}
+    However both these examples are \textit{symmetric} monoidal
+\end{ex}
+\noindent We would also like some more examples which are braided but \textit{not} symmetric.
+
+%so here we mean algebra over a ring while before was algebra over field? Or what's the difference /William
+\noindent In order to do so, consider an algebra $A$, then $A-\Mod$ is a category. Now, which extra structure on $A$ guarantees that $A-\Mod^{f.d.}$ is ribbon? Section \ref{ssub:making_} below is dedicated to answering this question. As a small preview we will be dealing with:
+\begin{itemize}
+    \item representations of "quantum groups":
+    \begin{itemize}
+        \item a "deformation" of $\Rep G = \Mod U\g$, %why is this true?/William
+        \item equivalently, a deformation of $U\g$ as a "Hopf algebra";
+    \end{itemize}
+    \item representations of a "ribbon Hopf algebra" $H$ which is a Hopf algebra with additional structure. We'll find $H-\Mod^{f.d.}$ to be a ribbon category. In particular we'll concentrate on $G=SL_2$ and we take $H = U_q (\sl_2)$ where $q$ is a root of unity.
+\end{itemize}
+
+Before that, we define a variation of the tangle category above and we'll have an interlude on knot theory.
 \begin{defn}
     Let \cat be a ribbon category. $\Tang_1^{fr}(\cat)$ is the following ribbon category, in which we "decorate with objects in \cat".
     \begin{itemize}
@@ -4349,7 +4403,7 @@ We now consider a variation of a tangle category.
         \item morphisms: has underlying (isotopy classes of) framed oriented tangles + each component is labelled by $V \in \cat$ such that the source and target are labelled by $(V, \pm 1)$.
         \item Composition is stacking pictures but only if the labels match up.
     \end{itemize}
-    The "correspondence" above is actually a forgetful functor $\Tang_1^{fr}(\cat) \to \Tang_1^{fr, or}$, which $or$ means adding an orientation to the bordism.
+    The "correspondence" above is actually a forgetful functor $\Tang_1^{fr}(\cat) \to \Tang_1^{fr, or}$, in which $or$ means adding an orientation to the bordism.
 \end{defn}
 
 \begin{prop}
