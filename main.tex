@@ -4827,7 +4827,7 @@ $U_q\sl_2$ is a $\C(q)$-algebra generators $E,F,K,K^{-1}$ with relations:
     KFK^{-1} &= q^{-2}F \\
     [E,F] &= \frac{K - K^{-1}}{q - q^{-1}}
 \end{align*}
-We have an important 2 dimensional module ("representation") for $U_q\sl_2$: $V_1 \cong \C^2$ with basis $V_1, V_{-1}$. Now, how does $U_q\sl_2$ act? In this basis we write:
+We have an important 2 dimensional module ("representation") for $U_q\sl_2$: $V_1 \cong \C^2$ with basis $v_1, v_{-1}$. Now, how does $U_q\sl_2$ act? In this basis we write:
 \begin{align*}
     E &=
     \begin{pmatrix}
@@ -4883,6 +4883,49 @@ quasi-triangular &$\leftrightarrow$& braiding
 \end{tabular}
 \end{center}
 
+
+% -------------------------------------------------------------
+% ---------------------- LECTURE 22 5/2 -----------------------
+% -------------------------------------------------------------
+
+%Tingley a minus sign... https://arxiv.org/abs/1002.0555
+%recollection...
+
+Let's make explicit the dual representation to $V_1$, $V_1^\vee = \Hom(V, \C) = \langle \hat v_1, \hat v_{-1}\rangle$, where $\hat v_1$ and $\hat v_{-1}$ are the dual basis.
+
+Recall that we had the \textit{decorated} tangle category. Let's take $\cat = U_q\sl_2 - \Mod^{f.d.}$ and let $V=V_1$ the representation above. In particular we work with "$\Tang_1^{fr,or}(V_1)$"$\subset \Tang_1^{fr,or}(\cat)$ in which we decorate everything with just $V_1$.
+
+\begin{rem}
+    \begin{itemize}
+        \item $A = q^{-1/2}$
+        \item slightly different normalization: $F(unknot) = -q -q^{-1}$.
+        \item What about the third relation of the Kauffmann bracket? It follows from monoidality!
+    \end{itemize}
+\end{rem}
+
+\section{Outlook: How to get a 3D TFT?} % (fold)
+\label{sec:outlook_how_to_get_a_3d_tft_}
+
+\subsection{From knots to 3 manifolds: surgery} % (fold)
+\label{sub:from_knots_to_3_manifolds_surgery}
+
+Given: a framed link $L\subset S^3$ (so far $L\subset\R^3$ but we now embed that into $S^3$) with $m$ components $L= L_1 \cup \dots \cup L_m$ with $L_i \cong S^1$. Now:
+\begin{itemize}
+    \item Choose closed tubular neighborhood $U \subset S^3$ of link $L$ such that $U = U_1 \amalg \dots \amalg U_m$:
+        \begin{equation}
+            \begin{tikzcd}
+                L_i \ar[r, phantom, "\cong"]\ar[d, phantom, "\cap"] & S^1 \times \{0\} \\
+                U_i \ar[r, "\phi"', "\cong"] & S^1 \times D^2
+            \end{tikzcd}
+        \end{equation}
+        framing of $L_i \cong$ constant normal vector field on $S^1\times\{0\} \hookrightarrow S^1 \times D^2$.
+        Could also have the nonconstant framing, that turns around once.
+    \item $\de(S^3 \setminus \operatorname{int}(U_1 \amalg\dots\amalg U_m)) = \de(U_1 \amalg\dots\amalg U_n) \cong S^1 \times S^1 \amalg \dots\amalg S^1\times S^1$, $m$ tori. Now glue in solid tori $D^2\times S^1$ (note that the order here matters) using identity as gluing map to get a closed connected 3 manifold. 
+\end{itemize}
+
+\begin{exercise}
+    Try unknot with trivial framing.
+\end{exercise}
 
 \newpage
 \input{exercises} % note - this is just a working interjection of the first sheet in these lecture notes (later on it might be nice to redistribute them to appear right after the concepts you need to solve them have been introduced) /Jacob
