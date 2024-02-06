@@ -18,6 +18,7 @@
 \usepackage{microtype}          % reduces the number of overfull/underfull boxes
 \usepackage{pdfpages}           % to include other pdfs (for titlepage)
 \usepackage{dsfont}				% special S for sphere spectrum
+\usepackage{bbding}             % for \Plane for extra sections
 %\usepackage[all,cmtip]{xy}     % don't know what it's for
 %\usepackage{upgreek}           % don't know what it's for
 %\usepackage[normalem]{ulem}    % don't know what it's for
@@ -34,7 +35,7 @@
 %\usepackage{color}             % don't know what it's for
 %\usepackage{xcolor}            % don't know what it's for
 
-%TODO mark extra sections somehow
+%I don't think having the "back to" sections /William
 
 \makeatletter %adjusting the color of the entire document
 \newcommand{\globalcolor}[1]{%
@@ -45,6 +46,8 @@
 \AtBeginDocument{\globalcolor{magenta!10!black}}
 
 \newcommand{\updateinfo}[1][\today]{\par\vfill\hfill{\scriptsize\color{red}Last updated on #1}}
+
+\newcommand{\extra}{\texorpdfstring{\textmd{\Plane}}{plane}}
 
 % \ensuremath to be able to write \R instead of $\R$
 \newcommand{\R}{\ensuremath{\mathbb{R}} }
@@ -191,6 +194,7 @@
 %       {\large\textcolor{black}{Jacob Skarby}}
 % \end{minipage}
 
+\pagenumbering{roman}
 \includepdf{titlepage}
 
 \clearpage
@@ -381,11 +385,11 @@ Can we then construct something like homology but characterized more like this l
 This is exactly the idea of \textit{(co)bordism}:
 \begin{enumerate}
     \item Let $M^n$ be a $n-$dimensional smooth compact manifold generally with boundary. Now, instead of maps from simplices we consider maps
-    $$\large{M^n\xrightarrow{f} S}.$$
+    $$M^n\xrightarrow{f} S.$$
     \item Instead of the boundary map of simplices we consider something like:
     $$\partial\big(M^n\xrightarrow{f}S\big)=\big(\partial M^n\xrightarrow{f|_{\partial M^n}}S\big),$$
     where, if $\partial M^n=\emptyset$ then define the map to be $0$.
-    \item Let $H^{\text{bord}}_n(S)$ denote this ``homology theory'' of degree $n$ on the space $S$. Let $M^n$ be closed, then $\large{M^n\xrightarrow{f} S}$ is zero in $H^{\text{bord}}_n(S)$ if and only if the map $f$ extends to a $(n+1)-$dimensional smooth compact manifold $W$ such that $\partial W= M$.
+    \item Let $H^{\text{bord}}_n(S)$ denote this ``homology theory'' of degree $n$ on the space $S$. Let $M^n$ be closed, then $M^n\xrightarrow{f} S$ is zero in $H^{\text{bord}}_n(S)$ if and only if the map $f$ extends to a $(n+1)-$dimensional smooth compact manifold $W$ such that $\partial W= M$.
 \end{enumerate}
 Using these ideas one obtains something very similar to singular homology even though different, indeed this bordism theory constitutes a generalized homology theory\footnote{There exist a list of axioms called \textit{Eilenberg–Steenrod axioms} that is used to define what a homology theory is since it may come in different flavours. A generalized homology theory is a theory that has every property required but one, generally (as in the case of Bordism as seen below) that one is the \textit{dimension axiom}.}! 
 
@@ -1716,7 +1720,7 @@ We now consider the case with boundary:
 \end{proof}
 
 
-%I don't think I like this and the other "back to" sections.
+
 \section{More on cobordism groups}
 \label{sec:more_on_cobordism_groups}
 
@@ -1815,7 +1819,7 @@ In a certain sense, $\mathds S$ is analgous to $\Z$ but in another category: \Z 
 % -------------------------------------------------------------
 % --------------------- LECTURE 9 22/11 -----------------------
 % -------------------------------------------------------------
-\chapter{Topological field theories}
+\chapter{A summary of Category Theory}
 \section{A modern perspective on cobordisms}
 
 A bordism invariant was characterized as a homomorphism from the cobordism group to some other abelian group. 
@@ -1875,8 +1879,7 @@ We make both these comparisons more rigorous by later (\ref{MonObj}) showing tha
 The same holds for the commutative case, commutative monoids, commutative algebras and (\emph{strict}\footnote{We will also sketch a way how to get general symmetric monoidal categories, i.e. not necessarily strict. See \ref{EAlg}.}) 
 symmetric monoidal categories are all examples of commutative monoid objects (see \ref{CommMonObj}).
 
-\section{Summary of Category Theory}
-\subsection{Category theory language} % (fold)
+\section{Category theory language} % (fold)
 \label{sub:cathegory_theory_language}
 
 \begin{defn}
@@ -2026,10 +2029,8 @@ Some more examples related to topological spaces.
     \end{enumerate}
 \end{ex}
 
-\subsection{Natural transformations} % (fold)
+\section{Natural transformations} % (fold)
 \label{sub:natural_transformations}
-
-% subsection natural_transformations (end)
 
 %Topological field theory as a categorification of a symmetric monoid. Should we explain coincisely what categorifying is and tell a story about how TFTs are categorified? /Andrea
 \begin{defn}
@@ -2054,6 +2055,7 @@ Some more examples related to topological spaces.
     Note that given a category $\cat$ and a \emph{groupoid} $\dat$, then $\Fun(\cat,\dat)$ is a groupoid since every component of any natural transformation is invertible because they are morphisms in $\dat$ and therefore any natural transformation is a natural isomorphism.
 \end{rem}
 \begin{ex}%TODO complete examples
+\label{ex:natural_trafos}
 \hfill
 \begin{enumerate}
     \item
@@ -2123,9 +2125,10 @@ The image of the latter diagram under $N$ is the following commutative diagram i
 Hence the components of $\tau$ are just the image under $N$ of the pairs of maps $(id,u)$, i.e. $\forall X\in\cat, \tau_X=N(id_X,u)$
 
 
-\subsection{Equivalence of categories} % (fold)
+\section{Equivalence of categories \extra} % (fold)
 \label{sub:equivalence_of_categories}
 
+We did not cover this topic in the lecture, but the concept of equivalence of categories is important for results such as \ref{thm:classif_of_1dtft}.
 \begin{defn}
     Let $F:\mathscr{C}\rightarrow\mathscr{D}$ be a functor. $F$ is named \begin{enumerate}
         \item faithful, if $\forall X,Y\in\mathscr{C}$ the map $\Hom_{\mathscr{C}}(X,Y)\rightarrow \Hom_{\mathscr{D}}(F(X),F(Y))$ is injective,
@@ -2231,7 +2234,7 @@ Now we just need to prove that there is a natural isomorphism $\epsilon:id_\cat\
 The right hand square commutes because of the naturality of $\eta$. Since the right hand square commutes $F(G(F(f)))=\eta^{-1}_{F(X')}\circ F(f)\circ \eta_{F(X)}$. Since the outer square commmutes $F(\epsilon_{X'})\circ F(f)=\eta^{-1}_{F(X')}\circ F(f)\circ \eta_{F(X)}\circ F(\epsilon_X)$. Thus, the left hand square commutes because $F(\epsilon_{X'})\circ F(f)=F(G(F(f)))\circ F(\epsilon_X)$ and thereby $\epsilon$ is natural because $\epsilon_{X'}\circ f=G(F(f))\circ \epsilon_X$ thanks to the faithfulness of $F$.
 \end{proof}
 
-\subsection{Adjunction} % (fold)
+\section{Adjunction \extra} % (fold)
 \label{sub:adjunction}
 
 \begin{defn}[Adjunction]\label{AdjFun}
@@ -2284,7 +2287,7 @@ The right hand square commutes because of the naturality of $\eta$. Since the ri
 \end{ex}
 
 
-\subsection{Higher categories} % (fold)
+\section{Higher categories \extra}
 \label{sub:higher_categories}
 
 \begin{rem}
@@ -2328,7 +2331,7 @@ Having loosely characterized enriched categores We can provide a definition of s
 \end{rem}
 \noindent We will later encounter a notion of weak 2-category (see \ref{Bicategory}).
 
-\subsection{Monoidal Categories}\label{MonCat}
+\section{Monoidal Categories}\label{MonCat}
 Recall that a monoid is a group where not necessarily every element is invertible: a set $M$ with a distinguished object $e\in M$ called unit, also known as neutral element, and a map of sets $m: M\times M \to M$ such that $m$ is:
 \begin{itemize}
     \item associative $$
@@ -2433,7 +2436,7 @@ A monoidal category generalizes this structure with respect to objects \emph{and
     \end{itemize}
 \end{ex}
 
-\subsection{Cartesian Categories: cartesian product} % (fold)
+\subsection{Cartesian Categories: cartesian product \extra} 
 \label{sub:cartesian_categories}
 
 In particular,
@@ -2495,7 +2498,7 @@ Thus, since both $(A\times\ast,pr_1,pr_2)$ and $(A,id_A,\phi_A)$ are products of
 
 \noindent Hence, we see how any category with finite cartesian products is a monoidal category. Cartesian monoidal categories are in a sense special because they have some maps which are not possessed by every monoidal category, notably the diagonal map $\Delta_X:X\to X\times X$ and $\phi_X:X\to\mathbb{1}_\cat$ giving every object a comonoid structure. Moreover, they are all symmetric (defined later, \ref{SymmMonCat}) because the cartesian product is symmetric. 
 
-\subsection{Noncartesian Monoidal Categories: tensor product} % (fold)
+\subsection{Noncartesian Monoidal Categories: tensor product \extra} % (fold)
 \label{sub:noncartesian_monoidal_categories}
 
 %TODO I think if we want to say this it should be moved before /William
@@ -2540,7 +2543,7 @@ Having defined what a bilinear map is, we can arrive at the definition of tensor
     We denote such group by $R$. $A\otimes B$ is then the following  quotient: $A\otimes B=\frac{A\times B}{R}$.
 \end{defn}
 
-\subsection{Enriched categories} % (fold)
+\section{Enriched categories \extra} % (fold)
 \label{sub:Enriched categories}
 
 Ab is very important as an enriching category. Before, we gave a loose characterization of what an enriched category is by just stating that the $\Hom$s are objects of whatever category we are enriching over. However, we glossed over an essential requirement: the category we are enriching on must be monoidal in order to define composition. We now give a fully satisfactory definition of an enriched category:
@@ -2568,7 +2571,7 @@ Ab is very important as an enriching category. Before, we gave a loose character
 There is another example of strict (2,1)-category from topology and it will let us rigorously show in which sense a homotopy is a natural transformations and why one might want to talk about $\infty$-categories.
 
 
-\subsection{Outlook: Grothendieck's Homotopy Hypothesis and $\infty$-categories} 
+\section{Outlook: Grothendieck's Homotopy Hypothesis and \texorpdfstring{$\infty$}{infinity}-categories \extra} 
 \begin{ex}\label{Homotopy2Top}
     We previously spelled out an analogue formulation of the natural transformation (see \ref{Homotopy}). This shows that the notion of homotopy and natural transformation are related. A way to more rigorously pin down that a homotopy is some kind of natural transformation is via the the homotopy 2-category of topological spaces. Instead of taking paths up to homotopies between paths, as in the more famous hTop, we take homotopies between paths up to homotopies between homotopies between paths. This results in a strict (2,1)-category 2-hTop where objects are topological spaces, 1-morphisms are continuous maps and 2-morphisms are homotopies between continuous maps up to higher homotopies, i.e. homotopies between homotopies between continuous maps. A homotopy between a homotopy between continuous maps is defined in the following manner: given continuous functions $f,g:X\to Y$ and homotopies between them $k,h:X\times [0,1]\to Y$, a homotopy $L$ between these two homotopies $k$ and $h$ is a continuous function $L:X\times [0,1]\times[0,1]\to Y$ such that 
     \begin{itemize}
@@ -2609,7 +2612,7 @@ These three different ways to model $\infty$-categories are equivalent in some a
     Another important example of $(\infty,1)$-category is the category of spectra, a category similar\footnote{Abelian Groups:Algebra$\sim$Spectra:Higher Algebra, for more on this check out \cite{Mazel-Gee2024}.} to the category of abelian groups which we will encounter later (see \ref{Spectra Phases of Matter}).
 \end{rem} 
 
-\subsection{Back to Enriched Categories} 
+\section{Back to Enriched Categories \extra} 
 
 Having characterized satisfactorily enriched categories we can now define what is an Ab-enriched category.
 \begin{defn}[Ab-Category]\label{Ab-Enriched Cat}
@@ -2691,7 +2694,7 @@ Another example of non-cartesian monoidal category, which is not algebraic in na
     We will use it to give an equivalent definition of $k$-algebra (see \ref{EAlg}), but in general they can be used to define factorization algebras, a very important tool in the field of TFTs, see \cite{Tanaka_2020}.
 \end{ex}
 
-\subsection{Objects Internal to a Monoidal Category}
+\section{Objects Internal to a Monoidal Category}
 \begin{defn}[Monoid Object]
     A monoid object in a monoidal category $\cat$ is an object $M\in\cat$ equipped with two distinguished morphisms, $\mu:M\otimes M\to M$ and $\eta:\mathbb{1}_\cat\to M$ called respectively multiplication and unit such that the following diagram commutes, so that the binary operation is associative 
     % https://q.uiver.app/#q=WzAsNSxbMCwwLCIoTVxcb3RpbWVzIE0pXFxvdGltZXMgTSJdLFsxLDAsIk1cXG90aW1lcyhNXFxvdGltZXMgTSkiXSxbMiwwLCJNXFxvdGltZXMgTSJdLFswLDEsIk1cXG90aW1lcyBNIl0sWzIsMSwiTSJdLFswLDEsIlxcYWxwaGFfe00sTSxNfSJdLFsxLDIsImlkX01cXG90aW1lc1xcbXUiXSxbMCwzLCJcXG11XFxvdGltZXMgaWRfTSIsMl0sWzMsNCwiXFxtdSIsMl0sWzIsNCwiXFxtdSJdXQ==
@@ -2728,51 +2731,7 @@ Another example of non-cartesian monoidal category, which is not algebraic in na
         \item Topological monoids in $(\Top,\times)$
     \end{itemize}
 \end{ex}
-This example clarifies the parallel between monoids, algebras and monoidal categories we made at the start of this section. However, one could be bothered by the fact that we do not actually get a general monoidal category (i.e. not necessarily strict). To do this we need to talk about $\mathbb E_1$-algebras.
-
-\subsection{Outlook towards $\mathbb{E}_n$-Algebras} 
-
-\begin{defn}[Isotopy]\label{Isotopy}
-    An isotopy is a stricter form of homotopy. Let $f,g:X\to Y$ be embeddings. Then $H:X\times [0,1]\to Y$ is an isotopy if 
-    \begin{itemize}
-        \item $H(0,-)=f$
-        \item $H(1,-)=g$
-    \end{itemize}
-    thereby making an isotopy a homotopy and
-    \begin{itemize}
-        \item $\forall t\in[0,1].H(t,-)\hookrightarrow Y$ is an embedding
-    \end{itemize}
-    Moreover, if $f,g$ are \emph{smooth} embeddings and $\forall t\in[0,1].H(t,-)\hookrightarrow Y$ is also a smooth embedding, then $H$ is a \emph{smooth} isotopy
-\end{defn}
-
-\begin{defn}[$\mathbb{E}_1$-Algebra]\label{EAlg}
-    Let $Disk_{1,0}^{or}$ be the category of 1-disks (see \ref{CatOfDisks}). Then a $\mathbb{E}_1$-algebra is a symmetric monoidal functor $$Disk_{1}^{or}\to \cat$$ such that if $j,i\in \Hom_{Disk_{1}^{or}}(X,Y)$ are smoothly isotopic embeddings, then  $F(j)=F(i)$, i.e. they are sent to the same morphism in $\cat$. More generally..
-\end{defn}
-\begin{thm}
-  $\mathbb{E}_1$-algebras with $\Vect_k$ as a target category correspond to $k$-algebras. Look into \cite{Tanaka_2020} for a sketch of the proof.
-\end{thm}
-\begin{thm}
-    $\mathbb{E}_1$-algebras with $\Cat$ as a target category are monoidal categories.
-\end{thm}
-\begin{proof}
-    %TBD /Andre
-\end{proof}
-We summarize the correspondence with the following table
-\begin{center}
-    \begin{tabular}{|c||c|c|c|}
-    \hline
-        \phantom{h} & Set & $\Vect_k$ & Cat \\ [0.5ex]
-         \hline\hline
-         $\mathbb{E}_1$-algebra & monoid & $k$-algebra & monoidal category  \\
-         \hline
-    \end{tabular}
-\end{center}
-\begin{rem}
-    Remember that a monoid object in Cat is a \emph{strict} monoidal category. Via $\mathbb{E}_1$-algebras is instead the way to precisely pin down the correspondence we laid down at the start of the section between monoidal categories, $k$-algebras and monoids, without collapsing monoidal categories to \emph{strict} monoidal category, as we did with the monoid object.
-\end{rem} 
-
-\subsection{Back to Monoid objects} % (fold)
-\label{sub:back_to_monoid_objects}
+This example clarifies the parallel between monoids, algebras and monoidal categories we made at the start of this section. However, one could be bothered by the fact that we do not actually get a general monoidal category (i.e. not necessarily strict). To do this we will briefly talk about $\mathbb E_1$-algebras in section \ref{sec:E_n_algebras}.
 
 \begin{defn}[Morphism of Monoids]
     Let $M,M'\in\cat$ be monoid objects $(M,\mu,\eta)$ and $(M',\mu',\eta')$. A morphism of monoids is a morphism $f:M\to M'$ such that both the following two diagrams commute 
@@ -2832,10 +2791,53 @@ We leave the case of the counit for the reader.
 \begin{ex}\label{LieGroup}
     A Lie Group is a group object in $SmoothMfd$.
 \end{ex}
+
+\section{Outlook towards \texorpdfstring{$\mathbb{E}_n$}{En}-Algebras \extra} 
+\label{sec:E_n_algebras}
+
+\begin{defn}[Isotopy]\label{Isotopy}
+    An isotopy is a stricter form of homotopy. Let $f,g:X\to Y$ be embeddings. Then $H:X\times [0,1]\to Y$ is an isotopy if 
+    \begin{itemize}
+        \item $H(0,-)=f$
+        \item $H(1,-)=g$
+    \end{itemize}
+    thereby making an isotopy a homotopy and
+    \begin{itemize}
+        \item $\forall t\in[0,1].H(t,-)\hookrightarrow Y$ is an embedding
+    \end{itemize}
+    Moreover, if $f,g$ are \emph{smooth} embeddings and $\forall t\in[0,1].H(t,-)\hookrightarrow Y$ is also a smooth embedding, then $H$ is a \emph{smooth} isotopy
+\end{defn}
+
+\begin{defn}[$\mathbb{E}_1$-Algebra]\label{EAlg}
+    Let $Disk_{1,0}^{or}$ be the category of 1-disks (see \ref{CatOfDisks}). Then a $\mathbb{E}_1$-algebra is a symmetric monoidal functor $$Disk_{1}^{or}\to \cat$$ such that if $j,i\in \Hom_{Disk_{1}^{or}}(X,Y)$ are smoothly isotopic embeddings, then  $F(j)=F(i)$, i.e. they are sent to the same morphism in $\cat$. More generally..
+\end{defn}
+\begin{thm}
+  $\mathbb{E}_1$-algebras with $\Vect_k$ as a target category correspond to $k$-algebras. Look into \cite{Tanaka_2020} for a sketch of the proof.
+\end{thm}
+\begin{thm}
+    $\mathbb{E}_1$-algebras with $\Cat$ as a target category are monoidal categories.
+\end{thm}
+\begin{proof}
+    %TBD /Andre
+\end{proof}
+We summarize the correspondence with the following table
+\begin{center}
+    \begin{tabular}{|c||c|c|c|}
+    \hline
+        \phantom{h} & Set & $\Vect_k$ & Cat \\ [0.5ex]
+         \hline\hline
+         $\mathbb{E}_1$-algebra & monoid & $k$-algebra & monoidal category  \\
+         \hline
+    \end{tabular}
+\end{center}
+\begin{rem}
+    Remember that a monoid object in Cat is a \emph{strict} monoidal category. Via $\mathbb{E}_1$-algebras is instead the way to precisely pin down the correspondence we laid down at the start of the section between monoidal categories, $k$-algebras and monoids, without collapsing monoidal categories to \emph{strict} monoidal category, as we did with the monoid object.
+\end{rem} 
+
 % -------------------------------------------------------------
 % --------------------- LECTURE 10 27/11 -----------------------
 % -------------------------------------------------------------
-\subsection{Symmetric Monoidal Categories} % (fold)
+\section{Symmetric Monoidal Categories} % (fold)
 \label{sub:symmetric_monoidal_categories}
 
 In order to get the categorical parallel of a commutative monoid, we need to define a \emph{symmetric} monoidal category. We want to achieve something similar to $a \cdot b = b \cdot a$ in a monoid. However, we will not characterize this behavior with strict identities\footnote{As we did not define associativity and unitality with strict identities but with natural isomorphisms.}, but with a natural isomorphism. Given the functor 
@@ -3047,7 +3049,7 @@ We have previously seen (\ref{Representations of Groups}) that a linear represen
 \end{defn}
 
 
-\subsection{Outlook: Interlude on Bicategories} % (fold)
+\section{Outlook: Interlude on Bicategories \extra} % (fold)
 \label{sub:outlook_interlude_on_bicategories}
 
 %I hope the order here is not confusing, in the sense that why not define before a bicategory and subsequently the delooping, however this sequence where one first pictures the delooping and then they picture a bicategory made sense in my mind. Feel free to change /Andrea
@@ -3137,8 +3139,11 @@ We now list some examples of 2-categories, to convey a more concrete intuition o
     \end{enumerate}
 \end{ex}
 
+\chapter{Topological field theories} 
+\label{cha:topological_field_theories}
+
 \section{The Cobordism Category}\label{CobCat}
-We now get to the most important example of symmetric monoidal category in this course: the symmetric monoidal category of cobordisms\footnote{See chapter 14 of \cite{FreedBordism}.}.
+We now get to the most important example of symmetric monoidal category in this course: the symmetric monoidal category of cobordisms\footnote{See chapter 14 of \cite{FreedBordism}.}. This is what will allow us to define a topological field theory.
 \begin{notat}
    Note that, if not explicitly stated we will \emph{smooth} manifold when we just write manifold.
 \end{notat}
@@ -3233,7 +3238,7 @@ In particular, that's how we get a topological field theory:
 \end{itemize}
 \end{exercise} 
 
-\subsection{Outlook on the Cobordism Hypothesis and Extended Topological Field Theories} % (fold)
+\subsection{Outlook on the Cobordism Hypothesis and Extended Topological Field Theories \extra} % (fold)
 \label{sub:outlook_on_the_cobordism_hypothesis_and_extended_topological_field_theories}
 
 \begin{rem}\label{RemarkOnCobHypo}
@@ -3336,8 +3341,7 @@ From the universal property of the groupoid completion, there is a further facto
     A nTFT is invertible if the TFT is itself an invertible (see \ref{InvertibleObject}) object in the category of nTFTs.
 \end{rem}
 
-\subsection{Outlook on Invertible Field Theories} % (fold)
-\label{sub:outlook_on_invertible_field_theories}
+\subsection{Outlook on Invertible Field Theories \extra} % (fold)
 \label{Spectra Phases of Matter}
 
 These theories can be studied with stable homotopy theory. However, in order to allow the application of such machinery, one must fully extend topological field theories (see \ref{RemarkExtendedTFTs}), i.e. with $(\infty,n)$-categories of bordisms as a source. So, in the case of extended TFTs, $|\Bord|$ and $\cat^\times$ both are $\infty$-groupoids since we get $|\Bord|$ by adjoining all inverses for all morphisms and $\cat^\times$ is obtained by forgetting about non-invertible morphisms (and objects) of $\cat$.
@@ -3573,7 +3577,7 @@ The main goal of this subsection is to prove that given an oriented 1d-TFT $Z:\B
 \begin{rem}
     By $(\cat^{\text{dualizable}})^{\cong}$ we denote the restriction of a symmetric monoidal category on its dualizable objects and its isomorphisms, said briefly: a restriction on the underlying Picard groupoid because in any symmetric monoidal groupoid an object is dualizable if and only if it is invertible (see \ref{PicardDualizable}).
 \end{rem}
-\begin{thm}
+\begin{thm}\label{thm:classif_of_1dtft}
     Let $\cat$ be a symmetric monoidal category. Then the map\footnote{There is unfortunately a notational clash between what we called the evaluation map for dualizable objects, denoted by $ev$, and what we also call in this case evaluation map, denoted by $\mathcal{E} V$. In the latter case, we are referring to a similar convention we use for example in topology when we call a map of this genre $Map(\ast,X)\to X$ an evaluation map. The intuition is that we feed an element of the domain into a map, a functor in our case, and see what happens, "evaluate it".} $$\TFT_{1,0}^{or}=Fun(\Bord_{1,0}^{or}(\cat)\xrightarrow{\mathcal{E} V}(\cat^{\text{dualizable}})^{\cong}$$ 
     $$\Zf\mapsto \Zf(\bullet_+)$$ is a symmetric monoidal equivalence of groupoids. 
     % https://q.uiver.app/#q=WzAsNCxbMCwwLCJURlRfezEsMH1ee29yfSJdLFswLDIsIihcXGNhdF57ZHVhbGl6YWJsZX0pXntcXGNvbmd9Il0sWzEsMSwiXFxjYXRee2R1YWxpemFibGV9Il0sWzIsMCwiXFxjYXQiXSxbMCwxXSxbMSwyLCJpIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMCwyLCIiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMCwzLCJcXG1hdGhjYWx7RX1WIl0sWzIsMywiaiIsMix7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV1d
@@ -3923,8 +3927,8 @@ We now provide an outlook to some research programs that are tightly connected t
     Often we take $X=BG$ the classifying space of a group $G$ and having maps $M \to BG$ and $\Sigma \to BG$ gives us principle bundles on $M$ and $\Sigma$. This is connected to the field of \textit{gauge theory} and is sometimes called \textit{cohomological TFT}. 
 %Unsure about adding these remarks on algebraic and arithmetic QFT and if it's BS, will ask Prof and please do check if BS /ANdrea
     
-    \item arithmetic field theories (\cite{Mazur1973NotesO},\cite{kim2016arithmetic},\cite{kapustin2007electricmagnetic}, \cite{Kapranov1995},\cite{RelativeBSVDUAL}): although still very conjectural, some envision poetic connections between number theory and physics via TFTs. The original intuition behind this connection is a mysterious analogy of Barry Mazur stating that number fields form correspond to some kind of 3-dimensional manifolds and primes in such number fields behave like knots embedded in these 3-dimensional manifolds. How this connects to TFTs will become clearer after the next section, where we will have gone through the connection between the Jones polynomial (a knot invariant) and 3d-Chern-Simons theory. For instance, the spectrum\footnote{Not in the sense of a modern abelian group, which we previously described \ref{Spectra Phases of Matter}! This is the spectrum of a ring.} of the commutative ring of the integers $\mathbb{Z}$ can be seen (roughly speaking\footnote{To make this more precise Mazur talks about exotic stuff like étale cohomological dimension.}) as a 3-dimensional manifold, and since the spectra prime fields can be canonically embedded in the spectra of the integers, they are analogous to knots since knots can be defined as embeddings of $S^1$ into some 3-dimensional manifold\footnote{Often it is sufficient to pick $\R^3$ as the manifold we embed in and it is what we will do in the next section. However, taking arbitrary 3 manifolds does also make sense and in some cases, like this one, it is what one desires.}. Mazur came up with this analogy in \cite{Mazur1973NotesO}, see this \href{https://mathoverflow.net/questions/50879/what-is-the-knot-associated-to-a-prime/50995#50995}{mathoverflow comment by Lieven Lebruyn} and the \href{https://ncatlab.org/nlab/show/Spec%28Z%29#As3dSpaceContainingKnots}{nLab entry on Spec($\Z$)} for accessible introductions to this specific correspondence. Some (\cite{kim2016arithmetic}, \href{https://shifted-project.github.io/}{Clark Barwick's SHIFTED project} and \href{https://www.youtube.com/watch?v=WXqmXKLtJrs}{this talk of his on his efforts towards geometric foundations for arithmetic field theories}) are trying to define arithmetic quantum field theories in order to apply ideas of TFTs to number theory, for example to arithmetic curves\footnote{Something from arithmetic geometry, see \cite{liu2002algebraic}}, i.e. the spectra of rings of integers in algebraic number fields. While others (\cite{Witten:1990bs},\cite{RelativeBSVDUAL}) more specifically, see a strong connection with the Langlands program. This view is summarized by the motto \emph{the Langlands program is part of the study of 4-dimensional (arithmetic, topological) quantum field theory}. For a more accessible introduction to this research program, check out these notes \cite{BenZviLanglands} by Jackson Van Dyke of a course on this topic by David Ben-Zvi.
-    \item algebraic quantum field theory (\cite{Haag:1963dh}): talking about endomorphism monoids, i.e. monoids of the form $(\Hom_\cat(X,X),\circ)$ (see \ref{Delooping Monoid}) we previously mentioned operator algebras, i.e. monoids and submonoids of the form $(\Hom_{\Top\!\Vect_{k}}(X,X),\circ)$. They are an object of interest in themselves but importantly for us algebraic quantum field theory makes extensive use of operator algebras. Algebraic quantum field theory is very roughly a way of translating the Heisenberg picture of quantum mechanics (sometimes called matrix mechanics) to quantum field theory by providing an attempt to axiomatize QFT in a mathematically rigorous way. Given some apt operators on an apt topological vector space, meaning that the topological vector space can represent a quantum state and the selected operators on it can represent observables, an AQFT provides a formal assignment of algebras of such operators to regions of spacetime according to some axioms, e.g. the \href{https://ncatlab.org/nlab/show/Haag-Kastler+axioms}{Haag Kastler Axioms}. In this way, it pins down how observables depend of spacetime while states are being fixed, as in the Heisenberg picture. Algebraic quantum field theory can be roughly considered to be a dual to topological quantum field theory since TFTs invert the direction by assigning geometric data to algebraic ones. In fact, topological quantum field theory can be seen as a way of translating the Schrödinger picture (also called wave mechanics) to quantum field theory: states are represented by objects in the target monoidal category, the functor from $\Bord$ captures the local time evolution, and thereby a TFT shows how states are propagated through time while the observables are held fixed, as in the Schrödinger picture (see more on this at \href{https://ncatlab.org/nlab/show/functorial+field+theory#QuantumMechanicsInSchroedingerPicture}{this section of the nLab entry on TFTs}). In quantum mechanics, the Heisenberg and the Schrödinger picture are two faces of the same medal, i.e. matrix mechanics and wave mechanics are equivalent\footnote{Interestingly from a historical point of view, Schrödinger's (and Eckhart's) famous proof from 1926 that the two approaches are equivalent is faulty, but von Neumann fortunately provided a foolproof demonstration in 1932. See \cite{MULLER199735} for more on this interesting trivia.}; however, we are far from proving that AQFT and TQFT are also two faces of the same medal. One point of contact between the two is via factorization algebras (something related to $E_n$-algebras, see \ref{EAlg} for the definition of a $E_1$-algebra), see \cite{costello2023factorization} for a summary on factorization algebras and how they relate to TQFT and AQFT. 
+    \item[\extra] arithmetic field theories (\cite{Mazur1973NotesO},\cite{kim2016arithmetic},\cite{kapustin2007electricmagnetic}, \cite{Kapranov1995},\cite{RelativeBSVDUAL}): although still very conjectural, some envision poetic connections between number theory and physics via TFTs. The original intuition behind this connection is a mysterious analogy of Barry Mazur stating that number fields form correspond to some kind of 3-dimensional manifolds and primes in such number fields behave like knots embedded in these 3-dimensional manifolds. How this connects to TFTs will become clearer after the next section, where we will have gone through the connection between the Jones polynomial (a knot invariant) and 3d-Chern-Simons theory. For instance, the spectrum\footnote{Not in the sense of a modern abelian group, which we previously described \ref{Spectra Phases of Matter}! This is the spectrum of a ring.} of the commutative ring of the integers $\mathbb{Z}$ can be seen (roughly speaking\footnote{To make this more precise Mazur talks about exotic stuff like étale cohomological dimension.}) as a 3-dimensional manifold, and since the spectra prime fields can be canonically embedded in the spectra of the integers, they are analogous to knots since knots can be defined as embeddings of $S^1$ into some 3-dimensional manifold\footnote{Often it is sufficient to pick $\R^3$ as the manifold we embed in and it is what we will do in the next section. However, taking arbitrary 3 manifolds does also make sense and in some cases, like this one, it is what one desires.}. Mazur came up with this analogy in \cite{Mazur1973NotesO}, see this \href{https://mathoverflow.net/questions/50879/what-is-the-knot-associated-to-a-prime/50995#50995}{mathoverflow comment by Lieven Lebruyn} and the \href{https://ncatlab.org/nlab/show/Spec%28Z%29#As3dSpaceContainingKnots}{nLab entry on Spec($\Z$)} for accessible introductions to this specific correspondence. Some (\cite{kim2016arithmetic}, \href{https://shifted-project.github.io/}{Clark Barwick's SHIFTED project} and \href{https://www.youtube.com/watch?v=WXqmXKLtJrs}{this talk of his on his efforts towards geometric foundations for arithmetic field theories}) are trying to define arithmetic quantum field theories in order to apply ideas of TFTs to number theory, for example to arithmetic curves\footnote{Something from arithmetic geometry, see \cite{liu2002algebraic}}, i.e. the spectra of rings of integers in algebraic number fields. While others (\cite{Witten:1990bs},\cite{RelativeBSVDUAL}) more specifically, see a strong connection with the Langlands program. This view is summarized by the motto \emph{the Langlands program is part of the study of 4-dimensional (arithmetic, topological) quantum field theory}. For a more accessible introduction to this research program, check out these notes \cite{BenZviLanglands} by Jackson Van Dyke of a course on this topic by David Ben-Zvi.
+    \item[\extra] algebraic quantum field theory (\cite{Haag:1963dh}): talking about endomorphism monoids, i.e. monoids of the form $(\Hom_\cat(X,X),\circ)$ (see \ref{Delooping Monoid}) we previously mentioned operator algebras, i.e. monoids and submonoids of the form $(\Hom_{\Top\!\Vect_{k}}(X,X),\circ)$. They are an object of interest in themselves but importantly for us algebraic quantum field theory makes extensive use of operator algebras. Algebraic quantum field theory is very roughly a way of translating the Heisenberg picture of quantum mechanics (sometimes called matrix mechanics) to quantum field theory by providing an attempt to axiomatize QFT in a mathematically rigorous way. Given some apt operators on an apt topological vector space, meaning that the topological vector space can represent a quantum state and the selected operators on it can represent observables, an AQFT provides a formal assignment of algebras of such operators to regions of spacetime according to some axioms, e.g. the \href{https://ncatlab.org/nlab/show/Haag-Kastler+axioms}{Haag Kastler Axioms}. In this way, it pins down how observables depend of spacetime while states are being fixed, as in the Heisenberg picture. Algebraic quantum field theory can be roughly considered to be a dual to topological quantum field theory since TFTs invert the direction by assigning geometric data to algebraic ones. In fact, topological quantum field theory can be seen as a way of translating the Schrödinger picture (also called wave mechanics) to quantum field theory: states are represented by objects in the target monoidal category, the functor from $\Bord$ captures the local time evolution, and thereby a TFT shows how states are propagated through time while the observables are held fixed, as in the Schrödinger picture (see more on this at \href{https://ncatlab.org/nlab/show/functorial+field+theory#QuantumMechanicsInSchroedingerPicture}{this section of the nLab entry on TFTs}). In quantum mechanics, the Heisenberg and the Schrödinger picture are two faces of the same medal, i.e. matrix mechanics and wave mechanics are equivalent\footnote{Interestingly from a historical point of view, Schrödinger's (and Eckhart's) famous proof from 1926 that the two approaches are equivalent is faulty, but von Neumann fortunately provided a foolproof demonstration in 1932. See \cite{MULLER199735} for more on this interesting trivia.}; however, we are far from proving that AQFT and TQFT are also two faces of the same medal. One point of contact between the two is via factorization algebras (something related to $E_n$-algebras, see \ref{EAlg} for the definition of a $E_1$-algebra), see \cite{costello2023factorization} for a summary on factorization algebras and how they relate to TQFT and AQFT. 
     
     In conclusion, algebraic quantum field theory is not a variant of topological field theory, but an alternative attempt to put quantum field theory on mathematically rigorous footings. One can discover more on algebraic quantum field theory in \cite{halvorson2006algebraic} and \cite{fewster2019algebraic}.
 \end{itemize}
@@ -3939,7 +3943,11 @@ We now provide an outlook to some research programs that are tightly connected t
 
 From now on the main reference will be \cite{KasselRossoTuraev97}.
 
-For classifying TFTs in 1 and 2 dimensions the procedure we have been following is to find an algebraic category which is equivalent with such TFTs evaluated on some object. In particular, in order to classify 1d TFTs we established an equivalence with the evaluation functor of 1TFTs on a point and finite dimensional vector spaces and for 2d TFTs evaluated on the circle $S^1$ are equivalent to commutative Frobenius algebras in some symmetric monoidal category and to finite-dimensional Frobenius $k$-algebras when considering $\Vect_k$ as the target category. These equivalences of categories allow us to reconstruct 1d and 2d TFTs (up to some reasonable form of equivalence) from this purely algebraic data since they. One can ask themselves if a classification of this kind is possible also for higher dimension, such as 3d TFTs. First, 3d-TFTs can be constructed from algebraic data, although a bit more sophisticated than what we got in lower dimensions, we will find out that every \textit{modular tensor category} gives a 3d TFT\footnote{So-called once-extended 3d TFTs, i.e. TFTs of the sort $\Bord_{3,2,1}\xrightarrow{\Zf}\cat$, can be classified by modular tensor categories. As we previously sketched, once-extended 2d TFTs have $\Bord_{2,1,0}$ as source and $\Bord_{2,1,0}$ is a symmetric monoidal bicategory (see \ref{Bicategory} and \ref{RemarkExtendedTFTs}). Also $\Bord_{3,2,1}$ is a symmetric monoidal bicategory with disjoint unions of $S^1$ as objects. In short, there is an equivalence between once-extended 3d-TFTs evaluated on the circle $S^1$ and modular tensor categories (see \cite{JordanTFTs} for more). This is a very difficult result, the details of which are not fully available yet, despite being expected/``known'' for a decade}. The algebraic data can be summarized diagramatically as follows
+For classifying TFTs in 1 and 2 dimensions the procedure we have been following is to find an algebraic category which is equivalent with such TFTs evaluated on some object. 
+In particular, in order to classify 1d TFTs we established an equivalence with the evaluation functor of 1TFTs on a point and finite dimensional vector spaces and for 2d TFTs evaluated on the circle $S^1$ are equivalent to commutative Frobenius algebras in some symmetric monoidal category and to finite-dimensional Frobenius $k$-algebras when considering $\Vect_k$ as the target category. 
+These equivalences of categories allow us to reconstruct 1d and 2d TFTs (up to some reasonable form of equivalence) from this purely algebraic data. One can ask themselves if a classification of this kind is possible also for higher dimension, such as 3d TFTs. 
+First, 3d-TFTs can be constructed from algebraic data, although a bit more sophisticated than what we got in lower dimensions, we will find out that every \textit{modular tensor category} gives a 3d TFT\footnote{So-called once-extended 3d TFTs, i.e. TFTs of the sort $\Bord_{3,2,1}\xrightarrow{\Zf}\cat$, can be classified by modular tensor categories. As we previously sketched, once-extended 2d TFTs have $\Bord_{2,1,0}$ as source and $\Bord_{2,1,0}$ is a symmetric monoidal bicategory (see \ref{Bicategory} and \ref{RemarkExtendedTFTs}). Also $\Bord_{3,2,1}$ is a symmetric monoidal bicategory with disjoint unions of $S^1$ as objects. In short, there is an equivalence between once-extended 3d-TFTs evaluated on the circle $S^1$ and modular tensor categories (see \cite{JordanTFTs} for more). This is a very difficult result, the details of which are not fully available yet, despite being expected/``known'' for a decade}. 
+The algebraic data can be summarized diagramatically as follows
 % https://q.uiver.app/#q=WzAsNixbMCwwLCJcXG9wZXJhdG9ybmFtZXtGaW5WZWN0fVxcbmkgWCJdLFswLDEsIlxcb3BlcmF0b3JuYW1le0NvbW1Gcm9ifVxcbmkgQSJdLFswLDIsIlxcb3BlcmF0b3JuYW1le01vZFRlbnNvcn1cXG5pXFxjYXQiXSxbMiwwLCJcXFpmXFxpblxcb3BlcmF0b3JuYW1lezEtVEZUfSJdLFsyLDEsIlxcWmZcXGluXFxvcGVyYXRvcm5hbWV7Mi1URlR9Il0sWzIsMiwiXFxaZlxcaW5cXG9wZXJhdG9ybmFtZXsxLVRGVH0iXSxbMCwzLCJcXHRleHR7XFx0aW55e3VuaXF1ZWx5IGRldGVybWluZXN9fSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6InNxdWlnZ2x5In19fV0sWzEsNCwiXFx0ZXh0e1xcdGlueXt1bmlxdWVseSBkZXRlcm1pbmVzfX0iLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJzcXVpZ2dseSJ9fX1dLFsyLDUsIlxcdGV4dHtcXHRpbnl7dW5pcXVlbHkgZGV0ZXJtaW5lc319IiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoic3F1aWdnbHkifX19XV0=
 \[\begin{tikzcd}[cramped]
 	{\operatorname{FinVect}\ni X} && {\Zf\in\operatorname{1-TFT}} \\
@@ -3961,7 +3969,7 @@ A modular tensor category is a tensor category with extra properties. We start w
     \item $\Hom_\cat (X,Y)$ is a vector space $\forall X,Y$.
     \item composition is bilinear $\Hom_\cat (X,Y) \otimes \Hom_\cat (Y,Z) \mapsto \Hom_\cat (X,Z)$\,.
     
-     A \textit{tensor category} is a monoidal linear category, that is, a linear category which is monoidal, and the monoidal product on the $\Hom$s is linear.
+    \noindent A \textit{tensor category} is a monoidal linear category, that is, a linear category which is monoidal, and the monoidal product on the $\Hom$s is linear.
 \end{itemize}
 \end{defn}
 
@@ -4064,7 +4072,7 @@ This comes from representation theory!
         \rho(gh) = \rho(g) \rho(h), \quad \forall g,h \in G
     \end{equation}
     Now, a morphism of representations $\rho_i: G \to \Aut(V_i), i=1,2$ is a linear map $\alpha: V_1 \to V_2$ such that the following diagram commutes:
-    \begin{equation}
+    \begin{equation}\label{eq:morphism_of_reps}
         \begin{tikzcd}
             V_1 \ar[r, "\alpha"] \ar[d, "\rho_1(g)"'] & V_2 \ar[d, "\rho_2(g)"]\\
             V_1 \ar[r, "\alpha"'] & V_2 
@@ -4072,6 +4080,12 @@ This comes from representation theory!
     \end{equation}
     This gives rise to the category of representations of $G$, $\Rep_G$.
 \end{defn}
+\begin{rem}
+    The diagram \ref{eq:morphism_of_reps} looks suspiciously like a natural transformation, and it is! In particular it's exactly example \ref{Cat of representations} in \ref{ex:natural_trafos}. In other words, the category of representations is the functor category:
+    \begin{equation}
+        \Rep(G) = \Fun(\mathbf B G,\Vect)
+    \end{equation}
+\end{rem}
 \begin{ex}
     Symmetries of a polygon: $G=D_n$ dihedral group and $\rho: D_n \to \Aut(\R^2)$, where $D_n \acts \R^2$ with reflections and rotations.
 \end{ex}
