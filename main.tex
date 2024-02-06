@@ -18,7 +18,9 @@
 \usepackage{microtype}          % reduces the number of overfull/underfull boxes
 \usepackage{pdfpages}           % to include other pdfs (for titlepage)
 \usepackage{dsfont}				% special S for sphere spectrum
-\usepackage{bbding}             % for \Plane for extra sections
+\usepackage{bbding}				%For the plane symbol
+\usepackage{ stmaryrd }			% to use \mapsfrom
+
 %\usepackage[all,cmtip]{xy}     % don't know what it's for
 %\usepackage{upgreek}           % don't know what it's for
 %\usepackage[normalem]{ulem}    % don't know what it's for
@@ -251,12 +253,18 @@ These are the lecture notes of the course \textit{``Bordism and Topological Fiel
 
 %Just realized that it looks weird put here because of 'contents' at the top of the page, don't know how to resolve /andrea
 \section*{Notational Conventions}
+	We use the symbol '\Plane' at the end of titles of sections, definitions or theorems that depart from the content of the lecture and deepen some aspect on a topic with an outloolk towards research topics.
+
 \begin{notat}
 	Throughout these notes we will abuse notation indicating a collection with some structure on it just by writing down the collection, e.g. denoting a monoid $(M,\cdot)$ by $M$, a metric space $(X,d)$ by $X$ etc...
 \end{notat}
 \begin{notat}
 	$n$-manifold and $n$-bordism mean respectively $n$ dimensional manifold and $n$ dimensional bordism.
 \end{notat}
+ \begin{notat}
+	We often denote equivalence classes just with a representative thereof. 
+\end{notat}
+
 
 %TODO I would label and caption the figures so they can be referenced and they can appear wherever TeX thinks best /William
 
@@ -826,13 +834,18 @@ There is an insidious set-theoretic issue when we define the $n$-th cobordism gr
     Prove the following statements
     \begin{enumerate}
         \item $(\Omega_n, \amalg)$ is an abelian group with operation given by the disjoint union $\amalg$.
-        \item In fact $[M]\amalg [M]=[\emptyset]$, i.e. the trivial element of the cobordism group\footnote{We will write $0=[\emptyset]$.}
+        \item In fact $[M]\amalg [M]=[\emptyset]$, i.e. the trivial element of the cobordism group\footnote{We will sometimes write $0=[\emptyset]$ or more often $\emptyset=[\emptyset]$}
     \end{enumerate}
 \end{exercise}
 
 \begin{rem}
     Actually $(\Omega_n,\amalg)$ is a finitely generated abelian group, but this is a hard theorem. In particular, it is a finite product of cyclic groups of order $2$ (from 2.)
 \end{rem}
+
+\begin{defn}[bordism invariant]
+	A bordism invariant is a homomorphism of abelian groups $$(\Omega_n,\amalg,\emptyset) \to (A,\cdot,e)$$ 
+	the abelian group $A$ can be $\Z$ for instance.
+\end{defn}
 \begin{defn}[Bordism invariant]
 	A bordism invariant is a homomorphism of abelian groups $$\Omega_n \to \Z$$ or $\R$, $\C$... or whatever abelian group captures that invariant.
 \end{defn}
@@ -845,10 +858,10 @@ There is an insidious set-theoretic issue when we define the $n$-th cobordism gr
 \begin{itemize}%TODO complete
     \item $\chi$ mod 2 (the Euler characteristic)
     \item signature
-    \item characteristic classes $\dots$
+    \item characteristic classes such as Pontrjagin, Stiefel-Whitney or Chern classes 
 \end{itemize}
 \end{ex}
-
+%add definition of characteristic class
 % texorpdfstring to remove the hyperref warning
 \subsection{The 0-th Cobordism Group, \texorpdfstring{$\Omega_{0}$}{Omega 0}}
 Consider
@@ -1783,7 +1796,7 @@ There are versions for any tangential structure, such as orientation or stable f
        $$ \Omega_\bullet^{or} /\text{torsion} \cong \Z[z_4, z_8, z_12, \dots]$$
     where the generators are given by Milnor hypersurfaces.
 \end{thm}
-%Now we have Stiefel-Whitney and Pontryagin numbers, which are cobordism invariants and hence determine classes of cobordisms.  % It is not clear to me what they are and what we are referring to just copied from the script, maybe should add explication /Andrea
+%Now we have Stiefel-Whitney and Pontryagin numbers, which are cobordism invariants and hence determine classes of cobordisms.  In 1959, C.T.C. Wall proved that two manifolds are cobordant if and only if their Pontrjagin numbers and Stiefel numbers are the same % It is not clear to me what they are and what we are referring to just copied from the script, maybe should add explication /Andrea 
 %TODO maybe say more
 \begin{ex}
 In particular, the groups in various degrees are given by the following list:
@@ -1801,10 +1814,22 @@ For the latter see \cite[p. 203]{MilnorS05}.
 %TODO maybe torsion comments
 \end{ex}
 %would be cool to write something why these are the case, but mysterious to me for now TBD /ANdrea
+\subsection{Cobordism groups and the sphere spectrum \Plane}
 Very interestingly, the (stable) framed version is isomorphic to the stable homotopy groups of the sphere and it is \textit{not} computed to all degrees. This is one way to phrase a theorem named after Thom. It is fascinating because the stable homotopy groups of the sphere are central objects in stable homotopy theory. They are equivalently the homotopy groups of the sphere spectrum.
+\begin{defn}[Suspension Spectrum]
+	
+\end{defn}
+\begin{defn}[Sphere Spectrum]
+	
+\end{defn}
+In a certain sense, $\mathds S$ is analgous to $\Z$ but in another category: \Z is the unit in Ab, while $\mathds S$ is the unit in spectra.
 %just as Z is the unit in AbGrp, S is the unit in Spectra, add definition of sphere spectrum and maybe intro to spectra since it will be useful later also. TBD /ANder
+\begin{rem}
+Note that the stable homotopy groups of the sphere can be made into a (super\footnote{Meaning that})commutative graded ring via direct sums. We denote it with $\pi_{\bullet}(\mathds{S})$
+$$\pi_{\bullet}(\mathds{S})=\bigoplus_{n\geq 0}\pi_{n}(\mathds{S})$$
+\end{rem}
 \begin{thm}[Thom's theorem]
-	$\Omega_{n}^{\fr}\cong\pi_n(\mathds{S})$
+	$\Omega_{\bullet}^{\fr}\cong\pi_{\bullet}(\mathds{S})$
 \end{thm}
 \begin{ex}
  We list some examples of such groups
@@ -1819,7 +1844,7 @@ Very interestingly, the (stable) framed version is isomorphic to the stable homo
   $$\Omega^{fr}_11 \cong\Z_{504}$$
   $$\Omega^{fr}_15 \cong\Z_{480}\oplus\Z_2$$
 \end{ex}
-In a certain sense, $\mathds S$ is analgous to $\Z$ but in another category: \Z is the unit in Ab, while $\mathds S$ is the unit in spectra.
+
 
 % -------------------------------------------------------------
 % --------------------- LECTURE 9 22/11 -----------------------
@@ -1832,7 +1857,7 @@ To extract the cobordism group from bordism we took the following steps:
 \begin{enumerate}
 	\item observed that being cobordant is an equivalence relation,
 	\item considered the equivalence classes of closed $n$ manifolds up to $n+1$ cobordisms, obtaining the \textit{sets} $\Omega_n$,
-	\item took such equivalence classes together with disjoint unions, this resulted in an abelian group\footnote{And eventually in a \Z graded commutative ring, but this will not be as important for us from now on.}.
+	\item took such equivalence classes together with disjoint unions, resulting in an abelian group\footnote{And eventually in a \Z graded commutative ring, but this will not be as important for us from now on.}.
 \end{enumerate} 
 This strategy was the key for classifying manifolds up to cobordism. 
 However, the cobordism groups merely record that \emph{there is} a bordism between two manifolds (since two manifolds are equivalent just if there is a bordism, independently of what kind of bordism it is), 
@@ -1916,7 +1941,7 @@ symmetric monoidal categories are all examples of commutative monoid objects (se
 A few examples of categories are the following:
 \begin{center}
 	\begin{tabular}{l|l|l}
-	Category & ob & morphisms \\ \hline 
+	category & objects & morphisms \\ \hline \hline
 	Set & class of all sets & functions between sets \\ \hline 
 	Mon & class of all monoids & monoid homomorphisms \\ \hline
 	Grp & class of all groups & group homomorphisms \\ \hline
@@ -1926,7 +1951,7 @@ A few examples of categories are the following:
 	Alg${}_k$ & class of all algebras over $k$ & algebra homomorphisms \\ \hline
 	Top & class of all topological spaces & continuous functions \\ \hline
 	FinSet & class of all finite sets & functions between sets \\ \hline
-	SmoothMfld & set of all smooth manifolds & smooth functions \\ \hline
+	SmoothMfld & set of all smooth manifolds & smooth functions \\ 
 	\end{tabular}
 \end{center}
     \begin{enumerate}
@@ -2574,26 +2599,22 @@ Ab is very important as an enriching category. Before, we gave a loose character
     \end{enumerate}
 \end{ex}
 There is another example of strict (2,1)-category from topology and it will let us rigorously show in which sense a homotopy is a natural transformations and why one might want to talk about $\infty$-categories.
-
-
-\section{Outlook: Grothendieck's Homotopy Hypothesis and \texorpdfstring{$\infty$}{infinity}-categories \extra} 
-\begin{ex}\label{Homotopy2Top}
-    We previously spelled out an analogue formulation of the natural transformation (see \ref{Homotopy}). This shows that the notion of homotopy and natural transformation are related. A way to more rigorously pin down that a homotopy is some kind of natural transformation is via the the homotopy 2-category of topological spaces. Instead of taking paths up to homotopies between paths, as in the more famous hTop, we take homotopies between paths up to homotopies between homotopies between paths. This results in a strict (2,1)-category 2-hTop where objects are topological spaces, 1-morphisms are continuous maps and 2-morphisms are homotopies between continuous maps up to higher homotopies, i.e. homotopies between homotopies between continuous maps. A homotopy between a homotopy between continuous maps is defined in the following manner: given continuous functions $f,g:X\to Y$ and homotopies between them $k,h:X\times [0,1]\to Y$, a homotopy $L$ between these two homotopies $k$ and $h$ is a continuous function $L:X\times [0,1]\times[0,1]\to Y$ such that 
-    \begin{itemize}
-        \item $\forall t\in [0,1]\forall x\in X. H(0,t,x)=h(t,x)$
-        \item $\forall t\in [0,1]\forall x\in X. H(1,t,x)=k(t,x)$
-        \item $\forall t'\in [0,1]\forall x\in X. H(t',0,x)=f(x)$
-        \item $\forall t'\in [0,1]\forall x\in X. H(t',1,x)=g(x)$
-    \end{itemize}
-    If one takes topological spaces as objects, continuous maps between them as 1-morphisms, and homotopies between continuous maps \emph{up to} homotopies between homotopies one gets the homotopy 2-category of topological spaces 2-hTop and is an example of a strict $(2,1)$-category. If one restricts themselves to spaces admitting the structure of CW-complexes, i.e. something like weakly Hausdorff compactly generated spaces, and then take the homotopy 1-types thereof, we get a subcategory of 2-hTop called 2-1Type. Via the Eilenberg-MacLane space of a groupoid one can establish an equivalence of categories 
-	$$2\operatorname{-}1Type\simeq Grpd$$
-	This is Grothendieck's infamous homotopy hypothesis in dimension 1. It was formulated in \emph{Pursuing Stacks} in full generality for $\infty$-groupoids. We now sketch how this works in full glory.
-\end{ex}
-\begin{notat}
-    By $\infty$-category we mean $(\infty,1)$-category.
-\end{notat}
-\begin{ex}\label{HomotopyHypothesis} 
-	Regarding the last example, one could ask why stop at homotopies between homotopies and not go all the way to homotopies between homotopies between homotopies, homotopies between ... for $\infty$ many times? This is a great question and also the way to provide a universal properties for constructions similar to the already seen cartesian product called homotopy co/limits (for more on this see chapters 1 and 2 of \cite{HarpazAlgebras}). In the end, one would get an $(\infty,1)$-category, a category in which the only morphisms that are not necessarily (weakly\footnote{To be precise, higher morphisms in such a category are weakly invertible and not strictly. This is not at all bad and that things are not strict but up to homotopy/equivalence is exactly what one desires in this context. Weakly invertible means that it is not the case the sense that $f\circ g=id$, but $f\circ g\simeq id$}.) invertible are morphisms between objects, all other morphisms between morphisms are invertible; in other words, a category in which all $n>1$-morphisms are invertible and 1-morphisms not necessarily. 
+\subsection{Grothendieck's Homotopy Hypothesis and \texorpdfstring{$\infty$}{infinity}-categories \extra}
+    \begin{ex}\label{Homotopy2Top}
+    We previously spelled out an analogue formulation of the natural transformation (see \ref{Homotopy}). This shows that the notion of homotopy and natural transformation are related. A way to more rigorously pin down that a homotopy is some kind of natural transformation is via the the homotopy 2-category of topological spaces. Instead of taking paths up to homotopies between paths, as in the more famous hTop, we take homotopies between paths up to homotopies between homotopies between paths. This results in a strict (2,1)-category 2-hTop where objects are topological spaces, 1-morphisms are continuous maps and 2-morphisms are homotopies between continuous maps up to higher homotopies, i.e. homotopies between homotopies between continuous maps. A homotopy between a homotopy between continuous maps is defined in the following manner: given continuous functions $f,g:X\to Y$ and homotopies between them $k,h:X\times [0,1]\to Y$, a homotopy $L$ between these two homotopies $k$ and $h$ is a continuous function $L:X\times [0,1]\times[0,1]\to Y$ such that \begin{itemize}
+            \item $\forall t\in [0,1]\forall x\in X. H(0,t,x)=h(t,x)$
+            \item $\forall t\in [0,1]\forall x\in X. H(1,t,x)=k(t,x)$
+            \item $\forall t'\in [0,1]\forall x\in X. H(t',0,x)=f(x)$
+            \item $\forall t'\in [0,1]\forall x\in X. H(t',1,x)=g(x)$
+        \end{itemize}
+        If one takes topological spaces as objects, continuous maps between them as 1-morphisms, and homotopies between continuous maps \emph{up to} homotopies between homotopies one gets the homotopy 2-category of topological spaces 2-hTop and is an example of a strict $(2,1)$-category. If one restricts themselves to spaces admitting the structure of CW-complexes, i.e. something like weakly Hausdorff compactly generated spaces, and then take the homotopy 1-types thereof, we get a subcategory of 2-hTop called 2-1Type. Via the Eilenberg-MacLane space of a groupoid one can establish an equivalence of categories 
+$$2\operatorname{-}1Type\simeq Grpd$$
+This is Grothendieck's infamous homotopy hypothesis in dimension 1. It was formulated in \emph{Pursuing Stacks} in full generality for $\infty$-groupoids. We now sketch how this works in full glory.
+    \end{ex}
+    \begin{notat}
+        By $\infty$-category we mean $(\infty,1)$-category.
+    \end{notat}
+\begin{ex}\label{HomotopyHypothesis} Regarding the last example, one could ask why stop at homotopies between homotopies and not go all the way to homotopies between homotopies between homotopies, homotopies between ... for $\infty$ many times? This is a great question and also the way to provide a universal properties for constructions similar to the already seen cartesian product called homotopy co/limits (for more on this see chapters 1 and 2 of \cite{HarpazAlgebras}). In the end, one would get an $(\infty,1)$-category, a category in which the only morphisms that are not necessarily (weakly\footnote{To be precise, higher morphisms in such a category are weakly invertible and not strictly. This is not at all bad and that things are not strict but up to homotopy/equivalence is exactly what one desires in this context. Weakly invertible means that it is not the case the sense that $f\circ g=id$, but $f\circ g\simeq id$}.) invertible are morphisms between objects, all other morphisms between morphisms are invertible; in other words, a category in which all $n>1$-morphisms are invertible and 1-morphisms not necessarily. 
 
 	Moreover, one gets the fundamental $\infty$-groupoid of a space via a similar reasoning: instead of considering paths up to homotopies between paths, one can go all the way up and consider homotopies between homotopies between... without forgetting any information. All paths and all homotopies are clearly invertible so for all $k\in \mathbb{N}_0$ all $k$-morphisms are invertible and that is why it is called $\infty$-\emph{groupoid}. A synonym for $\infty$-groupoid is $(\infty,0)$-category. Note that the category of all $\infty$-groupoids is not an $\infty$-groupoids, because functors are between $\infty$-groupoids are not necessarily invertible, parallelly to functors between 1-groupoids. The previously mentioned homotopy hypothesis states that the $(\infty,1)$-category of (nice) topological spaces we just sketched is equivalent to the $(\infty,1)$-category of $\infty$-groupoids. The intuition behinds this is that this should hold thanks to the construction of fundamental $\infty$-groupoids of spaces, whereas, in the other direction, from $\infty$-groupoids one can construct spaces via something called the geometric realization. This equivalence is the reason why in the literature the category of $\infty$-groupoids is sometimes called the category of Spaces. If the equivalence holds or not of course depends on how we define 'space' and $\infty$-groupoid, but it holds for many reasonable definitions. 
 
@@ -2737,7 +2758,7 @@ Another example of non-cartesian monoidal category, which is not algebraic in na
         \item Topological monoids in $(\Top,\times)$
     \end{itemize}
 \end{ex}
-This example clarifies the parallel between monoids, algebras and monoidal categories we made at the start of this section. However, one could be bothered by the fact that we do not actually get a general monoidal category (i.e. not necessarily strict). To do this we will briefly talk about $\mathbb E_1$-algebras in section \ref{sec:E_n_algebras}.
+This example clarifies the parallel between monoids, algebras and monoidal categories we made at the start of this section. However, one could be bothered by the fact that we do not actually get a general monoidal category (i.e. not necessarily strict). To do this we will briefly talk about $\mathbb E_1$-algebras in section \ref{EAlg}.
 
 \begin{defn}[Morphism of Monoids]
     Let $M,M'\in\cat$ be monoid objects $(M,\mu,\eta)$ and $(M',\mu',\eta')$. A morphism of monoids is a morphism $f:M\to M'$ such that both the following two diagrams commute 
@@ -2799,8 +2820,8 @@ We leave the case of the counit for the reader.
     A Lie Group is a group object in $\SmoothMfld$.
 \end{ex}
 
-\section{Outlook towards \texorpdfstring{$\mathbb{E}_n$}{En}-Algebras \extra} 
-\label{sec:E_n_algebras}
+\subsection{Outlook towards \texorpdfstring{$\mathbb{E}_n$}{En}-Algebras \extra} 
+\label{EAlg}
 
 \begin{defn}[Isotopy]\label{Isotopy}
     An isotopy is a stricter form of homotopy. Let $f,g:X\to Y$ be embeddings. Then $H:X\times [0,1]\to Y$ is an isotopy if 
@@ -2815,7 +2836,7 @@ We leave the case of the counit for the reader.
     Moreover, if $f,g$ are \emph{smooth} embeddings and $\forall t\in[0,1], H(t,-)\hookrightarrow Y$ is also a smooth embedding, then $H$ is a \emph{smooth} isotopy.
 \end{defn}
 
-\begin{defn}[$\mathbb{E}_1$-Algebra]\label{EAlg}
+\begin{defn}[$\mathbb{E}_1$-Algebra]
     Let $\Disk_{1,0}^{or}$ be the category of 1-disks (see \ref{CatOfDisks}). Then a $\mathbb{E}_1$-algebra is a symmetric monoidal functor $$\Disk_{1}^{or}\to \cat$$ such that if $j,i\in \Hom_{\Disk_{1}^{or}}(X,Y)$ are smoothly isotopic embeddings, then  $F(j)=F(i)$, i.e. they are sent to the same morphism in $\cat$. More generally.
 \end{defn}
 \begin{thm}
@@ -3057,10 +3078,8 @@ We have previously seen (\ref{Representations of Groups}) that a linear represen
     Let $\cat$ be a symmetric monoidal category. A linear representation of such category is a symmetric monoidal functor $$\cat\to\Vect_k$$ Such functors are the objects of the category of representation of $\cat$ whereas symmetric monoidal natural transformations are the morphisms, $\Rep(\cat)=\Fun^{\otimes}(\cat,\Vect_k)$
 \end{defn}
 
-
-\section{Outlook: Interlude on Bicategories \extra} % (fold)
+\subsection{Interlude on Bicategories \Plane} % (fold)
 \label{sub:outlook_interlude_on_bicategories}
-
 %I hope the order here is not confusing, in the sense that why not define before a bicategory and subsequently the delooping, however this sequence where one first pictures the delooping and then they picture a bicategory made sense in my mind. Feel free to change /Andrea
 %Also I hope it is not overkill, it all started because I wanted to define dual objects of a monoidal cat as adjunctions of 1-morphisms in the delooping, then realized that bicategory would be useful also for 2 reasons: 1-understanding better why Cat is strict and not weak, and in general picturing what weak n-categories are and 2-the extended 2-category of 2 dimensional bordisms is a bicategory. I'll ask the professor if it makes sense or it is just confusing
 \begin{defn}[Delooping of a Monoidal Category]\label{DeloopingMonCat}
@@ -3232,7 +3251,7 @@ We just saw that $\Bordn$ is a category. It has importantly also a symmetric mon
     Associativity and commutativity also hold up to diffeomorphism and not strictly if one defines the disjoint union as a coproduct\footnote{A coproduct is the dual notion of (cartesian) product (see \ref{CartProd}), i.e. a coproduct in $\cat$ is a product in $\cat^{op}$.}: every coproduct is unique up to isomorphism\footnote{One can prove this in a specular way in which we proved the uniqueness of the cartesian product, see \ref{UptoIsoProds}.}, the appropriate notion of isomorphism in the category of smooth manifolds is diffeomorphism and all diffeomorphic manifolds are cobordant.
 \end{rem}
 \subsection{Definition of Topological Field Theories}
-Recall that a group homomorphism $\Omega_n \to \Z$ or $\R$ or \C... is a bordism invariant, which is generally quite useful and interesting. Now that we have refined our tools and have a cobordism \emph{category} instead of the cobordism \emph{group}, the bordism invariants become symmetric monoidal functors into another symmetric monoidal category since symmetric monoidal functors are the appropriate notion of homomorphism of symmetric monoidal categories.
+Recall that a group homomorphism $\Omega_n \to X$ with $X$ also an abelian group is a bordism invariant, which is generally quite useful and interesting. Now that we have refined our tools and have a cobordism \emph{category} instead of the cobordism \emph{group}, the bordism invariants become symmetric monoidal functors into another symmetric monoidal category since symmetric monoidal functors are the appropriate notion of homomorphism of symmetric monoidal categories.
 
 In particular, that's how we get a topological field theory:
 \begin{defn}
@@ -3251,8 +3270,7 @@ In particular, that's how we get a topological field theory:
 \end{itemize}
 \end{exercise} 
 
-\subsection{Outlook on the Cobordism Hypothesis and Extended Topological Field Theories \extra} % (fold)
-\label{sub:outlook_on_the_cobordism_hypothesis_and_extended_topological_field_theories}
+\subsection{ The Cobordism Hypothesis and Extended Topological Field Theories \extra}\label{sub:outlook_on_the_cobordism_hypothesis_and_extended_topological_field_theories}
 
 \begin{rem}\label{RemarkOnCobHypo}
     After skimming through \cite{Atiyah1988} one might wonder why we defined the target category of a topological field to be just a general symmetric monoidal category and not specifically $(\Vect, \otimes)$, as Atiyah did, or at least something similar, in the end we are studying topological \emph{quantum field theories}! There are probably %added 'probably' because I'm unsure if it's true, is it true?/andrea
@@ -3358,9 +3376,9 @@ From the universal property of the groupoid completion, there is a further facto
     A nTFT is invertible if the TFT is itself an invertible (see \ref{InvertibleObject}) object in the category of nTFTs.
 \end{rem}
 
-\subsection{Outlook on Invertible Field Theories \extra} % (fold)
-\label{Spectra Phases of Matter}
+\subsection{Invertible tield theories and stable homotopy theory \extra}\label{Spectra Phases of Matter}
 
+>>>>>>> refs/remotes/origin/main
 These theories can be studied with stable homotopy theory. However, in order to allow the application of such machinery, one must fully extend topological field theories (see \ref{RemarkExtendedTFTs}), i.e. with $(\infty,n)$-categories of bordisms as a source. So, in the case of extended TFTs, $|\Bord|$ and $\cat^\times$ both are $\infty$-groupoids since we get $|\Bord|$ by adjoining all inverses for all morphisms and $\cat^\times$ is obtained by forgetting about non-invertible morphisms (and objects) of $\cat$.
 
 We previously talked about the fundamental $\infty$-groupoid of a space while sketching the homotopy hypothesis (see \ref{HomotopyHypothesis}) and told a story about how spaces are equivalent to $\infty$-groupoids. Hence, $\tilde\Zf$ corresponds to a map of spaces via this equivalence.
