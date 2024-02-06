@@ -121,6 +121,7 @@
 \DeclareMathOperator{\Lie}{Lie}
 \DeclareMathOperator{\Der}{Der}
 \DeclareMathOperator{\Disk}{Disk}
+\DeclareMathOperator{\SmoothMfld}{SmoothMfld}
 
 
 % ready made Torus drawing
@@ -2773,6 +2774,7 @@ This example clarifies the parallel between monoids, algebras and monoidal categ
 \end{tikzcd}\]
 We leave the case of the counit for the reader.
 \end{defn}
+%I don't think it's a bimonoid, i think it's just monoid and comonoid, without the additional property /William
 \begin{defn}[Frobenius Algebra]\label{FrobAlg}
     A Frobenius algebra in an arbitrary monoidal category $\cat$ is a bimonoid object such that the following holds: $$(\mathbb{1}_\cat\otimes\mu)\circ(\Delta\otimes\mathbb{1}_\cat)=\Delta\circ\mu=(\mu\otimes\unit_\cat)\circ(\unit_\cat\otimes\Delta)$$
 \end{defn}
@@ -2794,7 +2796,7 @@ We leave the case of the counit for the reader.
     A topological group is a group object in Top.
 \end{ex}
 \begin{ex}\label{LieGroup}
-    A Lie Group is a group object in $SmoothMfd$.
+    A Lie Group is a group object in $\SmoothMfld$.
 \end{ex}
 
 \section{Outlook towards \texorpdfstring{$\mathbb{E}_n$}{En}-Algebras \extra} 
@@ -3299,7 +3301,7 @@ TFTs were originally defined with Vect as the target category, $\Zf: (\nCob, \am
 \end{ex}
 
 
-\begin{defn}
+\begin{defn}\label{InvertibleObject}
     Let $(\cat, \otimes, \unit_\cat)$ be a monoidal category. An object $X \in \cat$ is invertible if there is a $Y \in \cat$ such that $X \otimes Y \cong \unit_\cat$.  
 \end{defn}
 
@@ -3317,7 +3319,7 @@ TFTs were originally defined with Vect as the target category, $\Zf: (\nCob, \am
 
 We can now rigorously define what we previously called an invertible TFT: 
 \begin{defn}
-    An invertible TFT is an invertible object in $Fun^\otimes(\Bordn,\cat)$. This is equivalent to the fact that $\Zf$ factors through $\cat^\times$:
+    An invertible TFT is an invertible object in $\Fun^\otimes(\Bordn,\cat)$. This is equivalent to the fact that $\Zf$ factors through $\cat^\times$:
  % https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXEJvcmRuXlxcYW1hbGciXSxbMiwwLCJcXGNhdF5cXG90aW1lcyJdLFsxLDEsIlxcY2F0XlxcdGltZXMiXSxbMCwxLCJcXFpmIl0sWzAsMiwiXFxiYXJ7XFxaZn0iLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMiwxLCIiLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dXQ==
 \[\begin{tikzcd}
 	{\Bordn^\amalg} && {\cat^\otimes} \\
@@ -3418,6 +3420,7 @@ Given $\Zf:\Bordn\to\Vect_k$ and $M\in\Bordn$, one can prove that $\Zf(M)$ is a 
 \begin{figure}[!ht]
     \centering
     \captionsetup{labelformat=empty, format = hang}
+    % I think the middle one has the wrong orientation, it should END on + /William
         \begin{measuredfigure}
             \includegraphics[width=9cm]{images/Lecture 11/1dBORDISM.png} \caption{\small{Two examples of 1-dimensional bordisms}}
         \end{measuredfigure}
@@ -3445,30 +3448,35 @@ We can also define analogous categories for other tangential structures, e.g. a 
     Let $\cat$ be a monoidal category. A left dual of an object $X \in \cat$ is an object $Y$ together with $ev_X: Y \otimes X \to \unit_\cat$ and $coev_X: \unit_\cat \to X \otimes Y$ such that
     
    % https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXG1hdGhiYnsxfV9cXGNhdFxcb3RpbWVzIFhcXGNvbmcgWCJdLFsxLDEsIlhcXG90aW1lcyBZXFxvdGltZXMgWCJdLFsyLDAsIlhcXG90aW1lc1xcbWF0aGJiezF9X1xcY2F0XFxjb25nIFgiXSxbMCwxLCJjb2V2X1hcXG90aW1lcyBpaWRfWCIsMl0sWzEsMiwiaWRfWFxcb3RpbWVzIGV2X1giLDJdLFswLDIsImlkX1giLDAseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsMiwiIiwxLHsib2Zmc2V0IjoxLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
-\[\begin{tikzcd} \label{DUAL1}
-	{\mathbb{1}_\cat\otimes X\cong X} && {X\otimes\mathbb{1}_\cat\cong X} \\
-	& {X\otimes Y\otimes X}
-	\arrow["{coev_X\otimes id_X}"', from=1-1, to=2-2]
-	\arrow["{id_X\otimes ev_X}"', from=2-2, to=1-3]
-	\arrow["{id_X}", from=1-1, to=1-3]
-\end{tikzcd}\]
-and
-    \label{DUAL2}
+	\begin{equation}
+		\[\begin{tikzcd} \label{DUAL1}
+			{\mathbb{1}_\cat\otimes X\cong X} && {X\otimes\mathbb{1}_\cat\cong X} \\
+			& {X\otimes Y\otimes X}
+			\arrow["{coev_X\otimes id_X}"', from=1-1, to=2-2]
+			\arrow["{id_X\otimes ev_X}"', from=2-2, to=1-3]
+			\arrow["{id_X}", from=1-1, to=1-3]
+		\end{tikzcd}\]
+	\end{equation}
+	and
+    
    % https://q.uiver.app/#q=WzAsMyxbMCwwLCJZXFxvdGltZXNcXG1hdGhiYnsxfV9cXGNhdFxcY29uZyBZIl0sWzEsMSwiWVxcb3RpbWVzIFhcXG90aW1lcyBZICJdLFsyLDAsIlxcbWF0aGJiezF9X1xcY2F0XFxvdGltZXMgWVxcY29uZyBZIl0sWzAsMSwiaWRfWVxcb3RpbWVzIGNvZXZfWSIsMl0sWzEsMiwiZXZfWVxcb3RpbWVzIGlkX1kiLDJdLFswLDIsImlkX1kiLDAseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsMiwiIiwxLHsib2Zmc2V0IjoxLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
-\[\begin{tikzcd}
-	{Y\otimes\mathbb{1}_\cat\cong Y} && {\mathbb{1}_\cat\otimes Y\cong Y} \\
-	& {Y\otimes X\otimes Y }
-	\arrow["{id_Y\otimes coev_Y}"', from=1-1, to=2-2]
-	\arrow["{ev_Y\otimes id_Y}"', from=2-2, to=1-3]
-	\arrow["{id_Y}", from=1-1, to=1-3]
-\end{tikzcd}\]
+	\begin{equation}
+   \label{DUAL2}
+		\[\begin{tikzcd}
+			{Y\otimes\mathbb{1}_\cat\cong Y} && {\mathbb{1}_\cat\otimes Y\cong Y} \\
+			& {Y\otimes X\otimes Y }
+			\arrow["{id_Y\otimes coev_Y}"', from=1-1, to=2-2]
+			\arrow["{ev_Y\otimes id_Y}"', from=2-2, to=1-3]
+			\arrow["{id_Y}", from=1-1, to=1-3]
+		\end{tikzcd}\]
+	\end{equation}
     The fact that these two diagrams commute is called snake relations. If the diagrams commute, then $X$ is the right dual of $Y$ and $Y$ is the left dual of $X$.
 
     Equivalently, a (left/right) dual object $X$ in a monoidal category $\cat$ can also be characterized as a (left/right) adjoint (see \ref{AdjFun}) when considered as a morphism in the delooping (see \ref{DeloopingMonCat}) bicategory (see \ref{Bicategory}) $\mathbf{B}\cat$ of $\cat$. This makes sense because:
     \begin{itemize}
         \item the evaluation map $ev_X$ corresponds to the counit $\epsilon$ of the adjunction 
         \item the coevaluation map $coev_X$ to the unit $\eta$ of the adjunction
-        \item the two diagrams (\ref{DUAL1} and \ref{DUAL2}) to the triangle identities of the adjunction
+        \item the two diagrams (\ref{DUAL1} and \ref{DUAL2}) to the triangle identities of the adjunction.
     \end{itemize} 
 \end{defn}
 \begin{rem}
@@ -3498,9 +3506,6 @@ The point $\bullet_+$ is dualizable with dual $\bullet_-$.
 This construction actually works for any object in $\Bordnor$ (and $\Bordn$).
 \end{enumerate}
 \end{ex}
-\begin{defn}\label{InvertibleObject}
-    Let $(\cat, \otimes, \unit_\cat)$ be a monoidal category. An object $X \in \cat$ is invertible if there is a $Y \in \cat$ such that $X \otimes Y \cong \unit_\cat$.  
-\end{defn}
 \begin{defn}[Dual Morphisms]\label{DualMorph}
     Let $X,Y$ be dualizable objects in a symmetric monoidal category $\cat$ and $f:X\to Y$ be a morphism. The dual morphism is given by $$f^\vee:Y^\vee\xrightarrow{id_{Y^\vee} \otimes coev_X}Y^\vee\otimes X \otimes X^\vee\xrightarrow{id_Y^\vee\otimes f\otimes id_{X^\vee}}Y^\vee\otimes Y\otimes X^\vee\xrightarrow{ev_Y\otimes id_{X^\vee}}X^\vee$$
 \end{defn}
@@ -3509,7 +3514,7 @@ This construction actually works for any object in $\Bordnor$ (and $\Bordn$).
 \end{defn}
 
 \begin{lem}\label{BordDuals}
-    In every bordism category $\Bordnor$ every object is dualizable
+    In every bordism category $\Bordnor$ every object is dualizable.
 \end{lem}
 \begin{lem}\label{DualizableMeansInvertibleNatTrans}
     Given symmetric monoidal categories $\cat$ and $\dat$, symmetric monoidal functors $F,G:\cat\to\dat$ and a symmetric monoidal natural transfromation $\alpha:F\Rightarrow G$, if $X\in\cat$ is dualizable, then $\alpha_X:F(X)\to G(X)$ is invertible.
@@ -3536,13 +3541,13 @@ This construction actually works for any object in $\Bordnor$ (and $\Bordn$).
 First of all, the triangle on the top commutes, i.e. $(id_{G(X)}\otimes\alpha_{X^\vee}\otimes\alpha_X)\circ(id_{G(X)}\otimes F(coev_X))=id_{G(X)}\otimes G(coev_X)$, because of the naturality of $\alpha$. The triangle underneath it also commutes, i.e. $id_{G(X)}\otimes\alpha_{X^{\vee}}\otimes\alpha_{X}=(id_{G(X)}\otimes id_{G(X)}\otimes\alpha_{X})\circ (id_{G(X)}\otimes\alpha_{X^{\vee}}\otimes id_{id_{F(X)}})$  because of the unitality of $id_{G(X)}$ and $id_{F(X)}$. Lastly, the bottom trapezoid commutes thanks to the naturality of $\alpha$ and thus the whole big diagram commutes. Consider now first mapping leftwards and successively downwards, i.e. $(G(ev_X)\otimes id_{G(X)})\circ id_{G(X)}\otimes G(coev_X)$, this equals to the identity by one of the two snake relations of dual objects. Take now the other route of the outer diagram, on the right; note that $(\alpha_X\vee)\vee=(G(ev_{X})\otimes id_{F(X)})\circ (id_{G(X)}\otimes\alpha_{X^\vee}\otimes id_{F(X)})\circ id_{G(X)}\otimes F(coev_{X})$ by definition (\ref{DualMorph}) and hence the right route on the outer diagram corresponds to $\alpha_X\circ(\alpha_{X^\vee})^\vee$. Since the outer diagram commutes we obtain that $\alpha_X\circ(\alpha_{X^\vee})^\vee=id_{G(X)}$, i.e. $(\alpha_{X^\vee})^\vee$ is the right inverse of $\alpha_X$. One constructs a symmetric diagram by substituting $F$s with $G$s to prove that it is also the left inverse.
 \end{proof}
 \begin{cor}
-    If every object in a symmetric monoidal category $\cat$ is dualizable, then any symmetric monoidal natural transformation between symmetric monoidal functors that have $\cat$ as the source category is invertible since a natural transfomation is invertible if and only if each of its components is invertible. Hence, $Fun^\otimes(\cat,\dat)$ is a groupoid for any $\dat$ when all objects in $\cat$ are dualizable.
+    If every object in a symmetric monoidal category $\cat$ is dualizable, then any symmetric monoidal natural transformation between symmetric monoidal functors that have $\cat$ as the source category is invertible since a natural transfomation is invertible if and only if each of its components is invertible. Hence, $\Fun^\otimes(\cat,\dat)$ is a groupoid for any $\dat$ when all objects in $\cat$ are dualizable.
 \end{cor}
 \begin{cor}\label{TFTsareGRPDS}
     The category of topological field theories $\TFT_{n,n-1}^{or}(\cat)$ is a groupoid.
 \end{cor}
 \begin{lem}\label{InvDual}
-    Any invertible object is dualizable
+    Any invertible object is dualizable.
 \end{lem}
 \begin{proof}
     Let $X$ be an invertible object. Then, there must be an $X^{-1}$ such that $X\otimes X^{-1}\cong\mathbb{1}_\cat$, the invertible object is the dual of $X$. The co/evaluation maps become isomorphisms and hence the snake relations hold\footnote{Note that every diagram composed solely of isomorphisms commutes.}.
@@ -3580,9 +3585,9 @@ goal may be
 \noindent \textbf{Classification}: Given that there’s something, what could it be?}{Jack Morava in \cite{morava2011cosmic}}
 %Sorry if too quirky XD feel free to delete it of course, was also undecided if to put it here or for classification of 2d manifolds /Andrea
 \subsection{Classification of 1d-TFTs}\label{ClassificationOf1dTFTs}
-The main goal of this subsection is to prove that given an oriented 1d-TFT $Z:\Bord_{1,0}\to\cat$, $Z(\bullet)$ has a dual and conversely, given an object $X\in\cat$, in the codomain of the TFT, and its dual $(Y,ev_X,coev_X)$, we can reconstruct a 1d-TFT.
+The main goal of this subsection is to prove that given an oriented 1d-TFT $\Z:\Bord_{1,0}\to\cat$, $\Z(\bullet)$ has a dual and conversely, given an object $X\in\cat$, in the codomain of the TFT, and its dual $(Y,ev_X,coev_X)$, we can reconstruct a 1d-TFT.
 \begin{lem}\label{Surjectivity}
-    Let $X\in\cat$ be a dualizable object with $Y$ as dual. Then the following determines a 1d-TFT: $$Z(\bullet_+):=X$$ $$Z(\bullet_-):=Y$$ $$Z():=ev_X$$ $$Z():=coev_X$$
+    Let $X\in\cat$ be a dualizable object with $Y$ as dual. Then the following determines a 1d-TFT: $$\Z(\bullet_+):=X$$ $$\Z(\bullet_-):=Y$$ $$\Z():=ev_X$$ $$\Z():=coev_X$$
 \end{lem}
 \begin{proof}
     
@@ -3593,8 +3598,12 @@ The main goal of this subsection is to prove that given an oriented 1d-TFT $Z:\B
     By $(\cat^{\text{dualizable}})^{\cong}$ we denote the restriction of a symmetric monoidal category on its dualizable objects and its isomorphisms, said briefly: a restriction on the underlying Picard groupoid because in any symmetric monoidal groupoid an object is dualizable if and only if it is invertible (see \ref{PicardDualizable}).
 \end{rem}
 \begin{thm}\label{thm:classif_of_1dtft}
-    Let $\cat$ be a symmetric monoidal category. Then the map\footnote{There is unfortunately a notational clash between what we called the evaluation map for dualizable objects, denoted by $ev$, and what we also call in this case evaluation map, denoted by $\mathcal{E} V$. In the latter case, we are referring to a similar convention we use for example in topology when we call a map of this genre $Map(\ast,X)\to X$ an evaluation map. The intuition is that we feed an element of the domain into a map, a functor in our case, and see what happens, "evaluate it".} $$\TFT_{1,0}^{or}=Fun(\Bord_{1,0}^{or}(\cat)\xrightarrow{\mathcal{E} V}(\cat^{\text{dualizable}})^{\cong}$$ 
-    $$\Zf\mapsto \Zf(\bullet_+)$$ is a symmetric monoidal equivalence of groupoids. 
+    Let $\cat$ be a symmetric monoidal category. Then the map\footnote{There is unfortunately a notational clash between what we called the evaluation map for dualizable objects, denoted by $ev$, and what we also call in this case evaluation map, denoted by $\mathcal{E} V$. In the latter case, we are referring to a similar convention we use for example in topology when we call a map of this genre $Map(\ast,X)\to X$ an evaluation map. The intuition is that we feed an element of the domain into a map, a functor in our case, and see what happens, "evaluate it".} 
+    \begin{align}
+    	\TFT_{1,0}^{or}=\Fun(\Bord_{1,0}^{or},\cat)&\xrightarrow{\mathcal{E} V}(\cat^{\text{dualizable}})^{\cong} \\
+    	\Zf&\mapsto \Zf(\bullet_+)
+    \end{align}
+    is a symmetric monoidal equivalence of groupoids. 
     % https://q.uiver.app/#q=WzAsNCxbMCwwLCJURlRfezEsMH1ee29yfSJdLFswLDIsIihcXGNhdF57ZHVhbGl6YWJsZX0pXntcXGNvbmd9Il0sWzEsMSwiXFxjYXRee2R1YWxpemFibGV9Il0sWzIsMCwiXFxjYXQiXSxbMCwxXSxbMSwyLCJpIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMCwyLCIiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMCwzLCJcXG1hdGhjYWx7RX1WIl0sWzIsMywiaiIsMix7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV1d
 \[\begin{tikzcd}
 	{\TFT_{1,0}^{or}} && \cat \\
@@ -3606,7 +3615,7 @@ The main goal of this subsection is to prove that given an oriented 1d-TFT $Z:\B
 	\arrow["{\mathcal{E}V}", from=1-1, to=1-3]
 	\arrow["j"', hook, from=2-2, to=1-3]
 \end{tikzcd}\]
-\end{thm}
+\end{thm}% I think I like \mathcal{E}v better, with small v /William
 The image of $\mathcal{E}V$ is in $(\cat^{dualizable})^{\cong}$, since \begin{enumerate}
     \item $\TFT_{1,0}^{or}$ is a groupoid, and functors preserve isomorphisms
     \item Every object in $\Bord_{1,0}^{or}$ is dualizable, because of functoriality, the image of a dualizable object remains a dualizable object
@@ -3623,7 +3632,7 @@ The image of $\mathcal{E}V$ is in $(\cat^{dualizable})^{\cong}$, since \begin{en
 \end{proof}
 This is the simplest case of an important guiding hypothesis in the field of TFTs, the cobordism hypothesis, see \ref{RemarkOnCobHypo}.
 
-Recap: $\TFT_{1,0}^{or},\cat) \xrightarrow{\mathscr Ev_{\bullet+}} (\cat^{dualiz})^{\simeq} \hookrightarrow \cat$. The map is the following: $\Zf \mapsto \Zf(\bullet_+)$.
+Recap: $\TFT_{1,0}^{or}(\cat) \xrightarrow{\mathscr Ev_{\bullet+}} (\cat^{dualiz})^{\simeq} \hookrightarrow \cat$. The map is the following: $\Zf \mapsto \Zf(\bullet_+)$.
 
 Now we classified 1 dimensional TFTs, we would now like to do the same for 2 dimensional TFTs and we will find that there is an equivalence between $\TFT_{2,1}^{or}(\cat)$ and commutative Frobenius algebras.
 
@@ -3638,11 +3647,13 @@ We have already defined the following notions in arbitrary monoidal categories (
     A $k-$coalgebra is a comonoid object in $\Vect_k$.
 \end{defn}
 \begin{defn}[Bialgebra over a Field]
-    A $k-$bialgebra is a bimonoid object (see \ref{BimonObj} in $\Vect_k$. More explicitly, it is simultaneously an $k-$algebra and a $k-$coalgebra, a monoid and a comonoid object in $\Vect_k$. A $k-$bialgebra is commutative in $\Vect_k$, if the underlying monoid is commutative, or viceversa, if the underlying comonoid is commutative. 
+    A $k-$bialgebra is a bimonoid object (see \ref{BimonObj}) in $\Vect_k$. More explicitly, it is simultaneously an $k-$algebra and a $k-$coalgebra, a monoid and a comonoid object in $\Vect_k$. 
+    % the additional compatibility condition is missing /William 
+    A $k-$bialgebra is commutative in $\Vect_k$, if the underlying monoid is commutative, or viceversa, if the underlying comonoid is commutative. 
 \end{defn}
 
 \begin{defn}[Frobenius $k-$Algebra]\label{Frobk-Alg}
-    A Frobenius $k-$algebra a Frobenius algebra (see \ref{FrobAlg}) in a $\Vect_k$. It is commutative if it is also a commutative $k-$bialgebra.
+    A Frobenius $k-$algebra is a Frobenius algebra (see \ref{FrobAlg}) in a $\Vect_k$. It is commutative if it is also a commutative $k-$bialgebra.
 \end{defn}
 
 These definitions are perfectly fine, if we disregard pedagogical considerations. However, they might still seem mysterious to someone not used to this abstract nonsense. For this reason, we now give three more concrete definitions of a Frobenius algebra. They are all equivalent.
@@ -3663,7 +3674,7 @@ If $V,W$ finite dimensional, this is equivalent to saying that
 are isomorphisms.
 
 \begin{exercise}
-    What's the analogous reformulation of "$X \in \cat$ is dualizable?"
+    What's the analogous reformulation of "$X \in \cat$ is dualizable"?
 \end{exercise}
 
 \begin{defn}
@@ -3699,9 +3710,9 @@ are isomorphisms.
     A \textit{co}algebra is a comonoid object in $\Vect_k$. More explicitly, one simply takes 
    $$ \Delta: A \to A \otimes A $$
    $$ \epsilon: A \to k $$
-and reversing the arrows in the diagrams.
+and reverses the arrows in the diagrams.
 \end{defn}
- A homomorphisms of $k$-coalgebras accordingly preserve $(\Delta_A, \epsilon_A)$ and $(\Delta_B, \epsilon_B)$. It is a monoid homomorphism in $\Vect_k^{op}$
+ A homomorphisms of $k$-coalgebras accordingly preserve $(\Delta_A, \epsilon_A)$ and $(\Delta_B, \epsilon_B)$. It is a monoid homomorphism in $\Vect_k^{op}$.
 
 \begin{ex}
     Take the vector space $A = k[x]/x^2 = k \oplus kx$ and take the map $A \to A \otimes A$ which sends $x \mapsto 1 \otimes x + x \otimes 1$ and $1 \mapsto 1 \otimes 1$ and the map $\epsilon: A \to k$ which sends 1 to 1 and $x$ to 0.
@@ -3781,6 +3792,7 @@ Note that the the only way in which we exploited the fact that we are working wi
     $\TFT_{2,1}^{or}(\cat)$ is a groupoid (see \ref{TFTsareGRPDS}).
 \end{rmnd}
 
+%\cFrob_{\cat}^dualiz^cong right?? Since we already said that the map fctors through C^dualiz^cong /William
 \begin{thm}[Classification of 2 dimensional TFTs]
     The functor 
     $$\TFT_{2,1}^{or} (\cat) \to \cFrob_{\cat}$$
@@ -3791,11 +3803,11 @@ The category $\cFrob_\cat$ has as objects commutative Frobenius algebras on an a
 \begin{thm}
     The category of Frobenius algebras on an arbitrary symmetric monoidal category $\cat$ is a groupoid.
 \end{thm}
-%have to think about a proof for arbitrary symm mon cats, Kock just proves it for Vectk
+%have to think about a proof for arbitrary symm mon cats, Kock just proves it for Vectk TODO
 \begin{proof}
-    Let $(A,\epsilon,\eta,\Delta,\mu),(A',\epsilon',\eta',\Delta',\mu')\in\cFrob_\cat$ and $\phi:A\to A'$ be a Frobenius homomorphism. Then  
+    Let $(A,\epsilon,\eta,\Delta,\mu),(A',\epsilon',\eta',\Delta',\mu')\in\cFrob_\cat$ and $\phi:A\to A'$ be a Frobenius homomorphism. Then ...
 \end{proof}
-Take a look at \cite{kock_2003} for a proof for Frobenius $k$-algebras, i.e. Frobenius algebras in $\Vect_k$
+Take a look at \cite{kock_2003} for a proof for Frobenius $k$-algebras, i.e. Frobenius algebras in $\Vect_k$.
 
 \begin{proof}
     (1) We need to prove that $\Zf(S^1) =:A$ is a commutative Frobenius algebra. We get the product from the pair of pants and the coproduct from the copants. The unit and counit maps are simply given by the cup and cocup. Showing that this is actually a Frobenius algebra now just amounts to drawing the commutative diagram for a Frobenius algebra in the category of bordisms, i.e. all maps are simply bordisms.
@@ -3817,7 +3829,7 @@ For functoriality we did not check that compositions of morphisms (natural trans
 Now, we want to prove the converse direction: given a commutative Frobenius algebra $A$, construct an oriented 2d-TFT such that $\Zf(S^1)= A$. We want to define a TFT $\Zf$. On objects we simply set $\Zf(S^1, or_+) \mapsto A$ %TODO how to write orientation of S^1
 and $\Zf(S^1, or_-) \mapsto A^\vee$. This is enough because objects in $\Bord_{2,1}^{or}$ are closed 1 dimensional manifolds and therefore diffeomorphic to a disjoint union of $S^1$s. Therefore, if $Y$ is a connected one dimensional manifold we have an orientation preserving diffeomorphism $Y \to S^1$, but in which sense is this unique? 
 \begin{defn}[Diffeomorphism Group]\label{DiffeoGroup}
-    Let $X\in SmoothMfd$. $\Diff(X)$ denotes the automorphism group of $X$, i.e. the group of diffeomorphisms $X\xrightarrow{\phi}X$.
+    Let $X\in \SmoothMfld$. $\Diff(X)$ denotes the automorphism group of $X$, i.e. the group of diffeomorphisms $X\xrightarrow{\phi}X$.
 \end{defn}
 
 Note that the diffeomorphism group can be considered a topological group (see \ref{TopologicalGroup}) if we use an apt topology, for example one can consider Diff$(X)$ a subspace of $(C^\infty(X,X),Whitney)$, where $Whitney$ denotes the \href{https://en.wikipedia.org/wiki/Whitney_topologies}{Whitney $C^\infty$ topology}, and endow it with the subspace topology.
