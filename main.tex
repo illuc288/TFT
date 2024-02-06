@@ -120,6 +120,8 @@
 \DeclareMathOperator{\Rep}{Rep}
 \DeclareMathOperator{\Lie}{Lie}
 \DeclareMathOperator{\Der}{Der}
+\DeclareMathOperator{\Disk}{Disk}
+
 
 % ready made Torus drawing
 \tikzset{
@@ -823,18 +825,18 @@ There is an insidious set-theoretic issue when we define the $n$-th cobordism gr
     Prove the following statements
     \begin{enumerate}
         \item $(\Omega_n, \amalg)$ is an abelian group with operation given by the disjoint union $\amalg$.
-        \item In fact $[M]\amalg [M]=[\emptyset]$, i.e. the trivial element of the cobordism group\footnote{We will write $0=[\emptyset]$}
+        \item In fact $[M]\amalg [M]=[\emptyset]$, i.e. the trivial element of the cobordism group\footnote{We will write $0=[\emptyset]$.}
     \end{enumerate}
 \end{exercise}
 
 \begin{rem}
     Actually $(\Omega_n,\amalg)$ is a finitely generated abelian group, but this is a hard theorem. In particular, it is a finite product of cyclic groups of order $2$ (from 2.)
 \end{rem}
-\begin{defn}[bordism invariant]
-	A bordism invariant is a homomorphism of abelian groups $$\Omega_n \to \Z$$ or $\R$, $\C$... or whatever abelian group captures that invariant
+\begin{defn}[Bordism invariant]
+	A bordism invariant is a homomorphism of abelian groups $$\Omega_n \to \Z$$ or $\R$, $\C$... or whatever abelian group captures that invariant.
 \end{defn}
 \begin{rem}
-	Many important manifold invariants are also bordism invariants
+	Many important manifold invariants are also bordism invariants.
 \end{rem}
 
 \begin{ex}
@@ -1326,7 +1328,7 @@ If we fix a local chart with coordinates $x_1, \dots, x_n$ we have a basis $\fra
 \subsection{Framings} % (fold) 
 \label{sub:framings}
 
-Recall the definition of a $G$ structure given above. As stated previously, if $G = GL_n^+(\R)$ a $G$ structure is an orientation. Another choice is simply to take $G = \{e\}$, this gives a \textit{framing}. We can talk about \textit{frameable} or \textit{parallelizable} manifolds, meaning they admit a framing. As a consequence, for a manifold with trivial tangent bundle we have $TM \cong M \times \R^n$ and a choice of framing corresponds to a choice of isomorphism.
+Recall the definition of a $G$ structure given above. As stated previously, if $G = GL_n^+(\R)$ a $G$ structure is an orientation. Another choice is simply to take $G = \{e\}$, this gives a \textit{framing}. We can talk about \textit{frameable} or \textit{parallelizable} manifolds, meaning they admit a framing. As a consequence, the manifold has a trivial tangent bundle we have $TM \cong M \times \R^n$ and a choice of framing corresponds to a choice of isomorphism.
 
 \begin{ex}
 Some examples of frameable manifolds are the following:
@@ -1341,7 +1343,7 @@ Some examples of frameable manifolds are the following:
         %Well for any point $p \in S^1$ we have $T_p S^1 \cong \R$ and the isomorphism is given by a choice of vector. 
 \end{ex}
 
-In fact, there aren't many closed connected 2 manifolds with framing:
+\noindent In fact, there aren't many closed connected 2 manifolds with framing:
 \begin{fct}
 	The only closed connected 2 manifolds with framing is the torus.
 \end{fct}
@@ -1362,15 +1364,15 @@ In fact, there aren't many closed connected 2 manifolds with framing:
 \label{sub:classification_of_2_manifolds_with_boundary}
 
 The aim of this chapter is to prove the aforementioned classification of compact 2-dimensional manifolds with the use of Morse theory (see \ref{Classification of 2 manifolds}). We remind the reader: let $M$ be a 2 manifold with genus $g$, then \begin{itemize}
-    \item if $M$ is oriented, $M$ is classified by its genus $g$. In particular $M$ it is diffeomorphic to $\Sigma_g:=T\# \dots \#T$, the connected sum of $g$-tori, where in particular $\Sigma_0=S^2$.
-    \item Instead if $M$ is non orientable\footnote{see \url{https://en.wikipedia.org/wiki/Genus_(mathematics)} for what is meant by genus of a non orientable surface}, $M$ is diffeomorphic to $g$ copies of the real projective plane, i.e.  $\R P^2\# \dots \#\R P^2$.
+    \item if $M$ is oriented, $M$ is classified by its genus $g$. In particular $M$ it is diffeomorphic to $\Sigma_g:=T\,\# \dots\#\,T$, the connected sum of $g$-tori, where in particular $\Sigma_0=S^2$.
+    \item Instead if $M$ is non orientable\footnote{see \url{https://en.wikipedia.org/wiki/Genus_(mathematics)} for what is meant by genus of a non orientable surface}, $M$ is diffeomorphic to $g$ copies of the real projective plane, i.e.  $\R P^2\,\# \dots \#\,\R P^2$.
 \end{itemize} 
 %One can find a thorough covering of this result in \cite{Hirsch1976}.
 
-In addition, we will also find a classification of compact 2 manifolds with boundary (which we will simply call \textit{surfaces}). To do it we will need Morse theory. What is the idea? Given a surface $M$ (it works in greater generality but now we're only interested in surfaces), find a map $f: M \to \R$ which is "nice" is a way we'll specify later on.
+\noindent In addition, we will also find a classification of compact 2 manifolds with boundary (which we will simply call \textit{surfaces}). To do it we will need Morse theory. What is the idea? Given a surface $M$ (it works in greater generality but now we're only interested in surfaces), find a map $f: M \to \R$ which is "nice" is a way we'll specify later on.
 Then by analizing properties of $f$ we can recover the topology of the surface (i.e. the surface up to diffeomorphism). 
 
-This section is based on \cite{Hirsch1976} and \cite{kosinski2013differential}.
+\noindent This section is based on \cite{Hirsch1976} and \cite{kosinski2013differential}.
 
 \subsection{Introduction to Morse Theory}
 %TODO specify somewhere that we mainly concentrate on 2d but Morse theory is more general.
@@ -1432,7 +1434,7 @@ Note that at the special points the preimage is generally not a smooth manifold.
 \begin{defn}[Index of a critical point]
 	If $p \in M$ is a nondegenerate critical point of $f : M \to \R$, the index of $f$ at $p$ is 
 	\begin{equation}
-		\ind_f (p) = \text{index of }\Hess(f)_p = \# \text{ negative eigenvalues of} \Hess(f)_p
+		\ind_f (p) = \text{index of }\Hess(f)_p = \# \text{ negative eigenvalues of} \Hess(f)_p .
 	\end{equation}
 \end{defn}
 
@@ -1482,13 +1484,14 @@ This explains what we noticed initially for the example of the torus, that the l
 
 The following theorem justifies the use of Morse theory to study manifolds.
 \begin{thm}
-    For any manifold Morse functions exist
+    For any manifold Morse functions exist.
     \label{thm:morse_exist}
 \end{thm}
 \noindent It's not trivial but it can be proven with tools from differential topology.
 
 Example of something we can prove with Morse functions:
 \begin{thm}
+	The Euler characteristic can be calculated by knowning the critical points and the corresponding indices of a Morse function:
     \begin{equation}
         \chi(M) = \sum (-1)^k c_k
     \end{equation}
@@ -1509,14 +1512,14 @@ The following theorem also seems very plausible from the drawings:
     The proof uses flow along vector field $\frac{\grad f}{|\grad f|}$... %DRAWING...
 \end{rem}
 
-We will restrict to the following class of Morse functions
+We will restrict to the following class of Morse functions:
 \begin{defn}[Admissibile Morse function]
     A Morse function $f: M \to [a,b]$ is admissibile if $\de M = f^{-1}(a) \cup f^{-1}(b)$ and $a,b$ are regular values.
 \end{defn}
 % but can I have im f = [a,c] with c<b and f^-1 (c) = emptyset?
 \noindent The fact that they're regular values is important, since it gives us that a neighborhood of $f^{-1}(a)$ is diffeomorphic to a cylinder $f^{-1}(a) \times [0, \epsilon]$, i.e. a collar (and the same is true for a neighborhood of $f^{-1}(b)$). So an admissible Morse function naturally equips $M$ with the structure of a cobordism from $f^{-1}(a)$ to $f^{-1}(b)$.
 
-Another useful theorem, analogous to \ref{thm:morse_exist} is the following:
+\noindent Another useful theorem, analogous to \ref{thm:morse_exist} is the following:
 \begin{thm}
     Admissible Morse functions exist.
 \end{thm}
@@ -1532,6 +1535,12 @@ We would now like to know \textit{how} the level set changes before and after th
 \begin{clm}
     $M^n \amalg_f H^j$ has a smooth structure.
 \end{clm}
+\noindent Since we're interested in 2 manifolds, let's make explicit what it means to attach a $j$ handle to a 2 manifold:
+\begin{itemize}%DRAWINGS
+    \item $j=0, H^0 = D^0 \times D^2\cong D^2$ and we attach along the empty set (since $\de D^0 = \emptyset$), i.e. we take the disjoint union with $D^2$.
+    \item $j=1, H^1 = D^1 \times D^1$ and we attach along $\de D^1 \times D^1$, i.e. along two segments
+    \item $j=2, H^2 = D^2 \times D^0$ and we attach along $\de D^2 \times D^0\cong S^1$, i.e. along a circle
+\end{itemize}
 \noindent We can now see how the level sets change at a critical point.
 \begin{thm}(\cite{Hirsch1976} Theorem 3.2, p.157)
     Let $M^n$ be compact and $f: M^n \to [a,b]$ an admissible Morse function. Suppose that $f$ has a unique critical point $z$ of index $j$.
@@ -1551,14 +1560,10 @@ We would now like to know \textit{how} the level set changes before and after th
     \end{equation}
     (for $n=2$ this is a unique diffeomorphism up to isotopy\footnote{See \ref{Isotopy} for the definition of isotopy.}).
 \end{thm}
-This theorem explains what happens to the level sets when we meet a critical point of index $j$: we attach a $j$ handle! 
+\noindent This theorem explains what happens to the level sets when we meet a critical point of index $j$: we attach a $j$ handle! 
 To use the terms above: we extend the belt disk to a $j$ handle and attach it to the boundary by gluing along the belt sphere (which is also extended).
-Of course, all the drawings presented are for 2 manifolds and we will only apply these results to such manifolds, but this theorem works more in general! Since we're only interested in 2 manifolds let's make explicit what it means to attach a $j$ handle:
-\begin{itemize}%DRAWINGS
-    \item $j=0, H^0 = D^0 \times D^2\cong D^2$ and we attach along the empty set (since $\de D^0 = \emptyset$), i.e. we take the disjoint union with $D^2$.
-    \item $j=1, H^1 = D^1 \times D^1$ and we attach along $\de D^1 \times D^1$, i.e. along two segments
-    \item $j=2, H^2 = D^2 \times D^0$ and we attach along $\de D^2 \times D^0\cong S^1$, i.e. along a circle
-\end{itemize}
+Of course, all the drawings presented are for 2 manifolds and we will only apply these results to such manifolds, but this theorem works more in general! 
+
 \begin{ex}
 \hfill%TODO not very clear
     \begin{itemize}
@@ -1577,7 +1582,7 @@ Of course, all the drawings presented are for 2 manifolds and we will only apply
 \begin{prop}[VI 7.1 in \cite{kosinski2013differential}, "Handle slides"]
     If $\tilde M := (M \coprod_f H^j) \coprod_g H^i$ and $i\leq j$, then $\tilde M$ can be obtained by first attaching $H^i$ and then $H^j$.
 \end{prop}
-Note that the word \textit{can} in the proposition is important: if we were to simply commute the two attachments $(M \coprod_g H^i) \coprod_f H^j$ we would get something that in general doesn't make sense, since the map $g$ goes into $M \coprod_f H^j$, not just $M$ and $H^j$ may no longer be attached at the boundary. The proposition instead says that there exist maps $\tilde f$ and $\tilde g$ into $M$ such that $(M \coprod_f H^j) \coprod_g H^i \cong (M \coprod_{\tilde g} H^i) \coprod_{\tilde f} H^j$.
+\noindent Note that the word \textit{can} in the proposition is important: if we were to simply commute the two attachments $(M \coprod_g H^i) \coprod_f H^j$ we would get something that in general doesn't make sense, since the map $g$ goes into $M \coprod_f H^j$, not just $M$, and $H^i$ may no longer be attached at the boundary, leading to a space that is not even a manifold. The proposition instead says that there exist maps $\tilde g$ and $\tilde f$, into $M$ and $M \coprod_{\tilde g} H^i$ respectively, such that $(M \coprod_f H^j) \coprod_g H^i \cong (M \coprod_{\tilde g} H^i) \coprod_{\tilde f} H^j$.
 \begin{ex} %DRAWING
 \hfill
     \begin{itemize}
@@ -1587,7 +1592,7 @@ Note that the word \textit{can} in the proposition is important: if we were to s
     \end{itemize}
 \end{ex}
 
-\noindent What happens if $i>j$?
+\noindent What happens if $i>j$? In general it's not so simple, but if $i=j+1$ the following result holds.
 \begin{prop}[VI 7.4 in \cite{kosinski2013differential}, "Handle cancellation"]
     Let $\tilde M := (M \coprod_f H^j) \coprod_g H^{j+1}$, where the attaching sphere of $H^{j+1}$ intersects the belt sphere of $H^j$ "transversely" in one point. Then $\tilde M \cong M$.
     %attaching sphere defined p 105 Kosinski but i don't understand how it's different from the belt sphere
@@ -1627,7 +1632,7 @@ Note that the word \textit{can} in the proposition is important: if we were to s
     \end{equation}
     and now we have $\exists a > f(p_-)$ such that $D_- = f^{-1}((-\infty,a]) \cong D^2$.
 
-    \noindent Let $B_+, B_-$ be disjoint caps around the poles of $S^2$ and denote $C := S^2 \int (B_+ \amalg B_-) \cong S^1 \times [0,1]$. % there was f,x star but I didn't understand TODO
+    \noindent Let $B_+, B_-$ be disjoint caps around the poles of $S^2$ and denote $C := S^2 \operatorname{int} (B_+ \amalg B_-) \cong S^1 \times [0,1]$. % there was f,x star but I didn't understand TODO
     Now, notice $\de D_+ \cong S^1 \cong \de D_-$ and we have a diffeomorphism $h_0: D_+ \to B_+$ as they are both diffeomorphic to $D^2$. In addition $h_0 |_{\de D_+} \de D_+ \to \de B_+$.
     Notice that between $[a,b]$ there are no critical values, that is $f^{-1}([a,b])$ has no crtiical points
     Now, using Morse Lemma II we get:
@@ -1672,8 +1677,7 @@ Note that the word \textit{can} in the proposition is important: if we were to s
 
 \begin{proof}
 $ $ \newline  % to go to a new line after the word proof
-
-    Step 1: Choose an admissible Morse function $f$.
+    \indent Step 1: Choose an admissible Morse function $f$.
     
     Step 2a: If necessary, "perturb" $f$ to get distinct critical values. %DRAWING
 
@@ -2131,13 +2135,13 @@ Hence the components of $\tau$ are just the image under $N$ of the pairs of maps
 We did not cover this topic in the lecture, but the concept of equivalence of categories is important for results such as \ref{thm:classif_of_1dtft}.
 \begin{defn}
     Let $F:\mathscr{C}\rightarrow\mathscr{D}$ be a functor. $F$ is named \begin{enumerate}
-        \item faithful, if $\forall X,Y\in\mathscr{C}$ the map $\Hom_{\mathscr{C}}(X,Y)\rightarrow \Hom_{\mathscr{D}}(F(X),F(Y))$ is injective,
-        \item full, if $\forall X,Y\in\mathscr{C}$ the map $\Hom_{\mathscr{C}}(X,Y)\rightarrow \Hom_{\mathscr{D}}(F(X),F(Y))$ is surjective,
+        \item faithful if $\forall X,Y\in\mathscr{C}$ the map $\Hom_{\mathscr{C}}(X,Y)\rightarrow \Hom_{\mathscr{D}}(F(X),F(Y))$ is injective,
+        \item full if $\forall X,Y\in\mathscr{C}$ the map $\Hom_{\mathscr{C}}(X,Y)\rightarrow \Hom_{\mathscr{D}}(F(X),F(Y))$ is surjective,
         \item fully faithful, if $F$ is full and faithful,
         \item conservative, if for $f:X\rightarrow Y$ in $\mathscr{C}$ such that if $F(f)$ is an isomorphism, then $f$ is an isomorphism,
-        \item an isomorphism, if $\exists G:\mathscr{D}\rightarrow\mathscr{C}$ such that $G\circ F=id_{\mathscr{C}}$ and $F\circ G=id_{\mathscr{D}}$,
+        \item an isomorphism if $\exists G:\mathscr{D}\rightarrow\mathscr{C}$ such that $G\circ F=id_{\mathscr{C}}$ and $F\circ G=id_{\mathscr{D}}$,
         \item an equivalence if $\exists G:\mathscr{D}\rightarrow\mathscr{C}$ and natural isomorphisms $G\circ F\overset{\epsilon}{\cong}id_{\mathscr{C}}$ and $F\circ G\overset{\eta}{\cong}id_{\mathscr{D}}$,
-        \item essentially surjective, if $\forall Z\in\mathscr{D}\exists Z'\in\mathscr{D}, X\in\mathscr{C}$ and an isomorphsim $F(X)\overset{f}{\cong}Z'$.
+        \item essentially surjective if $\forall Z\in\mathscr{D}, \exists Z'\in\mathscr{D}, X\in\mathscr{C}$ and an isomorphsim $F(X)\overset{f}{\cong}Z'$.
     \end{enumerate}
 \end{defn}
 % realized only writing down the definition of adjunction that I swapped unit and counit in the case of equivalence, will fix it, sorry! :/ /Andrea 
@@ -2626,6 +2630,7 @@ Having characterized satisfactorily enriched categories we can now define what i
 \end{defn}
 
 \begin{ex}
+\hfill
     \begin{itemize}
         \item A ring is a one object ringoid. More explicitly, a ring $(R,\cdot,+)=(\Hom_{\mathbf{B}R}(\ast,\ast),\circ,+)$  
         \item Ab is an Ab-category.
@@ -2635,7 +2640,7 @@ Having characterized satisfactorily enriched categories we can now define what i
 \begin{rem}
     These categories are very important for homological algebra, a field with important applications to many fields, e.g. algebraic geometry (in particular intersection theory) and algebraic topology. The standard reference is \cite{weibel1994introduction}, check out part I of \cite{Mazel-Gee2024} for a modern introduction to the subject geared towards higher categorical generalizations. Such higher categorical generalizations are of major interest to us in the context of TFTs, we will later sketch for example how they can be used to calculate topological phases of matter (\ref{Spectra Phases of Matter}). 
 \end{rem}
-Another very important example for us of noncartesian\footnote{Interestingly, the fact that $\Vect_k$ is not cartesian and in particular $\operatorname{Hilb}_\mathbb{C}$ (the category of complex Hilbert spaces) is the main reason behind the no-cloning theorem from quantum information theory, more on this in \cite{baez2004quantum}. This characterizing non-cartesian aspect is nicely summarized by Freed in \cite{freed2012cobordism}, "We will see that a characteristic property of quantum systems is that disjoint unions map to tensor products. The passage from classical to quantum is (poetically) a passage from addition to multiplication, a kind of exponentiation."} monoidal category is $(\Vect_k,\otimes)$
+Another very important example for us of noncartesian\footnote{Interestingly, the fact that $\Vect_k$ is not cartesian and in particular $\operatorname{Hilb}_\mathbb{C}$ (the category of complex Hilbert spaces) is the main reason behind the no-cloning theorem from quantum information theory, more on this in \cite{baez2004quantum}. This characterizing non-cartesian aspect is nicely summarized by Freed in \cite{freed2012cobordism}, "We will see that a characteristic property of quantum systems is that disjoint unions map to tensor products. The passage from classical to quantum is (poetically) a passage from addition to multiplication, a kind of exponentiation."} monoidal category is $(\Vect_k,\otimes)$.
 \begin{defn}[Tensor Product between Vector Spaces]
     The tensor product is usually defined from bases (see \hyperlink{https://en.wikipedia.org/wiki/Tensor_product}{wikipedia entry on tensor product}) or via quotient spaces\footnote{We use the definition via quotient spaces because it is easier to see that it fulfills the equivalent one via universal properties and the cartesian product.} along these lines: let $V,W\in \Vect_K$. Consider $L$, a vector space that has $V\times W$ as basis. Let $R$ be the subspace whose elements are linear combinations of one of the following forms
     $$(v+v',w)-(v,w)-(v',w)$$
@@ -2644,7 +2649,7 @@ Another very important example for us of noncartesian\footnote{Interestingly, th
     $$(v,kw)-k(v,w)$$
     where $v,v'\in V$, $w,w'\in W$ and $k\in K$. The tensor product is then the quotient space $L/R=V\otimes W$, where the image $(v,w)$ in this quotient is denoted by $v\otimes w$.
 
-   \noindent The cartesian product construction helps us find an equivalent definition the tensor product is an endofunctor $\otimes:\Vect_K\times\Vect_K\to\Vect_K$ where $V\otimes W$ has the following universal property: 
+   \noindent The cartesian product construction helps us find an equivalent definition of the tensor product: it is an endofunctor $\otimes:\Vect_K\times\Vect_K\to\Vect_K$ where $V\otimes W$ has the following universal property: 
    \begin{enumerate}
        \item there is a unique bilinear map out of the cartesian product of the underlying sets $\phi:V\times W\to V\otimes W$
        \item any other bilinear map out of the cartesian product of the underlying sets $h:V\times W\to X$ factors through $\phi$:% https://q.uiver.app/#q=WzAsMyxbMCwwLCJWXFx0aW1lcyBXIl0sWzAsMSwiVlxcb3RpbWVzIFciXSxbMSwwLCJYIl0sWzAsMSwiXFxwaGkiLDJdLFsxLDIsIlxcYmFye2h9IiwyXSxbMCwyLCJoIl1d
@@ -2658,9 +2663,9 @@ Another very important example for us of noncartesian\footnote{Interestingly, th
    \end{enumerate}
 \end{defn}
 
-As with Ab, $\Vect_k$ can also be used as enriching category
+As with Ab, $\Vect_k$ can also be used as enriching category.
 \begin{defn}
-     A linear category $\cat$, or algebroid, is a category enriched over $\Vect_k$
+     A linear category $\cat$, or algebroid, is a category enriched over $\Vect_k$.
 \end{defn}
    
 \begin{ex}
@@ -2671,7 +2676,7 @@ As with Ab, $\Vect_k$ can also be used as enriching category
     \end{itemize}
 \end{ex}
 
-More generally the category of modules is also a very important example of noncartesian monoidal category 
+More generally the category of modules is also a very important example of noncartesian monoidal category.
 \begin{defn}[Module]\label{CatOfModules}
     
 \end{defn}
@@ -2685,11 +2690,11 @@ Another example of non-cartesian monoidal category, which is not algebraic in na
 \begin{ex}\label{CatOfDisks}
     The category of oriented 1-dimensional open disks Disk$^{or}_{1}$ is also an important example of symmetric monoidal category for us in the context of TFTs. Recall that $D^1\cong (0,1)\cong\R$. 
     \begin{itemize}
-        \item Its objects are finite disjoint unions of 1-dimensional open disks $$\emptyset,\qquad\R,\qquad\R\amalg\R,\qquad\dots,\qquad\R^{\amalg k}$$ with $k\in\N$ arbitrary
-        \item $\Hom_{\text{Disk}^{or}_{1,0}}(X,Y)$ consists of all smooth embeddings $j:X\hookrightarrow Y$, i.e. $X$ is diffeomorphic onto its image, respecting orientations
-        \item The tensor product is given by the disjoint union where given $X$ a disjoint union of $n$ oriented 1-disks and $Y$ a disjoint union of $m$ oriented 1-disks, $X\amalg Y$ is a disjoint union of $n+m$ oriented disks 
-        \item The unit is the empty set since given an arbitrary disjoint union of disks $X$, $\emptyset\amalg X\cong X\cong X\amalg\emptyset$
-        \item There is a diffeomorphism $X\amalg Y\cong Y\amalg X$ making Disk$^{or}_{1,0}$ a \emph{symmetric} monoidal category
+        \item Its objects are finite disjoint unions of 1-dimensional open disks $$\emptyset,\qquad\R,\qquad\R\amalg\R,\qquad\dots,\qquad\R^{\amalg k}$$ with $k\in\N$ arbitrary.
+        \item $\Hom_{\text{Disk}^{or}_{1,0}}(X,Y)$ consists of all smooth embeddings $j:X\hookrightarrow Y$ respecting orientations, i.e. there is an orientation preserving diffeomorphism from $X$ onto its image, .
+        \item The tensor product is given by the disjoint union: given $X$ a disjoint union of $n$ oriented 1-disks and $Y$ a disjoint union of $m$ oriented 1-disks, $X\amalg Y$ is a disjoint union of $n+m$ oriented disks.
+        \item The unit is the empty set since given an arbitrary disjoint union of disks $X$, $\emptyset\amalg X\cong X\cong X\amalg\emptyset$.
+        \item There is a diffeomorphism $X\amalg Y\cong Y\amalg X$ making Disk$^{or}_{1,0}$ a \emph{symmetric} monoidal category.
     \end{itemize}  
     We will use it to give an equivalent definition of $k$-algebra (see \ref{EAlg}), but in general they can be used to define factorization algebras, a very important tool in the field of TFTs, see \cite{Tanaka_2020}.
 \end{ex}
@@ -2803,13 +2808,13 @@ We leave the case of the counit for the reader.
     \end{itemize}
     thereby making an isotopy a homotopy and
     \begin{itemize}
-        \item $\forall t\in[0,1].H(t,-)\hookrightarrow Y$ is an embedding
+        \item $\forall t\in[0,1], H(t,-)\hookrightarrow Y$ is an embedding.
     \end{itemize}
-    Moreover, if $f,g$ are \emph{smooth} embeddings and $\forall t\in[0,1].H(t,-)\hookrightarrow Y$ is also a smooth embedding, then $H$ is a \emph{smooth} isotopy
+    Moreover, if $f,g$ are \emph{smooth} embeddings and $\forall t\in[0,1], H(t,-)\hookrightarrow Y$ is also a smooth embedding, then $H$ is a \emph{smooth} isotopy.
 \end{defn}
 
 \begin{defn}[$\mathbb{E}_1$-Algebra]\label{EAlg}
-    Let $Disk_{1,0}^{or}$ be the category of 1-disks (see \ref{CatOfDisks}). Then a $\mathbb{E}_1$-algebra is a symmetric monoidal functor $$Disk_{1}^{or}\to \cat$$ such that if $j,i\in \Hom_{Disk_{1}^{or}}(X,Y)$ are smoothly isotopic embeddings, then  $F(j)=F(i)$, i.e. they are sent to the same morphism in $\cat$. More generally..
+    Let $\Disk_{1,0}^{or}$ be the category of 1-disks (see \ref{CatOfDisks}). Then a $\mathbb{E}_1$-algebra is a symmetric monoidal functor $$\Disk_{1}^{or}\to \cat$$ such that if $j,i\in \Hom_{\Disk_{1}^{or}}(X,Y)$ are smoothly isotopic embeddings, then  $F(j)=F(i)$, i.e. they are sent to the same morphism in $\cat$. More generally.
 \end{defn}
 \begin{thm}
   $\mathbb{E}_1$-algebras with $\Vect_k$ as a target category correspond to $k$-algebras. Look into \cite{Tanaka_2020} for a sketch of the proof.
@@ -2840,7 +2845,7 @@ We summarize the correspondence with the following table
 \section{Symmetric Monoidal Categories} % (fold)
 \label{sub:symmetric_monoidal_categories}
 
-In order to get the categorical parallel of a commutative monoid, we need to define a \emph{symmetric} monoidal category. We want to achieve something similar to $a \cdot b = b \cdot a$ in a monoid. However, we will not characterize this behavior with strict identities\footnote{As we did not define associativity and unitality with strict identities but with natural isomorphisms.}, but with a natural isomorphism. Given the functor 
+In order to get the categorical parallel of a commutative monoid, we need to define a \emph{symmetric} monoidal category. We want to achieve something similar to $a \cdot b = b \cdot a$ in a monoid. However, we will not characterize this behavior with strict identities, but with a natural isomorphism\footnote{Just as we did for associativity and unitality.}. Given the functor 
 $$swap:\cat\to\cat$$
 $$swap:(X,Y)\mapsto (Y,X)$$
 $$swap:(f,g)\mapsto (g,f)$$
@@ -2850,11 +2855,11 @@ we could try to achieve our objective with a natural isomorphism $\beta:\otimes\
 \[\begin{tikzcd}
 	\cat\times\cat & \cat
 	\arrow[""{name=0, anchor=center, inner sep=0}, "\otimes", curve={height=-18pt}, from=1-1, to=1-2]
-	\arrow[""{name=1, anchor=center, inner sep=0}, "{\otimes\circ swap}"', curve={height=18pt}, from=1-1, to=1-2]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "{\otimes\circ\, swap}"', curve={height=18pt}, from=1-1, to=1-2]
 	\arrow["\beta", shorten <=5pt, shorten >=5pt, Rightarrow, from=0, to=1]
 \end{tikzcd}\]
 
-However, this does not characterize an actually symmetric structure, but rather a \textit{braiding}, meaning that inverting two times the order of two tensor multiplied elements, i.e. objects or morphisms, does not necessarily equal the non-inverted tensor multiplied elements. What this means will become clearer with the example of the braid group and the definition of symmetric monoidal category.
+However, this does not characterize an actually symmetric structure, but rather a \textit{braiding}, meaning that inverting two times the order of two tensor multiplied elements, i.e. objects or morphisms, does not necessarily equal the original tensor product. What this means will become clearer with the example of the braid group and the definition of symmetric monoidal category.
 \begin{defn}
     A braiding on a monoidal category is a natural transformation $\beta$ with components $\beta_{X,Y}:X\otimes Y\Rightarrow Y\otimes X$
     % https://q.uiver.app/#q=WzAsMixbMCwwLCJcXGNhdFxcdGltZXNcXGNhdCJdLFsxLDAsIlxcY2F0Il0sWzAsMSwiLV9pXFxvdGltZXMtX2oiLDAseyJjdXJ2ZSI6LTN9XSxbMCwxLCItX2pcXG90aW1lcy1faSIsMix7ImN1cnZlIjozfV0sWzIsMywiXFxiZXRhIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfX1dXQ==
@@ -2894,32 +2899,32 @@ However, this does not characterize an actually symmetric structure, but rather 
 \end{tikzcd}\]
     The latter two diagrams are known as the hexagon diagrams. We call such categories braided monoidal.
 \end{defn}
-\begin{ex}
-    The braid group:
-    %TBD \Andrea
-\end{ex}
-A braided monoidal category is not the category corresponding to an abelian monoid. A special type of braided monoidal category is: the symmetric monoidal category.
+
+\noindent A braided monoidal category is \textit{not} the category corresponding to an abelian monoid. A special type of braided monoidal category is: the symmetric monoidal category.
 \begin{defn}
 \label{SymmMonCat}
-    A symmetric monoidal category is a braided monoidal category $(C, \otimes, 1, \alpha, \lambda, \rho,\beta)$ such that $\beta^2 = id$ (i.e. $(\beta_{y,x} \circ \beta_{x,y} = id)$).
+    A symmetric monoidal category is a braided monoidal category $(C, \otimes, 1, \alpha, \lambda, \rho,\beta)$ such that $\beta^2 = id$ (i.e. $\beta_{y,x} \circ \beta_{x,y} = id$).
 \end{defn}
 \begin{ex}
 \hfill
     \begin{itemize} 
         \item All the previous examples of monoidal categories! $(\Vect, \oplus), (\AbGrp, \otimes), \dots$
-        \item Importantly for us the category of bimodules $BMod$
-        \item The category of algebras over a module
+        \item Importantly for us the category of bimodules $BMod$.
+        \item The category of algebras over a module.
     \end{itemize}
 \end{ex}
+
+\noindent The following theorem assures us of the associativity of higher products that we had mentioned and also generalizes this result to braided and symmetric categories.
 \begin{thm}[MacLane's coherence theorem]\label{thm:maclane_coherence}
     In any monoidal category, any formal diagram, i.e. a diagram made up just of associators, unitors (and braidings, in the case of braided and symmetric monoidal categories) commutes.
 \end{thm}
-We do not provide the proof here but refer to chapter 7 of \cite{Lane1971}.
+\noindent We do not provide the proof here but refer to chapter 7 of \cite{Lane1971}.
 The analogy in a monoid is that it does not make a difference however I put my parentheses:
     $$(a_1 a_2) ((a_3 a_4) a_5) = ((a_1 (a_2 a_3)) a_4) a_5$$
 but instead of an equality we have objects equivalent up to isomorphisms given by associators, unitors, etc... note that we could have more than one way to compose unitors, e.g. in the diagram we previously imposed as conditions, but these will all form a commutative diagram and hence be equivalent.
 
-Earlier on we defined a monoid object (\ref{MonObj}), in a symmetric monoidal object, we can also define a commutative monoid object.
+Earlier on we defined a monoid object (\ref{MonObj}) in a monoidal category, now in a symmetric monoidal category we can also define a commutative monoid object.
+%why symmetric category and not just braided? /William
 \begin{defn}[Commutative Monoid Object]\label{CommMonObj}
     A commutative monoid object, is a monoid object in a symmetric monoidal category for which additionally the following diagram commutes
     % https://q.uiver.app/#q=WzAsMyxbMCwwLCJNXFxvdGltZXMgTSJdLFsyLDAsIk1cXG90aW1lcyBNIl0sWzEsMSwiTSJdLFswLDEsIlxcYmV0YV97TSxNfSJdLFswLDIsIlxcbXUiLDJdLFsxLDIsIlxcbXUiXV0=
@@ -2950,7 +2955,8 @@ A commutative monoid object is a
     A commutative Frobenius algebra in a symmetric monoidal category $\cat$ is a commutative bimonoid where the Frobenius relation holds, i.e. $$(\mathbb{1}_\cat\otimes\mu)\circ(\Delta\otimes\mathbb{1}_\cat)=\Delta\circ\mu=(\mu\otimes\unit_\cat)\circ(\unit_\cat\otimes\Delta)$$
 \end{defn}
 We need a notion of homomorphism between symmetric monoidal categories, a suitable definition of functor. 
-\begin{defn}\label{SymmMonFun}
+\begin{defn}[Symmetric monoidal functor]
+\label{SymmMonFun}
     Let $\mathscr{B},\cat$ be symmetric monoidal categories. A symmetric monoidal functor is a functor $F: \mathscr{B} \to \cat$ compatible with all of the structure:
     \begin{itemize}
         \item an isomorphism taking the monoidal unit in $\cat$ to the monoidal unit in $\mathscr{B}$: $\phi:\mathbb{1}_\cat \xrightarrow{1_F} F(\mathbb{1}_\mathscr{B})$
@@ -2994,10 +3000,11 @@ finally we just need a commutative diagram for all $X,Y\in\cat$ specifying how i
 	\arrow["{F(\beta_{X,Y})}"', from=2-1, to=2-2]
 \end{tikzcd}\]
 \end{defn}
-This notion will be one a central notion in this course since a TFT is just a symmetric monoidal functor with a special domain: the cobordism category (See the next subsection \ref{CobCat}).
+This notion will be central in this course since a TFT is just a symmetric monoidal functor with a special domain: the cobordism category (See the next subsection \ref{CobCat}).
 \begin{ex}
+\hfill
 \begin{enumerate}
-    \item The path-connected component functor (\ref{PathConnFunct}) $\pi_0: (\Top,\times)\to (\Set,\times)$ is a symmetric monoidal functor
+    \item The path-connected component functor (\ref{PathConnFunct}) $\pi_0: (\Top,\times)\to (\Set,\times)$ is a symmetric monoidal functor.
     \item ...
 \end{enumerate}
 \end{ex}
@@ -3025,7 +3032,7 @@ No other conditions are needed to be specified for a symmetric monoidal natural 
 \begin{ex}
 \hfill
 \begin{itemize}
-    \item Let $\Z[-]:\Set\to \AbGrp$ be the free functor\footnote{A free functor is a left adjoint to the forgetful functor.} generating free groups from sets. Define $\Z[-\times-]:\Set\to \AbGrp$, the free functor generating free groups out of cartesian products in $\Set$, and $\Z[-]\otimes\Z[-]$, the free functor first generating free groups and then tensor-multiply them with the tensor product in $\AbGrp$.  There is a monoidal natural isomorphism $\alpha$ between them, $\forall A,B\in \Set.\Z[A\times B]\cong\Z[A]\otimes\Z[B]$. The notation $\Z[-]$ comes from the fact that abelian groups are exactly free modules on the integers, the categories of abelian groups and of modules on the integers are not just equivalent categories, but naturally isomorphic, something very rare.
+    \item Let $\Z[-]:\Set\to \AbGrp$ be the free functor\footnote{A free functor is a left adjoint to the forgetful functor.} generating free groups from sets. Define $\Z[-\times-]:\Set\to \AbGrp$, the free functor generating free groups out of cartesian products in $\Set$, and $\Z[-]\otimes\Z[-]$, the free functor first generating free groups and then tensor-multiply them with the tensor product in $\AbGrp$.  There is a monoidal natural isomorphism $\alpha$ between them, $\forall A,B\in \Set, \Z[A\times B]\cong\Z[A]\otimes\Z[B]$. The notation $\Z[-]$ comes from the fact that abelian groups are exactly modules on the integers, the categories of abelian groups and of modules on the integers are not just equivalent categories, but isomorphic, something very rare.
     \item Let $V\in\Vect_k$. Then $V\to V^{\ast\ast}$ are the components of...
     \item The determinant...
     \item There is a monoidal natural isomorphism between $id_{\Grp}$ and $\Grp\xrightarrow{op} \Grp$, $G\mapsto G^{op}$, the functor sending every group $(G,\ast)$ to its opposite group, i.e. $(G^{op},\ast^{op})$, where $a\ast^{op}b=b\ast a$.
@@ -3045,7 +3052,7 @@ No other conditions are needed to be specified for a symmetric monoidal natural 
 \end{notat}
 We have previously seen (\ref{Representations of Groups}) that a linear representation of a group $G$ is just a functor $\mathbf{B}G\rightarrow \Vect_k$. More generally, some, e.g. \cite[p. 34 ]{kock_2003}, give a definition of linear representation for symmetric monoidal categories: 
 \begin{defn}[Linear Representation]\label{LinReprCat}
-    Let $\cat$ be a symmetric monoidal category. A linear representation of such category is a symmetric monoidal functor $$\cat\to\Vect_k$$ Such functors are the objects of the category of representation of $\cat$ whereas symmetric monoidal natural transformations are the morphisms, $Rep(\cat)=Fun^{\otimes}(\cat,\Vect_k)$
+    Let $\cat$ be a symmetric monoidal category. A linear representation of such category is a symmetric monoidal functor $$\cat\to\Vect_k$$ Such functors are the objects of the category of representation of $\cat$ whereas symmetric monoidal natural transformations are the morphisms, $\Rep(\cat)=\Fun^{\otimes}(\cat,\Vect_k)$
 \end{defn}
 
 
@@ -3145,7 +3152,7 @@ We now list some examples of 2-categories, to convey a more concrete intuition o
 \section{The Cobordism Category}\label{CobCat}
 We now get to the most important example of symmetric monoidal category in this course: the symmetric monoidal category of cobordisms\footnote{See chapter 14 of \cite{FreedBordism}.}. This is what will allow us to define a topological field theory.
 \begin{notat}
-   Note that, if not explicitly stated we will \emph{smooth} manifold when we just write manifold.
+   Note that, if not explicitly stated we will mean \emph{smooth} manifold when we write manifold.
 \end{notat}
 \begin{defn}[Bordism Category]\label{Bordism Cat Defn}
     The objects are closed $(n-1)$-dimensional manifolds. A morphism from $M$ to $N$ is a \textit{diffeomorphism class of} bordisms from $M$ (\textit{source}) to $N$ (\textit{target}), that is, a compact manifold with boundary $\Sigma$ together with embeddings
@@ -3161,7 +3168,11 @@ We now get to the most important example of symmetric monoidal category in this 
          \caption{This is an illustration of gluing of two bordisms along their common boundary.}
          \label{Gluing Bordisms}
      \end{figure}
-     The gluing of manifolds is associative. In order for this to actually be a category there must be unital identity morphisms. For an object $M$ it is given by $M \times [0,1]$. However, one could also take $M \times [0,2]$ which is diffeomorphic to $M \times [0,1]$ but \textit{not} strictly identical, on the nose. That is why we took a \textit{diffeomorphism class} of bordisms. In particular, the identity morphisms for any closed manifold $X\in\Bordn$, $X\xrightarrow{id_X}X$ is given by $[X\times [0,1]]_{\cong}$ where $\cong$ denotes isomorphisms between smooth manifolds, i.e. diffeomorphisms.
+    The gluing of manifolds is associative. 
+    In order for this to actually be a category there must be unital identity morphisms. For an object $M$ it is given by $M \times [0,1]$. 
+    However, one could also take $M \times [0,2]$ which is diffeomorphic to $M \times [0,1]$ but \textit{not} strictly identical, on the nose. 
+    That is why we took a \textit{diffeomorphism class} of bordisms. 
+    In particular, the identity morphisms for any closed manifold $X\in\Bordn$, $X\xrightarrow{id_X}X$ is given by $[X\times [0,1]]_{_{\cong}}$ where $\cong$ denotes isomorphisms between smooth manifolds, i.e. diffeomorphisms.
 \end{defn}
 \begin{notat}
     $\nCob=\Bordn$, meaning that objects are closed $n-1$-dimensional manifolds and morphisms are diffeomorphism classes of bordisms. Moreover, we indicate that the closed manifolds are oriented and the bordisms orientation preserving with $\Bordnor$ or equivalently $\nCob^{\orient}$.
@@ -3194,7 +3205,7 @@ Let us explicitly state what is meant by diffeomorphism of bordisms:
 
 \begin{ex}
     We have that 
-        $$\Hom_{\nCob} (\emptyset, \emptyset) = \text{ closed $n$ manifolds}/\text{diffeomorphism}$$
+        $$\Hom_{\nCob} (\emptyset, \emptyset) = \text{ closed $n$ manifolds}/\text{diffeomorphism}.$$
     For $n=2$, $\Sigma = S^2$ is a composition of
     %DRAWING
 
@@ -3216,7 +3227,7 @@ We just saw that $\Bordn$ is a category. It has importantly also a symmetric mon
     \item (B) $\beta_{M,N}: M \amalg N \xrightarrow{\cong} N \amalg M$ and $\beta^2 = id$
 \end{itemize}
 \begin{rem}
-    Associativity and commutativity also hold up to diffeomorphism and not strictly if one defines the disjoint union as a coproduct\footnote{A coproduct is the dual notion of (cartesian) product (see \ref{CartProd}), i.e. a coproduct in $\cat$ is a product in $\cat^{op}$.}: every coproduct is unique up to isomorphism\footnote{One can prove this in a specular way in which we proved the uniqueness of the cartesian product, see \ref{UptoIsoProds}.}, the appropriate notion of isomorphism in the category of smooth manifolds is diffeomorphism and every diffeomorphic manifold is cobordant.
+    Associativity and commutativity also hold up to diffeomorphism and not strictly if one defines the disjoint union as a coproduct\footnote{A coproduct is the dual notion of (cartesian) product (see \ref{CartProd}), i.e. a coproduct in $\cat$ is a product in $\cat^{op}$.}: every coproduct is unique up to isomorphism\footnote{One can prove this in a specular way in which we proved the uniqueness of the cartesian product, see \ref{UptoIsoProds}.}, the appropriate notion of isomorphism in the category of smooth manifolds is diffeomorphism and all diffeomorphic manifolds are cobordant.
 \end{rem}
 \subsection{Definition of Topological Field Theories}
 Recall that a group homomorphism $\Omega_n \to \Z$ or $\R$ or \C... is a bordism invariant, which is generally quite useful and interesting. Now that we have refined our tools and have a cobordism \emph{category} instead of the cobordism \emph{group}, the bordism invariants become symmetric monoidal functors into another symmetric monoidal category since symmetric monoidal functors are the appropriate notion of homomorphism of symmetric monoidal categories.
@@ -3253,11 +3264,15 @@ In particular, that's how we get a topological field theory:
 \label{sub:back_to_usual_tfts}
 
 \begin{rem}
-    A TFT is a functor in a similar way that a linear representation of a group\footnote{In fact, some regard it a kind of representation, check out for instance around minute 18:00 of \hyperlink{https://www.youtube.com/watch?v=_9FxudwLWzg}{Catharina Stroppel: The beauty of braids - from knot invariants to higher categories}; or the following quote from \hyperlink{https://www.hsm.uni-bonn.de/fileadmin/hsm/pictures/TQFT_Poster_01.pdf}{a poster for a conference on TQFTs and their connections to representation theory and mathematical physics} "...a TQFT is a symmetric monoidal functor from the cobordism category to some symmetric monoidal category. It can thus be seen as a representation of a fundamental geometric category on a target category and thereby organizes interesting algebraic structures, e.g. representations of mapping class groups, in terms of cobordism categories. ..."; or this quote from Daniel Freed "An extended topological field theory is a representation of the bordism category..." \cite{freed2012cobordism}.} is (see \ref{Representations of Groups}). We can construct the category of TFTs in an analagous way to the one we used to define the category of linear representations of a group (see \ref{Cat of representations}): by constructing a functor category where the objects are TFTs (hence particular symmetric monoidal functors) and morphisms apt natural transformations between them\footnote{See \ref{SymmMonNat} for the definition of a symmetric monoidal natural transformation.}. The category of $n$-dimensional TFTs will then be $\Hom_{SymmMonCat}(\nCob,\cat)$ (see \ref{CatSymmMonCat} for the definition of $SymmMonCat$, the category of all symmetric monoidal categories). Similarly as with groups, one can have linear and non-linear representations, although linear representations appear more frequenly. Typical examples of linear target categories are $(\AbGrp,\otimes),(Mod_R,\otimes),(\Vect_k,\otimes)$.
+    A TFT is a functor in a similar way that a linear representation of a group\footnote{In fact, some regard it a kind of representation, check out for instance around minute 18:00 of \hyperlink{https://www.youtube.com/watch?v=_9FxudwLWzg}{Catharina Stroppel: The beauty of braids - from knot invariants to higher categories}; or the following quote from \hyperlink{https://www.hsm.uni-bonn.de/fileadmin/hsm/pictures/TQFT_Poster_01.pdf}{a poster for a conference on TQFTs and their connections to representation theory and mathematical physics} "...a TQFT is a symmetric monoidal functor from the cobordism category to some symmetric monoidal category. It can thus be seen as a representation of a fundamental geometric category on a target category and thereby organizes interesting algebraic structures, e.g. representations of mapping class groups, in terms of cobordism categories. ..."; or this quote from Daniel Freed "An extended topological field theory is a representation of the bordism category..." \cite{freed2012cobordism}.} is (see \ref{Representations of Groups}). 
+    We can construct the category of TFTs in an analagous way to the one we used to define the category of linear representations of a group (see \ref{Cat of representations}): by constructing a functor category where the objects are TFTs (hence particular symmetric monoidal functors) and morphisms apt natural transformations between them\footnote{See \ref{SymmMonNat} for the definition of a symmetric monoidal natural transformation.}. 
+    The category of $n$-dimensional TFTs will then be $\Hom_{\SymmMonCat}(\nCob,\cat)$ (see \ref{CatSymmMonCat} for the definition of $\SymmMonCat$, the category of all symmetric monoidal categories). 
+    Similarly as with groups, one can have linear and non-linear representations, although linear representations appear more frequenly. 
+    Typical examples of linear target categories are $(\AbGrp,\otimes),(\Mod_R,\otimes),(\Vect_k,\otimes)$.
 \end{rem}
 
 \begin{notat}[Category of TFTs]
-    The category of TFTs is the functor category $$\Hom_{SymmMonCat}(\nCob,\cat)=Fun^\otimes(\nCob,\cat)=\TFT_n(\cat)=\operatorname{nTFT}(\cat)$$ This functor category is symmetric monoidal by defining the tensor product between TFTs pointwise: for $\Zf_1,\Zf_2\in\TFT_{n,n-1}(\cat)=n\TFT(\cat)$ and $M\in\nCob$ $$(\Zf_1\otimes\Zf_2)(M):=\Zf_1(M)\otimes\Zf_2(M)$$
+    The category of TFTs is the functor category $$\Hom_{\SymmMonCat}(\nCob,\cat)=\Fun^\otimes(\nCob,\cat)=\TFT_n(\cat)=\operatorname{nTFT}(\cat)$$ This functor category is symmetric monoidal by defining the tensor product between TFTs pointwise: for $\Zf_1,\Zf_2\in\TFT_n(\cat)$ and $M\in\nCob$ $$(\Zf_1\otimes\Zf_2)(M):=\Zf_1(M)\otimes\Zf_2(M)$$
 \end{notat}
 TFTs were originally defined with Vect as the target category, $\Zf: (\nCob, \amalg) \to (\Vect, \otimes) $), see \cite{Atiyah1988}. We can infer a few things about this TFT:
 \begin{enumerate}
