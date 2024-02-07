@@ -1814,7 +1814,7 @@ For the latter see \cite[p. 203]{MilnorS05}.
 %TODO maybe torsion comments
 \end{ex}
 %would be cool to write something why these are the case, but mysterious to me for now TBD /ANdrea
-\subsection{Cobordism groups and the sphere spectrum \Plane}
+\subsection{Cobordism groups and the sphere spectrum \extra}
 Very interestingly, the (stable) framed version is isomorphic to the stable homotopy groups of the sphere and it is \textit{not} computed to all degrees. This is one way to phrase a theorem named after Thom. It is fascinating because the stable homotopy groups of the sphere are central objects in stable homotopy theory. They are equivalently the homotopy groups of the sphere spectrum.
 \begin{defn}[Suspension Spectrum]
 	
@@ -3078,7 +3078,7 @@ We have previously seen (\ref{Representations of Groups}) that a linear represen
     Let $\cat$ be a symmetric monoidal category. A linear representation of such category is a symmetric monoidal functor $$\cat\to\Vect_k$$ Such functors are the objects of the category of representation of $\cat$ whereas symmetric monoidal natural transformations are the morphisms, $\Rep(\cat)=\Fun^{\otimes}(\cat,\Vect_k)$
 \end{defn}
 
-\subsection{Interlude on Bicategories \Plane} % (fold)
+\subsection{Interlude on Bicategories \extra} % (fold)
 \label{sub:outlook_interlude_on_bicategories}
 %I hope the order here is not confusing, in the sense that why not define before a bicategory and subsequently the delooping, however this sequence where one first pictures the delooping and then they picture a bicategory made sense in my mind. Feel free to change /Andrea
 %Also I hope it is not overkill, it all started because I wanted to define dual objects of a monoidal cat as adjunctions of 1-morphisms in the delooping, then realized that bicategory would be useful also for 2 reasons: 1-understanding better why Cat is strict and not weak, and in general picturing what weak n-categories are and 2-the extended 2-category of 2 dimensional bordisms is a bicategory. I'll ask the professor if it makes sense or it is just confusing
@@ -3467,26 +3467,26 @@ We can also define analogous categories for other tangential structures, e.g. a 
     
    % https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXG1hdGhiYnsxfV9cXGNhdFxcb3RpbWVzIFhcXGNvbmcgWCJdLFsxLDEsIlhcXG90aW1lcyBZXFxvdGltZXMgWCJdLFsyLDAsIlhcXG90aW1lc1xcbWF0aGJiezF9X1xcY2F0XFxjb25nIFgiXSxbMCwxLCJjb2V2X1hcXG90aW1lcyBpaWRfWCIsMl0sWzEsMiwiaWRfWFxcb3RpbWVzIGV2X1giLDJdLFswLDIsImlkX1giLDAseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsMiwiIiwxLHsib2Zmc2V0IjoxLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
 	\begin{equation}
-		\[\begin{tikzcd} \label{DUAL1}
+		\begin{tikzcd} \label{DUAL1}
 			{\mathbb{1}_\cat\otimes X\cong X} && {X\otimes\mathbb{1}_\cat\cong X} \\
 			& {X\otimes Y\otimes X}
 			\arrow["{coev_X\otimes id_X}"', from=1-1, to=2-2]
 			\arrow["{id_X\otimes ev_X}"', from=2-2, to=1-3]
 			\arrow["{id_X}", from=1-1, to=1-3]
-		\end{tikzcd}\]
+		\end{tikzcd}
 	\end{equation}
 	and
     
    % https://q.uiver.app/#q=WzAsMyxbMCwwLCJZXFxvdGltZXNcXG1hdGhiYnsxfV9cXGNhdFxcY29uZyBZIl0sWzEsMSwiWVxcb3RpbWVzIFhcXG90aW1lcyBZICJdLFsyLDAsIlxcbWF0aGJiezF9X1xcY2F0XFxvdGltZXMgWVxcY29uZyBZIl0sWzAsMSwiaWRfWVxcb3RpbWVzIGNvZXZfWSIsMl0sWzEsMiwiZXZfWVxcb3RpbWVzIGlkX1kiLDJdLFswLDIsImlkX1kiLDAseyJvZmZzZXQiOi0xLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsMiwiIiwxLHsib2Zmc2V0IjoxLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
 	\begin{equation}
    \label{DUAL2}
-		\[\begin{tikzcd}
+		\begin{tikzcd}
 			{Y\otimes\mathbb{1}_\cat\cong Y} && {\mathbb{1}_\cat\otimes Y\cong Y} \\
 			& {Y\otimes X\otimes Y }
 			\arrow["{id_Y\otimes coev_Y}"', from=1-1, to=2-2]
 			\arrow["{ev_Y\otimes id_Y}"', from=2-2, to=1-3]
 			\arrow["{id_Y}", from=1-1, to=1-3]
-		\end{tikzcd}\]
+		\end{tikzcd}
 	\end{equation}
     The fact that these two diagrams commute is called snake relations. If the diagrams commute, then $X$ is the right dual of $Y$ and $Y$ is the left dual of $X$.
 
@@ -4986,6 +4986,91 @@ Given: a framed link $L\subset S^3$ (so far $L\subset\R^3$ but we now embed that
 \begin{exercise}
     Try unknot with trivial framing.
 \end{exercise}
+
+% -------------------------------------------------------------
+% ---------------------- LECTURE 23 7/2 -----------------------
+% -------------------------------------------------------------
+
+Objective: 3d tqft.
+Surgery.
+
+%TODO cite bakalov kirillov lectures on tensor categories and modular functors
+Start with a link $L\subset S^3$ with $L= L_1 \amalg \dots \amalg L_m$ with $L_i \cong S^1$. We take a tubular neighborhood of $L$, $U = U_1 \amalg \dots \amalg U_m$ with $U_i \cong S^1 \times D^2$. Let $T := S^1\times D^2$, the full torus, and let $\phi: U_i \xrightarrow{\cong} T$. Now we can define
+\begin{equation}
+    M_{L,\phi} :=(S^3 \setminus \operatorname{int}(\bigcup_{i=1}^m U_i)) \coprod_{\phi} T^m
+\end{equation}
+surgery of $S^3$ along $L$ via $\phi$.
+However, the result depends on the choice of $\phi$ and we'll see that it corresponds to a choice of framing on the knot.
+
+If $L$ is framed and oriented, we can choose a $\phi$ as follows: let's restric to one component $L_i$. We then have $\de U_i \cong S^1 \times S^1$ and the framing determines a "cycle" of $S^1 \times S^1$ as can be seen in the drawing. In particular if the framing winds around $k$ times then we get a cycle that winds around once in the longitudinal direction and $k$ times in the other direction. This determines a diffeomorphism on the torus up to to isotopy, called the "Dehn twist". 
+% DRAWING
+We then compose with $swap: S^1 \times S^1 \to S^1 \times S^1$:
+\begin{equation}
+    \phi_i: 
+    \begin{tikzcd}
+        T \ar[r] & T \\
+        \alpha_i \ar[r, to] & -\beta_i \\
+        \beta_i \ar[r, to] & \alpha_i \\
+    \end{tikzcd}
+\end{equation}
+In short, via $\phi_i$ the induced framing on $S^1 \times \{0\}$ is a constant normal framing. So framing on $L$ determines/encodes/records the diffeomorphism $\phi$.
+
+Notation: $L$ framed $M_L:= M_{L,\phi}$ with $\phi$ as above.
+\begin{ex}
+\hfill
+    \begin{itemize}
+        \item $L= \emptyset$, we then get $M_L = S^3$,
+        \item $L= unknot$ with constant framing:
+        \begin{equation}
+            \de(S^3 \setminus \operatorname{int} T) \cong S^1 \times S^1
+        \end{equation}
+        Now, as a warmup let's see how $T \coprod_{\phi'} T = S^2$:
+        %DRAWING
+
+        \noindent Now, $(S^3\setminus \operatorname{int} T)  \coprod_{\phi'} T$...
+
+        We then have a well defined projection $M_L \to S^1$ and the fibers of this map are $S^2 = D^2 \coprod_{\de D^2} D^2$. In particular, the bundle is trivial:
+        \begin{fact}
+            $M_L \cong S^1 \times S^2$.
+        \end{fact}
+        \item $L = unknot$ with framing with one twist, we get $M_L = S^3$
+    \end{itemize}
+\end{ex}
+The last example is important because it shows that multiple framed links can give the same 3 manifold. However we have the following result:
+\begin{thm}
+    [Lickorice-Wallace]
+    Any connected closed oriented 3 manifold can be obtained as $M_L$ for some framed link $L$ in $S^3$.
+\end{thm}
+We can therefore try to define a manifold invariant by defining it on framed links, but we have to make sure that links that give the same 3 manifold have the same invariant.
+
+\begin{thm}
+    [Kirby calculus]
+    $M_L \cong M_{L'}$ if and only if $L'$ is obtained from $L$ by a finite sequence of \textit{Kirby moves} which are as follows:
+    %DRAWING
+\end{thm}
+
+How can we now get a 
+%Reshetikin turaev invariant, from kassel russo turaev
+
+\section{Outlook} % (fold)
+\label{sec:outlook}
+
+Recall: TFT is a symmetric monoidal functor out of the category of bordisms. This not only gives us invariants but also gives us a way to calculate them.
+
+\begin{equation}
+    \Fun^\otimes (\Bord_{2,1,0}^\fr, \bat) \xrightarrow{\simeq}[ev_{pt}] (\bat^{2 dualisable})^\simeq
+\end{equation}
+and this generalizes using $(\infty, n)$ categories:
+\begin{equation}
+    \Fun^\otimes (\Bord_{n,\dots,0}^\fr, \bat) \xrightarrow{\simeq}[ev_{pt}] (\cat^{n dualisable})^\simeq
+\end{equation}
+This is the cobordism hypothesis.
+
+In addition
+\begin{equation}
+    \Fun^\otimes (\Bord_{3,2,1}^\fr, \bat) \xrightarrow{\simeq}[ev_{S^1}] \text{modular tensor objects}.
+\end{equation}
+
 
 \newpage
 \input{exercises} % note - this is just a working interjection of the first sheet in these lecture notes (later on it might be nice to redistribute them to appear right after the concepts you need to solve them have been introduced) /Jacob
