@@ -38,6 +38,8 @@
 %\usepackage{xcolor}            % don't know what it's for
 
 %I don't think having the "back to" sections /William
+%TODO decide how to indicate interior, in some points there's the dot and in other int /William
+%I think we never comment on bordism or CObordism, maybe add a comment somewhere /William
 
 \makeatletter %adjusting the color of the entire document
 \newcommand{\globalcolor}[1]{%
@@ -49,7 +51,7 @@
 
 \newcommand{\updateinfo}[1][\today]{\par\vfill\hfill{\scriptsize\color{red}Last updated on #1}}
 
-\newcommand{\extra}{\texorpdfstring{\textmd{\Plane}}{plane}}
+\newcommand{\extra}{\texorpdfstring{\textmd{\Plane}\;\,}{plane}}
 
 % \ensuremath to be able to write \R instead of $\R$
 \newcommand{\R}{\ensuremath{\mathbb{R}} }
@@ -270,7 +272,7 @@ We use the symbol '\Plane' at the end of titles of sections, definitions or theo
 There are two ways one can approach topological field theories:
 \begin{enumerate}
 	\item As a way to make (some\footnote{Sadly, TFTs cannot axiomatize many quantum field theories that are particularly useful in physics, e.g. the quantum field theory behind the standard model.}) quantum field theories more mathematically rigorous
-	\item As a way to refine bordism invariants, or, roughly, as a kind of homology for smooth manifolds of a certain dimension, instead of general topological spaces
+	\item As a way to refine bordism invariants, or, roughly, as a kind of homology for smooth manifolds of a certain dimension, instead of general topological spaces.
 \end{enumerate}
 We now sketch how the former might make sense.
 \section{QFT}
@@ -322,17 +324,15 @@ If someone is into mathematics for the money or the prestige\footnote{If not alr
     \item Edward Witten received his Fields medal mainly because he found a link between 3d-TFTs, in particular Chern-Simons theory, and knot theory, in particular with the Jones polynomial. See \cite{Witten1989} for details.
 \end{itemize} 
 The Jones polynomial is a topological invariant of a knot, meaning that you can assign to each knot a Jones Polynomial in such a way that if two Knots have different polynomials, then they must be different.
-\begin{figure}[!ht]
-\centering
+\begin{center}
 \includegraphics[width=5cm]{images/Lecture 1/Jones.jpg}
-\end{figure}
+\end{center}
 What the heck do TFTs and knots have in common?! There is actually a deep connection between the two.
 When writing his paper, Witten drew several pictures like the following:
 %The order of the images is compiled strangely
-\begin{figure}[!ht]
-\centering
+\begin{center}
 \includegraphics[width=10cm]{images/Lecture 1/witten.png}
-\end{figure}
+\end{center}
 Two mathematicians, Segal and Atiyah, recognized a hidden symmetric monoidal functor and pinned down  Witten's intuitions rigorously, thereby axiomatizing TQFTs (and CFTs).
 
 \section{Topology}
@@ -816,7 +816,7 @@ We need to show that the relation satisfies the properties of reflexivity, symme
 \begin{defn}
 \label{Defn n-th cob group}
 The $n$-th cobordism group is
-$$\Omega_n = \frac{\{\text{closed $n$ manifolds}\}}{\{\text{$n+1-$cobordisms}\}}$$
+$$\Omega_n = \frac{\{\text{closed $n$ manifolds}\}}{\{\text{$n+1$ cobordisms}\}}$$
 \end{defn}
 \begin{rem}
 There is an insidious set-theoretic issue when we define the $n$-th cobordism group $\Omega_n$ (\ref{Defn n-th cob group}): is the collection of all closed $n$ manifolds a set? And what about the collection of all $n+1$ bordisms? It could be the case that it is something bigger than a usual set, thus not a set and problematic since we would not know how to treat them\footnote{We are assuming to be working in ZFC. There are other set theories in which one can define collections greater than sets, e.g. Von Neumann–Bernays–Gödel set theory.}. For example, we know that the collection of all sets is strictly greater than any set\footnote{Because of famous set-theoretic paradoxes like Cantor's paradox.} and thus not a set. Similarly, also the collection of topological spaces is not a set because we can regard any set as a topological space via the discrete topology\footnote{The topology where the set of open sets is the powerset of the set in question, or in other words where any subset is open.}. One could wonder if the collection of all manifolds of a certain dimension $n$ is likewise not a set. This is fortunately for us not the case. The following theorem allows us to happily treat \{\text{closed $n$ manifolds}\} and \{\text{$n+1$ cobordisms}\} as sets by replacing abstract manifolds and cobordism by manifolds and cobordisms embedded in $\R^{\infty}$.
@@ -839,12 +839,9 @@ There is an insidious set-theoretic issue when we define the $n$-th cobordism gr
     Actually $(\Omega_n,\amalg)$ is a finitely generated abelian group, but this is a hard theorem. In particular, it is a finite product of cyclic groups of order $2$ (from 2.)
 \end{rem}
 
-\begin{defn}[bordism invariant]
-	A bordism invariant is a homomorphism of abelian groups $$(\Omega_n,\amalg,\emptyset) \to (A,\cdot,e)$$ 
-	the abelian group $A$ can be $\Z$ for instance.
-\end{defn}
 \begin{defn}[Bordism invariant]
-	A bordism invariant is a homomorphism of abelian groups $$\Omega_n \to \Z$$ or $\R$, $\C$... or whatever abelian group captures that invariant.
+	A bordism invariant is a homomorphism of abelian groups $$(\Omega_n,\amalg,\emptyset) \to (A,\cdot,e)$$ 
+	the abelian group $A$ can be $\Z$, $\R$ or $\C$ for instance.
 \end{defn}
 \begin{rem}
 	Many important manifold invariants are also bordism invariants.
@@ -858,7 +855,7 @@ There is an insidious set-theoretic issue when we define the $n$-th cobordism gr
     \item characteristic classes such as Pontrjagin, Stiefel-Whitney or Chern classes 
 \end{itemize}
 \end{ex}
-%add definition of characteristic class
+%TODO add definition of characteristic class or maybe just some additional comment
 % texorpdfstring to remove the hyperref warning
 \subsection{The 0-th Cobordism Group, \texorpdfstring{$\Omega_{0}$}{Omega 0}}
 Consider
@@ -1102,9 +1099,9 @@ by observing that $S^2$ and $\Sigma_g$ are both cobordant to $\emptyset$ since t
     \Omega_2^{or} = 0.
 \end{equation} 
 %DRAWING
-\begin{ex}
+\begin{exercise}
     What about the non-oriented part $\Omega_2$?
-\end{ex}
+\end{exercise}
 
 
 % -------------------------------------------------------------
@@ -1229,7 +1226,7 @@ This is summarized by the fact that the following diagram commutes:
 	\arrow["\phi"', from=3-1, to=3-3]
 	\arrow["\cong", from=3-1, to=3-3]
 \end{tikzcd}\]
-This is actually an atlas with smooth structure. Transition functions $g_{ij} = \phi_j \circ \phi_i^{-1}|_{\phi_i(U_i \cap U_j)}$ are actually the jacobian and we have $g_{ij} \in GL_n(\R)$. 
+This is actually an atlas with smooth structure. Transition functions $g_{ij} = \tilde \phi_j \circ \tilde\phi_i^{-1}|_{\tilde \phi_i(U_i \cap U_j)}$ are actually the jacobian and we have $g_{ij} \in GL_n(\R)$. 
 
 \begin{defn}[Orientability and admissibility of $G$ structure]
     If $TM$ has local trivializations such that the transition functions between overlapping trivializations are in $ GL_n^+(\R)\subseteq GL_n(\R)$ then we say that $M$ is orientable.
@@ -1256,7 +1253,7 @@ This is actually an atlas with smooth structure. Transition functions $g_{ij} = 
 \end{ex}
 
 \begin{defn}[Orientation and $G$ structure]
-    An orientation (equivalently, a $GL^+_n(\R)$ structure) of $M$ is an equivalence class of trivialisations $\{(\tilde U, \tilde \phi)\}$ of $TM$ such that $\det g_{ij} > 0$ (i.e. $g_{ij} \in GL^+(n,\R)$), where $g_{ij} = \phi_j \circ \phi_i^{-1}|_{\phi_i(U_i \cap U_j)}$.
+    An orientation (equivalently, a $GL^+_n(\R)$ structure) of $M$ is an equivalence class of trivialisations $\{(\tilde U, \tilde \phi)\}$ of $TM$ such that $\det g_{ij} > 0$ (i.e. $g_{ij} \in GL^+(n,\R)$).
 
     \noindent Analogously, given some $G \subset GL_n(\R)$, a $G$ structure on $TM$ is an equivalence class of trivialisations $\{(\tilde U, \tilde \phi)\}$ such that $g_{ij} \in G$.
 \end{defn}
@@ -1319,7 +1316,7 @@ If we fix a local chart with coordinates $x_1, \dots, x_n$ we have a basis $\fra
 	%DRAWING
 \end{defn}
 
-\begin{defn}[oriented bordism]
+\begin{defn}[Oriented bordism]
 	Let  $Y_0$ and $Y_1$ be oriented closed $n$ manifolds.
 	An oriented bordism from $Y_0$ to $Y_1$ is an oriented $n+1$ manifold $X$ together with $p: \de X \to \{0,1\}$ and $\psi: \de X \to \bbar Y_0 \amalg Y_1$ an orientation preserving diffeomorphism.
 	(Note: now $p$ is actually too much data $\dots$, since it basically tells us which of the $Y_i$ we're reversing, so we can get rid of it.)
@@ -1339,7 +1336,7 @@ If we fix a local chart with coordinates $x_1, \dots, x_n$ we have a basis $\fra
 \subsection{Framings} % (fold) 
 \label{sub:framings}
 
-Recall the definition of a $G$ structure given above. As stated previously, if $G = GL_n^+(\R)$ a $G$ structure is an orientation. Another choice is simply to take $G = \{e\}$, this gives a \textit{framing}. We can talk about \textit{frameable} or \textit{parallelizable} manifolds, meaning they admit a framing. As a consequence, the manifold has a trivial tangent bundle we have $TM \cong M \times \R^n$ and a choice of framing corresponds to a choice of isomorphism.
+Recall the definition of a $G$ structure given above. As stated previously, if $G = GL_n^+(\R)$ a $G$ structure is an orientation. Another choice is simply to take $G = \{e\}$, this gives a \textit{framing}, which amounts to a smooth choice of basis for every point. We can talk about \textit{frameable} or \textit{parallelizable} manifolds, meaning they admit a framing. As a consequence, the manifold has a trivial tangent bundle we have $TM \cong M \times \R^n$ and a choice of framing corresponds to a choice of isomorphism.
 
 \begin{ex}
 Some examples of frameable manifolds are the following:
@@ -1486,12 +1483,12 @@ Note that at the special points the preimage is generally not a smooth manifold.
 % --------------------- LECTURE 6 13/11 -----------------------
 % -------------------------------------------------------------
 
-\noindent Given a Morse function $f: M \to \R$, $p \in M$, then we have the following mmediate consequences of the lemma:
+\noindent Given a Morse function $f: M \to \R$, $p \in M$, then we have the following immediate consequences of the lemma:
 \begin{itemize}
     \item if $p$ is critical (non degenerate because of the \textit{Morse} function), because of the lemma we have a chart as above. Then the level sets $f^{-1} (f(p))$ look like a neighborhood of 0 in a quadric (locally).
     \item if $p$ is not critical (it's regular), by the implicit function theorem there are coordinates such that $f(x_1, \dots, x_n) = x_1$. So the level sets $f^{-1} (f(p))$ look like hyperplanes in $\R^n$ (locally).
 \end{itemize}
-This explains what we noticed initially for the example of the torus, that the level set changes when passing a critical point. In particular it always changes in one of the ways shown in \ref{ex:quadric}. This observation will be more complete after Morse Lemma II below.
+This explains what we noticed initially for the example of the torus, that the level set changes when passing a critical point. In particular it always changes in one of the ways shown in \ref{ex:quadric}. This observation will be more complete after Morse Lemma II and Theorem \ref{thm:handle_attachment_morse} below.
 
 The following theorem justifies the use of Morse theory to study manifolds.
 \begin{thm}
@@ -1553,7 +1550,8 @@ We would now like to know \textit{how} the level set changes before and after th
     \item $j=2, H^2 = D^2 \times D^0$ and we attach along $\de D^2 \times D^0\cong S^1$, i.e. along a circle
 \end{itemize}
 \noindent We can now see how the level sets change at a critical point.
-\begin{thm}(\cite{Hirsch1976} Theorem 3.2, p.157)
+\begin{thm}[\cite{Hirsch1976} Theorem 3.2, p.157]
+\label{thm:handle_attachment_morse}
     Let $M^n$ be compact and $f: M^n \to [a,b]$ an admissible Morse function. Suppose that $f$ has a unique critical point $z$ of index $j$.
 
     \noindent There is an embedding $\iota: D^j \hookrightarrow M^n$ with image $e^j :=  \im \iota$ (called "belt disk"), satisfying: 
@@ -1704,7 +1702,7 @@ $ $ \newline  % to go to a new line after the word proof
         \item Use proposition about handle cancellation (first attaching $i$ handle and then $i+1$ handle these cancel) and handle slides: %DRAWING
         with these you can write down an algorithm to get the normal form from any handle decomposition.
         \item One can change the Morse function. Claim: We can choose $f$ such that if $\ind p_1 < \ind p_2 \implies f(p_1) < f(p_2)$. %DRAWING
-        This can be proven by changing the Morse function locally around a critical point (see Hirsch for more details). %TODO add ref
+        This can be proven by changing the Morse function locally around a critical point (see \cite{Hirsch1976} for more details). %TODO add ref
     \end{enumerate}
 
     Step 4: If $\de M = \emptyset$, then either $M = \emptyset$ or I have at least two critical points.
@@ -1735,11 +1733,11 @@ We now consider the case with boundary:
 \end{proof}
 
 
-
+%Can this go with the cobordism part? /William
 \section{More on cobordism groups}
 \label{sec:more_on_cobordism_groups}
 
-we now go back to cobordism groups to give some important results.
+We now go back to cobordism groups to give some important results.
 
 We had found 
 \begin{align}
@@ -1790,7 +1788,7 @@ There are versions for any tangential structure, such as orientation or stable f
     \end{equation*}
      $$  y_{4k}\mapsto [\C\P^{2k}]$$
      We write it in this way because in this case there is nontrivial torsion. We could also write
-       $$ \Omega_\bullet^{or} /\text{torsion} \cong \Z[z_4, z_8, z_12, \dots]$$
+       $$ \Omega_\bullet^{or} /\text{torsion} \cong \Z[z_4, z_8, z_{12}, \dots]$$
     where the generators are given by Milnor hypersurfaces.
 \end{thm}
 %Now we have Stiefel-Whitney and Pontryagin numbers, which are cobordism invariants and hence determine classes of cobordisms.  In 1959, C.T.C. Wall proved that two manifolds are cobordant if and only if their Pontrjagin numbers and Stiefel numbers are the same % It is not clear to me what they are and what we are referring to just copied from the script, maybe should add explication /Andrea 
@@ -1807,7 +1805,7 @@ $$ \Omega_{6}^{\orient}=0$$
 $$ \Omega_{7}^{\orient}=0$$
 $$ \Omega_{8}^{\orient}=\Z\oplus\Z$$
 $$ \Omega_{n\geq 9}^{\orient}\neq 0$$
-For the latter see \cite[p. 203]{MilnorS05}.
+For the last result see \cite[p. 203]{MilnorS05}.
 %TODO maybe torsion comments
 \end{ex}
 %would be cool to write something why these are the case, but mysterious to me for now TBD /ANdrea
@@ -1903,7 +1901,7 @@ The following table summarizes the comparison between additional structures in t
 \begin{center}
     \begin{tabular}{||c|c||}
     \hline
-        $\Omega_n$ & $Bord_{n,n-1}$ \\ [0.5ex]
+        $\Omega_n$ & $\Bord_{n,n-1}$ \\ [0.5ex]
          \hline\hline
          set & category \\
          \hline
@@ -1935,7 +1933,7 @@ We make both these comparisons more rigorous by later (\ref{MonObj}) showing tha
     \item an associative algebra is a monoid object in the category of $k$-vector spaces $Vect_k$
     \item a (\emph{strict}) monoidal category is a monoid object in the category of small categories Cat
 \end{enumerate} 
-The same holds for the commutative case, commutative monoids, commutative algebras and (\emph{strict}\footnote{We will also sketch a way how to get general symmetric monoidal categories, i.e. not necessarily strict. See \ref{EAlg}.}) 
+The same holds for the commutative case, commutative monoids, commutative algebras and (\emph{strict}\footnote{We will also sketch a way how to get general symmetric monoidal categories, i.e. not necessarily strict, in an analogous way. See \ref{EAlg}.}) 
 symmetric monoidal categories are all examples of commutative monoid objects (see \ref{CommMonObj}).
 
 \section{Category theory language} % (fold)
@@ -2065,7 +2063,7 @@ Some examples of functors:
 \begin{rem}\label{1CatOfAllCats}
       Since the composition of functors is associative\footnote{Try to convince yourself that it is so!} and unital there is a category of all (small\footnote{Let $\mathscr{C},\mathscr{D}$ be categories, the collection of all functors $F:\mathscr{C}\rightarrow\mathscr{D}$ is generally a class. Hence the category of all categories without any restriction would not be a locally small category and thereby not a category according to our definition \ref{Cat}.  However, if $\mathscr{C}$ is small, then the collection of all functors $F:\mathscr{C}\rightarrow\mathscr{D}$ is a set. Therefore, the category of all small categories is indeed a category according to our definition of category.}) categories $\Cat$ whose objects are (small) categories and whose morphisms are functors. For the same reason we also have a category Gpd of (small) groupoids.
 \end{rem}
-\begin{ex}
+\begin{ex}\extra
 Some more examples related to topological spaces.
     \begin{enumerate}
     \item \label{PathConnFunct} Let $X$ be a topological space. Observe the following equivalence relation: $x\sim x'$ if and only if there is a continuous map $f:[0,1]\to X$, also known as "path", such that $f(x)=0$ and $f(x')=1$. Denote with $\pi_0(X)$ the set of equivalence classes of path-connected points, also known as the set of path-connected components, in $X$. This gives a functor\footnote{There is also a functor $\pi:\Top\to \Set$ sending topological spaces to the sets of their connected components.} $\pi_0:\Top\to \Set$
@@ -2158,7 +2156,7 @@ Some more examples related to topological spaces.
 \end{enumerate}
 \end{ex}
 
-\begin{defn}[Homotopy Analogue of Natural Transformation]
+\begin{defn}\extra\textmd{(Homotopy Analogue of Natural Transformation).}
     Let $\Delta^{1}$ be the category with two objects $0,1$ and one nonidentity morphism $u:0\to1$. Given two functors $F,G:\cat\to\dat$ we can see a natural transformation $\tau:F\Rightarrow G$ as a functor $N:\cat\times\Delta^{1}\to\dat$ where $N|_{\cat\times\{0\}}=F$ and $N|_{\cat\times\{1\}}=G$ and thus for every $X\in\cat$, $N(X,0)=F(X)$ and $N(X,1)=G(X)$. 
 \end{defn}
 \noindent This is equivalent to the previous definition for the following reason: let $X\xrightarrow{f} Y$ be an arbitrary arrow in $\cat$ and consider this commutative\footnote{It commutes because of unitality in both categories: $f\circ id_X=id_Y\circ f$ and $u\circ id_0=id_1\circ u$.} diagram in $\cat\times\Delta^1$
@@ -2826,7 +2824,9 @@ We leave the case of the counit for the reader.
 \end{defn}
 %I don't think it's a bimonoid, i think it's just monoid and comonoid, without the additional property /William
 \begin{defn}[Frobenius Algebra]\label{FrobAlg}
-    A Frobenius algebra in an arbitrary monoidal category $\cat$ is a bimonoid object such that the following holds: $$(\mathbb{1}_\cat\otimes\mu)\circ(\Delta\otimes\mathbb{1}_\cat)=\Delta\circ\mu=(\mu\otimes\unit_\cat)\circ(\unit_\cat\otimes\Delta)$$
+    A Frobenius algebra in an arbitrary monoidal category $\cat$ is simultaneously a monoid and a comonoid object in $\cat$ with a compatibility condition different from the one above: 
+    $$(\mathbb{1}_\cat\otimes\mu)\circ(\Delta\otimes\mathbb{1}_\cat)=\Delta\circ\mu=(\mu\otimes\unit_\cat)\circ(\unit_\cat\otimes\Delta)$$
+    called the Frobenius relation. 
 \end{defn}
 
 \begin{defn}[Group Object]\label{GroupObj}
@@ -2922,7 +2922,7 @@ However, this does not characterize an actually symmetric structure, but rather 
 	\arrow["\beta", shorten <=5pt, shorten >=5pt, Rightarrow, from=0, to=1]
 \end{tikzcd}\]
 
-    In addition, we need to impose some compatibility conditions with the associator:
+    \noindent In addition, we need to impose some compatibility conditions with the associator:
     % https://q.uiver.app/#q=WzAsNixbMSwwLCIoWFxcb3RpbWVzIFkpXFxvdGltZXMgWiJdLFswLDEsIlhcXG90aW1lcyhZXFxvdGltZXMgWikiXSxbMCwyLCIoWVxcb3RpbWVzIFopXFxvdGltZXMgWCJdLFsxLDMsIllcXG90aW1lcyhaXFxvdGltZXMgWCkiXSxbMiwyLCJZXFxvdGltZXMoWFxcb3RpbWVzIFopIl0sWzIsMSwiKFlcXG90aW1lcyBYKVxcb3RpbWVzIFoiXSxbMSwwLCJcXGFscGhhX3tYLFksWn1eey0xfSJdLFsxLDIsIlxcYmV0YV97WCxZXFxvdGltZXMgWn0iLDJdLFsyLDMsIlxcYWxwaGFfe1ksWixYfSIsMl0sWzMsNCwiaWRfWVxcb3RpbWVzXFxiZXRhX3taLFh9IiwyXSxbMCw1LCJcXGJldGFfe1gsWX1cXG90aW1lcyBpZF9aIl0sWzUsNCwiXFxhbHBoYV97WSxYLFp9Il1d
 \[\begin{tikzcd}
 	& {(X\otimes Y)\otimes Z} \\
@@ -2991,20 +2991,20 @@ Earlier on we defined a monoid object (\ref{MonObj}) in a monoidal category, now
 \begin{ex}
 A commutative monoid object is a 
     \begin{itemize}
-        \item Commutative monoid when in $(\Set,\times)$
-        \item Commutative algebra when in $(\Vect_k,\otimes)$
-        \item \emph{Strict} symmetric monodial category when in $(Cat,\times)$
-        \item Commutative topological monoids in $(\Top,\times)$
+        \item commutative monoid when in $(\Set,\times)$,
+        \item commutative algebra when in $(\Vect_k,\otimes)$,
+        \item \emph{strict} symmetric monodial category when in $(Cat,\times)$,
+        \item commutative topological monoids in $(\Top,\times)$.
     \end{itemize}
 \end{ex}
 \begin{defn}[Cocommutative Comonoid Object]\label{CocommComonObj}
     Let $(M,\Delta,\epsilon)$ be a comonoid object (\ref{ComonObj}) in a symmetric monoidal category $\cat$. It is cocommutative iff $(M,\mu,\eta,\beta_{M,M})$ a commutative monoid object in $\cat^{op}$ (see \ref{CatOP}) such that $\mu=\Delta^{op}$, $\eta=\epsilon^{op}$ and $\beta_{M,M}^{op}=\beta_{M,M}$. Straightforwardly, the definition we gave for commutative monoid object, but with all the arrows inverted. 
 \end{defn}
 \begin{defn}[Commutative Bimonoid Object]\label{CommBim}
-    A commutative bimonoid object in a symmetric monoidal category $\cat$ is a bimonoid object (\ref{BimonObj}) such that the underlying monoid object is  commutative. Note that the underlying comonoid object is cocommutative id and only if the underlying monoid object is commutative.
+    A commutative bimonoid object in a symmetric monoidal category $\cat$ is a bimonoid object (\ref{BimonObj}) such that the underlying monoid object is  commutative. Note that the underlying comonoid object is cocommutative if and only if the underlying monoid object is commutative.
 \end{defn}
 \begin{defn}[Commutative Frobenius Algebra]\label{CommFrobAlg}
-    A commutative Frobenius algebra in a symmetric monoidal category $\cat$ is a commutative bimonoid where the Frobenius relation holds, i.e. $$(\mathbb{1}_\cat\otimes\mu)\circ(\Delta\otimes\mathbb{1}_\cat)=\Delta\circ\mu=(\mu\otimes\unit_\cat)\circ(\unit_\cat\otimes\Delta)$$
+    A commutative Frobenius algebra in a symmetric monoidal category $\cat$ is a Frobenius algebra whose monoid structures is commutative (this also implies that the comonoid structure is cocommutative).
 \end{defn}
 We need a notion of homomorphism between symmetric monoidal categories, a suitable definition of functor. 
 \begin{defn}[Symmetric monoidal functor]
@@ -3052,12 +3052,12 @@ finally we just need a commutative diagram for all $X,Y\in\cat$ specifying how i
 	\arrow["{F(\beta_{X,Y})}"', from=2-1, to=2-2]
 \end{tikzcd}\]
 \end{defn}
-This notion will be central in this course since a TFT is just a symmetric monoidal functor with a special domain: the cobordism category (See the next subsection \ref{CobCat}).
+This notion will be central in this course since a TFT is just a symmetric monoidal functor with a special domain: the cobordism category.
 \begin{ex}
 \hfill
 \begin{enumerate}
     \item The path-connected component functor (\ref{PathConnFunct}) $\pi_0: (\Top,\times)\to (\Set,\times)$ is a symmetric monoidal functor.
-    \item ...
+    \item ... %TODO more?
 \end{enumerate}
 \end{ex}
 We also need a suitable notion of natural transformation between symmetric monoidal functors.
@@ -3086,7 +3086,7 @@ No other conditions are needed to be specified for a symmetric monoidal natural 
 \begin{itemize}
     \item Let $\Z[-]:\Set\to \AbGrp$ be the free functor\footnote{A free functor is a left adjoint to the forgetful functor.} generating free groups from sets. Define $\Z[-\times-]:\Set\to \AbGrp$, the free functor generating free groups out of cartesian products in $\Set$, and $\Z[-]\otimes\Z[-]$, the free functor first generating free groups and then tensor-multiply them with the tensor product in $\AbGrp$.  There is a monoidal natural isomorphism $\alpha$ between them, $\forall A,B\in \Set, \Z[A\times B]\cong\Z[A]\otimes\Z[B]$. The notation $\Z[-]$ comes from the fact that abelian groups are exactly modules on the integers, the categories of abelian groups and of modules on the integers are not just equivalent categories, but isomorphic, something very rare.
     \item Let $V\in\Vect_k$. Then $V\to V^{\ast\ast}$ are the components of...
-    \item The determinant...
+    \item The determinant... %TODO complete
     \item There is a monoidal natural isomorphism between $id_{\Grp}$ and $\Grp\xrightarrow{op} \Grp$, $G\mapsto G^{op}$, the functor sending every group $(G,\ast)$ to its opposite group, i.e. $(G^{op},\ast^{op})$, where $a\ast^{op}b=b\ast a$.
 \end{itemize}
 \end{ex}
@@ -3100,11 +3100,14 @@ No other conditions are needed to be specified for a symmetric monoidal natural 
     There is a strict 2-category SymmMonCat similar to Cat (see section \ref{sub:higher_categories}), where 1-morphisms are symmetric monoidal functors and 2-morphisms are symmetric monoidal natural transformations. 
 \end{rem}
 \begin{notat}
-    Note that then $\Hom_{\SymmMonCat}(\cat,\dat)$ is a special functor category. A functor category where objects are symmetric monoidal functors. An alternative way to denote $\Hom_{\SymmMonCat}(\cat,\dat)$ is $Fun^{\otimes}(\cat,\dat)$.
+    Note that then $\Hom_{\SymmMonCat}(\cat,\dat)$ is a special functor category. A functor category where objects are symmetric monoidal functors. An alternative way to denote $\Hom_{\SymmMonCat}(\cat,\dat)$ is $\Fun^{\otimes}(\cat,\dat)$.
 \end{notat}
 We have previously seen (\ref{Representations of Groups}) that a linear representation of a group $G$ is just a functor $\mathbf{B}G\rightarrow \Vect_k$. More generally, some, e.g. \cite[p. 34 ]{kock_2003}, give a definition of linear representation for symmetric monoidal categories: 
 \begin{defn}[Linear Representation]\label{LinReprCat}
-    Let $\cat$ be a symmetric monoidal category. A linear representation of such category is a symmetric monoidal functor $$\cat\to\Vect_k$$ Such functors are the objects of the category of representation of $\cat$ whereas symmetric monoidal natural transformations are the morphisms, $\Rep(\cat)=\Fun^{\otimes}(\cat,\Vect_k)$
+    Let $\cat$ be a symmetric monoidal category. A linear representation of such category is a symmetric monoidal functor $$\cat\to\Vect_k$$ Such functors are the objects of the category of representation of $\cat$ whereas symmetric monoidal natural transformations are the morphisms, 
+    \begin{equation}\label{eq:rep_of_cat}
+      \Rep(\cat)=\Fun^{\otimes}(\cat,\Vect_k)
+    \end{equation}
 \end{defn}
 
 \subsection{Interlude on Bicategories \extra} % (fold)
@@ -3255,7 +3258,7 @@ Let us explicitly state what is meant by diffeomorphism of bordisms:
 
 \begin{ex}
     We have that 
-        $$\Hom_{\nCob} (\emptyset, \emptyset) = \text{ closed $n$ manifolds}/\text{diffeomorphism}.$$
+        $$\Hom_{\nCob} (\emptyset, \emptyset) = \text{ \{closed $n$ manifolds\}}/\text{\{diffeomorphism\}}.$$
     For $n=2$, $\Sigma = S^2$ is a composition of
     %DRAWING
 
@@ -3319,7 +3322,11 @@ In particular, that's how we get a topological field theory:
 \label{sub:back_to_usual_tfts}
 
 \begin{rem}
-    A TFT is a functor in a similar way that a linear representation of a group\footnote{In fact, some regard it a kind of representation, check out for instance around minute 18:00 of \hyperlink{https://www.youtube.com/watch?v=_9FxudwLWzg}{Catharina Stroppel: The beauty of braids - from knot invariants to higher categories}; or the following quote from \hyperlink{https://www.hsm.uni-bonn.de/fileadmin/hsm/pictures/TQFT_Poster_01.pdf}{a poster for a conference on TQFTs and their connections to representation theory and mathematical physics} "...a TQFT is a symmetric monoidal functor from the cobordism category to some symmetric monoidal category. It can thus be seen as a representation of a fundamental geometric category on a target category and thereby organizes interesting algebraic structures, e.g. representations of mapping class groups, in terms of cobordism categories. ..."; or this quote from Daniel Freed "An extended topological field theory is a representation of the bordism category..." \cite{freed2012cobordism}.} is (see \ref{Representations of Groups}). 
+    A TFT is a functor in a similar way that a linear representation of a group\footnote{
+    In fact, some regard it a kind of representation, check out for instance around minute 18:00 of \hyperlink{https://www.youtube.com/watch?v=_9FxudwLWzg}{Catharina Stroppel: The beauty of braids - from knot invariants to higher categories}; 
+    or the following quote from \hyperlink{https://www.hsm.uni-bonn.de/fileadmin/hsm/pictures/TQFT_Poster_01.pdf}{a poster for a conference on TQFTs and their connections to representation theory and mathematical physics} 
+    "...a TQFT is a symmetric monoidal functor from the cobordism category to some symmetric monoidal category. It can thus be seen as a representation of a fundamental geometric category on a target category and thereby organizes interesting algebraic structures, e.g. representations of mapping class groups, in terms of cobordism categories. ..."; 
+    or this quote from Daniel Freed "An extended topological field theory is a representation of the bordism category..." \cite{freed2012cobordism}.} is (see \ref{Representations of Groups}). 
     We can construct the category of TFTs in an analagous way to the one we used to define the category of linear representations of a group (see \ref{Cat of representations}): by constructing a functor category where the objects are TFTs (hence particular symmetric monoidal functors) and morphisms apt natural transformations between them\footnote{See \ref{SymmMonNat} for the definition of a symmetric monoidal natural transformation.}. 
     The category of $n$-dimensional TFTs will then be $\Hom_{\SymmMonCat}(\nCob,\cat)$ (see \ref{CatSymmMonCat} for the definition of $\SymmMonCat$, the category of all symmetric monoidal categories). 
     Similarly as with groups, one can have linear and non-linear representations, although linear representations appear more frequenly. 
@@ -3327,9 +3334,12 @@ In particular, that's how we get a topological field theory:
 \end{rem}
 
 \begin{notat}[Category of TFTs]
-    The category of TFTs is the functor category $$\Hom_{\SymmMonCat}(\nCob,\cat)=\Fun^\otimes(\nCob,\cat)=\TFT_n(\cat)=\operatorname{nTFT}(\cat)$$ This functor category is symmetric monoidal by defining the tensor product between TFTs pointwise: for $\Zf_1,\Zf_2\in\TFT_n(\cat)$ and $M\in\nCob$ $$(\Zf_1\otimes\Zf_2)(M):=\Zf_1(M)\otimes\Zf_2(M)$$
+    The category of TFTs is the functor category 
+    $$\Hom_{\SymmMonCat}(\nCob,\cat)=\Fun^\otimes(\nCob,\cat)=\TFT_n(\cat)=\operatorname{nTFT}(\cat).$$ 
+    This functor category is symmetric monoidal by defining the tensor product between TFTs pointwise: for $\Zf_1,\Zf_2\in\TFT_n(\cat)$ and $M\in\nCob$ $$(\Zf_1\otimes\Zf_2)(M):=\Zf_1(M)\otimes\Zf_2(M)$$
 \end{notat}
-TFTs were originally defined with Vect as the target category, $\Zf: (\nCob, \amalg) \to (\Vect, \otimes) $), see \cite{Atiyah1988}. We can infer a few things about this TFT:
+TFTs were originally defined with Vect as the target category, $\Zf: (\nCob, \amalg) \to (\Vect, \otimes) $), see \cite{Atiyah1988}. In this case we can use the notation in equation \ref{eq:rep_of_cat} and write $\TFT_n(\Vect_k) = \Rep(\Bord_{n,n-1}$.
+We can infer a few things about such TFTs:
 \begin{enumerate}
     \item $\Sigma$ closed $n$ manifold, we can then view it as a bordism $\emptyset \xrightarrow{\Sigma} \emptyset$ and then we can apply $Z$ and we get $Z(\emptyset) \xrightarrow{Z(\Sigma)} Z(\emptyset)$ but $Z(\emptyset) = k$, since that's the unit in $\Vect$. So $\Zf(\Sigma)$ is a linear map from $k$ to $k$, which is entirely determined by where it sends one element. We then get that $\Zf(\Sigma)(\unit)$ is a diffeomorphism invariant.
 
@@ -3363,7 +3373,7 @@ TFTs were originally defined with Vect as the target category, $\Zf: (\nCob, \am
 \end{ex}
 
 \begin{notat}
-    $\cat^\times \subset \cat$ subset of invertible objects and isomorphisms. We will later see that this is the underlying Picard groupoid (see \ref{PicardDualizable}) and synonymous with $(\cat^{dualizable})^\simeq$ because of \ref{InvertibleDualizable}.
+    $\cat^\times \subset \cat$ subset of invertible objects and isomorphisms. We will later see that this is the underlying Picard groupoid (see \ref{PicardDualizable}) and synonymous with $(\cat^{dualizable})^{\cong}$ because of \ref{InvertibleDualizable}.
 \end{notat}
 %dim(X \otimes Y) =  dim(X)dim (Y) = dim X = 1....?
 \begin{notat}
@@ -3430,7 +3440,7 @@ This is not only of theoretical interest but it also allows the application of t
 \subsection{Back to Ordinary TFTs} % (fold)
 \label{sub:back_to_ordinary_tfts}
 
-Given $\Zf:\Bordn\to\Vect_k$ and $M\in\Bordn$, one can prove that $\Zf(M)$ is a finite dimensional vector space. Specifically, we have that $\dim \Zf (M) = \Zf (M \times S^1)(1)$, where $M \times S^1$ is an $n$ dimensional cobordism from $\emptyset$ to $\emptyset$.
+Given $\Zf:\Bordn\to\Vect$ and $M\in\Bordn$, one can prove that $\Zf(M)$ is a finite dimensional vector space. Specifically, we have that $\dim \Zf (M) = \Zf (M \times S^1)(1)$, where $M \times S^1$ is an $n$ dimensional cobordism from $\emptyset$ to $\emptyset$.
 \begin{proof}
     Decompose $M\times S^1$ into two semicircles $M\times [0,1]$. Then it gets mapped by $\Zf$ to $\Vect_k$ in the following manner
 % https://q.uiver.app/#q=WzAsMTYsWzAsMCwiXFxlbXB0eXNldCJdLFsyLDAsIk1cXGFtYWxnIE0iXSxbNCwwLCJcXGVtcHR5c2V0Il0sWzEsMSwiXFxwaGFudG9te0R9TVxcdGltZXMgIl0sWzEsMF0sWzEsMl0sWzMsMSwiTVxcdGltZXMiXSxbMywwXSxbMywyXSxbMCwzLCJrXFxjb25nXFxaZihcXGVtcHR5c2V0KSJdLFsyLDMsIlxcWmYoTSlcXG90aW1lc1xcWmYoTSkiXSxbMSwzXSxbNCwzLCJcXFpmKFxcZW1wdHlzZXQpXFxjb25nIGsiXSxbMywzXSxbMiwyXSxbNCwxXSxbMCwxLCJNXFx0aW1lcyBbMCwxXSJdLFswLDksIlxcWmYiLDIseyJjdXJ2ZSI6Mywic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibWFwcyB0byJ9fX1dLFs5LDEwLCJcXFpmKE1cXHRpbWVzIFswLDFdKSIsMl0sWzMsMTEsIlxcWmYiLDIseyJsYWJlbF9wb3NpdGlvbiI6NjAsIm9mZnNldCI6LTUsInNob3J0ZW4iOnsic291cmNlIjozMCwidGFyZ2V0IjoxMH0sInN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1hcHMgdG8ifX19XSxbMTAsMTIsIlxcWmYoTVxcdGltZXMgWzAsMV0pIiwyXSxbNiwxMywiXFxaZiIsMix7InNob3J0ZW4iOnsic291cmNlIjozMCwidGFyZ2V0IjoxMH0sInN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1hcHMgdG8ifX19XSxbMiwxMiwiXFxaZiIsMCx7ImN1cnZlIjotMiwic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibWFwcyB0byJ9fX1dLFsxLDE0LCIiLDAseyJvZmZzZXQiOjUsImN1cnZlIjo1LCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsMiwiTVxcdGltZXMgWzAsMV0iXSxbNyw4LCIiLDAseyJvZmZzZXQiOi0yLCJjdXJ2ZSI6LTUsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
@@ -3523,32 +3533,19 @@ We can also define analogous categories for other tangential structures, e.g. a 
 		\end{tikzcd}
 	\end{equation}
     The fact that these two diagrams commute is called snake relations. If the diagrams commute, then $X$ is the right dual of $Y$ and $Y$ is the left dual of $X$.
+\end{defn}
 
-   \Plane Equivalently, a left/right dual object $X$ in a monoidal category $\cat$ can also be characterized as a left/right adjoint (see \ref{AdjFun}) when considered as a morphism in the delooping (see \ref{DeloopingMonCat}) bicategory (see \ref{Bicategory}) $\mathbf{B}\cat$ of $\cat$. This makes sense because:
-    \begin{itemize}
-        \item the evaluation map $ev_X$ corresponds to the counit $\epsilon$ of the adjunction 
-        \item the coevaluation map $coev_X$ to the unit $\eta$ of the adjunction
-        \item the two diagrams (\ref{DUAL1} and \ref{DUAL2}) to the triangle identities of the adjunction.
-    \end{itemize} 
-    A sane individual, i.e. not a homo categoriensis\footnote{A subspecies of homo sapiens. Exemplars usually say stuff like '\href{https://ncatlab.org/nlab/show/differential+equation}{I understand differential equations as sub-$\infty$-groupoids of tangent and jet bundles}' and have posters of Grothendieck or Lawvere in their bedroom.}, might ask why this is remotely useful. The answer is that one needs this intuition to talk about monoidal ($\infty,n$)-categories with duals. This is interesting for us because these objects are used in the cobordism hypothesis, stating that their objects classify fully extended TFTs, see \ref{RemarkOnCobHypo}.
-    \begin{rem}
-The notion of delooping of a monoidal category as a one-object bicategory can be generalized to monoidal $(\infty,n)$-categories. The delooping of a monoidal $(\infty,n)$-category $\cat$ is a one-object $(\infty,n+1)$-category $\mathbf{B}\cat$ where the objects of $\cat$ are the 1-morphisms of $\mathbf{B}\cat$ and the tensor product of $\cat$ is the composition $\circ$ of 1-morphisms.
-    \end{rem}
-    \begin{defn}[($\infty,n$)-monoidal categories with duals]\label{HigherMonCatDuals}
-		Let $\cat$ be a monoidal ($\infty,n$)-category. Then $\cat$ has duals if and only if its delooping $\mathbf{B}\cat$ has adjoints\footnote{In the usual jargon, an $(\infty,n)$-category has adjoints if it has adjoints for any $k$-morphism with $0<k<n$. We spelled however what it means anyway for the sake of clarity.} for any $k$-morphism with $0<k<n+1$ . We say that any object in such a category is fully $n$-dualizable.
-		
-		There is an equivalent definition talking about the homotopy category and the homotopy 2-category of $\cat$, see \cite{lurie2009classification} and \cite{gwilliam2018duals}. However, this intuition about adjoints is still very useful.
-	\end{defn}
-    \end{defn}
+
+
 
 \begin{rem}
     If $\cat$ is braided, and in particular for us symmetric, any right dual is a left dual and viceversa.
 \end{rem}
 \begin{notat}
-    We denote the dual of an object $X$ with $X^\vee$. Sometimes it is also denoted with $X^\ast$
+    We denote the dual of an object $X$ with $X^\vee$. Sometimes it is also denoted with $X^\ast$.
 \end{notat}
 \begin{cor}\label{ImageOfDualStillDual}
-     Let $F:\cat\to\dat$ be a monoidal functor. Thanks to monoidal functoriality, the monoidal unit $\unit_\cat$ is sent to $\unit_\dat$ (up to isomorphism), and hence one gets the evaluation map and coevaluation map: $ev_{F(X)}:F(Y)\otimes F(X)\to\unit_\dat\cong F(\unit_\cat)$ and $coev_{F(X)}:F(\unit_\cat)\cong\unit_\dat\to F(X)\otimes F(Y)$. Moreover, the image of a commuting diagram under a functor still commutes (see \ref{FunctorsPreserveCommut}). So, the dual objects are sent to dual objects by monoidal functors and $F(X^\vee)=F(X)^\vee$.
+    Let $F:\cat\to\dat$ be a monoidal functor. Thanks to monoidal functoriality, the monoidal unit $\unit_\cat$ is sent to $\unit_\dat$ (up to isomorphism), and hence one gets the evaluation map and coevaluation map: $ev_{F(X)}:F(Y)\otimes F(X)\to\unit_\dat\cong F(\unit_\cat)$ and $coev_{F(X)}:F(\unit_\cat)\cong\unit_\dat\to F(X)\otimes F(Y)$. Moreover, the image of a commuting diagram under a functor still commutes (see \ref{FunctorsPreserveCommut}). So, the dual objects are sent to dual objects by monoidal functors and $F(X^\vee)=F(X)^\vee$.
 \end{cor}
 
 \begin{ex}
@@ -3576,8 +3573,9 @@ This construction actually works for any object in $\Bordnor$ (and $\Bordn$).
 \end{defn}
 
 \begin{lem}\label{BordDuals}
-    In every bordism category $\Bordnor$ every object is dualizable.
+    In every bordism category $\Bord_{n,n-1}^{(\orient)}$ every object is dualizable.
 \end{lem}
+%DRAWING
 \begin{lem}\label{DualizableMeansInvertibleNatTrans}
     Given symmetric monoidal categories $\cat$ and $\dat$, symmetric monoidal functors $F,G:\cat\to\dat$ and a symmetric monoidal natural transfromation $\alpha:F\Rightarrow G$, if $X\in\cat$ is dualizable, then $\alpha_X:F(X)\to G(X)$ is invertible.
 \end{lem}
@@ -3613,6 +3611,7 @@ First of all, the triangle on the top commutes, i.e. $(id_{G(X)}\otimes\alpha_{X
 \end{lem}
 \begin{proof}
     Let $X$ be an invertible object. Then, there must be an $X^{-1}$ such that $X\otimes X^{-1}\cong\mathbb{1}_\cat$, the invertible object is the dual of $X$. The co/evaluation maps become isomorphisms and hence the snake relations hold\footnote{Note that every diagram composed solely of isomorphisms commutes.}.
+    %TODO pretty sure this claim is false, fix
 \end{proof}
 \begin{lem}\label{InvertibleDualizable}
     A dualizable object is invertible if and only if its co/evaluation maps are isomorphisms.
@@ -3630,8 +3629,26 @@ First of all, the triangle on the top commutes, i.e. $(id_{G(X)}\otimes\alpha_{X
     A Picard groupoid (\ref{PicardGroupoid}) is equivalently a monoidal groupoid where every object is dualizable.
 \end{cor}
 \begin{ex}
-    The underlying groupoid of $\Bordnor$ is a picard groupoid
+    The underlying groupoid of $\Bordnor$ is a picard groupoid.
 \end{ex}
+
+\subsubsection{Left and right duals in higher categories \extra} % (fold)
+\label{ssub:left_and_right_duals_in_higher_categories}
+Equivalently, a left/right dual object $X$ in a monoidal category $\cat$ can also be characterized as a left/right adjoint (see \ref{AdjFun}) when considered as a morphism in the delooping (see \ref{DeloopingMonCat}) bicategory (see \ref{Bicategory}) $\mathbf{B}\cat$ of $\cat$. This makes sense because:
+\begin{itemize}
+    \item the evaluation map $ev_X$ corresponds to the counit $\epsilon$ of the adjunction 
+    \item the coevaluation map $coev_X$ to the unit $\eta$ of the adjunction
+    \item the two diagrams (\ref{DUAL1} and \ref{DUAL2}) to the triangle identities of the adjunction.
+\end{itemize} 
+A sane individual, i.e. not a homo categoriensis\footnote{A subspecies of homo sapiens. Exemplars usually say stuff like '\href{https://ncatlab.org/nlab/show/differential+equation}{I understand differential equations as sub-$\infty$-groupoids of tangent and jet bundles}' and have posters of Grothendieck or Lawvere in their bedroom.}, might ask why this is remotely useful. The answer is that one needs this intuition to talk about monoidal ($\infty,n$)-categories with duals. This is interesting for us because these objects are used in the cobordism hypothesis, stating that their objects classify fully extended TFTs, see \ref{RemarkOnCobHypo}.
+\begin{rem}
+    The notion of delooping of a monoidal category as a one-object bicategory can be generalized to monoidal $(\infty,n)$-categories. The delooping of a monoidal $(\infty,n)$-category $\cat$ is a one-object $(\infty,n+1)$-category $\mathbf{B}\cat$ where the objects of $\cat$ are the 1-morphisms of $\mathbf{B}\cat$ and the tensor product of $\cat$ is the composition $\circ$ of 1-morphisms.
+\end{rem}
+\begin{defn}[($\infty,n$)-monoidal categories with duals]\label{HigherMonCatDuals}
+    Let $\cat$ be a monoidal ($\infty,n$)-category. Then $\cat$ has duals if and only if its delooping $\mathbf{B}\cat$ has adjoints\footnote{In the usual jargon, an $(\infty,n)$-category has adjoints if it has adjoints for any $k$-morphism with $0<k<n$. We spelled however what it means anyway for the sake of clarity.} for any $k$-morphism with $0<k<n+1$ . We say that any object in such a category is fully $n$-dualizable.
+
+    There is an equivalent definition talking about the homotopy category and the homotopy 2-category of $\cat$, see \cite{lurie2009classification} and \cite{gwilliam2018duals}. However, this intuition about adjoints is still very useful.
+\end{defn}
 % -------------------------------------------------------------
 % --------------------- LECTURE 12 4-6/12 ---------------------
 % -------------------------------------------------------------
@@ -3647,9 +3664,9 @@ goal may be
 \noindent \textbf{Classification}: Given that there’s something, what could it be?}{Jack Morava in \cite{morava2011cosmic}}
 %Sorry if too quirky XD feel free to delete it of course, was also undecided if to put it here or for classification of 2d manifolds /Andrea
 \subsection{Classification of 1d-TFTs}\label{ClassificationOf1dTFTs}
-The main goal of this subsection is to prove that given an oriented 1d-TFT $\Z:\Bord_{1,0}\to\cat$, $\Z(\bullet)$ has a dual and conversely, given an object $X\in\cat$, in the codomain of the TFT, and its dual $(Y,ev_X,coev_X)$, we can reconstruct a 1d-TFT.
+The main goal of this subsection is to prove that given an oriented 1d-TFT $\Zf:\Bord_{1,0}\to\cat$, $\Zf(\bullet)$ has a dual and conversely, given an object $X\in\cat$, in the codomain of the TFT, and its dual $(Y,ev_X,coev_X)$, we can reconstruct a 1d-TFT.
 \begin{lem}\label{Surjectivity}
-    Let $X\in\cat$ be a dualizable object with $Y$ as dual. Then the following determines a 1d-TFT: $$\Z(\bullet_+):=X$$ $$\Z(\bullet_-):=Y$$ $$\Z():=ev_X$$ $$\Z():=coev_X$$
+    Let $X\in\cat$ be a dualizable object with $Y$ as dual. Then the following determines a 1d-TFT: $$\Zf(\bullet_+):=X$$ $$\Zf(\bullet_-):=Y$$ $$\Zf():=ev_X$$ $$\Zf():=coev_X$$
 \end{lem}
 \begin{proof}
     
@@ -3662,7 +3679,7 @@ The main goal of this subsection is to prove that given an oriented 1d-TFT $\Z:\
 \begin{thm}\label{thm:classif_of_1dtft}
     Let $\cat$ be a symmetric monoidal category. Then the map\footnote{There is unfortunately a notational clash between what we called the evaluation map for dualizable objects, denoted by $ev$, and what we also call in this case evaluation map, denoted by $\mathcal{E} V$. In the latter case, we are referring to a similar convention we use for example in topology when we call a map of this genre $Map(\ast,X)\to X$ an evaluation map. The intuition is that we feed an element of the domain into a map, a functor in our case, and see what happens, "evaluate it".} 
     \begin{align}
-    	\TFT_{1,0}^{or}=\Fun(\Bord_{1,0}^{or},\cat)&\xrightarrow{\mathcal{E} V}(\cat^{\text{dualizable}})^{\cong} \\
+    	\TFT_{1,0}^{or}=\Fun(\Bord_{1,0}^{or},\cat)&\xrightarrow{\mathcal{E} v}(\cat^{\text{dualizable}})^{\cong} \\
     	\Zf&\mapsto \Zf(\bullet_+)
     \end{align}
     is a symmetric monoidal equivalence of groupoids. 
@@ -3674,14 +3691,16 @@ The main goal of this subsection is to prove that given an oriented 1d-TFT $\Z:\
 	\arrow[from=1-1, to=3-1]
 	\arrow["i"', hook, from=3-1, to=2-2]
 	\arrow[dashed, from=1-1, to=2-2]
-	\arrow["{\mathcal{E}V}", from=1-1, to=1-3]
+	\arrow["{\mathcal{E}v}", from=1-1, to=1-3]
 	\arrow["j"', hook, from=2-2, to=1-3]
 \end{tikzcd}\]
-\end{thm}% I think I like \mathcal{E}v better, with small v /William
-The image of $\mathcal{E}V$ is in $(\cat^{dualizable})^{\cong}$, since \begin{enumerate}
-    \item $\TFT_{1,0}^{or}$ is a groupoid, and functors preserve isomorphisms
-    \item Every object in $\Bord_{1,0}^{or}$ is dualizable, because of functoriality, the image of a dualizable object remains a dualizable object
+\end{thm}
+\noindent The image of $\mathcal{E}v$ is in $(\cat^{dualizable})^{\cong}$, since 
+\begin{enumerate}
+    \item $\TFT_{1,0}^{\orient}$ is a groupoid, and functors preserve isomorphisms
+    \item Every object in $\Bord_{1,0}^{\orient}$ is dualizable and, because of functoriality, the image of a dualizable object $(\bullet_+)$ remains a dualizable object $(\Zf(\bullet_+)$.
 \end{enumerate}
+Note that there's nothing special about dimension 1 here. We then have such an evaluation functor into $(\cat^{dualizable})^{\cong}$ in every dimension, i.e. from all $\TFT_{1,0}^{or}$. Dimension 1 is then special because this map is actually an equivalence.
 \begin{proof}
     Thanks to the fundamental theorem of category theory we prove three things to demonstrate that $\mathcal{E}V$ is an equivalence: that is full, faithful and essentially surjective.
     \begin{enumerate}
@@ -3715,7 +3734,7 @@ We have already defined the following notions in arbitrary monoidal categories (
 \end{defn}
 
 \begin{defn}[Frobenius $k-$Algebra]\label{Frobk-Alg}
-    A Frobenius $k-$algebra is a Frobenius algebra (see \ref{FrobAlg}) in a $\Vect_k$. It is commutative if it is also a commutative $k-$bialgebra.
+    A Frobenius $k-$algebra is a Frobenius algebra (see \ref{FrobAlg}) in a $\Vect_k$. It is commutative if it is also a commutative $k-$algebra (and therefore a cocommutative coalgebra).
 \end{defn}
 
 These definitions are perfectly fine, if we disregard pedagogical considerations. However, they might still seem mysterious to someone not used to this abstract nonsense. For this reason, we now give three more concrete definitions of a Frobenius algebra. They are all equivalent.
@@ -5117,7 +5136,7 @@ Recall: TFT is a symmetric monoidal functor out of the category of bordisms. Thi
     ev_{\ast}:
     \Fun^\otimes (\Bord_{2,1,0}^{\fr}, \bat) \xrightarrow{\simeq} (\bat^{2 dualisable})^\simeq
 \end{equation}
-<<<<<<< HEAD
+
 and this generalizes using $(\infty, n)$ categories:
 \begin{equation}
     ev_{\ast}: 
