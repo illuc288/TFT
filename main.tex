@@ -5009,8 +5009,8 @@ We then compose with $swap: S^1 \times S^1 \to S^1 \times S^1$:
     \phi_i: 
     \begin{tikzcd}
         T \ar[r] & T \\
-        \alpha_i \ar[r, to] & -\beta_i \\
-        \beta_i \ar[r, to] & \alpha_i \\
+        \alpha_i \ar[r, mapsto] & -\beta_i \\
+        \beta_i \ar[r, mapsto] & \alpha_i \\
     \end{tikzcd}
 \end{equation}
 In short, via $\phi_i$ the induced framing on $S^1 \times \{0\}$ is a constant normal framing. So framing on $L$ determines/encodes/records the diffeomorphism $\phi$.
@@ -5030,9 +5030,9 @@ Notation: $L$ framed $M_L:= M_{L,\phi}$ with $\phi$ as above.
         \noindent Now, $(S^3\setminus \operatorname{int} T)  \coprod_{\phi'} T$...
 
         We then have a well defined projection $M_L \to S^1$ and the fibers of this map are $S^2 = D^2 \coprod_{\de D^2} D^2$. In particular, the bundle is trivial:
-        \begin{fact}
+        \begin{fct}
             $M_L \cong S^1 \times S^2$.
-        \end{fact}
+        \end{fct}
         \item $L = unknot$ with framing with one twist, we get $M_L = S^3$
     \end{itemize}
 \end{ex}
@@ -5058,17 +5058,17 @@ How can we now get a
 Recall: TFT is a symmetric monoidal functor out of the category of bordisms. This not only gives us invariants but also gives us a way to calculate them.
 
 \begin{equation}
-    \Fun^\otimes (\Bord_{2,1,0}^\fr, \bat) \xrightarrow{\simeq}[ev_{pt}] (\bat^{2 dualisable})^\simeq
+    \Fun^\otimes (\Bord_{2,1,0}^{\fr}, \bat) \xrightarrow{\simeq}[ev_{pt}] (\bat^{2 dualisable})^\simeq
 \end{equation}
 and this generalizes using $(\infty, n)$ categories:
 \begin{equation}
-    \Fun^\otimes (\Bord_{n,\dots,0}^\fr, \bat) \xrightarrow{\simeq}[ev_{pt}] (\cat^{n dualisable})^\simeq
+    \Fun^\otimes (\Bord_{n,\dots,0}^{\fr}, \bat) \xrightarrow{\simeq}[ev_{pt}] (\cat^{n dualisable})^\simeq
 \end{equation}
 This is the cobordism hypothesis.
 
 In addition
 \begin{equation}
-    \Fun^\otimes (\Bord_{3,2,1}^\fr, \bat) \xrightarrow{\simeq}[ev_{S^1}] \text{modular tensor objects}.
+    \Fun^\otimes (\Bord_{3,2,1}^{\fr}, \bat) \xrightarrow[ev_{S^1}]{\simeq} \text{modular tensor objects}.
 \end{equation}
 
 
