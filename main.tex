@@ -234,6 +234,18 @@ These are the lecture notes of the course \textit{``Bordism and Topological Fiel
 \clearpage
 \thispagestyle{empty}
 \cleardoublepage
+\section*{Notational Conventions}
+We use the symbol '\Plane' at the end of titles of sections, definitions or theorems that depart from the content of the lecture and deepen some aspect on a topic with an outloolk towards research topics.
+
+\begin{notat}
+	Throughout these notes we will abuse notation indicating a collection with some structure on it just by writing down the collection, e.g. denoting a monoid $(M,\cdot)$ by $M$, a metric space $(X,d)$ by $X$ etc...
+\end{notat}
+\begin{notat}
+	$n$-manifold and $n$-bordism mean respectively $n$ dimensional manifold and $n$ dimensional bordism.
+\end{notat}
+\begin{notat}
+	We often denote equivalence classes just with a representative thereof. 
+\end{notat}
 
 \thispagestyle{empty}
 \hfill
@@ -250,21 +262,6 @@ These are the lecture notes of the course \textit{``Bordism and Topological Fiel
 % -------------------------------------------------------------
 % --------------------- LECTURE 1 23/10 -----------------------
 % -------------------------------------------------------------
-
-%Just realized that it looks weird put here because of 'contents' at the top of the page, don't know how to resolve /andrea
-\section*{Notational Conventions}
-	We use the symbol '\Plane' at the end of titles of sections, definitions or theorems that depart from the content of the lecture and deepen some aspect on a topic with an outloolk towards research topics.
-
-\begin{notat}
-	Throughout these notes we will abuse notation indicating a collection with some structure on it just by writing down the collection, e.g. denoting a monoid $(M,\cdot)$ by $M$, a metric space $(X,d)$ by $X$ etc...
-\end{notat}
-\begin{notat}
-	$n$-manifold and $n$-bordism mean respectively $n$ dimensional manifold and $n$ dimensional bordism.
-\end{notat}
- \begin{notat}
-	We often denote equivalence classes just with a representative thereof. 
-\end{notat}
-
 
 %TODO I would label and caption the figures so they can be referenced and they can appear wherever TeX thinks best /William
 
@@ -1816,12 +1813,44 @@ For the latter see \cite[p. 203]{MilnorS05}.
 %would be cool to write something why these are the case, but mysterious to me for now TBD /ANdrea
 \subsection{Cobordism groups and the sphere spectrum \extra}
 Very interestingly, the (stable) framed version is isomorphic to the stable homotopy groups of the sphere and it is \textit{not} computed to all degrees. This is one way to phrase a theorem named after Thom. It is fascinating because the stable homotopy groups of the sphere are central objects in stable homotopy theory. They are equivalently the homotopy groups of the sphere spectrum.
+\begin{defn}[Cone]
+Let $X$ be a topological space. The cone of $X$ is the pushout
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJYXFx0aW1lc1xcezFcXH0iXSxbMCwxLCJcXGFzdCJdLFsxLDAsIlhcXHRpbWVzWzAsMV0iXSxbMSwxLCJDKFgpIl0sWzAsMV0sWzAsMl0sWzEsM10sWzIsM10sWzMsMCwiIiwxLHsic3R5bGUiOnsibmFtZSI6ImNvcm5lciJ9fV1d
+\[\begin{tikzcd}[cramped]
+	{X\times\{1\}} & {X\times[0,1]} \\
+	\ast & {C(X)}
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=1-2, to=2-2]
+	\arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=1-1]
+\end{tikzcd}\]
+\end{defn}
+\begin{defn}[Suspension]
+	Let $X$ be a topological space. The suspension of $X$ is the pushout
+	% https://q.uiver.app/#q=WzAsNCxbMCwwLCJYXFx0aW1lc1xcezBcXH0iXSxbMCwxLCJDKFgpIl0sWzEsMCwiQyhYKSJdLFsxLDEsIlxcU2lnbWEoWCkiXSxbMCwxXSxbMCwyXSxbMSwzXSxbMiwzXV0=
+	\[\begin{tikzcd}[cramped]
+		{X\times\{0\}} & {C(X)} \\
+		{C(X)} & {\Sigma X}
+		\arrow[from=1-1, to=2-1]
+		\arrow[from=1-1, to=1-2]
+		\arrow[from=2-1, to=2-2]
+		\arrow[from=1-2, to=2-2]
+		\arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=1-1]
+	\end{tikzcd}\]
+\end{defn}
+\begin{ex}
+$\Sigma(S^1)=S^2$ more generally $\Sigma(S^n)=S^{n+1}$
+\end{ex}
+\begin{defn}[Spectrum]
+	A spectrum is a sequence of pointed spaces $\{X_k\}_{k\in\Z}$ with structure maps $\Sigma X_n\xrightarrow{\sigma_n}X_{n+1}$
+\end{defn}
 \begin{defn}[Suspension Spectrum]
-	
+	The suspension spectrum $\Sigma^\infty X$ has $\Sigma_n$ as the $n$-th space in the sequence and structure maps $\Sigma\Sigma_n\xrightarrow{\id}\Sigma_{n+1}$.
 \end{defn}
-\begin{defn}[Sphere Spectrum]
-	
-\end{defn}
+\begin{ex}[Sphere Spectrum]
+	The sphere spectrum $\mathds S$ is the suspension spectrum of the point, also known as $S^0$. In fact, $\Sigma S^0=S^1$, $\Sigma S^1=S^2$, etc...
+\end{ex}
 In a certain sense, $\mathds S$ is analgous to $\Z$ but in another category: \Z is the unit in Ab, while $\mathds S$ is the unit in spectra.
 %just as Z is the unit in AbGrp, S is the unit in Spectra, add definition of sphere spectrum and maybe intro to spectra since it will be useful later also. TBD /ANder
 \begin{rem}
@@ -1832,7 +1861,7 @@ $$\pi_{\bullet}(\mathds{S})=\bigoplus_{n\geq 0}\pi_{n}(\mathds{S})$$
 	$\Omega_{\bullet}^{\fr}\cong\pi_{\bullet}(\mathds{S})$
 \end{thm}
 \begin{ex}
- We list some examples of such groups
+ We list some examples of such commutative rings.
  $$    \Omega^{fr}_0 \cong\Z$$
   $$\Omega^{fr}_1 \cong\Z_2$$
   $$\Omega^{fr}_2 \cong \Z_2 $$
@@ -2616,9 +2645,9 @@ This is Grothendieck's infamous homotopy hypothesis in dimension 1. It was formu
     \end{notat}
 \begin{ex}\label{HomotopyHypothesis} Regarding the last example, one could ask why stop at homotopies between homotopies and not go all the way to homotopies between homotopies between homotopies, homotopies between ... for $\infty$ many times? This is a great question and also the way to provide a universal properties for constructions similar to the already seen cartesian product called homotopy co/limits (for more on this see chapters 1 and 2 of \cite{HarpazAlgebras}). In the end, one would get an $(\infty,1)$-category, a category in which the only morphisms that are not necessarily (weakly\footnote{To be precise, higher morphisms in such a category are weakly invertible and not strictly. This is not at all bad and that things are not strict but up to homotopy/equivalence is exactly what one desires in this context. Weakly invertible means that it is not the case the sense that $f\circ g=id$, but $f\circ g\simeq id$}.) invertible are morphisms between objects, all other morphisms between morphisms are invertible; in other words, a category in which all $n>1$-morphisms are invertible and 1-morphisms not necessarily. 
 
-	Moreover, one gets the fundamental $\infty$-groupoid of a space via a similar reasoning: instead of considering paths up to homotopies between paths, one can go all the way up and consider homotopies between homotopies between... without forgetting any information. All paths and all homotopies are clearly invertible so for all $k\in \mathbb{N}_0$ all $k$-morphisms are invertible and that is why it is called $\infty$-\emph{groupoid}. A synonym for $\infty$-groupoid is $(\infty,0)$-category. Note that the category of all $\infty$-groupoids is not an $\infty$-groupoids, because functors are between $\infty$-groupoids are not necessarily invertible, parallelly to functors between 1-groupoids. The previously mentioned homotopy hypothesis states that the $(\infty,1)$-category of (nice) topological spaces we just sketched is equivalent to the $(\infty,1)$-category of $\infty$-groupoids. The intuition behinds this is that this should hold thanks to the construction of fundamental $\infty$-groupoids of spaces, whereas, in the other direction, from $\infty$-groupoids one can construct spaces via something called the geometric realization. This equivalence is the reason why in the literature the category of $\infty$-groupoids is sometimes called the category of Spaces. If the equivalence holds or not of course depends on how we define 'space' and $\infty$-groupoid, but it holds for many reasonable definitions. 
+	Moreover, one gets the fundamental $\infty$-groupoid of a space via a similar reasoning: instead of considering paths up to homotopies between paths, one can go all the way up and consider homotopies between homotopies between... without forgetting any information. All paths and all homotopies are clearly invertible so for all $k\in \mathbb{N}_0$ all $k$-morphisms are invertible and that is why it is called $\infty$-\emph{groupoid}. A synonym for $\infty$-groupoid is $(\infty,0)$-category. Note that the category of all $\infty$-groupoids is not an $\infty$-groupoids, because functors between $\infty$-groupoids are not necessarily invertible, parallelly to functors between 1-groupoids. The previously mentioned homotopy hypothesis states that the $(\infty,1)$-category of (nice) topological spaces we just sketched is equivalent to the $(\infty,1)$-category of $\infty$-groupoids. The intuition behinds this is that this should hold thanks to the construction of fundamental $\infty$-groupoids of spaces, whereas, in the other direction, from $\infty$-groupoids one can construct spaces via something called the geometric realization. This equivalence is the reason why in the literature the category of $\infty$-groupoids is sometimes called the category of Spaces. If the equivalence holds or not of course depends on how we define 'space' and $\infty$-groupoid, but it holds for many reasonable definitions. 
 
-	One way to model this kind of categories with infinitely many invertible morphisms is with topologically enriched categories, which we previously described, since one can mapping spaces are Hom-objects, continuous functions between mapping spaces induce 1-morphisms between objects and higher morphisms are given by the homotopies between such mapping spaces. 
+	One way to model this kind of categories with infinitely many invertible morphisms is with topologically enriched categories, which we previously described, since mapping spaces are Hom-objects, continuous functions between mapping spaces induce 1-morphisms between objects and higher morphisms are given by the homotopies between such mapping spaces. 
 
 	A further way is via some specific simplicially enriched categories, i.e. categories enriched with the cartesian monoidal category of simplicial sets sSet (sometimes denoted Set$_\Delta$). A synonym of simplicially enriched category is simplicial category. 
 \end{ex}
@@ -3274,7 +3303,13 @@ In particular, that's how we get a topological field theory:
 
 \begin{rem}\label{RemarkOnCobHypo}
     After skimming through \cite{Atiyah1988} one might wonder why we defined the target category of a topological field to be just a general symmetric monoidal category and not specifically $(\Vect, \otimes)$, as Atiyah did, or at least something similar, in the end we are studying topological \emph{quantum field theories}! There are probably %added 'probably' because I'm unsure if it's true, is it true?/andrea
-    several reasons why someone would want to do so, for example for representation theoretic ones\footnote{e.g. \cite{stroppel2022categorification}, later we will also show that one must pick categories different to $\Vect_k$ in order to get interesting 3dTFTs and connect them with the Jones polynomial from knot theory, see \ref{sec:3d_tfts}}. One of the crucial ones in particular is that one of the guiding conjectures of this field, the cobordism hypothesis, is formulated without mentioning specifically $\Vect_k$ as a target category. The cobordism hypothesis informally states that any TFT, at any dimension, can be classified/constructed just by observing where the TFT in question maps the positively oriented point\footnote{We will soon see a proof of the 1-dimensional case \ref{ClassificationOf1dTFTs}.}. It was formulated by James Dolan and John Baez in \cite{Baez_1995} and now we have only partial proofs, \cite{lurie2009classification}, \cite{schommerpries2014classification}, \cite{ayala2017cobordism} and \cite{grady2022geometric}. The moral of the story is that "The history of the Baez-Dolan conjecture \textit{[i.e. the cobordism hypothesis]} goes most directly through quantum field theory and its adaptation to low-dimensional topology. Yet in retrospect it is a theorem about the structure of manifolds in all dimensions..." \cite{freed2012cobordism} and hence TFTs are of interest with respect to any suitable target category, not only the ones of interest from the viewpoint of physics.
+    several reasons why someone would want to do so, for example for representation theoretic ones\footnote{e.g. \cite{stroppel2022categorification}, later we will also show that one must pick categories different to $\Vect_k$ in order to get interesting 3dTFTs and connect them with the Jones polynomial from knot theory, see \ref{sec:3d_tfts}}. One of the crucial ones in particular is that one of the guiding conjectures of this field, the cobordism hypothesis, is formulated and provable without mentioning specifically $\Vect_k$ as a target category. The cobordism hypothesis informally states that any TFT, at any dimension, can be classified/constructed just by observing where the TFT in question sends the point\footnote{We will soon see a proof of the 1-dimensional case \ref{ClassificationOf1dTFTs}.}, i.e. a bit more rigorously
+    \begin{thm}[Cobordism Hypothesis]
+    	Let $\cat$ be a monoidal $(\infty,n)$-category with duals\footnote{We later give a definition of $(\infty,n)$-category with duals, see \ref{HigherMonCatDuals}.}. Then the evaluation functor on a point, i.e. the functor sending $\Zf\mapsto \Zf(\ast)$, induces an equivalence 
+    	$$ev_{\ast}:\Fun^{\otimes}(\Bord_{n},\cat)\to (\cat^{\operatorname{fd}})^{\simeq}$$
+    	where $\cat^{\operatorname{fd}}$ is the full\footnote{i.e. there are all morphisms between the objects of the subcategory, i.e. no morphism from the category is forgotten.} full monoidal $(\infty,n)$-category with duals\footnote{We later give a definition of $(\infty,n)$-category with duals, see \ref{HigherMonCatDuals}.}, i.e. we forget about all non-dualizable objects, and $\cat^{\simeq}$ is the maximal underlying groupoid of $\cat$, i.e. we forget about all morphisms that are not invertible.
+    \end{thm}
+     It was formulated by James Dolan and John Baez in \cite{Baez_1995} and now we have only partial proofs, \cite{lurie2009classification}, \cite{schommerpries2014classification}, \cite{ayala2017cobordism} and \cite{grady2022geometric}. The moral of the story is that "The history of the Baez-Dolan conjecture \textit{[i.e. the cobordism hypothesis]} goes most directly through quantum field theory and its adaptation to low-dimensional topology. Yet in retrospect it is a theorem about the structure of manifolds in all dimensions..." \cite{freed2012cobordism} and hence TFTs are of interest with respect to any suitable target category, not only the ones of interest from the viewpoint of physics.
     \end{rem}
 \begin{rem}[Remark on Extended TFTs]\label{RemarkExtendedTFTs}
          After defining the cobordism hypothesis in this manner, a natural question is: how can TFTs of any dimension greater than 1 be classified by evaluating them at a point? If we stick to our definition, there are no points in any category of bordisms of dimension greater than 1. Fortunately, one can \emph{extend} the bordism category, and consequently TFTs, and also talk about lower dimensions. Take as an example $\Bord^{or}_{2,1}$. As we defined the bordism category, in this case the lowest dimension is 1, the objects are lines, not points. Nevertheless, one could treat the category of 2 dimensional bordisms as a 2-category, more specifically as a bicategory (see \ref{Bicategory})\footnote{Since 1-morphisms do not compose strictly, but up to an appropriate notion of isomorphism.}, $\Bord_{2,1,0}$ where objects are disjoint unions of points, 1-morphisms are oriented cobordisms between points and 2-morphisms are cobordisms between the 1-morphisms; and then define 2d-TFTs as an appropriate notion of symmetric monoidal functor between symmetric monoidal bicategories\footnote{A detailed treatment of the 2d case is found in \cite{schommerpries2014classification}.}. Treating a TFT as a functor\footnote{To be rigorous, one would need to precisify what is an appropriate notion of functor between bicategories.} from a symmetric monoidal\footnote{Although we did not define a symmetric monoidal bicategory, there is indeed a way to do this, see the appendix C of \cite{schommerpries2014classification} for a definition and chapter 2 for an exposition.} bicategory (instead of from a symmetric monoidal category) is sometimes named 'once-extended TFT', e.g. \cite{SchwHopfQuantumTFT}. One can extended downward to dimension $0$ any $n$-dimensional TFT and it was first proposed by Daniel Freed in \cite{Freed_1994}. To be precise, one nowadays does not want to restrict themselves just to $n-$categories but wants to work with$(\infty,n)$-categories, i.e. categories where morphisms of dimension strictly greater than $n$ are invertible, because of technical reasons\footnote{For example, the argument sketched in \cite{lurie2009classification} is crucially a proof by induction on $n$ and in order to understand the $n+1$-morphisms of $\Bord_{n+1}$ one must understand such $n+1$-morphisms in $\Bord_{n}$ which are absent if we treat $\Bord_{n}$ as an $n$-category and not $(\infty,n)$-category. In short, that would just not be possible without such $\infty$-categorical machinery.}. Sketchily, the $(\infty,n)$ category of bordisms will have points as objects, bordisms between points as 1-morphisms, bordisms between bordisms between points as 2-morphisms,..., bordisms between bordisms between bordisms...\footnote{There is exactly $n-1$ times 'between bordisms' after the first instance of 'bordisms', $n$-morphisms are morphisms between $(n-1)$-morphisms.} as $n$-morphisms, diffeomorphisms between $n$-dimensional bordisms as $n+1$-morphisms, isotopies between diffeomorphisms as $n+2$-morphisms, isotopies between isotopies between diffeomorphsims as $n+3$-morphisms, ... and so on infinitely many times. This is an example of a $(\infty,n)$-category, since isotopies of diffeomorphisms and diffeomorphisms are in fact invertible, whereas oriented bordisms not necessarily. One can find more on this higher category of bordisms in \cite{Calaque_2019}. 
@@ -3376,9 +3411,8 @@ From the universal property of the groupoid completion, there is a further facto
     A nTFT is invertible if the TFT is itself an invertible (see \ref{InvertibleObject}) object in the category of nTFTs.
 \end{rem}
 
-\subsection{Invertible tield theories and stable homotopy theory \extra}\label{Spectra Phases of Matter}
+\subsection{Invertible field theories and stable homotopy theory \extra}\label{Spectra Phases of Matter}
 
->>>>>>> refs/remotes/origin/main
 These theories can be studied with stable homotopy theory. However, in order to allow the application of such machinery, one must fully extend topological field theories (see \ref{RemarkExtendedTFTs}), i.e. with $(\infty,n)$-categories of bordisms as a source. So, in the case of extended TFTs, $|\Bord|$ and $\cat^\times$ both are $\infty$-groupoids since we get $|\Bord|$ by adjoining all inverses for all morphisms and $\cat^\times$ is obtained by forgetting about non-invertible morphisms (and objects) of $\cat$.
 
 We previously talked about the fundamental $\infty$-groupoid of a space while sketching the homotopy hypothesis (see \ref{HomotopyHypothesis}) and told a story about how spaces are equivalent to $\infty$-groupoids. Hence, $\tilde\Zf$ corresponds to a map of spaces via this equivalence.
@@ -3490,18 +3524,28 @@ We can also define analogous categories for other tangential structures, e.g. a 
 	\end{equation}
     The fact that these two diagrams commute is called snake relations. If the diagrams commute, then $X$ is the right dual of $Y$ and $Y$ is the left dual of $X$.
 
-    Equivalently, a (left/right) dual object $X$ in a monoidal category $\cat$ can also be characterized as a (left/right) adjoint (see \ref{AdjFun}) when considered as a morphism in the delooping (see \ref{DeloopingMonCat}) bicategory (see \ref{Bicategory}) $\mathbf{B}\cat$ of $\cat$. This makes sense because:
+   \Plane Equivalently, a left/right dual object $X$ in a monoidal category $\cat$ can also be characterized as a left/right adjoint (see \ref{AdjFun}) when considered as a morphism in the delooping (see \ref{DeloopingMonCat}) bicategory (see \ref{Bicategory}) $\mathbf{B}\cat$ of $\cat$. This makes sense because:
     \begin{itemize}
         \item the evaluation map $ev_X$ corresponds to the counit $\epsilon$ of the adjunction 
         \item the coevaluation map $coev_X$ to the unit $\eta$ of the adjunction
         \item the two diagrams (\ref{DUAL1} and \ref{DUAL2}) to the triangle identities of the adjunction.
     \end{itemize} 
-\end{defn}
+    A sane individual, i.e. not a homo categoriensis\footnote{A subspecies of homo sapiens. Exemplars usually say stuff like '\href{https://ncatlab.org/nlab/show/differential+equation}{I understand differential equations as sub-$\infty$-groupoids of tangent and jet bundles}' and have posters of Grothendieck or Lawvere in their bedroom.}, might ask why this is remotely useful. The answer is that one needs this intuition to talk about monoidal ($\infty,n$)-categories with duals. This is interesting for us because these objects are used in the cobordism hypothesis, stating that their objects classify fully extended TFTs, see \ref{RemarkOnCobHypo}.
+    \begin{rem}
+The notion of delooping of a monoidal category as a one-object bicategory can be generalized to monoidal $(\infty,n)$-categories. The delooping of a monoidal $(\infty,n)$-category $\cat$ is a one-object $(\infty,n+1)$-category $\mathbf{B}\cat$ where the objects of $\cat$ are the 1-morphisms of $\mathbf{B}\cat$ and the tensor product of $\cat$ is the composition $\circ$ of 1-morphisms.
+    \end{rem}
+    \begin{defn}[($\infty,n$)-monoidal categories with duals]\label{HigherMonCatDuals}
+		Let $\cat$ be a monoidal ($\infty,n$)-category. Then $\cat$ has duals if and only if its delooping $\mathbf{B}\cat$ has adjoints\footnote{In the usual jargon, an $(\infty,n)$-category has adjoints if it has adjoints for any $k$-morphism with $0<k<n$. We spelled however what it means anyway for the sake of clarity.} for any $k$-morphism with $0<k<n+1$ . We say that any object in such a category is fully $n$-dualizable.
+		
+		There is an equivalent definition talking about the homotopy category and the homotopy 2-category of $\cat$, see \cite{lurie2009classification} and \cite{gwilliam2018duals}. However, this intuition about adjoints is still very useful.
+	\end{defn}
+    \end{defn}
+
 \begin{rem}
     If $\cat$ is braided, and in particular for us symmetric, any right dual is a left dual and viceversa.
 \end{rem}
 \begin{notat}
-    Usually, the dual of an object $X$ is denoted with $X^\vee$.
+    We denote the dual of an object $X$ with $X^\vee$. Sometimes it is also denoted with $X^\ast$
 \end{notat}
 \begin{cor}\label{ImageOfDualStillDual}
      Let $F:\cat\to\dat$ be a monoidal functor. Thanks to monoidal functoriality, the monoidal unit $\unit_\cat$ is sent to $\unit_\dat$ (up to isomorphism), and hence one gets the evaluation map and coevaluation map: $ev_{F(X)}:F(Y)\otimes F(X)\to\unit_\dat\cong F(\unit_\cat)$ and $coev_{F(X)}:F(\unit_\cat)\cong\unit_\dat\to F(X)\otimes F(Y)$. Moreover, the image of a commuting diagram under a functor still commutes (see \ref{FunctorsPreserveCommut}). So, the dual objects are sent to dual objects by monoidal functors and $F(X^\vee)=F(X)^\vee$.
@@ -5005,6 +5049,7 @@ However, the result depends on the choice of $\phi$ and we'll see that it corres
 If $L$ is framed and oriented, we can choose a $\phi$ as follows: let's restric to one component $L_i$. We then have $\de U_i \cong S^1 \times S^1$ and the framing determines a "cycle" of $S^1 \times S^1$ as can be seen in the drawing. In particular if the framing winds around $k$ times then we get a cycle that winds around once in the longitudinal direction and $k$ times in the other direction. This determines a diffeomorphism on the torus up to to isotopy, called the "Dehn twist". 
 % DRAWING
 We then compose with $swap: S^1 \times S^1 \to S^1 \times S^1$:
+
 \begin{equation}
     \phi_i: 
     \begin{tikzcd}
@@ -5013,6 +5058,17 @@ We then compose with $swap: S^1 \times S^1 \to S^1 \times S^1$:
         \beta_i \ar[r, mapsto] & \alpha_i \\
     \end{tikzcd}
 \end{equation}
+
+% is this the same diagram?
+% https://q.uiver.app/#q=WzAsNSxbMSwwLCIgIFxcYWxwaGFfaSAiXSxbMSwyLCIgXFxiZXRhX2kiXSxbMiwwLCItXFxiZXRhX2kiXSxbMiwyLCJcXGFscGhhX2kiXSxbMCwxLCJcXHBoaV9pIl0sWzAsMl0sWzEsM11d
+% \[\begin{tikzcd}[cramped]
+% 	& {  \alpha_i } & {-\beta_i} \\
+% 	{\phi_i} \\
+% 	& { \beta_i} & {\alpha_i}
+% 	\arrow[from=1-2, to=1-3]
+% 	\arrow[from=3-2, to=3-3]
+% \end{tikzcd}\]
+
 In short, via $\phi_i$ the induced framing on $S^1 \times \{0\}$ is a constant normal framing. So framing on $L$ determines/encodes/records the diffeomorphism $\phi$.
 
 Notation: $L$ framed $M_L:= M_{L,\phi}$ with $\phi$ as above.
@@ -5058,17 +5114,21 @@ How can we now get a
 Recall: TFT is a symmetric monoidal functor out of the category of bordisms. This not only gives us invariants but also gives us a way to calculate them.
 
 \begin{equation}
-    \Fun^\otimes (\Bord_{2,1,0}^{\fr}, \bat) \xrightarrow{\simeq}[ev_{pt}] (\bat^{2 dualisable})^\simeq
+    ev_{\ast}:
+    \Fun^\otimes (\Bord_{2,1,0}^{\fr}, \bat) \xrightarrow{\simeq} (\bat^{2 dualisable})^\simeq
 \end{equation}
+<<<<<<< HEAD
 and this generalizes using $(\infty, n)$ categories:
 \begin{equation}
-    \Fun^\otimes (\Bord_{n,\dots,0}^{\fr}, \bat) \xrightarrow{\simeq}[ev_{pt}] (\cat^{n dualisable})^\simeq
+    ev_{\ast}: 
+    \Fun^\otimes (\Bord_{n,\dots,0}^{\fr}, \bat) \xrightarrow{\simeq} (\cat^{n dualisable})^\simeq
 \end{equation}
 This is the cobordism hypothesis.
 
 In addition
 \begin{equation}
-    \Fun^\otimes (\Bord_{3,2,1}^{\fr}, \bat) \xrightarrow[ev_{S^1}]{\simeq} \text{modular tensor objects}.
+    ev_{S^1}:
+    \Fun^\otimes (\Bord_{3,2,1}^{\fr}, \bat) \xrightarrow{\simeq}\text{modular tensor objects}.
 \end{equation}
 
 
