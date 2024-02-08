@@ -234,6 +234,18 @@ These are the lecture notes of the course \textit{``Bordism and Topological Fiel
 \clearpage
 \thispagestyle{empty}
 \cleardoublepage
+\section*{Notational Conventions}
+We use the symbol '\Plane' at the end of titles of sections, definitions or theorems that depart from the content of the lecture and deepen some aspect on a topic with an outloolk towards research topics.
+
+\begin{notat}
+	Throughout these notes we will abuse notation indicating a collection with some structure on it just by writing down the collection, e.g. denoting a monoid $(M,\cdot)$ by $M$, a metric space $(X,d)$ by $X$ etc...
+\end{notat}
+\begin{notat}
+	$n$-manifold and $n$-bordism mean respectively $n$ dimensional manifold and $n$ dimensional bordism.
+\end{notat}
+\begin{notat}
+	We often denote equivalence classes just with a representative thereof. 
+\end{notat}
 
 \thispagestyle{empty}
 \hfill
@@ -250,21 +262,6 @@ These are the lecture notes of the course \textit{``Bordism and Topological Fiel
 % -------------------------------------------------------------
 % --------------------- LECTURE 1 23/10 -----------------------
 % -------------------------------------------------------------
-
-%Just realized that it looks weird put here because of 'contents' at the top of the page, don't know how to resolve /andrea
-\section*{Notational Conventions}
-	We use the symbol '\Plane' at the end of titles of sections, definitions or theorems that depart from the content of the lecture and deepen some aspect on a topic with an outloolk towards research topics.
-
-\begin{notat}
-	Throughout these notes we will abuse notation indicating a collection with some structure on it just by writing down the collection, e.g. denoting a monoid $(M,\cdot)$ by $M$, a metric space $(X,d)$ by $X$ etc...
-\end{notat}
-\begin{notat}
-	$n$-manifold and $n$-bordism mean respectively $n$ dimensional manifold and $n$ dimensional bordism.
-\end{notat}
- \begin{notat}
-	We often denote equivalence classes just with a representative thereof. 
-\end{notat}
-
 
 %TODO I would label and caption the figures so they can be referenced and they can appear wherever TeX thinks best /William
 
@@ -1816,12 +1813,44 @@ For the latter see \cite[p. 203]{MilnorS05}.
 %would be cool to write something why these are the case, but mysterious to me for now TBD /ANdrea
 \subsection{Cobordism groups and the sphere spectrum \extra}
 Very interestingly, the (stable) framed version is isomorphic to the stable homotopy groups of the sphere and it is \textit{not} computed to all degrees. This is one way to phrase a theorem named after Thom. It is fascinating because the stable homotopy groups of the sphere are central objects in stable homotopy theory. They are equivalently the homotopy groups of the sphere spectrum.
+\begin{defn}[Cone]
+Let $X$ be a topological space. The cone of $X$ is the pushout
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJYXFx0aW1lc1xcezFcXH0iXSxbMCwxLCJcXGFzdCJdLFsxLDAsIlhcXHRpbWVzWzAsMV0iXSxbMSwxLCJDKFgpIl0sWzAsMV0sWzAsMl0sWzEsM10sWzIsM10sWzMsMCwiIiwxLHsic3R5bGUiOnsibmFtZSI6ImNvcm5lciJ9fV1d
+\[\begin{tikzcd}[cramped]
+	{X\times\{1\}} & {X\times[0,1]} \\
+	\ast & {C(X)}
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=1-2, to=2-2]
+	\arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=1-1]
+\end{tikzcd}\]
+\end{defn}
+\begin{defn}[Suspension]
+	Let $X$ be a topological space. The suspension of $X$ is the pushout
+	% https://q.uiver.app/#q=WzAsNCxbMCwwLCJYXFx0aW1lc1xcezBcXH0iXSxbMCwxLCJDKFgpIl0sWzEsMCwiQyhYKSJdLFsxLDEsIlxcU2lnbWEoWCkiXSxbMCwxXSxbMCwyXSxbMSwzXSxbMiwzXV0=
+	\[\begin{tikzcd}[cramped]
+		{X\times\{0\}} & {C(X)} \\
+		{C(X)} & {\Sigma X}
+		\arrow[from=1-1, to=2-1]
+		\arrow[from=1-1, to=1-2]
+		\arrow[from=2-1, to=2-2]
+		\arrow[from=1-2, to=2-2]
+		\arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=1-1]
+	\end{tikzcd}\]
+\end{defn}
+\begin{ex}
+$\Sigma(S^1)=S^2$ more generally $\Sigma(S^n)=S^{n+1}$
+\end{ex}
+\begin{defn}[Spectrum]
+	A spectrum is a sequence of pointed spaces $\{X_k\}_{k\in\Z}$ with structure maps $\Sigma X_n\xrightarrow{\sigma_n}X_{n+1}$
+\end{defn}
 \begin{defn}[Suspension Spectrum]
-	
+	The suspension spectrum $\Sigma^\infty X$ has $\Sigma_n$ as the $n$-th space in the sequence and structure maps $\Sigma\Sigma_n\xrightarrow{\id}\Sigma_{n+1}$.
 \end{defn}
-\begin{defn}[Sphere Spectrum]
-	
-\end{defn}
+\begin{ex}[Sphere Spectrum]
+	The sphere spectrum $\mathds S$ is the suspension spectrum of the point, also known as $S^0$. In fact, $\Sigma S^0=S^1$, $\Sigma S^1=S^2$, etc...
+\end{ex}
 In a certain sense, $\mathds S$ is analgous to $\Z$ but in another category: \Z is the unit in Ab, while $\mathds S$ is the unit in spectra.
 %just as Z is the unit in AbGrp, S is the unit in Spectra, add definition of sphere spectrum and maybe intro to spectra since it will be useful later also. TBD /ANder
 \begin{rem}
@@ -1832,7 +1861,7 @@ $$\pi_{\bullet}(\mathds{S})=\bigoplus_{n\geq 0}\pi_{n}(\mathds{S})$$
 	$\Omega_{\bullet}^{\fr}\cong\pi_{\bullet}(\mathds{S})$
 \end{thm}
 \begin{ex}
- We list some examples of such groups
+ We list some examples of such commutative rings.
  $$    \Omega^{fr}_0 \cong\Z$$
   $$\Omega^{fr}_1 \cong\Z_2$$
   $$\Omega^{fr}_2 \cong \Z_2 $$
