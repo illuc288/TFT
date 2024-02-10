@@ -3599,7 +3599,20 @@ This construction actually works for any object in $\Bordnor$ (and $\Bordn$).
 	\arrow["{{\alpha_{X}}}", from=5-3, to=5-1]
 	\arrow["{{id_{G(X)}\otimes id_{G(X)}\otimes \alpha_X}}", from=3-3, to=2-1]
 \end{tikzcd}\]
-First of all, the triangle on the top commutes, i.e. $(id_{G(X)}\otimes\alpha_{X^\vee}\otimes\alpha_X)\circ(id_{G(X)}\otimes F(coev_X))=id_{G(X)}\otimes G(coev_X)$, because of the naturality of $\alpha$. The triangle underneath it also commutes, i.e. $id_{G(X)}\otimes\alpha_{X^{\vee}}\otimes\alpha_{X}=(id_{G(X)}\otimes id_{G(X)}\otimes\alpha_{X})\circ (id_{G(X)}\otimes\alpha_{X^{\vee}}\otimes id_{id_{F(X)}})$  because of the unitality of $id_{G(X)}$ and $id_{F(X)}$. Lastly, the bottom trapezoid commutes thanks to the naturality of $\alpha$ and thus the whole big diagram commutes. Consider now first mapping leftwards and successively downwards, i.e. $(G(ev_X)\otimes id_{G(X)})\circ id_{G(X)}\otimes G(coev_X)$, this equals to the identity by one of the two snake relations of dual objects. Take now the other route of the outer diagram, on the right; note that $(\alpha_X\vee)\vee=(G(ev_{X})\otimes id_{F(X)})\circ (id_{G(X)}\otimes\alpha_{X^\vee}\otimes id_{F(X)})\circ id_{G(X)}\otimes F(coev_{X})$ by definition (\ref{DualMorph}) and hence the right route on the outer diagram corresponds to $\alpha_X\circ(\alpha_{X^\vee})^\vee$. Since the outer diagram commutes we obtain that $\alpha_X\circ(\alpha_{X^\vee})^\vee=id_{G(X)}$, i.e. $(\alpha_{X^\vee})^\vee$ is the right inverse of $\alpha_X$. One constructs a symmetric diagram by substituting $F$s with $G$s to prove that it is also the left inverse.
+First of all, the triangle on the top commutes, i.e.
+ $(id_{G(X)}\otimes\alpha_{X^\vee}\otimes\alpha_X)\circ(id_{G(X)}\otimes F(coev_X))=id_{G(X)}\otimes G(coev_X)$
+ , because of the naturality of $\alpha$. The triangle underneath it also commutes, i.e.
+  $id_{G(X)}\otimes\alpha_{X^{\vee}}\otimes\alpha_{X}=(id_{G(X)}\otimes id_{G(X)}\otimes\alpha_{X})\circ (id_{G(X)}\otimes\alpha_{X^{\vee}}\otimes id_{id_{F(X)}})$
+    because of the unitality of $id_{G(X)}$ and $id_{F(X)}$.
+    Lastly, the bottom trapezoid commutes thanks to the naturality of $\alpha$ and thus the whole big diagram commutes. 
+    Consider now first mapping leftwards and successively downwards, i.e. $(G(ev_X)\otimes id_{G(X)})\circ id_{G(X)}\otimes G(coev_X)$, 
+    this equals to the identity by one of the two snake relations of dual objects. 
+    Take now the other route of the outer diagram, on the right;
+     note that $(\alpha_X\vee)\vee=(G(ev_{X})\otimes id_{F(X)})\circ (id_{G(X)}\otimes\alpha_{X^\vee}\otimes id_{F(X)})\circ id_{G(X)}\otimes F(coev_{X})$ 
+     by definition (\ref{DualMorph}) and hence the right route on the outer diagram corresponds to
+      $\alpha_X\circ(\alpha_{X^\vee})^\vee$. Since the outer diagram commutes we obtain that
+       $\alpha_X\circ(\alpha_{X^\vee})^\vee=id_{G(X)}$, i.e. $(\alpha_{X^\vee})^\vee$ is the right inverse of
+        $\alpha_X$. One constructs a symmetric diagram by substituting $F$s with $G$s to prove that it is also the left inverse.
 \end{proof}
 \begin{cor}
     If every object in a symmetric monoidal category $\cat$ is dualizable, then any symmetric monoidal natural transformation between symmetric monoidal functors that have $\cat$ as the source category is invertible since a natural transfomation is invertible if and only if each of its components is invertible. Hence, $\Fun^\otimes(\cat,\dat)$ is a groupoid for any $\dat$ when all objects in $\cat$ are dualizable.
@@ -3705,7 +3718,7 @@ from other classifications, for example the one of 2-dimensional manifolds we ha
    Sketchily, our strategy to prove these results will be to find generators and relations for $\Bord_{n}$.
 \section{Classification of 1d-TFTs}\label{ClassificationOf1dTFTs}
 The main goal of this subsection is to prove that given an oriented 1d-TFT $\Zf:\Bord_{1,0}\to\cat$, $\Zf(\bullet)$ has a dual and conversely, given an object $X\in\cat$, in the codomain of the TFT, and its dual $(Y,ev_X,coev_X)$, we can reconstruct a 1d-TFT.
-\begin{thm}
+\begin{thm}[Classification of 1-dimensional bordisms]\label{class1dBord}
 Any 1-dimensional bordism is diffeomorphic to a disjoint union of the following bordisms (\ref{all1bord}): 
 	\begin{figure}
 	\centering
@@ -3749,7 +3762,7 @@ and the relation (\ref{relations})
 \begin{thm}\label{thm:classif_of_1dtft}
     Let $\cat$ be a symmetric monoidal category. Then the map\footnote{There is unfortunately a notational clash between what we called the evaluation map for dualizable objects, denoted by $ev$, and what we also call in this case evaluation map, denoted by $\mathcal{E} V$. In the latter case, we are referring to a similar convention we use for example in topology when we call a map of this genre $Map(\ast,X)\to X$ an evaluation map. The intuition is that we feed an element of the domain into a map, a functor in our case, and see what happens, "evaluate it".} 
     \begin{align}
-    	\TFT_{1,0}^{or}=\Fun(\Bord_{1,0}^{or},\cat)&\xrightarrow{\mathcal{E} v}(\cat^{\operatorname{fd}})^{\cong} \\
+    	\TFT_{1,0}^{or}=\Fun^{\otimes}(\Bord_{1,0}^{or},\cat)&\xrightarrow{\mathcal{E} v}_{\bullet_{+}}(\cat^{\operatorname{fd}})^{\cong} \\
     	\Zf&\mapsto \Zf(\bullet_+)
     \end{align}
     is a symmetric monoidal equivalence of groupoids. 
@@ -3770,25 +3783,43 @@ and the relation (\ref{relations})
     \item $\TFT_{1,0}^{\orient}$ is a groupoid, and functors preserve isomorphisms
     \item Every object in $\Bord_{1,0}^{\orient}$ is dualizable and, because of functoriality, the image of a dualizable object $(\bullet_+)$ remains a dualizable object $(\Zf(\bullet_+)$.
 \end{enumerate}
-Note that there's nothing special about dimension 1 here. We then have such an evaluation functor into $(\cat^{\operatorname{fd}})^{\cong}$ in every dimension, i.e. from all $\TFT_{1,0}^{or}$. Dimension 1 is then special because this map is actually an equivalence.
+%Note that there's nothing special about dimension 1 here. We then have such an evaluation functor into $(\cat^{\operatorname{fd}})^{\cong}$ in every dimension, i.e. from all $\TFT_{1,0}^{or}$. Dimension 1 is then special because this map is actually an equivalence. %%% Can't understand what is meant here /Andrea
 \begin{proof}
     We need to prove three things to demonstrate that $\mathcal{E}V$ is an equivalence: that it is full, faithful and essentially surjective:
     \begin{enumerate}
         \item From lemma \ref{Surjectivity} it follows that $\mathcal{E}V$ is surjective, not even surjective
-        \item It is faithful: let $\Zf,\Zf'\in \TFT_{1,0}^{or}$ and $\alpha_1,\alpha_2:\Zf\Rightarrow\Zf'$ be natural
-         transformations between them and hence isomorphisms (see \ref{TFTsareGRPDS}). 
-        Recall that $\bullet_-=\bullet_+^\vee$ and we have that for any natural isomorphism
-         $\eta$: $\eta{\bullet_+^\vee}=(\eta{\bullet_+})^\vee$ because of functoriality and $\eta_{\bullet_-}=(\eta{\bullet_+}^\vee)^{-1}$ because of \ref{DualizableMeansInvertibleNatTrans}. From this it follows that $\alpha_{\bullet_-}=(\alpha_{\bullet_+}^\vee)^{-1}=(\beta{\bullet_+}^\vee)^{-1}=\beta_{\bullet_-}$. With a specular proof we can prove that $\alpha_{\bullet_+}=\beta_{\bullet_+}$. Since 0-dimensional compact manifolds are just finite disjoint unions of $\bullet_+$ or $\bullet_-$ and $\Zf,\Zf'$ are both symmetric \emph{monoidal} functors, it follows that for any $X\in\Bord_{1,0}^{or}$, $\alpha_X=\beta_X$. Take for example $X=\bullet_+\amalg\bullet_-$, then  $\Zf(\bullet_+\amalg\bullet_-)=\Zf(\bullet_+)\otimes\Zf(\bullet_-)$. Thus $\alpha=\beta$. This proves that $\mathcal{E}V$ is faithful because it implies that for any two equal natural transformations are mapped to equal morphisms in $\cat$
-        %Copied this from Freed Old/new and I am very confused, please check /Andrea
-        \item $\mathcal{E}V$ is full %TBD
+        \item It is faithful: let $\Zf,\Zf'\in \TFT_{1,0}^{or}$ and $\alpha,\beta:\Zf\Rightarrow\Zf'$ be natural
+         transformations between them and hence isomorphisms (see \ref{TFTsareGRPDS}). Suppose that
+          $\mathcal{E}V_{\bullet_{+}}(\alpha)=\mathcal{E}V(\beta)$, i.e. $\alpha^{1}_{\bullet_+}=\alpha^{2}_{\bullet_+}$ since $\mathcal{E}V_{\bullet_{+}}$ evaluates on the point.
+        Recall that $\bullet_-=\bullet_+^\vee$. We have that for any natural isomorphism
+         $\eta$ it holds that $\eta{\bullet_+^\vee}=(\eta{\bullet_+})^\vee$ because of functoriality and
+          $\eta_{\bullet_-}=(\eta{\bullet_+}^\vee)^{-1}$ 
+          because of \ref{DualizableMeansInvertibleNatTrans}. 
+          From this it follows that
+           $\alpha_{\bullet_-}=(\alpha_{\bullet_+}^\vee)^{-1}=(\beta{\bullet_+}^\vee)^{-1}=\beta_{\bullet_-}$. With a specular proof we can prove that $\alpha_{\bullet_+}=\beta_{\bullet_+}$. 
+           Since 0-dimensional compact manifolds are just finite disjoint unions of $\bullet_+$ or $\bullet_-$ and
+            $\alpha$ and $\beta$ are symmetric monoidal natural transformations
+           it follows that for any $X\in\Bord_{1,0}^{or}$, $\alpha_X=\beta_X$. 
+           This proves that $\mathcal{E}V$ is faithful because it implies that for any two natural transformations that
+            are mapped to equal morphisms in $\cat$ must be also equal in $\Fun^{\otimes}(\Bord_{1,0},\cat)$
+        \item $\mathcal{E}V_{\bullet_{+}}$ is full. Given an arbitrary isomorphism $f:X\to X'$
+         in $(\cat^{\operatorname{fd}})^{\cong}$ we now show that there is an isomorphism $\alpha:\Zf\Rightarrow\Zf'$
+         in $\Fun^{\otimes}(\Bord_{1,0},\cat)$ such that $\alpha_{\bullet_{+}}=f$ %very confused by Freed's proof
+  
     \end{enumerate}
-    
 \end{proof}
+\begin{proof}[Sketch of alternative]
+An alternative proof relies on the fact that there are only 5 connected 1-dimensional manifolds with boundary
+ (\ref{class1dBord}). One just has to determine where $\bullet_+$ and $\bullet_-$ are sent and the 5 possible
+  bordisms between disjoint unions thereof. 
+\end{proof}
+
 This is the simplest case of an important guiding hypothesis in the field of TFTs, the cobordism hypothesis, see \ref{RemarkOnCobHypo}.
 
 Recap: $\TFT_{1,0}^{or}(\cat) \xrightarrow{\mathscr Ev_{\bullet+}} (\cat^{dualiz})^{\simeq} \hookrightarrow \cat$. The map is the following: $\Zf \mapsto \Zf(\bullet_+)$.
 
-Now we classified 1 dimensional TFTs, we would now like to do the same for 2 dimensional TFTs and we will find that there is an equivalence between $\TFT_{2,1}^{or}(\cat)$ and commutative Frobenius algebras.
+Now we classified 1 dimensional TFTs, we would now like to do the same for 2 dimensional TFTs.
+We will find out that there is an equivalence between $\TFT_{2,1}^{or}(\cat)$ and commutative Frobenius algebras.
 
 \section{Classification of 2d-TFTs}
 As we have done for the 1-dimensional case, we now try to classify 2-dimensional TFTs. For a more detailed proof see Kock \cite{kock_2003} or the lecture notes from Schweigert \cite{SchwHopfQuantumTFT}. 
