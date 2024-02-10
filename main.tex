@@ -3205,7 +3205,6 @@ We now list some examples of 2-categories, to convey a more concrete intuition o
         \item The fundamental 2-groupoid of a topological space $X$ is a \emph{strict} 2-category where objects are the points in $X$, 1-morphisms are paths and homotopy classes of homotopies between paths are 2-morphisms.
         \item Every 1-category is a strict 2-category where the only 2-morphisms are identities on 1-morphisms
         \item There is a bicategory Alg$_k^2$ where objects are algebras over a vector space, 1-morphisms are bimodules (see \ref{CatOfBimodules}) and 2-morphisms are maps between bimodules, also known as intertwiners 
-        \item %TBD /ANdrea
     \end{enumerate}
 \end{ex}
 
@@ -3633,7 +3632,20 @@ First of all, the triangle on the top commutes, i.e. $(id_{G(X)}\otimes\alpha_{X
 \begin{ex}
     The underlying groupoid of $\Bordnor$ is a picard groupoid.
 \end{ex}
-
+\begin{notat}
+We denote with $\cat^{\cong}$ the underlying groupoid of $\cat$, i.e. the subcategory of $\cat$ where we forget 
+about non-invertible morphisms.
+\end{notat}
+\begin{notat}
+We denote with $\cat^{\operatorname{fd}}$ (or sometiimes $\cat^{\operatorname{dualizable}}$) the subcategory of $\cat$ containing only dualizable objects.
+We chose 'fd' because it can stand for two things:
+\begin{itemize}
+	\item 'finite dimensional' since dualizable objects in Vect are finite dimensional vector spaces and in general
+	dualizability can be seen as a finiteness condition
+	\item 'fully dualizable', a higher-categorical generalization of the notion of dualizability which we encounter
+	 in the next subsection
+\end{itemize}
+\end{notat}
 \subsubsection{Left and right duals in higher categories \extra} % (fold)
 \label{ssub:left_and_right_duals_in_higher_categories}
 Equivalently, a left/right dual object $X$ in a monoidal category $\cat$ can also be characterized as a left/right adjoint (see \ref{AdjFun}) when considered as a morphism in the delooping (see \ref{DeloopingMonCat}) bicategory (see \ref{Bicategory}) $\mathbf{B}\cat$ of $\cat$. This makes sense because:
@@ -3665,6 +3677,31 @@ goal may be
 
 \noindent \textbf{Classification}: Given that there’s something, what could it be?}{Jack Morava in \cite{morava2011cosmic}}
 %Sorry if too quirky XD feel free to delete it of course, was also undecided if to put it here or for classification of 2d manifolds /Andrea
+
+In this chapter, we classify 1d-TFTs and 2d-TFTs, provide a sketch on how that might work for 3d-TFTs 
+and show surprsising connections between knot theory and 3d-TFTs.
+
+Roughly, our classifications theorems will be equivalence of categories of this kind 
+$$ev_{X\in\Bord_{n}}:\Fun^{\otimes}(\Bord_{n},\cat)\simeq(\cat^{\operatorname{fd}})^{\cong}$$
+meaning that evaluating a TFT on an object of $\Bord_{n}$ induces an equivalence of categories. 
+To be clear, recall that: 
+\begin{itemize}
+\item $Bord_n$ is the category of $n$-bordisms
+\item $\Fun^{\otimes}(\Bord_{n},\cat)$ is the category of $n$-dimensional topological field theories since they are symmetric monoidal functors from the category of $n$-bordisms to some symmetric monoidal category
+\item $(\cat^{\operatorname{fd}})^{\cong}$ is the Picard groupoid underlying $\cat$ since
+ $\cat^{\operatorname{fd}}$ is the subcategory of $\cat$ contatining only dualizable
+ objects and $\cat^{\cong}$ is the underlying groupoid, making every dualizable object in
+  $\cat^{\operatorname{fd}}$ invertible
+\end{itemize}
+
+A natural question
+is: how is this a \emph{classification}? This sort of statement certainly looks different 
+from other classifications, for example the one of 2-dimensional manifolds we have seen in this course
+ (\ref{Classification of 2 manifolds}). Such an equivalence of categories classifies TFTs because every $n$d-TFT is
+  determined by where it sends an object in $\Bord_{n}$ and thus TFTs are classified merely by where they send
+   such $n-1$-manifold, without specifying how the functor acts on morphism, i.e. the bordisms. Moreover,
+   given a dualizable object of $\cat$ one can construct a TFT since the equivalence goes also 
+   in the other direction, so TFTs are classified by the dualizable objects of their target category.
 \section{Classification of 1d-TFTs}\label{ClassificationOf1dTFTs}
 The main goal of this subsection is to prove that given an oriented 1d-TFT $\Zf:\Bord_{1,0}\to\cat$, $\Zf(\bullet)$ has a dual and conversely, given an object $X\in\cat$, in the codomain of the TFT, and its dual $(Y,ev_X,coev_X)$, we can reconstruct a 1d-TFT.
 \begin{lem}\label{Surjectivity}
