@@ -3611,8 +3611,7 @@ First of all, the triangle on the top commutes, i.e. $(id_{G(X)}\otimes\alpha_{X
     Any invertible object is dualizable.
 \end{lem}
 \begin{proof}
-    Let $X$ be an invertible object. Then, there must be an $X^{-1}$ such that $X\otimes X^{-1}\cong\mathbb{1}_\cat$, the invertible object is the dual of $X$. The co/evaluation maps become isomorphisms and hence the snake relations hold\footnote{Note that every diagram composed solely of isomorphisms commutes.}.
-    %TODO pretty sure this claim is false, fix
+    Let $X$ be an invertible object. Then, there must be an $X^{-1}$ such that $X\otimes X^{-1}\cong\mathbb{1}_\cat$, the invertible object is the dual of $X$. The co/evaluation maps become isomorphisms the snake relations hold because if a commutative triangle of isomorphisms commutes in one direction, then it commutes also in the opposite one, i.e. for arbitrary isomorphisms $f,g,h$ such that $f=h\circ g$, it holds that $f^{-1}=(h\circ g)^{-1}=g^{-1}\circ h^{-1}$.
 \end{proof}
 \begin{lem}\label{InvertibleDualizable}
     A dualizable object is invertible if and only if its co/evaluation maps are isomorphisms.
@@ -3668,7 +3667,7 @@ A sane individual, i.e. not a homo categoriensis\footnote{A subspecies of homo s
 % -------------------------------------------------------------
 % flipped classroom
 
-\chapter{Classification of TFTs}\label{ClassificationOfTFTs}
+\chapter{Classification of topological field theories}\label{ClassificationOfTFTs}
 \epigraph{
 \textbf{Existence}: Why is there something, rather than nothing?
 
@@ -3771,12 +3770,15 @@ and the relation (\ref{relations})
     \item $\TFT_{1,0}^{\orient}$ is a groupoid, and functors preserve isomorphisms
     \item Every object in $\Bord_{1,0}^{\orient}$ is dualizable and, because of functoriality, the image of a dualizable object $(\bullet_+)$ remains a dualizable object $(\Zf(\bullet_+)$.
 \end{enumerate}
-Note that there's nothing special about dimension 1 here. We then have such an evaluation functor into $(\cat^{dualizable})^{\cong}$ in every dimension, i.e. from all $\TFT_{1,0}^{or}$. Dimension 1 is then special because this map is actually an equivalence.
+Note that there's nothing special about dimension 1 here. We then have such an evaluation functor into $(\cat^{\operatorname{fd}})^{\cong}$ in every dimension, i.e. from all $\TFT_{1,0}^{or}$. Dimension 1 is then special because this map is actually an equivalence.
 \begin{proof}
-    Thanks to the fundamental theorem of category theory we prove three things to demonstrate that $\mathcal{E}V$ is an equivalence: that is full, faithful and essentially surjective.
+    We need to prove three things to demonstrate that $\mathcal{E}V$ is an equivalence: that it is full, faithful and essentially surjective:
     \begin{enumerate}
         \item From lemma \ref{Surjectivity} it follows that $\mathcal{E}V$ is surjective, not even surjective
-        \item It is full: let $\Zf,\Zf'\in \TFT_{1,0}^{or}$ and $\alpha_1,\alpha_2:\Zf\Rightarrow\Zf'$ be natural transformations between them and hence isomorphisms (see \ref{TFTsareGRPDS}). $\bullet_-=\bullet_+^\vee$ we have that for any natural isomorphism $\eta$: $\eta{\bullet_+^\vee}=(\eta{\bullet_+})^\vee$ because of functoriality and $\eta_{\bullet_-}=(\eta{\bullet_+}^\vee)^{-1}$ because of \ref{DualizableMeansInvertibleNatTrans}. From this it follows that $\alpha_{\bullet_-}=(\alpha_{\bullet_+}^\vee)^{-1}=(\beta{\bullet_+}^\vee)^{-1}=\beta_{\bullet_-}$. With a specular proof we can prove that $\alpha_{\bullet_+}=\beta_{\bullet_+}$. Since 0-dimensional compact manifolds are just finite disjoint unions of $\bullet_+$ or $\bullet_-$ and $\Zf,\Zf'$ are both symmetric \emph{monoidal} functors, it follows that for any $X\in\Bord_{1,0}^{or}$, $\alpha_X=\beta_X$. Take for example $X=\bullet_+\amalg\bullet_-$, then  $\Zf(\bullet_+\amalg\bullet_-)=\Zf(\bullet_+)\otimes\Zf(\bullet_-)$. Thus $\alpha=\beta$. This proves that $\mathcal{E}V$ is faithful because it implies that for any two equal natural transformations are mapped to equal morphisms in $\cat$
+        \item It is faithful: let $\Zf,\Zf'\in \TFT_{1,0}^{or}$ and $\alpha_1,\alpha_2:\Zf\Rightarrow\Zf'$ be natural
+         transformations between them and hence isomorphisms (see \ref{TFTsareGRPDS}). 
+        Recall that $\bullet_-=\bullet_+^\vee$ and we have that for any natural isomorphism
+         $\eta$: $\eta{\bullet_+^\vee}=(\eta{\bullet_+})^\vee$ because of functoriality and $\eta_{\bullet_-}=(\eta{\bullet_+}^\vee)^{-1}$ because of \ref{DualizableMeansInvertibleNatTrans}. From this it follows that $\alpha_{\bullet_-}=(\alpha_{\bullet_+}^\vee)^{-1}=(\beta{\bullet_+}^\vee)^{-1}=\beta_{\bullet_-}$. With a specular proof we can prove that $\alpha_{\bullet_+}=\beta_{\bullet_+}$. Since 0-dimensional compact manifolds are just finite disjoint unions of $\bullet_+$ or $\bullet_-$ and $\Zf,\Zf'$ are both symmetric \emph{monoidal} functors, it follows that for any $X\in\Bord_{1,0}^{or}$, $\alpha_X=\beta_X$. Take for example $X=\bullet_+\amalg\bullet_-$, then  $\Zf(\bullet_+\amalg\bullet_-)=\Zf(\bullet_+)\otimes\Zf(\bullet_-)$. Thus $\alpha=\beta$. This proves that $\mathcal{E}V$ is faithful because it implies that for any two equal natural transformations are mapped to equal morphisms in $\cat$
         %Copied this from Freed Old/new and I am very confused, please check /Andrea
         \item $\mathcal{E}V$ is full %TBD
     \end{enumerate}
@@ -4110,6 +4112,13 @@ We now provide an outlook to some research programs that are tightly connected t
     \item[\extra] algebraic quantum field theory (\cite{Haag:1963dh}): talking about endomorphism monoids, i.e. monoids of the form $(\Hom_\cat(X,X),\circ)$ (see \ref{Delooping Monoid}) we previously mentioned operator algebras, i.e. monoids and submonoids of the form $(\Hom_{\Top\!\Vect_{k}}(X,X),\circ)$. They are an object of interest in themselves but importantly for us algebraic quantum field theory makes extensive use of operator algebras. Algebraic quantum field theory is very roughly a way of translating the Heisenberg picture of quantum mechanics (sometimes called matrix mechanics) to quantum field theory by providing an attempt to axiomatize QFT in a mathematically rigorous way. Given some apt operators on an apt topological vector space, meaning that the topological vector space can represent a quantum state and the selected operators on it can represent observables, an AQFT provides a formal assignment of algebras of such operators to regions of spacetime according to some axioms, e.g. the \href{https://ncatlab.org/nlab/show/Haag-Kastler+axioms}{Haag Kastler Axioms}. In this way, it pins down how observables depend of spacetime while states are being fixed, as in the Heisenberg picture. Algebraic quantum field theory can be roughly considered to be a dual to topological quantum field theory since TFTs invert the direction by assigning geometric data to algebraic ones. In fact, topological quantum field theory can be seen as a way of translating the Schrödinger picture (also called wave mechanics) to quantum field theory: states are represented by objects in the target monoidal category, the functor from $\Bord$ captures the local time evolution, and thereby a TFT shows how states are propagated through time while the observables are held fixed, as in the Schrödinger picture (see more on this at \href{https://ncatlab.org/nlab/show/functorial+field+theory#QuantumMechanicsInSchroedingerPicture}{this section of the nLab entry on TFTs}). In quantum mechanics, the Heisenberg and the Schrödinger picture are two faces of the same medal, i.e. matrix mechanics and wave mechanics are equivalent\footnote{Interestingly from a historical point of view, Schrödinger's (and Eckhart's) famous proof from 1926 that the two approaches are equivalent is faulty, but von Neumann fortunately provided a foolproof demonstration in 1932. See \cite{MULLER199735} for more on this interesting trivia.}; however, we are far from proving that AQFT and TQFT are also two faces of the same medal. One point of contact between the two is via factorization algebras (something related to $E_n$-algebras, see \ref{EAlg} for the definition of a $E_1$-algebra), see \cite{costello2023factorization} for a summary on factorization algebras and how they relate to TQFT and AQFT. 
     
     In conclusion, algebraic quantum field theory is not a variant of topological field theory, but an alternative attempt to put quantum field theory on mathematically rigorous footings. One can discover more on algebraic quantum field theory in \cite{halvorson2006algebraic} and \cite{fewster2019algebraic}.
+    
+ 
+    \item[\extra] supersymmetric field theory: supersymmetric field theories are field theories
+     defined as a functor similarly to TFTs but instead of having usual manifolds in the source,
+      they have objects called super manifolds. Stefan Stolz and Peter Teichner conjectured 
+      a deep relation between elliptic cohomology and such quantum field theories (see \cite{TeichnerStolz}) 
+      %TBD
 \end{itemize}
 
 
