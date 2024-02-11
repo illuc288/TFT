@@ -4316,7 +4316,9 @@ The algebraic data can be summarized diagramatically as follows
 
 \vspace{0,3cm}
 
-Here $\operatorname{ModTensor}$ is the category of \textit{modular tensor categories}, which we will not fully define; rather, we give some ingredients below.
+Here $\operatorname{ModTensor}$ is the category of \textit{modular tensor categories}, which we will not fully
+ define; rather, we give some ingredients below. As a rough sketch, it is a categorified commutative Frobenius
+  algebra.
 
 The main objective of this section is to sketch how this assignment could work and what is the relation between the 3d TFT assigned to a particular example of a modular tensor category (which is related to 3d Chern-Simons field theory), and the Jones polynomial, a knot invariant.
 
@@ -4381,9 +4383,9 @@ A modular tensor category is a tensor category with extra properties. We start w
 	\arrow["{\beta_{U,V\otimes W}}"', from=1-1, to=1-3]
 	\arrow["{\beta_{V,W}\otimes id_W}", from=1-3, to=2-3]
 \end{tikzcd}\]
-    We may visualize this also via string diagrams:
-    %DIAGRAM
-    we get exactly the same drawing! However, algebraically, the proof is not finished. We now apply 
+    We may visualize the commutativity also via string diagrams:    
+    \[\includegraphics[width=6cm]{images/Lecture 16/stringdiagrams1.png}\]
+    we get exactly two specular drawings! However, algebraically, the proof is not finished. We now apply 
     \begin{equation}
         (id_Y \otimes \beta_{X,Z}) \circ (\beta_{X,Y} \otimes id_Z) = \beta_{X,Y\otimes Z}
     \end{equation}
@@ -4445,10 +4447,12 @@ This comes from representation theory!
     \end{equation}
 \end{rem}
 \begin{ex}
-    Symmetries of a polygon: $G=D_n$ dihedral group and $\rho: D_n \to \Aut(\R^2)$, where $D_n \acts \R^2$ with reflections and rotations.
+    Symmetries of a polygon: $G=D_n$ dihedral group and $\rho: D_n \to \Aut(\R^2)$, where $D_n \acts \R^2$ via
+     reflections and rotations. For example the reflections can be represented visually for the hexagon as follows
+    \[\includegraphics[width=4cm]{images/Lecture 16/Hexagonsymmetries.png}\]
 \end{ex}
 
-Solutions of YBE give representations of the braid group, which we now recall.
+Solutions of YBE give representations of the braid group, which we explore in the next section.
 
 \subsection{The braid group and the Braid category} % (fold)
 \label{ssub:the_braid_group}
@@ -4468,11 +4472,12 @@ Solutions of YBE give representations of the braid group, which we now recall.
     %     \item $\sigma_i \sigma_j = \sigma_j \sigma_i$ if $|i-j|>1$
     %     \item $\sigma_i \sigma_{i+1} \sigma_i = \sigma_{i+1} \sigma_i \sigma_{i+1}$ for $1\leq i<k-1$
     % \end{enumerate}
-    In addition $B_2$ is the free group on one generator $\sigma$, i.e. it is isomorphic to $\Z$ and $B_1 = B_0 = {e}$.
+    In addition $B_2$ is the free group on one generator $\sigma$, i.e. it is isomorphic to $\Z$. For
+    even lower generators $B_1 = B_0 = {e}$.
 \end{defn}
 \noindent The reason we call $B_k$ the braid group with $k$ strands is that we can picture the elements $\sigma_i$ in the following way:
 \[\includegraphics[width=4cm]{images/Lecture 16/BraidGroup.png}\]
-
+which resembles a braid.
 \begin{rem}
     There is a surjective homomorphism to the symmetric group
     \begin{equation}
@@ -4788,8 +4793,16 @@ Before that, we define a variation of the tangle category above and we'll have a
 \end{prop}
 
 Finally, what does all this have to do with 3d TFTs? 
-%TODO diagram
-
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXFRhbmdee1xcZnJ9X3sxfShcXGNhdCkiXSxbMCwyLCJcXEJvcmRfezN9Il0sWzEsMCwiXFxjYXQiXSxbMiwwLCJcXFZlY3QiXSxbMCwxLCJcXG9wZXJhdG9ybmFtZXtzdXJnZXJ5IH0iLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJhcnJvd2hlYWQifSwiYm9keSI6eyJuYW1lIjoic3F1aWdnbHkifX19XSxbMCwyXSxbMiwzLCJmb3JnZXQiXSxbMSwzXV0=
+\[\begin{tikzcd}[cramped]
+	{\Tang^{\fr}_{1}(\cat)} & \cat & \Vect \\
+	\\
+	{\Bord_{3}}
+	\arrow["{\operatorname{surgery }}"', squiggly, tail reversed, from=1-1, to=3-1]
+	\arrow[from=1-1, to=1-2]
+	\arrow["forget", from=1-2, to=1-3]
+	\arrow[from=3-1, to=1-3]
+\end{tikzcd}\]
 We will use:
 \begin{itemize}
     \item every 3 manifold arises from framed 1-tangles via \textit{surgery},
@@ -4805,7 +4818,7 @@ We will use:
 \label{sub:interlude_on_knots_links_and_the_kones_polynomial}
 
 \begin{ex}
-%DRAWING
+
     Examples of knots are the following:
     \begin{itemize}
         \item the \textit{unknot} \[\includegraphics[width=2.5cm]{images/Lecture 19/unknot.png}\]
@@ -4825,16 +4838,18 @@ Italy named 'Borromeo'. However, this is not the only instance of such link in h
  with fascinating symbolism. For instance,
  they also symbolized the trinity
 \[\includegraphics[width=2.5cm]{images/Lecture 19/BorromeanRings-Trinity.png}\]
-In areas inhabited by Germanic peoples, interlocked triangles often appear  
- that are sometimes topologically equivalent to the Borromean rings, which we now refer
-to as 'valknut'. Sometimes it symbolizes the pagan God Odin. 
-The version isotopic to the Borromean rings is called tricursal. Here is an example of a tricursal valknut on an 
+Interlocked triangles, which we now refer
+to as 'valknut', often appear in areas inhabited by Germanic peoples. Sometimes the valknut symbolizes the pagan
+ God Odin. 
+Some of these valknuts are topologically equivalent to the Borromean rings, such version is called the tricursal
+ valknut. 
+ Here is an example of a tricursal valknut on an 
 ornate slab of stone in
  Sweden called the Stora Hammars I.
 
 \[\includegraphics[width=2.5cm]{images/Lecture 19/ValknutStoraHammars.png}\]
 
-A version of the valknut called the unicursal valknut is not topologically equivalent to the Borromean link:
+Another version of the valknut called the unicursal valknut is not topologically equivalent to the Borromean link:
  it is a knot and ambient isotopic to
  the trefoil. It is the current symbol of the German Football
  Association.
@@ -4846,8 +4861,13 @@ A version of the valknut called the unicursal valknut is not topologically equiv
         \coprod_{i=1}^k S^1 \hookrightarrow \R^3
     \end{equation}
 \end{defn}
-In which smoothness is to exclude some pathological situations.
-%DRAWING
+In which smoothness is to exclude some pathological situations. For instance the following one
+ \[\includegraphics[width=6.6cm]{images/Lecture 19/pathological.png}\]
+ This is pathological because it should be intuitively be equivalent to the unknot and to show this we would need 
+ infinitely many Reidemeister moves of type 1 (see \ref{moves}) to deform it to the unknot. 
+ However, one the fundamental theorem of knot theory \ref{ReidemeisterTHM}
+ manages to prove that two knots are equal if one can be deformed into the other with \emph{finitely} many 
+ Reidemeister moves.
 \begin{defn}
     A knot is a link with one component ($k=1$).
 \end{defn}
@@ -4878,21 +4898,26 @@ Concretely, we represent links and nots by 2d drawings, these drawings are calle
     \end{enumerate}
 \end{defn}
 \begin{defn}
-    A link diagram is a regular $p(L)$ together with over/under information at each crossing.
+    A link diagram is a regular $p(L)$ together with over/under information at each crossing. Visually:
+     \[\includegraphics[width=4.6cm]{images/Lecture 19/regularproj.png}\]
 \end{defn}
 \begin{rem}
-    Given a link, we do \textit{not} always get a link diagram $p(L)$, but we can always deform/perturb the embedding $L: \coprod_{i=1}^k S^1 \hookrightarrow \R^3$ by ambient isotopy to $L'$ which gives a link diagram.
+    Given a link, we do \textit{not} always get a link diagram $p(L)$, but we can always deform/perturb the embedding $L: \coprod_{i=1}^k S^1 \hookrightarrow \R^3$ by ambient isotopy to $L'$ which gives a link diagram. 
+    For instance, the following two projections are irregular: 
+     \[\includegraphics[width=6.6cm]{images/Lecture 19/irregularproj.png}\]
+     But such situation could be avoided by moving such links in a reasonable manner via ambient isotopies.
 \end{rem}
 
-Want to define a knot/link invariant by defining something on link diagrams. In order to do this we introduce Reidemeister moves, which are the following local changes in a link diagram:
-\begin{itemize}
-    \item (I or R1) %DRAWING
-    \item (II or R2) %DRAWING
-    \item (III or R3) %DRAWING
+Our aim is to define a knot/link invariant by defining something on link diagrams. 
+In order to do this we introduce Reidemeister moves, which are the following local changes in a link diagram:
+\begin{itemize}\label{moves}
+    \item (I or R1) \[\includegraphics[width=4.6cm]{images/Lecture 19/R1.png}\]
+    \item (II or R2) \[\includegraphics[width=4.6cm]{images/Lecture 19/R2.png}\]
+    \item (III or R3) \[\includegraphics[width=4.6cm]{images/Lecture 19/R3.png}\]
 \end{itemize}
 
-\begin{thm}[Reidemeister]
-    Two links are equivalent if and only if their link diagrams are the same up to finitely many Reidemeister moves and isotopy in $\R^2$.
+\begin{thm}[Reidemeister]\label{ReidemeisterTHM}
+    Two links are equivalent if and only if their link diagrams are the same up to finitely many Reidemeister moves and isotopy in $\R^2$. 
 \end{thm}
 This theorem is very important because it tells us that the link diagrams have all the information of the equivalence class of the link, so to determine (in)equivalence we can work with link diagrams.
 
@@ -5435,7 +5460,7 @@ How can we now get a
  ev_{\ast}:
  \Fun^\otimes (\Bord_{2,1,0}^{\fr}, \bat) \xrightarrow{\simeq} (\bat^{2\operatorname{-dualizable}})^{\cong} $$
 \item The other, although still conjectural\footnote{It was first stated by Kevin Walker and then some progress was made by Turaev, see \cite{Turaev+2016} for more on this.}, classifies 3d-TFTs via the evaluation on the circle
-$$	ev_{S^1}:\Fun^\otimes (\Bord_{3,2,1}^{\fr}, \operatorname{ModTensor}) \xrightarrow{\simeq}(\operatorname{ModTensor}^{2\operatorname{-dualizable}})^{\cong}$$ %unsure about the statement  but did not find clearr references /ANdrea
+$$	ev_{S^1}:\Fun^\otimes (\Bord_{3,2,1}^{\fr}, \operatorname{ModTensor}) \xrightarrow{\simeq}(\operatorname{ModTensor}^{2\operatorname{-dualizable}})^{\cong}$$ %unsure about the statement, did not find clearr references /ANdrea
 hence $\Zf(S^1)=\cat$ where $\cat$ is a modular tensor category, i.e. a special ribbon category which can be seen as a categorified commutative Frobenius algebra.
 	\end{enumerate}
 	
