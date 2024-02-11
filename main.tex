@@ -3361,7 +3361,9 @@ We can infer a few things about such TFTs:
 \end{ex}
 
 \begin{notat}
-    $\cat^\times \subset \cat$ subset of invertible objects and isomorphisms. We will later see that this is the underlying Picard groupoid (see \ref{PicardDualizable}) and synonymous with $(\cat^{dualizable})^{\cong}$ because of \ref{InvertibleDualizable}.
+    $\cat^\times \subset \cat$ subset of invertible objects and isomorphisms. We will later see that this is the
+     underlying Picard groupoid (see \ref{PicardDualizable}) %and synonymous with $(\cat^{dualizable})^{\cong}$
+      %because of \ref{InvertibleDualizable}.
 \end{notat}
 %dim(X \otimes Y) =  dim(X)dim (Y) = dim X = 1....?
 \begin{notat}
@@ -3713,7 +3715,8 @@ from other classifications, for example the one of 2-dimensional manifolds we ha
   determined by where it sends an object in $\Bord_{n}$ and thus TFTs are classified by where they send
    such $n-1$-manifold, without specifying how the functor acts on morphism, i.e. the bordisms. Moreover,
    given a dualizable object of $\cat$ one can construct a TFT since the equivalence goes also 
-   in the other direction, so one can say that TFTs are classified by the dualizable objects of their target category.
+   in the other direction, so one can say that TFTs are classified by the dualizable objects (up to isomorphism)
+    of their target category.
    
    Sketchily, our strategy to prove these results will be to find generators and relations for $\Bord_{n}$.
 \section{Classification of 1d-TFTs}\label{ClassificationOf1dTFTs}
@@ -3804,14 +3807,34 @@ and the relation (\ref{relations})
             are mapped to equal morphisms in $\cat$ must be also equal in $\Fun^{\otimes}(\Bord_{1,0},\cat)$
         \item $\mathcal{E}V_{\bullet_{+}}$ is full. Given an arbitrary isomorphism $f:X\to X'$
          in $(\cat^{\operatorname{fd}})^{\cong}$ we now show that there is an isomorphism $\alpha:\Zf\Rightarrow\Zf'$
-         in $\Fun^{\otimes}(\Bord_{1,0},\cat)$ such that $\alpha_{\bullet_{+}}=f$ %very confused by Freed's proof
-  
+         in $\Fun^{\otimes}(\Bord_{1,0},\cat)$ such that $\mathcal{E}V_{\bullet_{+}}(\alpha)=f$.
+         
+          %very confused by Freed's proof A/andrea  
     \end{enumerate}
 \end{proof}
-\begin{proof}[Sketch of alternative]
-An alternative proof relies on the fact that there are only 5 connected 1-dimensional manifolds with boundary
- (\ref{class1dBord}). One just has to determine where $\bullet_+$ and $\bullet_-$ are sent and the 5 possible
-  bordisms between disjoint unions thereof. 
+\begin{proof}
+An alternative proof relies proves the equivalence in the other direction and relies on the fact that since the functor
+ is symmetric monoidal one can just check what the TFT does only for 5 connected 1-dimensional manifolds with
+  boundary (\ref{class1dBord}). 
+  
+  First we need to determine where $\bullet_+,\bullet_-\in\Bord_{1,0}$ are sent. Since they are duals of one another,
+  they are dualizable objects and thus they are sent to $X,X^{\vee}\in\cat^{\operatorname{fd}}$,
+   e.g. finite dimensional vector spaces in the case of $\Vect_{k}$. An arbitrary objects of $M\in\Bord_{1,0}$
+   is a finite disjoint union of $\bullet_+,\bullet_-$, i.e. 
+   $$M=(\amalg_{I}\bullet_+)\amalg(\amalg_{J}\bullet_-)$$
+    where $I,J\subseteq\N$. Thanks to the symmetric monoidal functoriality of $\Zf$ we have that 
+    $$\Zf(M)^=(\amalg_{I}X)\amalg(\amalg_{J}X^\vee)$$
+     Now we need to understand where the 5 possible 1-bordisms are sent.
+  \begin{enumerate}
+  	\item $\Zf(\includegraphics[scale=0.18]{images/Classification 1TFT/identityplus.png})=id_{X}$
+  	\item$\Zf(\includegraphics[scale=0.18]{images/Classification 1TFT/identityminus.png})=id_{X^\vee}$
+  	\item $\Zf(\includegraphics[scale=0.17]{images/Classification 1TFT/evaluation.png})=ev_{X}$, hence $X\amalg X^\vee\xrightarrow{ev_{X}} \unit_{\cat}$ and more precisely for $v\in X\in\Vect_{k}$: $ev_{X}:(X,\lambda)\mapsto \lambda(v)$
+  	\item $\Zf(\includegraphics[scale=0.15]{images/Classification 1TFT/coevaluation.png})=coev_{X}$, hence $\unit_{\cat}\xrightarrow{coev_{X}}X\otimes X^\vee$ and more precisely for $\lambda\in k\in\Vect_{k}$, via the canonical isomorphism $X\otimes X^\vee\cong\operatorname{End}(X)$, $coev_X$ corresponds to taking the trace
+  	\item $\Zf(\includegraphics[scale=0.15]{images/Classification 1TFT/circle.png})=coev_X \circ ev_{X}$, hence $\unit_{\cat}\xrightarrow{coev_X \circ ev_{X}}\unit_{\cat}$, and by the cases for $\Vect_{k}$ treated before to taking the trace of the identity matrix, i.e. the dimension of $X$
+  \end{enumerate}
+  
+  Note that in the end everything is determined once one knows $X\in(\cat^{\operatorname{fd}})$, the TFT is uniquely
+  determined, up to isomorphism.
 \end{proof}
 
 This is the simplest case of an important guiding hypothesis in the field of TFTs, the cobordism hypothesis, see \ref{RemarkOnCobHypo}.
@@ -4129,9 +4152,13 @@ We now provide an outlook to some research programs that are tightly connected t
     \item open-closed TFTs (Lauda-Pfeiffer, \cite{Lauda_2008}): the idea is to enlarge the bordism category to include \textit{compact} 1d manifolds (not necessarily closed) and we then also have additional morphisms.
     %DRAWINGS
 
-    Now, what structure does the line segment have? It's still a Frobenius algebra! But it's not necessarily commutative.
-
-    \item extended TFTs (\cite{Freed_1994},\cite{Baez_1995},\cite{lurie2009classification},\cite{Calaque_2019}): one can extend TFTs downward, e.g. in 2-dimensional TFTs one might want to include the possibility of "composing" the line segment object with itself to get $S^1$. We would therefore modify the notion of symmetric monoidal category to be able to compose objects in $\Bord_{2,1,0}$. Thereby one gets a finer structure than a usual category, a.k.a. a $1$-category: objects, morphisms between objects and morphism between morphisms. The last ones are usually called 2-morphisms and the morphisms between objects are then called 1-morphisms. Objects, 1-morphisms and 2-morphisms are in this case 0 manifolds, 1-dimensional bordisms and 2 dimensional bordisms with corners. We then no longer have the structure of a category, but rather that of a weak 2-category, or bicategory. See \ref{strict nCat} for the definition of strict categories of any finite dimension, \ref{Bicategory} for the definition of a bicategory, and \ref{RemarkExtendedTFTs} for a more detailed outlook on extended TFTs.
+    Now, what structure does the line segment have? It's still a Frobenius algebra! But it is not necessarily
+     commutative.
+     
+      There is a more general result on the classification of such field theories by Kevin Costello
+       \cite{costello2006topological}.
+    
+        \item extended TFTs (\cite{Freed_1994},\cite{Baez_1995},\cite{lurie2009classification},\cite{Calaque_2019}): one can extend TFTs downward, e.g. in 2-dimensional TFTs one might want to include the possibility of "composing" the line segment object with itself to get $S^1$. We would therefore modify the notion of symmetric monoidal category to be able to compose objects in $\Bord_{2,1,0}$. Thereby one gets a finer structure than a usual category, a.k.a. a $1$-category: objects, morphisms between objects and morphism between morphisms. The last ones are usually called 2-morphisms and the morphisms between objects are then called 1-morphisms. Objects, 1-morphisms and 2-morphisms are in this case 0 manifolds, 1-dimensional bordisms and 2 dimensional bordisms with corners. We then no longer have the structure of a category, but rather that of a weak 2-category, or bicategory. See \ref{strict nCat} for the definition of strict categories of any finite dimension, \ref{Bicategory} for the definition of a bicategory, and \ref{RemarkExtendedTFTs} for a more detailed outlook on extended TFTs.
     %TODO monoidal category as bicategory already done by defining delooping of a monoidal category /Andrea
 
     \item cohomological TFTs (\cite{Witten:1990bs}): aka families of $(n-1)$ manifolds and families of $n$ bordisms. In practice, fix a space $X$, then objects are $M$ closed $(n-1)$ manifolds together with $M \to X$ and morphisms are bordisms $\Sigma$ together with $\Sigma \to X$.
@@ -5273,8 +5300,8 @@ How can we now get a
  ev_{\ast}:
  \Fun^\otimes (\Bord_{2,1,0}^{\fr}, \bat) \xrightarrow{\simeq} (\bat^{2\operatorname{-dualizable}})^{\cong} $$
 \item The other, although still conjectural\footnote{It was first stated by Kevin Walker and then some progress was made by Turaev, see \cite{Turaev+2016} for more on this.}, classifies 3d-TFTs via the evaluation on the circle
-$$	ev_{S^1}:\Fun^\otimes (\Bord_{3,2,1}^{\fr}, \cat) \xrightarrow{\simeq}(\cat^{2\operatorname{-dualizable}})^{\cong}$$ %unsure about the statement  but did not find clearr references /ANdrea
-where $\cat$ is a modular tensor category, i.e. a special ribbon category which can be seen as a categorified commutative Frobenius algebra.
+$$	ev_{S^1}:\Fun^\otimes (\Bord_{3,2,1}^{\fr}, \operatorname{ModTensor}) \xrightarrow{\simeq}(\operatorname{ModTensor}^{2\operatorname{-dualizable}})^{\cong}$$ %unsure about the statement  but did not find clearr references /ANdrea
+hence $\Zf(S^1)=\cat$ where $\cat$ is a modular tensor category, i.e. a special ribbon category which can be seen as a categorified commutative Frobenius algebra.
 	\end{enumerate}
 	
 	However, as one can infer from the aforementioned cobordism hypothesis, one can also extended downward to dimension $0$ any $n$-dimensional TFT and it was first proposed by Daniel Freed in \cite{Freed_1994}. To be precise, one nowadays does not want to restrict themselves just to $n$-categories but wants to work with$(\infty,n)$-categories, i.e. categories where morphisms of dimension strictly greater than $n$ are invertible, because of technical reasons\footnote{For example, the argument sketched in \cite{lurie2009classification} is crucially a proof by induction on $n$ and in order to understand the $n+1$-morphisms of $\Bord_{n+1}$ one must understand such $n+1$-morphisms in $\Bord_{n}$ which are absent if we treat $\Bord_{n}$ as an $n$-category and not $(\infty,n)$-category. In short, that would just not be possible without such $\infty$-categorical machinery.}. Sketchily, the $(\infty,n)$ category of bordisms will have points as objects, bordisms between points as 1-morphisms, bordisms between bordisms between points as 2-morphisms,..., bordisms between bordisms between bordisms...\footnote{There is exactly $n-1$ times 'between bordisms' after the first instance of 'bordisms', $n$-morphisms are morphisms between $(n-1)$-morphisms.} as $n$-morphisms, diffeomorphisms between $n$-dimensional bordisms as $n+1$-morphisms, isotopies between diffeomorphisms as $n+2$-morphisms, isotopies between isotopies between diffeomorphsims as $n+3$-morphisms, ... and so on infinitely many times. This is an example of a $(\infty,n)$-category, since isotopies of diffeomorphisms and diffeomorphisms are in fact invertible, whereas oriented bordisms not necessarily. One can find more on this higher category of bordisms in \cite{Calaque_2019}. 
