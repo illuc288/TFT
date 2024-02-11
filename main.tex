@@ -3717,8 +3717,11 @@ from other classifications, for example the one of 2-dimensional manifolds we ha
    in the other direction, so one can say that TFTs are classified by the dualizable objects (up to isomorphism)
     of their target category.
    
-   Sketchily, our strategy to prove these results will be to find generators and relations for $\Bord_{n}$.
-\section{Classification of 1d-TFTs}\label{ClassificationOf1dTFTs}
+   Sketchily, our strategy to prove these results will be to find generators and relations for $\Bord_{n}$ and then
+    check where they are sent to. It will follow that dualizable objects in $\cat$ already provide all the information
+    we need to know to determine what is the TFT in question: where the generators and relations of $\Bord_{n}$
+    are sent to.
+    \section{Classification of 1d-TFTs}\label{ClassificationOf1dTFTs}
 The main goal of this subsection is to prove that given an oriented 1d-TFT $\Zf:\Bord_{1,0}\to\cat$, $\Zf(\bullet)$ has a dual and conversely, given an object $X\in\cat$, in the codomain of the TFT, and its dual $(Y,ev_X,coev_X)$, we can reconstruct a 1d-TFT.
 \begin{thm}[Classification of 1-dimensional bordisms]\label{class1dBord}
 Any connected oriented 1-dimensional manifold with boundaries is diffeomorphic to one of 
@@ -3761,7 +3764,7 @@ This means that any 1-dimensional bordism (i.e. including disconnected ones)
     By coherence of the symmetric monoidal structure, especially how the braiding and the associatior 
     interact, $\Zf(M)$ is independent of the choice of diffeomorphism.
     Thanks to \ref{class1dBord}, we know that any oriented 1-dimensional bordism is diffeomorphic to a disjoint union
-     of the 5 manifolds in \ref{all1bord}.
+     of the manifolds in \ref{class1dBord}.
 \end{proof}
 
 \begin{rem}
