@@ -3765,7 +3765,7 @@ and the relation (\ref{relations})
 \begin{thm}\label{thm:classif_of_1dtft}
     Let $\cat$ be a symmetric monoidal category. Then the map\footnote{There is unfortunately a notational clash between what we called the evaluation map for dualizable objects, denoted by $ev$, and what we also call in this case evaluation map, denoted by $\mathcal{E} V$. In the latter case, we are referring to a similar convention we use for example in topology when we call a map of this genre $Map(\ast,X)\to X$ an evaluation map. The intuition is that we feed an element of the domain into a map, a functor in our case, and see what happens, "evaluate it".} 
     \begin{align}
-    	\TFT_{1,0}^{or}=\Fun^{\otimes}(\Bord_{1,0}^{or},\cat)&\xrightarrow{\mathcal{E} v}_{\bullet_{+}}(\cat^{\operatorname{fd}})^{\cong} \\
+    	\TFT_{1,0}^{or}=\Fun^{\otimes}(\Bord_{1,0}^{or},\cat)&\xrightarrow{\mathcal{E} v_{\bullet_{+}}}(\cat^{\operatorname{fd}})^{\cong} \\
     	\Zf&\mapsto \Zf(\bullet_+)
     \end{align}
     is a symmetric monoidal equivalence of groupoids. 
@@ -3777,14 +3777,14 @@ and the relation (\ref{relations})
 	\arrow["{\simeq}", from=1-1, to=3-1]
 	\arrow["i"', hook, from=3-1, to=2-2]
 	\arrow[dashed, from=1-1, to=2-2]
-	\arrow["{\mathcal{E}v}", from=1-1, to=1-3]
+	\arrow["{\mathcal{E}v_{\bullet_{+}}}", from=1-1, to=1-3]
 	\arrow["j"', hook, from=2-2, to=1-3]
 \end{tikzcd}\]
 \end{thm}
-\noindent The image of $\mathcal{E}v$ is in $(\cat^{\operatorname{fd}})^{\cong}$, since 
+\noindent The image of $\mathcal{E}v_{\bullet_{+}}$ is in $(\cat^{\operatorname{fd}})^{\cong}$, since 
 \begin{enumerate}
     \item $\TFT_{1,0}^{\orient}$ is a groupoid, and functors preserve isomorphisms
-    \item Every object in $\Bord_{1,0}^{\orient}$ is dualizable and, because of functoriality, the image of a dualizable object $(\bullet_+)$ remains a dualizable object $(\Zf(\bullet_+)$.
+    \item Every object in $\Bord_{1,0}^{\orient}$ is dualizable and, because of functoriality, the image of a dualizable object remains a dualizable object.
 \end{enumerate}
 %Note that there's nothing special about dimension 1 here. We then have such an evaluation functor into $(\cat^{\operatorname{fd}})^{\cong}$ in every dimension, i.e. from all $\TFT_{1,0}^{or}$. Dimension 1 is then special because this map is actually an equivalence. %%% Can't understand what is meant here /Andrea
 \begin{proof}
@@ -3830,11 +3830,11 @@ An alternative proof relies proves the equivalence in the other direction and re
   	\item$\Zf(\includegraphics[scale=0.18]{images/Classification 1TFT/identityminus.png})=id_{X^\vee}$
   	\item $\Zf(\includegraphics[scale=0.17]{images/Classification 1TFT/evaluation.png})=ev_{X}$, hence $X\amalg X^\vee\xrightarrow{ev_{X}} \unit_{\cat}$ and more precisely for $v\in X\in\Vect_{k}$: $ev_{X}:(X,\lambda)\mapsto \lambda(v)$
   	\item $\Zf(\includegraphics[scale=0.15]{images/Classification 1TFT/coevaluation.png})=coev_{X}$, hence $\unit_{\cat}\xrightarrow{coev_{X}}X\otimes X^\vee$ and more precisely for $\lambda\in k\in\Vect_{k}$, via the canonical isomorphism $X\otimes X^\vee\cong\operatorname{End}(X)$, $coev_X$ corresponds to taking the trace
-  	\item $\Zf(\includegraphics[scale=0.15]{images/Classification 1TFT/circle.png})=coev_X \circ ev_{X}$, hence $\unit_{\cat}\xrightarrow{coev_X \circ ev_{X}}\unit_{\cat}$, and by the cases for $\Vect_{k}$ treated before to taking the trace of the identity matrix, i.e. the dimension of $X$
+  	\item $\Zf(\includegraphics[scale=0.15]{images/Classification 1TFT/circle.png})=coev_X \circ ev_{X}$, hence $\unit_{\cat}\xrightarrow{coev_X \circ ev_{X}}\unit_{\cat}$, and, following the cases for $\Vect_{k}$ treated in the previous two points, to taking the trace of the identity matrix, i.e. the dimension of $X$
   \end{enumerate}
   
-  Note that in the end everything is determined once one knows $X\in(\cat^{\operatorname{fd}})$, the TFT is uniquely
-  determined, up to isomorphism.
+  The moral of the story is that a TFT is uniquely
+  determined, up to isomorphism, once one knows $X\in(\cat^{\operatorname{fd}})$.
 \end{proof}
 
 This is the simplest case of an important guiding hypothesis in the field of TFTs, the cobordism hypothesis, see \ref{RemarkOnCobHypo}.
