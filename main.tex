@@ -1368,7 +1368,8 @@ The aim of this chapter is to prove the aforementioned classification of compact
     \item if $M$ is oriented, $M$ is classified by its genus $g$. In particular $M$ it is diffeomorphic to $\Sigma_g:=T\,\# \dots\#\,T$, the connected sum of $g$-tori, where in particular $\Sigma_0=S^2$.
     \item Instead if $M$ is non orientable\footnote{see \url{https://en.wikipedia.org/wiki/Genus_(mathematics)} for what is meant by genus of a non orientable surface}, $M$ is diffeomorphic to $g$ copies of the real projective plane, i.e.  $\R P^2\,\# \dots \#\,\R P^2$.
 \end{itemize} 
-%One can find a thorough covering of this result in \cite{Hirsch1976}.
+
+One can find a thorough covering of this result in \cite{Hirsch1976}.
 
 \noindent In addition, we will also find a classification of compact 2 manifolds with boundary (which we will simply call \textit{surfaces}). To do it we will need Morse theory. What is the idea? Given a surface $M$ (it works in greater generality but now we're only interested in surfaces), find a map $f: M \to \R$ which is "nice" is a way we'll specify later on.
 Then by analizing properties of $f$ we can recover the topology of the surface (i.e. the surface up to diffeomorphism). 
@@ -1873,7 +1874,7 @@ $$\pi_{\bullet}(\mathds{S})=\bigoplus_{n\geq 0}\pi_{n}(\mathds{S})$$
   $$\Omega^{fr}_11 \cong\Z_{504}$$
   $$\Omega^{fr}_15 \cong\Z_{480}\oplus\Z_2$$
 \end{ex}
-
+%Would be cool to add something about Thom spectrum and Galatius-Madsen-Tillmann-Weiß theorem
 
 % -------------------------------------------------------------
 % --------------------- LECTURE 9 22/11 -----------------------
@@ -2680,7 +2681,11 @@ Having characterized satisfactorily enriched categories we can now define what i
         \item The composition of the underlying $\Hom$-\underline{sets} is bilinear with respect to $+$, meaning that $\circ$ of $\Hom$-sets distributes over $+$ of $\Hom$-abelian groups i.e. $$f\circ(g+h)=(f\circ g)+(f\circ h)$$ $$(f+g)\circ h=(f\circ h)+(f\circ h)$$
     \end{enumerate}
 \end{defn}
-
+\begin{rem}
+Note that in Ab-enriched categories there is an object $0$ such that it for any $X\in\cat$ there is a unique
+ morphism $0\to X$ and a unique morphism $X\to 0$. This means that 0 is an initial and final object,
+ such objects are usually called zero objects.
+\end{rem}
 \begin{ex}
 \hfill
     \begin{itemize}
@@ -2688,7 +2693,20 @@ Having characterized satisfactorily enriched categories we can now define what i
         \item Ab is an Ab-category.
     \end{itemize}
 \end{ex}
-%Actually I think we need abelian categories for homological algebra, which is more structure than just ab enriched.
+
+\begin{defn}[Additive category]
+A category $\cat$ is additive if it is an Ab-enriched category such that it has finite coproducts.
+\end{defn}
+Note that in an Ab-enriched category, finite coproducts coincide with finite products, any finite product is a
+finite coproduct and viceversa.
+\begin{defn}[Abelian category]\label{AbelianCat}
+A category $\cat$ is abelian if it is an additive category such that 
+\begin{itemize}
+	\item every morphism has kernel and cokernel
+	\item every monomorphism is a kernel and every epimorphism is a cokernel, or equivalently,
+	the evident map $\operatorname{Coim}(f)\to \operatorname{Im}(f)$ is an isomorphism
+\end{itemize}
+\end{defn}
 \begin{rem}
     These categories are very important for homological algebra, a field with important applications to many fields, e.g. algebraic geometry (in particular intersection theory) and algebraic topology. The standard reference is \cite{weibel1994introduction}, check out part I of \cite{Mazel-Gee2024} for a modern introduction to the subject geared towards higher categorical generalizations. Such higher categorical generalizations are of major interest to us in the context of TFTs, we will later sketch for example how they can be used to calculate topological phases of matter (\ref{Spectra Phases of Matter}). 
 \end{rem}
@@ -3646,7 +3664,7 @@ We chose 'fd' because it can stand for two things:
 	 in the next subsection
 \end{itemize}
 \end{notat}
-\subsubsection{Left and right duals in higher categories \extra} % (fold)
+\subsection{DUalizability in higher categories \extra} % (fold)
 \label{ssub:left_and_right_duals_in_higher_categories}
 Equivalently, a left/right dual object $X$ in a monoidal category $\cat$ can also be characterized as a left/right adjoint (see \ref{AdjFun}) when considered as a morphism in the delooping (see \ref{DeloopingMonCat}) bicategory (see \ref{Bicategory}) $\mathbf{B}\cat$ of $\cat$. This makes sense because:
 \begin{itemize}
@@ -3731,29 +3749,6 @@ This means that any 1-dimensional bordism (i.e. including disconnected ones)
  \emph{symmetric monoidal} functor, it means that we shall just check where such generators and relations are sent,
  see \ref{AlternativeProof1d}.
  
-\begin{lem}\label{Surjectivity}
-    Let $X\in\cat$ be a dualizable object with $Y$ as dual. Then the following determines a 1d-TFT:
-     $$\Zf(\bullet_+):=X$$ 
-    $$\Zf(\bullet_-):=Y$$
-     $$\Zf(\includegraphics[scale=0.17]{images/Classification 1TFT/evaluation.png}):=ev_X$$
-      $$\Zf(\includegraphics[scale=0.17]{images/Classification 1TFT/coevaluation.png}):=coev_X$$
-\end{lem}
-\begin{proof}
-    Set $\Zf( \bullet_{+})=X$ where $X\in\cat^{\operatorname{fd}}$ and consequently $\Zf(\bullet_{-})=X^\vee$ 
-    since we need to respect the symmetric monoidality of $\Zf$ and symmetric monoidal functors must send
-    dual objects in the source category to dual objects in the target category.
-    
-    An arbitrary compact 0-dimensional manifold
-     $M\in\Bord_{1,0}$
-    is a finite disjoint union of $\bullet_+,\bullet_-$. Thus, by a diffemorphism permuting the points 
-    $$M\cong(\amalg_{I}\bullet_+)\amalg(\amalg_{J}\bullet_-)$$
-    where $I,J\subseteq\N$. We set $\Zf$ to behave as follows, i.e. being symmetric monoidal
-    $$\Zf(M):=(\bigotimes_{I}X)\otimes(\bigotimes_{J}X^\vee)$$
-    By coherence of the symmetric monoidal structure, especially how the braiding and the associatior 
-    interact, $\Zf(M)$ is independent of the choice of diffeomorphism.
-    Thanks to \ref{class1dBord}, we know that any oriented 1-dimensional bordism is diffeomorphic to a disjoint union
-     of the manifolds in \ref{class1dBord}.
-\end{proof}
 
 \begin{rem}
     By $(\cat^{{\operatorname{fd}}})^{\cong}$ we denote the restriction of a symmetric monoidal category on its dualizable objects and its isomorphisms, said briefly: a restriction on the underlying Picard groupoid because in any symmetric monoidal groupoid an object is dualizable if and only if it is invertible (see \ref{PicardDualizable}).
@@ -3788,9 +3783,7 @@ This means that any 1-dimensional bordism (i.e. including disconnected ones)
 	
     We need to prove three things to demonstrate that $\mathcal{E}V_{\bullet_{+}}$ is an equivalence: that it is full, faithful and essentially surjective:
     \begin{enumerate}
-        \item From lemma \ref{Surjectivity} it follows that $\mathcal{E}V_{\bullet_{+}}$ is surjective, not even surjective.
-        Even
-        more trivially, note that since $\mathcal{E}V_{\bullet_{+}}$ lands in $(\cat^{\operatorname{fd}})^{\cong}$
+        \item Trivially, note that since $\mathcal{E}V_{\bullet_{+}}$ lands in $(\cat^{\operatorname{fd}})^{\cong}$
         then it must be essentially surjective since any two objects are isomorphic.
         \item It is faithful: let $\Zf,\Zf'\in \TFT_{1,0}^{or}$ and $\alpha,\beta:\Zf\Rightarrow\Zf'$ be natural
          transformations between them and hence isomorphisms (see \ref{TFTsareGRPDS}). Suppose that
@@ -3858,12 +3851,43 @@ This means that any 1-dimensional bordism (i.e. including disconnected ones)
     the circle is just a composition of evaluation and a coevaluation with a braiding in between. Note that
     the commutativity of the circle means that $\Zf(S^1)=\Zf'(S^1)$.
 \end{proof}
+\begin{rem}
+	The author of this part of the notes was very confused for a long time 
+	by the proof just provided. They cannot understand 
+	Freed's line of argument when it comes to the proof of the fullness of $\mathcal{E}V_{\bullet_{+}}$, probably 
+	because of	notational choices and some typos. Hence, we now give 2 alternative proofs, in order to make it 
+	as clear as possible.
+\end{rem}
+%modified a bit from the lecture, but I am confident it makes sense /andrea
+\begin{thm}[Alternative formulation of the classification of 1TFTs]
+	Let $X\in\cat$ be a dualizable object. Specifying $\Zf(\bullet_{+})=X$ determines a 1d-TFT.
+\end{thm}
+%\begin{proof}[Proof of the classification of 1-TFTs 2.0]
+	
+%	Set $\Zf( \bullet_{+})=X$ where $X\in\cat^{\operatorname{fd}}$ and $\Zf(\bullet_{-})=Y$ 
+	 %since we need to respect the symmetric monoidality of $\Zf$ and symmetric monoidal functors must send
+	%dual objects in the source category to dual objects in the target category.
+	%	$$\Zf(\bullet_+):=X$$ 
+%	$$\Zf(\bullet_-):=Y$$
+%	$$\Zf(\includegraphics[scale=0.17]{images/Classification 1TFT/evaluation.png}):=ev_X$$
+%	$$\Zf(\includegraphics[scale=0.17]{images/Classification 1TFT/coevaluation.png}):=coev_X$$
+%	An arbitrary compact 0-dimensional manifold
+%	$M\in\Bord_{1,0}$
+%	is a finite disjoint union of $\bullet_+,\bullet_-$. Thus, by a diffemorphism permuting the points 
+%	$$M\cong(\amalg_{I}\bullet_+)\amalg(\amalg_{J}\bullet_-)$$
+%	where $I,J\subseteq\N$. For any $M\in\Bord_{1,0}$, $\Zf$ to behave as follows, i.e. is symmetric monoidal
+%%	$$\Zf(M):=(\bigotimes_{I}X)\otimes(\bigotimes_{J}Y)$$
+%	By coherence of the symmetric monoidal structure, especially how the braiding and the associatior 
+%%	Thanks to \ref{class1dBord}, we know that any oriented 1-dimensional bordism is diffeomorphic to a disjoint union
+%	of the manifolds in \ref{class1dBord}. Since $\Zf$ is symmetric monoidal, it is sufficient to determine
+%\end{proof}
 
-\begin{proof}\label{AlternativeProof1d}
+\begin{proof}[Proof of the classification of 1-TFTs 2.0]
 An alternative proof relies proves the equivalence in the other direction and relies on the fact that since the functor
  is \emph{symmetric} monoidal one can just check what the TFT does only for 5 of all the possible 
- connected 1-dimensional bordisms (\ref{all1bord}), not considering what happens for the other 3 ones with the
-  reversed orientations. We took it from \cite[Example 1.1.9]{lurie2009classification}
+ connected 1-dimensional bordisms (\ref{class1dBord}), not considering what happens for the other 3 ones with the
+  reversed orientations without loss of generality because $\Bord_{1,0}$ is symmetric monoidal.
+   We took it from \cite[Example 1.1.9]{lurie2009classification}
   
   First we need to determine where $\bullet_+,\bullet_-\in\Bord_{1,0}$ are sent. Since they are duals of one another,
   they are dualizable objects and thus they are sent to $X,X^{\vee}\in\cat^{\operatorname{fd}}$,
@@ -3892,24 +3916,19 @@ An alternative proof relies proves the equivalence in the other direction and re
   
 \end{proof}
 \begin{rem}
-	The author of this part of the notes was very confused for a long time 
-	 by both the proofs just provided. They cannot understand 
-	Freed's line of argument when it comes to the proof of the fullness of $\mathcal{E}V_{\bullet_{+}}$, probably 
-	 because of	notational choices and some typos. Lurie considers 5 possible
-	 bordisms and not all 8, thereby excluding some possible orientations. However, Lurie's argument is without loss of
-	  generality because it implicitly relies 
-	 on the \emph{symmetric} monoidality of $\Bord_{1,0}$ since, for instance, one can get \includegraphics[width=0.7cm]{images/Lecture 12/coevminusplus.png}  by composing \includegraphics[width=0.7cm]{images/Lecture 12/coevplusminus.png} with a
-	  braiding.
+Lurie considers 5 possible
+bordisms and not all 8, thereby excluding some possible orientations. However, Lurie's argument is without loss of
+generality because it implicitly relies 
+on the \emph{symmetric} monoidality of $\Bord_{1,0}$ since, for instance, one can get \includegraphics[width=0.7cm]{images/Lecture 12/coevminusplus.png}  by composing \includegraphics[width=0.7cm]{images/Lecture 12/coevplusminus.png} with a
+braiding. 
+
+Anyways, we hold that there is a clearer way to demonstrate this result in a similar vein, which relies on the following
+ theorem.
 \end{rem}
-
-Anyways, we hold that there is a clearer way to demonstrate this result, which relies on the following theorem.
-
 \begin{lem}
 All 1-dimensional bordisms are generated by the generators: 
 \[\includegraphics[width=7cm]{images/Lecture 12/generators.png} \]
-		
 
-	
 and the relation 
 
 \[\includegraphics[width=3cm]{images/Lecture 12/relations.png} \]	
@@ -3925,10 +3944,10 @@ We need to show that there is a way of gluing our generators and the braiding re
 \end{enumerate}
 \end{proof}
 
-\begin{proof}[Alternative proof of the classification of 1-TFTs]
- In this proof we rely on the lemma we just proved. We need to show where the generators and the relation
+\begin{proof}[Proof of the classification of 1-TFTs 2.1 ]
+ In this proof we rely on the lemma we just proved. We need to show where the objects, the generators and the relation
   are sent to. Fortunately, we showed already in the proof took from Lurie's paper (\ref{AlternativeProof1d}) where
-   the generators are sent to. It remains to show where the braiding relation
+   the objects and our generators are sent to. It remains to show where the braiding relation
     \includegraphics[width=0.54cm]{images/Lecture 12/relations.png} is sent to.
     Since $\Zf$ is a symmetric monoidal functor, the braiding in $\Bord_{1,0}$ is sent to the braiding in the target
      category $\cat$.
@@ -5400,35 +5419,88 @@ Notation: $L$ framed $M_L:= M_{L,\phi}$ with $\phi$ as above.
 The last example is important because it shows that multiple framed links can give the same 3 manifold. However we have the following result:
 \begin{thm}
     [Lickorice-Wallace]
-    Any connected closed oriented 3 manifold can be obtained as $M_L$ for some framed link $L$ in $S^3$.
+    Any connected closed oriented 3-manifold can be obtained as $M_L$ for some framed link $L$ in $S^3$ via surgery.
 \end{thm}
 We can therefore try to define a manifold invariant by defining it on framed links, but we have to make sure that links that give the same 3 manifold have the same invariant.
 
 \begin{thm}
-    [Kirby calculus]
-    $M_L \cong M_{L'}$ if and only if $L'$ is obtained from $L$ by a finite sequence of \textit{Kirby moves} which are as follows:
-    %DRAWING
+    [Kirby's theorem]
+    $M_L \cong M_{L'}$ if and only if $L'$ is obtained from $L$ by a finite sequence of isotopies and \textit{Kirby moves} which are as follows:
+\[\includegraphics[width=6cm]{images/Final Lecture/KIRBY.png}\]
 \end{thm}
 
-How can we now get a 
-%Reshetikin turaev invariant, from kassel russo turaev
+We can now get a Reshetikin-Turaev invariant, see for details \cite{KasselRossoTuraev97}. %TODO TBD
 
+\begin{rem}
+If $L_1$ and $L_2$ are not linked, then $M_{L_{1}\amalg L_{2}}=M_{L_1}\#M_{L_2}$
+Moreover, $\tau(M_{L_1}\#M_{L_2})=c\dot \tau(M_{L_1})\cdot\tau(M_{L_2})$ where $c$ is a constant depending on the
+modular tensor category
+\end{rem}
+We can give a \textbf{rough sketch} of the following theorem
+\begin{thm}[Turaev]
+For any modular tensor category we have an oriented 3d TFT which generalizes the Reshetikin-Turaev invariants.
+\end{thm}
+A modular tensor category is hard to define. The following definition is from \cite{RunkelALG}.
+\begin{defn}[Modular Tensor Category]
+A modular tensor category is a strict $k$-linear\footnote{I.e. $\Vect_{k}$-enriched.} abelian semisimple ribbon category
+such that the index set is finite, every simple object is absolutely simple, and for which the $s$-matrix 
+$s=(s_{i,j})_{i,j\in I}$ with entries 
+$$s_{i,j}:=s_{U_{i},U_{j}}=\operatorname{tr}(c_{U_{i},U_{j}}\circ c_{U_{j},U_{i}})$$
+is non-degenerate. An element $\mathcal{D}\in k$ is called rank of a modular tensor category $\cat$ if 
+$$\mathcal{D}^2=\Sigma_{i\in I}(dim (U_i))^2$$
+Given a simple object $U_i\in \cat$, also $U_{i}^{\vee}$ is simple.
+\end{defn}
+See \ref{AbelianCat} for the definition of abelian category.
+\begin{rem}
+	In the original definition by Turaev (\cite{Turaev+2016}, \cite{TuraevMODTENSOR}) some conditions were
+	 weaker. It was enriched over Mod$_R$, with $R$ being a commutative ring instead of a field $k$,
+	 semisimplicity was replaced by the weaker dominance property and instead of it being abelian, it was
+	 just additive.
+\end{rem}
+\begin{ex}
+\begin{itemize} \hfill
+\item $\Vect_k$
+\item $U_{q}sl_2-mod^{\operatorname{fd}}$ for $q$ a root of unity
+\end{itemize}
+\end{ex}
+\begin{defn}[Simple object]
+An object $U\in\cat$ where $\cat$ is an abelian category is simple if it has no non-trivial subobjects, i.e. 
+any injection $V\hookrightarrow U$ is either the 0 object or an isomorphism.
+\end{defn}
+\begin{defn}[Semisimple object]
+An object $U\in\cat$ where $\cat$ is an abelian category is semisimple if it is isomorphic to a direct sum of 
+simple objects.
+\end{defn}
+\begin{defn}[Semisimple category]
+An abelian category is semisimple if it only has semisimple objects.
+\end{defn}
+\begin{defn}[Absolutely simple object]
+	An object $U\in\cat$ where $\cat$ is an abelian $k$-linear category is called absolutely simple if and only if 
+	$\Hom(V,V)=k \id_V$. If $\cat$ is semisimple and $k$ algebraically closed, then this is equivalent to a simple 
+	object.
+\end{defn}
 \section{Rough sketch of the cobordism hypothesis and extended topological field theories \extra}\label{sub:outlook_on_the_cobordism_hypothesis_and_extended_topological_field_theories}
  Recall that a TFT is
  \begin{itemize}
 \item a way to organize invariants of smooth manifolds and compute them
 \item a way to make (some) quantum field theories mathematically rigorous
  \end{itemize} 
- From the point of view of mathematics one might ask if we classify TFTs as we did for dimension 1 and 2 for any dimension. From the point of view of physics one might ask if a TFT describing a certain physical system can be determined by the behavior of the system around a point, i.e. if it is fully local. The answer to these questions is yes and is called the cobordism hypothesis.
+ From the point of view of mathematics one might ask if we classify TFTs as we did for dimension 1 and 2 for any dimension $n$. From the point of view of physics one might ask if a TFT describing a certain physical system can be determined by the behavior of the system around a point, i.e. if it is fully local. The answer to these questions is yes and is called the cobordism hypothesis.
 
 \begin{rem}\label{RemarkOnCobHypo}
  The cobordism hypothesis informally states that any TFT, at any dimension, can be classified/constructed just by observing where the TFT in question sends the point\footnote{We will soon see a proof of the 1-dimensional case \ref{ClassificationOf1dTFTs}.}, i.e. a bit more rigorously
 	\begin{thm}[Cobordism Hypothesis]
 		Let $\cat$ be a monoidal $(\infty,n)$-category with duals\footnote{We later give a definition of $(\infty,n)$-category with duals, see \ref{HigherMonCatDuals}.}. Then the evaluation functor on a point, i.e. the functor sending $\Zf\mapsto \Zf(\ast)$, induces an equivalence 
-		$$ev_{\ast}:\Fun^{\otimes}(\Bord_{n},\cat)\to (\cat^{\operatorname{fd}})^{\simeq}$$
-		where $\cat^{\operatorname{fd}}$ is the full\footnote{i.e. there are all morphisms between the objects of the subcategory, i.e. no morphism from the category is forgotten.} full monoidal $(\infty,n)$-category with duals\footnote{We later give a definition of $(\infty,n)$-category with duals, see \ref{HigherMonCatDuals}.}, i.e. we forget about all non-dualizable objects, and $\cat^{\simeq}$ is the maximal underlying groupoid of $\cat$, i.e. we forget about all morphisms that are not invertible.
+		$$ev_{\ast}:\Fun^{\otimes}(\Bord_{n},\cat)\to (\cat^{\operatorname{fd}})^{\cong}$$
+		where $\cat^{\operatorname{fd}}$ is the full\footnote{i.e. there are all morphisms between the objects of the subcategory, i.e. no morphism from the category is forgotten.} monoidal $(\infty,n)$-category with duals\footnote{We gave a definition of $(\infty,n)$-category with duals, see \ref{HigherMonCatDuals}.}, i.e. we
+		 forget about all non-dualizable objects, and $\cat^{\cong}$ is the maximal underlying groupoid of $\cat$, i.e. we
+		  forget about all morphisms that are not invertible.
 	\end{thm}
-	It was formulated by James Dolan and John Baez in \cite{Baez_1995} and now we have only partial proofs, \cite{lurie2009classification}, \cite{ayala2017cobordism} and \cite{grady2022geometric}. The one by Ayala and Francis relies has a different strategy to the first sketch by Lurie and relies on an unproved conjecture regarding factorization homology, i.e. a homology theory for framed $n$-manifolds with coefficients in $E_n$-algebras (see \ref{EAlg}).
+	It was formulated by James Dolan and John Baez in \cite{Baez_1995} and now we have only partial proofs,
+	 \cite{lurie2009classification}, \cite{ayala2017cobordism} and \cite{grady2022geometric}. The one by Ayala and
+	  Francis relies has a different strategy to the first sketch by Lurie and relies on an unproved conjecture regarding
+	   factorization homology, i.e. a homology theory for framed $n$-manifolds with coefficients in $E_n$-algebras (see
+	    \ref{EAlg}).
 	\end{rem}
 \begin{rem}[Remark on Extended TFTs]\label{RemarkExtendedTFTs}
 	After defining the cobordism hypothesis in this manner, a natural question is: how can TFTs of any dimension greater than 1 be classified by evaluating them at a point? If we stick to our definition, there are no points in any category of bordisms of dimension greater than 1. Fortunately, one can \emph{extend} the bordism category, and consequently TFTs, and also talk about lower dimensions. Take as an example $\Bord^{or}_{2,1}$. As we defined the bordism category, in this case the lowest dimension is 1, the objects are lines, not points. Nevertheless, one could treat the category of 2 dimensional bordisms as a 2-category, more specifically as a bicategory (see \ref{Bicategory})\footnote{Since 1-morphisms do not compose strictly, but up to an appropriate notion of isomorphism.}, $\Bord_{2,1,0}$ where objects are disjoint unions of points, 1-morphisms are oriented cobordisms between points and 2-morphisms are cobordisms between the 1-morphisms; and then define 2d-TFTs as an
