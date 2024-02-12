@@ -4951,14 +4951,22 @@ We now finally get to the Jones polynomial, found by Jones in 1984, and this pre
 \begin{defn}
     The Kauffmann bracket of a link diagram $D$ is a Laurent polynomial $\langle D\rangle \in \Z[A,A^{-1}]$ defined by
     \begin{itemize}
-        \item $\langle 0\rangle = 1$
-        \item ...%TODO complete
+        \item $\langle \includegraphics[width=0.4cm]{images/Lecture 19/unknot.png}\rangle = 1$
+        \item $\langle \includegraphics[width=0.4cm]{images/Lecture 19/cross.png}\rangle=A\cdot\langle \includegraphics[width=0.4cm]{images/Lecture 19/1Kauffmann.png}\rangle + A^{-1}\cdot\langle \includegraphics[width=0.4cm]{images/Lecture 19/2Kauffmann.png}\rangle $
+        \item $\langle L\cup \includegraphics[width=0.4cm]{images/Lecture 19/unknot.png}\rangle=(-A^{2}-A^{-2})\langle L\rangle$
     \end{itemize}
 \end{defn}
 \begin{ex}
-    ....
-    %DRAWING
-\end{ex}
+   $$\langle\includegraphics[width=0.7cm]{images/Lecture 19/ooHighlighted.png}\rangle= A\cdot\langle \includegraphics[width=0.7cm]{images/Lecture 19/oo1Kauffmann.png}\rangle + A^{-1}\cdot\langle \includegraphics[width=0.7cm]{images/Lecture 19/oo2Kauffmann.png}\rangle =$$
+   $$=A(-A^{2}-A^{-2})\langle\includegraphics[width=0.4cm]{images/Lecture 19/unknot.png}\rangle + A^{-1}\langle\includegraphics[width=0.4cm]{images/Lecture 19/unknot.png}\rangle=$$
+   $$=-A^3-A^{-1}+A^{-1}=-A^3$$
+   There is an issue:
+   $$\langle\includegraphics[width=0.7cm]{images/Lecture 19/oo.png}\rangle=\langle\includegraphics[width=0.55cm]{images/Lecture 19/Laststepkauffmann.png}\rangle$$
+   and the last image is equivalent to the unknot, with an application of the first Reidemeister move, but
+   $$\langle\includegraphics[width=0.55cm]{images/Lecture 19/Laststepkauffmann.png}\rangle=A^3$$
+   and 
+   $$\langle \includegraphics[width=0.4cm]{images/Lecture 19/unknot.png}\rangle = 1$$
+   \end{ex}
 This shows that the Kauffmann bracket is \textit{not} a knot invariant, in particular it is not invariant under R1. It \textit{is} however invariant under R2 and R3, in fact the coefficients in the definition of the bracket are exactly the ones that preserve R2 and R3.
 
 From now on: links are oriented, meaning $S^1$ comes with an orientation. So we can talk about oriented link invariants, for which we have oriented Reidemeister moves. 
