@@ -4926,9 +4926,11 @@ In order to do this we introduce Reidemeister moves, which are the following loc
 \end{itemize}
 
 \begin{thm}[Reidemeister]\label{ReidemeisterTHM}
-    Two links are equivalent if and only if their link diagrams are the same up to finitely many Reidemeister moves and isotopy in $\R^2$. 
+    Two links are equivalent if and only if their link diagrams are the same up to finitely many Reidemeister
+     moves and isotopies in $\R^2$. 
 \end{thm}
-This theorem is very important because it tells us that the link diagrams have all the information of the equivalence class of the link, so to determine (in)equivalence we can work with link diagrams.
+This theorem is very important because it tells us that the link diagrams have all the information of the
+ equivalence class of the link, so to determine (in)equivalence we can work with link diagrams.
 
 A first knot invariant is the "number of tricolorings": we color a link diagram with three colors according to the following rules
 \begin{itemize}
@@ -4936,12 +4938,14 @@ A first knot invariant is the "number of tricolorings": we color a link diagram 
     \item at each crossing either all three strands are the same color, or they're all different.
 \end{itemize}
 \begin{ex}
-    There are always three trivial colorings, the monochromatic ones. For the unknot, these are the only three tricolorings, while for the trefoil there is an additional one:
-    %DRAWING
+    There are always three trivial colorings, the monochromatic ones. For the unknot, these are the only three tricolorings
+    \[\includegraphics[width=5cm]{images/Lecture 19/Unknotcolors.png}\]
+    while the trefoil has an additional one:
+   \[\includegraphics[width=7cm]{images/Lecture 19/Trefoilcolors.png}\]
 
     This shows that the trefoil knot is \textit{not} equivalent to the unknot.
 \end{ex}
-In order to prove that it is a knot invariant one should check that it is invariant under Reidemeister moves.
+In order to prove that this is a knot invariant one should check that it is invariant under Reidemeister moves.
 
 We now finally get to the Jones polynomial, found by Jones in 1984, and this presentation is from Kauffmann in 1987. The motivation for it comes from operator algebras and the braid group representations. 
 \begin{defn}
@@ -5440,7 +5444,7 @@ We can give a \textbf{rough sketch} of the following theorem
 \begin{thm}[Turaev]
 For any modular tensor category we have an oriented 3d TFT which generalizes the Reshetikin-Turaev invariants.
 \end{thm}
-A modular tensor category is hard to define. The following definition is from \cite{RunkelALG}.
+Modular tensor categories are hard to define. The following definition is from \cite{RunkelALG}.
 \begin{defn}[Modular Tensor Category]
 A modular tensor category is a strict $k$-linear\footnote{I.e. $\Vect_{k}$-enriched.} abelian semisimple ribbon category
 such that the index set is finite, every simple object is absolutely simple, and for which the $s$-matrix 
