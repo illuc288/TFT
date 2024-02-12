@@ -574,30 +574,14 @@ In some contexts, it can be interesting to do calculus on a manifold. In order t
 \hfill 
 \begin{enumerate}
 	\item $D^n = \{x \in \R^n \mid  \ ||x||\leq 1\}$ the $n$ dimensional disk, which has a sphere as boundary: $\de D^n = S^{n-1}$
-	\item Consider 2 dimensional \emph{open} disks, i.e. $D^2=\{x\in\R^2\mid \ ||x||<1\}$. We can remove such shapes from the sphere and get the manifold $S^{2} \setminus D^{2}_{1} \amalg D_2^2 \amalg D^2_3$ which we can visualize in different ways.
+	\[\includegraphics[width=5cm]{images/Lecture 2/Boundary Disk.png} \]
+	\item Consider 2 dimensional \emph{open} disks, i.e. $D^2=\{x\in\R^2\mid \ ||x||<1\}$. We can remove such shapes
+	 from the sphere and get the manifold $S^{2} \setminus D^{2}_{1} \amalg D_2^2 \amalg D^2_3$ which we can
+	  visualize in different ways. \[\includegraphics[width=7cm]{images/Lecture 2/Manifold3holes.png} \]
 	\item Let $X, Y$ be $n$ manifolds with boundary, then $X \amalg Y$ is an $n$ manifold with boundary.
+	\[\includegraphics[width=7cm]{images/Lecture 2/Disjoint union of manifolds with boundary.png} \]
 	\item $T= S^1 \times S^1$ is a $2$ manifold with $\de T = \emptyset$ and $T^{\text{solid}} = D^2 \times S^1$ is a $3$-manifold with $\de T^{\text{solid}} = T$.
-%	I am having trouble with images but will resolve with the help of will /andrea    % DRAWINGS
-	%	\item \begin{figure}
-		%	\centering
-		%	\captionsetup{format = hang}
-		%	\includegraphics[width=7cm]{images/Lecture 2/Boundary Disk.png} 
-		%	\caption{$D^n = \{x \in \R^n \mid  \ ||x||\leq 1\}$ the $n$ dimensional disk, which has a sphere as boundary: $\de D^n = S^{n-1}$ 
-		%	}
-	%	\end{figure}
-		%\item \begin{figure}
-		%	\centering
-			%\captionsetup{format = hang}
-			%\includegraphics[width=7cm]{images/Lecture 2/Manifold3holes.png} 
-			%\caption{Consider 2 dimensional \emph{open} disks, i.e. $D^2=\{x\in\R^2\mid \ ||x||<1\}$. We can remove such shapes from the sphere and get the manifold $S^2 \setminus D^2_1 \amalg D_2^2 \amalg D^2_3$ which we can visualize in different ways.
-			%}
-		%\end{figure}
-	%	\begin{figure}
-		%	\centering
-		%	\captionsetup{format = hang}
-		%	\includegraphics[width=7cm]{images/Lecture 2/Manifold3holes.png} 
-		%	\caption{Consider 2 dimensional \emph{open} disks, i.e. $D^2=\{x\in\R^2\mid \ ||x||<1\}$. We can remove such shapes from the sphere and get the manifold $S^2 \setminus D^2_1 \amalg D_2^2 \amalg D^2_3$ which we can visualize in different ways.
-	%	}
+		\[\includegraphics[width=7cm]{images/Lecture 2/Torus Boundary.png} \]
 	\end{enumerate}
 \end{ex}
 
@@ -759,6 +743,7 @@ In some contexts, it can be interesting to do calculus on a manifold. In order t
         \end{tikzpicture}
     \end{subfigure}
     \end{figure}
+    The latter two are sometimes calles 'macaroni'.
     
     This shows that different bordisms can arise from the same underlying manifold. We will have a way of differentiating them when we will introduce tangential structures on a manifold, which will enable us to explain in which direction a manifold is oriented.
 
@@ -798,7 +783,7 @@ In some contexts, it can be interesting to do calculus on a manifold. In order t
 %add Drawings inspired by the Prof.'s examples?
 \begin{thm}
 \label{Cobordant Equiv}
-Being cobordant is an equivalence relation on closed $n$ manifolds. 
+Being cobordant is an equivalence relation on closed $n$-manifolds. 
 \end{thm}
 \begin{proof}
 We need to show that the relation satisfies the properties of reflexivity, symmetry and transitivity:
@@ -808,32 +793,38 @@ We need to show that the relation satisfies the properties of reflexivity, symme
     \item Symmetric: assume $Y_0 \sim Y_1$. Thus, we have $(X,p)$ from $Y_0$ to $Y_1$. We can use the same manifold and compose $p$ with the $swap$ of 0 and 1 in order to get 
     $$\tilde{p}=swap \circ p:\de X\xrightarrow{p}\{0,1\}\xrightarrow{swap}\{1,0\}$$ Consequently, $(X, swap \circ p)$ is a bordism from $Y_1$ to $Y_0$.
     %
-    \item Transitive: we have $Y_0 \sim Y_1$ via $(X_1, p_1)$ and $Y_1 \sim Y_2$ via $(X_2, p_2)$. Then we can use as a manifold $X = X_1 \cup_{Y_1} X_2$ where $\cup_{Y_1}$ indicates the gluing along $Y_1$. This is a manifold but there's some work involved in showing it's a \textit{smooth} manifold and it will be done later on (\ref{BordantTransitive}), via an equivalent definition of bordism. We then think of the boundary in the following way $\de X = \de_{in} X_1 \amalg \de_{out} X_2$.
+    \item Transitive: we have $Y_0 \sim Y_1$ via $(X_1, p_1)$ and $Y_1 \sim Y_2$ via $(X_2, p_2)$. 
+    Then we can use as a manifold $X = X_1 \cup_{Y_1} X_2$ where $\cup_{Y_1}$ indicates the gluing along $Y_1$. 
+    This is a manifold but there's some work involved in showing it's a \textit{smooth} manifold and it will be done later 
+    on (\ref{BordantTransitive}), via an equivalent definition of bordism. We then think of the boundary in the following
+     way $\de X = \de_{in} X_1 \amalg \de_{out} X_2$.
 \end{itemize}
 \end{proof}
 
 \section{Cobordism groups}\label{Cob Groups}
 \begin{defn}
 \label{Defn n-th cob group}
-The $n$-th cobordism group is
+The set underlying the $n$-th cobordism group is
 $$\Omega_n = \frac{\{\text{closed $n$ manifolds}\}}{\{\text{$n+1$ cobordisms}\}}$$
+$(\Omega_n, \amalg)$ is an abelian group with operation given by the disjoint union $\amalg$.
+	\begin{enumerate}
+		\item the disjoint union is associative and commutative
+		\item the identity element\footnote{We will
+			sometimes write $0=[\emptyset]$ or more often $\emptyset=[\emptyset]$}
+			 is the cobordism class of the empty set\footnote{Reminder: $\emptyset$ is an $n$-manifold for every $n$.}
+			  $[\emptyset]$, i.e. the set of $n$-manifolds which are bordant with the empty set
+		\item every element has an inverse:
+		$[M]\amalg [M]=[\emptyset]$ since $M\amalg M=(\de(M\times[0,1]))$ and such a cylinder can be bent into a
+		 macaroni, which is bordant to the empty set:
+		 \[\includegraphics[width=6.5cm]{images/Lecture 2/MACARONI.png}\]
+	\end{enumerate}
 \end{defn}
 \begin{rem}
 There is an insidious set-theoretic issue when we define the $n$-th cobordism group $\Omega_n$ (\ref{Defn n-th cob group}): is the collection of all closed $n$ manifolds a set? And what about the collection of all $n+1$ bordisms? It could be the case that it is something bigger than a usual set, thus not a set and problematic since we would not know how to treat them\footnote{We are assuming to be working in ZFC. There are other set theories in which one can define collections greater than sets, e.g. Von Neumann–Bernays–Gödel set theory.}. For example, we know that the collection of all sets is strictly greater than any set\footnote{Because of famous set-theoretic paradoxes like Cantor's paradox.} and thus not a set. Similarly, also the collection of topological spaces is not a set because we can regard any set as a topological space via the discrete topology\footnote{The topology where the set of open sets is the powerset of the set in question, or in other words where any subset is open.}. One could wonder if the collection of all manifolds of a certain dimension $n$ is likewise not a set. This is fortunately for us not the case. The following theorem allows us to happily treat \{\text{closed $n$ manifolds}\} and \{\text{$n+1$ cobordisms}\} as sets by replacing abstract manifolds and cobordism by manifolds and cobordisms embedded in $\R^{\infty}$.
 \end{rem}
 \begin{thm}[Whitney Embedding theorem\footnote{This result is not important only in this case, but notably for the interest of this class it was used to construct an apt category of bordisms \ref{CobCat} in order to sketch a partial proof of the most important conjecture in the field of TFTs: the cobordism hypothesis; see for details on this \cite{lurie2009classification} and \cite{Calaque_2019}.}]
     Any $n$ manifold can be embedded in $\R^{\infty}(=\bigcup_{n\in\N}\R^n)$. The space of such embeddings is contractible.\footnote{Note that there are refinements of the latter result.}
-    %It would be better to have \bigcup instead of \cup in \R^{\infty}(=\cup_{n\in\N}\R^n$) but \bigcup does not compile
 \end{thm}
-
-
-\begin{exercise}
-    Prove the following statements
-    \begin{enumerate}
-        \item $(\Omega_n, \amalg)$ is an abelian group with operation given by the disjoint union $\amalg$.
-        \item In fact $[M]\amalg [M]=[\emptyset]$, i.e. the trivial element of the cobordism group\footnote{We will sometimes write $0=[\emptyset]$ or more often $\emptyset=[\emptyset]$}
-    \end{enumerate}
-\end{exercise}
 
 \begin{rem}
     Actually $(\Omega_n,\amalg)$ is a finitely generated abelian group, but this is a hard theorem. In particular, it is a finite product of cyclic groups of order $2$ (from 2.)
@@ -856,7 +847,6 @@ There is an insidious set-theoretic issue when we define the $n$-th cobordism gr
 \end{itemize}
 \end{ex}
 %TODO add definition of characteristic class or maybe just some additional comment
-% texorpdfstring to remove the hyperref warning
 \subsection{The 0-th Cobordism Group, \texorpdfstring{$\Omega_{0}$}{Omega 0}}
 Consider
  $$\Omega_0 = \{\text{finite disjoint unions of points}\} / \{\text{$1$-dimensional cobordisms}\}.$$
@@ -865,7 +855,7 @@ To compute this, consider the following classification of $1$ manifolds:
 \begin{prop}\label{prop:classification_1d}
 Any $1$ dimensional compact manifold with boundary is diffeomorphic to a finite disjoint union of closed intervals $[0,1]$ and circles $S^1$.
 \end{prop}
-
+%TODO add proof, it should not be hard, and useful also for classification of 1TFT
 \begin{ex}
 An example of a $1$-dimensional cobordism is $W=[0,1]$. Here are the 3 different way of seeing it as a bordism: from $Y_0 = \{0,1\}$ to $Y_1 = \emptyset$, from $Y_0 = \{0\}$ to $Y_1 = \{1\}$ and from $Y_0 = \emptyset$ to $Y_1 = \{0,1\}$.
 \begin{figure}[H]
