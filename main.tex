@@ -1850,7 +1850,10 @@ $\Sigma(S^1)=S^2$ more generally $\Sigma(S^n)=S^{n+1}$
 \end{ex}
 Spectra are a higher categorical analog of abelian groups (see \ref{Ab-Enriched Cat}), they have been in fact called “the abelian groups of the 21st century” \cite{Mazel-Gee2024}. They are the main characters of stable homotopy theory, check out \cite{GregoricSpectra} for a great informal introduction (although assuming working knowledge of $\infty$-category theory). In a certain sense, $\mathds S$ is analgous to $\Z$ but in another category: \Z is the unit in Ab, while $\mathds S$ is the unit in the category of spectra. 
 These objects will also become useful later, \ref{Spectra Phases of Matter}.
-We make the comparison more explicit in order to convey some intuition\footnote{A cool synonym for higher algebra is brave new algebra. It was coined by Waldhausen, one of the pioneers of this discipline. Moreover, this table was inspired by a table in Thomas Nikolaus' talk: \url{https://www.youtube.com/watch?v=SJNKs1PxT9g}. } :
+We make the comparison more explicit via a table in order to convey some intuition\footnote{A
+	 cool synonym for higher algebra is brave new algebra. It was coined by Waldhausen, one of
+	  the pioneers of this discipline. Moreover, this table was inspired by a table in Thomas
+	   Nikolaus' talk: \url{https://www.youtube.com/watch?v=SJNKs1PxT9g}. } :
 
 \begin{center}
 	\begin{tabular}{||c|c||}
@@ -3165,8 +3168,8 @@ We have previously seen (\ref{Representations of Groups}) that a linear represen
 \begin{defn}[Delooping of a Monoidal Category]\label{DeloopingMonCat}
     Let $\cat$ be a monoidal category. The delooping category $\mathbf{B}\cat$ is a one object $2$-category with: \begin{itemize}
         \item $\ob(\mathbf{B}\cat)=\ast$
-        \item $1-mor(\mathbf{B}\cat)=\ob(\cat)$
-        \item $2-mor(\mathbf{B}\cat)=mor(\cat)$
+        \item $1\operatorname{-}mor(\mathbf{B}\cat)=\ob(\cat)$
+        \item $2\operatorname{-}mor(\mathbf{B}\cat)=mor(\cat)$
     \end{itemize}
     Composition of $2$-morphisms is given by the usual composition of morphisms between objects in $\cat$. The composition of $1$-morphisms is given by the tensor product. This makes sense since there is a monoidal unit $\mathbb{1}_\cat$ that works as the identity arrow for any object, since it is left and right unital for any object and the tensor product is associative. However, in monoidal categories associativity and unitality hold up to isomorphism and this is witnessed by the associator and left/right unitors!
 \end{defn}
@@ -3466,16 +3469,17 @@ We previously talked about the fundamental $\infty$-groupoid of a space while sk
  map of spaces via this equivalence.
 
 However, we do not have just $\infty$-groupoids but also a symmetric monoidal structure with
- duals on both $|\Bord|$ and $\cat^\times$, they are picard $\infty$-groupoid.
+ duals on both $|\Bord|$ and $\cat^\times$. In short, they are Picard $\infty$-groupoid.
  Navigating the literature it is useful to note that 
  	synonyms for Picard $\infty$-groupoids are $\mathbb{E}_\infty$-groups and grouplike
- 	$\mathbb{E}_\infty$ spaces.
+ 	$\mathbb{E}_\infty$-spaces.
  %Not so confident about this but just asked on a forum will update /andre
  
-  Recall that intuitively the delooping of a group in a
+  Recall that intuitively the delooping of a group is a
   one-object groupoid and the delooping of a certain monoidal $k$-category is an one-object
    $k+1$-category. Having Picard $\infty$-groupoids allows us to deloop infinitely
- many times. This roughly explains that Picard $\infty$-groupoids, so in particular the spaces corresponding to $|\Bord|$ and $\cat^{\times}$ are infinite loop spaces. 
+ many times. This roughly explains why Picard $\infty$-groupoids are infinite loop spaces, 
+ and in particular the spaces corresponding to $|\Bord|$ and $\cat^{\times}$. 
 \begin{defn}[Infinite loop space]
 An infinite loop space is a space $S_0$ with an infinite sequence of pointed spaces $S_0,S_1,S_2,...$ where $S_n$ is the delooping\footnote{We talked of deloopings just for categories but there is a corresponding notion for spaces. If you do not believe this, apply the equivalence of the homotopy hypothesis.} of $S_{n-1}$ and conversely $S_{n-1}$ is the loop space\footnote{The loop space object is an inverse operation to the delooping, meaning that that given some monoidal category $\cat$, $\cat$ is the loop space object of the delooping of $\cat$. The name comes from the topological notion, see \url{https://en.wikipedia.org/wiki/Loop_space}
  In general, loop space objects inherit the monoidal structure from the composition of loops. We would need to talk about homotopy pullbacks in order to strictly define what a loop space object is.}
@@ -3752,25 +3756,26 @@ A sane individual, i.e. not a homo categoriens\footnote{A subspecies of homo sap
 \end{rem}
 \begin{defn}[($\infty,n$)-monoidal categories with duals]\label{HigherMonCatDuals}
     Let $\cat$ be a monoidal ($\infty,n$)-category. Then $\cat$ has duals if and only if its delooping $\mathbf{B}\cat$ has adjoints\footnote{In the usual jargon, an $(\infty,n)$-category has adjoints if it has adjoints
-    	 for any $k$-morphism with $0<k<n$. We spelled however what it means anyway for the sake of clarity.} for any $k$-morphism with $0<k<n+1$ . We say that any object in such a
+    	 for any $k$-morphism with $0<k<n$. We spelled what it means anyway for the sake of clarity.} for any $k$-morphism with $0<k<n+1$ . We say that any object in such a
     	  category is fully $n$-dualizable. 
 \end{defn}
 We have a vague idea of what are monoidal ($\infty,n$)-categories and deloopings
 thereof. However, we did not sketch what it means that an ($\infty,n+1$)-category has
- adjoints, but it is essential since we characterized the duals of a monoidal
+ adjoints, but it is essential to understand this definition
+  since we characterized the duals of a monoidal
   ($\infty,n$)-category in terms of the adjoints of its delooping.
   The idea is to trace this back to adjoints of 1-morphisms in bicategories.
   \begin{defn}[Homotopy 2-category of an $(\infty,n)$-category]
 A homotopy 2-category of an $(\infty,n)$-category $\cat$ with $n\geq 2$ is a bicategory h$_{2}\cat$
 with 
 \begin{itemize}
-\item as objects the objects of $\cat$ $$\operatorname{ob}(\operatorname{h}_2\cat)=\operatorname{ob}(\cat)$$
-\item as 1-morphisms the 1-morphisms of $\cat$ 
-$$1\operatorname{-mor}(\operatorname{h}_2\cat)=1\operatorname{-mor}(\cat)$$ 
-\item as 2-morphisms isomorphism classes of 2-morphisms in $\cat$, i.e. given
+\item  the objects of $\cat$ as objects $$\operatorname{ob}(\cat)=\operatorname{ob}(\operatorname{h}_2\cat)$$
+\item the 1-morphisms of $\cat$ as 1-morphisms 
+$$1\operatorname{-mor}(\cat)=1\operatorname{-mor}(\operatorname{h}_2\cat)$$ 
+\item isomorphism classes of 2-morphisms in $\cat$ as 2-morphisms, i.e. given
 1-morphisms $f:X\to Y$ a 2-morphism in $\operatorname{h}_2\cat$ is a 2-morphism in $\cat$
 up to 3-isomorphism
- $$2\operatorname{-mor}(\operatorname{h}_2\cat)=2\operatorname{-mor}(\cat)/\cong$$ 
+ $$2\operatorname{-mor}(\cat)/_{\cong}=2\operatorname{-mor}(\operatorname{h}_2\cat)$$ 
 \end{itemize}
   \end{defn}
   \begin{defn}[Adjoints in $(\infty,n)$-categories]
@@ -3781,7 +3786,13 @@ $\operatorname{h}_2\cat$ has adjoints for 1-morphisms, i.e. if all 1-morphisms o
   adjoints for $k$-morphisms if, for every pair $X,Y\in\operatorname{ob}(\cat)$, the 
   $(\infty,n-1)$-category $\Hom_{\cat}(X,Y)$ has adjoints for $k-1$-morphisms.
   \end{defn}
-  Having 
+  We say that an $(\infty,n)$-category has adjoints if it has adjoints for any $k$-morphism 
+  with $0<k<n$. 
+  
+  Having defined adjoints of morphisms of an $(\infty,n)$-category, we now have all the
+  necessary pieces of the puzzle constituiting the sketch
+   of what it means that a monoidal $(\infty,n)$-category
+  has duals.
 \begin{rem}
 There is an equivalent definition of monoidal $(\infty,n)$-category with duals, see \cite{lurie2009classification} and
 \cite{gwilliam2018duals}. This intuition about adjoints is very useful also in this case.
