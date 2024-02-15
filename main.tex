@@ -90,6 +90,7 @@
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\tr}{tr}
 \DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\fd}{fd}
 
 % CATEGORY STUFF
 \DeclareMathOperator{\ob}{ob}
@@ -1848,7 +1849,10 @@ $\Sigma(S^1)=S^2$ more generally $\Sigma(S^n)=S^{n+1}$
 \begin{ex}[Sphere Spectrum]
 	The sphere spectrum $\mathds S$ is the suspension spectrum of the point, $S^0$. In fact, $\Sigma S^0=S^1$, $\Sigma^2 S^0=\Sigma\Sigma S^0=\Sigma S^1=S^2$ and in general $\Sigma^n S^0=S^n $
 \end{ex}
-Spectra are a higher categorical analog of abelian groups (see \ref{Ab-Enriched Cat}), they have been in fact called “the abelian groups of the 21st century” \cite{Mazel-Gee2024}. They are the main characters of stable homotopy theory, check out \cite{GregoricSpectra} for a great informal introduction (although assuming working knowledge of $\infty$-category theory). In a certain sense, $\mathds S$ is analgous to $\Z$ but in another category: \Z is the unit in Ab, while $\mathds S$ is the unit in the category of spectra. 
+Spectra are a higher categorical analog of abelian groups (see \ref{Ab-Enriched Cat}), they have been in fact called “the abelian groups of the 21st century” \cite{Mazel-Gee2024}
+because they provide very powerful techniques for many areas of mathematics
+where there is currently much progress, e.g. they the main characters of stable homotopy
+ theory and fundmental in algebraic K-theory. Check out \cite{GregoricSpectra} for a great informal introduction. In a certain sense, $\mathds S$ is analgous to $\Z$ but in another category: \Z is the unit in Ab, while $\mathds S$ is the unit in the category of spectra. 
 These objects will also become useful later, \ref{Spectra Phases of Matter}.
 We make the comparison more explicit via a table in order to convey some intuition\footnote{A
 	 cool synonym for higher algebra is brave new algebra. It was coined by Waldhausen, one of
@@ -3773,7 +3777,7 @@ with
 \item the 1-morphisms of $\cat$ as 1-morphisms 
 $$1\operatorname{-mor}(\cat)=1\operatorname{-mor}(\operatorname{h}_2\cat)$$ 
 \item isomorphism classes of 2-morphisms in $\cat$ as 2-morphisms, i.e. given
-1-morphisms $f:X\to Y$ a 2-morphism in $\operatorname{h}_2\cat$ is a 2-morphism in $\cat$
+1-morphisms $f,g:X\to Y$ a 2-morphism in $\operatorname{h}_2\cat$ is a 2-morphism in $\cat$
 up to 3-isomorphism
  $$2\operatorname{-mor}(\cat)/_{\cong}=2\operatorname{-mor}(\operatorname{h}_2\cat)$$ 
 \end{itemize}
@@ -3821,12 +3825,12 @@ $$ev_{X\in\Bord_{n}}:\Fun^{\otimes}(\Bord_{n},\cat)\simeq(\cat^{\operatorname{fd
 meaning that evaluating a TFT on an object of $\Bord_{n}$ induces an equivalence of categories. 
 To be clear, recall that: 
 \begin{itemize}
-\item $Bord_n$ is the category of $n$-bordisms
+\item $\Bord_n$ is the category of $n$-bordisms
 \item $\Fun^{\otimes}(\Bord_{n},\cat)$ is the category of $n$-dimensional topological field theories since they are symmetric monoidal functors from the category of $n$-bordisms to some symmetric monoidal category
 \item $(\cat^{\operatorname{fd}})^{\cong}$ is the Picard groupoid underlying $\cat$ since
  $\cat^{\operatorname{fd}}$ is the subcategory of $\cat$ contatining only dualizable
- objects and $\cat^{\cong}$ is the underlying groupoid, making every dualizable object in
-  $\cat^{\operatorname{fd}}$ invertible
+ objects and $(\cat^{\operatorname{fd}})^{\cong}$ is the maximal underlying groupoid, restricting dualizable objects in
+  $\cat^{\operatorname{fd}}$ to invertible ones
 \end{itemize}
 
 A natural question
@@ -3844,7 +3848,9 @@ from other classifications, for example the one of 2-dimensional manifolds we ha
     we need to know to determine what is the TFT in question: where the generators and relations of $\Bord_{n}$
     are sent to.
     \section{Classification of 1d-TFTs}\label{ClassificationOf1dTFTs}
-The main goal of this subsection is to prove that given an oriented 1d-TFT $\Zf:\Bord_{1,0}\to\cat$, $\Zf(\bullet)$ has a dual and conversely, given an object $X\in\cat$, in the codomain of the TFT, and its dual $(Y,ev_X,coev_X)$, we can reconstruct a 1d-TFT.
+The main goal of this subsection is to prove that given an oriented 1d-TFT
+ $\Zf:\Bord_{1,0}\to\cat$, $\Zf(\bullet)$ has a dual and conversely, given an object $X\in\cat$
+  in the target category of the TFT we can reconstruct a 1d-TFT.
 \begin{thm}[Classification of 1-dimensional bordisms]\label{class1dBord}
 Any connected oriented 1-dimensional manifold with boundaries is diffeomorphic to one of 
 the following manifolds: 
@@ -3999,7 +4005,7 @@ This means that any 1-dimensional bordism (i.e. including disconnected ones)
 %	of the manifolds in \ref{class1dBord}. Since $\Zf$ is symmetric monoidal, it is sufficient to determine
 %\end{proof}
 
-\begin{proof}[Proof of the classification of 1-TFTs 2.0]
+\begin{proof}[Proof of the classification of 1-TFTs 2.0]\label{GeneratorsClass1TFT}
 An alternative proof relies proves the equivalence in the other direction and relies on the fact that since the functor
  is \emph{symmetric} monoidal one can just check what the TFT does only for 5 of all the possible 
  connected 1-dimensional bordisms (\ref{class1dBord}), not considering what happens for the other 3 ones with the
@@ -4025,7 +4031,8 @@ An alternative proof relies proves the equivalence in the other direction and re
   The moral of the story is that a TFT is uniquely
   determined, up to isomorphism, once one knows $X\in\cat^{\operatorname{fd}}$ since then one knows 
   \begin{itemize}
-  	\item what $X^\vee$ is, what finite sequences of tensored $X$ and $X^\vee$ are, which will be sent to finite
+  	\item what $X^\vee$ is, what finite sequences of tensored $X$ and $X^\vee$ are, which will
+  	 be sent to finite
   	 disjoint unions of $\bullet_{+}$ and $\bullet_-$ (aka all the objects of $\Bord_{1,0}$);
   	 \item what $id_X$ and $id_{X^\vee}$ are
   	 \item what $ev_X$ and $coev_X$ are and hence also $coev_X\circ ev_X$
@@ -4034,13 +4041,17 @@ An alternative proof relies proves the equivalence in the other direction and re
 \end{proof}
 \begin{rem}
 Lurie considers 5 possible
-bordisms and not all 8, thereby excluding some possible orientations. However, Lurie's argument is without loss of
+bordisms and not all 8, thereby excluding some possible orientations. However, Lurie's
+ argument is without loss of
 generality because it implicitly relies 
-on the \emph{symmetric} monoidality of $\Bord_{1,0}$ since, for instance, one can get \includegraphics[width=0.7cm]{images/Lecture 12/coevminusplus.png}  by composing \includegraphics[width=0.7cm]{images/Lecture 12/coevplusminus.png} with a
+on the \emph{symmetric} monoidality of $\Bord_{1,0}$ since, for instance, one can get
+ \includegraphics[width=0.7cm]{images/Lecture 12/coevminusplus.png}  by composing
+  \includegraphics[width=0.7cm]{images/Lecture 12/coevplusminus.png} with a
 braiding. 
 
-Anyways, we hold that there is a clearer way to demonstrate this result in a similar vein, which relies on the following
- theorem.
+Anyways, we hold that there is a clearer way to demonstrate this result in a similar vein, which
+ relies on the following
+ result.
 \end{rem}
 \begin{lem}
 All 1-dimensional bordisms are generated by the generators: 
@@ -4062,20 +4073,26 @@ We need to show that there is a way of gluing our generators and the braiding re
 \end{proof}
 
 \begin{proof}[Proof of the classification of 1-TFTs 2.1 ]
- In this proof we rely on the lemma we just proved. We need to show where the objects, the generators and the relation
-  are sent to. Fortunately, we showed already in the proof took from Lurie's paper (\ref{AlternativeProof1d}) where
+ In this proof we rely on the lemma we just proved. We need to show where the objects, the
+  generators and the relation
+  are sent to. Fortunately, we showed already in the proof took from Lurie's paper
+   (\ref{GeneratorsClass1TFT}) where
    the objects and our generators are sent to. It remains to show where the braiding relation
     \includegraphics[width=0.54cm]{images/Lecture 12/relations.png} is sent to.
-    Since $\Zf$ is a symmetric monoidal functor, the braiding in $\Bord_{1,0}$ is sent to the braiding in the target
+    Since $\Zf$ is a symmetric monoidal functor, the braiding in $\Bord_{1,0}$ is sent to the
+     braiding in the target
      category $\cat$.
  \end{proof}
 
-The classification of 1-dimensional topological field theories is the simplest case of an important guiding hypothesis
- in the field of TFTs, the cobordism hypothesis, see \ref{RemarkOnCobHypo}. It is the only case in which so-called
- extended TFTs coincide with non-extended ones, i.e. the usual Atiyah-Segal definition as a simple symmetric 
+The classification of 1-dimensional topological field theories is the simplest case of an
+ important guiding hypothesis
+ in the field of TFTs, the cobordism hypothesis, see \ref{RemarkOnCobHypo}. It is the only
+  case in which so-called
+ extended TFTs coincide with non-extended ones, i.e. the usual Atiyah-Segal definition as a
+  simple symmetric 
  monoidal functor we are using.
 
-Recap: $\TFT_{1,0}^{or}(\cat) \xrightarrow{\mathscr Ev_{\bullet+}} (\cat^{dualiz})^{\simeq} \hookrightarrow \cat$. The map is the following: $\Zf \mapsto \Zf(\bullet_+)$.
+Recap: $\TFT_{1,0}^{or}(\cat) \xrightarrow{\mathscr Ev_{\bullet+}} (\cat^{\fd})^{\simeq} \hookrightarrow \cat$. The map is the following: $\Zf \mapsto \Zf(\bullet_+)$.
 
 Now we classified 1 dimensional TFTs, we would now like to do the same for 2 dimensional TFTs.
 We will find out that there is an equivalence between $\TFT_{2,1}^{or}(\cat)$ and commutative Frobenius algebras.
@@ -4403,7 +4420,8 @@ We now provide an outlook to some research programs that are tightly connected t
 %Unsure about adding these remarks on algebraic and arithmetic QFT and if it's BS, will ask Prof and please do check if BS /ANdrea
     
     \item[\extra] arithmetic field theories (\cite{Mazur1973NotesO},\cite{kim2016arithmetic},\cite{kapustin2007electricmagnetic}, \cite{Kapranov1995},\cite{RelativeBSVDUAL}): although still very conjectural, some envision poetic connections between number theory and physics via TFTs. The original intuition behind this connection is a mysterious analogy of Barry Mazur stating that number fields form correspond to some kind of 3-dimensional manifolds and primes in such number fields behave like knots embedded in these 3-dimensional manifolds. How this connects to TFTs will become clearer after the next section, where we will have gone through the connection between the Jones polynomial (a knot invariant) and 3d-Chern-Simons theory. For instance, the spectrum\footnote{Not in the sense of a modern abelian group, which we previously described \ref{Spectra Phases of Matter}! This is the spectrum of a ring.} of the commutative ring of the integers $\mathbb{Z}$ can be seen (roughly speaking\footnote{To make this more precise Mazur talks about exotic stuff like étale cohomological dimension.}) as a 3-dimensional manifold, and since the spectra prime fields can be canonically embedded in the spectra of the integers, they are analogous to knots since knots can be defined as embeddings of $S^1$ into some 3-dimensional manifold\footnote{Often it is sufficient to pick $\R^3$ as the manifold we embed in and it is what we will do in the next section. However, taking arbitrary 3 manifolds does also make sense and in some cases, like this one, it is what one desires.}. Mazur came up with this analogy in \cite{Mazur1973NotesO}, see this \href{https://mathoverflow.net/questions/50879/what-is-the-knot-associated-to-a-prime/50995#50995}{mathoverflow comment by Lieven Lebruyn} and the \href{https://ncatlab.org/nlab/show/Spec%28Z%29#As3dSpaceContainingKnots}{nLab entry on Spec($\Z$)} for accessible introductions to this specific correspondence. Some (\cite{kim2016arithmetic}, \href{https://shifted-project.github.io/}{Clark Barwick's SHIFTED project} and \href{https://www.youtube.com/watch?v=WXqmXKLtJrs}{this talk of his on his efforts towards geometric foundations for arithmetic field theories}) are trying to define arithmetic quantum field theories in order to apply ideas of TFTs to number theory, for example to arithmetic curves\footnote{Something from arithmetic geometry, see \cite{liu2002algebraic}}, i.e. the spectra of rings of integers in algebraic number fields. While others (\cite{Witten:1990bs},\cite{RelativeBSVDUAL}) more specifically, see a strong connection with the Langlands program. This view is summarized by the motto \emph{the Langlands program is part of the study of 4-dimensional (arithmetic, topological) quantum field theory}. For a more accessible introduction to this research program, check out these notes \cite{BenZviLanglands} by Jackson Van Dyke of a course on this topic by David Ben-Zvi.
-    \item[\extra] algebraic quantum field theory (\cite{Haag:1963dh}): talking about endomorphism monoids, i.e. monoids of the form $(\Hom_\cat(X,X),\circ)$ (see \ref{Delooping Monoid}) we previously mentioned operator algebras, i.e. monoids and submonoids of the form $(\Hom_{\Top\!\Vect_{k}}(X,X),\circ)$. They are an object of interest in themselves but importantly for us algebraic quantum field theory makes extensive use of operator algebras. Algebraic quantum field theory is very roughly a way of translating the Heisenberg picture of quantum mechanics (sometimes called matrix mechanics) to quantum field theory by providing an attempt to axiomatize QFT in a mathematically rigorous way. Given some apt operators on an apt topological vector space, meaning that the topological vector space can represent a quantum state and the selected operators on it can represent observables, an AQFT provides a formal assignment of algebras of such operators to regions of spacetime according to some axioms, e.g. the \href{https://ncatlab.org/nlab/show/Haag-Kastler+axioms}{Haag Kastler Axioms}. In this way, it pins down how observables depend of spacetime while states are being fixed, as in the Heisenberg picture. Algebraic quantum field theory can be roughly considered to be a dual to topological quantum field theory since TFTs invert the direction by assigning geometric data to algebraic ones. In fact, topological quantum field theory can be seen as a way of translating the Schrödinger picture (also called wave mechanics) to quantum field theory: states are represented by objects in the target monoidal category, the functor from $\Bord$ captures the local time evolution, and thereby a TFT shows how states are propagated through time while the observables are held fixed, as in the Schrödinger picture (see more on this at \href{https://ncatlab.org/nlab/show/functorial+field+theory#QuantumMechanicsInSchroedingerPicture}{this section of the nLab entry on TFTs}). In quantum mechanics, the Heisenberg and the Schrödinger picture are two faces of the same medal, i.e. matrix mechanics and wave mechanics are equivalent\footnote{Interestingly from a historical point of view, Schrödinger's (and Eckhart's) famous proof from 1926 that the two approaches are equivalent is faulty, but von Neumann fortunately provided a foolproof demonstration in 1932. See \cite{MULLER199735} for more on this interesting trivia.}; however, we are far from proving that AQFT and TQFT are also two faces of the same medal. One point of contact between the two is via factorization algebras (something related to $E_n$-algebras, see \ref{EAlg} for the definition of a $E_1$-algebra), see \cite{costello2023factorization} for a summary on factorization algebras and how they relate to TQFT and AQFT. 
+    \item[\extra] algebraic quantum field theory (\cite{Haag:1963dh}): talking about endomorphism monoids, i.e. monoids of the form $(\Hom_\cat(X,X),\circ)$ (see \ref{Delooping Monoid}) we previously mentioned operator algebras, i.e. monoids and submonoids of the form $(\Hom_{\Top\!\Vect_{k}}(X,X),\circ)$. They are an object of interest in themselves but importantly for us algebraic quantum field theory makes extensive use of operator algebras. Algebraic quantum field theory is very roughly a way of translating the Heisenberg picture of quantum mechanics (sometimes called matrix mechanics) to quantum field theory by providing an attempt to axiomatize QFT in a mathematically rigorous way. Given some apt operators on an apt topological vector space, meaning that the topological vector space can represent a quantum state and the selected operators on it can represent observables, an AQFT provides a formal assignment of algebras of such operators to regions of spacetime according to some axioms, e.g. the \href{https://ncatlab.org/nlab/show/Haag-Kastler+axioms}{Haag Kastler Axioms}. In this way, it pins down how observables depend of spacetime while states are being fixed, as in the Heisenberg picture. Algebraic quantum field theory can be roughly considered to be a dual to topological quantum field theory since TFTs invert the direction by assigning geometric data to algebraic ones. In fact, topological quantum field theory can be seen as a way of translating the Schrödinger picture (also called wave mechanics) to quantum field theory: states are represented by objects in the target monoidal category, the functor from $\Bord$ captures the local time evolution, and thereby a TFT shows how states are
+     propagated through time while the observables are held fixed, as in the Schrödinger picture (see more on this at \href{https://ncatlab.org/nlab/show/functorial+field+theory#QuantumMechanicsInSchroedingerPicture}{this section of the nLab entry on TFTs}). In quantum mechanics, the Heisenberg and the Schrödinger picture are two faces of the same medal, i.e. matrix mechanics and wave mechanics are equivalent\footnote{Interestingly from a historical point of view, Schrödinger's (and Eckhart's) famous proof from 1926 that the two approaches are equivalent is faulty, but von Neumann fortunately provided a foolproof demonstration in 1932. See \cite{MULLER199735} for more on this interesting trivia.}; however, we are far from proving that AQFT and TQFT are also two faces of the same medal. One point of contact between the two is via factorization algebras (something related to $E_n$-algebras, see \ref{EAlg} for the definition of a $E_1$-algebra), see \cite{costello2023factorization} for a summary on factorization algebras and how they relate to TQFT and AQFT. 
     
     In conclusion, algebraic quantum field theory is not a variant of topological field theory, but an alternative attempt to put quantum field theory on mathematically rigorous footings. One can discover more on algebraic quantum field theory in \cite{halvorson2006algebraic} and \cite{fewster2019algebraic}.
     
