@@ -318,7 +318,8 @@ Therefore, axiomatizations have been developed exploiting new tools from geometr
 
 \bigskip
 
-If someone is into mathematics for the money or the prestige\footnote{If not already sufficiently clear, we explicitly state that this is a joke.}, the field of topological field theories is the one to specialize in: \begin{itemize}
+If someone is into mathematics for the money or the prestige\footnote{If not already sufficiently clear, we explicitly state that this is a joke.}, the field of topological field theories is the one to specialize in:
+ \begin{itemize}
     \item René Thom, the mathematician who laid the foundation of cobordism theory\footnote{Which is at the root of TFTs: TFTs can be seen as a refinement of his work.} in his PhD thesis, received the Fields Medal for this.
     % TODO is secondary here correct? What does it mean? Also, I would write Chern classes instead of Chern-Simons forms/William 
     \item Shiing-Shen Chern and Jim Simons discovered geometric invariants of 3-dimensional Riemannian manifolds called (classical) Chern-Simons invariants. They are a generalization of the total geodesic curvature, which is in turn a generalization of the curvature of a plane curve that $=0$ when the curve is a geodesic. Such invariants are the basic building blocks Witten used to define the earliest example we have of a TFT: 3d Chern-Simons theory\footnote{One can find more on this in \cite{freed2008remarks}}. Simons  then went on to found an incredibily successful hedge fund and became a billionaire. Chern continued to do groundbreaking work in differential geometry and topology; so much that some years ago the International Congress of Mathematicians named a prize after him: the \hyperlink{https://en.wikipedia.org/wiki/Chern_Medal}{Chern Medal}.
@@ -1847,7 +1848,31 @@ $\Sigma(S^1)=S^2$ more generally $\Sigma(S^n)=S^{n+1}$
 \begin{ex}[Sphere Spectrum]
 	The sphere spectrum $\mathds S$ is the suspension spectrum of the point, $S^0$. In fact, $\Sigma S^0=S^1$, $\Sigma^2 S^0=\Sigma\Sigma S^0=\Sigma S^1=S^2$ and in general $\Sigma^n S^0=S^n $
 \end{ex}
-Spectra are a higher categorical analog of abelian groups (see \ref{Ab-Enriched Cat}), they have been in fact called “the abelian groups of the 21st century” \cite{Mazel-Gee2024}. They are the main characters of stable homotopy theory, check out \cite{GregoricSpectra} for a great informal introduction (although assuming working knowledge of $\infty$-category theory). In a certain sense, $\mathds S$ is analgous to $\Z$ but in another category: \Z is the unit in Ab, while $\mathds S$ is the unit in the category of spectra. These objects will also become useful later, \ref{Spectra Phases of Matter}
+Spectra are a higher categorical analog of abelian groups (see \ref{Ab-Enriched Cat}), they have been in fact called “the abelian groups of the 21st century” \cite{Mazel-Gee2024}. They are the main characters of stable homotopy theory, check out \cite{GregoricSpectra} for a great informal introduction (although assuming working knowledge of $\infty$-category theory). In a certain sense, $\mathds S$ is analgous to $\Z$ but in another category: \Z is the unit in Ab, while $\mathds S$ is the unit in the category of spectra. 
+These objects will also become useful later, \ref{Spectra Phases of Matter}.
+We make the comparison more explicit in order to convey some intuition\footnote{A cool synonym for higher algebra is brave new algebra. It was coined by Waldhausen, one of the pioneers of this discipline. Moreover, this table was inspired by a table in Thomas Nikolaus' talk: \url{https://www.youtube.com/watch?v=SJNKs1PxT9g}. } :
+
+\begin{center}
+	\begin{tabular}{||c|c||}
+		\hline
+		 algebra & higher algebra\\ [0.5ex]
+		\hline\hline
+		set & $\infty$-groupoid\\
+		\hline
+		abelian group & spectrum \\
+		\hline
+		Ab & Sp \\
+		\hline
+	    \Z &  $\mathds S$ \\
+		\hline
+		Ab-enriched category & Sp-enriched category \\
+		\hline
+		abelian category & stable category \\
+		\hline
+	\end{tabular}
+\end{center}
+See \ref{Ab-Enriched Cat} and \ref{AbelianCat} for the definitions of Ab-enriched category and
+abelian category.
 \begin{notat}[Stable Homotopy Groups of the Sphere]
 	The stable homotopy groups of the sphere are the homotopy groups of the sphere spectrum. Alternatively, one can define them as the homotopy groups of the sphere $\pi_{n+i}(S^n)$ such that $n>i+1$. This latter
 	 characterization explains why they are called 'stable': due to Freudenthal's suspension theorem, such homotopy
@@ -2633,13 +2658,13 @@ Ab is very important as an enriching category. Before, we gave a loose character
 There is another example of strict (2,1)-category from topology and it will let us rigorously show in which sense a homotopy is a natural transformations and why one might want to talk about $\infty$-categories.
 \subsection{Grothendieck's Homotopy Hypothesis and \texorpdfstring{$\infty$}{infinity}-categories \extra}
     \begin{ex}\label{Homotopy2Top}
-    We previously spelled out an analogue formulation of the natural transformation (see \ref{Homotopy}). This shows that the notion of homotopy and natural transformation are related. A way to more rigorously pin down that a homotopy is some kind of natural transformation is via the the homotopy 2-category of topological spaces. Instead of taking paths up to homotopies between paths, as in the more famous hTop, we take homotopies between paths up to homotopies between homotopies between paths. This results in a strict (2,1)-category 2-hTop where objects are topological spaces, 1-morphisms are continuous maps and 2-morphisms are homotopies between continuous maps up to higher homotopies, i.e. homotopies between homotopies between continuous maps. A homotopy between a homotopy between continuous maps is defined in the following manner: given continuous functions $f,g:X\to Y$ and homotopies between them $k,h:X\times [0,1]\to Y$, a homotopy $L$ between these two homotopies $k$ and $h$ is a continuous function $L:X\times [0,1]\times[0,1]\to Y$ such that \begin{itemize}
+    We previously spelled out an analogue formulation of the natural transformation (see \ref{Homotopy}). This shows that the notion of homotopy and natural transformation are related. A way to more rigorously pin down that a homotopy is some kind of natural transformation is via the the homotopy 2-category of topological spaces. Instead of taking paths up to homotopies between paths, as in the more famous hTop, we take homotopies between paths up to homotopies between homotopies between paths. This results in a strict (2,1)-category h$_2$Top where objects are topological spaces, 1-morphisms are continuous maps and 2-morphisms are homotopies between continuous maps up to higher homotopies, i.e. homotopies between homotopies between continuous maps. A homotopy between a homotopy between continuous maps is defined in the following manner: given continuous functions $f,g:X\to Y$ and homotopies between them $k,h:X\times [0,1]\to Y$, a homotopy $L$ between these two homotopies $k$ and $h$ is a continuous function $L:X\times [0,1]\times[0,1]\to Y$ such that \begin{itemize}
             \item $\forall t\in [0,1]\forall x\in X. H(0,t,x)=h(t,x)$
             \item $\forall t\in [0,1]\forall x\in X. H(1,t,x)=k(t,x)$
             \item $\forall t'\in [0,1]\forall x\in X. H(t',0,x)=f(x)$
             \item $\forall t'\in [0,1]\forall x\in X. H(t',1,x)=g(x)$
         \end{itemize}
-        If one takes topological spaces as objects, continuous maps between them as 1-morphisms, and homotopies between continuous maps \emph{up to} homotopies between homotopies one gets the homotopy 2-category of topological spaces 2-hTop and is an example of a strict $(2,1)$-category. If one restricts themselves to spaces admitting the structure of CW-complexes, i.e. something like weakly Hausdorff compactly generated spaces, and then take the homotopy 1-types thereof, we get a subcategory of 2-hTop called 2-1Type. Via the Eilenberg-MacLane space of a groupoid one can establish an equivalence of categories 
+        If one takes topological spaces as objects, continuous maps between them as 1-morphisms, and homotopies between continuous maps \emph{up to} homotopies between homotopies one gets the homotopy 2-category of topological spaces h$_2$Top and is an example of a strict $(2,1)$-category. If one restricts themselves to spaces admitting the structure of CW-complexes, i.e. something like weakly Hausdorff compactly generated spaces, and then take the homotopy 1-types thereof, we get a subcategory of  h$_2$Top called 2-1Type. Via the Eilenberg-MacLane space of a groupoid one can establish an equivalence of categories 
 $$2\operatorname{-}1Type\simeq Grpd$$
 This is Grothendieck's infamous homotopy hypothesis in dimension 1. It was formulated in \emph{Pursuing Stacks} in full generality for $\infty$-groupoids. We now sketch how this works in full glory.
     \end{ex}
@@ -2709,7 +2734,8 @@ A category $\cat$ is abelian if it is an additive category such that
 \end{itemize}
 \end{defn}
 \begin{rem}
-    These categories are very important for homological algebra, a field with important applications to many fields, e.g. algebraic geometry (in particular intersection theory) and algebraic topology. The standard reference is \cite{weibel1994introduction}, check out part I of \cite{Mazel-Gee2024} for a modern introduction to the subject geared towards higher categorical generalizations. Such higher categorical generalizations are of major interest to us in the context of TFTs, we will later sketch for example how they can be used to calculate topological phases of matter (\ref{Spectra Phases of Matter}). 
+    The category of abelian groups is very important for homological algebra, 
+    a field with important applications to many fields, e.g. algebraic geometry (in particular intersection theory) and algebraic topology. The standard reference is \cite{weibel1994introduction}, check out part I of \cite{Mazel-Gee2024} for a modern introduction to the subject geared towards higher categorical generalizations. Such higher categorical generalizations are of major interest to us in the context of TFTs, we will later sketch for example how they can be used to calculate topological phases of matter (\ref{Spectra Phases of Matter}). 
 \end{rem}
 Another very important example for us of noncartesian\footnote{Interestingly, the fact that $\Vect_k$ is not cartesian and in particular $\operatorname{Hilb}_\mathbb{C}$ (the category of complex Hilbert spaces) is the main reason behind the no-cloning theorem from quantum information theory, more on this in \cite{baez2004quantum}. This characterizing non-cartesian aspect is nicely summarized by Freed in \cite{freed2012cobordism}, "We will see that a characteristic property of quantum systems is that disjoint unions map to tensor products. The passage from classical to quantum is (poetically) a passage from addition to multiplication, a kind of exponentiation."} monoidal category is $(\Vect_k,\otimes)$.
 \begin{defn}[Tensor Product between Vector Spaces]
@@ -3434,20 +3460,44 @@ These theories can be studied with stable homotopy theory. However, in order to 
 	\item  $\cat^\times$ is obtained by forgetting about non-invertible morphisms (and objects) of $\cat$ and thus we are left only with invertible morphisms
 \end{enumerate} 
 
-We previously talked about the fundamental $\infty$-groupoid of a space while sketching the homotopy hypothesis (see \ref{HomotopyHypothesis}) and told a story about how spaces are equivalent to $\infty$-groupoids. Following this line of thinking, $\tilde\Zf$ corresponds to a map of spaces via this equivalence.
+We previously talked about the fundamental $\infty$-groupoid of a space while sketching the
+ homotopy hypothesis (see \ref{HomotopyHypothesis}) and told a story about how spaces are
+ equivalent to $\infty$-groupoids. Following this line of thinking, $\tilde\Zf$ corresponds to a
+ map of spaces via this equivalence.
 
-However, we do not have just $\infty$-groupoids but also a symmetric monoidal structure on both $|\Bord|$ and $\cat^\times$. Recall that intuitively the delooping of a group in a one-object groupoid and the delooping of a certain monoidal $k$-category is an one-object $k+1$-category. Having symmetric monoidal $\infty$-groupoids allows us to deloop infinitely many times since a delooping of a monoidal $\infty$-category is a one object. From this it follows that the spaces corresponding to $|\Bord|$ and $\cat^{\times}$ are infinite loop spaces. 
+However, we do not have just $\infty$-groupoids but also a symmetric monoidal structure with
+ duals on both $|\Bord|$ and $\cat^\times$, they are picard $\infty$-groupoid.
+ Navigating the literature it is useful to note that 
+ 	synonyms for Picard $\infty$-groupoids are $\mathbb{E}_\infty$-groups and grouplike
+ 	$\mathbb{E}_\infty$ spaces.
+ %Not so confident about this but just asked on a forum will update /andre
+ 
+  Recall that intuitively the delooping of a group in a
+  one-object groupoid and the delooping of a certain monoidal $k$-category is an one-object
+   $k+1$-category. Having Picard $\infty$-groupoids allows us to deloop infinitely
+ many times. This roughly explains that Picard $\infty$-groupoids, so in particular the spaces corresponding to $|\Bord|$ and $\cat^{\times}$ are infinite loop spaces. 
 \begin{defn}[Infinite loop space]
 An infinite loop space is a space $S_0$ with an infinite sequence of pointed spaces $S_0,S_1,S_2,...$ where $S_n$ is the delooping\footnote{We talked of deloopings just for categories but there is a corresponding notion for spaces. If you do not believe this, apply the equivalence of the homotopy hypothesis.} of $S_{n-1}$ and conversely $S_{n-1}$ is the loop space\footnote{The loop space object is an inverse operation to the delooping, meaning that that given some monoidal category $\cat$, $\cat$ is the loop space object of the delooping of $\cat$. The name comes from the topological notion, see \url{https://en.wikipedia.org/wiki/Loop_space}
  In general, loop space objects inherit the monoidal structure from the composition of loops. We would need to talk about homotopy pullbacks in order to strictly define what a loop space object is.}
  object of $S_n$. 
 \end{defn}
-Infinite loop spaces correspond to \href{https://ncatlab.org/nlab/show/connective+spectrum}{connective spectra}. 
-  While the degree homotopy groups for usual topological spaces are defined to be positive, homotopy groups of spectra can be defined and be non-trivial also for negative degrees. Connective spectra are spectra that only have positive non-trivial homotopy groups. They are called connective because a synonym is ($-1$)-connected spectra, referring to the convention that an $n$-connected space is a space where its homotopy groups for all $k\leq n$ are trivial. This is why $\tilde\Zf$ is not just a map of spaces but a map of spectra, and this enables the application of stable homotopy theory, making life easier. We can conclude this interlude on stable homotopy theory and invertible TFTs with the following motto
+Picard $\infty$-groupoids do not only correspond to infinite loop spaces but also to connective 
+spectra. 
+\begin{thm}[Recognition theorem for infinite loop spaces, Boardman-Vogt, May]
+Picard $\infty$-groupoids $\simeq$ infinite loop spaces $\simeq$ connective spectra
+\end{thm}
+For a more precise formulation of this theorem and proof thereof see \cite[Corollary II.24]{KtheoryHebestreitWagner}. 
+
+The natural question now is what kind of spectra are connective spectra? We now sketchily characterize them.
+
+  While the degree homotopy groups for usual topological spaces are defined to be positive, homotopy groups of spectra can be defined and be non-trivial also for negative degrees. Connective spectra are spectra that only have positive non-trivial homotopy groups. They
+   are called connective because a synonym is ($-1$)-connected spectra, referring to the convention that an $n$-connected space is a space where its homotopy groups for all $k\leq n$ are trivial. This is why $\tilde\Zf$ is not just a map of spaces but a map of spectra, and this enables the application of stable homotopy theory, making life easier. We can conclude this interlude on stable homotopy theory and invertible TFTs with the following motto
 
 $$\text{\textit{Invertible TFTs are (equivalently) maps of spectra!}}$$
 
-This is not only of theoretical interest but it also allows the application of topological field theories to condensed matter theory! Classical phases of matter are governed by Landau theory of phase transition. However, the phases of a quantum material do not behave in the same manner. Fortunately, there are ways to describe them, or at least specific types of quantum matter (with gapped Hamiltonians for instance)\footnote{Kitaev for instance proposed in \cite{Kitaev_2009} that the topological insulators and superconductors of a certain type of condensed matter are classifiable via K-theory\footnote{See \url{https://ncatlab.org/nlab/show/topological+phase+of+matter} and \url{https://ncatlab.org/nlab/show/K-theory+classification+of+topological+phases+of+matter}.} and this was further refined via twisted equivariant K-theory by Dan Freed and Greg Moore in \cite{Freed_2013}. }. The topological field theories describing the (\href{https://ncatlab.org/nlab/show/topological+phase+of+matter}{topological}) phases of matter of some condensed matter systems (with short range entanglement) are \emph{invertible} field theories. The connection to stable homotopy theory allows to compute topological invariants of spectra and thereby of phases of matter. This was done by Freed and Hopkins in \cite{Freed_2021} and in \cite{freed2014shortrange}.
+This is not only of theoretical interest but it also allows the application of topological field theories to condensed matter theory! Classical phases of matter are governed by Landau
+ theory of phase transition. However, the phases of a quantum material do not behave in the
+  same manner. Fortunately, there are ways to describe them, or at least specific types of quantum matter (with gapped Hamiltonians for instance)\footnote{Kitaev for instance proposed in \cite{Kitaev_2009} that the topological insulators and superconductors of a certain type of condensed matter are classifiable via K-theory\footnote{See \url{https://ncatlab.org/nlab/show/topological+phase+of+matter} and \url{https://ncatlab.org/nlab/show/K-theory+classification+of+topological+phases+of+matter}.} and this was further refined via twisted equivariant K-theory by Dan Freed and Greg Moore in \cite{Freed_2013}. }. The topological field theories describing the (\href{https://ncatlab.org/nlab/show/topological+phase+of+matter}{topological}) phases of matter of some condensed matter systems (with short range entanglement) are \emph{invertible} field theories. The connection to stable homotopy theory allows to compute topological invariants of spectra and thereby of phases of matter. This was done by Freed and Hopkins in \cite{Freed_2021} and in \cite{freed2014shortrange}.
 
 
 % -------------------------------------------------------------
@@ -3665,23 +3715,78 @@ We chose 'fd' because it can stand for two things:
 	 in the next subsection
 \end{itemize}
 \end{notat}
-\subsection{DUalizability in higher categories \extra} % (fold)
+\subsection{Dualizability in higher categories \extra} % (fold)
 \label{ssub:left_and_right_duals_in_higher_categories}
-Equivalently, a left/right dual object $X$ in a monoidal category $\cat$ can also be characterized as a left/right adjoint (see \ref{AdjFun}) when considered as a morphism in the delooping (see \ref{DeloopingMonCat}) bicategory (see \ref{Bicategory}) $\mathbf{B}\cat$ of $\cat$. This makes sense because:
+Equivalently, a left/right dual object $X$ in a monoidal category $\cat$ can also be
+ characterized as a left/right adjoint
+ when considered as a 1-morphism in the delooping (see
+  \ref{DeloopingMonCat}) bicategory (see \ref{Bicategory}) $\mathbf{B}\cat$ of $\cat$.
+  This
+   makes sense because:
 \begin{itemize}
     \item the evaluation map $ev_X$ corresponds to the counit $\epsilon$ of the adjunction 
     \item the coevaluation map $coev_X$ to the unit $\eta$ of the adjunction
     \item the two diagrams (\ref{DUAL1} and \ref{DUAL2}) to the triangle identities of the adjunction.
 \end{itemize} 
-A sane individual, i.e. not a homo categoriensis\footnote{A subspecies of homo sapiens. Exemplars usually say stuff like '\href{https://ncatlab.org/nlab/show/differential+equation}{I understand differential equations as sub-$\infty$-groupoids of tangent and jet bundles}' and have posters of Grothendieck or Lawvere in their bedroom.}, might ask why this is remotely useful. The answer is that one needs this intuition to talk about monoidal ($\infty,n$)-categories with duals. This is interesting for us because these objects are used in the cobordism hypothesis, stating that their objects classify fully extended TFTs, see \ref{RemarkOnCobHypo}.
+A natural question is: what is an adjoint 1-morphism?
+We defined only adjoint functors (see \ref{AdjFun})! 
+Fortunately the definition we gave for functors, i.e.
+1-morphisms in Cat, is easily generalizable to 1-morphisms in an arbitrary bicategory,
+meaning that it is virtually the same: one just has to substitute '1-morphisms' for 'functors'
+and substitute '2-morphisms' for 'natural
+transformations' (when talking about the co/evaluation and the identity on the functors).
+
+A sane individual, i.e. not a homo categoriens\footnote{A subspecies of homo sapiens.
+	 Exemplars usually say stuff like 
+	 '\href{https://ncatlab.org/nlab/show/differential+equation}{I understand differential equations as sub-$\infty$-groupoids of tangent and jet bundles}'
+	  and have posters of Grothendieck or Lawvere in their bedroom.}
+, might ask why this is remotely useful. The answer is that one needs this intuition to talk about
+ monoidal ($\infty,n$)-categories with duals. This is interesting for us because, for 
+ instance,  these objects are used in the cobordism hypothesis, stating that their objects
+  classify fully extended TFTs,
+  see \ref{RemarkOnCobHypo}.
 \begin{rem}
-    The notion of delooping of a monoidal category as a one-object bicategory can be generalized to monoidal $(\infty,n)$-categories. The delooping of a monoidal $(\infty,n)$-category $\cat$ is a one-object $(\infty,n+1)$-category $\mathbf{B}\cat$ where the objects of $\cat$ are the 1-morphisms of $\mathbf{B}\cat$ and the tensor product of $\cat$ is the composition $\circ$ of 1-morphisms.
+    The notion of delooping of a monoidal category as a one-object bicategory can be
+     generalized to monoidal $(\infty,n)$-categories. The delooping of a monoidal
+      $(\infty,n)$-category $\cat$ is a one-object $(\infty,n+1)$-category $\mathbf{B}\cat$ where the objects of $\cat$ are the 1-morphisms of $\mathbf{B}\cat$ and the tensor product of $\cat$ is the composition $\circ$ of 1-morphisms.
 \end{rem}
 \begin{defn}[($\infty,n$)-monoidal categories with duals]\label{HigherMonCatDuals}
-    Let $\cat$ be a monoidal ($\infty,n$)-category. Then $\cat$ has duals if and only if its delooping $\mathbf{B}\cat$ has adjoints\footnote{In the usual jargon, an $(\infty,n)$-category has adjoints if it has adjoints for any $k$-morphism with $0<k<n$. We spelled however what it means anyway for the sake of clarity.} for any $k$-morphism with $0<k<n+1$ . We say that any object in such a category is fully $n$-dualizable.
-
-    There is an equivalent definition talking about the homotopy category and the homotopy 2-category of $\cat$, see \cite{lurie2009classification} and \cite{gwilliam2018duals}. However, this intuition about adjoints is still very useful.
+    Let $\cat$ be a monoidal ($\infty,n$)-category. Then $\cat$ has duals if and only if its delooping $\mathbf{B}\cat$ has adjoints\footnote{In the usual jargon, an $(\infty,n)$-category has adjoints if it has adjoints
+    	 for any $k$-morphism with $0<k<n$. We spelled however what it means anyway for the sake of clarity.} for any $k$-morphism with $0<k<n+1$ . We say that any object in such a
+    	  category is fully $n$-dualizable. 
 \end{defn}
+We have a vague idea of what are monoidal ($\infty,n$)-categories and deloopings
+thereof. However, we did not sketch what it means that an ($\infty,n+1$)-category has
+ adjoints, but it is essential since we characterized the duals of a monoidal
+  ($\infty,n$)-category in terms of the adjoints of its delooping.
+  The idea is to trace this back to adjoints of 1-morphisms in bicategories.
+  \begin{defn}[Homotopy 2-category of an $(\infty,n)$-category]
+A homotopy 2-category of an $(\infty,n)$-category $\cat$ with $n\geq 2$ is a bicategory h$_{2}\cat$
+with 
+\begin{itemize}
+\item as objects the objects of $\cat$ $$\operatorname{ob}(\operatorname{h}_2\cat)=\operatorname{ob}(\cat)$$
+\item as 1-morphisms the 1-morphisms of $\cat$ 
+$$1\operatorname{-mor}(\operatorname{h}_2\cat)=1\operatorname{-mor}(\cat)$$ 
+\item as 2-morphisms isomorphism classes of 2-morphisms in $\cat$, i.e. given
+1-morphisms $f:X\to Y$ a 2-morphism in $\operatorname{h}_2\cat$ is a 2-morphism in $\cat$
+up to 3-isomorphism
+ $$2\operatorname{-mor}(\operatorname{h}_2\cat)=2\operatorname{-mor}(\cat)/\cong$$ 
+\end{itemize}
+  \end{defn}
+  \begin{defn}[Adjoints in $(\infty,n)$-categories]
+We define adjoints for $k$-morphisms by recursion.
+An $(\infty,n)$-category $\cat$ has adjoints for 1-morphisms if its homotopy 2-category 
+$\operatorname{h}_2\cat$ has adjoints for 1-morphisms, i.e. if all 1-morphisms of
+ $\operatorname{h}_2\cat$ are part of an adjunction. An $(\infty,n)$-category $\cat$ has
+  adjoints for $k$-morphisms if, for every pair $X,Y\in\operatorname{ob}(\cat)$, the 
+  $(\infty,n-1)$-category $\Hom_{\cat}(X,Y)$ has adjoints for $k-1$-morphisms.
+  \end{defn}
+  Having 
+\begin{rem}
+There is an equivalent definition of monoidal $(\infty,n)$-category with duals, see \cite{lurie2009classification} and
+\cite{gwilliam2018duals}. This intuition about adjoints is very useful also in this case.
+\end{rem}
+
 % -------------------------------------------------------------
 % --------------------- LECTURE 12 4-6/12 ---------------------
 % -------------------------------------------------------------
