@@ -1927,8 +1927,8 @@ This strategy was the key for classifying manifolds up to cobordism.
 However, the cobordism groups merely record that \emph{there is} a bordism between two manifolds (since two manifolds are equivalent just if there is a bordism, independently of what kind of bordism it is), 
 thereby forgetting other properties of the bordism itself. 
 We swich now perspective and analyze a more sophisticated structure remembering \underline{how} two manifolds are cobordant, 
-e.g. indicating the manifold that bounds them and the direction of the bordism: the symmetric monoidal category $\Bord_{n,n-1}$ where objects are $(n-1)$ manifolds and morphisms are $n$-cobordisms. We will do this via a process called categorification\footnote{Sometimes, e.g. in the nLab, also called vertical categorification.}: adding categorical structure to things, 
-e.g.\footnote{Note that although this way of categorifying is the most prominent one, it is strictly speaking not the only instance of categorifying, one could also go from category theory to higher category theory.} 
+e.g. indicating the manifold that bounds them and the direction of the bordism: the symmetric monoidal category $\Bord_{n,n-1}$ where objects are $(n-1)$ manifolds and morphisms are $n$-cobordisms. This is an instance of a process called categorification\footnote{Sometimes, e.g. in the nLab, also called vertical categorification.}: adding categorical structure to things, 
+e.g.\footnote{Note that although this way of categorifying is the most prominent one, it is strictly speaking not the only way to categorify, one could also go from category theory to higher category theory.} 
 passing from set-theoretic notions like set or function  categorical ones like category or functor. 
 The invariants will become in turn functors from $\Bord_{n,n-1}$ to categories of algebraic nature like $\Vect_k$, the category of vector spaces on a field $k$. 
 Such categorified cobordism invariants are exactly topological field theories (TFTs). 
@@ -2391,7 +2391,7 @@ The right hand square commutes because of the naturality of $\eta$. Since the ri
     An $(n,k)$-category is a category in which all $m$-morphisms with $n\geq m>k$ are invertible and all $j$-morphisms with $j\leq k$ are not necessarily invertible.
 \end{notat}
 \noindent Following this convention an ordinary category is a strict $(1,1)$-category, a strict 2-category is a strict (2,2)-category, a groupoid is a strict (1,0) groupoid, and more generally an $n$-groupoid is an $(n,0)$-category. In order to make this more rigorous we need to loosely characterize enriched categories.
-\begin{defn}[Loose definition of Enriched Category]\label{loose enriched Cat}
+\begin{defn}[Loose definition of enriched category]\label{loose enriched Cat}
     Given a category $\dat$ a category $\cat$ enriched over $\dat$ is a category such that for every $X,Y\in\cat$ $$\Hom_{\cat}(X,Y)\in\dat$$
 \end{defn}
 \begin{rem}
@@ -2592,10 +2592,11 @@ Thus, since both $(A\times\ast,pr_1,pr_2)$ and $(A,id_A,\phi_A)$ are products of
 
 \noindent Hence, we see how any category with finite cartesian products is a monoidal category. Cartesian monoidal categories are in a sense special because they have some maps which are not possessed by every monoidal category, notably the diagonal map $\Delta_X:X\to X\times X$ and $\phi_X:X\to\mathbb{1}_\cat$ giving every object a comonoid structure. Moreover, they are all symmetric (defined later, \ref{SymmMonCat}) because the cartesian product is symmetric. 
 
-\subsection{Noncartesian Monoidal Categories: tensor product \extra} % (fold)
+\subsection{Noncartesian monoidal categories \extra} % (fold)
 \label{sub:noncartesian_monoidal_categories}
 
 %TODO I think if we want to say this it should be moved before /William
+%Do you mean by 'this' the whole section? If so, I disagree since we need the cartesian product to define the tensor product in Ab and Vect via a universal property /Andrea
 \begin{notat}
     We denote the category of abelian groups $\AbGrp$ also with Ab.
 \end{notat}
@@ -2652,57 +2653,18 @@ Ab is very important as an enriching category. Before, we gave a loose character
 \end{defn}
 \begin{ex}
 	\hfill
-	%TODO some examples already done before... /William
+	%TODO some examples already done before... /William True, did not notice, now I added that we are just recalling some, is it okay or better just \ref? /Andre
+	We recall some examples spelled out before and provide a new one coming from topology (the last one):
     \begin{enumerate}\label{Examples of enriched categories (Simplicially)}
         \item A locally small category is a category enriched over Set. Set is a category enriched over itself.
         \item A $2$-category is a category enriched over Cat. Cat is a category enriched over itself, since Cat is a 2-category because $\Hom$s are functor \emph{categories}.
         \item A strict $n$-category is a category enriched over a strict $(n-1)$-category.
-        \item A topologically enriched category is a category enriched over Top. The category of compactly generated Hausdorff spaces CGHaus, i.e. a category containing all $CW$-complexes, is a topologically enriched category, since one can take the mapping space $Map(X,Y)$ with the compact-open topology for any $X,Y\in \operatorname{CGHaus}$. Such categories can be used to define ?
-        %TODO either complete or remove the end /William
         \item A strict $(2,1)$-category is a category in which 2-morphisms are invertible and 1-morphisms not necessarily. It is a Grpd-enriched category. An example of (2,1)-category is Grpd itself, since all $\Hom_{\operatorname{Grpd}}$ are indeed  groupoids (see \ref{2,1Grpd} for an explanation). 
+        \item A topologically enriched category is a category enriched over Top. The category of compactly generated Hausdorff spaces CGHaus, i.e. a category containing all $CW$-complexes, is a topologically enriched category, since one can take the mapping space $Map(X,Y)$ with the compact-open topology for any $X,Y\in \operatorname{CGHaus}$. Such categories can be used to model $(\infty,1)$-categories see \ref{HomotopyHypothesis} for a sketch of how this might work.
     \end{enumerate}
 \end{ex}
-There is another example of strict (2,1)-category from topology and it will let us rigorously show in which sense a homotopy is a natural transformations and why one might want to talk about $\infty$-categories.
-\subsection{Grothendieck's Homotopy Hypothesis and \texorpdfstring{$\infty$}{infinity}-categories \extra}
-    \begin{ex}\label{Homotopy2Top}
-    We previously spelled out an analogue formulation of the natural transformation (see \ref{Homotopy}). This shows that the notion of homotopy and natural transformation are related. A way to more rigorously pin down that a homotopy is some kind of natural transformation is via the the homotopy 2-category of topological spaces. Instead of taking paths up to homotopies between paths, as in the more famous hTop, we take homotopies between paths up to homotopies between homotopies between paths. This results in a strict (2,1)-category h$_2$Top where objects are topological spaces, 1-morphisms are continuous maps and 2-morphisms are homotopies between continuous maps up to higher homotopies, i.e. homotopies between homotopies between continuous maps. A homotopy between a homotopy between continuous maps is defined in the following manner: given continuous functions $f,g:X\to Y$ and homotopies between them $k,h:X\times [0,1]\to Y$, a homotopy $L$ between these two homotopies $k$ and $h$ is a continuous function $L:X\times [0,1]\times[0,1]\to Y$ such that \begin{itemize}
-            \item $\forall t\in [0,1]\forall x\in X. H(0,t,x)=h(t,x)$
-            \item $\forall t\in [0,1]\forall x\in X. H(1,t,x)=k(t,x)$
-            \item $\forall t'\in [0,1]\forall x\in X. H(t',0,x)=f(x)$
-            \item $\forall t'\in [0,1]\forall x\in X. H(t',1,x)=g(x)$
-        \end{itemize}
-        If one takes topological spaces as objects, continuous maps between them as 1-morphisms, and homotopies between continuous maps \emph{up to} homotopies between homotopies one gets the homotopy 2-category of topological spaces h$_2$Top and is an example of a strict $(2,1)$-category. If one restricts themselves to spaces admitting the structure of CW-complexes, i.e. something like weakly Hausdorff compactly generated spaces, and then take the homotopy 1-types thereof, we get a subcategory of  h$_2$Top called 2-1Type. Via the Eilenberg-MacLane space of a groupoid one can establish an equivalence of categories 
-$$2\operatorname{-}1Type\simeq Grpd$$
-This is Grothendieck's infamous homotopy hypothesis in dimension 1. It was formulated in \emph{Pursuing Stacks} in full generality for $\infty$-groupoids. We now sketch how this works in full glory.
-    \end{ex}
-    \begin{notat}
-        By $\infty$-category we mean $(\infty,1)$-category.
-    \end{notat}
-\begin{ex}\label{HomotopyHypothesis} Regarding the last example, one could ask why stop at homotopies between homotopies and not go all the way to homotopies between homotopies between homotopies, homotopies between ... for $\infty$ many times? This is a great question and also the way to provide a universal properties for constructions similar to the already seen cartesian product called homotopy co/limits (for more on this see chapters 1 and 2 of \cite{HarpazAlgebras}). In the end, one would get an $(\infty,1)$-category, a category in which the only morphisms that are not necessarily (weakly\footnote{To be precise, higher morphisms in such a category are weakly invertible and not strictly. This is not at all bad and that things are not strict but up to homotopy/equivalence is exactly what one desires in this context. Weakly invertible means that it is not the case the sense that $f\circ g=id$, but $f\circ g\simeq id$}.) invertible are morphisms between objects, all other morphisms between morphisms are invertible; in other words, a category in which all $n>1$-morphisms are invertible and 1-morphisms not necessarily. 
-
-	Moreover, one gets the fundamental $\infty$-groupoid of a space via a similar reasoning: instead of considering paths up to homotopies between paths, one can go all the way up and consider homotopies between homotopies between... without forgetting any information. All paths and all homotopies are clearly invertible so for all $k\in \mathbb{N}_0$ all $k$-morphisms are invertible and that is why it is called $\infty$-\emph{groupoid}. A synonym for $\infty$-groupoid is $(\infty,0)$-category. Note that the category of all $\infty$-groupoids is not an $\infty$-groupoids, because functors between $\infty$-groupoids are not necessarily invertible, parallelly to functors between 1-groupoids. The previously mentioned homotopy hypothesis states that the $(\infty,1)$-category of (nice) topological spaces we just sketched is equivalent to the $(\infty,1)$-category of $\infty$-groupoids. The intuition behinds this is that this should hold thanks to the construction of fundamental $\infty$-groupoids of spaces, whereas, in the other direction, from $\infty$-groupoids one can construct spaces via something called the geometric realization. This equivalence is the reason why in the literature the category of $\infty$-groupoids is sometimes called the category of Spaces. If the equivalence holds or not of course depends on how we define 'space' and $\infty$-groupoid, but it holds for many reasonable definitions. 
-
-	One way to model this kind of categories with infinitely many invertible morphisms is with topologically enriched categories, which we previously described, since mapping spaces are Hom-objects, continuous functions between mapping spaces induce 1-morphisms between objects and higher morphisms are given by the homotopies between such mapping spaces. 
-
-	A further way is via some specific simplicially enriched categories, i.e. categories enriched with the cartesian monoidal category of simplicial sets sSet (sometimes denoted Set$_\Delta$). A synonym of simplicially enriched category is simplicial category. 
-\end{ex}
-\begin{defn}[The Simplex Category]
-    We call simplex category, the category with all linearly ordered sets $[n]$ as objects and weakly monotonic maps as morphisms. We denote such category with $\Delta$.
-\end{defn}
-\begin{defn}[Simplicial Set]
-    A simplicial set is a Set-valued presheaf on $\Delta$, i.e. a functor $X:\Delta^{\operatorname{op}}\to \Set$. Simplicial sets form a functor category where morphisms are natural transformations denoted sSet. It is bicomplete, see the proof in \cite[1.1.24]{land2021introduction}
-\end{defn}
-However, we do not want simplicial sets in general, but simplicial sets that are Kan complexes\footnote{See \url{https://ncatlab.org/nlab/show/Kan+complex}.}. This is because these special simplicial sets give a geometric model of $\infty$-groupoids and hence if we enrich a category via such simplicial sets, we get the desired $(\infty,1)$-category, similarly to getting (2,1)-categories by enriching with ordinary groupoids.
-
-Quasi-categories are another construction to model $\infty$-categories that has been proven very useful and apt to create useful constructions. It also relies heavily on simplicial sets and there is strong connection to simplicially enriched categories\footnote{See \cite{land2021introduction}.}.
-
-These three different ways to model $\infty$-categories are equivalent in some apt sense (see \cite{LurieGoodwillieEquivalent} and \cite{bergner2006survey}).
-
-\begin{rem}
-    Another important example of $(\infty,1)$-category is the category of spectra, a category similar\footnote{Abelian Groups:Algebra$\sim$Spectra:Higher Algebra, for more on this check out \cite{Mazel-Gee2024}.} to the category of abelian groups which we will encounter later (see \ref{Spectra Phases of Matter}).
-\end{rem} 
-
-\section{Back to Enriched Categories \extra} 
+There is an interesting example of strict (2,1)-category from topology and it will let us rigorously show in which sense a homotopy is a natural transformations and why one might want to talk
+ about $\infty$-categories. Take a look at the following subsection for more on this \ref{ooHomotopyHypothesis}.
 
 Having characterized satisfactorily enriched categories we can now define what is an Ab-enriched category.
 \begin{defn}[Ab-Category]\label{Ab-Enriched Cat}
@@ -2802,6 +2764,52 @@ Another example of non-cartesian monoidal category, which is not algebraic in na
     \end{itemize}  
     We will use it to give an equivalent definition of $k$-algebra (see \ref{EAlg}), but in general they can be used to define factorization algebras, a very important tool in the field of TFTs, see \cite{Tanaka_2020}.
 \end{ex}
+\subsection{Grothendieck's Homotopy Hypothesis and \texorpdfstring{$\infty$}{infinity}-categories \extra}\label{ooHomotopyHypothesis}
+\begin{ex}\label{Homotopy2Top}
+	We previously spelled out an analogue formulation of the natural transformation (see \ref{Homotopy}). This shows that the notion of homotopy and natural transformation are related. A way to more rigorously pin down that a homotopy is some kind of natural transformation is via the the homotopy 2-category of topological spaces. Instead of taking paths up to homotopies between paths, as in the more famous hTop, we take homotopies between paths up to homotopies between homotopies between paths. This results in a strict (2,1)-category h$_2$Top where objects are topological spaces, 1-morphisms are continuous maps and 2-morphisms are homotopies between continuous maps up to higher homotopies, i.e. homotopies between homotopies between continuous maps. A homotopy between a homotopy between continuous maps is defined in the following manner: given continuous functions $f,g:X\to Y$ and homotopies between them $k,h:X\times [0,1]\to Y$, a homotopy $L$ between these two homotopies $k$ and $h$ is a continuous function $L:X\times [0,1]\times[0,1]\to Y$ such that 
+	\begin{itemize}
+		\item $\forall t\in [0,1]\forall x\in X. H(0,t,x)=h(t,x)$
+		\item $\forall t\in [0,1]\forall x\in X. H(1,t,x)=k(t,x)$
+		\item $\forall t'\in [0,1]\forall x\in X. H(t',0,x)=f(x)$
+		\item $\forall t'\in [0,1]\forall x\in X. H(t',1,x)=g(x)$
+	\end{itemize}
+	If one takes topological spaces as objects, continuous maps between them as 1-morphisms, and homotopies between continuous maps \emph{up to} homotopies between homotopies one gets the homotopy 2-category of topological spaces h$_2$Top and is an example of a strict $(2,1)$-category. If one restricts themselves to spaces admitting the structure of CW-complexes, i.e. something like weakly Hausdorff compactly generated spaces, and then take the homotopy 1-types thereof, we get a subcategory of  h$_2$Top called 2-1Type. Via the Eilenberg-MacLane space of a groupoid one can establish an equivalence of categories 
+	$$2\operatorname{-}1Type\simeq Grpd$$
+	This is Grothendieck's infamous homotopy hypothesis in dimension 1. It was formulated in \emph{Pursuing Stacks} in full generality for $\infty$-groupoids. We now sketch how this works in full glory.
+\end{ex}
+\begin{notat}
+	By $\infty$-category we mean $(\infty,1)$-category.
+\end{notat}
+\begin{ex}\label{HomotopyHypothesis} Regarding the last example, one could ask why stop at homotopies between homotopies and not go all the way to homotopies between homotopies between homotopies, homotopies between ... for $\infty$ many times? This is a great question and also the way to provide a universal properties for constructions similar to the already seen cartesian product called homotopy co/limits (for more on this see chapters 1 and 2 of \cite{HarpazAlgebras}). In the end, one would get an $(\infty,1)$-category, a category in which the only morphisms that are not necessarily (weakly\footnote{To be precise, higher
+		 morphisms in such a category are weakly invertible and not strictly. Weakly invertible means
+		 that it is not the case the sense that $f\circ g=id$, but $f\circ g\simeq id$. This is not at all
+		 negative. That things are not strict but up to homotopy/equivalence is exactly what one desires in this context.}) invertible are morphisms between objects, all other morphisms between morphisms are invertible; in other words, a category in which all $n>1$-morphisms are invertible and 1-morphisms not necessarily. 
+	
+	Moreover, one gets the fundamental $\infty$-groupoid of a space via a similar reasoning: instead of considering paths up to homotopies between paths, one can go all the way up and consider homotopies between homotopies between... without forgetting any information. All paths and all homotopies are clearly invertible so for all $k\in \mathbb{N}_0$ all $k$-morphisms are invertible and that is why it is called $\infty$-\emph{groupoid}. A synonym for $\infty$-groupoid is $(\infty,0)$-category. Note that the category of all $\infty$-groupoids is not an $\infty$-groupoids, because functors between $\infty$-groupoids are not necessarily invertible, parallelly to functors between 1-groupoids. The previously mentioned homotopy hypothesis states that the $(\infty,1)$-category of (nice) topological spaces we just sketched is equivalent to the $(\infty,1)$-category of $\infty$-groupoids. The intuition behinds this is that this should hold thanks to the construction of fundamental $\infty$-groupoids of spaces, whereas, in the other direction, from $\infty$-groupoids one can construct spaces via something called the geometric realization. This equivalence is the reason why in the literature the category of $\infty$-groupoids is sometimes called the category of Spaces. If the equivalence holds or not of course depends on how we define 'space' and $\infty$-groupoid, but it holds for many reasonable definitions, for instance a category of convenient topological spaces like the one of compactly generated weakly Hausdorff spaces. 
+	
+	Similarly to (2,1)-categories, which are enriched over ordinary groupoids, the sketchy idea
+	behind an $(\infty,1)$-category is being enriched over $\infty$-groupoids.
+	
+	More concretely, one way to model this kind of categories with infinitely many invertible morphisms is with topologically enriched categories (which we previously described \ref{Examples of enriched categories (Simplicially)}), since mapping spaces are Hom-objects, 2-morphisms are paths 
+	in such mapping spaces and higher morphisms are given by the homotopies between homotopies. 
+	
+	A further way is via some specific simplicially enriched categories, i.e. categories enriched with the cartesian monoidal category of simplicial sets sSet (sometimes denoted Set$_\Delta$). A synonym of simplicially enriched category is simplicial category. 
+\end{ex}
+\begin{defn}[The Simplex Category]
+	We call simplex category, the category with all linearly ordered sets $[n]$ as objects and weakly monotonic maps as morphisms. We denote such category with $\Delta$.
+\end{defn}
+\begin{defn}[Simplicial Set]
+	A simplicial set is a Set-valued presheaf on $\Delta$, i.e. a functor $X:\Delta^{\operatorname{op}}\to \Set$. Simplicial sets form a functor category where morphisms are natural transformations denoted sSet. It is bicomplete, see the proof in \cite[1.1.24]{land2021introduction}
+\end{defn}
+However, we do not want simplicial sets in general, but simplicial sets that are Kan complexes\footnote{See \url{https://ncatlab.org/nlab/show/Kan+complex}.}. This is because these special simplicial sets give a geometric model of $\infty$-groupoids and hence by enriching a category via such simplicial sets we get the desired $(\infty,1)$-category, similarly to getting (2,1)-categories by enriching with ordinary groupoids.
+
+Quasi-categories are another construction to model $\infty$-categories that has been proven very useful and apt to create useful constructions. It also relies heavily on simplicial sets and there is strong connection to simplicially enriched categories (see \cite{land2021introduction}).
+
+These three different ways to model $\infty$-categories are equivalent in some apt sense (see \cite{LurieGoodwillieEquivalent} and \cite{bergner2006survey}).
+
+\begin{rem}
+	Another important example of $(\infty,1)$-category is the category of spectra, a category similar\footnote{Abelian Groups:Algebra$\sim$Spectra:Higher Algebra, for more on this check out \cite{Mazel-Gee2024}.} to the category of abelian groups which we will encounter later (see \ref{Spectra Phases of Matter}).
+\end{rem} 
 
 \section{Objects Internal to a Monoidal Category}
 \begin{defn}[Monoid Object]
