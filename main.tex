@@ -21,7 +21,8 @@
 \usepackage{dsfont}				% special S for sphere spectrum
 \usepackage{bbding}				%For the plane symbol
 \usepackage{ stmaryrd }			% to use \mapsfrom
-
+\usepackage{fourier}				%for the danger symbol
+\usepackage[mathscr]{euscript}	%for cooler curly letters for cats, especially 'S'
 %\usepackage[all,cmtip]{xy}     % don't know what it's for
 %\usepackage{upgreek}           % don't know what it's for
 %\usepackage[normalem]{ulem}    % don't know what it's for
@@ -96,6 +97,7 @@
 \DeclareMathOperator{\ob}{ob}
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Alg}{Alg}
 \DeclareMathOperator{\Set}{Set}
 \DeclareMathOperator{\Top}{Top}
 \DeclareMathOperator{\Vect}{Vect}
@@ -103,7 +105,6 @@
 \DeclareMathOperator{\Mon}{Mon}
 \DeclareMathOperator{\Grp}{Grp}
 \DeclareMathOperator{\AbGrp}{AbGrp}
-\DeclareMathOperator{\Alg}{Alg}
 \DeclareMathOperator{\Ring}{Ring}
 \DeclareMathOperator{\Cat}{Cat}
 \DeclareMathOperator{\Gpd}{Gpd}
@@ -230,6 +231,11 @@ $-$H. Poincaré}\\
 \hfill
 \vspace{0.50cm}\\
 These are the lecture notes of the course \textit{``Bordism and Topological Field Theory''} held by Prof.\hspace{1mm}Dr. Claudia Scheimbauer (\href{mailto:scheimbauer@ma.tum.de}{scheimbauer@ma.tum.de}) during the Wintersemester 2023/2024 at the \textit{Technische Universität München}. The tutorial sessions are held by Anja \v{S}vraka (\href{mailto:svr@ma.tum.de}{svr@ma.tum.de}).\hspace{1.5mm}The notes are typed by Luca Ipsale (\href{mailto:luca.ipsale@campus.lmu.de}{luca.ipsale@campus.lmu.de}), William Luciani (\href{mailto:w.luciani@campus.lmu.de}{w.luciani@campus.lmu.de}), Andrea Sittoni (\href{mailto:sittoniandrea@gmail.com}{sittoniandrea@gmail.com}) and Üzeyir Sa\c{c}{\i}kay (\href{mailto:uzeyirsacikay@gmail.com}{uzeyirsacikay@gmail.com}). Exercises are also implemented in the notes by Jacob Skarby (\href{mailto:jacob.skarby@tum.de}{jacob.skarby@tum.de}). If you find errors or if you have suggestions of any kind, please feel free to write us an e-mail.
+
+\vspace{1cm}
+
+{\LARGE \danger These notes have not been proofread by Prof. Scheimbauer, use at your own risk}.
+
 \updateinfo
 \thispagestyle{empty}
 
@@ -2914,7 +2920,7 @@ We leave the case of the counit for the reader.
 
 \subsection{Outlook towards \texorpdfstring{$\mathbb{E}_n$}{En}-Algebras \extra} 
 \label{EAlg}
-
+This outlook is based on \cite{HiroLee2022} and \cite{Mazel-Gee2024}.
 \begin{defn}[Isotopy]\label{Isotopy}
     An isotopy is a stricter form of homotopy. Let $f,g:X\to Y$ be embeddings. Then $H:X\times [0,1]\to Y$ is an isotopy if 
     \begin{itemize}
@@ -2931,6 +2937,9 @@ We leave the case of the counit for the reader.
 \begin{defn}[$\mathbb{E}_1$-Algebra]
     Let $\Disk_{1,0}^{or}$ be the category of 1-disks (see \ref{CatOfDisks}). Then a $\mathbb{E}_1$-algebra is a symmetric monoidal functor $$\Disk_{1}^{or}\to \cat$$ such that if $j,i\in \Hom_{\Disk_{1}^{or}}(X,Y)$ are smoothly isotopic embeddings, then  $F(j)=F(i)$, i.e. they are sent to the same morphism in $\cat$. More generally.
 \end{defn}
+\begin{notat}
+A synonym for $\mathbb{E}_1$-algebra is $A_\infty$-algebra.
+\end{notat}
 \begin{thm}
   $\mathbb{E}_1$-algebras with $\Vect_k$ as a target category correspond to $k$-algebras. Look into \cite{Tanaka_2020} for a sketch of the proof.
 \end{thm}
@@ -2952,8 +2961,115 @@ We summarize the correspondence with the following table
 \end{center}
 \begin{rem}
     Remember that a monoid object in Cat is a \emph{strict} monoidal category. Via $\mathbb{E}_1$-algebras is instead the way to precisely pin down the correspondence we laid down at the start of the section between monoidal categories, $k$-algebras and monoids, without collapsing monoidal categories to \emph{strict} monoidal category, as we did with the monoid object.
-\end{rem} 
+\end{rem}
 
+\begin{defn}[Category of $n$-disks]
+Let $\Disk_{n}^{\fr}$ be the $\infty$-category with finite disjoint
+unions of framed $n$-dimensional disks as objects, i.e. $(\R^{n})^{\amalg_{i}}$ for $i\geq 0$, and spaces of
+ framed smooth embeddings (with the compact-open topology) as Hom-objects, e.g. $\Hom_{\Disk_{n}^{\fr}}(\R^n\amalg\R^n,\R^n)$.
+\end{defn}
+\begin{defn}[$\mathbb{E}_n$ algebra]
+ Fix a symmetric monoidal $\infty$-category $\cat$. For any
+  $n\geq 1$, an $\mathbb{E}_n$-algebra in $\cat$ is a symmetric monoidal
+  functor 
+  $$\Disk_{n}^{\fr}\xrightarrow{A} \cat$$
+  
+  This is actually an algebra because it induces a parametrized family of $i$-ary multiplications 
+  $$\Hom_{\Disk_{n}^{\fr}}((\R^{n})^{\amalg_{i}},\R^n)\xrightarrow{A}\Hom_{\cat}(A(\R^n)^{\otimes_{i}},A(\R^n))$$
+  Which do not compose strictly! But up to the higher isotopies of the mappig space in $\Disk_{n}^{\fr}$!
+  \end{defn}
+
+In short, such $\mathbb{E}_n$-algebras allow us to define objects internal to categories up to coherent 
+homotopies. 
+
+$\mathbb{E}_n$-algebras in a symmetric monoidal $\infty$-category $\cat$ form an $\infty$-category 
+$$\Alg_{\mathbb{E}_n}:=\Fun^{\otimes} (\Disk_{n}^{\fr},\cat)$$
+Similarly to how monoid objects internal to a category $\cat$ form a category $\operatorname{Mon}(\cat)$, e.g. $\operatorname{Mon}(\Set)=\operatorname{Mon}$ (the usual category of monoids).
+
+\begin{center}
+	\begin{tabular}{|c||c|c|c|}
+		\hline
+		\phantom{h} & Set & $\Vect_k$ & Cat \\ [0.5ex]
+		\hline\hline
+		$\mathbb{E}_1$-algebra & monoid & $k$-algebra & monoidal category  \\
+		\hline
+		$\mathbb{E}_2$-algebra & commutative monoid &  commutative $k$-algebra & braided monoidal category \\
+		\hline 
+		$\mathbb{E}_3$-algebra & commutative monoid &  commutative $k$-algebra & symmetric monoidal category \\
+		\hline
+		$\mathbb{E}_4$-algebra & commutative monoid &  commutative $k$-algebra & symmetric monoidal category \\
+		\hline 
+		... & ... & ... & ... \\
+		\hline 
+		$\mathbb{E}_\infty$-algebra & commutative monoid &  commutative $k$-algebra & symmetric monoidal category \\
+		\hline
+	\end{tabular}
+\end{center}
+Set and $\Vect_{k}$ cannot detect the difference between $\mathbb{E}_n$-algebras for $n\geq 2$ while 
+Cat can go one step further. This is because Cat is a 2-category, and so has the necessary homotopies 
+in order to express more fine grained notions of commutativity like braided and symmetric.
+
+However, some categories have more homotopical information and hence 
+are even more refined. This is one of the reasons they are the categories
+in which higher algebra takes place.
+\begin{center}
+	\begin{tabular}{|c||c|c|c|}
+		\hline
+		\phantom{h} & $\infty$-Grpd & $\infty$-Cat & Spectra \\ [0.5ex]
+		\hline\hline
+		$\mathbb{E}_1$-algebra & $A_\infty$-space &  monoidal $\infty$-category &  $\mathbb{E}_1$-ring spectrum  \\
+		\hline
+		$\mathbb{E}_\infty$-algebra & $\mathbb{E}_\infty$-space & symmetric monoidal $\infty$-category &  $\mathbb{E}_\infty$-ring spectrum \\
+		\hline
+	\end{tabular}
+\end{center}
+\begin{notat}
+Under the homotopy hypothesis $\infty$-Grpd corresponds to a nice category of spaces, hence it is 
+sometimes denoted as $\mathscr{S}$ for $\mathscr{S}$paces.
+Other synonyms nowadays are: \begin{itemize}
+	\item $\infty$-Set, because it is the category one enriches over to get $\infty$-categories,
+	similarly to ordinary sets and locally small categories 
+	\item An, standing for anima, terminology coming from condensed mathematics
+\end{itemize}
+\end{notat}
+\begin{notat}
+ A synonym for $A_\infty$-space is monoidal $\infty$-groupoid. A synonym for $\mathbb{E}_\infty$-space is
+  symmetric monoidal $\infty$-groupoid. 
+\end{notat}
+\begin{defn}[Grouplike $\mathbb{E}_n$-Algebras]\label{grouplikeEalg}
+An $\mathbb{E}_n$-algebra $A\in\Alg_{\mathbb{E}_n}$ is grouplike if it lands in the category of groups
+$\operatorname{Grp}\subset\operatorname{Mon}$ when sent via the composition of
+\begin{itemize}
+	\item the functor $\pi_0:\mathscr{S}\to\Set$, sending objects in groupoids
+	to their isomorphism classes\footnote{The notation is no coincidence: under the homotopy hypothesis
+		this functor and the one sending points to their path-connected components are the same.} 
+	\item and the one forgetting
+	all the commutative structure, but just remembering the homotopy-coherent
+	associativity\footnote{Similarly to a forgetful functor 
+		from the category of commutative monoids to the category of monoids.}
+\end{itemize} 
+which can be visualized with the following diagram
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXEFsZ197XFxtYXRoYmJ7RX1fbn0oXFxtYXRoc2Nye1N9KSJdLFsxLDEsIlxcQWxnX3tcXG1hdGhiYntFfV9ufShcXFNldCkiXSxbMiwwLCJcXG9wZXJhdG9ybmFtZXtHcnB9XFxzdWJzZXRcXEFsZ197XFxtYXRoYmJ7RX1fMX0oXFxTZXQpXFxzaW1lcVxcb3BlcmF0b3JuYW1le01vbn0iXSxbMCwxLCJcXEFsZ197XFxtYXRoYmJ7RX1fbn0oXFxwaV8wKSIsMl0sWzEsMiwiXFxvcGVyYXRvcm5hbWV7Zm9yZ2V0fSIsMl0sWzAsMl1d
+\[\begin{tikzcd}[cramped]
+	{\Alg_{\mathbb{E}_n}(\mathscr{S})} && {\Alg_{\mathbb{E}_1}(\Set)\simeq\operatorname{Mon}} \\
+	& {\Alg_{\mathbb{E}_n}(\Set)}
+	\arrow["{\Alg_{\mathbb{E}_n}(\pi_0)}"', from=1-1, to=2-2]
+	\arrow["{\operatorname{forget}}"', from=2-2, to=1-3]
+	\arrow[from=1-1, to=1-3]
+\end{tikzcd}\]
+One may denote the subcategory of grouplike $\mathbb{E}_n$-algebras with
+ $\Alg^{\operatorname{gp}}_{\mathbb{E}_n}(\mathscr{C})\subset\Alg_{\mathbb{E}_n}(\mathscr{C})$
+ 
+\end{defn}
+\begin{rem}
+
+Grouplike algebras in the category of spaces $\Alg^{\operatorname{gp}}_{\mathbb{E}_n}(\mathscr{S})$ are
+Picard $\infty$-groupoids! Following the notation given in the table above,
+they are also called grouplike $\mathbb{E}_\infty$-spaces.
+
+Such objects are interesting for us because invertible field theories are equivalently
+maps of such grouplike $\mathbb{E}_\infty$-spaces! See \ref{Spectra Phases of Matter}.
+\end{rem}
 % -------------------------------------------------------------
 % --------------------- LECTURE 10 27/11 -----------------------
 % -------------------------------------------------------------
@@ -3482,10 +3598,10 @@ We previously talked about the fundamental $\infty$-groupoid of a space while sk
 
 However, we do not have just $\infty$-groupoids but also a symmetric monoidal structure with
  duals on both $|\Bord|$ and $\cat^\times$. In short, they are Picard $\infty$-groupoid.
- Navigating the literature it is useful to note that 
+It is useful to note that 
  	synonyms for Picard $\infty$-groupoids are $\mathbb{E}_\infty$-groups and grouplike
- 	$\mathbb{E}_\infty$-spaces.
- %Not so confident about this but just asked on a forum will update /andre
+ 	$\mathbb{E}_\infty$-spaces. In fact, they are particular $\mathbb{E}_n$-algebras 
+ 	and we already defined them, see \ref{grouplikeEalg}.
  
   Recall that intuitively the delooping of a group is a
   one-object groupoid and the delooping of a certain monoidal $k$-category is an one-object
