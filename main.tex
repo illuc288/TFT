@@ -1853,12 +1853,12 @@ $\Sigma(S^1)=S^2$ more generally $\Sigma(S^n)=S^{n+1}$
 	The suspension spectrum $\Sigma^\infty X$ has $\Sigma_n$ as the $n$-th space in the sequence and structure maps $\Sigma\Sigma_n\xrightarrow{\id}\Sigma_{n+1}$.
 \end{defn}
 \begin{ex}[Sphere Spectrum]
-	The sphere spectrum $\mathds S$ is the suspension spectrum of the point, $S^0$. In fact, $\Sigma S^0=S^1$, $\Sigma^2 S^0=\Sigma\Sigma S^0=\Sigma S^1=S^2$ and in general $\Sigma^n S^0=S^n $
+	The sphere spectrum $\mathbb{S}$ is the suspension spectrum of the point, $S^0$. In fact, $\Sigma S^0=S^1$, $\Sigma^2 S^0=\Sigma\Sigma S^0=\Sigma S^1=S^2$ and in general $\Sigma^n S^0=S^n $
 \end{ex}
 Spectra are a higher categorical analog of abelian groups (see \ref{Ab-Enriched Cat}), they have been in fact called “the abelian groups of the 21st century” \cite{Mazel-Gee2024}
 because they provide very powerful techniques for many areas of mathematics
 where there is currently much progress, e.g. they the main characters of stable homotopy
- theory and fundmental in algebraic K-theory. Check out \cite{GregoricSpectra} for a great informal introduction. In a certain sense, $\mathds S$ is analgous to $\Z$ but in another category: \Z is the unit in Ab, while $\mathds S$ is the unit in the category of spectra. 
+ theory and fundmental in algebraic K-theory. Check out \cite{GregoricSpectra} for a great informal introduction. In a certain sense, $\mathbb{S}$ is analgous to $\Z$ but in another category: \Z is the unit in Ab, while $\mathbb{S}$ is the unit in the category of spectra. 
 These objects will also become useful later, \ref{Spectra Phases of Matter}.
 We make the comparison more explicit via a table in order to convey some intuition\footnote{A
 	 cool synonym for higher algebra is brave new algebra. It was coined by Waldhausen, one of
@@ -1876,7 +1876,7 @@ We make the comparison more explicit via a table in order to convey some intuiti
 		\hline
 		Ab & Sp \\
 		\hline
-	    \Z &  $\mathds S$ \\
+	    \Z &  $\mathbb{S}$ \\
 		\hline
 		Ab-enriched category & Sp-enriched category \\
 		\hline
@@ -1893,11 +1893,11 @@ abelian category.
 \end{notat}
 \begin{rem}
 Note that the stable homotopy groups of the sphere can be made into a commutative \Z-graded ring via direct sums. We denote it with $\pi_{\bullet}(\mathds{S})$
-$$\pi_{\bullet}(\mathds{S})=\bigoplus_{n\geq 0}\pi_{n}(\mathds{S})$$
+$$\pi_{\bullet}(\mathds{S})=\bigoplus_{n\geq 0}\pi_{n}(\mathbb{S})$$
 \end{rem}
 \begin{thm}[Thom's theorem]
 	One way of phrasing Thom's theorem is
-	$$\Omega_{\bullet}^{\fr}\cong\pi_{\bullet}(\mathds{S})$$
+	$$\Omega_{\bullet}^{\fr}\cong\pi_{\bullet}(\mathbb{S})$$
 	This is also called Pontrjagin-Thom isomorphism.
 \end{thm}
 \begin{ex}
@@ -3025,7 +3025,7 @@ in which higher algebra takes place.
 \end{center}
 \begin{notat}
 Under the homotopy hypothesis $\infty$-Grpd corresponds to a nice category of spaces, hence it is 
-sometimes denoted as $\mathscr{S}$ for $\mathscr{S}$paces.
+sometimes denoted as $\mathds{S}$ for $\mathds{S}$paces.
 Other synonyms nowadays are: \begin{itemize}
 	\item $\infty$-Set, because it is the category one enriches over to get $\infty$-categories,
 	similarly to ordinary sets and locally small categories 
@@ -3040,7 +3040,7 @@ Other synonyms nowadays are: \begin{itemize}
 An $\mathbb{E}_n$-algebra $A\in\Alg_{\mathbb{E}_n}$ is grouplike if it lands in the category of groups
 $\operatorname{Grp}\subset\operatorname{Mon}$ when sent via the composition of
 \begin{itemize}
-	\item the functor $\pi_0:\mathscr{S}\to\Set$, sending objects in groupoids
+	\item the functor $\pi_0:\mathds{S}\to\Set$, sending objects in groupoids
 	to their isomorphism classes\footnote{The notation is no coincidence: under the homotopy hypothesis
 		this functor and the one sending points to their path-connected components are the same.} 
 	\item and the one forgetting
@@ -3051,7 +3051,7 @@ $\operatorname{Grp}\subset\operatorname{Mon}$ when sent via the composition of
 which can be visualized with the following diagram
 % https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXEFsZ197XFxtYXRoYmJ7RX1fbn0oXFxtYXRoc2Nye1N9KSJdLFsxLDEsIlxcQWxnX3tcXG1hdGhiYntFfV9ufShcXFNldCkiXSxbMiwwLCJcXG9wZXJhdG9ybmFtZXtHcnB9XFxzdWJzZXRcXEFsZ197XFxtYXRoYmJ7RX1fMX0oXFxTZXQpXFxzaW1lcVxcb3BlcmF0b3JuYW1le01vbn0iXSxbMCwxLCJcXEFsZ197XFxtYXRoYmJ7RX1fbn0oXFxwaV8wKSIsMl0sWzEsMiwiXFxvcGVyYXRvcm5hbWV7Zm9yZ2V0fSIsMl0sWzAsMl1d
 \[\begin{tikzcd}[cramped]
-	{\Alg_{\mathbb{E}_n}(\mathscr{S})} && {\Alg_{\mathbb{E}_1}(\Set)\simeq\operatorname{Mon}} \\
+	{\Alg_{\mathbb{E}_n}(\mathds{S})} && {\Alg_{\mathbb{E}_1}(\Set)\simeq\operatorname{Mon}} \\
 	& {\Alg_{\mathbb{E}_n}(\Set)}
 	\arrow["{\Alg_{\mathbb{E}_n}(\pi_0)}"', from=1-1, to=2-2]
 	\arrow["{\operatorname{forget}}"', from=2-2, to=1-3]
@@ -3061,15 +3061,18 @@ One may denote the subcategory of grouplike $\mathbb{E}_n$-algebras with
  $\Alg^{\operatorname{gp}}_{\mathbb{E}_n}(\mathscr{C})\subset\Alg_{\mathbb{E}_n}(\mathscr{C})$
  
 \end{defn}
-\begin{rem}
+\begin{ex}
 
-Grouplike algebras in the category of spaces $\Alg^{\operatorname{gp}}_{\mathbb{E}_n}(\mathscr{S})$ are
-Picard $\infty$-groupoids! Following the notation given in the table above,
+Grouplike $\mathbb{E}_\infty$-algebras in the category of spaces $\Alg^{\operatorname{gp}}_{\mathbb{E}_n}(\mathds{S})$ are
+Picard $\infty$-groupoids! The intuition is that an $\mathbb{E}_\infty$-algebra provide
+the symmetric monoidal structure and being grouplike provides the inverse
+objects. 
+Following the notation given in the table above,
 they are also called grouplike $\mathbb{E}_\infty$-spaces.
 
 Such objects are interesting for us because invertible field theories are equivalently
 maps of such grouplike $\mathbb{E}_\infty$-spaces! See \ref{Spectra Phases of Matter}.
-\end{rem}
+\end{ex}
 % -------------------------------------------------------------
 % --------------------- LECTURE 10 27/11 -----------------------
 % -------------------------------------------------------------
@@ -3625,7 +3628,7 @@ The natural question now is what kind of spectra are connective spectra? We now 
   While the degree homotopy groups for usual topological spaces are defined to be positive, homotopy groups of spectra can be defined and be non-trivial also for negative degrees. Connective spectra are spectra that only have positive non-trivial homotopy groups. They
    are called connective because a synonym is ($-1$)-connected spectra, referring to the convention that an $n$-connected space is a space where its homotopy groups for all $k\leq n$ are trivial. This is why $\tilde\Zf$ is not just a map of spaces but a map of spectra, and this enables the application of stable homotopy theory, making life easier. We can conclude this interlude on stable homotopy theory and invertible TFTs with the following motto
 
-$$\text{\textit{Invertible TFTs are (equivalently) maps of spectra!}}$$
+$$\text{\textit{Invertible TFTs are maps of connective spectra!}}$$
 
 This is not only of theoretical interest but it also allows the application of topological field theories to condensed matter theory! Classical phases of matter are governed by Landau
  theory of phase transition. However, the phases of a quantum material do not behave in the
