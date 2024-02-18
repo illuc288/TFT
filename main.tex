@@ -1846,19 +1846,21 @@ Let $X$ be a topological space. The cone of $X$ is the pushout
 \begin{ex}
 $\Sigma(S^1)=S^2$ more generally $\Sigma(S^n)=S^{n+1}$
 \end{ex}
-\begin{defn}[Spectrum]
-	A spectrum is a sequence of pointed spaces $\{X_k\}_{k\in\Z}$ with structure maps $\Sigma X_n\xrightarrow{\sigma_n}X_{n+1}$
+\begin{defn}[Pre\footnote{Sometimes it is called just spectrum. We call it
+		 \emph{pre}spectrum in order to distinguish it from other notions with more structure, such as the suspension spectrum})spectrum.]
+	A prespectrum is a sequence of pointed spaces $\{X_k\}_{k\in\Z}$ with maps preserving basepoints
+	 $\Sigma X_n\xrightarrow{\sigma_n}X_{n+1}$ called structure maps.
 \end{defn}
 \begin{defn}[Suspension Spectrum]
 	The suspension spectrum $\Sigma^\infty X$ has $\Sigma_n$ as the $n$-th space in the sequence and structure maps $\Sigma\Sigma_n\xrightarrow{\id}\Sigma_{n+1}$.
 \end{defn}
 \begin{ex}[Sphere Spectrum]
-	The sphere spectrum $\mathbb{S}$ is the suspension spectrum of the point, $S^0$. In fact, $\Sigma S^0=S^1$, $\Sigma^2 S^0=\Sigma\Sigma S^0=\Sigma S^1=S^2$ and in general $\Sigma^n S^0=S^n $
+	The sphere spectrum $\mathds{S}$ is the suspension spectrum of the point, $S^0$. In fact, $\Sigma S^0=S^1$, $\Sigma^2 S^0=\Sigma\Sigma S^0=\Sigma S^1=S^2$ and in general $\Sigma^n S^0=S^n $
 \end{ex}
 Spectra are a higher categorical analog of abelian groups (see \ref{Ab-Enriched Cat}), they have been in fact called “the abelian groups of the 21st century” \cite{Mazel-Gee2024}
 because they provide very powerful techniques for many areas of mathematics
 where there is currently much progress, e.g. they the main characters of stable homotopy
- theory and fundmental in algebraic K-theory. Check out \cite{GregoricSpectra} for a great informal introduction. In a certain sense, $\mathbb{S}$ is analgous to $\Z$ but in another category: \Z is the unit in Ab, while $\mathbb{S}$ is the unit in the category of spectra. 
+ theory and fundmental in algebraic K-theory. Check out \cite{GregoricSpectra} for a great informal introduction. In a certain sense, $\mathds{S}$ is analgous to $\Z$ but in another category: \Z is the unit in Ab, while $\mathds{S}$ is the unit in the category of spectra. 
 These objects will also become useful later, \ref{Spectra Phases of Matter}.
 We make the comparison more explicit via a table in order to convey some intuition\footnote{A
 	 cool synonym for higher algebra is brave new algebra. It was coined by Waldhausen, one of
@@ -1876,7 +1878,7 @@ We make the comparison more explicit via a table in order to convey some intuiti
 		\hline
 		Ab & Sp \\
 		\hline
-	    \Z &  $\mathbb{S}$ \\
+	    \Z &  $\mathds{S}$ \\
 		\hline
 		Ab-enriched category & Sp-enriched category \\
 		\hline
@@ -1893,11 +1895,11 @@ abelian category.
 \end{notat}
 \begin{rem}
 Note that the stable homotopy groups of the sphere can be made into a commutative \Z-graded ring via direct sums. We denote it with $\pi_{\bullet}(\mathds{S})$
-$$\pi_{\bullet}(\mathds{S})=\bigoplus_{n\geq 0}\pi_{n}(\mathbb{S})$$
+$$\pi_{\bullet}(\mathds{S})=\bigoplus_{n\geq 0}\pi_{n}(\mathds{S})$$
 \end{rem}
 \begin{thm}[Thom's theorem]
 	One way of phrasing Thom's theorem is
-	$$\Omega_{\bullet}^{\fr}\cong\pi_{\bullet}(\mathbb{S})$$
+	$$\Omega_{\bullet}^{\fr}\cong\pi_{\bullet}(\mathds{S})$$
 	This is also called Pontrjagin-Thom isomorphism.
 \end{thm}
 \begin{ex}
@@ -3040,7 +3042,7 @@ Other synonyms nowadays are: \begin{itemize}
 An $\mathbb{E}_n$-algebra $A\in\Alg_{\mathbb{E}_n}$ is grouplike if it lands in the category of groups
 $\operatorname{Grp}\subset\operatorname{Mon}$ when sent via the composition of
 \begin{itemize}
-	\item the functor $\pi_0:\mathds{S}\to\Set$, sending objects in groupoids
+	\item the functor $\pi_0:\mathscr{S}\to\Set$, sending objects in groupoids
 	to their isomorphism classes\footnote{The notation is no coincidence: under the homotopy hypothesis
 		this functor and the one sending points to their path-connected components are the same.} 
 	\item and the one forgetting
@@ -3051,7 +3053,7 @@ $\operatorname{Grp}\subset\operatorname{Mon}$ when sent via the composition of
 which can be visualized with the following diagram
 % https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXEFsZ197XFxtYXRoYmJ7RX1fbn0oXFxtYXRoc2Nye1N9KSJdLFsxLDEsIlxcQWxnX3tcXG1hdGhiYntFfV9ufShcXFNldCkiXSxbMiwwLCJcXG9wZXJhdG9ybmFtZXtHcnB9XFxzdWJzZXRcXEFsZ197XFxtYXRoYmJ7RX1fMX0oXFxTZXQpXFxzaW1lcVxcb3BlcmF0b3JuYW1le01vbn0iXSxbMCwxLCJcXEFsZ197XFxtYXRoYmJ7RX1fbn0oXFxwaV8wKSIsMl0sWzEsMiwiXFxvcGVyYXRvcm5hbWV7Zm9yZ2V0fSIsMl0sWzAsMl1d
 \[\begin{tikzcd}[cramped]
-	{\Alg_{\mathbb{E}_n}(\mathds{S})} && {\Alg_{\mathbb{E}_1}(\Set)\simeq\operatorname{Mon}} \\
+	{\Alg_{\mathbb{E}_n}(\mathscr{\cat})} && {\Alg_{\mathbb{E}_1}(\Set)\simeq\operatorname{Mon}} \\
 	& {\Alg_{\mathbb{E}_n}(\Set)}
 	\arrow["{\Alg_{\mathbb{E}_n}(\pi_0)}"', from=1-1, to=2-2]
 	\arrow["{\operatorname{forget}}"', from=2-2, to=1-3]
@@ -3063,10 +3065,10 @@ One may denote the subcategory of grouplike $\mathbb{E}_n$-algebras with
 \end{defn}
 \begin{ex}
 
-Grouplike $\mathbb{E}_\infty$-algebras in the category of spaces $\Alg^{\operatorname{gp}}_{\mathbb{E}_n}(\mathds{S})$ are
+Grouplike $\mathbb{E}_\infty$-algebras in the category of spaces (who live in the category $\Alg^{\operatorname{gp}}_{\mathbb{E}_\infty}(\mathscr{S})$) are
 Picard $\infty$-groupoids! The intuition is that an $\mathbb{E}_\infty$-algebra provide
-the symmetric monoidal structure and being grouplike provides the inverse
-objects. 
+the symmetric monoidal structure and being grouplike provides the invertibility
+objects.
 Following the notation given in the table above,
 they are also called grouplike $\mathbb{E}_\infty$-spaces.
 
@@ -3603,7 +3605,8 @@ However, we do not have just $\infty$-groupoids but also a symmetric monoidal st
  duals on both $|\Bord|$ and $\cat^\times$. In short, they are Picard $\infty$-groupoid.
 It is useful to note that 
  	synonyms for Picard $\infty$-groupoids are $\mathbb{E}_\infty$-groups and grouplike
- 	$\mathbb{E}_\infty$-spaces. In fact, they are particular $\mathbb{E}_n$-algebras 
+ 	$\mathbb{E}_\infty$-spaces. In fact, they are particular $\mathbb{E}_n$-algebras, grouplike
+ 	 $\mathbb{E}_n$-algebras in the category of $\infty$-groupoids,
  	and we already defined them, see \ref{grouplikeEalg}.
  
   Recall that intuitively the delooping of a group is a
@@ -3619,9 +3622,15 @@ An infinite loop space is a space $S_0$ with an infinite sequence of pointed spa
 Picard $\infty$-groupoids do not only correspond to infinite loop spaces but also to connective 
 spectra. 
 \begin{thm}[Recognition theorem for infinite loop spaces, Boardman-Vogt, May]
-Picard $\infty$-groupoids $\simeq$ infinite loop spaces $\simeq$ connective spectra
+$$\{ \operatorname{Picard\: }\infty\operatorname{-groupoids }\} \simeq\{\operatorname{\:infinite\:loop\:spaces }\} \simeq \{ \operatorname{connective\: spectra}\} $$
+Or more precisely, there is an equivalence: 
+$$\mathbf{B}:\Alg_{\mathbb{E}_{\infty}}^{\operatorname{gp}}(\mathscr{S})\leftrightarrows\operatorname{Sp}_{\geq 0}:\Omega$$
+where $\operatorname{Sp}_{\geq 0}$ denotes the category of connective spectra,
+$\mathbf{B}$ the delooping functor, which takes a monoidal category to its delooping, and 
+$\Omega$ is the functor forming loop space objects out of the objects in the source category.
+
 \end{thm}
-For a more precise formulation of this theorem and proof thereof see \cite[Corollary II.24]{KtheoryHebestreitWagner}. 
+For a proof see \cite[Corollary II.24]{KtheoryHebestreitWagner}. 
 
 The natural question now is what kind of spectra are connective spectra? We now sketchily characterize them.
 
