@@ -1815,79 +1815,32 @@ For the last result see \cite[p. 203]{MilnorS05}.
 %TODO maybe torsion comments
 \end{ex}
 %would be cool to write something why these are the case, but mysterious to me for now TBD /ANdrea
-\subsection{Cobordism groups and the sphere spectrum \extra}
+\subsection{Cobordism groups and the sphere spectrum \extra}\label{homotopyCob}
 Very interestingly, the (stable) framed version is isomorphic to the stable homotopy groups of the sphere and it is \textit{not} computed to all degrees. This is one way to phrase a theorem named after Thom. It is fascinating because the stable homotopy groups of the sphere are central objects in stable homotopy theory. They are equivalently the homotopy groups of the sphere spectrum.
-\begin{defn}[Cone]
-Let $X$ be a topological space. The cone of $X$ is the pushout
-% https://q.uiver.app/#q=WzAsNCxbMCwwLCJYXFx0aW1lc1xcezFcXH0iXSxbMCwxLCJcXGFzdCJdLFsxLDAsIlhcXHRpbWVzWzAsMV0iXSxbMSwxLCJDKFgpIl0sWzAsMV0sWzAsMl0sWzEsM10sWzIsM10sWzMsMCwiIiwxLHsic3R5bGUiOnsibmFtZSI6ImNvcm5lciJ9fV1d
-\[\begin{tikzcd}[cramped]
-	{X\times\{1\}} & {X\times[0,1]} \\
-	\ast & {C(X)}
-	\arrow[from=1-1, to=2-1]
-	\arrow[from=1-1, to=1-2]
-	\arrow[from=2-1, to=2-2]
-	\arrow[from=1-2, to=2-2]
-	\arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=1-1]
-\end{tikzcd}\]
-\end{defn}
+
+Now characterize spectra the bare minimum in order to talk about the sphere spectrum. Later,
+after some detours in the magical world of $\infty$-categories, we will 
+give a deeper sketch of what they are \ref{WhatSpectra}.
 \begin{defn}[Suspension]
-	Let $X$ be a topological space. The suspension of $X$ is the pushout
-	% https://q.uiver.app/#q=WzAsNCxbMCwwLCJYXFx0aW1lc1xcezBcXH0iXSxbMCwxLCJDKFgpIl0sWzEsMCwiQyhYKSJdLFsxLDEsIlxcU2lnbWEoWCkiXSxbMCwxXSxbMCwyXSxbMSwzXSxbMiwzXV0=
-	\[\begin{tikzcd}[cramped]
-		{X\times\{0\}} & {C(X)} \\
-		{C(X)} & {\Sigma X}
-		\arrow[from=1-1, to=2-1]
-		\arrow[from=1-1, to=1-2]
-		\arrow[from=2-1, to=2-2]
-		\arrow[from=1-2, to=2-2]
-		\arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=1-1]
-	\end{tikzcd}\]
+	Let $X$ be a pointed topological space. The suspension $\Sigma X$ of $X$ is the smash product of $X$
+	 with $S^1$, i.e.
+	$$\Sigma X=X\land S^1=\frac{X\times S^1}{(\{\ast\}\times S^1)\amalg X\times \{1\}}$$
 \end{defn}
 \begin{ex}
 $\Sigma(S^1)=S^2$ more generally $\Sigma(S^n)=S^{n+1}$
 \end{ex}
-\begin{defn}[Pre\footnote{Sometimes it is called just spectrum. We call it
-		 \emph{pre}spectrum in order to distinguish it from other notions with more structure, such as the suspension spectrum})spectrum.]
-	A prespectrum is a sequence of pointed spaces $\{X_k\}_{k\in\Z}$ with maps preserving basepoints
+\begin{defn}[Sequential spectrum\footnote{Sometimes it is called just spectrum. We call it
+		\emph{pre}spectrum in order to distinguish it from other notions with more structure, such as the suspension spectrum}]
+	A sequential spectrum is a sequence of pointed spaces $\{X_k\}_{k\in\Z}$ with maps preserving basepoints
 	 $\Sigma X_n\xrightarrow{\sigma_n}X_{n+1}$ called structure maps.
 \end{defn}
 \begin{defn}[Suspension Spectrum]
-	The suspension spectrum $\Sigma^\infty X$ has $\Sigma_n$ as the $n$-th space in the sequence and structure maps $\Sigma\Sigma_n\xrightarrow{\id}\Sigma_{n+1}$.
+	The suspension spectrum $\Sigma^\infty X$ has $\Sigma_n$ as the $n$-th space in the sequence and structure maps $\Sigma\Sigma_n\cong\Sigma_{n+1}$.
 \end{defn}
 \begin{ex}[Sphere Spectrum]
 	The sphere spectrum $\mathds{S}$ is the suspension spectrum of the point, $S^0$. In fact, $\Sigma S^0=S^1$, $\Sigma^2 S^0=\Sigma\Sigma S^0=\Sigma S^1=S^2$ and in general $\Sigma^n S^0=S^n $
 \end{ex}
-Spectra are a higher categorical analog of abelian groups (see \ref{Ab-Enriched Cat}), they have been in fact called “the abelian groups of the 21st century” \cite{Mazel-Gee2024}
-because they provide very powerful techniques for many areas of mathematics
-where there is currently much progress, e.g. they the main characters of stable homotopy
- theory and fundmental in algebraic K-theory. Check out \cite{GregoricSpectra} for a great informal introduction. In a certain sense, $\mathds{S}$ is analgous to $\Z$ but in another category: \Z is the unit in Ab, while $\mathds{S}$ is the unit in the category of spectra. 
-These objects will also become useful later, \ref{Spectra Phases of Matter}.
-We make the comparison more explicit via a table in order to convey some intuition\footnote{A
-	 cool synonym for higher algebra is brave new algebra. It was coined by Waldhausen, one of
-	  the pioneers of this discipline. Moreover, this table was inspired by a table in Thomas
-	   Nikolaus' talk: \url{https://www.youtube.com/watch?v=SJNKs1PxT9g}. } :
 
-\begin{center}
-	\begin{tabular}{||c|c||}
-		\hline
-		 algebra & higher algebra\\ [0.5ex]
-		\hline\hline
-		set & $\infty$-groupoid\\
-		\hline
-		abelian group & spectrum \\
-		\hline
-		Ab & Sp \\
-		\hline
-	    \Z &  $\mathds{S}$ \\
-		\hline
-		Ab-enriched category & Sp-enriched category \\
-		\hline
-		abelian category & stable category \\
-		\hline
-	\end{tabular}
-\end{center}
-See \ref{Ab-Enriched Cat} and \ref{AbelianCat} for the definitions of Ab-enriched category and
-abelian category.
 \begin{notat}[Stable Homotopy Groups of the Sphere]
 	The stable homotopy groups of the sphere are the homotopy groups of the sphere spectrum. Alternatively, one can define them as the homotopy groups of the sphere $\pi_{n+i}(S^n)$ such that $n>i+1$. This latter
 	 characterization explains why they are called 'stable': due to Freudenthal's suspension theorem, such homotopy
@@ -2893,7 +2846,7 @@ This example clarifies the parallel between monoids, algebras and monoidal categ
 \end{tikzcd}\]
 We leave the case of the counit for the reader.
 \end{defn}
-%I don't think it's a bimonoid, i think it's just monoid and comonoid, without the additional property /William
+%I don't think it's a bimonoid, i think it's just monoid and comonoid, without the additional property /William You are very right!!!!!!
 \begin{defn}[Frobenius Algebra]\label{FrobAlg}
     A Frobenius algebra in an arbitrary monoidal category $\cat$ is simultaneously a monoid and a comonoid object in $\cat$ with a compatibility condition different from the one above: 
     $$(\mathbb{1}_\cat\otimes\mu)\circ(\Delta\otimes\mathbb{1}_\cat)=\Delta\circ\mu=(\mu\otimes\unit_\cat)\circ(\unit_\cat\otimes\Delta)$$
@@ -2914,15 +2867,53 @@ We leave the case of the counit for the reader.
 \end{tikzcd}\]
 \end{defn}
 \begin{ex}\label{TopologicalGroup}
-    A topological group is a group object in Top.
-\end{ex}
-\begin{ex}\label{LieGroup}
-    A Lie Group is a group object in $\SmoothMfld$.
+	\begin{itemize}
+\item A topological group is a group object in Top
+\item   A Lie group is a group object in $\SmoothMfld$
+\item A group is a group object in Set
+	\end{itemize}
+    
+
+
 \end{ex}
 
 \subsection{Outlook towards \texorpdfstring{$\mathbb{E}_n$}{En}-Algebras \extra} 
 \label{EAlg}
 This outlook is based on \cite{HiroLee2022} and \cite{Mazel-Gee2024}.
+
+A monoid object in Cat\footnote{Recall that the monoidal structure on Cat is given by the product of
+	 categories, i.e. a cartesian product in Cat.} is a strict monoidal category. Take a look at associativity for
+	  instance:
+a monoid object $\cat\in\Cat$ makes the following diagram commute strictly
+% https://q.uiver.app/#q=WzAsNSxbMCwwLCIoTVxcb3RpbWVzIE0pXFxvdGltZXMgTSJdLFsxLDAsIk1cXG90aW1lcyhNXFxvdGltZXMgTSkiXSxbMiwwLCJNXFxvdGltZXMgTSJdLFswLDEsIk1cXG90aW1lcyBNIl0sWzIsMSwiTSJdLFswLDEsIlxcYWxwaGFfe00sTSxNfSJdLFsxLDIsImlkX01cXG90aW1lc1xcbXUiXSxbMCwzLCJcXG11XFxvdGltZXMgaWRfTSIsMl0sWzMsNCwiXFxtdSIsMl0sWzIsNCwiXFxtdSJdXQ==
+\[\begin{tikzcd}
+	{(\cat\times \cat)\times \cat} & {\cat\times(\cat\times \cat)} & {\cat\times \cat} \\
+	{\cat\times \cat} && \cat
+	\arrow["{\alpha_{\cat,\cat,\cat}}", from=1-1, to=1-2]
+	\arrow["{id_{\cat}\times\mu}", from=1-2, to=1-3]
+	\arrow["{\mu\times id_M}"', from=1-1, to=2-1]
+	\arrow["\mu"', from=2-1, to=2-3]
+	\arrow["\mu", from=1-3, to=2-3]
+\end{tikzcd}\]
+This means that if we take $X,Y,Z\in\cat$, then $(X\otimes Y)\otimes Z=X\otimes (Y\otimes Z)$, but the
+ tensor product in general monoidal categories
+is associative and unital via some specific natural isomorphisms, the associator and the two unitors!
+So, this definition of monoid object does not work well with our initial comparison 
+between monoids, algebras and monoidal categories. The issue is that the definition of monoid object is
+ tailored for 1-categories, and thus cannot
+regard morphisms higher than 1 and makes everything commute strictly.
+ There is however a way to have the \textbf{morally right} notion of monoid object, meaning a monoid object
+that yields monoidal categories in the case of cats and more generally 
+monoids that cohere via higher morphisms (including the ones higher than 2, given that the category in
+ question has them). The idea is to exploit the homotopical information of the category of $n$-disks\footnote{
+ Using disks is not the only way to do it, but it is arguably the simplest. Historically, it is done via things called
+ operads.}, i.e. the isotopies between embeddings from disjoint unions of $\R^n$, and import it to the monoidal
+ category we want our monoid object to be defined in via a symmetric monoidal functor. This notion is called 
+ $\mathbb{E}_1$-algebra for monoid objects, and $\mathbb{E}_\infty$-algebra for commutative ones.
+ 
+ We recall now what an isotopy is since this will be the information in the source category of disks that we will
+ stamp onto the category where the desired monoid object lives.
+
 \begin{defn}[Isotopy]\label{Isotopy}
     An isotopy is a stricter form of homotopy. Let $f,g:X\to Y$ be embeddings. Then $H:X\times [0,1]\to Y$ is an isotopy if 
     \begin{itemize}
@@ -2964,7 +2955,7 @@ We summarize the correspondence with the following table
 \begin{rem}
     Remember that a monoid object in Cat is a \emph{strict} monoidal category. Via $\mathbb{E}_1$-algebras is instead the way to precisely pin down the correspondence we laid down at the start of the section between monoidal categories, $k$-algebras and monoids, without collapsing monoidal categories to \emph{strict} monoidal category, as we did with the monoid object.
 \end{rem}
-
+We now start to define the necessary tools we need to define monoid objects that are (more) commutative.
 \begin{defn}[Category of $n$-disks]
 Let $\Disk_{n}^{\fr}$ be the $\infty$-category with finite disjoint
 unions of framed $n$-dimensional disks as objects, i.e. $(\R^{n})^{\amalg_{i}}$ for $i\geq 0$, and spaces of
@@ -3017,7 +3008,7 @@ in which higher algebra takes place.
 \begin{center}
 	\begin{tabular}{|c||c|c|c|}
 		\hline
-		\phantom{h} & $\infty$-Grpd & $\infty$-Cat & Spectra \\ [0.5ex]
+		\phantom{h} & $\infty$-Grpd & $\infty$-Cat & Sp \\ [0.5ex]
 		\hline\hline
 		$\mathbb{E}_1$-algebra & $A_\infty$-space &  monoidal $\infty$-category &  $\mathbb{E}_1$-ring spectrum  \\
 		\hline
@@ -3026,11 +3017,15 @@ in which higher algebra takes place.
 	\end{tabular}
 \end{center}
 \begin{notat}
+	Sp denotes the category of spectra, see \ref{WhatSpectra} for a definition.
+\end{notat}
+\begin{notat}
 Under the homotopy hypothesis $\infty$-Grpd corresponds to a nice category of spaces, hence it is 
 sometimes denoted as $\mathds{S}$ for $\mathds{S}$paces.
 Other synonyms nowadays are: \begin{itemize}
 	\item $\infty$-Set, because it is the category one enriches over to get $\infty$-categories,
-	similarly to ordinary sets and locally small categories 
+	similarly to ordinary sets and locally small categories, and it plays a parallel role in higher algebra to set in 
+	ordinary algebra (see the table in \ref{WhatSpectra})
 	\item An, standing for anima, terminology coming from condensed mathematics
 \end{itemize}
 \end{notat}
@@ -3039,18 +3034,19 @@ Other synonyms nowadays are: \begin{itemize}
   symmetric monoidal $\infty$-groupoid. 
 \end{notat}
 \begin{defn}[Grouplike $\mathbb{E}_n$-Algebras]\label{grouplikeEalg}
-An $\mathbb{E}_n$-algebra $A\in\Alg_{\mathbb{E}_n}$ is grouplike if it lands in the category of groups
+An $\mathbb{E}_n$-algebra $A\in\Alg_{\mathbb{E}_n}(\cat)$ is grouplike if it lands in the category of groups
 $\operatorname{Grp}\subset\operatorname{Mon}$ when sent via the composition of
 \begin{itemize}
-	\item the functor $\pi_0:\mathscr{S}\to\Set$, sending objects in groupoids
+	\item the functor $\pi_0:\mathscr{C}\to\Set$, sending objects in groupoids
 	to their isomorphism classes\footnote{The notation is no coincidence: under the homotopy hypothesis
-		this functor and the one sending points to their path-connected components are the same.} 
+		this functor in the category of spaces 
+		 and the one sending points to their path-connected components are the same.} 
 	\item and the one forgetting
 	all the commutative structure, but just remembering the homotopy-coherent
 	associativity\footnote{Similarly to a forgetful functor 
 		from the category of commutative monoids to the category of monoids.}
 \end{itemize} 
-which can be visualized with the following diagram
+which can be visualized with the following diagram %stuff is written in another way in Mazel-Gee's book, but I think it is a typo, wrote him to check and will update accordingly /Andre
 % https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXEFsZ197XFxtYXRoYmJ7RX1fbn0oXFxtYXRoc2Nye1N9KSJdLFsxLDEsIlxcQWxnX3tcXG1hdGhiYntFfV9ufShcXFNldCkiXSxbMiwwLCJcXG9wZXJhdG9ybmFtZXtHcnB9XFxzdWJzZXRcXEFsZ197XFxtYXRoYmJ7RX1fMX0oXFxTZXQpXFxzaW1lcVxcb3BlcmF0b3JuYW1le01vbn0iXSxbMCwxLCJcXEFsZ197XFxtYXRoYmJ7RX1fbn0oXFxwaV8wKSIsMl0sWzEsMiwiXFxvcGVyYXRvcm5hbWV7Zm9yZ2V0fSIsMl0sWzAsMl1d
 \[\begin{tikzcd}[cramped]
 	{\Alg_{\mathbb{E}_n}(\mathscr{\cat})} && {\Alg_{\mathbb{E}_1}(\Set)\simeq\operatorname{Mon}} \\
@@ -3059,18 +3055,33 @@ which can be visualized with the following diagram
 	\arrow["{\operatorname{forget}}"', from=2-2, to=1-3]
 	\arrow[from=1-1, to=1-3]
 \end{tikzcd}\]
-One may denote the subcategory of grouplike $\mathbb{E}_n$-algebras with
+One may denote the subcategory of grouplike $\mathbb{E}_n$-algebras in $\cat$ with
  $\Alg^{\operatorname{gp}}_{\mathbb{E}_n}(\mathscr{C})\subset\Alg_{\mathbb{E}_n}(\mathscr{C})$
  
 \end{defn}
 \begin{ex}
 
-Grouplike $\mathbb{E}_\infty$-algebras in the category of spaces (who live in the category $\Alg^{\operatorname{gp}}_{\mathbb{E}_\infty}(\mathscr{S})$) are
+Grouplike $\mathbb{E}_\infty$-algebras in the category of spaces (who form the category $\Alg^{\operatorname{gp}}_{\mathbb{E}_\infty}(\mathscr{S})$) are
 Picard $\infty$-groupoids! The intuition is that an $\mathbb{E}_\infty$-algebra provide
 the symmetric monoidal structure and being grouplike provides the invertibility
-objects.
+objects. 
+\begin{notat}
 Following the notation given in the table above,
-they are also called grouplike $\mathbb{E}_\infty$-spaces.
+they are also called grouplike $\mathbb{E}_\infty$-spaces. Sometimes they are called
+$\mathbb{E}_\infty$-groups because they are commutative (hence $\mathbb{E}_\infty$) group objects 
+(hence groups). Other times they are called abelian $\infty$-groups 
+because:
+\begin{itemize}
+	\item $\infty$-groupoids are also known as $\infty$-sets 
+	\item group objects in Set are
+	groups
+	\item group objects (in the morally right sense, i.e. grouplike $\mathbb{E}_1$-algebras) in $\infty-\Set$,
+	aka $\infty$-Grpd,
+	are monoidal groupoids with invertible objects, which are usually called $\infty$-groups
+	\item abelian groups are groups where the operation is commutative and grouplike
+	 $\mathbb{E}_\infty$-spaces are $\infty$-groups where the operation is homotopically commutative
+\end{itemize}
+\end{notat}
 
 Such objects are interesting for us because invertible field theories are equivalently
 maps of such grouplike $\mathbb{E}_\infty$-spaces! See \ref{Spectra Phases of Matter}.
@@ -3588,9 +3599,92 @@ From the universal property of the groupoid completion, there is a further facto
 
 \subsection{Invertible field theories and stable homotopy theory \extra}\label{Spectra Phases of Matter}
 
-These theories can be studied with stable homotopy theory. However, in order to allow the application of such machinery, one must fully extend topological field theories (see \ref{RemarkExtendedTFTs}), i.e. with $(\infty,n)$-categories of bordisms as a source. 
+These theories can be studied with stable homotopy theory. Stable homotopy homotopy theory is the branch
+of homotopy theory that studies phenomena and structures that are stable under suspension. 
+This is achieved via spectra. This begs the question: what are spectra?
 
-\noindent In the case of extended TFTs, $|\Bord|$ and $\cat^\times$ both are $\infty$-groupoids since
+\subsubsection{What are spectra? \extra}\label{WhatSpectra}
+We already have seen some spectra and definitions of some kinds of spectra in \ref{homotopyCob}, e.g. the 
+sphere spectrum and the suspension spectrum. In that section, we defined suspension as a quotient.
+ However, one can define a suspension in full generality, i.e. for any $\infty$-category, via certain homotopy
+  colimits. Homotopy co/limits are objects making certain diagrams commute via homotopies and with certain
+   universal properties. %TBD /Andrea
+   
+   \begin{defn}[Suspension]
+   	Let $\cat$ be a pointed\footnote{A category with a zero object: an object that is both initial and final.} 
+   	 $\infty$-category with the zero object denoted by 0 
+   	 and let $X\in\cat$. Then the suspension $\Sigma X$ of $X$ is the pushout 
+  % https://q.uiver.app/#q=WzAsNCxbMCwwLCJYIl0sWzAsMSwiMCJdLFsxLDAsIjAiXSxbMSwxLCJcXFNpZ21hIFgiXSxbMCwxXSxbMCwyXSxbMSwzXSxbMiwzXSxbMywwLCIiLDEseyJzdHlsZSI6eyJuYW1lIjoiY29ybmVyIn19XV0=
+  \[\begin{tikzcd}[cramped]
+  	X & 0 \\
+  	0 & {\Sigma X}
+  	\arrow[from=1-1, to=2-1]
+  	\arrow[from=1-1, to=1-2]
+  	\arrow[from=2-1, to=2-2]
+  	\arrow[from=1-2, to=2-2]
+  	\arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=1-1]
+  \end{tikzcd}\]
+   \end{defn}
+   Dually, one can define the loop space of an object
+\begin{defn}[Loop space]
+   	Let $\cat$ be a pointed
+$\infty$-category and let $X\in\cat$. Then the loop space $\Omega X$ is the pullback 
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXE9tZWdhIFgiXSxbMCwxLCIwIl0sWzEsMCwiMCJdLFsxLDEsIlgiXSxbMCwxXSxbMCwyXSxbMSwzXSxbMiwzXSxbMCwzLCIiLDEseyJzdHlsZSI6eyJuYW1lIjoiY29ybmVyIn19XV0=
+\[\begin{tikzcd}[cramped]
+	{\Omega X} & 0 \\
+	0 & X
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=1-2, to=2-2]
+	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
+\end{tikzcd}\]
+\end{defn}
+\begin{defn}[Spectrum\footnote{Also denoted $\Omega$-spectrum in the older literature.}]
+	A spectrum is a collection of 
+	pointed spaces $(\{E_n\}_{n\in\Z}$ with equivalences $\delta_n:E_n\simeq \Omega E_{n+1}$
+\end{defn}
+
+In sum, spectra are a higher categorical analog of abelian groups (see \ref{Ab-Enriched Cat}), they have been in fact called “the abelian groups of the 21st century” \cite{Mazel-Gee2024}
+because they provide very powerful techniques for many areas of mathematics
+where there is currently much progress, e.g. in algebraic K-theory. Check out \cite{GregoricSpectra} for a
+ great informal introduction. In a certain sense, $\mathds{S}$ is analgous to $\Z$ but in another category: \Z is the unit in Ab, while $\mathds{S}$ is the unit in the category of spectra. 
+These objects will also become useful later, \ref{Spectra Phases of Matter}.
+We make the comparison more explicit via a table\footnote{A
+	cool synonym for higher algebra is brave new algebra. It was coined by Waldhausen, one of
+	the pioneers of this discipline. Moreover, this table was inspired by a table in Thomas
+	Nikolaus' talk: \url{https://www.youtube.com/watch?v=SJNKs1PxT9g}. } :
+
+\begin{center}
+	\begin{tabular}{||c|c||}
+		\hline
+		algebra & higher algebra\\ [0.5ex]
+		\hline\hline
+		set & $\infty$-groupoid\\
+		\hline
+		abelian group & spectrum \\
+		\hline
+		Ab & Sp \\
+		\hline
+		\Z &  $\mathds{S}$ \\
+		\hline
+		commutative ring & $\mathbb{E}_\infty$-ring spectrum \\
+		\hline
+		Ab-enriched category & Sp-enriched category \\
+		\hline
+		abelian category & stable category \\
+		\hline
+	\end{tabular}
+\end{center}
+See \ref{Ab-Enriched Cat} and \ref{AbelianCat} for the definitions of Ab-enriched category and
+abelian category. See \ref{EAlg} for the definition of $\mathbb{E}_\infty$-ring spectrum.
+
+\subsubsection{Invertible field theories are maps of spectra \extra}
+ In order to allow the application of stable homotopy theory, one must fully extend topological field theories (see \ref{RemarkExtendedTFTs}), i.e. with $(\infty,n)$-categories of bordisms as a source, because
+ only with the homotopy coherent additional structure of such categories one gets that $|\Bord|$ and
+  $\cat^\times$ are particular kinds of spectra.
+  
+  In the case of extended TFTs, $|\Bord|$ and $\cat^\times$ both are $\infty$-groupoids since
 \begin{enumerate}
 	\item we get $|\Bord|$ by adjoining all inverses for all morphisms and thus all morphisms become invertible
 	\item  $\cat^\times$ is obtained by forgetting about non-invertible morphisms (and objects) of $\cat$ and thus we are left only with invertible morphisms
@@ -3624,7 +3718,7 @@ spectra.
 \begin{thm}[Recognition theorem for infinite loop spaces, Boardman-Vogt, May]
 $$\{ \operatorname{Picard\: }\infty\operatorname{-groupoids }\} \simeq\{\operatorname{\:infinite\:loop\:spaces }\} \simeq \{ \operatorname{connective\: spectra}\} $$
 Or more precisely, there is an equivalence: 
-$$\mathbf{B}:\Alg_{\mathbb{E}_{\infty}}^{\operatorname{gp}}(\mathscr{S})\leftrightarrows\operatorname{Sp}_{\geq 0}:\Omega$$
+$$\mathbf{B}^{\infty}:\Alg_{\mathbb{E}_{\infty}}^{\operatorname{gp}}(\mathscr{S})\leftrightarrows\operatorname{Sp}_{\geq 0}:\Omega^{\infty}$$
 where $\operatorname{Sp}_{\geq 0}$ denotes the category of connective spectra,
 $\mathbf{B}$ the delooping functor, which takes a monoidal category to its delooping, and 
 $\Omega$ is the functor forming loop space objects out of the objects in the source category.
