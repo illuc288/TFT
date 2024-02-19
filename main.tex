@@ -230,7 +230,7 @@ $-$H. Poincaré}\\
 \chapter*{\huge{\textcolor{black}{For the reader}}}
 \hfill
 \vspace{0.50cm}\\
-These are the lecture notes of the course \textit{``Bordism and Topological Field Theory''} held by Prof.\hspace{1mm}Dr. Claudia Scheimbauer (\href{mailto:scheimbauer@ma.tum.de}{scheimbauer@ma.tum.de}) during the Wintersemester 2023/2024 at the \textit{Technische Universität München}. The tutorial sessions are held by Anja \v{S}vraka (\href{mailto:svr@ma.tum.de}{svr@ma.tum.de}).\hspace{1.5mm}The notes are typed by Luca Ipsale (\href{mailto:luca.ipsale@campus.lmu.de}{luca.ipsale@campus.lmu.de}), William Luciani (\href{mailto:w.luciani@campus.lmu.de}{w.luciani@campus.lmu.de}), Andrea Sittoni (\href{mailto:sittoniandrea@gmail.com}{sittoniandrea@gmail.com}) and Üzeyir Sa\c{c}{\i}kay (\href{mailto:uzeyirsacikay@gmail.com}{uzeyirsacikay@gmail.com}). Exercises are also implemented in the notes by Jacob Skarby (\href{mailto:jacob.skarby@tum.de}{jacob.skarby@tum.de}). If you find errors or if you have suggestions of any kind, please feel free to write us an e-mail.
+These are the lecture notes of the course \textit{``Bordism and Topological Field Theory''} held by Prof.\hspace{1mm}Dr. Claudia Scheimbauer (\href{mailto:scheimbauer@ma.tum.de}{scheimbauer@ma.tum.de}) during the Wintersemester 2023/2024 at the \textit{Technische Universität München}. The tutorial sessions are held by Anja \v{S}vraka (\href{mailto:svr@ma.tum.de}{svr@ma.tum.de}).\hspace{1.5mm}The notes are typed by Luca Ipsale (\href{mailto:luca.ipsale@campus.lmu.de}{luca.ipsale@campus.lmu.de}), William Luciani (\href{mailto:w.luciani@campus.lmu.de}{w.luciani@campus.lmu.de}), Andrea Sittoni (\href{mailto:sittoniandrea@gmail.com}{sittoniandrea@gmail.com}) and Üzeyir Sa\c{c}{\i}kay (\href{mailto:uzeyirsacikay@gmail.com}{uzeyirsacikay@gmail.com}). Exercises are also implemented in the notes by Jacob Skarby (\href{mailto:jacob.skarby@tum.de}{jacob.skarby@tum.de}). If you find errors or if you have suggestions of any kind, please write us an e-mail.
 
 \vspace{1cm}
 
@@ -245,7 +245,7 @@ These are the lecture notes of the course \textit{``Bordism and Topological Fiel
 \thispagestyle{empty}
 \cleardoublepage
 \section*{Notational Conventions}
-We use the symbol '\Plane' at the end of titles of sections, definitions or theorems that depart from the content of the lecture and deepen some aspect on a topic with an outloolk towards research topics.
+We use the symbol '\Plane' at the end of titles of sections, definitions or theorems that depart from the content of the lecture and deepen some aspect on a topic with an outlook towards research topics.
 
 \begin{notat}
 	Throughout these notes we will abuse notation indicating a collection with some structure on it just by writing down the collection, e.g. denoting a monoid $(M,\cdot)$ by $M$, a metric space $(X,d)$ by $X$ etc...
@@ -2910,8 +2910,17 @@ monoids that cohere via higher morphisms (including the ones higher than 2, give
  operads.}, i.e. the isotopies between embeddings from disjoint unions of $\R^n$, and import it to the monoidal
  category we want our monoid object to be defined in via a symmetric monoidal functor. This notion is called 
  $\mathbb{E}_1$-algebra for monoid objects, and $\mathbb{E}_\infty$-algebra for commutative ones.
- 
- We recall now what an isotopy is since this will be the information in the source category of disks that we will
+ We can summarize the idea with the following mottos 
+ $$\mathbb{E}_1\textit{-algebras are homotopically associative and unital monoid objects }$$
+ $$\mathbb{E}_\infty\textit{-algebras are homotopically commutative, associative and unital monoid objects}$$
+ And as generally as possible:
+ $$ \mathbb{E}_n\textit{-algebras are homotopy-coherent monoid objects } $$
+$$	\textit{that are commutative via homotopies up to the $n$-th order}$$
+where by homotopy-coherent monoid objects we mean monoids that are homotopically associative, i.e.
+$A\cdot(B\cdot C)\simeq(A\cdot B)\cdot C $
+
+
+  We recall now what an isotopy is since this will be the information in the source category of disks that we will
  stamp onto the category where the desired monoid object lives.
 
 \begin{defn}[Isotopy]\label{Isotopy}
@@ -3034,7 +3043,8 @@ Other synonyms nowadays are: \begin{itemize}
   symmetric monoidal $\infty$-groupoid. 
 \end{notat}
 \begin{defn}[Grouplike $\mathbb{E}_n$-Algebras]\label{grouplikeEalg}
-An $\mathbb{E}_n$-algebra $A\in\Alg_{\mathbb{E}_n}(\cat)$ is grouplike if it lands in the category of groups
+An $\mathbb{E}_n$-algebra $A\in\Alg_{\mathbb{E}_n}(\cat)$ in a cartesian monoidal category $\cat$
+ is grouplike if it lands in the category of groups
 $\operatorname{Grp}\subset\operatorname{Mon}$ when sent via the composition of
 \begin{itemize}
 	\item the functor $\pi_0:\mathscr{C}\to\Set$, sending objects in groupoids
@@ -3058,10 +3068,14 @@ which can be visualized with the following diagram %stuff is written in another 
 One may denote the subcategory of grouplike $\mathbb{E}_n$-algebras in $\cat$ with
  $\Alg^{\operatorname{gp}}_{\mathbb{E}_n}(\mathscr{C})\subset\Alg_{\mathbb{E}_n}(\mathscr{C})$
  
+ We can conclude with the following motto
+ $$\textit{grouplike }\mathbb{E}_n\textit{-algebras are homotopy-coherent group objects } $$
+ $$	\textit{that are commutative via homotopies up to the $n$-th order}$$
 \end{defn}
 \begin{ex}
 
-Grouplike $\mathbb{E}_\infty$-algebras in the category of spaces (who form the category $\Alg^{\operatorname{gp}}_{\mathbb{E}_\infty}(\mathscr{S})$) are
+Grouplike $\mathbb{E}_\infty$-algebras in the category of spaces (who form the category
+ $\Alg^{\operatorname{gp}}_{\mathbb{E}_\infty}(\mathscr{S})$) are
 Picard $\infty$-groupoids! The intuition is that an $\mathbb{E}_\infty$-algebra provide
 the symmetric monoidal structure and being grouplike provides the invertibility
 objects. 
@@ -3608,9 +3622,178 @@ We already have seen some spectra and definitions of some kinds of spectra in \r
 sphere spectrum and the suspension spectrum. In that section, we defined suspension as a quotient.
  However, one can define a suspension in full generality, i.e. for any $\infty$-category, via certain homotopy
   colimits. Homotopy co/limits are objects making certain diagrams commute via homotopies and with certain
-   universal properties. %TBD /Andrea
+   universal properties. Such diagrams commute in a very similar sense to how $\mathbb{E}_n$-algebras 
+   are associative via homotopies of every order up to $\infty$. Every co/limit in an $\infty$-category works as a homotopy
+   co/limit\footnote{Being able to define homotopy co/limits via usual universal properties is indeed one
+   of the motivations for $\infty$-categories, as said in \ref{HomotopyHypothesis}.}, see \cite[Section
+    4]{land2021introduction} for a thorough introduction to how that works.
+    
+    We now provide a rough sketch.
+    \begin{defn}[Terminal, initial, zero objects]
+A terminal object in a category $\cat$ is an object $\ast\in\cat$ such that for every
+$X\in\cat$ there is a unique morphism $X\to\ast$
+
+An initial object in a category $\cat$ is an object $\emptyset\in\cat$ such that for every
+$X\in\cat$ there is a unique morphism $\emptyset\to X$
+
+A zero object is an object that is both initial and final. A category is called pointed if it has a zero object.
+    \end{defn}
+    
+    \begin{defn}[Diagram]
+    	Until now, we spoke of diagrams informally, there is however a precise definition. Given a
+    	 small\footnote{This means that the collection of objects and morphisms are both sets}
+    	category $\mathscr{J}$, a diagram of 
+    	shape $\mathscr{J}$ in $\cat$ is a functor $D:\mathscr{J}\to \cat$
+    \end{defn}
+    \begin{defn}[Co/limits]
+    	Given a category $\mathscr{J}$ we can construct 
+    	\begin{itemize}
+    		\item the cone\footnote{Aka left cone} of $\mathscr{J}$: $\mathscr{J}^{\lhd}$ by adding an initial object to $\mathscr{J}$
+    		\item the cocone\footnote{Aka right cone} of $\mathscr{J}$: $\mathscr{J}^{\rhd}$ by adding a terminal object to $\mathscr{J}$
+    	\end{itemize}
+    	Given a diagram $D$ of shape $\mathscr{J}$ in $\cat$ and $X\in\cat$ we have 
+    	
+    	\begin{itemize}
+    		\item a cone over $D$ that is a natural transformation $\gamma: X\Rightarrow D$, where $X$ denotes the functor sending every object in $\mathscr{J}$ to $X$. So, because of naturality
+    		of $\gamma$ for $M\xrightarrow{f}N$ in $\mathscr{J}$ there is the following commutative diagram:
+    	% https://q.uiver.app/#q=WzAsMyxbMSwwLCJYKE4pPVg9WChNKSJdLFswLDEsIkQoTikiXSxbMiwxLCJEKE0pIl0sWzAsMSwiXFxnYW1tYV97Tn0iLDJdLFswLDIsIlxcZ2FtbWFfe019Il0sWzEsMiwiRChmKSIsMl1d
+    	\[\begin{tikzcd}[cramped]
+    		& {X(N)=X=X(M)} \\
+    		{D(N)} && {D(M)}
+    		\arrow["{\gamma_{N}}"', from=1-2, to=2-1]
+    		\arrow["{\gamma_{M}}", from=1-2, to=2-3]
+    		\arrow["{D(f)}"', from=2-1, to=2-3]
+    	\end{tikzcd}\]
+    		We have then also the category of cones over $D$. 
+    		An equivalent description of a cone over $D$ is a functor $\mathscr{J}^{\lhd}\to\cat$
+    		hence the category of cones is the functor category
+    		$\Fun_D(\mathscr{J}^{\lhd},\cat)$.
+    		
+    		\item a cocone over $D$ that is a natural transformation $\eta: D\Rightarrow X$ and because of naturality
+    		of $\gamma$ for $M\xrightarrow{f}N$ in $\mathscr{J}$ there is the following commutative diagram:
+    		% https://q.uiver.app/#q=WzAsMyxbMSwxLCJYKE4pPVg9WChNKSJdLFswLDAsIkQoTikiXSxbMiwwLCJEKE0pIl0sWzEsMCwiXFxldGFfe059IiwyXSxbMiwwLCJcXGV0YV97TX0iXSxbMSwyLCJEKGYpIl1d
+    		\[\begin{tikzcd}[cramped]
+    			{D(N)} && {D(M)} \\
+    			& {X(N)=X=X(M)}
+    			\arrow["{\eta_{N}}"', from=1-1, to=2-2]
+    			\arrow["{\eta_{M}}", from=1-3, to=2-2]
+    			\arrow["{D(f)}", from=1-1, to=1-3]
+    		\end{tikzcd}\]
+    		We have then also the category of cocones over $D$. An equivalent description of a cocone over $D$ is a functor $\mathscr{J}^{\rhd}\to\cat$
+    		hence the category of cocones is the functor category
+    		$\Fun_D(\mathscr{J}^{\rhd},\cat)$
+    	\end{itemize}
+    	Then, 
+ \begin{itemize}
+	\item the limit of the diagram $D$ is a terminal object in the category of cones over $\mathscr{J}$, i.e. $\Fun_D(\mathscr{J}^{\lhd},\cat)$
+	\item the colimit of the diagram $D$ is an initial object in the category of cocones over $\mathscr{J}$, i.e. $\Fun_D(\mathscr{J}^{\rhd},\cat)$
+\end{itemize}
+In order to get a definition of homotopy co/limit or $(\infty,1)$-co/limit, just substitute your favourite
+ model of $\infty$-category with 'category' in this definition. 
+    \end{defn}
+    \begin{ex}
+ We previously defined the cartesian product of two objects by saying that some diagram commutes and the product  has a certain universal property (\ref{CartProd}). 
+ Such cartesian product is a limit over a diagram shaped as a discrete category with two objects.
+ Let us name this discrete category with two different objects $\mathscr{J}=\{0,1\}$, discrete means that
+ there are only the identity morphisms $id_0$ and $id_1$. 
+ Given $\cat$ an arbitrary category, observe a diagram 
+ $$D:\mathscr{J}\to \cat $$ 
+ $$0\mapsto A$$
+ $$1\mapsto B$$
+ Then, a cartesian product $A\times B$ is the limit over $D$
+    % https://q.uiver.app/#q=WzAsNSxbMSwwLCJZIl0sWzIsMSwiQiJdLFswLDBdLFswLDEsIkEiXSxbMSwxLCJBXFx0aW1lcyBCIl0sWzAsMSwiZyJdLFs0LDMsInByXzEiXSxbMCwzLCJmIiwyXSxbNCwxLCJwcl8yIiwyXSxbMCw0LCJcXGV4aXN0cyEgdSIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
+\[\begin{tikzcd}
+	{} & Y \\
+	A & {A\times B} & B
+	\arrow["g", from=1-2, to=2-3]
+	\arrow["{pr_1}", from=2-2, to=2-1]
+	\arrow["f"', from=1-2, to=2-1]
+	\arrow["{pr_2}"', from=2-2, to=2-3]
+	\arrow["{\exists! u}"{description}, dashed, from=1-2, to=2-2]
+\end{tikzcd}\]
+The two projections exist because $A\times B$ is a cone: a cone is an initial object in the shape category $\mathscr{J}$ and $D$ is a functor, so it imports the unique morphisms from the initial object to where $0$ and $1$ are mapped, i.e. to $A$ and $B$.
+
+\noindent $u$ exists and is unique because $A\times B$ is the terminal object in the category of cones.
+
+ \noindent The two smaller triangles commute because of the naturality of the morphism $u$: recall that
+ the category of cones is a functor category hence morphisms between cones 
+ are natural transformations and note that $pr_1$ and $f$ for instance are images of morphisms in
+  $\mathscr{J}^{\lhd}$
+    \end{ex}
+    
+   \begin{ex}[Homotopy pullback/$(\infty,1)$-pullback]
+   	Let  $\mathscr{J}$ be an $\infty$-category with objects and 1-morphisms $0\to1\leftarrow2$ and
+   	 $D:\mathscr{J}\to \cat$ be a diagram. To be rigorous, we would need to define what is an
+   	 $\infty$-functor. However, since this necessitates getting our hands dirty with a model,
+   	 we prefer to remain loose: an $\infty$-functor is an assignment that respects composition and identity
+   	  morphisms\footnote{i.e. is functorial.} not only on 1-morphisms, but for also all higher invertible morphisms.
+   	  Then, an $\infty$-pullback of 
+   	is the homotopy limit of $D$.
+   	
+   	We now unpack what this means. A cone of $\mathscr{J}$, where $\emptyset$ is the new initial object
+   	 looks like this:
+   	% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXGVtcHR5c2V0Il0sWzAsMSwiMCJdLFsxLDEsIjEiXSxbMSwwLCIyIl0sWzAsMV0sWzEsMl0sWzAsM10sWzMsMl0sWzAsMl0sWzgsMSwiIiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwfSwic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiYXJyb3doZWFkIn19fV0sWzgsMywiIiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwfSwic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiYXJyb3doZWFkIn19fV1d
+   	\[\begin{tikzcd}[cramped]
+   		\emptyset & 2 \\
+   		0 & 1
+   		\arrow[from=1-1, to=2-1]
+   		\arrow[from=2-1, to=2-2]
+   		\arrow[from=1-1, to=1-2]
+   		\arrow[from=1-2, to=2-2]
+   		\arrow[""{name=0, anchor=center, inner sep=0}, from=1-1, to=2-2]
+   		\arrow[shorten <=2pt, Rightarrow, 2tail reversed, from=0, to=2-1]
+   		\arrow[shorten <=2pt, Rightarrow, 2tail reversed, from=0, to=1-2]
+   	\end{tikzcd}\]
+   	Where the two small triangles commute via higher morphisms denoted with $\Leftrightarrow$.
+   	
+   	Let $D(1)=X$, $D(2)=Y$ and $D(0)=Z$. Then, the $\infty$-pullback of $D$ is the terminal object 
+   	in the functor $\infty$-category $\Fun_D(\mathscr{J},\cat)$. Denote the image of $\emptyset$ of such pullback with $Y\times_X Z$. Then there is the following homotopy coherent diagram
+   % https://q.uiver.app/#q=WzAsNCxbMCwwLCJZXFx0aW1lc19YIFoiXSxbMCwxLCJZIl0sWzEsMSwiWiJdLFsxLDAsIlgiXSxbMCwxXSxbMSwyXSxbMCwzXSxbMywyXSxbMCwyXSxbOCwxLCIiLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MzAsInRhcmdldCI6MTB9LCJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJhcnJvd2hlYWQifX19XSxbOCwzLCIiLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MzAsInRhcmdldCI6MTB9LCJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJhcnJvd2hlYWQifX19XV0=
+   \[\begin{tikzcd}[cramped]
+   	{Y\times_X Z} & X \\
+   	Y & Z
+   	\arrow[from=1-1, to=2-1]
+   	\arrow[from=2-1, to=2-2]
+   	\arrow[from=1-1, to=1-2]
+   	\arrow[from=1-2, to=2-2]
+   	\arrow[""{name=0, anchor=center, inner sep=0}, from=1-1, to=2-2]
+   	\arrow[shorten <=4pt, shorten >=1pt, Rightarrow, 2tail reversed, from=0, to=2-1]
+   	\arrow[shorten <=4pt, shorten >=1pt, Rightarrow, 2tail reversed, from=0, to=1-2]
+   \end{tikzcd}\]
+   	Because the $\infty$-pullback is a functor and thus preserves the homotopy-coherent commutativity
+   	of diagrams in the shape $\mathscr{J}$, by preserving compositionality for all $n$-morphisms.
+   	Since it is the terminal object in the category of cones over the diagram $D$ for every other cone
+   	mapping $\emptyset$ to an object $Q\in\cat$, then there is a unique morphism $Q\to Y\times_X Z$
+   	making the following diagram commute homotopically
+   	% https://q.uiver.app/#q=WzAsNSxbMSwxLCJZXFx0aW1lc19YIFoiXSxbMSwyLCJZIl0sWzIsMiwiWiJdLFsyLDEsIlgiXSxbMCwwLCJRIl0sWzAsMV0sWzEsMl0sWzAsM10sWzMsMl0sWzAsMl0sWzQsMF0sWzQsMV0sWzQsM10sWzksMSwiIiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjMwLCJ0YXJnZXQiOjEwfSwic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiYXJyb3doZWFkIn19fV0sWzksMywiIiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjMwLCJ0YXJnZXQiOjEwfSwic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiYXJyb3doZWFkIn19fV0sWzEwLDExLCIiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJhcnJvd2hlYWQifX19XSxbMTAsMTIsIiIsMix7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH0sInN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9fX1dXQ==
+   	\[\begin{tikzcd}[cramped]
+   		Q \\
+   		& {Y\times_X Z} & X \\
+   		& Y & Z
+   		\arrow[from=2-2, to=3-2]
+   		\arrow[from=3-2, to=3-3]
+   		\arrow[from=2-2, to=2-3]
+   		\arrow[from=2-3, to=3-3]
+   		\arrow[""{name=0, anchor=center, inner sep=0}, from=2-2, to=3-3]
+   		\arrow[""{name=1, anchor=center, inner sep=0}, from=1-1, to=2-2]
+   		\arrow[""{name=2, anchor=center, inner sep=0}, from=1-1, to=3-2]
+   		\arrow[""{name=3, anchor=center, inner sep=0}, from=1-1, to=2-3]
+   		\arrow[shorten <=4pt, shorten >=1pt, Rightarrow, 2tail reversed, from=0, to=3-2]
+   		\arrow[shorten <=4pt, shorten >=1pt, Rightarrow, 2tail reversed, from=0, to=2-3]
+   		\arrow[shorten <=2pt, shorten >=2pt, Rightarrow, 2tail reversed, from=1, to=2]
+   		\arrow[shorten <=4pt, shorten >=4pt, Rightarrow, 2tail reversed, from=1, to=3]
+   	\end{tikzcd}\]
+   	The two small triangles formed by morphisms that have $Q$ as source and by the projections of $Y\times_X Z$ (the ones on the upper left) commute because of the naturality of morphisms in 
+   	 $\Fun_D(\mathscr{J}^{\lhd},\cat)$
+   \end{ex}
+ \begin{notat}
+From now on, when we are talking about commutative diagrams in an $\infty$-category, we do not write the double arrows $\Leftrightarrow$ symbolizing the 
+higher morphisms that make the diagram commute.
+ \end{notat}
    
-   \begin{defn}[Suspension]
+   There is the dual notion of homotopy pushout which we now use to define suspensions.
+
+    \begin{defn}[Suspension]
    	Let $\cat$ be a pointed\footnote{A category with a zero object: an object that is both initial and final.} 
    	 $\infty$-category with the zero object denoted by 0 
    	 and let $X\in\cat$. Then the suspension $\Sigma X$ of $X$ is the pushout 
@@ -3624,6 +3807,9 @@ sphere spectrum and the suspension spectrum. In that section, we defined suspens
   	\arrow[from=1-2, to=2-2]
   	\arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=1-1]
   \end{tikzcd}\]
+   \end{defn}
+   \begin{defn}[Suspension functor]
+   	Inhalt...
    \end{defn}
    Dually, one can define the loop space of an object
 \begin{defn}[Loop space]
@@ -3640,10 +3826,46 @@ $\infty$-category and let $X\in\cat$. Then the loop space $\Omega X$ is the pull
 	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
 \end{tikzcd}\]
 \end{defn}
-\begin{defn}[Spectrum\footnote{Also denoted $\Omega$-spectrum in the older literature.}]
-	A spectrum is a collection of 
-	pointed spaces $(\{E_n\}_{n\in\Z}$ with equivalences $\delta_n:E_n\simeq \Omega E_{n+1}$
+\begin{defn}[Loop space functor]
+	Inhalt...
 \end{defn}
+
+\begin{defn}[Spectrum\footnote{Also denoted $\Omega$-spectrum in the older literature, e.g. books or 
+	articles by May.}]
+	A spectrum is a collection of 
+	pointed spaces $\{E_n\}_{n\in\Z}$ with equivalences $\delta_n:E_n\simeq \Omega E_{n+1}$
+\end{defn}
+\begin{defn}[$\infty$-category of spectra]
+	Inhalt...
+\end{defn}
+\begin{defn}[Infinite loop space]
+	An infinite loop space is a space $S_0$ with an infinite sequence of pointed spaces $S_0,S_1,S_2,...$ where $S_n$ is the delooping\footnote{We talked of deloopings just for categories but there is a corresponding notion for spaces. If you do not believe this, apply the equivalence of the homotopy hypothesis.} of $S_{n-1}$ and conversely $S_{n-1}$ is the loop space\footnote{The loop space object is an inverse operation to the delooping, meaning that that given some monoidal category $\cat$, $\cat$ is the loop space object of the delooping of $\cat$. The name comes from the topological notion, see \url{https://en.wikipedia.org/wiki/Loop_space}
+		In general, loop space objects inherit the monoidal structure from the composition of loops. We would need to talk about homotopy pullbacks in order to strictly define what a loop space object is.}
+	object of $S_n$. 
+\end{defn}
+\begin{defn}[Underlying infinite loop space functor]
+	$$\Omega^{\infty}$$	
+\end{defn}
+\begin{defn}[Classifying spectrum]
+	Inhalt...
+\end{defn}
+\begin{defn}[Delooping functor]
+	Inhalt...
+\end{defn}
+Picard $\infty$-groupoids do not only correspond to infinite loop spaces but also to connective 
+spectra. 
+\begin{thm}[Recognition theorem for infinite loop spaces, Boardman-Vogt, May]
+	$$\{ \operatorname{Picard\: }\infty\operatorname{-groupoids }\} \simeq\{\operatorname{\:infinite\:loop\:spaces }\} \simeq \{ \operatorname{connective\: spectra}\} $$
+	Or more precisely, there is an equivalence: 
+	$$\mathbf{B}^{\infty}:\Alg_{\mathbb{E}_{\infty}}^{\operatorname{gp}}(\mathscr{S})\leftrightarrows\operatorname{Sp}_{\geq 0}:\Omega^{\infty}$$
+	where $\operatorname{Sp}_{\geq 0}$ denotes the category of connective spectra.
+\end{thm}
+For a detailed proof see \cite[Corollary II.24]{KtheoryHebestreitWagner}. 
+
+The natural question now is what kind of spectra are connective spectra? We now sketchily characterize them.
+
+While the degree homotopy groups for usual topological spaces are defined to be positive, homotopy groups of spectra can be defined and be non-trivial also for negative degrees. Connective spectra are spectra that only have positive non-trivial homotopy groups. They
+are called connective because a synonym is ($-1$)-connected spectra, referring to the convention that an $n$-connected space is a space where its homotopy groups for all $k\leq n$ are trivial. This is why $\tilde\Zf$ is not just a map of spaces but a map of spectra, and this enables the application of stable homotopy theory, making life easier. We can conclude this interlude on stable homotopy theory and invertible TFTs with the following motto
 
 In sum, spectra are a higher categorical analog of abelian groups (see \ref{Ab-Enriched Cat}), they have been in fact called “the abelian groups of the 21st century” \cite{Mazel-Gee2024}
 because they provide very powerful techniques for many areas of mathematics
@@ -3708,28 +3930,7 @@ It is useful to note that
    $k+1$-category. Having Picard $\infty$-groupoids allows us to deloop infinitely
  many times. This roughly explains why Picard $\infty$-groupoids are infinite loop spaces, 
  and in particular the spaces corresponding to $|\Bord|$ and $\cat^{\times}$. 
-\begin{defn}[Infinite loop space]
-An infinite loop space is a space $S_0$ with an infinite sequence of pointed spaces $S_0,S_1,S_2,...$ where $S_n$ is the delooping\footnote{We talked of deloopings just for categories but there is a corresponding notion for spaces. If you do not believe this, apply the equivalence of the homotopy hypothesis.} of $S_{n-1}$ and conversely $S_{n-1}$ is the loop space\footnote{The loop space object is an inverse operation to the delooping, meaning that that given some monoidal category $\cat$, $\cat$ is the loop space object of the delooping of $\cat$. The name comes from the topological notion, see \url{https://en.wikipedia.org/wiki/Loop_space}
- In general, loop space objects inherit the monoidal structure from the composition of loops. We would need to talk about homotopy pullbacks in order to strictly define what a loop space object is.}
- object of $S_n$. 
-\end{defn}
-Picard $\infty$-groupoids do not only correspond to infinite loop spaces but also to connective 
-spectra. 
-\begin{thm}[Recognition theorem for infinite loop spaces, Boardman-Vogt, May]
-$$\{ \operatorname{Picard\: }\infty\operatorname{-groupoids }\} \simeq\{\operatorname{\:infinite\:loop\:spaces }\} \simeq \{ \operatorname{connective\: spectra}\} $$
-Or more precisely, there is an equivalence: 
-$$\mathbf{B}^{\infty}:\Alg_{\mathbb{E}_{\infty}}^{\operatorname{gp}}(\mathscr{S})\leftrightarrows\operatorname{Sp}_{\geq 0}:\Omega^{\infty}$$
-where $\operatorname{Sp}_{\geq 0}$ denotes the category of connective spectra,
-$\mathbf{B}$ the delooping functor, which takes a monoidal category to its delooping, and 
-$\Omega$ is the functor forming loop space objects out of the objects in the source category.
 
-\end{thm}
-For a proof see \cite[Corollary II.24]{KtheoryHebestreitWagner}. 
-
-The natural question now is what kind of spectra are connective spectra? We now sketchily characterize them.
-
-  While the degree homotopy groups for usual topological spaces are defined to be positive, homotopy groups of spectra can be defined and be non-trivial also for negative degrees. Connective spectra are spectra that only have positive non-trivial homotopy groups. They
-   are called connective because a synonym is ($-1$)-connected spectra, referring to the convention that an $n$-connected space is a space where its homotopy groups for all $k\leq n$ are trivial. This is why $\tilde\Zf$ is not just a map of spaces but a map of spectra, and this enables the application of stable homotopy theory, making life easier. We can conclude this interlude on stable homotopy theory and invertible TFTs with the following motto
 
 $$\text{\textit{Invertible TFTs are maps of connective spectra!}}$$
 
@@ -4649,7 +4850,12 @@ We now provide an outlook to some research programs that are tightly connected t
     Often we take $X=BG$ the classifying space of a group $G$ and having maps $M \to BG$ and $\Sigma \to BG$ gives us principle bundles on $M$ and $\Sigma$. This is connected to the field of \textit{gauge theory} and is sometimes called \textit{cohomological TFT}. 
 %Unsure about adding these remarks on algebraic and arithmetic QFT and if it's BS, will ask Prof and please do check if BS /ANdrea
     
-    \item[\extra] arithmetic field theories (\cite{Mazur1973NotesO},\cite{kim2016arithmetic},\cite{kapustin2007electricmagnetic}, \cite{Kapranov1995},\cite{RelativeBSVDUAL}): although still very conjectural, some envision poetic connections between number theory and physics via TFTs. The original intuition behind this connection is a mysterious analogy of Barry Mazur stating that number fields form correspond to some kind of 3-dimensional manifolds and primes in such number fields behave like knots embedded in these 3-dimensional manifolds. How this connects to TFTs will become clearer after the next section, where we will have gone through the connection between the Jones polynomial (a knot invariant) and 3d-Chern-Simons theory. For instance, the spectrum\footnote{Not in the sense of a modern abelian group, which we previously described \ref{Spectra Phases of Matter}! This is the spectrum of a ring.} of the commutative ring of the integers $\mathbb{Z}$ can be seen (roughly speaking\footnote{To make this more precise Mazur talks about exotic stuff like étale cohomological dimension.}) as a 3-dimensional manifold, and since the spectra prime fields can be canonically embedded in the spectra of the integers, they are analogous to knots since knots can be defined as embeddings of $S^1$ into some 3-dimensional manifold\footnote{Often it is sufficient to pick $\R^3$ as the manifold we embed in and it is what we will do in the next section. However, taking arbitrary 3 manifolds does also make sense and in some cases, like this one, it is what one desires.}. Mazur came up with this analogy in \cite{Mazur1973NotesO}, see this \href{https://mathoverflow.net/questions/50879/what-is-the-knot-associated-to-a-prime/50995#50995}{mathoverflow comment by Lieven Lebruyn} and the \href{https://ncatlab.org/nlab/show/Spec%28Z%29#As3dSpaceContainingKnots}{nLab entry on Spec($\Z$)} for accessible introductions to this specific correspondence. Some (\cite{kim2016arithmetic}, \href{https://shifted-project.github.io/}{Clark Barwick's SHIFTED project} and \href{https://www.youtube.com/watch?v=WXqmXKLtJrs}{this talk of his on his efforts towards geometric foundations for arithmetic field theories}) are trying to define arithmetic quantum field theories in order to apply ideas of TFTs to number theory, for example to arithmetic curves\footnote{Something from arithmetic geometry, see \cite{liu2002algebraic}}, i.e. the spectra of rings of integers in algebraic number fields. While others (\cite{Witten:1990bs},\cite{RelativeBSVDUAL}) more specifically, see a strong connection with the Langlands program. This view is summarized by the motto \emph{the Langlands program is part of the study of 4-dimensional (arithmetic, topological) quantum field theory}. For a more accessible introduction to this research program, check out these notes \cite{BenZviLanglands} by Jackson Van Dyke of a course on this topic by David Ben-Zvi.
+    \item[\extra] arithmetic field theories (\cite{Mazur1973NotesO},\cite{kim2016arithmetic},\cite{kapustin2007electricmagnetic}, \cite{Kapranov1995},\cite{RelativeBSVDUAL}): although still very conjectural, some envision poetic connections between number theory and physics via TFTs. The original intuition behind this connection is a mysterious analogy of Barry Mazur stating that number fields form correspond to some kind of 3-dimensional manifolds and primes in such number fields behave like knots embedded in these 3-dimensional manifolds. How this connects to TFTs will become clearer after the next section, where we will have gone through the connection between the Jones polynomial (a knot invariant) and 3d-Chern-Simons theory. For instance, the spectrum\footnote{Not in the sense of a modern abelian group, which we previously described \ref{Spectra Phases of Matter}! This is the spectrum of a ring.} of the commutative ring of the integers $\mathbb{Z}$ can be seen (roughly speaking\footnote{To make this more precise Mazur talks about exotic stuff like étale cohomological dimension.}) as a 3-dimensional manifold\footnote{This analogy has been
+    	very recently made precise by Peter Scholze via the framework of condensed mathematics. He talked
+    	about this in this talk \url{https://archive.mpim-bonn.mpg.de/id/eprint/4956/}.}
+    	, and since the spectra prime fields can be canonically embedded in the spectra of the integers, they are analogous to knots since knots can be defined as embeddings of $S^1$ into some 3-dimensional manifold\footnote{Often it is sufficient to pick $\R^3$ as the manifold we embed in and it is what we will do in the next section. However, taking arbitrary 3 manifolds does also make sense and in some cases, like this one, it is what one desires.}. Mazur came up with this analogy in \cite{Mazur1973NotesO}, see this \href{https://mathoverflow.net/questions/50879/what-is-the-knot-associated-to-a-prime/50995#50995}{mathoverflow comment by Lieven Lebruyn}
+     and the \href{https://ncatlab.org/nlab/show/Spec%28Z%29#As3dSpaceContainingKnots}{nLab entry on
+     	 Spec($\Z$)} for accessible introductions to this specific correspondence. Some (\cite{kim2016arithmetic}, \href{https://shifted-project.github.io/}{Clark Barwick's SHIFTED project} and \href{https://www.youtube.com/watch?v=WXqmXKLtJrs}{this talk of his on his efforts towards geometric foundations for arithmetic field theories}) are trying to define arithmetic quantum field theories in order to apply ideas of TFTs to number theory, for example to arithmetic curves\footnote{Something from arithmetic geometry, see \cite{liu2002algebraic}}, i.e. the spectra of rings of integers in algebraic number fields. While others (\cite{Witten:1990bs},\cite{RelativeBSVDUAL}) more specifically, see a strong connection with the Langlands program. This view is summarized by the motto \emph{the Langlands program is part of the study of 4-dimensional (arithmetic, topological) quantum field theory}. For a more accessible introduction to this research program, check out these notes \cite{BenZviLanglands} by Jackson Van Dyke of a course on this topic by David Ben-Zvi.
     \item[\extra] algebraic quantum field theory (\cite{Haag:1963dh}): talking about endomorphism monoids, i.e. monoids of the form $(\Hom_\cat(X,X),\circ)$ (see \ref{Delooping Monoid}) we previously mentioned operator algebras, i.e. monoids and submonoids of the form $(\Hom_{\Top\!\Vect_{k}}(X,X),\circ)$. They are an object of interest in themselves but importantly for us algebraic quantum field theory makes extensive use of operator algebras. Algebraic quantum field theory is very roughly a way of translating the Heisenberg picture of quantum mechanics (sometimes called matrix mechanics) to quantum field theory by providing an attempt to axiomatize QFT in a mathematically rigorous way. Given some apt operators on an apt topological vector space, meaning that the topological vector space can represent a quantum state and the selected operators on it can represent observables, an AQFT provides a formal assignment of algebras of such operators to regions of spacetime according to some axioms, e.g. the \href{https://ncatlab.org/nlab/show/Haag-Kastler+axioms}{Haag Kastler Axioms}. In this way, it pins down how observables depend of spacetime while states are being fixed, as in the Heisenberg picture. Algebraic quantum field theory can be roughly considered to be a dual to topological quantum field theory since TFTs invert the direction by assigning geometric data to algebraic ones. In fact, topological quantum field theory can be seen as a way of translating the Schrödinger picture (also called wave mechanics) to quantum field theory: states are represented by objects in the target monoidal category, the functor from $\Bord$ captures the local time evolution, and thereby a TFT shows how states are
      propagated through time while the observables are held fixed, as in the Schrödinger picture (see more on this at \href{https://ncatlab.org/nlab/show/functorial+field+theory#QuantumMechanicsInSchroedingerPicture}{this section of the nLab entry on TFTs}). In quantum mechanics, the Heisenberg and the Schrödinger picture are two faces of the same medal, i.e. matrix mechanics and wave mechanics are equivalent\footnote{Interestingly from a historical point of view, Schrödinger's (and Eckhart's) famous proof from 1926 that the two approaches are equivalent is faulty, but von Neumann fortunately provided a foolproof demonstration in 1932. See \cite{MULLER199735} for more on this interesting trivia.}; however, we are far from proving that AQFT and TQFT are also two faces of the same medal. One point of contact between the two is via factorization algebras (something related to $E_n$-algebras, see \ref{EAlg} for the definition of a $E_1$-algebra), see \cite{costello2023factorization} for a summary on factorization algebras and how they relate to TQFT and AQFT. 
     
