@@ -3910,21 +3910,28 @@ $$\operatorname{lim}(...\leftarrow\sat_\ast\leftarrow\sat_\ast\leftarrow\sat_\as
 where we can see the diagram we are taking the limit over as a functor 
 $D:\Z^{\operatorname{op}}\to\infty\operatorname{-Cat}$ where $\Z$ is considered as a category
 via its ordering ($\leq$ corresponds to a morphism $\to$) and for each $i\in\Z$ $D(i)=\sat_\ast$. Sometimes 
-such diagrams are called towers.
+such diagrams are called towers. %TBD
 \end{defn}
 \begin{defn}[Infinite loop space]
 	An infinite loop space is a space $S_0$ with an infinite sequence of pointed spaces $S_0,S_1,S_2,...$ where $S_n$ is the delooping\footnote{We talked of deloopings just for categories but there is a corresponding notion for spaces. If you do not believe this, apply the equivalence of the homotopy hypothesis.} of $S_{n-1}$ and conversely $S_{n-1}$ is the loop space\footnote{The loop space object is an inverse operation to the delooping, meaning that that given some monoidal category $\cat$, $\cat$ is the loop space object of the delooping of $\cat$. The name comes from the topological notion, see \url{https://en.wikipedia.org/wiki/Loop_space}
 		In general, loop space objects inherit the monoidal structure from the composition of loops. We would need to talk about homotopy pullbacks in order to strictly define what a loop space object is.}
 	object of $S_n$. 
 \end{defn}
-\begin{defn}[Underlying infinite loop space functor]
-	$$\Omega^{\infty}$$	
+\begin{defn}[Underlying (infinite loop) space functor]
+	Given a spectrum, we 
+	$$\Omega^{\infty}:\operatorname{Sp}\to\sat_\ast$$	
+	$$ \{X_i\}_{i\in\Z}\mapsto X_0$$
+\end{defn}
+\begin{defn}[Suspension spectrum functor]
+$$\Sigma^{\infty}:\sat_\ast\to\operatorname{Sp}$$
 \end{defn}
 \begin{defn}[Classifying spectrum]
-	Inhalt...
+	Let $M$ be an $\mathbb{E}_\infty$-space, i.e. an $\mathbb{E}_\infty$-algebra in $\sat_\ast$ (see
+	 \ref{EAlg}). Then we define the classifying spectrum of $M$
+$$\mathbf{B}^{\infty}(M):=$$
 \end{defn}
-\begin{defn}[Delooping functor]
-	Inhalt...
+\begin{defn}[Classifying spectrum functor]
+$$\mathbf{B}^{\infty}$$
 \end{defn}
 Picard $\infty$-groupoids do not only correspond to infinite loop spaces but also to connective 
 spectra. 
@@ -3945,7 +3952,7 @@ In sum, spectra are a higher categorical analog of abelian groups (see \ref{Ab-E
 because they provide very powerful techniques for many areas of mathematics
 where there is currently much progress, e.g. in algebraic K-theory. Check out \cite{GregoricSpectra} for a
  great informal introduction. In a certain sense, $\mathds{S}$ is analgous to $\Z$ but in another category: \Z is the unit in Ab, while $\mathds{S}$ is the unit in the category of spectra. 
-These objects will also become useful later, \ref{Spectra Phases of Matter}.
+
 We make the comparison more explicit via a table\footnote{A
 	cool synonym for higher algebra is brave new algebra. It was coined by Waldhausen, one of
 	the pioneers of this discipline. Moreover, this table was inspired by a table in Thomas
@@ -4004,10 +4011,7 @@ It is useful to note that
    $k+1$-category. Having Picard $\infty$-groupoids allows us to deloop infinitely
  many times. This roughly explains why Picard $\infty$-groupoids are infinite loop spaces, 
  and in particular the spaces corresponding to $|\Bord|$ and $\cat^{\times}$. 
-
-
 $$\text{\textit{Invertible TFTs are maps of connective spectra!}}$$
-
 This is not only of theoretical interest but it also allows the application of topological field theories to condensed matter theory! Classical phases of matter are governed by Landau
  theory of phase transition. However, the phases of a quantum material do not behave in the
   same manner. Fortunately, there are ways to describe them, or at least specific types of quantum matter (with gapped Hamiltonians for instance)\footnote{Kitaev for instance proposed in \cite{Kitaev_2009} that the topological insulators and superconductors of a certain type of condensed matter are classifiable via K-theory\footnote{See \url{https://ncatlab.org/nlab/show/topological+phase+of+matter} and \url{https://ncatlab.org/nlab/show/K-theory+classification+of+topological+phases+of+matter}.} and this was further refined via twisted equivariant K-theory by Dan Freed and Greg Moore in \cite{Freed_2013}. }. The topological field theories describing the (\href{https://ncatlab.org/nlab/show/topological+phase+of+matter}{topological}) phases of matter of some condensed matter systems (with short range entanglement) are \emph{invertible} field theories. The connection to stable homotopy theory allows to compute topological invariants of spectra and thereby of phases of matter. This was done by Freed and Hopkins in \cite{Freed_2021} and in \cite{freed2014shortrange}.
