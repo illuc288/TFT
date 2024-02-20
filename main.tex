@@ -72,6 +72,7 @@
 \newcommand{\cat}{\ensuremath{\mathscr{C}} }
 \newcommand{\dat}{\ensuremath{\mathscr{D}} }
 \newcommand{\eat}{\ensuremath{\mathscr{E}} }
+\newcommand{\sat}{\ensuremath{\mathscr{S}} }
 \newcommand{\unit}{\ensuremath{\mathbb{1}} }
 \newcommand{\g}{\ensuremath{\mathfrak{g}} }
 \newcommand{\gl}{\ensuremath{\mathfrak{gl}} }
@@ -256,6 +257,21 @@ We use the symbol '\Plane' at the end of titles of sections, definitions or theo
 \begin{notat}
 	We often denote equivalence classes just with a representative thereof. 
 \end{notat}
+\begin{notat}
+We denote the category of spaces/$\infty$-groupoids both with $\mathscr{S}$ and with $\infty\operatorname{-Grpd}$. This is motivated by the homotopy hypothesis \ref{HomotopyHypothesis}.
+\end{notat}
+\begin{notat}
+When there is no ambiguity, we denote $(\infty,1)$-categories as $\infty$-categories.
+\end{notat}
+\section*{Prerequisites}
+The notes strive to be as self-contained as possible. We do assume however knowledge of linear algebra,
+basic notions from analysis, e.g. $C^{\infty}$ differentiability, and basic notions of topology, e.g. 
+paracompactness. Knowledge of algebraic topology is helpful but not necessary to understand the
+most important parts.
+\section*{Acknowledgements}
+Apart from Prof. Scheimbauer's lectures and the cited references,
+we often got inspiration from the nLab (\url{https://ncatlab.org/nlab/show/HomePage}) and from notes
+on algebraic topology by Prof. Land (available on \url{https://www.mathematik.uni-muenchen.de/~gritscha/TOP1-23.php}).
 
 \thispagestyle{empty}
 \hfill
@@ -2330,6 +2346,10 @@ The right hand square commutes because of the naturality of $\eta$. Since the ri
 		\arrow["{id_{G}}", Rightarrow, from=1-1, to=1-3]
 	\end{tikzcd}\]
 	We say that $F$ is left adjoint to $G$ denoted by $F\dashv G$, and reciprocally $G$ is right adjoint to $F$ denoted by $G\vdash F$.
+	
+	See \ref{HigherAdjFun} for an equivalent formulation\footnote{Although in the $\infty$-categorical 
+	context, it is easily tranlatable by forgetting about the $\infty$s and substituting 'set' for
+	'$\infty$-groupoid'.}
 \end{defn}
 
 \begin{ex}
@@ -2911,13 +2931,13 @@ monoids that cohere via higher morphisms (including the ones higher than 2, give
  category we want our monoid object to be defined in via a symmetric monoidal functor. This notion is called 
  $\mathbb{E}_1$-algebra for monoid objects, and $\mathbb{E}_\infty$-algebra for commutative ones.
  We can summarize the idea with the following mottos 
- $$\mathbb{E}_1\textit{-algebras are homotopically associative and unital monoid objects }$$
- $$\mathbb{E}_\infty\textit{-algebras are homotopically commutative, associative and unital monoid objects}$$
- And as generally as possible:
+ $$\mathbb{E}_1\textit{-algebras are homtopy coherently associative and unital monoid objects }$$
+ $$\mathbb{E}_\infty\textit{-algebras are homotopy coherently commutative, associative and unital monoid objects}$$
+ And generally:
  $$ \mathbb{E}_n\textit{-algebras are homotopy-coherent monoid objects } $$
 $$	\textit{that are commutative via homotopies up to the $n$-th order}$$
-where by homotopy-coherent monoid objects we mean monoids that are homotopically associative, i.e.
-$A\cdot(B\cdot C)\simeq(A\cdot B)\cdot C $
+%where by homotopy-coherent monoid objects we mean monoids that are homotopy coherently associative, i.e.
+%$A\cdot(B\cdot C)\simeq(A\cdot B)\cdot C $
 
 
   We recall now what an isotopy is since this will be the information in the source category of disks that we will
@@ -3042,48 +3062,39 @@ Other synonyms nowadays are: \begin{itemize}
  A synonym for $A_\infty$-space is monoidal $\infty$-groupoid. A synonym for $\mathbb{E}_\infty$-space is
   symmetric monoidal $\infty$-groupoid. 
 \end{notat}
-\begin{defn}[Grouplike $\mathbb{E}_n$-Algebras]\label{grouplikeEalg}
-An $\mathbb{E}_n$-algebra $A\in\Alg_{\mathbb{E}_n}(\cat)$ in a cartesian monoidal category $\cat$
- is grouplike if it lands in the category of groups
+\begin{defn}[Grouplike $\mathbb{E}_n$-space]\label{grouplikeEspace}
+An $\mathbb{E}_n$-algebra in the category of spaces $A\in\Alg_{\mathbb{E}_n}(\mathscr{S})$, i.e. an $\mathbb{E}_{n}$-space,
+ is grouplike, if it lands in the category of groups
 $\operatorname{Grp}\subset\operatorname{Mon}$ when sent via the composition of
 \begin{itemize}
 	\item the functor $\pi_0:\mathscr{C}\to\Set$, sending objects in groupoids
 	to their isomorphism classes\footnote{The notation is no coincidence: under the homotopy hypothesis
 		this functor in the category of spaces 
-		 and the one sending points to their path-connected components are the same.} 
+		 and the one sending points to their path-connected components are the same.}
 	\item and the one forgetting
 	all the commutative structure, but just remembering the homotopy-coherent
 	associativity\footnote{Similarly to a forgetful functor 
 		from the category of commutative monoids to the category of monoids.}
 \end{itemize} 
-which can be visualized with the following diagram %stuff is written in another way in Mazel-Gee's book, but I think it is a typo, wrote him to check and will update accordingly /Andre
+such composition of morphisms can be visualized with the following diagram 
 % https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXEFsZ197XFxtYXRoYmJ7RX1fbn0oXFxtYXRoc2Nye1N9KSJdLFsxLDEsIlxcQWxnX3tcXG1hdGhiYntFfV9ufShcXFNldCkiXSxbMiwwLCJcXG9wZXJhdG9ybmFtZXtHcnB9XFxzdWJzZXRcXEFsZ197XFxtYXRoYmJ7RX1fMX0oXFxTZXQpXFxzaW1lcVxcb3BlcmF0b3JuYW1le01vbn0iXSxbMCwxLCJcXEFsZ197XFxtYXRoYmJ7RX1fbn0oXFxwaV8wKSIsMl0sWzEsMiwiXFxvcGVyYXRvcm5hbWV7Zm9yZ2V0fSIsMl0sWzAsMl1d
 \[\begin{tikzcd}[cramped]
-	{\Alg_{\mathbb{E}_n}(\mathscr{\cat})} && {\Alg_{\mathbb{E}_1}(\Set)\simeq\operatorname{Mon}} \\
+	{\Alg_{\mathbb{E}_n}(\mathscr{S})} && {\Alg_{\mathbb{E}_1}(\Set)\simeq\operatorname{Mon}} \\
 	& {\Alg_{\mathbb{E}_n}(\Set)}
 	\arrow["{\Alg_{\mathbb{E}_n}(\pi_0)}"', from=1-1, to=2-2]
 	\arrow["{\operatorname{forget}}"', from=2-2, to=1-3]
 	\arrow[from=1-1, to=1-3]
 \end{tikzcd}\]
-One may denote the subcategory of grouplike $\mathbb{E}_n$-algebras in $\cat$ with
- $\Alg^{\operatorname{gp}}_{\mathbb{E}_n}(\mathscr{C})\subset\Alg_{\mathbb{E}_n}(\mathscr{C})$
- 
- We can conclude with the following motto
- $$\textit{grouplike }\mathbb{E}_n\textit{-algebras are homotopy-coherent group objects } $$
- $$	\textit{that are commutative via homotopies up to the $n$-th order}$$
+One may denote the subcategory of grouplike $\mathbb{E}_n$-spaces with
+ $\Alg^{\operatorname{gp}}_{\mathbb{E}_n}(\mathscr{S})\subset\Alg_{\mathbb{E}_n}(\mathscr{S})$
 \end{defn}
-\begin{ex}
-
-Grouplike $\mathbb{E}_\infty$-algebras in the category of spaces (who form the category
- $\Alg^{\operatorname{gp}}_{\mathbb{E}_\infty}(\mathscr{S})$) are
-Picard $\infty$-groupoids! The intuition is that an $\mathbb{E}_\infty$-algebra provide
+\begin{rem}
+Grouplike $\mathbb{E}_\infty$-spaces in the category of spaces are
+Picard $\infty$-groupoids! The intuition is that the $\mathbb{E}_\infty$ provides
 the symmetric monoidal structure and being grouplike provides the invertibility
 objects. 
 \begin{notat}
-Following the notation given in the table above,
-they are also called grouplike $\mathbb{E}_\infty$-spaces. Sometimes they are called
-$\mathbb{E}_\infty$-groups because they are commutative (hence $\mathbb{E}_\infty$) group objects 
-(hence groups). Other times they are called abelian $\infty$-groups 
+Sometimes grouplike $\mathbb{E}_\infty$-spaces are called abelian $\infty$-groups 
 because:
 \begin{itemize}
 	\item $\infty$-groupoids are also known as $\infty$-sets 
@@ -3093,13 +3104,20 @@ because:
 	aka $\infty$-Grpd,
 	are monoidal groupoids with invertible objects, which are usually called $\infty$-groups
 	\item abelian groups are groups where the operation is commutative and grouplike
-	 $\mathbb{E}_\infty$-spaces are $\infty$-groups where the operation is homotopically commutative
+	 $\mathbb{E}_\infty$-spaces are $\infty$-groups where the operation is homotopy coherently  commutative
 \end{itemize}
 \end{notat}
 
 Such objects are interesting for us because invertible field theories are equivalently
 maps of such grouplike $\mathbb{E}_\infty$-spaces! See \ref{Spectra Phases of Matter}.
-\end{ex}
+\end{rem}
+\begin{rem}
+	We defined grouplike $\mathbb{E}_n$-algebras only in the category of spaces. There is however
+	a way to give a general definition for any cartesian monoidal $\infty$-category, aka a category with
+	 finite products. See \cite[5.2.6.6]{Luriealgebra} for such a definition\footnote{Note that there is 
+	 a typo, instead of 'Let \cat be an $\infty$-category which admits finite products.' there should be
+	 'Let $\mathscr{X}$ be  an $\infty$-category which admits finite products.'.}
+\end{rem}
 % -------------------------------------------------------------
 % --------------------- LECTURE 10 27/11 -----------------------
 % -------------------------------------------------------------
@@ -3620,16 +3638,20 @@ This is achieved via spectra. This begs the question: what are spectra?
 \subsubsection{What are spectra? \extra}\label{WhatSpectra}
 We already have seen some spectra and definitions of some kinds of spectra in \ref{homotopyCob}, e.g. the 
 sphere spectrum and the suspension spectrum. In that section, we defined suspension as a quotient.
- However, one can define a suspension in full generality, i.e. for any $\infty$-category, via certain homotopy
-  colimits. Homotopy co/limits are objects making certain diagrams commute via homotopies and with certain
+ However, one can define a suspension in full generality, i.e. for any pointed $\infty$-category, via certain homotopy
+  colimits. Moreover, via such homotopy co/limits one can define other fundamental notions for spectra,
+   so in what follows, we try to convey an idea for how they work.
+  
+   Homotopy co/limits are objects making certain diagrams commute via homotopies and with certain
    universal properties. Such diagrams commute in a very similar sense to how $\mathbb{E}_n$-algebras 
    are associative via homotopies of every order up to $\infty$. Every co/limit in an $\infty$-category works as a homotopy
    co/limit\footnote{Being able to define homotopy co/limits via usual universal properties is indeed one
    of the motivations for $\infty$-categories, as said in \ref{HomotopyHypothesis}.}, see \cite[Section
     4]{land2021introduction} for a thorough introduction to how that works.
     
-    We now provide a rough sketch.
-    \begin{defn}[Terminal, initial, zero objects]
+    We now provide a rough sketch of what are homotopy co/limits. To do this, we first need to define 
+    what are co/limits in ordinary categories.
+       \begin{defn}[Terminal, initial, zero objects]
 A terminal object in a category $\cat$ is an object $\ast\in\cat$ such that for every
 $X\in\cat$ there is a unique morphism $X\to\ast$
 
@@ -3691,7 +3713,7 @@ A zero object is an object that is both initial and final. A category is called 
 In order to get a definition of homotopy co/limit or $(\infty,1)$-co/limit, just substitute your favourite
  model of $\infty$-category with 'category' in this definition. 
     \end{defn}
-    \begin{ex}
+    \begin{ex}[Cartesian product]
  We previously defined the cartesian product of two objects by saying that some diagram commutes and the product  has a certain universal property (\ref{CartProd}). 
  Such cartesian product is a limit over a diagram shaped as a discrete category with two objects.
  Let us name this discrete category with two different objects $\mathscr{J}=\{0,1\}$, discrete means that
@@ -3747,7 +3769,7 @@ The two projections exist because $A\times B$ is a cone: a cone is an initial ob
    	Where the two small triangles commute via higher morphisms denoted with $\Leftrightarrow$.
    	
    	Let $D(1)=X$, $D(2)=Y$ and $D(0)=Z$. Then, the $\infty$-pullback of $D$ is the terminal object 
-   	in the functor $\infty$-category $\Fun_D(\mathscr{J},\cat)$. Denote the image of $\emptyset$ of such pullback with $Y\times_X Z$. Then there is the following homotopy coherent diagram
+   	in the $\infty$-functor $\infty$-category $\Fun_D(\mathscr{J},\cat)$. Denote the image of $\emptyset$ of such pullback with $Y\times_X Z$. Then there is the following homotopy coherent diagram
    % https://q.uiver.app/#q=WzAsNCxbMCwwLCJZXFx0aW1lc19YIFoiXSxbMCwxLCJZIl0sWzEsMSwiWiJdLFsxLDAsIlgiXSxbMCwxXSxbMSwyXSxbMCwzXSxbMywyXSxbMCwyXSxbOCwxLCIiLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MzAsInRhcmdldCI6MTB9LCJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJhcnJvd2hlYWQifX19XSxbOCwzLCIiLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MzAsInRhcmdldCI6MTB9LCJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJhcnJvd2hlYWQifX19XV0=
    \[\begin{tikzcd}[cramped]
    	{Y\times_X Z} & X \\
@@ -3764,7 +3786,8 @@ The two projections exist because $A\times B$ is a cone: a cone is an initial ob
    	of diagrams in the shape $\mathscr{J}$, by preserving compositionality for all $n$-morphisms.
    	Since it is the terminal object in the category of cones over the diagram $D$ for every other cone
    	mapping $\emptyset$ to an object $Q\in\cat$, then there is a unique morphism $Q\to Y\times_X Z$
-   	making the following diagram commute homotopically
+   	making the following diagram commute homotopy coherently
+   	
    	% https://q.uiver.app/#q=WzAsNSxbMSwxLCJZXFx0aW1lc19YIFoiXSxbMSwyLCJZIl0sWzIsMiwiWiJdLFsyLDEsIlgiXSxbMCwwLCJRIl0sWzAsMV0sWzEsMl0sWzAsM10sWzMsMl0sWzAsMl0sWzQsMF0sWzQsMV0sWzQsM10sWzksMSwiIiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjMwLCJ0YXJnZXQiOjEwfSwic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiYXJyb3doZWFkIn19fV0sWzksMywiIiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjMwLCJ0YXJnZXQiOjEwfSwic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiYXJyb3doZWFkIn19fV0sWzEwLDExLCIiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJhcnJvd2hlYWQifX19XSxbMTAsMTIsIiIsMix7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH0sInN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9fX1dXQ==
    	\[\begin{tikzcd}[cramped]
    		Q \\
@@ -3791,7 +3814,10 @@ From now on, when we are talking about commutative diagrams in an $\infty$-categ
 higher morphisms that make the diagram commute.
  \end{notat}
    
-   There is the dual notion of homotopy pushout which we now use to define suspensions.
+
+   
+   There is the dual notion of homotopy pullback: the homotopy pushout, which we now use to define
+    suspensions.
 
     \begin{defn}[Suspension]
    	Let $\cat$ be a pointed\footnote{A category with a zero object: an object that is both initial and final.} 
@@ -3808,8 +3834,9 @@ higher morphisms that make the diagram commute.
   	\arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=1-1]
   \end{tikzcd}\]
    \end{defn}
+
    \begin{defn}[Suspension functor]
-   	Inhalt...
+Given a pointed $\infty$-category $\cat$ the assignment $X\mapsto \Sigma X$ gives rise to a functor $\Sigma:\cat\to\cat$
    \end{defn}
    Dually, one can define the loop space of an object
 \begin{defn}[Loop space]
@@ -3827,16 +3854,63 @@ $\infty$-category and let $X\in\cat$. Then the loop space $\Omega X$ is the pull
 \end{tikzcd}\]
 \end{defn}
 \begin{defn}[Loop space functor]
-	Inhalt...
+	Given a pointed $\infty$-category $\cat$ the assignment $X\mapsto \Omega X$ gives rise to a functor $\Omega:\cat\to\cat$
 \end{defn}
+\begin{defn}[Alternative definition of adjunction]\label{HigherAdjFun}
+We defined adjoint functors via the natural tranformations unit and counit (\ref{AdjFun}). There is however an equivalent
+formulation:
+two $\infty$-functors $\cat\underset{L}{\overset{R}{\leftrightarrows}}\dat$ form an adjunction $L\dashv R$, i.e. where $L$ is the left adjoint
+and $R$ is the right adjoint, if between the two Hom-$\infty$-functors 
+$$\Hom_\cat(L(-),-):\cat^{\operatorname{op}}\times\cat \to \infty\operatorname{-Grpd}$$
+and
+$$\Hom_\dat(-,R(-)):\dat^{\operatorname{op}}\times\dat\to\infty\operatorname{-Grpd}$$
+there is a natural isomorphism $\Hom_\cat(L(-),-)\simeq \Hom_\dat(-,R(-))$
 
+This definition is easily derivable from the one with units we gave previously, given 
+the unit $\epsilon:id_{\dat}\Rightarrow R\circ L$ and $X\in\cat$ and $Y\in\dat$, 
+the following holds because of one of the triangle identities: 
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXEhvbV97XFxjYXR9KEwoWSksWCkiXSxbMSwxLCJcXEhvbV9cXGRhdChSKEwoWSkpLFIoWCkpIl0sWzIsMCwiXFxIb21fXFxkYXQoWSxSKFgpKSJdLFswLDFdLFsxLDJdLFswLDIsIlxcc2ltZXEiXV0=
+\[\begin{tikzcd}[cramped]
+	{\Hom_{\cat}(L(Y),X)} && {\Hom_\dat(Y,R(X))} \\
+	& {\Hom_\dat(R(L(Y)),R(X))}
+	\arrow[from=1-1, to=2-2]
+	\arrow[from=2-2, to=1-3]
+	\arrow["\simeq", from=1-1, to=1-3]
+\end{tikzcd}\]
+\end{defn}
+\begin{rem}[Suspension-loop adjunction]
+There is an adjunction $\Sigma\dashv\Omega$ and thus for any pointed $\infty$-category
+$\cat$ it holds that $\Hom_{\cat}(\Sigma-,-)\simeq \Hom_{\cat}(-,\Omega-)$. If it is not sufficiently clear from
+the fact that 
+$\Omega X=0\times_X 0$ and $\Sigma X=0\amalg_X 0$, do not worry. In the case that it interests us the most
+it can be seen from another perspective. Recall that for $X\in \Top_\ast$
+$\Sigma X= X\land S^1$ and $\Omega_x=\operatorname{Map}_{\ast}(S^1,X)$ and that $\Top_\ast$ is cartesian
+ monoidal closed, i.e. for any $A,B,C\in\Top_\ast$ it holds that $\Hom_{\Top_{\ast}}(A\land B, C)\cong\Hom_{\Top_{\ast}}(A,\operatorname{Map}_{\ast}(B,C))$ and hence 
+ $\Hom_{\Top_{\ast}}(-\land S^1,-)\cong\Hom_{\Top_{\ast}}(-,\operatorname{Map}_{\ast}(S^1,-))$
+\end{rem}
 \begin{defn}[Spectrum\footnote{Also denoted $\Omega$-spectrum in the older literature, e.g. books or 
 	articles by May.}]
 	A spectrum is a collection of 
 	pointed spaces $\{E_n\}_{n\in\Z}$ with equivalences $\delta_n:E_n\simeq \Omega E_{n+1}$
 \end{defn}
+\begin{rem}
+Note that via the adjunction $\Sigma\dashv\Omega$ we can get a sequential spectrum from a spectrum:
+given $X_i,X_{i+1}\in\sat_\ast$ it holds that 
+$\Hom_{\sat_{\ast}}(X_i,\Omega X_{i+1})\simeq \Hom_{\sat_{\ast}}(\Sigma X_i,X_{i+1})$ and thus we can 
+get the pointed maps we need in order to define a sequential spectrum. This means that every spectrum
+is a sequential spectrum, i.e. the category of spectra is a subcategory of the category of sequential spectra.
+
+
+\end{rem}
 \begin{defn}[$\infty$-category of spectra]
-	Inhalt...
+The $\infty$-category of spectra is the category where objects are spectra. %The fact that there
+%are equivalences $X_i\simeq\Omega X_{i+1}$ 
+This is equivalent to saying that the category of spectra is the homotopy limit 
+$$\operatorname{lim}(...\leftarrow\sat_\ast\leftarrow\sat_\ast\leftarrow\sat_\ast\leftarrow ...)$$
+where we can see the diagram we are taking the limit over as a functor 
+$D:\Z^{\operatorname{op}}\to\infty\operatorname{-Cat}$ where $\Z$ is considered as a category
+via its ordering ($\leq$ corresponds to a morphism $\to$) and for each $i\in\Z$ $D(i)=\sat_\ast$. Sometimes 
+such diagrams are called towers.
 \end{defn}
 \begin{defn}[Infinite loop space]
 	An infinite loop space is a space $S_0$ with an infinite sequence of pointed spaces $S_0,S_1,S_2,...$ where $S_n$ is the delooping\footnote{We talked of deloopings just for categories but there is a corresponding notion for spaces. If you do not believe this, apply the equivalence of the homotopy hypothesis.} of $S_{n-1}$ and conversely $S_{n-1}$ is the loop space\footnote{The loop space object is an inverse operation to the delooping, meaning that that given some monoidal category $\cat$, $\cat$ is the loop space object of the delooping of $\cat$. The name comes from the topological notion, see \url{https://en.wikipedia.org/wiki/Loop_space}
@@ -3923,7 +3997,7 @@ It is useful to note that
  	synonyms for Picard $\infty$-groupoids are $\mathbb{E}_\infty$-groups and grouplike
  	$\mathbb{E}_\infty$-spaces. In fact, they are particular $\mathbb{E}_n$-algebras, grouplike
  	 $\mathbb{E}_n$-algebras in the category of $\infty$-groupoids,
- 	and we already defined them, see \ref{grouplikeEalg}.
+ 	and we already defined them, see \ref{grouplikeEspace}.
  
   Recall that intuitively the delooping of a group is a
   one-object groupoid and the delooping of a certain monoidal $k$-category is an one-object
