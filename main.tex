@@ -258,7 +258,7 @@ We use the symbol '\Plane' at the end of titles of sections, definitions or theo
 	We often denote equivalence classes just with a representative thereof. 
 \end{notat}
 \begin{notat}
-We denote the category of spaces/$\infty$-groupoids both with $\mathscr{S}$ and with $\infty\operatorname{-Grpd}$. This is motivated by the homotopy hypothesis \ref{HomotopyHypothesis}.
+We denote the category of spaces/$\infty$-groupoids both with $\mathscr{S}$, $\operatorname{Grpd}_\infty$ and with $\infty\operatorname{-Grpd}$. This is motivated by the homotopy hypothesis \ref{HomotopyHypothesis}.
 \end{notat}
 \begin{notat}
 When there is no ambiguity, we denote $(\infty,1)$-categories as $\infty$-categories.
@@ -2936,12 +2936,28 @@ monoids that cohere via higher morphisms (including the ones higher than 2, give
  And generally:
  $$ \mathbb{E}_n\textit{-algebras are homotopy-coherent monoid objects } $$
 $$	\textit{that are commutative via homotopies up to the $n$-th order}$$
-%where by homotopy-coherent monoid objects we mean monoids that are homotopy coherently associative, i.e.
-%$A\cdot(B\cdot C)\simeq(A\cdot B)\cdot C $
+where by homotopy-coherent monoid objects we mean monoids that are for instance homotopy coherently associative, i.e. the following diagram commutes via homotopies
+    % https://q.uiver.app/#q=WzAsNSxbMCwwLCIoTVxcb3RpbWVzIE0pXFxvdGltZXMgTSJdLFsxLDAsIk1cXG90aW1lcyhNXFxvdGltZXMgTSkiXSxbMiwwLCJNXFxvdGltZXMgTSJdLFswLDEsIk1cXG90aW1lcyBNIl0sWzIsMSwiTSJdLFswLDEsIlxcYWxwaGFfe00sTSxNfSJdLFsxLDIsImlkX01cXG90aW1lc1xcbXUiXSxbMCwzLCJcXG11XFxvdGltZXMgaWRfTSIsMl0sWzMsNCwiXFxtdSIsMl0sWzIsNCwiXFxtdSJdXQ==
+\[\begin{tikzcd}
+	{(M\otimes M)\otimes M} & {M\otimes(M\otimes M)} & {M\otimes M} \\
+	{M\otimes M} && M
+	\arrow["{\alpha_{M,M,M}}", from=1-1, to=1-2]
+	\arrow["{id_M\otimes\mu}", from=1-2, to=1-3]
+	\arrow["{\mu\otimes id_M}"', from=1-1, to=2-1]
+	\arrow["\mu"', from=2-1, to=2-3]
+	\arrow["\mu", from=1-3, to=2-3]
+\end{tikzcd}\]
+Meaning that $\mu\circ(\mu\otimes id_m)\simeq\mu\circ(id_M\otimes\mu)\circ\alpha$, instead of the usual
+$\mu\circ(\mu\otimes id_m)=\mu\circ(id_M\otimes\mu)\circ\alpha$, and additionally there are higher
+ homotopies making everything cohere. We now sketch what this homotopy coherence means by
+  means of this exaple. Let us call $h$ the 2-morphism 
+$h:\mu\circ(\mu\times id_m)\to\mu\circ(id_M\times\mu)\circ\alpha$ and its homotopy inverse
+$k:\mu\circ(id_M\times\mu)\circ\alpha\to\mu\circ(\mu\times id_m)$, then there are 3-morphisms 
+$l:h\leftrightarrows k:m$ such that $m\circ l\simeq id_h$ and $l\circ m\simeq id_k$ and so on to $\infty$.
 
 
   We recall now what an isotopy is since this will be the information in the source category of disks that we will
- stamp onto the category where the desired monoid object lives.
+ stamp onto the category where the desired monoid object lives. 
 
 \begin{defn}[Isotopy]\label{Isotopy}
     An isotopy is a stricter form of homotopy. Let $f,g:X\to Y$ be embeddings. Then $H:X\times [0,1]\to Y$ is an isotopy if 
@@ -3039,7 +3055,7 @@ in which higher algebra takes place.
 		\hline
 		\phantom{h} & $\infty$-Grpd & $\infty$-Cat & Sp \\ [0.5ex]
 		\hline\hline
-		$\mathbb{E}_1$-algebra & $A_\infty$-space &  monoidal $\infty$-category &  $\mathbb{E}_1$-ring spectrum  \\
+		$\mathbb{E}_1$-algebra & $\mathbb{E}_1$-space &  monoidal $\infty$-category &  $\mathbb{E}_1$-ring spectrum  \\
 		\hline
 		$\mathbb{E}_\infty$-algebra & $\mathbb{E}_\infty$-space & symmetric monoidal $\infty$-category &  $\mathbb{E}_\infty$-ring spectrum \\
 		\hline
@@ -3059,9 +3075,13 @@ Other synonyms nowadays are: \begin{itemize}
 \end{itemize}
 \end{notat}
 \begin{notat}
- A synonym for $A_\infty$-space is monoidal $\infty$-groupoid. A synonym for $\mathbb{E}_\infty$-space is
+ Synonyms for $\mathbb{E}_1$-space are $A_\infty$-space and monoidal $\infty$-groupoid. A synonym for $\mathbb{E}_\infty$-space is
   symmetric monoidal $\infty$-groupoid. 
 \end{notat}
+\begin{ex}
+	$\Omega X$ is an $\mathbb{E}_1$-space: composition of loops induces an operation which is not
+	 strictly unital or associative, but only via homotopies.
+\end{ex}
 \begin{defn}[Grouplike $\mathbb{E}_n$-space]\label{grouplikeEspace}
 An $\mathbb{E}_n$-algebra in the category of spaces $A\in\Alg_{\mathbb{E}_n}(\mathscr{S})$, i.e. an $\mathbb{E}_{n}$-space,
  is grouplike, if it lands in the category of groups
@@ -3088,6 +3108,10 @@ such composition of morphisms can be visualized with the following diagram
 One may denote the subcategory of grouplike $\mathbb{E}_n$-spaces with
  $\Alg^{\operatorname{gp}}_{\mathbb{E}_n}(\mathscr{S})\subset\Alg_{\mathbb{E}_n}(\mathscr{S})$
 \end{defn}
+\begin{ex}
+	$\Omega X$ is not just an $\mathbb{E}_1$-space, but also a grouplike $\mathbb{E}_1$-space since
+	the inversion of based loops is homotopy equivalent to 
+\end{ex}
 \begin{rem}
 Grouplike $\mathbb{E}_\infty$-spaces in the category of spaces are
 Picard $\infty$-groupoids! The intuition is that the $\mathbb{E}_\infty$ provides
@@ -3742,7 +3766,33 @@ The two projections exist because $A\times B$ is a cone: a cone is an initial ob
  are natural transformations and note that $pr_1$ and $f$ for instance are images of morphisms in
   $\mathscr{J}^{\lhd}$
     \end{ex}
+    We already sketched what might mean that a diagram is homotopy coherently commutative in the
+     case of an $\mathbb{E}_1$-algebra (\ref{EAlg}). For the sake of clarity we sketch it here again,
+     in a more general setting. Recall that all morphisms higher than 1 in an $\infty$-category are weakly invertible.
+% https://q.uiver.app/#q=WzAsNSxbMCwwLCJBIl0sWzAsMiwiQiJdLFsyLDIsIkQiXSxbMiwwLCJDIl0sWzEsMSwiLi4uIl0sWzAsMywiZyJdLFswLDEsImYiLDJdLFsxLDIsInEiLDJdLFszLDIsInIiXSxbMSwzLCJoIiwwLHsiY3VydmUiOi0zLCJzaG9ydGVuIjp7InNvdXJjZSI6MTAsInRhcmdldCI6MTB9LCJsZXZlbCI6Mn1dLFszLDEsImsiLDAseyJjdXJ2ZSI6LTMsInNob3J0ZW4iOnsic291cmNlIjoxMCwidGFyZ2V0IjoxMH0sImxldmVsIjoyfV0sWzksMTAsIm0iLDIseyJjdXJ2ZSI6Mywic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfX1dLFsxMCw5LCJsIiwyLHsiY3VydmUiOjMsInNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XV0=
+\[\begin{tikzcd}[cramped]
+	A && C \\
+	& {...} \\
+	B && D
+	\arrow["g", from=1-1, to=1-3]
+	\arrow["f"', from=1-1, to=3-1]
+	\arrow["q"', from=3-1, to=3-3]
+	\arrow["r", from=1-3, to=3-3]
+	\arrow[""{name=0, anchor=center, inner sep=0}, "h", curve={height=-18pt}, shorten <=7pt, shorten >=7pt, Rightarrow, from=3-1, to=1-3]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "k", curve={height=-18pt}, shorten <=7pt, shorten >=7pt, Rightarrow, from=1-3, to=3-1]
+	\arrow["m"', curve={height=18pt}, shorten <=8pt, shorten >=8pt, Rightarrow, from=0, to=1]
+	\arrow["l"', curve={height=18pt}, shorten <=8pt, shorten >=8pt, Rightarrow, from=1, to=0]
+\end{tikzcd}\]
+     This diagram does not commute strictly, but via homotopies.
+     This means that $h:q\circ f\simeq r\circ g:k$, instead of what we are used to: $q\circ f= r\circ g$.
+     Not only this however, it is the case that $k\circ h\simeq id_{q\circ f}$ and $h\circ k\simeq id_{r\circ g}$
+     , insted of the usual strict invertibility, and thus via the 3-morphisms $l$ and $m$, the 2-morphisms 
+     $k$ and $h$ are homotopic, i.e. $l:k\simeq h:m$. Then there
+     will be some explicit 4-morphisms witnessing that $m\simeq l$, and so on to $\infty$.
     
+   %I am unsure about the sketch above!!!! Please check /Andrea
+   
+     we know that 
    \begin{ex}[Homotopy pullback/$(\infty,1)$-pullback]
    	Let  $\mathscr{J}$ be an $\infty$-category with objects and 1-morphisms $0\to1\leftarrow2$ and
    	 $D:\mathscr{J}\to \cat$ be a diagram. To be rigorous, we would need to define what is an
