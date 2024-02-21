@@ -4114,7 +4114,7 @@ $D:\Z^{\operatorname{op}}\to\infty\operatorname{-Cat}$ where $\Z$ is considered 
 via its ordering ($\leq$ corresponds to a morphism $\to$) and for each $i\in\Z$ $D(i)=\sat_\ast$. %Sometimes 
 %such diagrams are called towers. %TBD
 \end{defn}
-
+The initial object of such category is the sphere spectrum $\mathds{S}$.
 \begin{defn}[Infinite loop space]\label{InfiniteLoop}
 	An infinite loop space is a space $X_0$ with an infinite sequence of pointed spaces $X_0,X_1,X_2,...$ with weak equivalences for $n\geq 0$
 	 $$X_n\simeq \Omega X_{n+1}$$
@@ -4179,16 +4179,24 @@ are called connective because a synonym is ($-1$)-connected spectra, referring t
 
 In sum, spectra are a higher categorical analog of abelian groups (see \ref{Ab-Enriched Cat}), they have been in fact called “the abelian groups of the 21st century” \cite{Mazel-Gee2024}
 because they provide very powerful techniques for many areas of mathematics
-where there is currently much progress, e.g. in algebraic K-theory. This is not just a vague analogy, 
+where there is currently much progress, e.g. in algebraic K-theory. One can do algebra with 
+spectra as one does ordinary algebra with abelian groups and rings, this subject is usually called 
+'higher algebra'\footnote{A
+	funny synonym for higher algebra is brave new algebra, referring to Huxley's dystopian
+	novel \textit{Brave New World}. It was coined by Waldhausen, one of
+	the pioneers of this discipline, hinting at the fact that it seems to have myriads of intriguing
+	opportunities but at the same could lead into a world of pure abstractions detached from mathematics
+	 with actual content. Examples of successful applications of such machinery
+	to concrete problems, e.g. the counterexamples to Ravenel's telescope conjecture
+	\cite{burklund2023ktheoretic}, convince the author of this section that this nightmare was avoided,
+	 although 
+	it must be said that they are clearly biased.}. This is not just a vague analogy, 
 but something that can be motivated formally, for instance, abelian groups are discrete spectra:
  $$\pi_0:\operatorname{Sp}\to\operatorname{Ab}$$
  where in particular $\pi_0(\mathds{S})=\Z$
  %In a certain sense, $\mathds{S}$ is analgous to $\Z$ but in another category: \Z is the unit in Ab, while $\mathds{S}$ is the unit in the category of spectra. 
 
-We make the comparison clearer via a table\footnote{A
-	funny synonym for higher algebra is brave new algebra, referring to Huxley's dystopian
-	novel \textit{Brave New World}. It was coined by Waldhausen, one of
-	the pioneers of this discipline. Moreover, this table was inspired by a table in Thomas
+We make the comparison clearer via the following table\footnote{his table was inspired by a table in Thomas
 	Nikolaus' talk: \url{https://www.youtube.com/watch?v=SJNKs1PxT9g}. } :
 
 \begin{center}
@@ -4204,6 +4212,8 @@ We make the comparison clearer via a table\footnote{A
 		\hline
 		\Z &  $\mathds{S}$ \\
 		\hline
+		ring & $\E_1$-ring spectrum \\
+		\hline
 		commutative ring & $\mathbb{E}_\infty$-ring spectrum \\
 		\hline
 		Ab-enriched category & Sp-enriched category \\
@@ -4213,9 +4223,11 @@ We make the comparison clearer via a table\footnote{A
 	\end{tabular}
 \end{center}
 See \ref{Ab-Enriched Cat} and \ref{AbelianCat} for the definitions of Ab-enriched category and
-abelian category. See \ref{EAlg} for the definition of $\mathbb{E}_\infty$-ring spectrum. A stable
+abelian category. See \ref{EAlg} for the definitions of $\E_1$-ring spectrum and of
+ $\mathbb{E}_\infty$-ring spectrum. A stable
  category is a category where $\Sigma\dashv\Omega$ do not just form an adjunction, but are equivalent. 
- There is an equivalent definition of stable category that more closely resembles the definition of abelian category, see \cite[Section 1]{Luriealgebra}.
+ There is an equivalent definition of stable category that more closely resembles the definition of abelian
+  category, see \cite[Section 1]{Luriealgebra}.
 
 \subsubsection{Invertible field theories are maps of spectra \extra}
  In order to allow the application of stable homotopy theory, one must fully extend topological field theories (see \ref{RemarkExtendedTFTs}), i.e. with $(\infty,n)$-categories of bordisms as a source, because
