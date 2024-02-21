@@ -8,6 +8,7 @@
 \usetikzlibrary{math}           % for some stuff with tikz drawings
 %\usepackage{newpxtext,newpxmath}   % font, but it causes a problem with \bigcup and all big operators
 \usepackage{mathpazo}           % math font
+
 \usepackage[hidelinks]{hyperref}% for hyperlinks
 \usepackage{float}              % for the H position modifier for figures
 \usepackage{threeparttable}     % for measuredfigure but I don't know why it's used
@@ -63,6 +64,7 @@
 \newcommand{\Z}{\ensuremath{\mathbb{Z}} }
 \newcommand{\N}{\ensuremath{\mathbb{N}} }
 \newcommand{\Q}{\ensuremath{\mathbb{Q}} }
+\newcommand{\E}{\ensuremath{\mathbb{E}} }
 \newcommand{\F}{\ensuremath{\mathbb{F}} }
 \newcommand{\K}{\ensuremath{\mathbb{K}} }
 \newcommand{\T}{\ensuremath{\mathcal{T}} }
@@ -2892,256 +2894,8 @@ We leave the case of the counit for the reader.
 \item   A Lie group is a group object in $\SmoothMfld$
 \item A group is a group object in Set
 	\end{itemize}
-    
-
-
 \end{ex}
 
-\subsection{Outlook towards \texorpdfstring{$\mathbb{E}_n$}{En}-Algebras \extra} 
-\label{EAlg}
-This outlook is based on \cite{HiroLee2022} and \cite{Mazel-Gee2024}.
-
-A monoid object in Cat\footnote{Recall that the monoidal structure on Cat is given by the product of
-	 categories, i.e. a cartesian product in Cat.} is a strict monoidal category. Take a look at associativity for
-	  instance:
-a monoid object $\cat\in\Cat$ makes the following diagram commute strictly
-% https://q.uiver.app/#q=WzAsNSxbMCwwLCIoTVxcb3RpbWVzIE0pXFxvdGltZXMgTSJdLFsxLDAsIk1cXG90aW1lcyhNXFxvdGltZXMgTSkiXSxbMiwwLCJNXFxvdGltZXMgTSJdLFswLDEsIk1cXG90aW1lcyBNIl0sWzIsMSwiTSJdLFswLDEsIlxcYWxwaGFfe00sTSxNfSJdLFsxLDIsImlkX01cXG90aW1lc1xcbXUiXSxbMCwzLCJcXG11XFxvdGltZXMgaWRfTSIsMl0sWzMsNCwiXFxtdSIsMl0sWzIsNCwiXFxtdSJdXQ==
-\[\begin{tikzcd}
-	{(\cat\times \cat)\times \cat} & {\cat\times(\cat\times \cat)} & {\cat\times \cat} \\
-	{\cat\times \cat} && \cat
-	\arrow["{\alpha_{\cat,\cat,\cat}}", from=1-1, to=1-2]
-	\arrow["{id_{\cat}\times\mu}", from=1-2, to=1-3]
-	\arrow["{\mu\times id_M}"', from=1-1, to=2-1]
-	\arrow["\mu"', from=2-1, to=2-3]
-	\arrow["\mu", from=1-3, to=2-3]
-\end{tikzcd}\]
-This means that if we take $X,Y,Z\in\cat$, then $(X\otimes Y)\otimes Z=X\otimes (Y\otimes Z)$, but the
- tensor product in general monoidal categories
-is associative and unital via some specific natural isomorphisms, the associator and the two unitors!
-So, this definition of monoid object does not work well with our initial comparison 
-between monoids, algebras and monoidal categories. The issue is that the definition of monoid object is
- tailored for 1-categories, and thus cannot
-regard morphisms higher than 1 and makes everything commute strictly.
- There is however a way to have the \textbf{morally right} notion of monoid object, meaning a monoid object
-that yields monoidal categories in the case of cats and more generally 
-monoids that cohere via higher morphisms (including the ones higher than 2, given that the category in
- question has them). The idea is to exploit the homotopical information of the category of $n$-disks\footnote{
- Using disks is not the only way to do it, but it is arguably the simplest. Historically, it is done via things called
- operads.}, i.e. the isotopies between embeddings from disjoint unions of $\R^n$, and import it to the monoidal
- category we want our monoid object to be defined in via a symmetric monoidal functor. This notion is called 
- $\mathbb{E}_1$-algebra for monoid objects, and $\mathbb{E}_\infty$-algebra for commutative ones.
- We can summarize the idea with the following mottos 
- $$\mathbb{E}_1\textit{-algebras are homtopy coherently associative and unital monoid objects }$$
- $$\mathbb{E}_\infty\textit{-algebras are homotopy coherently commutative, associative and unital monoid objects}$$
- And generally:
- $$ \mathbb{E}_n\textit{-algebras are homotopy-coherent monoid objects } $$
-$$	\textit{that are commutative via homotopies up to the $n$-th order}$$
-where by homotopy-coherent monoid objects we mean monoids that are for instance homotopy coherently associative, i.e. the following diagram commutes via homotopies
-    % https://q.uiver.app/#q=WzAsNSxbMCwwLCIoTVxcb3RpbWVzIE0pXFxvdGltZXMgTSJdLFsxLDAsIk1cXG90aW1lcyhNXFxvdGltZXMgTSkiXSxbMiwwLCJNXFxvdGltZXMgTSJdLFswLDEsIk1cXG90aW1lcyBNIl0sWzIsMSwiTSJdLFswLDEsIlxcYWxwaGFfe00sTSxNfSJdLFsxLDIsImlkX01cXG90aW1lc1xcbXUiXSxbMCwzLCJcXG11XFxvdGltZXMgaWRfTSIsMl0sWzMsNCwiXFxtdSIsMl0sWzIsNCwiXFxtdSJdXQ==
-\[\begin{tikzcd}
-	{(M\otimes M)\otimes M} & {M\otimes(M\otimes M)} & {M\otimes M} \\
-	{M\otimes M} && M
-	\arrow["{\alpha_{M,M,M}}", from=1-1, to=1-2]
-	\arrow["{id_M\otimes\mu}", from=1-2, to=1-3]
-	\arrow["{\mu\otimes id_M}"', from=1-1, to=2-1]
-	\arrow["\mu"', from=2-1, to=2-3]
-	\arrow["\mu", from=1-3, to=2-3]
-\end{tikzcd}\]
-Meaning that $\mu\circ(\mu\otimes id_m)\simeq\mu\circ(id_M\otimes\mu)\circ\alpha$, instead of the usual
-$\mu\circ(\mu\otimes id_m)=\mu\circ(id_M\otimes\mu)\circ\alpha$, and additionally there are higher
- homotopies making everything cohere. We now sketch what this homotopy coherence means by
-  means of this exaple. Let us call $h$ the 2-morphism 
-$h:\mu\circ(\mu\times id_m)\to\mu\circ(id_M\times\mu)\circ\alpha$ and its homotopy inverse
-$k:\mu\circ(id_M\times\mu)\circ\alpha\to\mu\circ(\mu\times id_m)$, then there are 3-morphisms 
-$l:h\leftrightarrows k:m$ such that $m\circ l\simeq id_h$ and $l\circ m\simeq id_k$ and so on to $\infty$.
-
-
-  We recall now what an isotopy is since this will be the information in the source category of disks that we will
- stamp onto the category where the desired monoid object lives. 
-
-\begin{defn}[Isotopy]\label{Isotopy}
-    An isotopy is a stricter form of homotopy. Let $f,g:X\to Y$ be embeddings. Then $H:X\times [0,1]\to Y$ is an isotopy if 
-    \begin{itemize}
-        \item $H(0,-)=f$
-        \item $H(1,-)=g$
-    \end{itemize}
-    thereby making an isotopy a homotopy and
-    \begin{itemize}
-        \item $\forall t\in[0,1], H(t,-)\hookrightarrow Y$ is an embedding.
-    \end{itemize}
-    Moreover, if $f,g$ are \emph{smooth} embeddings and $\forall t\in[0,1], H(t,-)\hookrightarrow Y$ is also a smooth embedding, then $H$ is a \emph{smooth} isotopy.
-\end{defn}
-
-\begin{defn}[$\mathbb{E}_1$-Algebra]
-    Let $\Disk_{1,0}^{or}$ be the category of 1-disks (see \ref{CatOfDisks}). Then a $\mathbb{E}_1$-algebra is a symmetric monoidal functor $$\Disk_{1}^{or}\to \cat$$ such that if $j,i\in \Hom_{\Disk_{1}^{or}}(X,Y)$ are smoothly isotopic embeddings, then  $F(j)=F(i)$, i.e. they are sent to the same morphism in $\cat$. More generally.
-\end{defn}
-\begin{notat}
-A synonym for $\mathbb{E}_1$-algebra is $A_\infty$-algebra.
-\end{notat}
-\begin{thm}
-  $\mathbb{E}_1$-algebras with $\Vect_k$ as a target category correspond to $k$-algebras. Look into \cite{Tanaka_2020} for a sketch of the proof.
-\end{thm}
-\begin{thm}
-    $\mathbb{E}_1$-algebras with $\Cat$ as a target category are monoidal categories.
-\end{thm}
-\begin{proof}
-    %TBD /Andre
-\end{proof}
-We summarize the correspondence with the following table
-\begin{center}
-    \begin{tabular}{|c||c|c|c|}
-    \hline
-        \phantom{h} & Set & $\Vect_k$ & Cat \\ [0.5ex]
-         \hline\hline
-         $\mathbb{E}_1$-algebra & monoid & $k$-algebra & monoidal category  \\
-         \hline
-    \end{tabular}
-\end{center}
-\begin{rem}
-    Remember that a monoid object in Cat is a \emph{strict} monoidal category. Via $\mathbb{E}_1$-algebras is instead the way to precisely pin down the correspondence we laid down at the start of the section between monoidal categories, $k$-algebras and monoids, without collapsing monoidal categories to \emph{strict} monoidal category, as we did with the monoid object.
-\end{rem}
-We now start to define the necessary tools we need to define monoid objects that are (more) commutative.
-\begin{defn}[Category of $n$-disks]
-Let $\Disk_{n}^{\fr}$ be the $\infty$-category with finite disjoint
-unions of framed $n$-dimensional disks as objects, i.e. $(\R^{n})^{\amalg_{i}}$ for $i\geq 0$, and spaces of
- framed smooth embeddings (with the compact-open topology) as Hom-objects, e.g. $\Hom_{\Disk_{n}^{\fr}}(\R^n\amalg\R^n,\R^n)$.
-\end{defn}
-\begin{defn}[$\mathbb{E}_n$ algebra]
- Fix a symmetric monoidal $\infty$-category $\cat$. For any
-  $n\geq 1$, an $\mathbb{E}_n$-algebra in $\cat$ is a symmetric monoidal
-  functor 
-  $$\Disk_{n}^{\fr}\xrightarrow{A} \cat$$
-  
-  This is actually an algebra because it induces a parametrized family of $i$-ary multiplications 
-  $$\Hom_{\Disk_{n}^{\fr}}((\R^{n})^{\amalg_{i}},\R^n)\xrightarrow{A}\Hom_{\cat}(A(\R^n)^{\otimes_{i}},A(\R^n))$$
-  Which do not compose strictly! But up to the higher isotopies of the mappig space in $\Disk_{n}^{\fr}$!
-  \end{defn}
-
-In short, such $\mathbb{E}_n$-algebras allow us to define objects internal to categories up to coherent 
-homotopies. 
-
-$\mathbb{E}_n$-algebras in a symmetric monoidal $\infty$-category $\cat$ form an $\infty$-category 
-$$\Alg_{\mathbb{E}_n}:=\Fun^{\otimes} (\Disk_{n}^{\fr},\cat)$$
-Similarly to how monoid objects internal to a category $\cat$ form a category $\operatorname{Mon}(\cat)$, e.g. $\operatorname{Mon}(\Set)=\operatorname{Mon}$ (the usual category of monoids).
-
-\begin{center}
-	\begin{tabular}{|c||c|c|c|}
-		\hline
-		\phantom{h} & Set & $\Vect_k$ & Cat \\ [0.5ex]
-		\hline\hline
-		$\mathbb{E}_1$-algebra & monoid & $k$-algebra & monoidal category  \\
-		\hline
-		$\mathbb{E}_2$-algebra & commutative monoid &  commutative $k$-algebra & braided monoidal category \\
-		\hline 
-		$\mathbb{E}_3$-algebra & commutative monoid &  commutative $k$-algebra & symmetric monoidal category \\
-		\hline
-		$\mathbb{E}_4$-algebra & commutative monoid &  commutative $k$-algebra & symmetric monoidal category \\
-		\hline 
-		... & ... & ... & ... \\
-		\hline 
-		$\mathbb{E}_\infty$-algebra & commutative monoid &  commutative $k$-algebra & symmetric monoidal category \\
-		\hline
-	\end{tabular}
-\end{center}
-Set and $\Vect_{k}$ cannot detect the difference between $\mathbb{E}_n$-algebras for $n\geq 2$ while 
-Cat can go one step further. This is because Cat is a 2-category, and so has the necessary homotopies 
-in order to express more fine grained notions of commutativity like braided and symmetric.
-
-However, some categories have more homotopical information and hence 
-are even more refined. This is one of the reasons they are the categories
-in which higher algebra takes place.
-\begin{center}
-	\begin{tabular}{|c||c|c|c|}
-		\hline
-		\phantom{h} & $\infty$-Grpd & $\infty$-Cat & Sp \\ [0.5ex]
-		\hline\hline
-		$\mathbb{E}_1$-algebra & $\mathbb{E}_1$-space &  monoidal $\infty$-category &  $\mathbb{E}_1$-ring spectrum  \\
-		\hline
-		$\mathbb{E}_\infty$-algebra & $\mathbb{E}_\infty$-space & symmetric monoidal $\infty$-category &  $\mathbb{E}_\infty$-ring spectrum \\
-		\hline
-	\end{tabular}
-\end{center}
-\begin{notat}
-	Sp denotes the category of spectra, see \ref{WhatSpectra} for a definition.
-\end{notat}
-\begin{notat}
-Under the homotopy hypothesis $\infty$-Grpd corresponds to a nice category of spaces, hence it is 
-sometimes denoted as $\mathds{S}$ for $\mathds{S}$paces.
-Other synonyms nowadays are: \begin{itemize}
-	\item $\infty$-Set, because it is the category one enriches over to get $\infty$-categories,
-	similarly to ordinary sets and locally small categories, and it plays a parallel role in higher algebra to set in 
-	ordinary algebra (see the table in \ref{WhatSpectra})
-	\item An, standing for anima, terminology coming from condensed mathematics
-\end{itemize}
-\end{notat}
-\begin{notat}
- Synonyms for $\mathbb{E}_1$-space are $A_\infty$-space and monoidal $\infty$-groupoid. A synonym for $\mathbb{E}_\infty$-space is
-  symmetric monoidal $\infty$-groupoid. 
-\end{notat}
-\begin{ex}
-	$\Omega X$ is an $\mathbb{E}_1$-space: composition of loops induces an operation which is not
-	 strictly unital or associative, but only via homotopies.
-\end{ex}
-\begin{defn}[Grouplike $\mathbb{E}_n$-space]\label{grouplikeEspace}
-An $\mathbb{E}_n$-algebra in the category of spaces $A\in\Alg_{\mathbb{E}_n}(\mathscr{S})$, i.e. an $\mathbb{E}_{n}$-space,
- is grouplike, if it lands in the category of groups
-$\operatorname{Grp}\subset\operatorname{Mon}$ when sent via the composition of
-\begin{itemize}
-	\item the functor $\pi_0:\mathscr{C}\to\Set$, sending objects in groupoids
-	to their isomorphism classes\footnote{The notation is no coincidence: under the homotopy hypothesis
-		this functor in the category of spaces 
-		 and the one sending points to their path-connected components are the same.}
-	\item and the one forgetting
-	all the commutative structure, but just remembering the homotopy-coherent
-	associativity\footnote{Similarly to a forgetful functor 
-		from the category of commutative monoids to the category of monoids.}
-\end{itemize} 
-such composition of morphisms can be visualized with the following diagram 
-% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXEFsZ197XFxtYXRoYmJ7RX1fbn0oXFxtYXRoc2Nye1N9KSJdLFsxLDEsIlxcQWxnX3tcXG1hdGhiYntFfV9ufShcXFNldCkiXSxbMiwwLCJcXG9wZXJhdG9ybmFtZXtHcnB9XFxzdWJzZXRcXEFsZ197XFxtYXRoYmJ7RX1fMX0oXFxTZXQpXFxzaW1lcVxcb3BlcmF0b3JuYW1le01vbn0iXSxbMCwxLCJcXEFsZ197XFxtYXRoYmJ7RX1fbn0oXFxwaV8wKSIsMl0sWzEsMiwiXFxvcGVyYXRvcm5hbWV7Zm9yZ2V0fSIsMl0sWzAsMl1d
-\[\begin{tikzcd}[cramped]
-	{\Alg_{\mathbb{E}_n}(\mathscr{S})} && {\Alg_{\mathbb{E}_1}(\Set)\simeq\operatorname{Mon}} \\
-	& {\Alg_{\mathbb{E}_n}(\Set)}
-	\arrow["{\Alg_{\mathbb{E}_n}(\pi_0)}"', from=1-1, to=2-2]
-	\arrow["{\operatorname{forget}}"', from=2-2, to=1-3]
-	\arrow[from=1-1, to=1-3]
-\end{tikzcd}\]
-One may denote the subcategory of grouplike $\mathbb{E}_n$-spaces with
- $\Alg^{\operatorname{gp}}_{\mathbb{E}_n}(\mathscr{S})\subset\Alg_{\mathbb{E}_n}(\mathscr{S})$
-\end{defn}
-\begin{ex}
-	$\Omega X$ is not just an $\mathbb{E}_1$-space, but also a grouplike $\mathbb{E}_1$-space since
-	the inversion of based loops is homotopy equivalent to 
-\end{ex}
-\begin{rem}
-Grouplike $\mathbb{E}_\infty$-spaces in the category of spaces are
-Picard $\infty$-groupoids! The intuition is that the $\mathbb{E}_\infty$ provides
-the symmetric monoidal structure and being grouplike provides the invertibility
-objects. 
-\begin{notat}
-Sometimes grouplike $\mathbb{E}_\infty$-spaces are called abelian $\infty$-groups 
-because:
-\begin{itemize}
-	\item $\infty$-groupoids are also known as $\infty$-sets 
-	\item group objects in Set are
-	groups
-	\item group objects (in the morally right sense, i.e. grouplike $\mathbb{E}_1$-algebras) in $\infty-\Set$,
-	aka $\infty$-Grpd,
-	are monoidal groupoids with invertible objects, which are usually called $\infty$-groups
-	\item abelian groups are groups where the operation is commutative and grouplike
-	 $\mathbb{E}_\infty$-spaces are $\infty$-groups where the operation is homotopy coherently  commutative
-\end{itemize}
-\end{notat}
-
-Such objects are interesting for us because invertible field theories are equivalently
-maps of such grouplike $\mathbb{E}_\infty$-spaces! See \ref{Spectra Phases of Matter}.
-\end{rem}
-\begin{rem}
-	We defined grouplike $\mathbb{E}_n$-algebras only in the category of spaces. There is however
-	a way to give a general definition for any cartesian monoidal $\infty$-category, aka a category with
-	 finite products. See \cite[5.2.6.6]{Luriealgebra} for such a definition\footnote{Note that there is 
-	 a typo, instead of 'Let \cat be an $\infty$-category which admits finite products.' there should be
-	 'Let $\mathscr{X}$ be  an $\infty$-category which admits finite products.'.}
-\end{rem}
 % -------------------------------------------------------------
 % --------------------- LECTURE 10 27/11 -----------------------
 % -------------------------------------------------------------
@@ -3361,6 +3115,396 @@ We have previously seen (\ref{Representations of Groups}) that a linear represen
     \end{equation}
 \end{defn}
 
+\subsection{Outlook towards \texorpdfstring{$\mathbb{E}_n$}{En}-Algebras \extra} 
+\label{EAlg}
+This outlook is based on \cite{HiroLee2022}, \cite{Mazel-Gee2024} and \cite{CalleInfiniteLoops}. It has two motivations:
+\begin{enumerate}
+	\item understand how we can define (symmetric/braided) monoidal categories internally to Cat
+	\item provide the necessary machinery to sensibly talk about spectra and $\mathbb{E}_n$ spaces
+	in \ref{WhatSpectra}
+\end{enumerate}
+
+A monoid object in Cat\footnote{Recall that the monoidal structure on Cat is given by the product of
+	categories, i.e. a cartesian product in Cat.} is a strict monoidal category. Take a look at associativity for
+instance:
+a monoid object $\cat\in\Cat$ makes the following diagram commute strictly
+% https://q.uiver.app/#q=WzAsNSxbMCwwLCIoTVxcb3RpbWVzIE0pXFxvdGltZXMgTSJdLFsxLDAsIk1cXG90aW1lcyhNXFxvdGltZXMgTSkiXSxbMiwwLCJNXFxvdGltZXMgTSJdLFswLDEsIk1cXG90aW1lcyBNIl0sWzIsMSwiTSJdLFswLDEsIlxcYWxwaGFfe00sTSxNfSJdLFsxLDIsImlkX01cXG90aW1lc1xcbXUiXSxbMCwzLCJcXG11XFxvdGltZXMgaWRfTSIsMl0sWzMsNCwiXFxtdSIsMl0sWzIsNCwiXFxtdSJdXQ==
+\[\begin{tikzcd}
+	{(\cat\times \cat)\times \cat} & {\cat\times(\cat\times \cat)} & {\cat\times \cat} \\
+	{\cat\times \cat} && \cat
+	\arrow["{\alpha_{\cat,\cat,\cat}}", from=1-1, to=1-2]
+	\arrow["{id_{\cat}\times\mu}", from=1-2, to=1-3]
+	\arrow["{\mu\times id_M}"', from=1-1, to=2-1]
+	\arrow["\mu"', from=2-1, to=2-3]
+	\arrow["\mu", from=1-3, to=2-3]
+\end{tikzcd}\]
+This means that if we take $X,Y,Z\in\cat$, then $(X\otimes Y)\otimes Z=X\otimes (Y\otimes Z)$, but the
+tensor product in general monoidal categories
+is associative and unital via some specific natural isomorphisms, the associator and the two unitors!
+So, this definition of monoid object does not work well with our initial comparison 
+between monoids, algebras and monoidal categories. The issue is that the definition of monoid object is
+tailored for 1-categories, and thus cannot
+regard morphisms higher than 1 and makes everything commute strictly.
+There is however a way to have the \textbf{morally right} notion of monoid object, meaning a monoid object
+that yields monoidal categories in the case of cats and more generally 
+monoids that cohere via higher morphisms (including the ones higher than 2, given that the category in
+question has them). The idea is to exploit the homotopical information of the category of $n$-disks\footnote{
+	Using disks is not the only way to do it, but it is arguably the simplest. Historically, it is done via things called
+	operads.}, i.e. the isotopies between embeddings from disjoint unions of $\R^n$, and import it to the monoidal
+category we want our monoid object to be defined in via a symmetric monoidal functor. This notion is called 
+$\mathbb{E}_1$-algebra for monoid objects, and $\mathbb{E}_\infty$-algebra for commutative ones.
+We can summarize the idea with the following mottos 
+$$\mathbb{E}_1\textit{-algebras are homtopy coherently associative and unital monoid objects }$$
+$$\mathbb{E}_\infty\textit{-algebras are homotopy coherently commutative, associative and unital monoid objects}$$
+And generally:
+$$ \mathbb{E}_n\textit{-algebras are homotopy-coherent monoid objects } $$
+$$	\textit{that are commutative via homotopies up to the $n$-th order}$$
+Now we try to sketch what being homotopy coherent means by means of an example:
+homotopy coherent associativity.
+Let $\mathcal{A}$ be an $\mathbb{E}_1$-algebra in an arbitrary symmetric monoidal $\infty$-category
+$\cat$, let $W,X,Y,Z\in \mathcal{A}$ and let us denote the multiplication of such algebra 
+as $\cdot:\mathcal{A}\otimes\mathcal{A}\to\mathcal{A}$. Then, 
+\begin{itemize}
+	\item there are two ways one can bracket three elements, for any $X,Y,Z\in \mathcal{A}$ there is a
+	2-associator\footnote{We say '$n$-associators' to make explicit that they are $n$-morphisms.} $\alpha:X\cdot(Y\cdot Z)\simeq(X\cdot Y)\cdot Z$ 
+	instead of the usual strict equality $X\cdot(Y\cdot Z)\simeq(X\cdot Y)\cdot Z$
+	\item there are five ways one can bracket 4 elements, for any $W,X,Y,Z\in \mathcal{A}$ there is a
+	3-associator between two compositions of 2-associators making the following pentagon cohere 
+	% https://q.uiver.app/#q=WzAsNSxbMiwwLCIoWFxcY2RvdCBZKVxcY2RvdChaXFxjZG90IFcpICJdLFswLDEsIigoWFxcY2RvdCBZKVxcY2RvdCBaKVxcY2RvdCBXIl0sWzEsMywiKFhcXGNkb3QgKFlcXGNkb3QgWikpXFxjZG90IFciXSxbMywzLCJYXFxjZG90KChZXFxjZG90IFopXFxjZG90IFcpIl0sWzQsMSwiWFxcY2RvdCAoWVxcY2RvdCAoWlxcY2RvdCBXKSkiXSxbMSwwXSxbMSwyXSxbMiwzXSxbMCw0XSxbMyw0XSxbNywwLCIiLDIseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV1d
+	\[\begin{tikzcd}[cramped, column sep=tiny]
+		&& {(X\cdot Y)\cdot(Z\cdot W) } \\
+		{((X\cdot Y)\cdot Z)\cdot W} &&&& {X\cdot (Y\cdot (Z\cdot W))} \\
+		\\
+		& {(X\cdot (Y\cdot Z))\cdot W} && {X\cdot((Y\cdot Z)\cdot W)}
+		\arrow[from=2-1, to=1-3]
+		\arrow[from=2-1, to=4-2]
+		\arrow[""{name=0, anchor=center, inner sep=0}, from=4-2, to=4-4]
+		\arrow[from=1-3, to=2-5]
+		\arrow[from=4-4, to=2-5]
+		\arrow[shorten <=12pt, shorten >=12pt, Rightarrow, from=0, to=1-3]
+	\end{tikzcd}\]
+	\item there are 14 ways to bracket 5 elements, for any $A,B,C,D,E\in\mathcal{A}$ there is a 4-associator
+	between the two possible compositions of 3-associators. The next diagram is stolen from Luke Trujillo's
+	undergraduate thesis (\cite{TrujilloCoherence}). It depicts from one point of view,
+	the 2-associators and the objects of the 
+	coherence diagram for 3-associators that commutes via the 4-associator. Here the 3-associators
+	should be arrows on the faces of this polyhedron\footnote{Such polyhedra are called associahedra.} and 
+	the 4-associator should be a 4-morphism inside the polyhedron going from one possible composition of 3-associators.
+	
+	\begin{center}
+		\begin{tikzcd}
+			&[-2cm]
+			&[-2.5cm]
+			&[-1cm]
+			A ((B  C)  (D  E))
+			\arrow[dll, swap, "1_{A}\otimes \alpha_{B C,D,E}"]
+			\arrow[drr, "\alpha_{A,B C,D E}"]
+			&[-1cm]
+			&[-2.5cm]
+			&[-2cm]
+			\\[0.2cm] % 1
+			&
+			A((( B  C ) D)  E)
+			\arrow[dddr, "\alpha_{A, B (C D), E}"]
+			&
+			&
+			\bullet
+			\arrow[<-, dashed,u]
+			&
+			&
+			(A (B  C))  (D  E)
+			\arrow[dr, "\alpha_{A,B,C}\otimes (1_{D} \otimes 1_{E})"]
+			\arrow[dddl, swap, "\alpha_{A (B C), D, E}"]
+			&
+			\\[0.4cm] % 2
+			A ((B  (C  D)) E)
+			\arrow[ur, "(1_{A} \otimes \alpha_{B,C,D})\otimes 1_{E}"]
+			\arrow[ddddr, swap, "\alpha_{A,B C D, E}"]
+			\arrow[<-, drr, dashed]
+			&
+			&
+			&
+			&
+			&
+			&
+			((A B)  C)  (D  E)
+			\arrow[<-, dashed, dll]
+			\arrow[ddddl, "\alpha_{(A B) C, D, E}"]
+			\\[-0.7cm] %2.5
+			&
+			&
+			\bullet
+			\arrow[<-, dashed, uur]
+			&
+			&
+			\bullet
+			\arrow[<-, dashed, uul]
+			&
+			&
+			\\[0.2cm] % 3
+			&
+			&
+			(A ((B  C)  D))  E
+			\arrow[rr, "\alpha_{A, B C, D}\otimes 1_{E}"]
+			&
+			&
+			((A (B  C)) D)  E
+			\arrow[ddr, swap, "(\alpha_{A,B,C}\otimes 1_{D})\otimes 1_{E}"]
+			&
+			&
+			\\[-0.7cm] %3.5
+			&
+			&
+			&
+			\bullet
+			\arrow[<-, dashed, uur]
+			\arrow[<-, dashed, uul]
+			&
+			&
+			&
+			\\[0.4cm] % 4
+			&
+			(A (B  (C  D)))  E
+			\arrow[uur, swap, "(1_{A} \otimes \alpha_{B,C,D}) \otimes 1_{E}"]
+			\arrow[drr, swap, "\alpha_{A, B, C D} \otimes 1_{E}"]
+			&
+			&
+			&
+			&
+			(((A B)  C)  D)  E
+			&
+			\\[0.2cm] % 5
+			&
+			&
+			&
+			((A B)  (C  D))  E
+			\arrow[urr, swap, "\alpha_{A B, C, D}\otimes 1_{E}"]
+			\arrow[<-, uu, dashed]
+			&
+			&
+			&
+		\end{tikzcd}
+	\end{center}
+	\item the story then goes on and on to $\infty$-associators
+\end{itemize}
+\begin{ex}
+	Like a one object 1-category can be seen as a monoid, a one object $\infty$-category 
+	 can be seen as a homotopy coherent monoid
+	 $(\mathcal{A},cdot, e)$, where 
+	 \begin{itemize}
+\item $\operatorname{1-Mor}=\mathcal{A}$
+\item $\cdot =\circ$ where $\circ$ refers to composition of 1-morphisms
+\item $e=id_\ast$
+\item the higher homotopies making everything homotopy coherently associative and unital coincide
+	 \end{itemize}
+\end{ex}
+
+We recall now what an isotopy is since this will be the information in the source category of disks that we will
+stamp onto the category where the desired monoid object lives. 
+
+\begin{defn}[Isotopy]\label{Isotopy}
+	An isotopy is a stricter form of homotopy. Let $f,g:X\to Y$ be embeddings. Then $H:X\times [0,1]\to Y$ is an isotopy if 
+	\begin{itemize}
+		\item $H(0,-)=f$
+		\item $H(1,-)=g$
+	\end{itemize}
+	thereby making an isotopy a homotopy and
+	\begin{itemize}
+		\item $\forall t\in[0,1], H(t,-)\hookrightarrow Y$ is an embedding.
+	\end{itemize}
+	Moreover, if $f,g$ are \emph{smooth} embeddings and $\forall t\in[0,1], H(t,-)\hookrightarrow Y$ is also a smooth embedding, then $H$ is a \emph{smooth} isotopy.
+\end{defn}
+
+\begin{defn}[$\mathbb{E}_1$-Algebra]
+	Let $\Disk_{1,0}^{or}$ be the category of 1-disks (see \ref{CatOfDisks}). Then a $\mathbb{E}_1$-algebra is a symmetric monoidal functor $$\Disk_{1}^{or}\to \cat$$ such that if $j,i\in \Hom_{\Disk_{1}^{or}}(X,Y)$ are smoothly isotopic embeddings, then  $F(j)=F(i)$, i.e. they are sent to the same morphism in $\cat$. More generally.
+\end{defn}
+\begin{notat}
+	A synonym for $\mathbb{E}_1$-algebra is $A_\infty$-algebra.
+\end{notat}
+\begin{thm}
+	$\mathbb{E}_1$-algebras with $\Vect_k$ as a target category correspond to $k$-algebras. Look into \cite{Tanaka_2020} for a sketch of the proof.
+\end{thm}
+\begin{thm}
+	$\mathbb{E}_1$-algebras with $\Cat$ as a target category are monoidal categories.
+\end{thm}
+\begin{proof}
+	%TBD /Andre
+\end{proof}
+We summarize the correspondence with the following table
+\begin{center}
+	\begin{tabular}{|c||c|c|c|}
+		\hline
+		\phantom{h} & Set & $\Vect_k$ & Cat \\ [0.5ex]
+		\hline\hline
+		$\mathbb{E}_1$-algebra & monoid & $k$-algebra & monoidal category  \\
+		\hline
+	\end{tabular}
+\end{center}
+\begin{rem}
+	Remember that a monoid object in Cat is a \emph{strict} monoidal category. Via $\mathbb{E}_1$-algebras is instead the way to precisely pin down the correspondence we laid down at the start of the section between monoidal categories, $k$-algebras and monoids, without collapsing monoidal categories to \emph{strict} monoidal category, as we did with the monoid object.
+\end{rem}
+We now start to define the necessary tools we need to define monoid objects that are (more) commutative.
+\begin{defn}[Category of $n$-disks]
+	Let $\Disk_{n}^{\fr}$ be the $\infty$-category with finite disjoint
+	unions of framed $n$-dimensional disks as objects, i.e. $(\R^{n})^{\amalg_{i}}$ for $i\geq 0$, and spaces of
+	framed smooth embeddings (with the compact-open topology) as Hom-objects, e.g. $\Hom_{\Disk_{n}^{\fr}}(\R^n\amalg\R^n,\R^n)$.
+\end{defn}
+\begin{defn}[$\mathbb{E}_n$ algebra]
+	Fix a symmetric monoidal $\infty$-category $\cat$. For any
+	$n\geq 1$, an $\mathbb{E}_n$-algebra in $\cat$ is a symmetric monoidal
+	functor 
+	$$\Disk_{n}^{\fr}\xrightarrow{A} \cat$$
+	
+	This is actually an algebra because it induces a parametrized family of $i$-ary multiplications 
+	$$\Hom_{\Disk_{n}^{\fr}}((\R^{n})^{\amalg_{i}},\R^n)\xrightarrow{A}\Hom_{\cat}(A(\R^n)^{\otimes_{i}},A(\R^n))$$
+	Which do not compose strictly! But up to the higher isotopies of the mappig space in $\Disk_{n}^{\fr}$!
+\end{defn}
+
+In short, such $\mathbb{E}_n$-algebras allow us to define objects internal to categories up to coherent 
+homotopies. 
+
+$\mathbb{E}_n$-algebras in a symmetric monoidal $\infty$-category $\cat$ form an $\infty$-category 
+$$\Alg_{\mathbb{E}_n}:=\Fun^{\otimes} (\Disk_{n}^{\fr},\cat)$$
+Similarly to how monoid objects internal to a category $\cat$ form a category $\operatorname{Mon}(\cat)$, e.g. $\operatorname{Mon}(\Set)=\operatorname{Mon}$ (the usual category of monoids).
+
+\begin{center}
+	\begin{tabular}{|c||c|c|c|}
+		\hline
+		\phantom{h} & Set & $\Vect_k$ & Cat \\ [0.5ex]
+		\hline\hline
+		$\mathbb{E}_1$-algebra & monoid & $k$-algebra & monoidal category  \\
+		\hline
+		$\mathbb{E}_2$-algebra & commutative monoid &  commutative $k$-algebra & braided monoidal category \\
+		\hline 
+		$\mathbb{E}_3$-algebra & commutative monoid &  commutative $k$-algebra & symmetric monoidal category \\
+		\hline
+		$\mathbb{E}_4$-algebra & commutative monoid &  commutative $k$-algebra & symmetric monoidal category \\
+		\hline 
+		... & ... & ... & ... \\
+		\hline 
+		$\mathbb{E}_\infty$-algebra & commutative monoid &  commutative $k$-algebra & symmetric monoidal category \\
+		\hline
+	\end{tabular}
+\end{center}
+Set and $\Vect_{k}$ cannot detect the difference between $\mathbb{E}_n$-algebras for $n\geq 2$ while 
+Cat can go one step further. This is because Cat is a 2-category, and so has the necessary homotopies 
+in order to express more fine grained notions of commutativity like braided and symmetric.
+
+However, some categories have more homotopical information and hence 
+are even more refined. This is one of the reasons they are the categories
+in which higher algebra takes place.
+\begin{center}
+	\begin{tabular}{|c||c|c|c|}
+		\hline
+		\phantom{h} & $\infty$-Grpd & $\infty$-Cat & Sp \\ [0.5ex]
+		\hline\hline
+		$\mathbb{E}_1$-algebra & $\mathbb{E}_1$-space &  monoidal $\infty$-category &  $\mathbb{E}_1$-ring spectrum  \\
+		\hline
+		$\mathbb{E}_\infty$-algebra & $\mathbb{E}_\infty$-space & symmetric monoidal $\infty$-category &  $\mathbb{E}_\infty$-ring spectrum \\
+		\hline
+	\end{tabular}
+\end{center}
+\begin{notat}
+	Sp denotes the category of spectra, see \ref{WhatSpectra} for a definition.
+\end{notat}
+\begin{notat}
+	Under the homotopy hypothesis $\infty$-Grpd corresponds to a nice category of spaces, hence it is 
+	sometimes denoted as $\mathds{S}$ for $\mathds{S}$paces.
+	Other synonyms nowadays are: \begin{itemize}
+		\item $\infty$-Set, because it is the category one enriches over to get $\infty$-categories,
+		similarly to ordinary sets and locally small categories, and it plays a parallel role in higher algebra to set in 
+		ordinary algebra (see the table in \ref{WhatSpectra})
+		\item An, standing for anima, terminology coming from condensed mathematics
+	\end{itemize}
+\end{notat}
+\begin{notat}
+	Synonyms for $\mathbb{E}_1$-space are $A_\infty$-space and monoidal $\infty$-groupoid. A synonym for $\mathbb{E}_\infty$-space is
+	symmetric monoidal $\infty$-groupoid. 
+\end{notat}
+\begin{ex}
+	$\Omega X$ is an $\mathbb{E}_1$-space: composition of loops induces an operation which is not
+	strictly unital or associative, but only via homotopies. See
+	\ref{WhatSpectra} for a definition of loop spaces.
+\end{ex}
+\begin{thm}[Dunn additivity theorem]\label{DunnAdds}
+	The Dunn additivity theorem is a higher categorical refinement of the Eckmann-Hilton argument.
+	The Eckmann-Hilton argument states that if there are two monoid multiplications on the same set, then
+	they coincide and the operation is commutative. However, in categories with morphisms higher than 1,
+	we do not just have commutativity or non-commutativity of monoid objects but an infinite sequence of
+	 shades of
+	commutativity. The Dunn additivity theorem states
+	that for $n,m\geq 0$ and including possibly $n=\infty$ or $m=\infty$
+	$$\Alg_{\mathbb{E}_n}(\Alg_{\mathbb{E}_m}(\cat))\simeq \Alg_{\mathbb{E}_{m+n}}(\cat)$$
+\end{thm}
+\begin{ex}
+	By the Dunn additivity argument, $n$-iterated loop spaces coincide with $\Alg_{\mathbb{E}_n}(\sat)$.
+	In particular, loop spaces which are iterated infinitely many times correspond with 
+	$\Alg_{\mathbb{E}_\infty}(\sat)$. Such $\infty$-iterated loop spaces are called infinite loop spaces, 
+	see \ref{InfiniteLoop} for a definition.
+\end{ex}
+\begin{defn}[Grouplike $\mathbb{E}_n$-space]\label{grouplikeEspace}
+	An $\mathbb{E}_n$-algebra in the category of spaces $A\in\Alg_{\mathbb{E}_n}(\mathscr{S})$, i.e. an $\mathbb{E}_{n}$-space,
+	is grouplike, if it lands in the category of groups
+	$\operatorname{Grp}\subset\operatorname{Mon}$ when sent via the composition of
+	\begin{itemize}
+		\item the functor $\pi_0:\mathscr{C}\to\Set$, sending objects in groupoids
+		to their isomorphism classes\footnote{The notation is no coincidence: under the homotopy hypothesis
+			this functor in the category of spaces 
+			and the one sending points to their path-connected components are the same.}
+		\item and the one forgetting
+		all the commutative structure, but just remembering the homotopy-coherent
+		associativity\footnote{Similarly to a forgetful functor 
+			from the category of commutative monoids to the category of monoids.}
+	\end{itemize} 
+	such composition of morphisms can be visualized with the following diagram 
+	% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXEFsZ197XFxtYXRoYmJ7RX1fbn0oXFxtYXRoc2Nye1N9KSJdLFsxLDEsIlxcQWxnX3tcXG1hdGhiYntFfV9ufShcXFNldCkiXSxbMiwwLCJcXG9wZXJhdG9ybmFtZXtHcnB9XFxzdWJzZXRcXEFsZ197XFxtYXRoYmJ7RX1fMX0oXFxTZXQpXFxzaW1lcVxcb3BlcmF0b3JuYW1le01vbn0iXSxbMCwxLCJcXEFsZ197XFxtYXRoYmJ7RX1fbn0oXFxwaV8wKSIsMl0sWzEsMiwiXFxvcGVyYXRvcm5hbWV7Zm9yZ2V0fSIsMl0sWzAsMl1d
+	\[\begin{tikzcd}[cramped]
+		{\Alg_{\mathbb{E}_n}(\mathscr{S})} && {\Alg_{\mathbb{E}_1}(\Set)\simeq\operatorname{Mon}} \\
+		& {\Alg_{\mathbb{E}_n}(\Set)}
+		\arrow["{\Alg_{\mathbb{E}_n}(\pi_0)}"', from=1-1, to=2-2]
+		\arrow["{\operatorname{forget}}"', from=2-2, to=1-3]
+		\arrow[from=1-1, to=1-3]
+	\end{tikzcd}\]
+	One may denote the subcategory of grouplike $\mathbb{E}_n$-spaces with
+	$\Alg^{\operatorname{gp}}_{\mathbb{E}_n}(\mathscr{S})\subset\Alg_{\mathbb{E}_n}(\mathscr{S})$
+\end{defn}
+\begin{ex}
+	$\Omega X$ is not just an $\mathbb{E}_1$-space, but also a grouplike $\mathbb{E}_1$-space since
+	the inversion of based loops is homotopy equivalent to the costant map on the point. Moreover,
+	by the Dunn additivity theorem we just stated infinite loop spaces are grouplike $\mathbb{E}_{\infty}$-spaces
+\end{ex}
+
+See \cite[5.1.2.2]{Luriealgebra} for a proof.
+\begin{rem}
+	Grouplike $\mathbb{E}_\infty$-spaces in the category of spaces are
+	Picard $\infty$-groupoids! The intuition is that the $\mathbb{E}_\infty$ provides
+	the symmetric monoidal structure and being grouplike provides the invertibility
+	objects. 
+	\begin{notat}
+		Sometimes grouplike $\mathbb{E}_\infty$-spaces are called abelian $\infty$-groups 
+		because:
+		\begin{itemize}
+			\item $\infty$-groupoids are also known as $\infty$-sets 
+			\item group objects in Set are
+			groups
+			\item group objects (in the morally right sense, i.e. grouplike $\mathbb{E}_1$-algebras) in $\infty-\Set$,
+			aka $\infty$-Grpd,
+			are monoidal groupoids with invertible objects, which are usually called $\infty$-groups
+			\item abelian groups are groups where the operation is commutative and grouplike
+			$\mathbb{E}_\infty$-spaces are $\infty$-groups where the operation is homotopy coherently  commutative
+		\end{itemize}
+	\end{notat}
+	
+	Such objects are interesting for us because invertible field theories are equivalently
+	maps of such grouplike $\mathbb{E}_\infty$-spaces! See \ref{Spectra Phases of Matter}.
+\end{rem}
+\begin{rem}
+	We defined grouplike $\mathbb{E}_n$-algebras only in the category of spaces. There is however
+	a way to give a general definition for any cartesian monoidal $\infty$-category, aka a category with
+	finite products. See \cite[5.2.6.6]{Luriealgebra} for such a definition\footnote{Note that there is 
+		a typo, instead of 'Let \cat be an $\infty$-category which admits finite products.' there should be
+		'Let $\mathscr{X}$ be  an $\infty$-category which admits finite products.'.}
+\end{rem}
 \subsection{Interlude on Bicategories \extra} % (fold)
 \label{sub:outlook_interlude_on_bicategories}
 %I hope the order here is not confusing, in the sense that why not define before a bicategory and subsequently the delooping, however this sequence where one first pictures the delooping and then they picture a bicategory made sense in my mind. Feel free to change /Andrea
@@ -3786,13 +3930,13 @@ The two projections exist because $A\times B$ is a cone: a cone is an initial ob
      This diagram does not commute strictly, but via homotopies.
      This means that $h:q\circ f\simeq r\circ g:k$, instead of what we are used to: $q\circ f= r\circ g$.
      Not only this however, it is the case that $k\circ h\simeq id_{q\circ f}$ and $h\circ k\simeq id_{r\circ g}$
-     , insted of the usual strict invertibility, and thus via the 3-morphisms $l$ and $m$, the 2-morphisms 
+     , instead of the usual strict invertibility, and thus via the 3-morphisms $l$ and $m$, the 2-morphisms 
      $k$ and $h$ are homotopic, i.e. $l:k\simeq h:m$. Then there
      will be some explicit 4-morphisms witnessing that $m\simeq l$, and so on to $\infty$.
     
    %I am unsure about the sketch above!!!! Please check /Andrea
    
-     we know that 
+      
    \begin{ex}[Homotopy pullback/$(\infty,1)$-pullback]
    	Let  $\mathscr{J}$ be an $\infty$-category with objects and 1-morphisms $0\to1\leftarrow2$ and
    	 $D:\mathscr{J}\to \cat$ be a diagram. To be rigorous, we would need to define what is an
@@ -3906,14 +4050,18 @@ $\infty$-category and let $X\in\cat$. Then the loop space $\Omega X$ is the pull
 \begin{defn}[Loop space functor]
 	Given a pointed $\infty$-category $\cat$ the assignment $X\mapsto \Omega X$ gives rise to a functor $\Omega:\cat\to\cat$
 \end{defn}
+\begin{rem}
+	As already mentioned in \ref{EAlg}, a loop space is an example of $\mathbb{E}_1$-space and 
+	$n$-iterated loop spaces are $\mathbb{E}_n$-spaces by the Dunn additivity theorem.
+\end{rem}
 \begin{defn}[Alternative definition of adjunction]\label{HigherAdjFun}
 We defined adjoint functors via the natural tranformations unit and counit (\ref{AdjFun}). There is however an equivalent
 formulation:
 two $\infty$-functors $\cat\underset{L}{\overset{R}{\leftrightarrows}}\dat$ form an adjunction $L\dashv R$, i.e. where $L$ is the left adjoint
 and $R$ is the right adjoint, if between the two Hom-$\infty$-functors 
-$$\Hom_\cat(L(-),-):\cat^{\operatorname{op}}\times\cat \to \infty\operatorname{-Grpd}$$
+$$\Hom_\cat(L(-),-):\cat^{\operatorname{op}}\times\cat \to \operatorname{Grpd}_\infty$$
 and
-$$\Hom_\dat(-,R(-)):\dat^{\operatorname{op}}\times\dat\to\infty\operatorname{-Grpd}$$
+$$\Hom_\dat(-,R(-)):\dat^{\operatorname{op}}\times\dat\to \operatorname{Grpd}_\infty$$
 there is a natural isomorphism $\Hom_\cat(L(-),-)\simeq \Hom_\dat(-,R(-))$
 
 This definition is easily derivable from the one with units we gave previously, given 
@@ -3955,23 +4103,50 @@ is a sequential spectrum, i.e. the category of spectra is a subcategory of the c
 \begin{defn}[$\infty$-category of spectra]
 The $\infty$-category of spectra is the category where objects are spectra. %The fact that there
 %are equivalences $X_i\simeq\Omega X_{i+1}$ 
-This is equivalent to saying that the category of spectra is the homotopy limit 
+
+
+This is equivalent to saying that the category of spectra is the sequential homotopy limit 
 $$\operatorname{lim}(...\leftarrow\sat_\ast\leftarrow\sat_\ast\leftarrow\sat_\ast\leftarrow ...)$$
 where we can see the diagram we are taking the limit over as a functor 
 $D:\Z^{\operatorname{op}}\to\infty\operatorname{-Cat}$ where $\Z$ is considered as a category
-via its ordering ($\leq$ corresponds to a morphism $\to$) and for each $i\in\Z$ $D(i)=\sat_\ast$. Sometimes 
-such diagrams are called towers. %TBD
+via its ordering ($\leq$ corresponds to a morphism $\to$) and for each $i\in\Z$ $D(i)=\sat_\ast$. %Sometimes 
+%such diagrams are called towers. %TBD
 \end{defn}
-\begin{defn}[Infinite loop space]
-	An infinite loop space is a space $S_0$ with an infinite sequence of pointed spaces $S_0,S_1,S_2,...$ where $S_n$ is the delooping\footnote{We talked of deloopings just for categories but there is a corresponding notion for spaces. If you do not believe this, apply the equivalence of the homotopy hypothesis.} of $S_{n-1}$ and conversely $S_{n-1}$ is the loop space\footnote{The loop space object is an inverse operation to the delooping, meaning that that given some monoidal category $\cat$, $\cat$ is the loop space object of the delooping of $\cat$. The name comes from the topological notion, see \url{https://en.wikipedia.org/wiki/Loop_space}
-		In general, loop space objects inherit the monoidal structure from the composition of loops. We would need to talk about homotopy pullbacks in order to strictly define what a loop space object is.}
-	object of $S_n$. 
+
+\begin{defn}[Infinite loop space]\label{InfiniteLoop}
+	An infinite loop space is a space $X_0$ with an infinite sequence of pointed spaces $X_0,X_1,X_2,...$ with weak equivalences for $n\geq 0$
+	 $$X_n\simeq \Omega X_{n+1}$$
+	
+	 %\footnote{The loop space object is an inverse operation to the delooping, meaning that that given some monoidal category $\cat$, $\cat$ is the loop space object of the delooping of $\cat$. The name comes from the topological notion, see \url{https://en.wikipedia.org/wiki/Loop_space}
+		
+		%In general, loop space objects inherit the monoidal structure from the composition of loops. We would need to talk about homotopy pullbacks in order to strictly define what a loop space object is.}
+
 \end{defn}
+\begin{rem}[Important observation: Infinite loop spaces=grouplike $\E_\infty$-spaces=Picard groupoids]\label{InfLoopsPicard}
+We already argued in \ref{EAlg} that such infinite loop spaces are grouplike
+$\mathbb{E}_\infty$-spaces because of the Dunn additivity theorem \ref{DunnAdds}.
+Moreover, also in \ref{EAlg} we explained how grouplike
+$\mathbb{E}_\infty$-spaces are
+Picard $\infty$-groupoids:\begin{itemize}
+\item the $\E_\infty$ makes them homotopy coherent commutative
+monoid objects in $\operatorname{Grpd}_\infty$, i.e. symmetric monoidal $\infty$-groupoids
+\item since they are grouplike, they have inverses because if we first
+apply $\pi_0$, then forget about the commutative structure, and land in the category of groups, that
+means that the inverses must have been there from the start
+\end{itemize} 
+\end{rem}
+
+
+Infinite loop spaces seem very similar to what we defined as spectra. However, there is a crucial 
+difference: there is no space to start from in a spectrum, since there are deloopings for all spaces, i.e. $ X_{-1}\simeq \Omega X_{0}$, 
+$ X_{-2}\simeq \Omega X_{-1}$ and so on, while in an infinite loop space there are not.
 \begin{defn}[Underlying (infinite loop) space functor]
-	Given a spectrum, we 
+	Given a spectrum, the assignment of a spectrum $ \{X_i\}_{i\in\Z}$ to its underlying
+	infinite loop space, aka 0-th space, is a functor.
 	$$\Omega^{\infty}:\operatorname{Sp}\to\sat_\ast$$	
 	$$ \{X_i\}_{i\in\Z}\mapsto X_0$$
 \end{defn}
+Such assignment has a left adjoint.
 \begin{defn}[Suspension spectrum functor]
 $$\Sigma^{\infty}:\sat_\ast\to\operatorname{Sp}$$
 \end{defn}
@@ -3985,26 +4160,32 @@ $$\mathbf{B}^{\infty}$$
 \end{defn}
 Picard $\infty$-groupoids do not only correspond to infinite loop spaces but also to connective 
 spectra. 
-\begin{thm}[Recognition theorem for infinite loop spaces, Boardman-Vogt, May]
-	$$\{ \operatorname{Picard\: }\infty\operatorname{-groupoids }\} \simeq\{\operatorname{\:infinite\:loop\:spaces }\} \simeq \{ \operatorname{connective\: spectra}\} $$
-	Or more precisely, there is an equivalence: 
+\begin{thm}[Recognition theorem for infinite loop spaces, Boardman-Vogt, May]\label{RecognitionInfLoops}
+	There is an equivalence: 
 	$$\mathbf{B}^{\infty}:\Alg_{\mathbb{E}_{\infty}}^{\operatorname{gp}}(\mathscr{S})\leftrightarrows\operatorname{Sp}_{\geq 0}:\Omega^{\infty}$$
 	where $\operatorname{Sp}_{\geq 0}$ denotes the category of connective spectra.
 \end{thm}
+\begin{proof}
+	%TBD
+\end{proof}
 For a detailed proof see \cite[Corollary II.24]{KtheoryHebestreitWagner}. 
 
 The natural question now is what kind of spectra are connective spectra? We now sketchily characterize them.
 
 While the degree homotopy groups for usual topological spaces are defined to be positive, homotopy groups of spectra can be defined and be non-trivial also for negative degrees. Connective spectra are spectra that only have positive non-trivial homotopy groups. They
-are called connective because a synonym is ($-1$)-connected spectra, referring to the convention that an $n$-connected space is a space where its homotopy groups for all $k\leq n$ are trivial. This is why $\tilde\Zf$ is not just a map of spaces but a map of spectra, and this enables the application of stable homotopy theory, making life easier. We can conclude this interlude on stable homotopy theory and invertible TFTs with the following motto
+are called connective because a synonym is ($-1$)-connected spectra, referring to the convention that an $n$-connected space is a space where its homotopy groups for all $k\leq n$ are trivial. 
 
 In sum, spectra are a higher categorical analog of abelian groups (see \ref{Ab-Enriched Cat}), they have been in fact called “the abelian groups of the 21st century” \cite{Mazel-Gee2024}
 because they provide very powerful techniques for many areas of mathematics
-where there is currently much progress, e.g. in algebraic K-theory. Check out \cite{GregoricSpectra} for a
- great informal introduction. In a certain sense, $\mathds{S}$ is analgous to $\Z$ but in another category: \Z is the unit in Ab, while $\mathds{S}$ is the unit in the category of spectra. 
+where there is currently much progress, e.g. in algebraic K-theory. This is not just a vague analogy, 
+but something that can be motivated formally, for instance, abelian groups are discrete spectra:
+ $$\pi_0:\operatorname{Sp}\to\operatorname{Ab}$$
+ where in particular $\pi_0(\mathds{S})=\Z$
+ %In a certain sense, $\mathds{S}$ is analgous to $\Z$ but in another category: \Z is the unit in Ab, while $\mathds{S}$ is the unit in the category of spectra. 
 
-We make the comparison more explicit via a table\footnote{A
-	cool synonym for higher algebra is brave new algebra. It was coined by Waldhausen, one of
+We make the comparison clearer via a table\footnote{A
+	funny synonym for higher algebra is brave new algebra, referring to Huxley's dystopian
+	novel \textit{Brave New World}. It was coined by Waldhausen, one of
 	the pioneers of this discipline. Moreover, this table was inspired by a table in Thomas
 	Nikolaus' talk: \url{https://www.youtube.com/watch?v=SJNKs1PxT9g}. } :
 
@@ -4030,7 +4211,9 @@ We make the comparison more explicit via a table\footnote{A
 	\end{tabular}
 \end{center}
 See \ref{Ab-Enriched Cat} and \ref{AbelianCat} for the definitions of Ab-enriched category and
-abelian category. See \ref{EAlg} for the definition of $\mathbb{E}_\infty$-ring spectrum.
+abelian category. See \ref{EAlg} for the definition of $\mathbb{E}_\infty$-ring spectrum. A stable
+ category is a category where $\Sigma\dashv\Omega$ do not just form an adjunction, but are equivalent. 
+ There is an equivalent definition of stable category that more closely resembles the definition of abelian category, see \cite[Section 1]{Luriealgebra}.
 
 \subsubsection{Invertible field theories are maps of spectra \extra}
  In order to allow the application of stable homotopy theory, one must fully extend topological field theories (see \ref{RemarkExtendedTFTs}), i.e. with $(\infty,n)$-categories of bordisms as a source, because
@@ -4043,24 +4226,18 @@ abelian category. See \ref{EAlg} for the definition of $\mathbb{E}_\infty$-ring 
 	\item  $\cat^\times$ is obtained by forgetting about non-invertible morphisms (and objects) of $\cat$ and thus we are left only with invertible morphisms
 \end{enumerate} 
 
-We previously talked about the fundamental $\infty$-groupoid of a space while sketching the
- homotopy hypothesis (see \ref{HomotopyHypothesis}) and told a story about how spaces are
- equivalent to $\infty$-groupoids. Following this line of thinking, $\tilde\Zf$ corresponds to a
- map of spaces via this equivalence.
+%We previously talked about the fundamental $\infty$-groupoid of a space while sketching the
+ %homotopy hypothesis (see \ref{HomotopyHypothesis}) and told a story about how spaces are
+ %equivalent to $\infty$-groupoids. Following this line of thinking, $\tilde\Zf$ corresponds to a
+ %map of spaces via this equivalence.
 
 However, we do not have just $\infty$-groupoids but also a symmetric monoidal structure with
- duals on both $|\Bord|$ and $\cat^\times$. In short, they are Picard $\infty$-groupoid.
-It is useful to note that 
- 	synonyms for Picard $\infty$-groupoids are $\mathbb{E}_\infty$-groups and grouplike
- 	$\mathbb{E}_\infty$-spaces. In fact, they are particular $\mathbb{E}_n$-algebras, grouplike
- 	 $\mathbb{E}_n$-algebras in the category of $\infty$-groupoids,
- 	and we already defined them, see \ref{grouplikeEspace}.
+ duals on both $|\Bord|$ and $\cat^\times$. In short, they are Picard $\infty$-groupoid. Thanks to 
+ \ref{InfLoopsPicard}, we know that they are thereby grouplike $\E_n$-spaces and infinite loop spaces.
+  Via the recognition
+ principle for infinite loop spaces \ref{RecognitionInfLoops}, we know that they are connective spectra.
  
-  Recall that intuitively the delooping of a group is a
-  one-object groupoid and the delooping of a certain monoidal $k$-category is an one-object
-   $k+1$-category. Having Picard $\infty$-groupoids allows us to deloop infinitely
- many times. This roughly explains why Picard $\infty$-groupoids are infinite loop spaces, 
- and in particular the spaces corresponding to $|\Bord|$ and $\cat^{\times}$. 
+ This is why $\tilde\Zf$ is not just a map of spaces but a map of spectra, and this enables the application of stable homotopy theory, making life easier. We can conclude this interlude on stable homotopy theory and invertible TFTs with the following motto
 $$\text{\textit{Invertible TFTs are maps of connective spectra!}}$$
 This is not only of theoretical interest but it also allows the application of topological field theories to condensed matter theory! Classical phases of matter are governed by Landau
  theory of phase transition. However, the phases of a quantum material do not behave in the
