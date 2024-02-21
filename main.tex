@@ -3189,7 +3189,7 @@ as $\cdot:\mathcal{A}\otimes\mathcal{A}\to\mathcal{A}$. Then,
 	the 2-associators and the objects of the 
 	coherence diagram for 3-associators that commutes via the 4-associator. Here the 3-associators
 	should be arrows on the faces of this polyhedron\footnote{Such polyhedra are called associahedra.} and 
-	the 4-associator should be a 4-morphism inside the polyhedron going from one possible composition of 3-associators.
+	the 4-associator should be a 4-morphism inside the polyhedron going from one possible composition of 3-associators to the other.
 	
 	\begin{center}
 		\begin{tikzcd}
@@ -3433,15 +3433,24 @@ in which higher algebra takes place.
 	we do not just have commutativity or non-commutativity of monoid objects but an infinite sequence of
 	 shades of
 	commutativity. The Dunn additivity theorem states
-	that for $n,m\geq 0$ and including possibly $n=\infty$ or $m=\infty$
+	that for $0< n,m\leq \infty$
 	$$\Alg_{\mathbb{E}_n}(\Alg_{\mathbb{E}_m}(\cat))\simeq \Alg_{\mathbb{E}_{m+n}}(\cat)$$
 \end{thm}
+See \cite[5.1.2.2]{Luriealgebra} for a proof.
 \begin{ex}
 	By the Dunn additivity argument, $n$-iterated loop spaces coincide with $\Alg_{\mathbb{E}_n}(\sat)$.
 	In particular, loop spaces which are iterated infinitely many times correspond with 
 	$\Alg_{\mathbb{E}_\infty}(\sat)$. Such $\infty$-iterated loop spaces are called infinite loop spaces, 
 	see \ref{InfiniteLoop} for a definition.
 \end{ex}
+As one can expect, there is a way to define homotopy coherent group objects in a cartesian monoidal
+$\infty$-category, as there is a way to define group objects in a cartesian monoidal 1-category.
+Nonetheless, we concentrate solely on such homotopy coherent group objects in the category of spaces because it is 
+what we will later need in \ref{Spectra Phases of Matter} to prove that invertible field theories are maps
+between certain spectra. See \cite[5.2.6.6]{Luriealgebra}\footnote{Note that there
+	 is a typo, instead of 'Let \cat be an $\infty$-category which admits finite products.' there should be
+	'Let $\mathscr{X}$ be  an $\infty$-category which admits finite products.'.} for a definition of homotopy coherent group objects in full generality,
+	i.e. in any cartesian monoidal $\infty$-category.
 \begin{defn}[Grouplike $\mathbb{E}_n$-space]\label{grouplikeEspace}
 	An $\mathbb{E}_n$-algebra in the category of spaces $A\in\Alg_{\mathbb{E}_n}(\mathscr{S})$, i.e. an $\mathbb{E}_{n}$-space,
 	is grouplike, if it lands in the category of groups
@@ -3474,7 +3483,7 @@ in which higher algebra takes place.
 	by the Dunn additivity theorem we just stated infinite loop spaces are grouplike $\mathbb{E}_{\infty}$-spaces
 \end{ex}
 
-See \cite[5.1.2.2]{Luriealgebra} for a proof.
+
 \begin{rem}
 	Grouplike $\mathbb{E}_\infty$-spaces in the category of spaces are
 	Picard $\infty$-groupoids! The intuition is that the $\mathbb{E}_\infty$ provides
@@ -3497,13 +3506,6 @@ See \cite[5.1.2.2]{Luriealgebra} for a proof.
 	
 	Such objects are interesting for us because invertible field theories are equivalently
 	maps of such grouplike $\mathbb{E}_\infty$-spaces! See \ref{Spectra Phases of Matter}.
-\end{rem}
-\begin{rem}
-	We defined grouplike $\mathbb{E}_n$-algebras only in the category of spaces. There is however
-	a way to give a general definition for any cartesian monoidal $\infty$-category, aka a category with
-	finite products. See \cite[5.2.6.6]{Luriealgebra} for such a definition\footnote{Note that there is 
-		a typo, instead of 'Let \cat be an $\infty$-category which admits finite products.' there should be
-		'Let $\mathscr{X}$ be  an $\infty$-category which admits finite products.'.}
 \end{rem}
 \subsection{Interlude on Bicategories \extra} % (fold)
 \label{sub:outlook_interlude_on_bicategories}
