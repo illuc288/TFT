@@ -1845,9 +1845,9 @@ give a deeper sketch of what they are \ref{WhatSpectra}.
 \begin{ex}
 $\Sigma(S^1)=S^2$ more generally $\Sigma(S^n)=S^{n+1}$
 \end{ex}
-\begin{defn}[Sequential spectrum\footnote{Sometimes it is called just spectrum. We call it
+\begin{defn}[Prespectrum\footnote{In older literature it is called just spectrum, or sometimes it is called sequential spectrum. We call it
 		\emph{pre}spectrum in order to distinguish it from other notions with more structure, such as the suspension spectrum}]
-	A sequential spectrum is a sequence of pointed spaces $\{X_k\}_{k\in\Z}$ with maps preserving basepoints
+	A prespectrum is a sequence of pointed spaces $\{X_k\}_{k\in\Z}$ with maps preserving basepoints
 	 $\Sigma X_n\xrightarrow{\sigma_n}X_{n+1}$ called structure maps.
 \end{defn}
 \begin{defn}[Suspension Spectrum]
@@ -1950,7 +1950,7 @@ We make both these comparisons more rigorous by later (\ref{MonObj}) showing tha
 The same holds for the commutative case, commutative monoids, commutative algebras and (\emph{strict}\footnote{We will also sketch a way how to get general symmetric monoidal categories, i.e. not necessarily strict, in an analogous way. See \ref{EAlg}.}) 
 symmetric monoidal categories are all examples of commutative monoid objects (see \ref{CommMonObj}).
 
-\section{Category theory language} % (fold)
+\section{Category theory: basic definitions} % (fold)
 \label{sub:cathegory_theory_language}
 
 \begin{defn}
@@ -2355,7 +2355,7 @@ The right hand square commutes because of the naturality of $\eta$. Since the ri
 \begin{ex}
 	A trivial example is given by any functor that is an isomorphism. In that case the natural transformations are actually identities. 
 
-	\noindent An equivalence of categories instead is in general \textit{not} an adjunction, however it can always be made into one by appropriately changing the natural isomorphisms. 
+	\noindent An equivalence of categories instead is an adjunction.
 
 	\noindent The more typical examples are instead related to forgetful functors.
 	%TODO add examples
@@ -2406,7 +2406,7 @@ Having loosely characterized enriched categores We can provide a definition of s
 \end{rem}
 \noindent We will later encounter a notion of weak 2-category (see \ref{Bicategory}).
 
-\section{Monoidal Categories}\label{MonCat}
+\section{Monoidal categories}\label{MonCat}
 Recall that a monoid is a group where not necessarily every element is invertible: a set $M$ with a distinguished object $e\in M$ called unit, also known as neutral element, and a map of sets $m: M\times M \to M$ such that $m$ is:
 \begin{itemize}
     \item associative $$
@@ -2511,12 +2511,12 @@ A monoidal category generalizes this structure with respect to objects \emph{and
     \end{itemize}
 \end{ex}
 
-\subsection{Cartesian Categories: cartesian product \extra} 
+\subsection{Cartesian categories: cartesian product \extra} 
 \label{sub:cartesian_categories}
 
 In particular,
  $(\AbGrp, \oplus), (\Vect_k, \oplus), (\Set, \times), (\Top, \times), (Cat, \times)$ are all examples of special monoidal categories: cartesian monoidal categories. A cartesian monoidal category is a monoidal category where the monoidal structure is given by a suitable notion of cartesian product in such category. We give a definition via a \textit{universal property} which is therefore valid for every category (although \textit{existance} must then be checked in the categories of interest).
-\begin{defn}[Cartesian Product]\label{CartProd}
+\begin{defn}[Cartesian product]\label{CartProd}
     Given $A,B\in\cat$, their cartesian product, if it exists, is the tuple $(A\times B,pr_1,pr_2)$, where $A\times B\in \ob(\cat)$ and $pr_1:A\times B\to A$  $pr_2:A\times B\to B$ such that for every other object $Y$ with morphisms $f:Y\to A$ and $g:Y\to B$ there is a unique morphism $u:Y\to A\times B$. This definition is summarised by the fact that the following commuting diagram 
     % https://q.uiver.app/#q=WzAsNSxbMSwwLCJZIl0sWzIsMSwiQiJdLFswLDBdLFswLDEsIkEiXSxbMSwxLCJBXFx0aW1lcyBCIl0sWzAsMSwiZyJdLFs0LDMsInByXzEiXSxbMCwzLCJmIiwyXSxbNCwxLCJwcl8yIiwyXSxbMCw0LCJcXGV4aXN0cyEgdSIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
 \[\begin{tikzcd}
@@ -3288,7 +3288,7 @@ as $\cdot:\mathcal{A}\otimes\mathcal{A}\to\mathcal{A}$. Then,
 \begin{ex}
 	Like a one object 1-category can be seen as a monoid, a one object $\infty$-category 
 	 can be seen as a homotopy coherent monoid
-	 $(\mathcal{A},cdot, e)$, where 
+	 $(\mathcal{A},\cdot, e)$, where 
 	 \begin{itemize}
 \item $\operatorname{1-Mor}=\mathcal{A}$
 \item $\cdot =\circ$ where $\circ$ refers to composition of 1-morphisms
@@ -3444,7 +3444,7 @@ See \cite[5.1.2.2]{Luriealgebra} for a proof.
   Later we will state a result that shows that grouplike $\E_n$-spaces and $n$-iterated loop spaces
    coincide:
   not only every $n$-iterated loop space is an $\E_n$-space, but also viceversa,
-  every $\E_n$-space is an $n$-iterated loop space. See \ref{RecognitionInfLOOPS}.
+  every $\E_n$-space is an $n$-iterated loop space. See \ref{RecognitionNLOOPS}.
 \end{ex}
 As one can expect, there is a way to define homotopy coherent group objects in a cartesian monoidal
 $\infty$-category, as there is a way to define group objects in a cartesian monoidal 1-category.
@@ -3482,8 +3482,14 @@ between certain spectra. See \cite[5.2.6.6]{Luriealgebra}\footnote{Note that the
 \end{defn}
 \begin{ex}
 	$\Omega X$ is not just an $\mathbb{E}_1$-space, but also a grouplike $\mathbb{E}_1$-space since
-	the inversion of based loops is homotopy equivalent to the costant map on the point. Moreover,
-	by the Dunn additivity theorem we just stated infinite loop spaces are grouplike $\mathbb{E}_{\infty}$-spaces
+	the inversion of based loops is homotopy equivalent to the costant map on the point, or more
+	rigorously, recall that $\pi_0(\Omega X)=\pi_1(X)$ and that the fundamental group obviously
+	 $\pi_i(X)\in\Grp$. Moreover, $n$-iterated loop spaces are grouplike $\mathbb{E}_{n}$-spaces and in
+	  particular infinite loop spaces
+	 are grouplike $\mathbb{E}_{\infty}$-spaces for the same reason that $\Omega X$ a grouplike
+	  $\mathbb{E}_1$-space, since after applying $\pi_0$ we forget all the homotopy-coherent 
+	  commutativity. Alternatively, this holds also
+	by the Dunn additivity theorem (\ref{DunnAdds}).
 \end{ex}
 
 
@@ -3825,7 +3831,7 @@ The investigation of stable phenomena is achieved via spectra, i.e. sequence of 
 relating them one another. For instance the stable homotopy group of the sphere are exactly the
  homotopy groups of the sphere spectrum. This begs the question: what are spectra?
 
-\subsubsection{What are spectra? \extra}\label{WhatSpectra}
+\subsubsection[And how do they relate to grouplike $\E_\infty$-spaces?]{What are spectra? \extra}\label{WhatSpectra}
 This subsection is based off \cite{Luriealgebra}, \cite{AdamsLoops}, \cite{GregoricSpectra},
  \cite{Mazel-Gee2024}, \cite{NardinStable} and \cite{CalleInfiniteLoops}.
 
@@ -4077,6 +4083,13 @@ $\infty$-category and let $X\in\cat$. Then the loop space $\Omega X$ is the pull
 	Given a pointed $\infty$-category $\cat$ the assignment $X\mapsto \Omega X$ gives rise to a functor $\Omega:\cat\to\cat$
 \end{defn}
 \begin{rem}
+One very important property of the loop space functor is the shift in homotopy groups:
+$$ \pi_n(\Omega X)=\pi_{n+1}(X)$$
+If you took a class on algebraic topology, you most probably already witnessed this phenomenon, 
+the fundamental group is defined as
+$$ \pi_0(\Omega X)=\pi_1(X)$$
+\end{rem}
+\begin{rem}
 	As already mentioned in \ref{EAlg}, a loop space is an example of $\mathbb{E}_1$-space and 
 	$n$-iterated loop spaces are $\mathbb{E}_n$-spaces by the Dunn additivity theorem.
 \end{rem}
@@ -4118,13 +4131,12 @@ $\Sigma X= X\land S^1$ and $\Omega_x=\operatorname{Map}_{\ast}(S^1,X)$ and that 
 	pointed spaces $\{E_n\}_{n\in\Z}$ with equivalences $\delta_n:E_n\simeq \Omega E_{n+1}$
 \end{defn}
 \begin{rem}
-Note that via the adjunction $\Sigma\dashv\Omega$ we can get a sequential spectrum from a spectrum:
+Note that via the adjunction $\Sigma\dashv\Omega$ we can get a prespectrum from a spectrum:
 given $X_i,X_{i+1}\in\sat_\ast$ it holds that 
 $\Hom_{\sat_{\ast}}(X_i,\Omega X_{i+1})\simeq \Hom_{\sat_{\ast}}(\Sigma X_i,X_{i+1})$ and thus we can 
-get the pointed maps we need in order to define a sequential spectrum. This means that every spectrum
-is a sequential spectrum, i.e. the category of spectra is a subcategory of the category of sequential
- spectra. This is counterintuitive and the reason why sequential spectra are sometimes called 
- prespectra, signalling that they are something more general, less structured.
+get the pointed maps we need in order to define a prespectrum. This means that every spectrum
+is a prespectrum, i.e. the category of spectra is a subcategory of the category of prespectra. This is the
+ reason why the synonym of prespectra 'sequential spectra' is counterintuitive.
 \end{rem}
 
 
@@ -4137,26 +4149,47 @@ This is equivalent to saying that the category of spectra is the sequential homo
 $$\operatorname{lim}(...\leftarrow\sat_\ast\leftarrow\sat_\ast\leftarrow\sat_\ast\leftarrow ...)$$
 where we can see the diagram we are taking the limit over as a functor 
 $D:\Z^{\operatorname{op}}\to\infty\operatorname{-Cat}$ where $\Z$ is considered as a category
-via its ordering ($\leq$ corresponds to a morphism $\to$) and for each $i\in\Z$ $D(i)=\sat_\ast$. Via this
-definition of the category of spectra as such sequential homotopy limit, we avoid defining
-explicitly what are the morphisms between spectra.
+via its ordering ($\leq$ corresponds to a morphism $\to$) and for each $i\in\Z$ $D(i)=\sat_\ast$. 
  %Sometimes 
 %such diagrams are called towers. %TBD
+
+From this it follows that a map of spectra $f:\{X_i\}_{i\in\Z}\to\{Y_i\}_{i\in\Z}$ is given by components 
+that are pointed maps $f_i:X_i\to Y_i$ such that the following square commutes homotopy coherently
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJYX2kiXSxbMSwwLCJZX2kiXSxbMCwxLCJcXE9tZWdhIFhfe2krMX0iXSxbMSwxLCJcXE9tZWdhIFlfe2krMX0iXSxbMCwxLCJmX2kiXSxbMCwyLCJcXHNpbWVxIiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxLDMsIlxcc2ltZXEiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsMywiXFxPbWVnYSBmX3tpKzF9IiwyXV0=
+\[\begin{tikzcd}[cramped]
+	{X_i} & {Y_i} \\
+	{\Omega X_{i+1}} & {\Omega Y_{i+1}}
+	\arrow["{f_i}", from=1-1, to=1-2]
+	\arrow["\simeq"', no head, from=1-1, to=2-1]
+	\arrow["\simeq", no head, from=1-2, to=2-2]
+	\arrow["{\Omega f_{i+1}}"', from=2-1, to=2-2]
+\end{tikzcd}\] %UNSURE ABOUT THIS; PLEAASE CHECK /ANDREA
 \end{defn}
-The initial object of such category is the sphere spectrum $\mathds{S}$.
+The initial object of the $\infty$-category of spectra is the sphere spectrum $\mathds{S}$.
+\begin{notat}
+	An $n$-connective space is a space with trivial homotopy groups for
+	all $k< n$. An $n$-connective space is an $n-1$-connected space.
+\end{notat}
 \begin{defn}[Infinite loop space]\label{InfiniteLoop}
-	An infinite loop space is a space $X_0$ with an infinite sequence of pointed spaces $X_0,X_1,X_2,...$ with weak equivalences for $n\geq 0$
+	An infinite loop space is a $0$-connective pointed space $X_0$ with an infinite sequence of pointed
+	 spaces
+	 $X_0,X_1,X_2,...$ with weak equivalences for $n\geq 0$
 	 $$X_n\simeq \Omega X_{n+1}$$
 	
-	 %\footnote{The loop space object is an inverse operation to the delooping, meaning that that given some monoidal category $\cat$, $\cat$ is the loop space object of the delooping of $\cat$. The name comes from the topological notion, see \url{https://en.wikipedia.org/wiki/Loop_space}
+		 %\footnote{The loop space object is an inverse operation to the delooping, meaning that that given some monoidal category $\cat$, $\cat$ is the loop space object of the delooping of $\cat$. The name comes from the topological notion, see \url{https://en.wikipedia.org/wiki/Loop_space}
 		
 		%In general, loop space objects inherit the monoidal structure from the composition of loops. We would need to talk about homotopy pullbacks in order to strictly define what a loop space object is.}
 
 \end{defn}
 
-Infinite loop spaces seem very similar to what we defined as spectra. However, there is a crucial 
-difference: there is no space to start from in a spectrum, since there are deloopings for all spaces, i.e. $ X_{-1}\simeq \Omega X_{0}$, 
-$ X_{-2}\simeq \Omega X_{-1}$ and so on, while in an infinite loop space there are not.
+Infinite loop spaces seem very similar to what we defined as spectra ($\Omega$-spectra). 
+
+% However, there is a crucial 
+%difference: there is no space to start from in a spectrum, since there are deloopings for all spaces, i.e. $ X_{-1}\simeq \Omega X_{0}$, 
+%$ X_{-2}\simeq \Omega X_{-1}$ and so on, while in an infinite loop space there are not.
+
+\noindent In fact, we will soon see that infinite loop spaces coincide with a particular kind of spectra:
+ connective spectra.
 \begin{defn}[Underlying (infinite loop) space functor]
 	Given a spectrum, the assignment of a spectrum $ \{X_i\}_{i\in\Z}$ to its underlying
 	infinite loop space, aka 0-th space, is a functor.
@@ -4173,46 +4206,25 @@ then (aka $\Omega$-spectra) thanks to the adjunction $\Sigma\dashv\Omega$.
 
 An example of such spectra is the sphere spectrum we already encountered in \ref{homotopyCob}. 
 \end{defn}
-\begin{defn}[Classifying spectrum]
-	Let $M$ be an $\mathbb{E}_\infty$-space, i.e. an $\mathbb{E}_\infty$-algebra in $\sat_\ast$ (see
-	 \ref{EAlg}). Then we define the classifying spectrum of $M$
-$$\mathbf{B}^{\infty}(M):=\{\mathbf{B}^n\}$$ %TBD
+%\begin{defn}[Classifying spectrum]
+	%Let $M$ be an $\mathbb{E}_\infty$-space, i.e. an $\mathbb{E}_\infty$-algebra in $\sat_\ast$ (see
+	% \ref{EAlg}). Then we define the classifying spectrum of $M$
+%$$\mathbf{B}^{\infty}(M):=\{\mathbf{B}^n\}$$ %TBD
 %It might be useful to check out what is a classifying space of a topological
  %group\footnote{\url{https://en.wikipedia.org/wiki/Classifying_space}}.
-\end{defn}
-\begin{defn}[Classifying spectrum functor]
-$$\mathbf{B}^{\infty}$$
-\end{defn}
-Picard $\infty$-groupoids do not only correspond to infinite loop spaces but also to connective 
-spectra. 
-\begin{rem}[Important observation: Infinite loop spaces are grouplike $\E_\infty$-spaces=Picard groupoids]\label{InfLoopsPicard}
-	We already argued in \ref{EAlg} that such infinite loop spaces are grouplike
-	$\mathbb{E}_\infty$-spaces because of the Dunn additivity theorem \ref{DunnAdds}.
-	Moreover, also in \ref{EAlg} we explained how grouplike
-	$\mathbb{E}_\infty$-spaces coincide with
-	Picard $\infty$-groupoids:
-	\begin{itemize}
-		\item the $\E_\infty$ makes them homotopy coherent commutative
-		monoid objects in $\operatorname{Grpd}_\infty$, i.e. symmetric monoidal $\infty$-groupoids
-		\item since they are grouplike, they have inverses because if we first
-		apply $\pi_0$, then forget about the commutative structure, and land in the category of groups, that
-		means that the inverses must have been there from the start
-	\end{itemize} 
-	The following result proves the other direction: all grouplike $\E_\infty$-spaces (and thus Picard $\infty$-groupoids) 
-	are infinite loop spaces.
-\end{rem}
+%\end{defn}
+%\begin{defn}[
+%\end{defn}
 
-\begin{thm}[Recognition theorem for $n$-iterated loop spaces, Boardman-Vogt, May]\label{RecognitionInfLOOPS}
-For any $n< 0$, $n$-iterated loop spaces coincide with grouplike $\E_n$-spaces. 
+
+\begin{thm}[Recognition theorem for $n$-iterated loop spaces, Boardman-Vogt, May]\label{RecognitionNLOOPS}
+For any $n> 0$, $n$-iterated loop spaces coincide with grouplike $\E_n$-spaces. 
 More rigorously: the 
 $n$-iterated loop space functor $\Omega^{n}:\sat_\ast \to\sat_\ast$ restricts to an equivalence of
  $\infty$-categories between $n$-connective pointed spaces and grouplike $\E_n$-spaces
 $$\Omega^n:\sat^{\geq n}_{\ast}\simeq \Alg_{\mathbb{E}_n}^{\operatorname{gp}}(\sat) $$
 \end{thm}
-\begin{notat}
-	An $n$-connective, or alternatively $n$-connected, space is a space with trivial homotopy groups for
-	 all $k\leq n$. Hence 0-connective spaces are the usual path-connected spaces.
-\end{notat}
+
 See \cite[5.2.6.10]{Luriealgebra} for a rigorous proof. Note anyway that it follows from an easier fact
 to prove (see \cite[Theorem 3.9]{NardinStable}):
 \begin{thm}[Recognition theorem for loop spaces]
@@ -4229,11 +4241,12 @@ for $n$-iterated loop spaces by induction. The base case: $n=1$ is the recogniti
  
  As said in the preamble of this section, stable homotopy groups of a space $A\in\sat$, denoted 
  $\pi^{s}_{i}(A)$, are exactly the homotopy groups of the spectrum of $A$, $\Sigma^{\infty}A$. Thus,
- $\pi^{s}_{i}(A)\cong \pi_{i}(\Sigma^{\infty}A)$. There is however a natural question: what are the homotopy groups of a spectrum?
- While the degree homotopy groups for usual topological spaces are defined to be positive, homotopy
+ $\pi^{s}_{i}(A)\cong \pi_{i}(\Sigma^{\infty}A)$. There is however a natural question: what are the
+  homotopy groups of a spectrum? One interesting fact is that
+ while the degree homotopy groups for usual topological spaces are defined to be positive, homotopy
  groups of spectra can be defined and be non-trivial also for negative degrees.
  \begin{defn}[Homotopy groups of spectra]
- 	Given a sequential spectrum $\{ E_i\}_{i\in\Z}$ with pointed maps $\sigma_i:\Sigma E_i\to E_{i+1}$,
+ 	Given a prespectrum $\{ E_i\}_{i\in\Z}$ with pointed maps $\sigma_i:\Sigma E_i\to E_{i+1}$,
  	 for $n,k\in\Z$, the $n$th homotopy group of 
  	$\{ E_i\}_{i\in\Z}$ is 
  	$$\pi_n(\{ E_i\}_{i\in\Z}):=\underset{\rightarrow}{\operatorname{lim}}(...\to \pi_{n+k}(E_k)\xrightarrow{\Sigma} \pi_{n+k+1}(\Sigma E_{k})\xrightarrow{\pi_{n+k+1}(\sigma_k)}\pi_{n+k+1}(E_{k+1})\to ...)$$
@@ -4241,7 +4254,7 @@ for $n$-iterated loop spaces by induction. The base case: $n=1$ is the recogniti
  	spaces $E_k\in \{ E_i\}_{i\in\Z}$. Since $k\in\Z$, there are indeed also homotopy groups with negative 
  	degrees.
  	
- 	If a sequential spectrum $\{ X_i\}_{i\in\Z}$ is also a spectrum, then from the definition we just provided
+ 	If a prespectrum $\{ X_i\}_{i\in\Z}$ is also a spectrum, then from the definition we just provided
  	 it
  	follows that for 
  	$$ \pi_n(\{ X_i\}_{i\in\Z})
@@ -4260,33 +4273,57 @@ spectra that only have positive non-trivial homotopy groups: let $\{ X_i\}_{i\in
  Connective spectra form a subcategory of Sp denoted $\operatorname{Sp}_{\geq 0}$.
 \end{defn}
 
-\begin{thm}[Recognition theorem for connective spectra]\label{RecognitionConnectiveSpectra}
+\begin{rem}[Connective spectra=infinite loop spaces]
+	An infinite loop space is a $-1$-connective pointed space, hence it does not have any negative
+	 homotopy groups and it has exactly the same structure $X_n\simeq \Omega X_{n+1}$ as a spectrum.
+	 
+	 Thus, infinite loop spaces coincide with connective spectra.
+\end{rem}
+\begin{rem}[Grouplike $\E_\infty$-spaces=Picard groupoids]\label{InfLoopsPicard}
+
+	Recall (\ref{EAlg}) that grouplike
+	$\mathbb{E}_\infty$-spaces coincide with
+	Picard $\infty$-groupoids:
+	\begin{itemize}
+		\item the $\E_\infty$ makes them homotopy coherent commutative
+		monoid objects in $\operatorname{Grpd}_\infty$, i.e. symmetric monoidal $\infty$-groupoids
+		\item since they are grouplike, they have inverses because if we first
+		apply $\pi_0$, then forget about the commutative structure, and land in the category of groups, that
+		means that the inverses must have been there from the start
+	\end{itemize} 
+\end{rem}
+
+The following result proves the that all grouplike $\E_\infty$-spaces (aka Picard
+$\infty$-groupoids) 
+are connective spectra (aka infinite loop spaces). Hence, we will be able to conclude that Picard
+ $\infty$-groupoids coincide with infinite
+ loop spaces.  However, what is really important for us is that Picard groupoids coincide with connective
+ spectra since this is the fact that will allow us to recognize that invertible field theories are maps of 
+ spectra.
+
+Roughly, passing to the limit $n\to\infty$ in the recognition theorem for $n$-iterated loop spaces with
+ some abstract nonsense regarding 
+the definition of the category of spectra as the sequential homotopy limit
+$\operatorname{lim}(...\leftarrow\sat_\ast\leftarrow\sat_\ast\leftarrow\sat_\ast\leftarrow ...)$ leads to the 
+following result.
+\begin{thm}[Recognition theorem for connective spectra/infinite loop
+	 spaces]\label{RecognitionConnectiveSpectra}
 	Connective spectra coincide with grouplike $\E_\infty$-spaces.
 	
 	There is an equivalence: 
 	$$\mathbf{B}^{\infty}:\Alg_{\mathbb{E}_{\infty}}^{\operatorname{gp}}(\mathscr{S})\leftrightarrows\operatorname{Sp}_{\geq 0}:\Omega^{\infty}$$
-	where $\operatorname{Sp}_{\geq 0}$ denotes the category of connective spectra.
+	
+where $\mathbf{B}^{\infty}$ denotes the classifying spectrum functor.
 \end{thm}
-It follows from the recognition theorem for iterated loop spaces and some abstract nonsense regarding 
-the definition of the category of spectra as the sequential homotopy limit
- $\operatorname{lim}(...\leftarrow\sat_\ast\leftarrow\sat_\ast\leftarrow\sat_\ast\leftarrow ...)$.
- See \cite[5.2.6]{Luriealgebra},
+ See \cite[7.2.2.11]{lurie2008higher},
  \cite[Corollary II.24]{KtheoryHebestreitWagner} or
  \cite[3.29]{NardinStable} for proofs.
- \begin{rem}
- Combining the recognition theorem for connective spectra and the recognition theorem for infinite loop
-spaces we get that infinite loop spaces coincide with connective spectra. Another way to see this is
-to note that 
-\begin{itemize}
 
-\item for a spectra $X\in \operatorname{Sp}$ it holds that $\pi_i(X)\cong\pi_i(\Omega^\infty X)$, where 
-$\pi_i$ on the left denotes a homotopy group of spectra while $\pi_i$ on the right refers to the usual
-homotopy groups of spaces.
-\end{itemize}
+We can conclude this fast-paced introduction to spectra with the following slogan:
 
- \end{rem}
+$$\textit{Picard $\infty$-groupoids are connective spectra! }$$
 
-
+\subsubsection{Spectra and higher algebra \extra}
 In sum, spectra are a higher categorical analog of abelian groups (see \ref{Ab-Enriched Cat}), they have been in fact called “the abelian groups of the 21st century” \cite{Mazel-Gee2024}
 because they provide very powerful techniques for many areas of mathematics
 where there is currently much progress, e.g. in algebraic K-theory. One can do algebra with 
@@ -4335,7 +4372,8 @@ We make the comparison clearer via the following table\footnote{his table was in
 See \ref{Ab-Enriched Cat} and \ref{AbelianCat} for the definitions of Ab-enriched category and
 abelian category. See \ref{EAlg} for the definitions of $\E_1$-ring spectrum and of
  $\mathbb{E}_\infty$-ring spectrum. A stable
- category is a pointed $\infty$-category where $\Sigma\dashv\Omega$ do not just form an adjunction,
+ category is a pointed $\infty$-category with finite limits and colimits where $\Sigma\dashv\Omega$ do
+  not just form an adjunction,
   but are equivalent. 
  There is an equivalent definition of stable category that more closely resembles the definition of abelian
   category, i.e. an additive $\infty$-category with further conditions, see \cite[Section 1]{Luriealgebra}.
@@ -4358,15 +4396,27 @@ abelian category. See \ref{EAlg} for the definitions of $\E_1$-ring spectrum and
 
 However, we do not have just $\infty$-groupoids but also a symmetric monoidal structure with
  duals on both $|\Bord|$ and $\cat^\times$. In short, they are Picard $\infty$-groupoid. Thanks to 
- \ref{InfLoopsPicard}, we know that they are thereby grouplike $\E_n$-spaces and infinite loop spaces.
-  Via the recognition
- principle for infinite loop spaces \ref{RecognitionInfLoops}, we know that they are connective spectra.
+ \ref{InfLoopsPicard}, we know that they are thereby grouplike $\E_\infty$-spaces. Via the recognition
+ principle for connective spectra \ref{RecognitionConnectiveSpectra}, we know that they are connective
+  spectra.
  
  This is why $\tilde\Zf$ is not just a map of spaces but a map of spectra, and this enables the application of stable homotopy theory, making life easier. We can conclude this interlude on stable homotopy theory and invertible TFTs with the following motto
 $$\text{\textit{Invertible TFTs are maps of connective spectra!}}$$
 This is not only of theoretical interest but it also allows the application of topological field theories to condensed matter theory! Classical phases of matter are governed by Landau
  theory of phase transition. However, the phases of a quantum material do not behave in the
-  same manner. Fortunately, there are ways to describe them, or at least specific types of quantum matter (with gapped Hamiltonians for instance)\footnote{Kitaev for instance proposed in \cite{Kitaev_2009} that the topological insulators and superconductors of a certain type of condensed matter are classifiable via K-theory\footnote{See \url{https://ncatlab.org/nlab/show/topological+phase+of+matter} and \url{https://ncatlab.org/nlab/show/K-theory+classification+of+topological+phases+of+matter}.} and this was further refined via twisted equivariant K-theory by Dan Freed and Greg Moore in \cite{Freed_2013}. }. The topological field theories describing the (\href{https://ncatlab.org/nlab/show/topological+phase+of+matter}{topological}) phases of matter of some condensed matter systems (with short range entanglement) are \emph{invertible} field theories. The connection to stable homotopy theory allows to compute topological invariants of spectra and thereby of phases of matter. This was done by Freed and Hopkins in \cite{Freed_2021} and in \cite{freed2014shortrange}.
+  same manner. Fortunately, there are ways to describe them, or at least specific types of quantum
+   matter (with gapped Hamiltonians for instance)\footnote{Kitaev for instance proposed in
+  	 \cite{Kitaev_2009} that the topological insulators and superconductors of a certain type of condensed
+  	 matter are classifiable via K-theory\footnote{See
+  	 	 \url{https://ncatlab.org/nlab/show/topological+phase+of+matter} and
+  	 	  \url{https://ncatlab.org/nlab/show/K-theory+classification+of+topological+phases+of+matter}.} and
+  	 	   this was further refined via twisted equivariant K-theory by Dan Freed and Greg Moore in
+  	 	    \cite{Freed_2013}. }. The topological field theories describing the
+  	 	     (\href{https://ncatlab.org/nlab/show/topological+phase+of+matter}{topological}) phases of
+  	 	      matter of some condensed matter systems (with short range entanglement) are
+  	 	       \emph{invertible} field theories. The connection to stable homotopy theory allows to compute
+  	 	        topological invariants of spectra and thereby of phases of matter. This was done by Freed and
+  	 	         Hopkins in \cite{Freed_2021} and in \cite{freed2014shortrange}.
 
 
 % -------------------------------------------------------------
