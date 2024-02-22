@@ -364,9 +364,7 @@ Two mathematicians, Segal and Atiyah, recognized a hidden symmetric monoidal fun
 
 \section{Topology}
 \begin{flushleft}
-\textit{Topology is the science of fundamental patterns\\
-and structural relationships of event constellations.\\
--Fuller}
+\epigraph{Topology is the science of fundamental patterns and structural relationships of event constellations.}{Fuller}
 \end{flushleft}
 The ideas behind cobordisms were developed already by Poincaré together with homology (and their group structure was discovered and investigated by Emmy Noether) but a proper definition was established by Pontryangin and Thom in the 20$^{\text{th}}$ century.
 
@@ -445,7 +443,7 @@ Now, ``surely'' not all closed manifolds are a boundary of compact manifold! And
 
 \medskip
 
-But when do two $n$ manifolds represent the same class in $H^{\text{bord}}_n(S)$? In the case of $S = pt$, they should be the boundary of the same manifold. In general, we require also that the maps into $S$ extend to the $n+1$ manifold, i.e. let $M_1$ and $M_2$ be closed $n$ manifolds, with maps $M_1\xrightarrow{f_1}S$ and $M_2\xrightarrow{f_2}S$, then they represent the same element in $H^{\text{bord}}_n(S)$ if and only if there exists a compact $n+1$ manifold with boundary $W$ with a map $ W\xrightarrow{g}S$ with the property that $\partial W= M_1 \amalg M_2$ and such that it makes the following diagram commute
+But when do two $n$-manifolds represent the same class in $H^{\text{bord}}_n(S)$? In the case of $S = pt$, they should be the boundary of the same manifold. In general, we require also that the maps into $S$ extend to the $n+1$ manifold, i.e. let $M_1$ and $M_2$ be closed $n$ manifolds, with maps $M_1\xrightarrow{f_1}S$ and $M_2\xrightarrow{f_2}S$, then they represent the same element in $H^{\text{bord}}_n(S)$ if and only if there exists a compact $n+1$ manifold with boundary $W$ with a map $ W\xrightarrow{g}S$ with the property that $\partial W= M_1 \amalg M_2$ and such that it makes the following diagram commute
     $$
     \begin{tikzcd}
 M_1 \arrow[rd, hook] \arrow[rrd, bend left, "f_1"' description]         \\
@@ -527,13 +525,13 @@ From the introduction it's clear that we will also deal with manifolds with boun
 \end{figure}
 
 \begin{defn}[Boundary of a Manifold]
-	If for $p \in X$ and some chart $\phi$ it is the case that $x_1(\phi (p) )= 0$ (meaning $\phi_p (x) \in \{(0,x_2, \dots, x_n)\}\subseteq \H^n$), then it does in every chart. We then say that $p$ is in the \textit{boundary} of $X$, 
+	If for $p \in X$ and some chart $\phi$ it is the case that $x_1(\phi (p) )= 0$ (meaning $\phi (p) \in \{(0,x_2, \dots, x_n)\}\subseteq \H^n$), then it does in every chart. We then say that $p$ is in the \textit{boundary} of $X$, 
 	$$
 		\de X := \{ p \in X : x_1(p) = 0\}
 	$$
 	otherwise, $p$ is in the \textit{interior} of $X$, which we denote with Int $X$. 
 
-    \noindent Equivalently, $p \in \de X$ means that $p$ has neighborhood $V$ that is the domain of a coordinate chart $\psi:V\to\H^n$ such that $\psi(V)\cap\de\H^n\neq\emptyset$ and sending $p$ to $\de \H^n$.
+    \noindent An equivalent definition is: $p \in \de X$ if $p$ has neighborhood $V$ that is the domain of a coordinate chart $\psi:V\to\H^n$ such that $\psi(V)\cap\de\H^n\neq\emptyset$ and sending $p$ to $\de \H^n$.
 
     \noindent Specularly, we could have defined the interior of $X$ to be the set of points $q\in X$ that have a neighourhood $U$ that is the domain of a chart $\psi:U\to\R^n$.
 \end{defn}
@@ -541,7 +539,7 @@ From the introduction it's clear that we will also deal with manifolds with boun
     If $X$ is an $n$ dimensional manifold with boundary, then $\de X$ is a $n-1$ dimensional manifold.
 \end{lem}
 \begin{proof}
-    Let $p\in\de X$ be an arbitrary point on the boundary of an $n$ manifold with boundary. Hence, there is an open neighbourhood $U_p$ of $p$ which is homeomorphic to an open set $V$ in $\mathbb{H}^n$, $ \phi(U_p)\cong V$. Since $p\in\de X$ we know that $x_1(\phi(p))=0$ and $\phi(p)\in V\cap\mathbb{H}^n$. $\phi:U_p\to V$ can be restricted to a homemorphism $\phi\mid_{\phi^{-1}(V\cap\mathbb{H}^n)}:\phi^{-1}(V\cap\mathbb{H}^n)\xrightarrow{\cong}V\cap\mathbb{H}^n$. Note that $\phi^{-1}(V\cap\mathbb{H}^n)=U_p\cap\de X$ because $p$ is sent to the boundary $\de\mathbb{H}^n$ for every chart. Note also that $\de\mathbb{H}^n=\{(0,x_2, \dots, x_n)\}$ and $\de\mathbb{H}^n\cong\R^{n-1}$. Since $V\cap\mathbb{H}^n\in\de\mathbb{H}^n$ and $V\cap\mathbb{H}^n\cong U_p\cap\de X$, $U_p\cap\de X$ is homeomorphic to an open set in $\R^{n-1}$.
+    Let $p\in\de X$ be an arbitrary point on the boundary of an $n$-manifold with boundary. Hence, there is an open neighbourhood $U_p$ of $p$ which is homeomorphic to an open set $V$ in $\mathbb{H}^n$, $ \phi(U_p)\cong V$. Since $p\in\de X$ we know that $x_1(\phi(p))=0$ and $\phi(p)\in V\cap\mathbb{H}^n$. $\phi:U_p\to V$ can be restricted to a homemorphism $\phi\mid_{\phi^{-1}(V\cap\mathbb{H}^n)}:\phi^{-1}(V\cap\mathbb{H}^n)\xrightarrow{\cong}V\cap\mathbb{H}^n$. Note that $\phi^{-1}(V\cap\mathbb{H}^n)=U_p\cap\de X$ because $p$ is sent to the boundary $\de\mathbb{H}^n$ for every chart. Note also that $\de\mathbb{H}^n=\{(0,x_2, \dots, x_n)\}$ and $\de\mathbb{H}^n\cong\R^{n-1}$. Since $V\cap\mathbb{H}^n\in\de\mathbb{H}^n$ and $V\cap\mathbb{H}^n\cong U_p\cap\de X$, $U_p\cap\de X$ is homeomorphic to an open set in $\R^{n-1}$.
 \end{proof}
 \begin{defn}[Closed Manifold]
     A manifold is \textit{closed} if it is compact and without boundary, i.e. $\de X = \emptyset$. Conversely, an \textit{open} manifold is also a manifold without boundary but with no closed components, i.e. it has only non-compact components. 
@@ -647,7 +645,7 @@ In some contexts, it can be interesting to do calculus on a manifold. In order t
 
 \begin{defn}[$1^{st}$ variant of the definition of bordism: via \emph{strict equalities}]
 \label{Define Bordism}
-	Let $Y_0, Y_1$ be closed $n$ manifolds. A bordism $(X,p)$ from $Y_0$ to $Y_1$ consists of a compact $n+1$ manifold with boundary together with a map $p: \de X \to \{0,1\}$ such that $Y_0 = p^{-1}(0)$ and $Y_1 = p^{-1}(1)$. Thus, $\de X = Y_0 \amalg Y_1$.
+	Let $Y_0, Y_1$ be closed $n$ manifolds. A bordism $(X,p)$ from $Y_0$ to $Y_1$ consists of a compact $(n+1)$-manifold with boundary together with a map $p: \de X \to \{0,1\}$ such that $Y_0 = p^{-1}(0)$ and $Y_1 = p^{-1}(1)$. Thus, $\de X = Y_0 \amalg Y_1$.
 
 	\noindent We then say that $Y_0$ and $Y_1$ are \textit{cobordant}.
 \end{defn}
@@ -774,7 +772,7 @@ In some contexts, it can be interesting to do calculus on a manifold. In order t
     
     This shows that different bordisms can arise from the same underlying manifold. We will have a way of differentiating them when we will introduce tangential structures on a manifold, which will enable us to explain in which direction a manifold is oriented.
 
-    \item Given two $n$ manifolds $M,N$, their \textit{connected sum} is 
+    \item Given two $n$-manifolds $M,N$, their \textit{connected sum} is 
     \begin{equation*}
          M\# N=M\setminus(D^{n})^{\circ}\coprod_{S^{n-1}} N\setminus(D^{n})^{\circ}
      \end{equation*}
@@ -789,7 +787,7 @@ In some contexts, it can be interesting to do calculus on a manifold. In order t
 \end{itemize}
 \end{ex}
 \begin{prop}
-    $M\# N$ is an n manifold.
+    $M\# N$ is an $n$-manifold.
 \end{prop}
 %proof to be added?
 \begin{lem}
@@ -847,7 +845,7 @@ $(\Omega_n, \amalg)$ is an abelian group with operation given by the disjoint un
 	\end{enumerate}
 \end{defn}
 \begin{rem}
-There is an insidious set-theoretic issue when we define the $n$-th cobordism group $\Omega_n$ (\ref{Defn n-th cob group}): is the collection of all closed $n$ manifolds a set? And what about the collection of all $n+1$ bordisms? It could be the case that it is something bigger than a usual set, thus not a set and problematic since we would not know how to treat them\footnote{We are assuming to be working in ZFC. There are other set theories in which one can define collections greater than sets, e.g. Von Neumann–Bernays–Gödel set theory.}. For example, we know that the collection of all sets is strictly greater than any set\footnote{Because of famous set-theoretic paradoxes like Cantor's paradox.} and thus not a set. Similarly, also the collection of topological spaces is not a set because we can regard any set as a topological space via the discrete topology\footnote{The topology where the set of open sets is the powerset of the set in question, or in other words where any subset is open.}. One could wonder if the collection of all manifolds of a certain dimension $n$ is likewise not a set. This is fortunately for us not the case. The following theorem allows us to happily treat \{\text{closed $n$ manifolds}\} and \{\text{$n+1$ cobordisms}\} as sets by replacing abstract manifolds and cobordism by manifolds and cobordisms embedded in $\R^{\infty}$.
+There is an insidious set-theoretic issue when we define the $n$-th cobordism group $\Omega_n$ (\ref{Defn n-th cob group}): is the collection of all closed $n$-manifolds a set? And what about the collection of all $(n+1)$-bordisms? It could be the case that it is something bigger than a usual set, thus not a set and problematic since we would not know how to treat them\footnote{We are assuming to be working in ZFC. There are other set theories in which one can define collections greater than sets, e.g. Von Neumann–Bernays–Gödel set theory.}. For example, we know that the collection of all sets is strictly greater than any set\footnote{Because of famous set-theoretic paradoxes like Cantor's paradox.} and thus not a set. Similarly, also the collection of topological spaces is not a set because we can regard any set as a topological space via the discrete topology\footnote{The topology where the set of open sets is the powerset of the set in question, or in other words where any subset is open.}. One could wonder if the collection of all manifolds of a certain dimension $n$ is likewise not a set. This is fortunately for us not the case. The following theorem allows us to happily treat \{\text{closed $n$ manifolds}\} and \{\text{$n+1$ cobordisms}\} as sets by replacing abstract manifolds and cobordism by manifolds and cobordisms embedded in $\R^{\infty}$.
 \end{rem}
 \begin{thm}[Whitney Embedding theorem\footnote{This result is not important only in this case, but notably for the interest of this class it was used to construct an apt category of bordisms \ref{CobCat} in order to sketch a partial proof of the most important conjecture in the field of TFTs: the cobordism hypothesis; see for details on this \cite{lurie2009classification} and \cite{Calaque_2019}.}]
     Any $n$ manifold can be embedded in $\R^{\infty}(=\bigcup_{n\in\N}\R^n)$. The space of such embeddings is contractible.\footnote{Note that there are refinements of the latter result.}
@@ -1131,7 +1129,7 @@ by observing that $S^2$ and $\Sigma_g$ are both cobordant to $\emptyset$ since t
 \label{sec:different_definitions_of_bordisms}
 
 \begin{rmnd}[Definition \ref{Define Bordism} of Bordism]
-Let $Y_0, Y_1$ be closed $n$ manifolds. A bordism $(X,p)$ from $Y_0$ to $Y_1$ consists of a compact $n+1$ manifold with boundary together with a map $p: \de X \to \{0,1\}$ such that $Y_0 \text{\colorbox{yellow}{=}} p^{-1}(0)$ and $Y_1 \text{\colorbox{yellow}{=}} p^{-1}(1)$ (hence $\de X \text{\colorbox{yellow}{=}}  Y_0 \amalg Y_1$). We say that $Y_0$ and $Y_1$ are \textit{cobordant}.
+Let $Y_0, Y_1$ be closed $n$-manifolds. A bordism $(X,p)$ from $Y_0$ to $Y_1$ consists of a compact $(n+1)$-manifold with boundary together with a map $p: \de X \to \{0,1\}$ such that $Y_0 \text{\colorbox{yellow}{=}} p^{-1}(0)$ and $Y_1 \text{\colorbox{yellow}{=}} p^{-1}(1)$ (hence $\de X \text{\colorbox{yellow}{=}}  Y_0 \amalg Y_1$). We say that $Y_0$ and $Y_1$ are \textit{cobordant}.
 \end{rmnd}
 
 \noindent There was a complaint: why don't we use diffeomorphisms instead of the highlighted equalities? This question arises because even with simple examples the equality seems too strict:
@@ -1140,14 +1138,14 @@ Let $Y_0, Y_1$ be closed $n$ manifolds. A bordism $(X,p)$ from $Y_0$ to $Y_1$ co
 Being cobordant is an equivalence relation.
 \end{rmnd} 
 
-\noindent In particular, for any closed $n$ manifold $Y$ we have $Y\sim Y$. The bordism is given by the cylinder $Y\times [0,1]$, where $p:Y\times\{0,1\}\to \{0,1\}$. Then $Y\times\{0\}=p^{-1}(0)$, but $Y\neq Y\times\{0\}$! 
+\noindent In particular, for any closed $n$-manifold $Y$ we have $Y\sim Y$. The bordism is given by the cylinder $Y\times [0,1]$, where $p:Y\times\{0,1\}\to \{0,1\}$. Then $Y\times\{0\}=p^{-1}(0)$, but $Y\neq Y\times\{0\}$! 
 It seems like our previous definition does not actually give rise to an equivalence relation. 
 %TODO is this above what we wanted to say? /William
 Instead, if we substitute the strict equalities with diffeomorphisms (isomorphisms in the category of smooth manifolds) things seem to work out flawlessly:
 
 \begin{defn}[$2^{nd}$ variant of the definition of bordism: via diffeomorphisms]
 \label{NewDefBord}
-    Let $Y_0, Y_1$ be closed $n$ manifolds. A bordism from $Y_0$ to $Y_1$ is a quadruple $(X,p,\phi_{0},\phi_{1})$ consisting of a compact $n+1$ manifold with boundary $\de X$ together with maps 
+    Let $Y_0, Y_1$ be closed $n$-manifolds. A bordism from $Y_0$ to $Y_1$ is a quadruple $(X,p,\phi_{0},\phi_{1})$ consisting of a compact $(n+1)$-manifold with boundary $\de X$ together with maps 
     \begin{align*}
         p&: \de X \to \{0,1\}        \\
         \phi_{0}&:Y_{0}\xrightarrow{\cong} p^{-1}(0) \\
@@ -1189,7 +1187,7 @@ In order to achieve this, we need to introduce the following notion:
 \end{proof}
 
 \begin{defn}[$3^{rd}$ variant of the definition of bordism: via collars]
-    Let $Y_0$ and $Y_1$ be closed $n$ manifolds. A bordism from $Y_0$ to $Y_1$ is a quadruple $(M, p, \phi_0, \phi_1)$ with $M$ and $p$ as before. $\phi_0, \phi_1$ are given by
+    Let $Y_0$ and $Y_1$ be closed $n$-manifolds. A bordism from $Y_0$ to $Y_1$ is a quadruple $(M, p, \phi_0, \phi_1)$ with $M$ and $p$ as before. $\phi_0, \phi_1$ are given by
     $$\phi_0:[0, \epsilon)\times Y_0\to U \supseteq p^{-1}(0)$$
     $$\phi_1:(-\epsilon, 0]\times Y_1\to V \supseteq p^{-1}(1)$$
     where $U$ and $V$ together form a collar of the boundary of $M$.
@@ -1251,7 +1249,7 @@ This is actually an atlas with smooth structure. Transition functions $g_{ij} = 
 \begin{defn}[Orientability and admissibility of $G$ structure]
     If $TM$ has local trivializations such that the transition functions between overlapping trivializations are in $ GL_n^+(\R)\subseteq GL_n(\R)$ then we say that $M$ is orientable.
 
-    \noindent In other words "The structure group of $TM$ can be reduced to $GL_n^+ (\R) \subset GL_n(\R)$".
+    \noindent In other words ``''The structure group of $TM$ can be reduced to $GL_n^+ (\R) \subset GL_n(\R)$''.
     
     \noindent Analogously, given some $G \subset GL_n(\R)$, we can say $M$ admits a $G$ structure if the local trivialisations are such that $\phi_{i,j} \in G$, i.e. "the structure group can be reduced to $G$". In this sense, being orientable is the same as admitting a $GL_n^+ (\R)$ structure.
 
@@ -1283,7 +1281,7 @@ This is actually an atlas with smooth structure. Transition functions $g_{ij} = 
 	A $GL_n^+ (\R)$ structure is the same as an $SO(n)$ structure.
 \end{lem}
 
-\noindent How many orientations can $M$ have? 0 if it's not orientable, 2 if it's connected and orientable, in general $2^{\# \text{ connected components}}$ if it's orientable.
+\noindent How many orientations can $M$ have? $0$ if it's not orientable, $2$ if it's connected and orientable, in general $2^{\# \text{ connected components}}$ if it's orientable.
 
 \begin{defn}[Opposite orientation]
 	$M$ oriented with charts $\{(U_i, \phi_i)\}$. The opposite orientation on $M$ is given by: $\{(U_i, \bar \phi_i)\}$ in which $\bar \phi_i$ is given by the following composition
