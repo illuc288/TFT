@@ -4151,13 +4151,23 @@ This is equivalent to saying that the category of spectra is the sequential homo
 $$\operatorname{lim}(...\leftarrow\sat_\ast\leftarrow\sat_\ast\leftarrow\sat_\ast\leftarrow ...)$$
 where we can see the diagram we are taking the limit over as a functor 
 $D:\Z^{\operatorname{op}}\to\infty\operatorname{-Cat}$ where $\Z$ is considered as a category
-via its ordering ($\leq$ corresponds to a morphism $\to$) and for each $i\in\Z$ $D(i)=\sat_\ast$. Via this
-definition of the category of spectra as such sequential homotopy limit, we avoid defining
-explicitly what are the morphisms between spectra.
+via its ordering ($\leq$ corresponds to a morphism $\to$) and for each $i\in\Z$ $D(i)=\sat_\ast$. 
  %Sometimes 
 %such diagrams are called towers. %TBD
+
+From this it follows that a map of spectra $f:\{X_i\}_{i\in\Z}\to\{Y_i\}_{i\in\Z}$ is given by components 
+that are pointed maps $f_i:X_i\to Y_i$ such that the following square commutes homotopy coherently
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJYX2kiXSxbMSwwLCJZX2kiXSxbMCwxLCJcXE9tZWdhIFhfe2krMX0iXSxbMSwxLCJcXE9tZWdhIFlfe2krMX0iXSxbMCwxLCJmX2kiXSxbMCwyLCJcXHNpbWVxIiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxLDMsIlxcc2ltZXEiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsMywiXFxPbWVnYSBmX3tpKzF9IiwyXV0=
+\[\begin{tikzcd}[cramped]
+	{X_i} & {Y_i} \\
+	{\Omega X_{i+1}} & {\Omega Y_{i+1}}
+	\arrow["{f_i}", from=1-1, to=1-2]
+	\arrow["\simeq"', no head, from=1-1, to=2-1]
+	\arrow["\simeq", no head, from=1-2, to=2-2]
+	\arrow["{\Omega f_{i+1}}"', from=2-1, to=2-2]
+\end{tikzcd}\] %UNSURE ABOUT THIS; PLEAASE CHECK /ANDREA
 \end{defn}
-The initial object of such category is the sphere spectrum $\mathds{S}$.
+The initial object of the $\infty$-category of spectra is the sphere spectrum $\mathds{S}$.
 \begin{notat}
 	An $n$-connective space is a space with trivial homotopy groups for
 	all $k< n$. An $n$-connective space is an $n-1$-connected space.
