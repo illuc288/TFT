@@ -2737,13 +2737,13 @@ More generally the category of modules is also a very important example of nonca
 \end{ex}
 Another example of non-cartesian monoidal category, which is not algebraic in nature but topological and will be useful for an outlook in the next section is the category of disks.
 \begin{ex}\label{CatOfDisks}
-    The category of oriented 1-dimensional open disks Disk$^{or}_{1}$ is also an important example of symmetric monoidal category for us in the context of TFTs. Recall that $D^1\cong (0,1)\cong\R$. 
+    The category of oriented 1-dimensional open disks Disk$^{\fr}_{1}$ is also an important example of symmetric monoidal category for us in the context of TFTs. Recall that $D^1\cong (0,1)\cong\R$. 
     \begin{itemize}
         \item Its objects are finite disjoint unions of 1-dimensional open disks $$\emptyset,\qquad\R,\qquad\R\amalg\R,\qquad\dots,\qquad\R^{\amalg k}$$ with $k\in\N$ arbitrary.
-        \item $\Hom_{\text{Disk}^{or}_{1,0}}(X,Y)$ consists of all smooth embeddings $j:X\hookrightarrow Y$ respecting orientations, i.e. there is an orientation preserving diffeomorphism from $X$ onto its image, .
+        \item $\Hom_{\text{Disk}^{\fr}_{1,0}}(X,Y)$ consists of all smooth embeddings $j:X\hookrightarrow Y$ respecting orientations, i.e. there is an orientation preserving diffeomorphism from $X$ onto its image, .
         \item The tensor product is given by the disjoint union: given $X$ a disjoint union of $n$ oriented 1-disks and $Y$ a disjoint union of $m$ oriented 1-disks, $X\amalg Y$ is a disjoint union of $n+m$ oriented disks.
         \item The unit is the empty set since given an arbitrary disjoint union of disks $X$, $\emptyset\amalg X\cong X\cong X\amalg\emptyset$.
-        \item There is a diffeomorphism $X\amalg Y\cong Y\amalg X$ making Disk$^{or}_{1,0}$ a \emph{symmetric} monoidal category.
+        \item There is a diffeomorphism $X\amalg Y\cong Y\amalg X$ making Disk$^{\fr}_{1,0}$ a \emph{symmetric} monoidal category.
     \end{itemize}  
     We will use it to give an equivalent definition of $k$-algebra (see \ref{EAlg}), but in general they can be used to define factorization algebras, a very important tool in the field of TFTs, see \cite{Tanaka_2020}.
 \end{ex}
@@ -3154,7 +3154,7 @@ question has them). The idea is to exploit the homotopical information of the ca
 category we want our monoid object to be defined in via a symmetric monoidal functor. This notion is called 
 $\mathbb{E}_1$-algebra for monoid objects, and $\mathbb{E}_\infty$-algebra for commutative ones.
 We can summarize the idea with the following mottos 
-$$\mathbb{E}_1\textit{-algebras are homtopy coherently associative and unital monoid objects }$$
+$$\mathbb{E}_1\textit{-algebras are homotopy coherently associative and unital monoid objects }$$
 $$\mathbb{E}_\infty\textit{-algebras are homotopy coherently commutative, associative and unital monoid objects}$$
 And generally:
 $$ \mathbb{E}_n\textit{-algebras are homotopy-coherent monoid objects } $$
@@ -3287,6 +3287,11 @@ as $\cdot:\mathcal{A}\otimes\mathcal{A}\to\mathcal{A}$. Then,
 	\end{center}
 	\item the story then goes on and on to $\infty$-associators
 \end{itemize}
+\begin{notat}
+	A synonym for $\E_1$-algebra is $A_\infty$-algebra. An $A_n$-algebra more generally is an object
+	 internal to a category where it controls how associative is the algebra, meaning up to how many
+	 $n$-associators. For instance, an $A_3$ algebra would be an algebra with 3-associators.
+\end{notat}
 \begin{ex}
 	Like a one object 1-category can be seen as a monoid, a one object $\infty$-category 
 	 can be seen as a homotopy coherent monoid
@@ -3298,6 +3303,16 @@ as $\cdot:\mathcal{A}\otimes\mathcal{A}\to\mathcal{A}$. Then,
 \item the higher homotopies making everything homotopy coherently associative and unital coincide
 	 \end{itemize}
 \end{ex}
+One can tell a similar story for homotopy coherent commutativity:
+\begin{enumerate}
+	\item An $\E_1$-algebra is just a homotopy coherent monoid object, it is not commutative in any sense
+	\item An $\E_2$-algebra is a homotopy coherent monoid with a 2-commutator $X\cdot Y\to Y\cdot X$
+	\item An $\E_3$-algebra is a homotopy coherent monoid with a 3-commmutator between the two
+	 ways one can compose 2-commutators in order to get from $X\cdot Y\cdot Z$ to $Z\cdot X\cdot Y$
+	 \item[$\infty$] An $\E_\infty$ algebra is a  homotopy coherent monoid object that is homotopy coherently
+	  commutative all the way up to $\infty$
+\end{enumerate}
+
 
 We recall now what an isotopy is since this will be the information in the source category of disks that we will
 stamp onto the category where the desired monoid object lives. 
@@ -3316,7 +3331,7 @@ stamp onto the category where the desired monoid object lives.
 \end{defn}
 
 \begin{defn}[$\mathbb{E}_1$-Algebra]
-	Let $\Disk_{1,0}^{or}$ be the category of 1-disks (see \ref{CatOfDisks}). Then a $\mathbb{E}_1$-algebra is a symmetric monoidal functor $$\Disk_{1}^{or}\to \cat$$ such that if $j,i\in \Hom_{\Disk_{1}^{or}}(X,Y)$ are smoothly isotopic embeddings, then  $F(j)=F(i)$, i.e. they are sent to the same morphism in $\cat$. More generally.
+	Let $\Disk_{1,0}^{\fr}$ be the category of 1-disks (see \ref{CatOfDisks}). Then a $\mathbb{E}_1$-algebra is a symmetric monoidal functor $$\Disk_{1}^{\fr}\to \cat$$ such that if $j,i\in \Hom_{\Disk_{1}^{\fr}}(X,Y)$ are smoothly isotopic embeddings, then  $F(j)=F(i)$, i.e. they are sent to the same morphism in $\cat$. More generally.
 \end{defn}
 \begin{notat}
 	A synonym for $\mathbb{E}_1$-algebra is $A_\infty$-algebra.
@@ -3518,6 +3533,75 @@ between certain spectra. See \cite[5.2.6.6]{Luriealgebra}\footnote{Note that the
 	Such objects are interesting for us because invertible field theories are equivalently
 	maps of such grouplike $\mathbb{E}_\infty$-spaces! See \ref{Spectra Phases of Matter}.
 \end{rem}
+\subsubsection{Factorization homology \extra}
+This outlook is based mainly off \cite[10.5]{Mazel-Gee2024} and secondarly on
+ \cite{ayala2019factorization} and
+ \cite{Tanaka_2020}.
+
+Since we defined $\E_n$-algebras we now briefly sketch what is factorization homology because it is a
+central tool in the investigation of topological field theories.
+
+Factorization homology in general is a bridge\footnote{This metaphor is not original. We stole it from the
+	 abstract of
+Hiro Lee Tanaka's talk \url{https://www.mpim-bonn.mpg.de/node/6147}.} between differential topology
+and higher algebra. It takes a geometric input, i.e. an $n$-manifold, and higher algebraic data from 
+a symmetric monoidal $\infty$-category
+, i.e. 
+an $\E_n$-algebra, a stack over $\E_n$-algebra.
+
+Roughly, it can be seen as 
+\begin{itemize}
+\item a homology theory for (framed) manifolds with coefficients in $\E_n$-algebras (see
+ \cite{Ayalatopological_2015})
+\item a way of integrating $\E_n$-algebras\footnote{Or $(\infty,n)$-categories, see
+ \cite{ayalacategories2020factorization}.} over a manifold in the same sense that ordinary
+ homology $H(M,A)$ is given by integrating an abelian group $A$ over a space $M$
+  (see \cite{Ayalatopological_2015})
+ \item an extended topological field theory (see \cite{Scheimbauer:2014zty}, \cite[4.1]{lurie2009classification} and
+  \cite{Ayalatopological_2015})
+\end{itemize}
+
+\begin{defn}[Factorization homology]
+	Given an $\E_n$-algebra $A\in\Alg_{\E_{n}}(\cat)$, its factorization homology is the left Kan
+	 extension\footnote{We spell out the definition but see \cite[Section 3.6.1]{Tanaka_2020} for a better
+	 	 paced explanation of what is a left
+	 	 Kan extension for $\infty$-categoires.}
+	% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXG9wZXJhdG9ybmFtZXtEaXNrfV57XFxmcn1fe259Il0sWzAsMSwiXFxvcGVyYXRvcm5hbWV7TWZsZH1ee1xcZnJ9X3tufSJdLFsxLDAsIlxcY2F0Il0sWzAsMSwiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMCwyLCJBIl0sWzEsMiwiXFxpbnRfeygtKX1BIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
+	\[\begin{tikzcd}[cramped]
+		{\operatorname{Disk}^{\fr}_{n}} & \cat \\
+		{\operatorname{Mfld}^{\fr}_{n}}
+		\arrow[hook, from=1-1, to=2-1]
+		\arrow["A", from=1-1, to=1-2]
+		\arrow["{\int_{(-)}A}"', dashed, from=2-1, to=1-2]
+	\end{tikzcd}\]
+	This means that the factorization homology of $A$ over a manifold
+	 $M\in\operatorname{Mfld}_{n}^{\fr}$ is given by 
+	 $$\int_M A:=\operatorname{colim}(\Disk_{n}^{\fr})_{/M}\xrightarrow{\operatorname{forget}\Disk_{n}^{\fr}\xrightarrow{A}\cat)}$$
+	 Where $\Disk_{n}^{\fr})_{/M}$ denotes the slice category over $M$, meaning where the objects are
+	 morphisms from objects in $\Disk_{n}^{\fr}$ into $M$ and the morphisms are morphisms
+	 between sources of morphisms into $M$ with reasonable commutativity conditions. More
+	 precisely: given $X,Y\in\Disk_{n}^{\fr}$, $f:X\to M$ and $g:Y\to M$, then a morphism from
+	 $f$ to $g$ is a morphism $h:X\to Y$ such that $f=h\circ g$.
+\end{defn}
+One way in which it is a homology theory for manifolds is that every homology theory $H$ for framed
+ $n$-manifolds is given by factorization homology with coefficients in the $\E_n$-algebra $H(\R^n)$,
+ see \cite{Ayalatopological_2015}.
+ \begin{ex}
+ 	Hochschild homology is factorization homology over $S^1\in\operatorname{Mfld_{1}^{\fr}}$.
+ \end{ex}
+ \begin{defn}[Factorization algebra]\label{FactorAlgebra}
+ Recall that a partially ordered set can be seen as a category where the arrows are given by the
+  $\leq$ relation. The open subsets of a space generally and in particular of a manifold form a poset.
+   Given an $\E_n$-algebra $A\in\Alg_{\E_{n}}(\cat)$, a manifold $M$ and an open set
+    $U\in\operatorname{Opens(M)}$ we can define what 
+   a factorization algebra is, it is a functor
+   $$\operatorname{Opens(M)}\to \cat$$
+   $$U\mapsto\int_U A$$
+ \end{defn}
+ Such objects are also very important for the study of TFTs, for instance they provide a bridge 
+ between topological field theories and a dual approach to the formalization of quantum field theories:
+ algebraic quantum field theories. See \ref{AQFT} for a sketch of what this approach is and 
+ \cite{costello2023factorization} for more on factorization algebras.
 \subsection{Interlude on Bicategories \extra} % (fold)
 \label{sub:outlook_interlude_on_bicategories}
 %I hope the order here is not confusing, in the sense that why not define before a bicategory and subsequently the delooping, however this sequence where one first pictures the delooping and then they picture a bicategory made sense in my mind. Feel free to change /Andrea
@@ -4170,10 +4254,11 @@ that are pointed maps $f_i:X_i\to Y_i$ such that the following square commutes h
 The initial object of the $\infty$-category of spectra is the sphere spectrum $\mathds{S}$.
 \begin{notat}
 	An $n$-connective space is a space with trivial homotopy groups for
-	all $k< n$. An $n$-connective space is an $n-1$-connected space.
+	all $k< n$. An $n$-connective space is an $n-1$-connected space. A space is 0-connective if and only
+	if it is non-empty.
 \end{notat}
 \begin{defn}[Infinite loop space]\label{InfiniteLoop}
-	An infinite loop space is a $0$-connective pointed space $X_0$ with an infinite sequence of pointed
+	An infinite loop space is a non-empty pointed space $X_0$ with an infinite sequence of pointed
 	 spaces
 	 $X_0,X_1,X_2,...$ with weak equivalences for $n\geq 0$
 	 $$X_n\simeq \Omega X_{n+1}$$
@@ -4276,7 +4361,8 @@ spectra that only have positive non-trivial homotopy groups: let $\{ X_i\}_{i\in
 \end{defn}
 
 \begin{rem}[Connective spectra=infinite loop spaces]
-	An infinite loop space is a $-1$-connective pointed space, hence it does not have any negative
+	An infinite loop space is a 0-connective pointed space (since it is non-empty), hence it does not have
+	 any negative
 	 homotopy groups and it has exactly the same structure $X_n\simeq \Omega X_{n+1}$ as a spectrum.
 	 
 	 Thus, infinite loop spaces coincide with connective spectra.
@@ -5333,13 +5419,16 @@ We now provide an outlook to some research programs that are tightly connected t
 %Unsure about adding these remarks on algebraic and arithmetic QFT and if it's BS, will ask Prof and please do check if BS /ANdrea
     
     \item[\extra] arithmetic field theories (\cite{Mazur1973NotesO},\cite{kim2016arithmetic},\cite{kapustin2007electricmagnetic}, \cite{Kapranov1995},\cite{RelativeBSVDUAL}): although still very conjectural, some envision poetic connections between number theory and physics via TFTs. The original intuition behind this connection is a mysterious analogy of Barry Mazur stating that number fields form correspond to some kind of 3-dimensional manifolds and primes in such number fields behave like knots embedded in these 3-dimensional manifolds. How this connects to TFTs will become clearer after the next section, where we will have gone through the connection between the Jones polynomial (a knot invariant) and 3d-Chern-Simons theory. For instance, the spectrum\footnote{Not in the sense of a modern abelian group, which we previously described \ref{Spectra Phases of Matter}! This is the spectrum of a ring.} of the commutative ring of the integers $\mathbb{Z}$ can be seen (roughly speaking\footnote{To make this more precise Mazur talks about exotic stuff like étale cohomological dimension.}) as a 3-dimensional manifold\footnote{This analogy has been
-    	very recently made precise by Peter Scholze via the framework of condensed mathematics. He talked
+    	very recently made precise by Peter Scholze via the framework of analytic stacks, which is defined
+    	via the language of condensed mathematics. He talked
     	about this in this talk \url{https://archive.mpim-bonn.mpg.de/id/eprint/4956/}.}
     	, and since the spectra prime fields can be canonically embedded in the spectra of the integers, they are analogous to knots since knots can be defined as embeddings of $S^1$ into some 3-dimensional manifold\footnote{Often it is sufficient to pick $\R^3$ as the manifold we embed in and it is what we will do in the next section. However, taking arbitrary 3 manifolds does also make sense and in some cases, like this one, it is what one desires.}. Mazur came up with this analogy in \cite{Mazur1973NotesO}, see this \href{https://mathoverflow.net/questions/50879/what-is-the-knot-associated-to-a-prime/50995#50995}{mathoverflow comment by Lieven Lebruyn}
      and the \href{https://ncatlab.org/nlab/show/Spec%28Z%29#As3dSpaceContainingKnots}{nLab entry on
      	 Spec($\Z$)} for accessible introductions to this specific correspondence. Some (\cite{kim2016arithmetic}, \href{https://shifted-project.github.io/}{Clark Barwick's SHIFTED project} and \href{https://www.youtube.com/watch?v=WXqmXKLtJrs}{this talk of his on his efforts towards geometric foundations for arithmetic field theories}) are trying to define arithmetic quantum field theories in order to apply ideas of TFTs to number theory, for example to arithmetic curves\footnote{Something from arithmetic geometry, see \cite{liu2002algebraic}}, i.e. the spectra of rings of integers in algebraic number fields. While others (\cite{Witten:1990bs},\cite{RelativeBSVDUAL}) more specifically, see a strong connection with the Langlands program. This view is summarized by the motto \emph{the Langlands program is part of the study of 4-dimensional (arithmetic, topological) quantum field theory}. For a more accessible introduction to this research program, check out these notes \cite{BenZviLanglands} by Jackson Van Dyke of a course on this topic by David Ben-Zvi.
-    \item[\extra] algebraic quantum field theory (\cite{Haag:1963dh}): talking about endomorphism monoids, i.e. monoids of the form $(\Hom_\cat(X,X),\circ)$ (see \ref{Delooping Monoid}) we previously mentioned operator algebras, i.e. monoids and submonoids of the form $(\Hom_{\Top\!\Vect_{k}}(X,X),\circ)$. They are an object of interest in themselves but importantly for us algebraic quantum field theory makes extensive use of operator algebras. Algebraic quantum field theory is very roughly a way of translating the Heisenberg picture of quantum mechanics (sometimes called matrix mechanics) to quantum field theory by providing an attempt to axiomatize QFT in a mathematically rigorous way. Given some apt operators on an apt topological vector space, meaning that the topological vector space can represent a quantum state and the selected operators on it can represent observables, an AQFT provides a formal assignment of algebras of such operators to regions of spacetime according to some axioms, e.g. the \href{https://ncatlab.org/nlab/show/Haag-Kastler+axioms}{Haag Kastler Axioms}. In this way, it pins down how observables depend of spacetime while states are being fixed, as in the Heisenberg picture. Algebraic quantum field theory can be roughly considered to be a dual to topological quantum field theory since TFTs invert the direction by assigning geometric data to algebraic ones. In fact, topological quantum field theory can be seen as a way of translating the Schrödinger picture (also called wave mechanics) to quantum field theory: states are represented by objects in the target monoidal category, the functor from $\Bord$ captures the local time evolution, and thereby a TFT shows how states are
-     propagated through time while the observables are held fixed, as in the Schrödinger picture (see more on this at \href{https://ncatlab.org/nlab/show/functorial+field+theory#QuantumMechanicsInSchroedingerPicture}{this section of the nLab entry on TFTs}). In quantum mechanics, the Heisenberg and the Schrödinger picture are two faces of the same medal, i.e. matrix mechanics and wave mechanics are equivalent\footnote{Interestingly from a historical point of view, Schrödinger's (and Eckhart's) famous proof from 1926 that the two approaches are equivalent is faulty, but von Neumann fortunately provided a foolproof demonstration in 1932. See \cite{MULLER199735} for more on this interesting trivia.}; however, we are far from proving that AQFT and TQFT are also two faces of the same medal. One point of contact between the two is via factorization algebras (something related to $E_n$-algebras, see \ref{EAlg} for the definition of a $E_1$-algebra), see \cite{costello2023factorization} for a summary on factorization algebras and how they relate to TQFT and AQFT. 
+    \item[\extra]\label{AQFT} algebraic quantum field theory (\cite{Haag:1963dh}): talking about endomorphism monoids, i.e. monoids of the form $(\Hom_\cat(X,X),\circ)$ (see \ref{Delooping Monoid}) we previously mentioned operator algebras, i.e. monoids and submonoids of the form $(\Hom_{\Top\!\Vect_{k}}(X,X),\circ)$. They are an object of interest in themselves but importantly for us algebraic quantum field theory makes extensive use of operator algebras. Algebraic quantum field theory is very roughly a way of translating the Heisenberg picture of quantum mechanics (sometimes called matrix mechanics) to quantum field theory by providing an attempt to axiomatize QFT in a mathematically rigorous way. Given some apt operators on an apt topological vector space, meaning that the topological vector space can represent a quantum state and the selected operators on it can represent observables, an AQFT provides a formal assignment of algebras of such operators to regions of spacetime according to some axioms, e.g. the \href{https://ncatlab.org/nlab/show/Haag-Kastler+axioms}{Haag Kastler Axioms}. In this way, it pins down how observables depend of spacetime while states are being fixed, as in the Heisenberg picture. Algebraic quantum field theory can be roughly considered to be a dual to topological quantum field theory since TFTs invert the direction by assigning geometric data to algebraic ones. In fact, topological quantum field theory can be seen as a way of translating the Schrödinger picture (also called wave mechanics) to quantum field theory: states are represented by objects in the target monoidal category, the functor from $\Bord$ captures the local time evolution, and thereby a TFT shows how states are
+     propagated through time while the observables are held fixed, as in the Schrödinger picture (see more on this at \href{https://ncatlab.org/nlab/show/functorial+field+theory#QuantumMechanicsInSchroedingerPicture}{this section of the nLab entry on TFTs}). In quantum mechanics, the Heisenberg and the Schrödinger picture are two faces of the same medal, i.e. matrix mechanics and wave mechanics are equivalent\footnote{Interestingly from a historical point of view, Schrödinger's (and Eckhart's) famous proof from 1926 that the two approaches are equivalent is faulty, but von Neumann fortunately provided a foolproof demonstration in 1932. See \cite{MULLER199735} for more on this interesting trivia.}; however, we are far from proving that AQFT and TQFT are also two faces of the same medal. One point of contact between the two is via factorization algebras (something related to $E_n$-algebras, see \ref{EAlg} for the definition of a $E_1$-algebra), see
+     \ref{FactorAlgebra} for a definition of factorization algebra and \cite{costello2023factorization} for
+      a summary on factorization algebras and how they relate to TQFT and AQFT. 
     
     In conclusion, algebraic quantum field theory is not a variant of topological field theory, but an alternative attempt to put quantum field theory on mathematically rigorous footings. One can discover more on algebraic quantum field theory in \cite{halvorson2006algebraic} and \cite{fewster2019algebraic}.
     
