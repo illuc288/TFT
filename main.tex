@@ -1285,7 +1285,7 @@ This is actually an atlas with smooth structure. Transition functions $g_{ij} = 
 \begin{defn}[Opposite orientation]
 	$M$ oriented with charts $\{(U_i, \phi_i)\}$. The opposite orientation on $M$ is given by: $\{(U_i, \bar \phi_i)\}$ in which $\bar \phi_i$ is given by the following composition
 	\begin{equation}
-		U_i \xrightarrow{\phi_i} \R^n \to \R^n %TODO write better
+		U_i \xrightarrow{\phi_i} \R^n \xrightarrow{ \ x_1\mapsto-x_1 \ } \R^n %TODO write better
 	\end{equation}
 	We will indicate $M$ with opposite orientation by $\bbar M$.
 \end{defn}
@@ -1293,9 +1293,9 @@ This is actually an atlas with smooth structure. Transition functions $g_{ij} = 
 \begin{ex}
 	$S^1$ %DRAWING
 \end{ex}
-
+Note that a diffeomorphism between two orientable manifolds can induce orientations: if we have $f:M\to N$ and choose an orientation on $M$ i.e. a proper choice of trivialization $(U_\alpha, \phi_\alpha)$, then on $N$ we can define a trivialization $(V_\alpha,\psi_\alpha)$ with $V_\alpha:=f(U_\alpha)$ and $\psi_\alpha:=\phi_\alpha\circ f^{-1}$. First note that, being $f$ a diffeomorphism, everything in perfectly well defined. Then note: $\psi_\alpha\circ\psi_\beta^{-1}=(\phi_\alpha\circ f^{-1})\circ (f\circ \phi_\beta^{-1})=\phi_\alpha\circ\phi_{\beta}^{-1}$ and thus the determinand of the transition functions on $N$ is the same as the ones of $M$!
 \begin{defn}[Orientation preserving and reversing diffeomorphism]
-	A diffeomorphism $\psi: M \to N$ between oriented manifolds is orientation preserving (reversing) if the orientation on $N$ induced by the one on $M$ is the (opposite) orientation on $N$.
+	A diffeomorphism $f: M \to N$ between oriented manifolds is orientation preserving (reversing) if the orientation on $N$ induced by the one on $M$ is the (opposite) orientation on $N$ $\iff \text{det}(df_p)>0$ (or $<0$) for all $p\in M$.
 \end{defn}
 \begin{ex}
 	Consider maps $S^1 \to S^1$ (implicitly using the same orientation on each $S^1$). The identity is an orientation preserving map, while the map $x \mapsto \bar x$ is orientation reversing (considering $S^1 \subset \C$).
@@ -1305,17 +1305,18 @@ This is actually an atlas with smooth structure. Transition functions $g_{ij} = 
 
 Given a manifold $M$ with boundary, its tangent bundle (how is it defined?) contains a copy of $T(\de M)$.
 %DRAWING
-This is because we can "glue another collar" $[0,\epsilon]$ onto the boundary so that the points that were on the boundary are now interior points. This allows us to define $T_x M$ for $x \in \de M$, the tangent bundle for boundary points. Instead, considering $\de M$ as its own manifold we have $T_x \de M$ and we have that $T_x \de M \subset T_x M$ and it has codimension 1. We can then define the quotient
+This is because we can "glue another collar" $[0,\epsilon)$ onto the boundary so that the points that were on the boundary are now interior points. This allows us to define $T_x M$ for $x \in \de M$, the tangent bundle for boundary points. Instead, considering $\de M$ as its own manifold we have $T_x \de M$ and we have that $T_x \de M \subset T_x M$ and it has codimension 1. We can then define the quotient
+%TODO clarify this part
 $$
 	\nu_x = T_x M /T_x \de M
 $$
 and we can write the following short exact sequence of bundles on $\de M$.
 \begin{equation}
-	0 \to T(\de M) \to i^* TM \to \nu \to 0
+	0 \to i_*T(\de M) \to TM \to \nu \to 0
 \end{equation}
-in which $i: \de M \to M$ is the inclusion and $i^*: TM$ (bundle over $M$) $\to TM$ (bundle over $\de M$) is its pullback. 
+in which $i: \de M \to M$ is the inclusion and $i_*: T(\de M)$ (bundle over $\de M$) $\to TM$ (bundle over $M$) is its pushforward. This is saying that the tangent bundle over $M$ on a boudary point is the tangent bundle of the boundary plus an extra ``normal'' direction.\\
 %TODO did I understand this correctly?
-If we fix a local chart with coordinates $x_1, \dots, x_n$ we have a basis $\frac{\de}{\de x_1}$ for $\nu$.
+If we fix a local chart on $M$ with coordinates $x_1, \dots, x_n$ we have a basis $\frac{\de}{\de x_1}$ for $\nu$.
 
 \noindent This has the following consequences:
 \begin{enumerate}
