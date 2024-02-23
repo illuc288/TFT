@@ -1029,25 +1029,23 @@ Note that a diffeomorphism between two orientable manifolds can induce orientati
 	\noindent We could instead consider maps $S^1 \to \bbar{S^1}$. In this case the identity is orientation reversing.
 \end{ex}
 
-Given a manifold $M$ with boundary, its tangent bundle (how is it defined?) contains a copy of $T(\de M)$.
+Consider a oriented manidold $M$ with boundary. By a previous theorem we know that $\de M$ is a manifold itself and thus we can talk of it's tangent bundle $T\de M$. At the same time, we can ``glue another collar'' $[0,\epsilon)$ onto the boundary so that the points of the boundary are now in the interior of the new extended manifold thus allowing us to define the tangent space $T_p M$ for $p\in \de M$ (this construction is independent from the extension). Now, we can consider $T\de M$ as a subspace of $TM|_{\de M}$ via the inclusion $i: \de M \to M$ which induces $i_*: T(\de M)\to TM$.
 %DRAWING
-This is because we can "glue another collar" $[0,\epsilon)$ onto the boundary so that the points that were on the boundary are now interior points. This allows us to define $T_x M$ for $x \in \de M$, the tangent bundle for boundary points. Instead, considering $\de M$ as its own manifold we have $T_x \de M$ and we have that $T_x \de M \subset T_x M$ and it has codimension 1. We can then define the quotient
-%TODO clarify this part
+We can then define the quotient
 $$
-	\nu_x = T_x M /T_x \de M
+	\nu_p = T_p M /i_*T_p \de M \cong \R
 $$
 and we can write the following short exact sequence of bundles on $\de M$.
 \begin{equation}
 	0 \to i_*T(\de M) \to TM \to \nu \to 0
 \end{equation}
-in which $i: \de M \to M$ is the inclusion and $i_*: T(\de M)$ (bundle over $\de M$) $\to TM$ (bundle over $M$) is its pushforward. This is saying that the tangent bundle over $M$ on a boudary point is the tangent bundle of the boundary plus an extra ``normal'' direction.\\
-%TODO did I understand this correctly?
-If we fix a local chart on $M$ with coordinates $x_1, \dots, x_n$ we have a basis $\frac{\de}{\de x_1}$ for $\nu$.
+This is saying that the tangent bundle over $M$ on a boudary point is the tangent bundle of the boundary plus an extra ``normal'' direction $\nu$.\\
+We can fix a local chart on $M$ with coordinates $x_1, \dots, x_n$ so that we have a positive oriented basis of $TM$ with $\frac{\de}{\de x_1}$ basis for $\nu$ and so that it's ``pointing outword'' (i.e. under pushforward of the chart $(\phi_{\alpha})_*(\de/\de x_1)$ has positive first component, $x_1$), so that removing it from the basis of $TM$ we have an induced orientation on the boundary.
 
-\noindent This has the following consequences:
+\noindent From this, we can infer the following consequences:
 \begin{enumerate}
+	\item $\nu$ has ``two orientations'' ($\cong$ normal directions, $\pi_0(\R\setminus0)$)
 	\item an orientation on $M$ induces one on $\de M$
-	\item $\nu$ has two "orientations" ($\cong$ normal directions)
 	\item an orientation on $\de M$ induces one on $\de M \times (0,1)$ (if I choose an orientation on $(0,1)$) but in general we can't extend this construction to all of $M$.
 
 	\noindent More generally, note that if $M$ and $N$ are oriented, then $M\times N$ is oriented. \cite{FreedBordism}
@@ -1061,12 +1059,11 @@ If we fix a local chart on $M$ with coordinates $x_1, \dots, x_n$ we have a basi
 \end{defn}
 
 \begin{defn}[Oriented bordism]
-	Let  $Y_0$ and $Y_1$ be oriented closed $n$ manifolds.
-	An oriented bordism from $Y_0$ to $Y_1$ is an oriented $n+1$ manifold $X$ together with $p: \de X \to \{0,1\}$ and $\psi: \de X \to \bbar Y_0 \amalg Y_1$ an orientation preserving diffeomorphism.
-	(Note: now $p$ is actually too much data $\dots$, since it basically tells us which of the $Y_i$ we're reversing, so we can get rid of it.)
-	%TODO make this comment clearer
+	Let  $Y_0$ and $Y_1$ be oriented closed $n$-manifolds.
+	An oriented bordism from $Y_0$ to $Y_1$ is an oriented $(n+1)$-manifold $X$ together with $p: \de X \to \{0,1\}$ and $\psi: \de X \to \bbar Y_0 \amalg Y_1$ an orientation preserving diffeomorphism.
 \end{defn}
-\noindent Again this is an equivalence relation which we call "being oriented cobordant", which allows us to give the following definition.
+\noindent Note: the choice of $\psi$ already clarifies what is the incoming boundary, i.e. $\bbar Y_0$, and the outgoing one, i.e. $Y_1$, so that $p$ is actually too much data and so it can be dropped.\\
+This is an equivalence relation which we call ``being oriented cobordant'', which allows us to give the following definition.
 \begin{defn}
 	The oriented bordism group is:
 	\begin{equation}
@@ -1135,14 +1132,14 @@ Any connected 1-manifold is diffeomorphic to:
 \subsection{Classification of 2-manifolds with boundary}
 \label{sub:classification_of_2_manifolds_with_boundary}
 
-The aim of this chapter is to prove the aforementioned classification of compact 2-dimensional manifolds with the use of Morse theory (see \ref{Classification of 2 manifolds}). We remind the reader: let $M$ be a 2 manifold with genus $g$, then \begin{itemize}
-    \item if $M$ is oriented, $M$ is classified by its genus $g$. In particular $M$ it is diffeomorphic to $\Sigma_g:=T\,\# \dots\#\,T$, the connected sum of $g$-tori, where in particular $\Sigma_0=S^2$.
+The aim of this chapter is to prove the aforementioned classification of compact 2-dimensional manifolds with the use of Morse theory (see \ref{Classification of 2 manifolds}). We remind the reader: let $M$ be a compact 2-manifold with genus $g$, then \begin{itemize}
+    \item if $M$ is oriented, $M$ is classified by its genus $g$. In particular $M$ it is diffeomorphic to $\Sigma_g:=T\,\# \dots\#\,T$, the connected sum of $g$ tori, and where we define $\Sigma_0:=S^2$.
     \item Instead if $M$ is non orientable\footnote{see \url{https://en.wikipedia.org/wiki/Genus_(mathematics)} for what is meant by genus of a non orientable surface}, $M$ is diffeomorphic to $g$ copies of the real projective plane, i.e.  $\R P^2\,\# \dots \#\,\R P^2$.
 \end{itemize} 
 
 One can find a thorough covering of this result in \cite[Chapter 3, page 200]{Hirsch1976}.
 
-\noindent In addition, we will also find a classification of compact 2 manifolds with boundary (which we will simply call \textit{surfaces}). To do it we will need Morse theory. What is the idea? Given a surface $M$ (it works in greater generality but now we're only interested in surfaces), find a map $f: M \to \R$ which is "nice" is a way we'll specify later on.
+\noindent In addition, we will also find a classification of compact 2-manifolds with boundary (which we will simply call \textit{surfaces}). To do it we will need Morse theory. What is the idea? Given a surface $M$ (it works in greater generality but now we're only interested in surfaces), find a map $f: M \to \R$ which is ``nice''.
 Then by analizing properties of $f$ we can recover the topology of the surface (i.e. the surface up to diffeomorphism). 
 
 \noindent This section is based on \cite{Hirsch1976} and \cite{kosinski2013differential}.
@@ -1174,18 +1171,20 @@ Note that at the special points the preimage is generally not a smooth manifold.
 %TODO add what the strategy is
 
 \begin{defn}[Critical point and critical value]
-	Let $M$ be a closed $n$ manifold. A critical point of $f: M \to \R$ is a point $p \in M$ such that $(df)_p: T_p M \to T_{f(p)} \R \cong \R$ is \textit{not} surjective. 
+	Let $M$ be a closed $n$-manifold and $f:M\to\R$ a smooth map. A critical point of $f$ is a point $p \in M$ such that $(df)_p: T_p M \to T_{f(p)} \R \cong \R$ is \textit{not} surjective. 
 	A critical value is the image of a critical point.
 \end{defn}
 
-\noindent The main goal then is to recover (up to diffeomorphism) $M$ from knowing the critical points and the behaviour in a neighborhood thereof. 
+\noindent So a critical point is a point of $M$ with tangent bundle ``vertical'' with respect to $\R$ (thinking of $f$ as some kind of projection).
+
+The main goal then is to recover (up to diffeomorphism) $M$ from knowing the critical points and the behaviour in a neighborhood thereof. 
 
 
-\noindent Firstly we can define what we mean by a "nice" function:
+\noindent Firstly we can define what we mean by a ``nice'' function:
 \begin{defn}
-	A Morse function is a smooth map $f: M \to \R$ such that all critical points are nondegenerate, that is 
+	A Morse function is a smooth map $f: M \to \R$ such that all critical points are nondegenerate, that is if $p$ is a critical point of $f$, then 
 	$\Hess(f)_p := \left( \frac{\de^2 f}{\de x_i \de x_j}(p)\right)_{i,j}$
-	is non-singular.
+	is non-singular (i.e. $\text{det}(\Hess(f)_p)\neq 0$).
 \end{defn}
 \begin{rem}
 	This is independent of the choice of chart. 
@@ -1258,8 +1257,8 @@ Note that at the special points the preimage is generally not a smooth manifold.
 
 \noindent Given a Morse function $f: M \to \R$, $p \in M$, then we have the following immediate consequences of the lemma:
 \begin{itemize}
-    \item if $p$ is critical (non degenerate because of the \textit{Morse} function), because of the lemma we have a chart as above. Then the level sets $f^{-1} (f(p))$ look like a neighborhood of 0 in a quadric (locally).
-    \item if $p$ is not critical (it's regular), by the implicit function theorem there are coordinates such that $f(x_1, \dots, x_n) = x_1$. So the level sets $f^{-1} (f(p))$ look like hyperplanes in $\R^n$ (locally).
+    \item if $p$ is critical ( and nondegenerate since is a \textit{Morse} function), because of the lemma we have a chart as above. Then the level sets $f^{-1} (f(p))$ look like a neighborhood of 0 in a quadric (locally).
+    \item if $p$ is regular (that is, non-singular), by the implicit function theorem there are coordinates such that $f(x_1, \dots, x_n) = x_1$. So the level sets $f^{-1} (f(p))$ look like a submanifold in $\R^n$ (locally).
 \end{itemize}
 This explains what we noticed initially for the example of the torus, that the level set changes when passing a critical point. In particular it always changes in one of the ways shown in \ref{ex:quadric}. This observation will be more complete after Morse Lemma II and Theorem \ref{thm:handle_attachment_morse} below.
 
@@ -1282,11 +1281,11 @@ Example of something we can prove with Morse functions:
 
 The following theorem also seems very plausible from the drawings:
 \begin{lem}[Morse Lemma II]
-    Let $f: M \to \R$, $a< b \in \R$ such that $f$ does not have a critical value in $[a,b]$. Then
+    Let $f: M \to \R$ be a Morse function, $a< b \in \R$ such that $f$ does not have a critical value in $[a,b]$. Then
     \begin{equation}
         M_a = f^{-1} ((-\infty, a]) \hookrightarrow M_b = f^{-1} ((-\infty, b])
     \end{equation}
-    is a deformation retract. In particular, it induces a diffeomorphism $f^{-1}(a) \cong f^{-1}(b)$.
+    is a (smooth) deformation retract. In particular, it induces a diffeomorphism $f^{-1}(a) \cong f^{-1}(b)$.
 \end{lem}
 \noindent Concretely this tells us that the level set \textit{only} changes when crossing a critical point.
 \begin{rem}
@@ -1309,7 +1308,7 @@ We will restrict to the following class of Morse functions:
 %tells us how the level set changes before and after the critical point
 We would now like to know \textit{how} the level set changes before and after the critical point. In order to do this we first introduce the concept of handle attachment.
 \begin{defn}[Handle attachment]
-	Let $M^n$ be an $n$ manifold and let $H^j \coloneq D^j \times D^{n-j}$ for $j=0,1,\dots, n$. In addition let $f: \de D^j \times D^{n-j} \hookrightarrow \de M^n$ be an embedding and note that $\de D^j \times D^{n-j}$ also embeds into $H^j$. We can then \textit{attach a j-handle} to $M^n$ by gluing along $f$ to obtain the manifold 
+	Let $M^n$ be an $n$-manifold and let $H^j \coloneqq D^j \times D^{n-j}$ for $j=0,1,\dots, n$. In addition let $f: \de D^j \times D^{n-j} \hookrightarrow \de M^n$ be an embedding and note that $\de D^j \times D^{n-j}$ also embeds into $H^j$. We can then \textit{attach a j-handle} to $M^n$ by gluing along $f$ to obtain the manifold 
 	$M^n \amalg_f H^j$.
 \end{defn}
 \noindent This concept will be studied in one of the exercises. The following claim makes the definition meaningful:
@@ -2096,7 +2095,7 @@ A few examples of categories are the following:
  	\noindent  Then, $(\Hom_{\mathscr{C}}(\ast,\ast),\circ)$ is a monoid since composition is associative and unital with neutral element given by the identity morphism $id_\ast$.
   %TODO I think the notation is usually just BM, not bold--You are probably right but I prefer to put it bold because sometimes it can be confusing, e.g. a bicategory is often denoted by 'B' and then the delooping of a bicategory becomes a one-object tricategory BB. There was also a case I can't remember where one couldn't discern Bs in a topology class. It is true that we'll probably not encounter any such confusing cases but I still prefer it because it shows that it is something "special". having said this, not a big issue for me however, if we change it to just nonbold B /Andrea
 	Conversely, every monoid $(M,\cdot)$ defines a category $\mathbf{B}M$ with 
-	$$\ob(\mathbf{B}M)=\{\ast\},\Hom_{\mathbf{B}M}(\ast,\ast)=M,m\circ_{\mathbf{B}M} m'=m\cdot m',id_{\ast}=1_{M}$$ 
+	$$\ob(\mathbf{B}M)=\{\ast\}, \ \ \Hom_{\mathbf{B}M}(\ast,\ast)=M, \ \ m\circ_{\mathbf{B}M} m'=m\cdot m', \ \ id_{\ast}=1_{M}$$ 
 	$\mathbf{B}M$ is called the delooping of the monoid $(M,\cdot)$
     \footnote{We will see a generalization of such deloopings for certain categories, monoidal categories (see \ref{MonCat}) where any monoidal category $\cat$, will be a one-object \emph{bi}category $\mathbf{B}\cat$ called the delooping $\cat$ (see \ref{DeloopingMonCat}).}.
     The same holds for groups and one-object groupoids: every group $(G,\cdot)$ defines a one-object groupoid $\mathbf{B}G$ and vice versa
@@ -2164,7 +2163,8 @@ Some more examples related to topological spaces.
     
     \end{itemize} 
     Units are constant paths, i.e. $c:[0,1]\to X$ such that $\forall t\in[0,1], c(t)=x$. Additionally, this is indeed a groupoid since inverses are given by the same paths run in the opposite direction. We have a functor 
-    $$\pi_{\leq 1}:\Top\to \Gpd$$ 
+    $$\pi_{\leq 1}:\Top\to \Gpd.$$
+    In this context, the Seifert–Van Kampen theorem can be formulated as follows: $\pi_{\leq1}$ preserves pushouts\footnote{Pushouts are certain objects in a category defined, up to isomorphism, by a certain universal property. An example of pushout is the gluing of two spaces along a common other, as we have already seen numerous times in this course. The resulting space is a pushout in $Top$}.
     
     \item Let $X$ be a topological space and $x\in X$ an arbitrary basepoint. The assignement of a fundamental group of $X$ at $x$, $\pi_1(X,x)$\footnote{\textit{Reminder}: $\pi_1(X,x)=\pi_0(\Omega_x(X))$, where $\Omega_x(X)$ is the based loop space of $X$ at $x$} is a functor $\pi_1:\Top\to \Grp$
     \end{enumerate}
@@ -2278,7 +2278,7 @@ We did not cover this topic in the lecture, but the concept of equivalence of ca
         \item conservative, if for $f:X\rightarrow Y$ in $\mathscr{C}$ such that if $F(f)$ is an isomorphism, then $f$ is an isomorphism,
         \item an isomorphism if $\exists G:\mathscr{D}\rightarrow\mathscr{C}$ such that $G\circ F=id_{\mathscr{C}}$ and $F\circ G=id_{\mathscr{D}}$,
         \item an equivalence if $\exists G:\mathscr{D}\rightarrow\mathscr{C}$ and natural isomorphisms $G\circ F\overset{\epsilon}{\cong}id_{\mathscr{C}}$ and $F\circ G\overset{\eta}{\cong}id_{\mathscr{D}}$,
-        \item essentially surjective if $\forall Z\in\mathscr{D}, \exists Z'\in\mathscr{D}, X\in\mathscr{C}$ and an isomorphsim $F(X)\overset{f}{\cong}Z'$.
+        \item essentially surjective if $\forall Z\in\mathscr{D}, \exists X\in\mathscr{C}$ and an isomorphsim $F(X)\cong Z'$ (isomorphism in $\mathscr{D}$).
     \end{enumerate}
 \end{defn}
 % realized only writing down the definition of adjunction that I swapped unit and counit in the case of equivalence, will fix it, sorry! :/ /Andrea 
@@ -2479,7 +2479,7 @@ Having loosely characterized enriched categores We can provide a definition of s
 \noindent We will later encounter a notion of weak 2-category (see \ref{Bicategory}).
 
 \section{Monoidal categories}\label{MonCat}
-Recall that a monoid is a group where not necessarily every element is invertible: a set $M$ with a distinguished object $e\in M$ called unit, also known as neutral element, and a map of sets $m: M\times M \to M$ such that $m$ is:
+Recall that a monoid is a group where elements are not required to be invertible: a set $M$ with a distinguished object $e\in M$ called unit, also known as neutral element, and a map of sets $m: M\times M \to M$ such that $m$ is:
 \begin{itemize}
     \item associative $$
     \forall a,b,c\in M, \quad m(m(a,b),c)=m(a,m(b,c))
