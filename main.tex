@@ -249,7 +249,9 @@ These are the lecture notes of the course \textit{``Bordism and Topological Fiel
 \cleardoublepage
 \section*{Notational Conventions}
 \begin{notat}
-	Throughout these notes we will abuse notation indicating a collection with some structure on it just by writing down the collection, e.g. denoting a monoid $(M,\cdot)$ by $M$, a metric space $(X,d)$ by $X$ etc...
+	Throughout these notes we will abuse notation indicating a collection with some structure on it just by
+	 writing down the collection, e.g. denoting a monoid $(M,\cdot)$ by $M$, a metric space $(X,d)$ by
+	  $X$ etc...
 \end{notat}
 \begin{notat}
 	By '$n$-manifold' and '$n$-bordism', we mean respectively a manifold of dimension $n$
@@ -265,7 +267,12 @@ These are the lecture notes of the course \textit{``Bordism and Topological Fiel
 	
 	They are often sketchy. Their aim is to convey the intuition behind exciting topics in the field of TFTs
 	 or neighouring ones (and often
-	convince you that $\infty$-categories are cool and useful). They have been written by Andrea Sittoni.
+	convince you that $\infty$-categories are cool and useful\footnote{Regarding this, we are very 
+	happy and excited to communicate that the next semester (SoSe2024) there will be a seminar
+	regarding simplicial homotopy theory and $\infty$-categories at LMU. If you are interested or 
+	have any questions regarding this, contact Prof. Land
+	 (\href{mailto:Markus.land@math.lmu.de}{Markus.land@math.lmu.de}) and check
+	 \href{https://www.markus-land.de}{his website}}). They have been written by Andrea Sittoni.
 	Please send corrections, suggestions and comments.
 \end{notat}
 In this kind of sections we have the following conventions.
@@ -312,7 +319,7 @@ on algebraic topology by Prof. Land (available on \url{https://www.mathematik.un
 There are two ways one can see topological field theories:
 \begin{enumerate}
 	\item As a way to make (some\footnote{Sadly, TFTs cannot axiomatize many quantum field theories that are particularly useful in physics, e.g. the quantum field theory behind the standard model.}) quantum field theories more mathematically rigorous
-	\item As a way to refine bordism invariants, or, roughly, as a kind of homology for smooth manifolds of a certain dimension, instead of general topological spaces.
+	\item As a way to refine bordism invariants
 \end{enumerate}
 We now sketch how these two approaches work.
 \section{QFT}
@@ -1952,14 +1959,14 @@ $$\pi_{\bullet}(\mathds{S})=\bigoplus_{n\geq 0}\pi_{n}(\mathds{S})$$
 % --------------------- LECTURE 9 22/11 -----------------------
 % -------------------------------------------------------------
 \part{Topological field theories}
-\chapter{A summary of category theory}
-\section{A modern perspective on cobordisms}
+
+\chapter{Preamble: a modern perspective on cobordisms}
 
 A bordism invariant was characterized as a homomorphism from the cobordism group to some other abelian group. 
 To extract the cobordism group from bordism we took the following steps:
 \begin{enumerate}
 	\item observed that being cobordant is an equivalence relation,
-	\item considered the equivalence classes of closed $n$ manifolds up to $n+1$ cobordisms, obtaining the \textit{sets} $\Omega_n$,
+	\item considered the equivalence classes of closed $n$ manifolds up to $n+1$ cobordisms, obtaining the sets $\Omega_n$,
 	\item took such equivalence classes together with disjoint unions, resulting in an abelian group\footnote{And eventually in a \Z graded commutative ring, but this will not be as important for us from now on.}.
 \end{enumerate} 
 This strategy was the key for classifying manifolds up to cobordism. 
@@ -2012,6 +2019,7 @@ We make both these comparisons more rigorous by later (\ref{MonObj}) showing tha
 The same holds for the commutative case, commutative monoids, commutative algebras and (\emph{strict}\footnote{We will also sketch a way how to get general symmetric monoidal categories, i.e. not necessarily strict, in an analogous way. See \ref{EAlg}.}) 
 symmetric monoidal categories are all examples of commutative monoid objects (see \ref{CommMonObj}).
 
+\chapter{A summary of category theory}
 \section{Category theory: basic definitions} % (fold)
 \label{sub:cathegory_theory_language}
 
@@ -2575,7 +2583,7 @@ A monoidal category generalizes this structure with respect to objects \emph{and
     \end{itemize}
 \end{ex}
 
-\subsection{Cartesian categories: cartesian product \extra} 
+\subsection{Cartesian monoidal categories \extra} 
 \label{sub:cartesian_categories}
 
 In particular,
@@ -2820,12 +2828,20 @@ Another example of non-cartesian monoidal category, which is not algebraic in na
 	\end{itemize}
 	If one takes topological spaces as objects, continuous maps between them as 1-morphisms, and homotopies between continuous maps \emph{up to} homotopies between homotopies one gets the homotopy 2-category of topological spaces h$_2$Top and is an example of a strict $(2,1)$-category. If one restricts themselves to spaces admitting the structure of CW-complexes, i.e. something like weakly Hausdorff compactly generated spaces, and then take the homotopy 1-types thereof, we get a subcategory of  h$_2$Top called 2-1Type. Via the Eilenberg-MacLane space of a groupoid one can establish an equivalence of categories 
 	$$2\operatorname{-}1Type\simeq Grpd$$
-	This is Grothendieck's infamous homotopy hypothesis in dimension 1. It was formulated in \emph{Pursuing Stacks} in full generality for $\infty$-groupoids. We now sketch how this works in full glory.
+	This is Grothendieck's infamous homotopy hypothesis in dimension 1. It was formulated in
+	 \emph{Pursuing Stacks} (\cite{grothendieck2021pursuing}) in general for $n$-groupoids. We now
+	  sketch how this might work in full glory, i.e. for $\infty$-groupoids.
 \end{ex}
 \begin{notat}
 	By $\infty$-category we mean $(\infty,1)$-category.
 \end{notat}
-\begin{ex}\label{HomotopyHypothesis} Regarding the last example, one could ask why stop at homotopies between homotopies and not go all the way to homotopies between homotopies between homotopies, homotopies between ... for $\infty$ many times? This is a great question and also the way to provide a universal properties for constructions similar to the already seen cartesian product called homotopy co/limits (for more on this see chapters 1 and 2 of \cite{HarpazAlgebras}). In the end, one would get an $(\infty,1)$-category, a category in which the only morphisms that are not necessarily (weakly\footnote{To be precise, higher
+\begin{ex}\label{HomotopyHypothesis} Regarding the last example, one could ask why stop at homotopies between homotopies and not go all the way to homotopies between homotopies between
+	 homotopies, homotopies between ... for $\infty$ many times? This is a great question and also the way
+	 to provide universal properties for
+	 homotopy co/limits (for more on this see chapters 1 and 2 of \cite{HarpazAlgebras} and 
+	 the start of \ref{WhatSpectra}) and 
+	 homotopy coherent diagrams more generally. In the end, one
+	 would get an $(\infty,1)$-category, a category in which the only morphisms that are not necessarily (weakly\footnote{To be precise, higher
 		 morphisms in such a category are weakly invertible and not strictly. Weakly invertible means
 		 that it is not the case the sense that $f\circ g=id$, but $f\circ g\simeq id$. This is not at all
 		 negative. That things are not strict but up to homotopy/equivalence is exactly what one desires in this context.}) invertible are morphisms between objects, all other morphisms between morphisms are invertible; in other words, a category in which all $n>1$-morphisms are invertible and 1-morphisms not necessarily. 
@@ -2838,25 +2854,40 @@ Another example of non-cartesian monoidal category, which is not algebraic in na
 	More concretely, one way to model this kind of categories with infinitely many invertible morphisms is with topologically enriched categories (which we previously described \ref{Examples of enriched categories (Simplicially)}), since mapping spaces are Hom-objects, 2-morphisms are paths 
 	in such mapping spaces and higher morphisms are given by the homotopies between homotopies. 
 	
-	A further way is via some specific simplicially enriched categories, i.e. categories enriched with the cartesian monoidal category of simplicial sets sSet (sometimes denoted Set$_\Delta$). A synonym of simplicially enriched category is simplicial category. 
+	A further way is via some specific simplicially enriched categories, i.e. categories enriched with the
+	 cartesian monoidal category of simplicial sets sSet (sometimes denoted Set$_\Delta$). A synonym
+	 of simplicially enriched category is simplicial category. 
 \end{ex}
 \begin{defn}[The Simplex Category]
-	We call simplex category, the category with all linearly ordered sets $[n]$ as objects and weakly monotonic maps as morphisms. We denote such category with $\Delta$.
+	We call simplex category, the category with all linearly ordered sets $[n]$ as objects and weakly
+	 monotonic maps as morphisms. We denote such category with $\Delta$.
 \end{defn}
 \begin{defn}[Simplicial Set]
-	A simplicial set is a Set-valued presheaf on $\Delta$, i.e. a functor $X:\Delta^{\operatorname{op}}\to \Set$. Simplicial sets form a functor category where morphisms are natural transformations denoted sSet. It is bicomplete, see the proof in \cite[1.1.24]{land2021introduction}
+	A simplicial set is a Set-valued presheaf on $\Delta$, i.e. a functor 
+	$X:\Delta^{\operatorname{op}}\to \Set$. Simplicial sets form a functor category where morphisms are
+	 natural transformations denoted
+	 sSet. It is bicomplete, see the proof in \cite[1.1.24]{land2021introduction}
 \end{defn}
-However, we do not want simplicial sets in general, but simplicial sets that are Kan complexes\footnote{See \url{https://ncatlab.org/nlab/show/Kan+complex}.}. This is because these special simplicial sets give a geometric model of $\infty$-groupoids and hence by enriching a category via such simplicial sets we get the desired $(\infty,1)$-category, similarly to getting (2,1)-categories by enriching with ordinary groupoids.
+However, for simplicial categories,
+ we do not want simplicial sets in general, but simplicial sets that are Kan
+ complexes\footnote{See \url{https://ncatlab.org/nlab/show/Kan+complex}.}. This is because these special simplicial sets give a geometric model of $\infty$-groupoids and hence by enriching a category via such simplicial sets we get the desired $(\infty,1)$-category, similarly to getting (2,1)-categories by enriching with ordinary groupoids.
 
-Quasi-categories are another construction to model $\infty$-categories that has been proven very useful and apt to create useful constructions. It also relies heavily on simplicial sets and there is strong connection to simplicially enriched categories (see \cite{land2021introduction}).
+Quasicategories are another construction to model $\infty$-categories that has been proven very
+ useful and apt to create useful constructions, see for instance \cite{lurie2008higher} and
+  \cite{Luriealgebra}. Quasicategories are simplicial sets similar to Kan complexes\footnote{In fact, a 
+  synonym for quasicategories is weak Kan complexes.} and there is strong connection to
+   simplicially enriched categories (see \cite{land2021introduction}).
 
-These three different ways to model $\infty$-categories are equivalent in some apt sense (see \cite{LurieGoodwillieEquivalent} and \cite{bergner2006survey}).
+These three different ways to model $\infty$-categories are equivalent in some apt sense (see
+ \cite{LurieGoodwillieEquivalent} and \cite{bergner2006survey}).
 
 \begin{rem}
-	Another important example of $(\infty,1)$-category is the category of spectra, a category similar\footnote{Abelian Groups:Algebra$\sim$Spectra:Higher Algebra, for more on this check out \cite{Mazel-Gee2024}.} to the category of abelian groups which we will encounter later (see \ref{Spectra Phases of Matter}).
+	Another important example of $(\infty,1)$-category is the category of spectra, a category
+	 similar\footnote{Abelian Groups:Algebra$\sim$Spectra:Higher Algebra, for more on this check out \cite{Mazel-Gee2024}.} to the category of abelian groups which we will encounter later (see
+	 \ref{WhatSpectra}).
 \end{rem} 
 
-\section{Objects Internal to a Monoidal Category}
+\section{Objects internal to a monoidal category}
 \begin{defn}[Monoid Object]
     A monoid object in a monoidal category $\cat$ is an object $M\in\cat$ equipped with two distinguished morphisms, $\mu:M\otimes M\to M$ and $\eta:\mathbb{1}_\cat\to M$ called respectively multiplication and unit such that the following diagram commutes, so that the binary operation is associative 
     % https://q.uiver.app/#q=WzAsNSxbMCwwLCIoTVxcb3RpbWVzIE0pXFxvdGltZXMgTSJdLFsxLDAsIk1cXG90aW1lcyhNXFxvdGltZXMgTSkiXSxbMiwwLCJNXFxvdGltZXMgTSJdLFswLDEsIk1cXG90aW1lcyBNIl0sWzIsMSwiTSJdLFswLDEsIlxcYWxwaGFfe00sTSxNfSJdLFsxLDIsImlkX01cXG90aW1lc1xcbXUiXSxbMCwzLCJcXG11XFxvdGltZXMgaWRfTSIsMl0sWzMsNCwiXFxtdSIsMl0sWzIsNCwiXFxtdSJdXQ==
@@ -2961,7 +2992,7 @@ We leave the case of the counit for the reader.
 % -------------------------------------------------------------
 % --------------------- LECTURE 10 27/11 -----------------------
 % -------------------------------------------------------------
-\section{Symmetric Monoidal Categories} % (fold)
+\section{Symmetric monoidal categories} % (fold)
 \label{sub:symmetric_monoidal_categories}
 
 In order to get the categorical parallel of a commutative monoid, we need to define a \emph{symmetric} monoidal category. We want to achieve something similar to $a \cdot b = b \cdot a$ in a monoid. However, we will not characterize this behavior with strict identities, but with a natural isomorphism\footnote{Just as we did for associativity and unitality.}. Given the functor 
@@ -3689,7 +3720,7 @@ One way in which it is a homology theory for manifolds is that every homology th
  $$ \int_{(-)}A:\operatorname{Bord}^{\fr}_{n}\to \operatorname{Fact}_n\subset \cat$$
  where $\Bord_n$ is the extended category of bordisms (see \ref{RemarkExtendedTFTs}) and thus 
  a TFT! Check out \cite{Scheimbauer:2014zty} for a detailed treatment.
-\subsection{Interlude on Bicategories \extra} % (fold)
+\subsection{Interlude on bicategories \extra} % (fold)
 \label{sub:outlook_interlude_on_bicategories}
 %I hope the order here is not confusing, in the sense that why not define before a bicategory and subsequently the delooping, however this sequence where one first pictures the delooping and then they picture a bicategory made sense in my mind. Feel free to change /Andrea
 %Also I hope it is not overkill, it all started because I wanted to define dual objects of a monoidal cat as adjunctions of 1-morphisms in the delooping, then realized that bicategory would be useful also for 2 reasons: 1-understanding better why Cat is strict and not weak, and in general picturing what weak n-categories are and 2-the extended 2-category of 2 dimensional bordisms is a bicategory. I'll ask the professor if it makes sense or it is just confusing
@@ -4446,6 +4477,13 @@ spectra that only have positive non-trivial homotopy groups: let $\{ X_i\}_{i\in
  
  Connective spectra form a subcategory of Sp denoted $\operatorname{Sp}_{\geq 0}$.
 \end{defn}
+\begin{ex}
+	Many of the spectra one uses are connective:
+	\begin{itemize}
+\item suspension spectra,and thus remarkably the sphere spectrum $\mathds{S}$
+\item the Thom spectrum MO
+	\end{itemize}
+\end{ex}
 
 \begin{rem}[Connective spectra=infinite loop spaces]
 	An infinite loop space is a 0-connective pointed space (since it is non-empty), hence it does not have
@@ -4956,7 +4994,7 @@ This means that any 1-dimensional bordism (i.e. including disconnected ones)
  Hence, we now know the generators of $\Bord_{1,0}$, i.e. $\bullet_{+}$ and $\bullet_-$, and the relations, 
  i.e. the possible connected 1-dimensional bordisms. Since we also know that $\Zf$ is a 
  \emph{symmetric monoidal} functor, it means that we shall just check where such generators and relations are sent,
- see \ref{AlternativeProof1d}.
+ see \ref{GeneratorsClass1TFT}.
  
 
 \begin{rem}
