@@ -1491,12 +1491,13 @@ We now consider the case with boundary:
 \end{proof}
 
 \chapter{Cobordism groups}\label{Cob Groups}
-We now define the most fundamental idea in cobordism theory: the cobordism group.
+We now define the most fundamental object in cobordism theory: the cobordism group.
  It is an algebraic structure characterizig if two manifolds are cobordant and how this relates to the
   disjoint 
- union of manifolds. From this one can establish cobordism invariants, homomorphisms 
- from a certain cobordism group to another abelian group. To do this, we will exploit we proved about
- the classification of 1- and 2-manifolds up to diffeomorphism. To be diffeomorphic is a much 
+ union of manifolds. From this one can establish cobordism invariants, i.e. homomorphisms 
+ from a certain cobordism group to another abelian group. To do this, we will exploit
+ the classifications of 1- and 2-manifolds up to diffeomorphism we proved in the previous chapters.
+  To be diffeomorphic is a much 
  stricter and finer relation then being cobordant, that is why it is much harder to classify manifolds
  up to diffeomorphism, but it also will make our life much easier when establishing cobordism invariants.
 \begin{defn}
@@ -2408,8 +2409,9 @@ The right hand square commutes because of the naturality of $\eta$. Since the ri
 \begin{ex}
 	A trivial example is given by any functor that is an isomorphism. In that case the natural transformations are actually identities. 
 
-	\noindent An equivalence of categories instead is an adjunction.
-    %I had found written "An equivalence of categories instead is in general \textit{not} an adjunction, however it can always be made into one by appropriately changing the natural isomorphisms.", which is correct? /William
+	\noindent An equivalence of categories can always be promoted to an adjunction where the 
+	unit and the counit are natural isomorphisms. Such an adjunction is called adjoint equivalence.
+	See for a proof \cite[4.4.5]{riehl2017category}.
 
 	\noindent The more typical examples are instead related to forgetful functors.
 	%TODO add examples
@@ -3355,7 +3357,8 @@ as $\cdot:\mathcal{A}\otimes\mathcal{A}\to\mathcal{A}$. Then,
 \item the higher homotopies making everything homotopy coherently associative and unital coincide
 	 \end{itemize}
 \end{ex}
-One can tell a similar story for homotopy coherent commutativity:
+As we sketched what is homotopy coherent associativity, one can tell a similar story for homotopy
+ coherent commutativity:
 \begin{enumerate}
 	\item An $\E_1$-algebra is just a homotopy coherent monoid object, it is not commutative in any sense
 	\item An $\E_2$-algebra is a homotopy coherent monoid with a 2-commutator $X\cdot Y\to Y\cdot X$
@@ -3366,7 +3369,8 @@ One can tell a similar story for homotopy coherent commutativity:
 \end{enumerate}
 
 
-We recall now what an isotopy is since this will be the information in the source category of disks that we will
+We recall now what an isotopy is since this will be the information in the source category of disks that
+ we will
 stamp onto the category where the desired monoid object lives. 
 
 \begin{defn}[Isotopy]\label{Isotopy}
@@ -3476,10 +3480,12 @@ in which higher algebra takes place.
 \end{notat}
 \begin{notat}
 	Under the homotopy hypothesis $\infty$-Grpd corresponds to a nice category of spaces, hence it is 
-	sometimes denoted as $\mathds{S}$ for $\mathds{S}$paces.
-	Other synonyms nowadays are: \begin{itemize}
+	sometimes denoted as $\mathscr{S}$ for $\mathscr{S}$paces.
+	Other synonyms nowadays are: 
+	\begin{itemize}
 		\item $\infty$-Set, because it is the category one enriches over to get $\infty$-categories,
-		similarly to ordinary sets and locally small categories, and it plays a parallel role in higher algebra to set in 
+		similarly to ordinary sets and locally small categories, and it plays a parallel role in higher algebra to
+		 set in 
 		ordinary algebra (see the table in \ref{WhatSpectra})
 		\item An, standing for anima, terminology coming from condensed mathematics
 	\end{itemize}
