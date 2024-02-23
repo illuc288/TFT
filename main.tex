@@ -232,7 +232,8 @@ $-$H. Poincaré}\\
 \chapter*{\huge{\textcolor{black}{For the reader}}}
 \hfill
 \vspace{0.50cm}\\
-These are the lecture notes of the course \textit{``Bordism and Topological Field Theory''} held by Prof.\hspace{1mm}Dr. Claudia Scheimbauer (\href{mailto:scheimbauer@ma.tum.de}{scheimbauer@ma.tum.de}) during the Wintersemester 2023/2024 at the \textit{Technische Universität München}. The tutorial sessions are held by Anja \v{S}vraka (\href{mailto:svr@ma.tum.de}{svr@ma.tum.de}).\hspace{1.5mm}The notes are typed by Luca Ipsale (\href{mailto:luca.ipsale@campus.lmu.de}{luca.ipsale@campus.lmu.de}), William Luciani (\href{mailto:w.luciani@campus.lmu.de}{w.luciani@campus.lmu.de}), Andrea Sittoni (\href{mailto:sittoniandrea@gmail.com}{sittoniandrea@gmail.com}) and Üzeyir Sa\c{c}{\i}kay (\href{mailto:uzeyirsacikay@gmail.com}{uzeyirsacikay@gmail.com}). Exercises are also implemented in the notes by Jacob Skarby (\href{mailto:jacob.skarby@tum.de}{jacob.skarby@tum.de}). If you find errors or if you have suggestions of any kind, please write us an e-mail.
+These are the lecture notes of the course \textit{``Bordism and Topological Field Theory''} held by Prof.\hspace{1mm}Dr. Claudia Scheimbauer (\href{mailto:scheimbauer@ma.tum.de}{scheimbauer@ma.tum.de}) during the Wintersemester 2023/2024 at the \textit{Technische Universität München}. The tutorial sessions are held by Anja \v{S}vraka (\href{mailto:svr@ma.tum.de}{svr@ma.tum.de}).\hspace{1.5mm}The notes are typed by Luca Ipsale (\href{mailto:luca.ipsale@campus.lmu.de}{luca.ipsale@campus.lmu.de}), William Luciani (\href{mailto:w.luciani@campus.lmu.de}{w.luciani@campus.lmu.de}), Andrea Sittoni (\href{mailto:sittoniandrea@gmail.com}{sittoniandrea@gmail.com}) and Üzeyir Sa\c{c}{\i}kay (\href{mailto:uzeyirsacikay@gmail.com}{uzeyirsacikay@gmail.com}). Exercises are also implemented in the notes by Jacob Skarby (\href{mailto:jacob.skarby@tum.de}{jacob.skarby@tum.de}). If you find
+ errors or have suggestions of any kind, please write us an e-mail.
 
 \vspace{1cm}
 
@@ -247,26 +248,40 @@ These are the lecture notes of the course \textit{``Bordism and Topological Fiel
 \thispagestyle{empty}
 \cleardoublepage
 \section*{Notational Conventions}
-We use the symbol '\extra' at the end of titles of sections, definitions or theorems that depart from the content of the lecture and deepen some aspect on a topic with an outlook towards research topics.
-
 \begin{notat}
 	Throughout these notes we will abuse notation indicating a collection with some structure on it just by writing down the collection, e.g. denoting a monoid $(M,\cdot)$ by $M$, a metric space $(X,d)$ by $X$ etc...
 \end{notat}
 \begin{notat}
-	$n$-manifold and $n$-bordism mean respectively $n$ dimensional manifold and $n$ dimensional bordism.
+	By '$n$-manifold' and '$n$-bordism', we mean respectively a manifold of dimension $n$
+	 and bordism a bordism of dimension $n$.
 \end{notat}
 \begin{notat}
 	We often denote equivalence classes just with a representative thereof. 
 \end{notat}
+
+\begin{notat}[\extra]
+	We use the symbol '\extra' at the end of titles of sections, definitions or theorems that depart from the
+	content of the class and deepen some aspects of topics we did not cover in the lectures.
+	
+	They are often sketchy. Their aim is to convey the intuition behind exciting topics in the field of TFTs
+	 or neighouring ones (and often
+	convince you that $\infty$-categories are cool and useful). They have been written by Andrea Sittoni.
+	Please send corrections, suggestions and comments.
+\end{notat}
+In this kind of sections we have the following conventions.
 \begin{notat}
-We denote the category of spaces/$\infty$-groupoids both with $\mathscr{S}$, $\operatorname{Grpd}_\infty$ and with $\infty\operatorname{-Grpd}$. This is motivated by the homotopy hypothesis \ref{HomotopyHypothesis}.
+We denote the $(\infty,1)$-category of spaces/$\infty$-groupoids both with $\mathscr{S}$,
+ $\operatorname{Grpd}_\infty$ and with $\infty\operatorname{-Grpd}$. $\mathscr{S}$ stands for 
+ $\mathscr{S}$paces. This is motivated by the
+  homotopy hypothesis, see \ref{HomotopyHypothesis}.
 \end{notat}
 \begin{notat}
-When there is no ambiguity, we denote $(\infty,1)$-categories as $\infty$-categories.
+When there is no ambiguity, we denote $(\infty,1)$-categories as $\infty$-categories. We denote the
+$(\infty,2)$-category of all $(\infty,1)$-categories with $\Cat_\infty$ or $\infty$-Cat.
 \end{notat}
 \section*{Prerequisites}
 The notes strive to be as self-contained as possible. We do assume however knowledge of linear algebra,
-basic notions from analysis, e.g. $C^{\infty}$ differentiability, and basic notions of topology, e.g. 
+basic notions from analysis, e.g. smoothness, and basic notions of topology, e.g. 
 paracompactness. Knowledge of algebraic topology is helpful but not necessary to understand the
 most important parts.
 \section*{Acknowledgements}
@@ -294,7 +309,7 @@ on algebraic topology by Prof. Land (available on \url{https://www.mathematik.un
 
 \chapter{Why should you care? An informal introduction}
 %As the name suggests, this subject is two-sided: we have a physics part, namely Quantum Field Theory, and a mathematics part, more specifically topology and in particular (Co)Bordism. Let us explore the motivations and ideas behind these two subjects and how they come together. Do not worry if everything is not immediately clear, it will become so during the semester... hopefully. /// Andre: there is nothing wrong with this, just liked more the alternative I wrote down, feel free to change it back /AAndre
-There are two ways one can approach topological field theories:
+There are two ways one can see topological field theories:
 \begin{enumerate}
 	\item As a way to make (some\footnote{Sadly, TFTs cannot axiomatize many quantum field theories that are particularly useful in physics, e.g. the quantum field theory behind the standard model.}) quantum field theories more mathematically rigorous
 	\item As a way to refine bordism invariants, or, roughly, as a kind of homology for smooth manifolds of a certain dimension, instead of general topological spaces.
@@ -345,7 +360,7 @@ Therefore, axiomatizations have been developed exploiting new tools from geometr
 If someone is into mathematics for the money or the prestige\footnote{If not already sufficiently clear, we explicitly state that this is a joke.}, the field of topological field theories is the one to specialize in:
  \begin{itemize}
     \item René Thom, the mathematician who laid the foundation of cobordism theory\footnote{Which is at the root of TFTs: TFTs can be seen as a refinement of his work.} in his PhD thesis, received the Fields Medal for this.
-    % TODO is secondary here correct? What does it mean? Also, I would write Chern classes instead of Chern-Simons forms/William 
+    
     \item Shiing-Shen Chern and Jim Simons discovered geometric invariants of 3-dimensional Riemannian manifolds called (classical) Chern-Simons invariants. They are a generalization of the total geodesic curvature, which is in turn a generalization of the curvature of a plane curve that $=0$ when the curve is a geodesic. Such invariants are the basic building blocks Witten used to define the earliest example we have of a TFT: 3d Chern-Simons theory\footnote{One can find more on this in \cite{freed2008remarks}}. Simons  then went on to found an incredibily successful hedge fund and became a billionaire. Chern continued to do groundbreaking work in differential geometry and topology; so much that some years ago the International Congress of Mathematicians named a prize after him: the \hyperlink{https://en.wikipedia.org/wiki/Chern_Medal}{Chern Medal}.
     \item Edward Witten received his Fields medal mainly because he found a link between 3d-TFTs, in particular Chern-Simons theory, and knot theory, in particular with the Jones polynomial. See \cite{Witten1989} for details.
 \end{itemize} 
@@ -478,7 +493,7 @@ But are all these notions are actually useful? Well, classifying manifolds up to
 \part{Classical cobordism theory}
 \chapter{Manifolds and bordisms}
 
-\section{Some definitions} % (fold)
+\section{What are manifolds?} % (fold)
 \label{sec:some_definitions}
 
 Before venturing into a definition of cobordism, let us recall some useful definitions.
@@ -640,7 +655,7 @@ In some contexts, it can be interesting to do calculus on a manifold. In order t
 	Come up with the natural notion of smooth map between manifolds \emph{with} boundary. 
 \end{exercise}
 
-\section{What is a Bordism?}
+\section{What is a bordism?}
 
 \begin{defn}[$1^{st}$ variant of the definition of bordism: via \emph{strict equalities}]
 \label{Define Bordism}
@@ -824,302 +839,6 @@ We need to show that the relation satisfies the properties of reflexivity, symme
      way $\de X = \de_{in} X_1 \amalg \de_{out} X_2$.
 \end{itemize}
 \end{proof}
-
-\section{Cobordism groups}\label{Cob Groups}
-\begin{defn}
-\label{Defn n-th cob group}
-The set underlying the $n$-th cobordism group is
-$$\Omega_n = \frac{\{\text{closed $n$ manifolds}\}}{\{\text{$n+1$ cobordisms}\}}$$
-$(\Omega_n, \amalg)$ is an abelian group with operation given by the disjoint union $\amalg$.
-	\begin{enumerate}
-		\item the disjoint union is associative and commutative
-		\item the identity element\footnote{We will
-			sometimes write $0=[\emptyset]$ or more often $\emptyset=[\emptyset]$}
-			 is the cobordism class of the empty set\footnote{Reminder: $\emptyset$ is an $n$-manifold for every $n$.}
-			  $[\emptyset]$, i.e. the set of $n$-manifolds which are bordant with the empty set
-		\item every element has an inverse:
-		$[M]\amalg [M]=[\emptyset]$ since $M\amalg M=(\de(M\times[0,1]))$ and such a cylinder can be bent into a
-		 macaroni, which is bordant to the empty set:
-		 \[\includegraphics[width=6.5cm]{images/Lecture 2/MACARONI.png}\]
-	\end{enumerate}
-\end{defn}
-\begin{rem}
-There is an insidious set-theoretic issue when we define the $n$-th cobordism group $\Omega_n$ (\ref{Defn n-th cob group}): is the collection of all closed $n$-manifolds a set? And what about the collection of all $(n+1)$-bordisms? It could be the case that it is something bigger than a usual set, thus not a set and problematic since we would not know how to treat them\footnote{We are assuming to be working in ZFC. There are other set theories in which one can define collections greater than sets, e.g. Von Neumann–Bernays–Gödel set theory.}. For example, we know that the collection of all sets is strictly greater than any set\footnote{Because of famous set-theoretic paradoxes like Cantor's paradox.} and thus not a set. Similarly, also the collection of topological spaces is not a set because we can regard any set as a topological space via the discrete topology\footnote{The topology where the set of open sets is the powerset of the set in question, or in other words where any subset is open.}. One could wonder if the collection of all manifolds of a certain dimension $n$ is likewise not a set. This is fortunately for us not the case. The following theorem allows us to happily treat \{\text{closed $n$ manifolds}\} and \{\text{$n+1$ cobordisms}\} as sets by replacing abstract manifolds and cobordism by manifolds and cobordisms embedded in $\R^{\infty}$.
-\end{rem}
-\begin{thm}[Whitney Embedding theorem\footnote{This result is not important only in this case, but notably for the interest of this class it was used to construct an apt category of bordisms \ref{CobCat} in order to sketch a partial proof of the most important conjecture in the field of TFTs: the cobordism hypothesis; see for details on this \cite{lurie2009classification} and \cite{Calaque_2019}.}]
-    Any $n$ manifold can be embedded in $\R^{\infty}(=\bigcup_{n\in\N}\R^n)$. The space of such embeddings is contractible.\footnote{Note that there are refinements of the latter result.}
-\end{thm}
-
-\begin{rem}
-    Actually $(\Omega_n,\amalg)$ is a finitely generated abelian group, but this is a hard theorem. In particular, it is a finite product of cyclic groups of order $2$ (from 2.)
-\end{rem}
-
-\begin{defn}[Bordism invariant]
-	A bordism invariant is a homomorphism of abelian groups $$(\Omega_n,\amalg,\emptyset) \to (A,\cdot,e)$$ 
-	the abelian group $A$ can be $\Z$, $\R$ or $\C$ for instance.
-\end{defn}
-\begin{rem}
-	Many important manifold invariants are also bordism invariants.
-\end{rem}
-
-\begin{ex}
-\hfill
-\begin{itemize}%TODO complete
-    \item $\chi$ mod 2 (the Euler characteristic)
-    \item signature
-    \item characteristic classes such as Pontrjagin, Stiefel-Whitney or Chern classes 
-\end{itemize}
-\end{ex}
-%TODO add definition of characteristic class or maybe just some additional comment
-\subsection{The 0-th Cobordism Group, \texorpdfstring{$\Omega_{0}$}{Omega 0}}
-Consider
- $$\Omega_0 = \{\text{finite disjoint unions of points}\} / \{\text{$1$-dimensional cobordisms}\}.$$
-To compute this, consider the following classification of $1$ manifolds:
-
-\begin{prop}\label{prop:classification_1d}
-Any $1$ dimensional compact manifold with boundary is diffeomorphic to a finite disjoint union of closed intervals $[0,1]$ and circles $S^1$.
-\end{prop}
-%TODO add proof, it should not be hard, and useful also for classification of 1TFT
-\begin{ex}
-An example of a $1$-dimensional cobordism is $W=[0,1]$. Here are the 3 different way of seeing it as a bordism: from $Y_0 = \{0,1\}$ to $Y_1 = \emptyset$, from $Y_0 = \{0\}$ to $Y_1 = \{1\}$ and from $Y_0 = \emptyset$ to $Y_1 = \{0,1\}$.
-\begin{figure}[H]
-    \centering
-    \begin{tikzpicture}
-        % Line segment
-        \draw[line width=1pt] (0,0.5) arc (90:270:-0.5 and 0.5);
-  
-        % Filled dots at the ends
-        \fill (0,0.5) circle (2pt);
-        \fill (0,-0.5) circle (2pt);
-
-        \draw[line width=1pt] (3.5,0) -- (4.5,0);
-  
-        % Filled dots at the ends
-        \fill (3.5,0) circle (2pt);
-        \fill (4.5,0) circle (2pt);
-
-        \draw[line width=1pt] (8,0.5) arc (90:270:0.5 and 0.5);
-  
-        % Filled dots at the ends
-        \fill (8,0.5) circle (2pt);
-        \fill (8,-0.5) circle (2pt);
-    \end{tikzpicture}
-    %\caption{}
-\end{figure}
-\end{ex}
-
-\begin{ex} Here is a list of various finite disjoint unions of points with different cardinalities. Can you see a pattern emerging?
-\begin{figure}[H]
-    \captionsetup[subfigure]{labelformat=empty}
-    \centering
-    \begin{subfigure}[t]{.3\textwidth}
-        \centering
-        \begin{tikzpicture}
-            \draw[line width=1pt] (0,0) -- (1,0);
-      
-            \fill (0,0) circle (2pt);
-            \fill (1,0) circle (2pt);
-        \end{tikzpicture}
-        \caption{1 point}
-    \end{subfigure}
-    %
-    \begin{subfigure}[t]{.3\textwidth}
-        \centering
-        \begin{tikzpicture}
-            \draw[line width=1pt] (0,0.5) arc (90:270:-0.5 and 0.5);
-      
-            \fill (0,0.5) circle (2pt);
-            \fill (0,-0.5) circle (2pt);
-        \end{tikzpicture}
-        \caption{2 points}
-    \end{subfigure}
-    %
-    \begin{subfigure}[t]{.3\textwidth}
-        \centering
-        \begin{tikzpicture}
-            \draw[line width=1pt] (0,0.5) arc (90:270:-0.5 and 0.5);
-      
-            \fill (0,0.5) circle (2pt);
-            \fill (0,-0.5) circle (2pt);
-    
-            \draw[line width=1pt] (0,-1) -- (1,-1);
-      
-            \fill (0,-1) circle (2pt);
-            \fill (1,-1) circle (2pt);
-        \end{tikzpicture}
-        \caption{3 points}
-    \end{subfigure}
-
-    \bigskip
-    
-    \begin{subfigure}[t]{.3\textwidth}
-        \centering
-        \begin{tikzpicture}
-            % Line segment
-            \draw[line width=1pt] (0,0.5) arc (90:270:-0.5 and 0.5);
-      
-            % Filled dots at the ends
-            \fill (0,0.5) circle (2pt);
-            \fill (0,-0.5) circle (2pt);
-
-            % Line segment
-            \draw[line width=1pt] (0,-1) arc (90:270:-0.5 and 0.5);
-      
-            % Filled dots at the ends
-            \fill (0,-1) circle (2pt);
-            \fill (0,-2) circle (2pt);
-        \end{tikzpicture}
-        \caption{4 points}
-    \end{subfigure}
-    %
-    \begin{subfigure}[t]{.3\textwidth}
-        \centering
-        \begin{tikzpicture}
-            % Line segment
-            \draw[line width=1pt] (0,0.5) arc (90:270:-0.5 and 0.5);
-      
-            % Filled dots at the ends
-            \fill (0,0.5) circle (2pt);
-            \fill (0,-0.5) circle (2pt);
-
-            % Line segment
-            \draw[line width=1pt] (0,-1) arc (90:270:-0.5 and 0.5);
-      
-            % Filled dots at the ends
-            \fill (0,-1) circle (2pt);
-            \fill (0,-2) circle (2pt);
-
-            % Line segment
-            \draw[line width=1pt] (0,-2.5) -- (1,-2.5);
-      
-            % Filled dots at the ends
-            \fill (0,-2.5) circle (2pt);
-            \fill (1,-2.5) circle (2pt);
-        \end{tikzpicture}
-        \caption{5 points}
-    \end{subfigure}
-    %
-    \begin{subfigure}[t]{.3\textwidth}
-        \centering
-        \begin{tikzpicture}
-            % Line segment
-            \draw[line width=1pt] (0,0.5) arc (90:270:-0.5 and 0.5);
-      
-            % Filled dots at the ends
-            \fill (0,0.5) circle (2pt);
-            \fill (0,-0.5) circle (2pt);
-
-            % Line segment
-            \draw[line width=1pt] (0,-1) arc (90:270:-0.5 and 0.5);
-      
-            % Filled dots at the ends
-            \fill (0,-1) circle (2pt);
-            \fill (0,-2) circle (2pt);
-
-            % Line segment
-            \draw[line width=1pt] (0,-2.5) arc (90:270:-0.5 and 0.5);
-      
-            % Filled dots at the ends
-            \fill (0,-2.5) circle (2pt);
-            \fill (0,-3.5) circle (2pt);
-        \end{tikzpicture}
-        \caption{6 points}
-    \end{subfigure}
-\end{figure}
-\end{ex}
-
-\noindent Keeping this pattern in mind, consider collection of $k$ points, with $k$ finite (i.e. the only closed 0 manifolds):
-
-\begin{itemize}
-	\item If $k$ is even, we can find a bordism to $\emptyset$
-	\item If $k$ is odd, we can find a bordism to $\{*\}$
-\end{itemize}
-
-\noindent We then have 
-\begin{equation*}
-    2k \text{ points} \sim \emptyset, \quad\quad 2k+1 \text{ points} \sim \text{1 point}
-\end{equation*}
-Therefore, the 0-th cobordism group is given by
-\begin{equation}
-    \Omega_0 = \{ \emptyset, \{*\}\} \cong \Z_2.
-\end{equation}
-A possible variation is: add a ``decoration'', called \textit{orientation} (will be made more precise later), so we now have:
-$$\Omega_0^{\textit{or}} = \big\{\text{finite sets of points $S$ with a map } S \to \{+,-\}\big\} /\{\text{oriented cobordism}\}$$
-
-An oriented cobordism in $1$ dimension is given by $[0,1]$ or $S^1$ which comes with an orientation. Here are some
-examples
-
-\[ \includegraphics[width=9cm]{images/Lecture 11/1dBORDISM.png}\]
-
-\begin{exercise}
-    What is $\Omega_0^{or}$? Try to think about it! 
-\end{exercise}
-
-\subsection{The 1st cobordism group, \texorpdfstring{$\Omega_{1}$}{Omega 1}}
-Now we have
-$$\Omega_1= \{\text{closed $1$-dimensional manifolds}\} / \{\text{$2$-dimensional cobordisms}\}.$$
-In studying this group, the following result, which is a restriction of \ref{prop:classification_1d}:
-\begin{thm}
-    Any closed $1$-dimensional manifold is a finite disjoint union of circles
-\end{thm}
-\noindent However, a circle is the boundary of a 2-disk, which gives a cobordism from $S^1$ to $\emptyset$, we then have $S^1 \sim \emptyset$. Hence, also finite disjoint unions of $S^1$ are cobordant to the empty set. Therefore, the $1$st cobordism group is trivial:
-\begin{equation}
-    \Omega_1 = 0
-\end{equation}
-
-\subsection{The 2nd cobordism group, \texorpdfstring{$\Omega_{2}$}{Omega 2}}
-In order to find the $2$nd cobordism group, we first need a classification of $2$ manifolds. %(Introduced before) In order to state the result we need to introduce the concept of \textit{connected sum}
-%\begin{defn}[Connected Sum]
-	%Given $n$ manifolds $M,N$, their connected sum $M\# N$ is given by
-	%%M\# N = M \setminus (D^n)^\circ \cup_{\de D^n \times [0,1]} N \setminus (D^n)^\circ
-	%\end{equation}
-%\end{defn}
-%DRAWING
-\begin{prop}[Classification of $2$-dimensional manifolds]\label{Classification of 2 manifolds}
-Every connected closed $2$ manifold is diffeomorphic to
-\begin{enumerate}
-    \item $S^2$, orientable
-    \begin{figure}[!ht]
-        \centering
-        \includegraphics[width=3cm]{images/Lecture 3/sphere.png}
-        \caption{2-sphere, $S^2$}
-    \end{figure}
-    \item $\Sigma_g = \underbrace{T \# \dots \# T}_{g-\text{times}}$ , orientable
-    \begin{figure}[!ht]
-        \centering
-        \includegraphics[width=10cm]{images/Lecture 3/surface_of_genus_g.png}
-        \caption{Surface of genus g, $\Sigma_g$}
-    \end{figure}
-    \item $P_k = \underbrace{\R\P^2 \# \dots \# \R\P^2}_{k-\text{times}}$ , non-orientable
-    \begin{figure}[!ht]
-        \centering
-        \begin{subfigure}[t]{.4\textwidth}
-            \centering
-            \includegraphics[width=6cm]{images/Lecture 3/sigma_g_rp2.png}
-            \caption{$P_{2g+1} \cong \Sigma_g \# \R\P^2$}
-        \end{subfigure}\hspace{10mm}
-        \begin{subfigure}[t]{.4\textwidth}
-            \centering
-            \includegraphics[width=6cm]{images/Lecture 3/sigma_g_klein_bottle.png}
-            \caption{$P_{2g+2} \cong \Sigma_g \# K$}
-        \end{subfigure}
-    \end{figure}
-\end{enumerate}
-\end{prop}
-
-\noindent We can now use this knowledge to compute
-$$
-	\Omega_2^{\text{or}} = \{\text{closed oriented $2$ manifolds} \} /\{\text{$3$-dimensional oriented cobordisms}\}
-$$
-by observing that $S^2$ and $\Sigma_g$ are both cobordant to $\emptyset$ since they can simply be ``filled'' to a $3$ dimensional manifold with boundary, we get
-\begin{equation}
-    \Omega_2^{or} = 0.
-\end{equation} 
-%DRAWING
-\begin{exercise}
-    What about the non-oriented part $\Omega_2$?
-\end{exercise}
-
 
 % -------------------------------------------------------------
 % --------------------- LECTURE 3 30/10 -----------------------
@@ -1382,8 +1101,28 @@ Some examples of frameable manifolds are the following:
 % -------------------------------------------------------------
 % --------------------- LECTURE 5 6/11 ------------------------
 % -------------------------------------------------------------
+\section{Classifications of 1- and 2-manifolds}
+In this section we classify 1- and 2-manifolds up to diffeomorphism. This will make our life much easier 
+when we will later classify such manifolds up to cobordism, via cobordism invariants.
 
-\section{Classification of 2 manifolds with boundary} % (fold) // what do you mean by '(fold)'? /andrea
+Note that any manifold, of any dimension, is diffeomorphic to the disjoint union of its connected
+ components. Hence, two manifolds are diffeomorphic if and only if there is a 1-to-1 correpsondence 
+  between their connected components such that the correpsonding components are diffeomorphic.
+  For this reason, when classifying $n$-manifolds it is sufficient to classify connected ones. 
+  
+  In the next two subsections we aim at doing this: classifying connected 1- and 2-manifolds,
+  so that we classify all 1- and 2-manifolds.
+\subsection{Classification of 1-manifolds}
+\begin{thm}[Classification of (connected) 1-manifolds]
+Any connected 1-manifold is diffeomorphic to:
+\begin{itemize}
+	\item $[0,1]$
+	\item $(0,1]$
+	\item $(0,1)$
+	\item $S^1$
+\end{itemize}
+\end{thm}
+\subsection{Classification of 2-manifolds with boundary}
 \label{sub:classification_of_2_manifolds_with_boundary}
 
 The aim of this chapter is to prove the aforementioned classification of compact 2-dimensional manifolds with the use of Morse theory (see \ref{Classification of 2 manifolds}). We remind the reader: let $M$ be a compact 2-manifold with genus $g$, then \begin{itemize}
@@ -1391,7 +1130,7 @@ The aim of this chapter is to prove the aforementioned classification of compact
     \item Instead if $M$ is non orientable\footnote{see \url{https://en.wikipedia.org/wiki/Genus_(mathematics)} for what is meant by genus of a non orientable surface}, $M$ is diffeomorphic to $g$ copies of the real projective plane, i.e.  $\R P^2\,\# \dots \#\,\R P^2$.
 \end{itemize} 
 
-One can find a thorough covering of this result in \cite{Hirsch1976}.
+One can find a thorough covering of this result in \cite[Chapter 3, page 200]{Hirsch1976}.
 
 \noindent In addition, we will also find a classification of compact 2-manifolds with boundary (which we will simply call \textit{surfaces}). To do it we will need Morse theory. What is the idea? Given a surface $M$ (it works in greater generality but now we're only interested in surfaces), find a map $f: M \to \R$ which is ``nice''.
 Then by analizing properties of $f$ we can recover the topology of the surface (i.e. the surface up to diffeomorphism). 
@@ -1399,14 +1138,22 @@ Then by analizing properties of $f$ we can recover the topology of the surface (
 \noindent This section is based on \cite{Hirsch1976} and \cite{kosinski2013differential}.
 
 \subsection{Introduction to Morse Theory}
-%TODO specify somewhere that we mainly concentrate on 2d but Morse theory is more general.
-\begin{figure}
-    \centering
-    \includegraphics[width=9.3cm]{images/Lecture on Morse Theory/TORUS MORSE THEORY.png}
-    \caption{Image of the Morse function of a torus from \cite{HiroLee2022}}
-    \label{TORUS MORSE}
-\end{figure}
-Take as an example the projection map from the torus, see \ref{TORUS MORSE}. Here we have 4 special points: the top and bottom, and then the two points in the middle. What happens in these points is that the shape of the preimage changes:
+Morse theory is a way to extract informations on a manifold $M$ from smartly chosen functions 
+$$f:M\to \R$$
+Such smart functions are called Morse functions. It is very powerful, for instance, it plays a major role 
+in the sketch of the proof of the cobordism hypothesis, see \cite{lurie2009classification}, and
+in symplectic topology, see \cite{HiroLee2022}. 
+Thus, it is very useful to have an idea of how it works!
+
+However, we will only use it to classify 2-dimensional manifolds. Now, we introduce the fundamental tool
+of Morse theory: the Morse function.
+
+
+Take as an example the projection map from the torus (stolen from \cite{HiroLee2022}):
+\begin{center}
+	\includegraphics[width=9.3cm]{images/Lecture on Morse Theory/TORUS MORSE THEORY.png}
+\end{center}
+ Here we have 4 special points: the top and bottom, and then the two points in the middle. What happens in these points is that the shape of the preimage changes:
 \begin{itemize}
 	\item the preimage of the top (and bottom) is a point
 	\item the preimage of points between the top and middle point is a circle
@@ -1750,8 +1497,312 @@ We now consider the case with boundary:
 	Now $ \de M \neq \emptyset$, then $\de M = S^1 \amalg \dots \amalg S^1$. If $f$ is an admissible Morse function $f$ onto $[a,b]$ with $f^{-1}(a) \cong (S^1)^{\amalg m}$ and $f^{-1}(b) \cong (S^1)^{\amalg n}$. Now one can prove that we need neither 0-handles (if $m \neq 0$) nor 2-handles (if $n \neq 0$).
 \end{proof}
 
+\chapter{Cobordism groups}\label{Cob Groups}
+We now define the most fundamental object in cobordism theory: the cobordism group.
+ It is an algebraic structure characterizig if two manifolds are cobordant and how this relates to the
+  disjoint 
+ union of manifolds. From this one can establish cobordism invariants, i.e. homomorphisms 
+ from a certain cobordism group to another abelian group. To do this, we will exploit
+ the classifications of 1- and 2-manifolds up to diffeomorphism we proved in the previous chapters.
+  To be diffeomorphic is a much 
+ stricter and finer relation then being cobordant, that is why it is much harder to classify manifolds
+ up to diffeomorphism, but it also will make our life much easier when establishing cobordism invariants.
+\begin{defn}
+	\label{Defn n-th cob group}
+	The set underlying the $n$-th cobordism group is
+	$$\Omega_n = \frac{\{\text{closed $n$ manifolds}\}}{\{\text{$n+1$ cobordisms}\}}$$
+	$(\Omega_n, \amalg)$ is an abelian group with operation given by the disjoint union $\amalg$.
+	\begin{enumerate}
+		\item the disjoint union is associative and commutative
+		\item the identity element\footnote{We will
+			sometimes write $0=[\emptyset]$ or more often $\emptyset=[\emptyset]$}
+		is the cobordism class of the empty set\footnote{Reminder: $\emptyset$ is an $n$-manifold for every $n$.}
+		$[\emptyset]$, i.e. the set of $n$-manifolds which are bordant with the empty set
+		\item every element has an inverse:
+		$[M]\amalg [M]=[\emptyset]$ since $M\amalg M=(\de(M\times[0,1]))$ and such a cylinder can be bent into a
+		macaroni, which is bordant to the empty set:
+		\[\includegraphics[width=6.5cm]{images/Lecture 2/MACARONI.png}\]
+	\end{enumerate}
+\end{defn}
+\begin{rem}
+	There is an insidious set-theoretic issue when we define the $n$-th cobordism group $\Omega_n$ (\ref{Defn n-th cob group}): is the collection of all closed $n$-manifolds a set? And what about the collection of all $(n+1)$-bordisms? It could be the case that it is something bigger than a usual set, thus not a set and problematic since we would not know how to treat them\footnote{We are assuming to be working in ZFC. There are other set theories in which one can define collections greater than sets, e.g. Von Neumann–Bernays–Gödel set theory.}. For example, we know that the collection of all sets is strictly greater than any set\footnote{Because of famous set-theoretic paradoxes like Cantor's paradox.} and thus not a set. Similarly, also the collection of topological spaces is not a set because we can regard any set as a topological space via the discrete topology\footnote{The topology where the set of open sets is the powerset of the set in question, or in other words where any subset is open.}. One could wonder if the collection of all manifolds of a certain dimension $n$ is likewise not a set. This is fortunately for us not the case. The following theorem allows us to happily treat \{\text{closed $n$ manifolds}\} and \{\text{$n+1$ cobordisms}\} as sets by replacing abstract manifolds and cobordism by manifolds and cobordisms embedded in $\R^{\infty}$.
+\end{rem}
+\begin{thm}[Whitney Embedding theorem\footnote{This result is not important only in this case, but notably for the interest of this class it was used to construct an apt category of bordisms \ref{CobCat} in order to sketch a partial proof of the most important conjecture in the field of TFTs: the cobordism hypothesis; see for details on this \cite{lurie2009classification} and \cite{Calaque_2019}.}]
+	Any $n$ manifold can be embedded in $\R^{\infty}(=\bigcup_{n\in\N}\R^n)$. The space of such embeddings is contractible.\footnote{Note that there are refinements of the latter result.}
+\end{thm}
 
-%Can this go with the cobordism part? /William
+\begin{rem}
+	Actually $(\Omega_n,\amalg)$ is a finitely generated abelian group, but this is a hard theorem. In particular, it is a finite product of cyclic groups of order $2$ (from 2.)
+\end{rem}
+
+\begin{defn}[Bordism invariant]
+	A bordism invariant is a homomorphism of abelian groups $$(\Omega_n,\amalg,\emptyset) \to (A,\cdot,e)$$ 
+	the abelian group $A$ can be $\Z$, $\R$ or $\C$ for instance.
+\end{defn}
+\begin{rem}
+	Many important manifold invariants are also bordism invariants.
+\end{rem}
+
+\begin{ex}
+	\hfill
+	\begin{itemize}%TODO complete
+		\item $\chi$ mod 2 (the Euler characteristic)
+		\item signature
+		\item characteristic classes such as Pontrjagin, Stiefel-Whitney or Chern classes 
+	\end{itemize}
+\end{ex}
+%TODO add definition of characteristic class or maybe just some additional comment
+\section{The 0-th Cobordism Group, \texorpdfstring{$\Omega_{0}$}{Omega 0}}
+Consider
+$$\Omega_0 = \{\text{finite disjoint unions of points}\} / \{\text{$1$-dimensional cobordisms}\}.$$
+To compute this, consider the following classification of $1$ manifolds:
+
+\begin{prop}\label{prop:classification_1d}
+	Any $1$ dimensional compact manifold with boundary is diffeomorphic to a finite disjoint union of closed intervals $[0,1]$ and circles $S^1$.
+\end{prop}
+%TODO add proof, it should not be hard, and useful also for classification of 1TFT
+\begin{ex}
+	An example of a $1$-dimensional cobordism is $W=[0,1]$. Here are the 3 different way of seeing it as a bordism: from $Y_0 = \{0,1\}$ to $Y_1 = \emptyset$, from $Y_0 = \{0\}$ to $Y_1 = \{1\}$ and from $Y_0 = \emptyset$ to $Y_1 = \{0,1\}$.
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}
+			% Line segment
+			\draw[line width=1pt] (0,0.5) arc (90:270:-0.5 and 0.5);
+			
+			% Filled dots at the ends
+			\fill (0,0.5) circle (2pt);
+			\fill (0,-0.5) circle (2pt);
+			
+			\draw[line width=1pt] (3.5,0) -- (4.5,0);
+			
+			% Filled dots at the ends
+			\fill (3.5,0) circle (2pt);
+			\fill (4.5,0) circle (2pt);
+			
+			\draw[line width=1pt] (8,0.5) arc (90:270:0.5 and 0.5);
+			
+			% Filled dots at the ends
+			\fill (8,0.5) circle (2pt);
+			\fill (8,-0.5) circle (2pt);
+		\end{tikzpicture}
+		%\caption{}
+	\end{figure}
+\end{ex}
+
+\begin{ex} Here is a list of various finite disjoint unions of points with different cardinalities. Can you see a pattern emerging?
+	\begin{figure}[H]
+		\captionsetup[subfigure]{labelformat=empty}
+		\centering
+		\begin{subfigure}[t]{.3\textwidth}
+			\centering
+			\begin{tikzpicture}
+				\draw[line width=1pt] (0,0) -- (1,0);
+				
+				\fill (0,0) circle (2pt);
+				\fill (1,0) circle (2pt);
+			\end{tikzpicture}
+			\caption{1 point}
+		\end{subfigure}
+		%
+		\begin{subfigure}[t]{.3\textwidth}
+			\centering
+			\begin{tikzpicture}
+				\draw[line width=1pt] (0,0.5) arc (90:270:-0.5 and 0.5);
+				
+				\fill (0,0.5) circle (2pt);
+				\fill (0,-0.5) circle (2pt);
+			\end{tikzpicture}
+			\caption{2 points}
+		\end{subfigure}
+		%
+		\begin{subfigure}[t]{.3\textwidth}
+			\centering
+			\begin{tikzpicture}
+				\draw[line width=1pt] (0,0.5) arc (90:270:-0.5 and 0.5);
+				
+				\fill (0,0.5) circle (2pt);
+				\fill (0,-0.5) circle (2pt);
+				
+				\draw[line width=1pt] (0,-1) -- (1,-1);
+				
+				\fill (0,-1) circle (2pt);
+				\fill (1,-1) circle (2pt);
+			\end{tikzpicture}
+			\caption{3 points}
+		\end{subfigure}
+		
+		\bigskip
+		
+		\begin{subfigure}[t]{.3\textwidth}
+			\centering
+			\begin{tikzpicture}
+				% Line segment
+				\draw[line width=1pt] (0,0.5) arc (90:270:-0.5 and 0.5);
+				
+				% Filled dots at the ends
+				\fill (0,0.5) circle (2pt);
+				\fill (0,-0.5) circle (2pt);
+				
+				% Line segment
+				\draw[line width=1pt] (0,-1) arc (90:270:-0.5 and 0.5);
+				
+				% Filled dots at the ends
+				\fill (0,-1) circle (2pt);
+				\fill (0,-2) circle (2pt);
+			\end{tikzpicture}
+			\caption{4 points}
+		\end{subfigure}
+		%
+		\begin{subfigure}[t]{.3\textwidth}
+			\centering
+			\begin{tikzpicture}
+				% Line segment
+				\draw[line width=1pt] (0,0.5) arc (90:270:-0.5 and 0.5);
+				
+				% Filled dots at the ends
+				\fill (0,0.5) circle (2pt);
+				\fill (0,-0.5) circle (2pt);
+				
+				% Line segment
+				\draw[line width=1pt] (0,-1) arc (90:270:-0.5 and 0.5);
+				
+				% Filled dots at the ends
+				\fill (0,-1) circle (2pt);
+				\fill (0,-2) circle (2pt);
+				
+				% Line segment
+				\draw[line width=1pt] (0,-2.5) -- (1,-2.5);
+				
+				% Filled dots at the ends
+				\fill (0,-2.5) circle (2pt);
+				\fill (1,-2.5) circle (2pt);
+			\end{tikzpicture}
+			\caption{5 points}
+		\end{subfigure}
+		%
+		\begin{subfigure}[t]{.3\textwidth}
+			\centering
+			\begin{tikzpicture}
+				% Line segment
+				\draw[line width=1pt] (0,0.5) arc (90:270:-0.5 and 0.5);
+				
+				% Filled dots at the ends
+				\fill (0,0.5) circle (2pt);
+				\fill (0,-0.5) circle (2pt);
+				
+				% Line segment
+				\draw[line width=1pt] (0,-1) arc (90:270:-0.5 and 0.5);
+				
+				% Filled dots at the ends
+				\fill (0,-1) circle (2pt);
+				\fill (0,-2) circle (2pt);
+				
+				% Line segment
+				\draw[line width=1pt] (0,-2.5) arc (90:270:-0.5 and 0.5);
+				
+				% Filled dots at the ends
+				\fill (0,-2.5) circle (2pt);
+				\fill (0,-3.5) circle (2pt);
+			\end{tikzpicture}
+			\caption{6 points}
+		\end{subfigure}
+	\end{figure}
+\end{ex}
+
+\noindent Keeping this pattern in mind, consider collection of $k$ points, with $k$ finite (i.e. the only closed 0 manifolds):
+
+\begin{itemize}
+	\item If $k$ is even, we can find a bordism to $\emptyset$
+	\item If $k$ is odd, we can find a bordism to $\{*\}$
+\end{itemize}
+
+\noindent We then have 
+\begin{equation*}
+	2k \text{ points} \sim \emptyset, \quad\quad 2k+1 \text{ points} \sim \text{1 point}
+\end{equation*}
+Therefore, the 0-th cobordism group is given by
+\begin{equation}
+	\Omega_0 = \{ \emptyset, \{*\}\} \cong \Z_2.
+\end{equation}
+A possible variation is: add a ``decoration'', called \textit{orientation} (will be made more precise later), so we now have:
+$$\Omega_0^{\textit{or}} = \big\{\text{finite sets of points $S$ with a map } S \to \{+,-\}\big\} /\{\text{oriented cobordism}\}$$
+
+An oriented cobordism in $1$ dimension is given by $[0,1]$ or $S^1$ which comes with an orientation. Here are some
+examples
+
+\[ \includegraphics[width=9cm]{images/Lecture 11/1dBORDISM.png}\]
+
+\begin{exercise}
+	What is $\Omega_0^{or}$? Try to think about it! 
+\end{exercise}
+
+\subsection{The 1st cobordism group, \texorpdfstring{$\Omega_{1}$}{Omega 1}}
+Now we have
+$$\Omega_1= \{\text{closed $1$-dimensional manifolds}\} / \{\text{$2$-dimensional cobordisms}\}.$$
+In studying this group, the following result, which is a restriction of \ref{prop:classification_1d}:
+\begin{thm}
+	
+	Any closed $1$-dimensional manifold is a finite disjoint union of circles
+\end{thm}
+\noindent However, a circle is the boundary of a 2-disk, which gives a cobordism from $S^1$ to $\emptyset$, we then have $S^1 \sim \emptyset$. Hence, also finite disjoint unions of $S^1$ are cobordant to the empty set. Therefore, the $1$st cobordism group is trivial:
+\begin{equation}
+	\Omega_1 = 0
+\end{equation}
+
+\section{The 2nd cobordism group, \texorpdfstring{$\Omega_{2}$}{Omega 2}}
+In order to find the $2$nd cobordism group, we first need a classification of $2$ manifolds. %(Introduced before) In order to state the result we need to introduce the concept of \textit{connected sum}
+%\begin{defn}[Connected Sum]
+%Given $n$ manifolds $M,N$, their connected sum $M\# N$ is given by
+%%M\# N = M \setminus (D^n)^\circ \cup_{\de D^n \times [0,1]} N \setminus (D^n)^\circ
+%\end{equation}
+%\end{defn}
+%DRAWING
+\begin{prop}[Classification of $2$-dimensional manifolds]\label{Classification of 2 manifolds}
+	Every connected closed $2$ manifold is diffeomorphic to
+	\begin{enumerate}
+		\item $S^2$, orientable
+		\begin{figure}[!ht]
+			\centering
+			\includegraphics[width=3cm]{images/Lecture 3/sphere.png}
+			\caption{2-sphere, $S^2$}
+		\end{figure}
+		\item $\Sigma_g = \underbrace{T \# \dots \# T}_{g-\text{times}}$ , orientable
+		\begin{figure}[!ht]
+			\centering
+			\includegraphics[width=10cm]{images/Lecture 3/surface_of_genus_g.png}
+			\caption{Surface of genus g, $\Sigma_g$}
+		\end{figure}
+		\item $P_k = \underbrace{\R\P^2 \# \dots \# \R\P^2}_{k-\text{times}}$ , non-orientable
+		\begin{figure}[!ht]
+			\centering
+			\begin{subfigure}[t]{.4\textwidth}
+				\centering
+				\includegraphics[width=6cm]{images/Lecture 3/sigma_g_rp2.png}
+				\caption{$P_{2g+1} \cong \Sigma_g \# \R\P^2$}
+			\end{subfigure}\hspace{10mm}
+			\begin{subfigure}[t]{.4\textwidth}
+				\centering
+				\includegraphics[width=6cm]{images/Lecture 3/sigma_g_klein_bottle.png}
+				\caption{$P_{2g+2} \cong \Sigma_g \# K$}
+			\end{subfigure}
+		\end{figure}
+	\end{enumerate}
+\end{prop}
+
+\noindent We can now use this knowledge to compute
+$$
+\Omega_2^{\text{or}} = \{\text{closed oriented $2$ manifolds} \} /\{\text{$3$-dimensional oriented cobordisms}\}
+$$
+by observing that $S^2$ and $\Sigma_g$ are both cobordant to $\emptyset$ since they can simply be ``filled'' to a $3$ dimensional manifold with boundary, we get
+\begin{equation}
+	\Omega_2^{or} = 0.
+\end{equation} 
+%DRAWING
+\begin{exercise}
+	What about the non-oriented part $\Omega_2$?
+\end{exercise}
+
+%Can this go with the cobordism part? /William YES, I agree that it makes much more sense and that is why I am restructuring some stuff /Andrea
 \section{More on cobordism groups}
 \label{sec:more_on_cobordism_groups}
 
@@ -1830,12 +1881,23 @@ For the last result see \cite[p. 203]{MilnorS05}.
 %TODO maybe torsion comments
 \end{ex}
 %would be cool to write something why these are the case, but mysterious to me for now TBD /ANdrea
-\subsection{Cobordism groups and the sphere spectrum \extra}\label{homotopyCob}
+\section{Cobordism theory and stable homotopy theory \extra}
+When establishing bordism invariants, we cheated and relied on stronger classification theorems.
+However, the intuition of cobordism theory is that is much easier to classify manifolds up to cobordism
+then up to diffeomorphism.
+The natural question is: how? Thom's brilliant idea in his PhD thesis is to reduce such problem to 
+a problem in stable homotopy theory. This is very convenient because stable homotopy theory is much
+easier than ordinary differential topology. His strategy was to first define the Thom spectrum, i.e.
+roughly a spectrum for cobordisms, and then establish an isomorphism between the homotopy groups
+ of this spectrum and the cobordism ring via the Pontryagin-Thom construnction.
+ 
+ In this section we sketch how this works. \danger \textbf{THIS IS WORK IN PROGRESS}
+ \subsection{Cobordism groups and the sphere spectrum \extra}\label{homotopyCob}
 Very interestingly, the (stable) framed version is isomorphic to the stable homotopy groups of the sphere and it is \textit{not} computed to all degrees. This is one way to phrase a theorem named after Thom. It is fascinating because the stable homotopy groups of the sphere are central objects in stable homotopy theory. They are equivalently the homotopy groups of the sphere spectrum.
 
 Now characterize spectra the bare minimum in order to talk about the sphere spectrum. Later,
 after some detours in the magical world of $\infty$-categories, we will 
-give a deeper sketch of what they are \ref{WhatSpectra}.
+give a more comprehensive sketch of what they are \ref{WhatSpectra}.
 \begin{defn}[Suspension]
 	Let $X$ be a pointed topological space. The suspension $\Sigma X$ of $X$ is the smash product of $X$
 	 with $S^1$, i.e.
@@ -2354,8 +2416,9 @@ The right hand square commutes because of the naturality of $\eta$. Since the ri
 \begin{ex}
 	A trivial example is given by any functor that is an isomorphism. In that case the natural transformations are actually identities. 
 
-	\noindent An equivalence of categories instead is an adjunction.
-    %I had found written "An equivalence of categories instead is in general \textit{not} an adjunction, however it can always be made into one by appropriately changing the natural isomorphisms.", which is correct? /William
+	\noindent An equivalence of categories can always be promoted to an adjunction where the 
+	unit and the counit are natural isomorphisms. Such an adjunction is called adjoint equivalence.
+	See for a proof \cite[4.4.5]{riehl2017category}.
 
 	\noindent The more typical examples are instead related to forgetful functors.
 	%TODO add examples
@@ -3113,7 +3176,7 @@ We have previously seen (\ref{Representations of Groups}) that a linear represen
     \end{equation}
 \end{defn}
 
-\subsection{Outlook towards \texorpdfstring{$\mathbb{E}_n$}{En}-Algebras \extra} 
+\subsection{Homotopy coherent monoid objects: \texorpdfstring{$\mathbb{E}_n$}{En}-Algebras \extra} 
 \label{EAlg}
 This outlook is based on \cite{HiroLee2022}, \cite{Mazel-Gee2024} and \cite{CalleInfiniteLoops}. It has two motivations:
 \begin{enumerate}
@@ -3185,8 +3248,10 @@ as $\cdot:\mathcal{A}\otimes\mathcal{A}\to\mathcal{A}$. Then,
 	between the two possible compositions of 3-associators. The next diagram is stolen from Luke Trujillo's
 	undergraduate thesis (\cite{TrujilloCoherence}). It depicts from one point of view,
 	the 2-associators and the objects of the 
-	coherence diagram for 3-associators that commutes via the 4-associator. Here the 3-associators
-	should be arrows on the faces of this polyhedron\footnote{Such polyhedra are called associahedra.} and 
+	coherence diagram for 3-associators that commutes via the 4-associator. In this image, the
+	 3-associators
+	should be arrows on the faces of the polyhedron\footnote{Such polyhedra are called associahedra.}
+	 and 
 	the 4-associator should be a 4-morphism inside the polyhedron going from one possible composition of 3-associators to the other.
 	
 	\begin{center}
@@ -3301,7 +3366,8 @@ as $\cdot:\mathcal{A}\otimes\mathcal{A}\to\mathcal{A}$. Then,
 \item the higher homotopies making everything homotopy coherently associative and unital coincide
 	 \end{itemize}
 \end{ex}
-One can tell a similar story for homotopy coherent commutativity:
+As we sketched what is homotopy coherent associativity, one can tell a similar story for homotopy
+ coherent commutativity:
 \begin{enumerate}
 	\item An $\E_1$-algebra is just a homotopy coherent monoid object, it is not commutative in any sense
 	\item An $\E_2$-algebra is a homotopy coherent monoid with a 2-commutator $X\cdot Y\to Y\cdot X$
@@ -3312,7 +3378,8 @@ One can tell a similar story for homotopy coherent commutativity:
 \end{enumerate}
 
 
-We recall now what an isotopy is since this will be the information in the source category of disks that we will
+We recall now what an isotopy is since this will be the information in the source category of disks that
+ we will
 stamp onto the category where the desired monoid object lives. 
 
 \begin{defn}[Isotopy]\label{Isotopy}
@@ -3422,10 +3489,12 @@ in which higher algebra takes place.
 \end{notat}
 \begin{notat}
 	Under the homotopy hypothesis $\infty$-Grpd corresponds to a nice category of spaces, hence it is 
-	sometimes denoted as $\mathds{S}$ for $\mathds{S}$paces.
-	Other synonyms nowadays are: \begin{itemize}
+	sometimes denoted as $\mathscr{S}$ for $\mathscr{S}$paces.
+	Other synonyms nowadays are: 
+	\begin{itemize}
 		\item $\infty$-Set, because it is the category one enriches over to get $\infty$-categories,
-		similarly to ordinary sets and locally small categories, and it plays a parallel role in higher algebra to set in 
+		similarly to ordinary sets and locally small categories, and it plays a parallel role in higher algebra to
+		 set in 
 		ordinary algebra (see the table in \ref{WhatSpectra})
 		\item An, standing for anima, terminology coming from condensed mathematics
 	\end{itemize}
@@ -3443,9 +3512,13 @@ in which higher algebra takes place.
 	The Dunn additivity theorem is a higher categorical refinement of the Eckmann-Hilton argument.
 	The Eckmann-Hilton argument states that if there are two monoid multiplications on the same set, then
 	they coincide and the operation is commutative. However, in categories with morphisms higher than 1,
-	we do not just have commutativity or non-commutativity of monoid objects but an infinite sequence of
+	we do not just have commutativity or non-commutativity of monoid objects but
 	 shades of
-	commutativity. The Dunn additivity theorem states
+	commutativity, and possibly infinitely many (in $\infty$-categories). This result roughly states that
+	 when we have two monoidal structures on an object
+	internal to a symmetric monoidal category, they coincide and the outcome is more commutative then
+	 the two alone. More
+	 precisely, the Dunn additivity theorem states
 	that for $0< n,m\leq \infty$
 	$$\Alg_{\mathbb{E}_n}(\Alg_{\mathbb{E}_m}(\cat))\simeq \Alg_{\mathbb{E}_{m+n}}(\cat)$$
 \end{thm}
@@ -3498,7 +3571,7 @@ between certain spectra. See \cite[5.2.6.6]{Luriealgebra}\footnote{Note that the
 \begin{ex}
 	$\Omega X$ is not just an $\mathbb{E}_1$-space, but also a grouplike $\mathbb{E}_1$-space since
 	the inversion of based loops is homotopy equivalent to the costant map on the point, or more
-	rigorously, recall that $\pi_0(\Omega X)=\pi_1(X)$ and that the fundamental group obviously
+	rigorously, recall that $\pi_0(\Omega X)=\pi_1(X)$ and that the fundamental group is indeed a group,
 	 $\pi_i(X)\in\Grp$. Moreover, $n$-iterated loop spaces are grouplike $\mathbb{E}_{n}$-spaces and in
 	  particular infinite loop spaces
 	 are grouplike $\mathbb{E}_{\infty}$-spaces for the same reason that $\Omega X$ a grouplike
@@ -3533,7 +3606,7 @@ between certain spectra. See \cite[5.2.6.6]{Luriealgebra}\footnote{Note that the
 \end{rem}
 \subsubsection{Factorization homology \extra}
 This outlook is based mainly on \cite[10.5]{Mazel-Gee2024} and secondarly on
- \cite{ayala2019factorization} and
+ \cite{ayala2019factorization},\cite{Scheimbauer:2014zty} and
  \cite{Tanaka_2020}.
 
 We now briefly sketch what is factorization homology because it is a
@@ -3555,15 +3628,16 @@ Roughly, it can be seen as
  \cite{ayalacategories2020factorization}.} over a manifold in the same sense that ordinary
  homology $H(M,A)$ is given by integrating an abelian group $A$ over a space $M$
   (see \cite{Ayalatopological_2015})
- \item an extended topological field theory (see \cite{Scheimbauer:2014zty}, \cite[4.1]{lurie2009classification} and
+ \item an extended\footnote{If you do not know what an extended TFT is, it might be helpful
+ to check out \ref{RemarkExtendedTFTs}.} topological field theory (see \cite{Scheimbauer:2014zty},
+  \cite[4.1]{lurie2009classification} and
   \cite{Ayalatopological_2015})
 \end{itemize}
 
 \begin{defn}[Factorization homology]\label{FactorHomology}
 	Given an $\E_n$-algebra $A\in\Alg_{\E_{n}}(\cat)$, its factorization homology is the left Kan
-	 extension\footnote{We spell out the definition but see \cite[Section 3.6.1]{Tanaka_2020} for a better
-	 	 paced explanation of what is a left
-	 	 Kan extension for $\infty$-categoires.}
+	 extension\footnote{We spell out the definition but see \cite[Section 3.6.1]{Tanaka_2020} for a better explanation of what is a left
+	 	 Kan extension for $\infty$-categories.}
 	% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXG9wZXJhdG9ybmFtZXtEaXNrfV57XFxmcn1fe259Il0sWzAsMSwiXFxvcGVyYXRvcm5hbWV7TWZsZH1ee1xcZnJ9X3tufSJdLFsxLDAsIlxcY2F0Il0sWzAsMSwiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMCwyLCJBIl0sWzEsMiwiXFxpbnRfeygtKX1BIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
 	\[\begin{tikzcd}[cramped]
 		{\operatorname{Disk}^{\fr}_{n}} & \cat \\
@@ -3586,8 +3660,9 @@ One way in which it is a homology theory for manifolds is that every homology th
  $n$-manifolds is given by factorization homology with coefficients in the $\E_n$-algebra $H(\R^n)$,
  see \cite{Ayalatopological_2015}.
  \begin{ex}
- 	Hochschild homology is factorization homology over $S^1\in\operatorname{Mfld_{1}^{\fr}}$.
+ 	Hochschild homology is a factorization homology over $S^1\in\operatorname{Mfld_{1}^{\fr}}$.
  \end{ex}
+
  \begin{defn}[Factorization algebra]\label{FactorAlgebra}
  Recall that a partially ordered set can be seen as a category where the arrows are given by the
   $\leq$ relation. The open subsets of a space generally and in particular of a manifold form a poset.
@@ -3600,7 +3675,19 @@ One way in which it is a homology theory for manifolds is that every homology th
  Such objects are also very important for the study of TFTs. For instance, they provide a bridge 
  between topological field theories and a dual approach to the formalization of quantum field theories:
  algebraic quantum field theories. See \ref{AQFT} for a sketch of what this approach is and 
- \cite{costello2023factorization} for more on factorization algebras.
+ \cite{costello2023factorization} for more on factorization algebras in other areas of
+ mathematics and physics and in particular as a connection between AQFTs and 
+ TFTs.
+ 
+  To see how it can define an extended TFT, note that $\Bord_n$ is just a special category of manifolds 
+ and that the factorization homology of an $\E_n$-algebra $A\in\Alg_{\E_{n}}(\cat)$ is a functor 
+ $$ \int_{(-)}A:\operatorname{Mfld}^{\fr}_{n}\to \operatorname{Fact}_n\subset \cat$$
+ where $\operatorname{Fact}_n$ denotes the subcategory of factorization algebras in $\cat$. 
+ Hence, one can intuit that there is a way to construct a factorization homology of an $\E_n$-algebra
+ as a symmetric monoidal $\infty$-functor 
+ $$ \int_{(-)}A:\operatorname{Bord}^{\fr}_{n}\to \operatorname{Fact}_n\subset \cat$$
+ where $\Bord_n$ is the extended category of bordisms (see \ref{RemarkExtendedTFTs}) and thus 
+ a TFT! Check out \cite{Scheimbauer:2014zty} for a detailed treatment.
 \subsection{Interlude on Bicategories \extra} % (fold)
 \label{sub:outlook_interlude_on_bicategories}
 %I hope the order here is not confusing, in the sense that why not define before a bicategory and subsequently the delooping, however this sequence where one first pictures the delooping and then they picture a bicategory made sense in my mind. Feel free to change /Andrea
