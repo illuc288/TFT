@@ -232,7 +232,8 @@ $-$H. Poincaré}\\
 \chapter*{\huge{\textcolor{black}{For the reader}}}
 \hfill
 \vspace{0.50cm}\\
-These are the lecture notes of the course \textit{``Bordism and Topological Field Theory''} held by Prof.\hspace{1mm}Dr. Claudia Scheimbauer (\href{mailto:scheimbauer@ma.tum.de}{scheimbauer@ma.tum.de}) during the Wintersemester 2023/2024 at the \textit{Technische Universität München}. The tutorial sessions are held by Anja \v{S}vraka (\href{mailto:svr@ma.tum.de}{svr@ma.tum.de}).\hspace{1.5mm}The notes are typed by Luca Ipsale (\href{mailto:luca.ipsale@campus.lmu.de}{luca.ipsale@campus.lmu.de}), William Luciani (\href{mailto:w.luciani@campus.lmu.de}{w.luciani@campus.lmu.de}), Andrea Sittoni (\href{mailto:sittoniandrea@gmail.com}{sittoniandrea@gmail.com}) and Üzeyir Sa\c{c}{\i}kay (\href{mailto:uzeyirsacikay@gmail.com}{uzeyirsacikay@gmail.com}). Exercises are also implemented in the notes by Jacob Skarby (\href{mailto:jacob.skarby@tum.de}{jacob.skarby@tum.de}). If you find errors or if you have suggestions of any kind, please write us an e-mail.
+These are the lecture notes of the course \textit{``Bordism and Topological Field Theory''} held by Prof.\hspace{1mm}Dr. Claudia Scheimbauer (\href{mailto:scheimbauer@ma.tum.de}{scheimbauer@ma.tum.de}) during the Wintersemester 2023/2024 at the \textit{Technische Universität München}. The tutorial sessions are held by Anja \v{S}vraka (\href{mailto:svr@ma.tum.de}{svr@ma.tum.de}).\hspace{1.5mm}The notes are typed by Luca Ipsale (\href{mailto:luca.ipsale@campus.lmu.de}{luca.ipsale@campus.lmu.de}), William Luciani (\href{mailto:w.luciani@campus.lmu.de}{w.luciani@campus.lmu.de}), Andrea Sittoni (\href{mailto:sittoniandrea@gmail.com}{sittoniandrea@gmail.com}) and Üzeyir Sa\c{c}{\i}kay (\href{mailto:uzeyirsacikay@gmail.com}{uzeyirsacikay@gmail.com}). Exercises are also implemented in the notes by Jacob Skarby (\href{mailto:jacob.skarby@tum.de}{jacob.skarby@tum.de}). If you find
+ errors or have suggestions of any kind, please write us an e-mail.
 
 \vspace{1cm}
 
@@ -247,8 +248,6 @@ These are the lecture notes of the course \textit{``Bordism and Topological Fiel
 \thispagestyle{empty}
 \cleardoublepage
 \section*{Notational Conventions}
-We use the symbol '\extra' at the end of titles of sections, definitions or theorems that depart from the content of the lecture and deepen some aspect on a topic with an outlook towards research topics.
-
 \begin{notat}
 	Throughout these notes we will abuse notation indicating a collection with some structure on it just by writing down the collection, e.g. denoting a monoid $(M,\cdot)$ by $M$, a metric space $(X,d)$ by $X$ etc...
 \end{notat}
@@ -259,15 +258,26 @@ We use the symbol '\extra' at the end of titles of sections, definitions or theo
 \begin{notat}
 	We often denote equivalence classes just with a representative thereof. 
 \end{notat}
+
+\begin{notat}[\extra]
+	We use the symbol '\extra' at the end of titles of sections, definitions or theorems that depart from the
+	content of the class and deepen some aspects of topics we did not cover in the lectures.
+	
+	They are often sketchy. Their aim is to convey the intuition behind exciting topics in the field of TFTs
+	 or neighouring ones (and often
+	convince you that $\infty$-categories are cool and useful). They have been written by Andrea Sittoni.
+	Please send corrections, suggestions and comments.
+\end{notat}
+In this kind of sections we have the following conventions.
 \begin{notat}
 We denote the $(\infty,1)$-category of spaces/$\infty$-groupoids both with $\mathscr{S}$,
  $\operatorname{Grpd}_\infty$ and with $\infty\operatorname{-Grpd}$. $\mathscr{S}$ stands for 
  $\mathscr{S}$paces. This is motivated by the
-  homotopy hypothesis \ref{HomotopyHypothesis}.
+  homotopy hypothesis, see \ref{HomotopyHypothesis}.
 \end{notat}
 \begin{notat}
 When there is no ambiguity, we denote $(\infty,1)$-categories as $\infty$-categories. We denote the
-$(\infty,2)$-category of all $(\infty,1)$-categories by $\Cat_\infty$ or $\infty$-Cat.
+$(\infty,2)$-category of all $(\infty,1)$-categories with $\Cat_\infty$ or $\infty$-Cat.
 \end{notat}
 \section*{Prerequisites}
 The notes strive to be as self-contained as possible. We do assume however knowledge of linear algebra,
@@ -299,7 +309,7 @@ on algebraic topology by Prof. Land (available on \url{https://www.mathematik.un
 
 \chapter{Why should you care? An informal introduction}
 %As the name suggests, this subject is two-sided: we have a physics part, namely Quantum Field Theory, and a mathematics part, more specifically topology and in particular (Co)Bordism. Let us explore the motivations and ideas behind these two subjects and how they come together. Do not worry if everything is not immediately clear, it will become so during the semester... hopefully. /// Andre: there is nothing wrong with this, just liked more the alternative I wrote down, feel free to change it back /AAndre
-There are two ways one can approach topological field theories:
+There are two ways one can see topological field theories:
 \begin{enumerate}
 	\item As a way to make (some\footnote{Sadly, TFTs cannot axiomatize many quantum field theories that are particularly useful in physics, e.g. the quantum field theory behind the standard model.}) quantum field theories more mathematically rigorous
 	\item As a way to refine bordism invariants, or, roughly, as a kind of homology for smooth manifolds of a certain dimension, instead of general topological spaces.
@@ -645,7 +655,7 @@ In some contexts, it can be interesting to do calculus on a manifold. In order t
 	Come up with the natural notion of smooth map between manifolds \emph{with} boundary. 
 \end{exercise}
 
-\section{What is a Bordism?}
+\section{What is a bordism?}
 
 \begin{defn}[$1^{st}$ variant of the definition of bordism: via \emph{strict equalities}]
 \label{Define Bordism}
@@ -1138,17 +1148,15 @@ in the sketch of the proof of the cobordism hypothesis, see \cite{lurie2009class
 in symplectic topology, see \cite{HiroLee2022}. 
 Thus, it is very useful to have an idea of how it works!
 
-However, we will use it to only classify 2-dimensional manifolds. Now, we introduce the fundamental tool
+However, we will only use it to classify 2-dimensional manifolds. Now, we introduce the fundamental tool
 of Morse theory: the Morse function.
 
-%TODO specify somewhere that we mainly concentrate on 2d but Morse theory is more general.
-\begin{figure}
-    \centering
-    \includegraphics[width=9.3cm]{images/Lecture on Morse Theory/TORUS MORSE THEORY.png}
-    \caption{Image of the Morse function of a torus from \cite{HiroLee2022}}
-    \label{TORUS MORSE}
-\end{figure}
-Take as an example the projection map from the torus, see \ref{TORUS MORSE}. Here we have 4 special points: the top and bottom, and then the two points in the middle. What happens in these points is that the shape of the preimage changes:
+
+Take as an example the projection map from the torus (stolen from \cite{HiroLee2022}):
+\begin{center}
+	\includegraphics[width=9.3cm]{images/Lecture on Morse Theory/TORUS MORSE THEORY.png}
+\end{center}
+ Here we have 4 special points: the top and bottom, and then the two points in the middle. What happens in these points is that the shape of the preimage changes:
 \begin{itemize}
 	\item the preimage of the top (and bottom) is a point
 	\item the preimage of points between the top and middle point is a circle
@@ -1880,7 +1888,7 @@ However, the intuition of cobordism theory is that is much easier to classify ma
 then up to diffeomorphism.
 The natural question is: how? Thom's brilliant idea in his PhD thesis is to reduce such problem to 
 a problem in stable homotopy theory. This is very convenient because stable homotopy theory is much
-easier than ordinary differential topology. His strategy was to first define the Thom spectrum, 
+easier than ordinary differential topology. His strategy was to first define the Thom spectrum, i.e.
 roughly a spectrum for cobordisms, and then establish an isomorphism between the homotopy groups
  of this spectrum and the cobordism ring via the Pontryagin-Thom construnction.
  
@@ -1890,7 +1898,7 @@ Very interestingly, the (stable) framed version is isomorphic to the stable homo
 
 Now characterize spectra the bare minimum in order to talk about the sphere spectrum. Later,
 after some detours in the magical world of $\infty$-categories, we will 
-give a deeper sketch of what they are \ref{WhatSpectra}.
+give a more comprehensive sketch of what they are \ref{WhatSpectra}.
 \begin{defn}[Suspension]
 	Let $X$ be a pointed topological space. The suspension $\Sigma X$ of $X$ is the smash product of $X$
 	 with $S^1$, i.e.
@@ -3169,7 +3177,7 @@ We have previously seen (\ref{Representations of Groups}) that a linear represen
     \end{equation}
 \end{defn}
 
-\subsection{Outlook towards \texorpdfstring{$\mathbb{E}_n$}{En}-Algebras \extra} 
+\subsection{Homotopy coherent monoid objects: \texorpdfstring{$\mathbb{E}_n$}{En}-Algebras \extra} 
 \label{EAlg}
 This outlook is based on \cite{HiroLee2022}, \cite{Mazel-Gee2024} and \cite{CalleInfiniteLoops}. It has two motivations:
 \begin{enumerate}
@@ -3241,8 +3249,10 @@ as $\cdot:\mathcal{A}\otimes\mathcal{A}\to\mathcal{A}$. Then,
 	between the two possible compositions of 3-associators. The next diagram is stolen from Luke Trujillo's
 	undergraduate thesis (\cite{TrujilloCoherence}). It depicts from one point of view,
 	the 2-associators and the objects of the 
-	coherence diagram for 3-associators that commutes via the 4-associator. Here the 3-associators
-	should be arrows on the faces of this polyhedron\footnote{Such polyhedra are called associahedra.} and 
+	coherence diagram for 3-associators that commutes via the 4-associator. In this image, the
+	 3-associators
+	should be arrows on the faces of the polyhedron\footnote{Such polyhedra are called associahedra.}
+	 and 
 	the 4-associator should be a 4-morphism inside the polyhedron going from one possible composition of 3-associators to the other.
 	
 	\begin{center}
@@ -3503,9 +3513,13 @@ in which higher algebra takes place.
 	The Dunn additivity theorem is a higher categorical refinement of the Eckmann-Hilton argument.
 	The Eckmann-Hilton argument states that if there are two monoid multiplications on the same set, then
 	they coincide and the operation is commutative. However, in categories with morphisms higher than 1,
-	we do not just have commutativity or non-commutativity of monoid objects but an infinite sequence of
+	we do not just have commutativity or non-commutativity of monoid objects but
 	 shades of
-	commutativity. The Dunn additivity theorem states
+	commutativity, and possibly infinitely many (in $\infty$-categories). This result roughly states that
+	 when we have two monoidal structures on an object
+	internal to a symmetric monoidal category, they coincide and the outcome is more commutative then
+	 the two alone. More
+	 precisely, the Dunn additivity theorem states
 	that for $0< n,m\leq \infty$
 	$$\Alg_{\mathbb{E}_n}(\Alg_{\mathbb{E}_m}(\cat))\simeq \Alg_{\mathbb{E}_{m+n}}(\cat)$$
 \end{thm}
@@ -3558,7 +3572,7 @@ between certain spectra. See \cite[5.2.6.6]{Luriealgebra}\footnote{Note that the
 \begin{ex}
 	$\Omega X$ is not just an $\mathbb{E}_1$-space, but also a grouplike $\mathbb{E}_1$-space since
 	the inversion of based loops is homotopy equivalent to the costant map on the point, or more
-	rigorously, recall that $\pi_0(\Omega X)=\pi_1(X)$ and that the fundamental group obviously
+	rigorously, recall that $\pi_0(\Omega X)=\pi_1(X)$ and that the fundamental group is indeed a group,
 	 $\pi_i(X)\in\Grp$. Moreover, $n$-iterated loop spaces are grouplike $\mathbb{E}_{n}$-spaces and in
 	  particular infinite loop spaces
 	 are grouplike $\mathbb{E}_{\infty}$-spaces for the same reason that $\Omega X$ a grouplike
@@ -3593,7 +3607,7 @@ between certain spectra. See \cite[5.2.6.6]{Luriealgebra}\footnote{Note that the
 \end{rem}
 \subsubsection{Factorization homology \extra}
 This outlook is based mainly on \cite[10.5]{Mazel-Gee2024} and secondarly on
- \cite{ayala2019factorization} and
+ \cite{ayala2019factorization},\cite{Scheimbauer:2014zty} and
  \cite{Tanaka_2020}.
 
 We now briefly sketch what is factorization homology because it is a
@@ -3615,15 +3629,16 @@ Roughly, it can be seen as
  \cite{ayalacategories2020factorization}.} over a manifold in the same sense that ordinary
  homology $H(M,A)$ is given by integrating an abelian group $A$ over a space $M$
   (see \cite{Ayalatopological_2015})
- \item an extended topological field theory (see \cite{Scheimbauer:2014zty}, \cite[4.1]{lurie2009classification} and
+ \item an extended\footnote{If you do not know what an extended TFT is, it might be helpful
+ to check out \ref{RemarkExtendedTFTs}.} topological field theory (see \cite{Scheimbauer:2014zty},
+  \cite[4.1]{lurie2009classification} and
   \cite{Ayalatopological_2015})
 \end{itemize}
 
 \begin{defn}[Factorization homology]\label{FactorHomology}
 	Given an $\E_n$-algebra $A\in\Alg_{\E_{n}}(\cat)$, its factorization homology is the left Kan
-	 extension\footnote{We spell out the definition but see \cite[Section 3.6.1]{Tanaka_2020} for a better
-	 	 paced explanation of what is a left
-	 	 Kan extension for $\infty$-categoires.}
+	 extension\footnote{We spell out the definition but see \cite[Section 3.6.1]{Tanaka_2020} for a better explanation of what is a left
+	 	 Kan extension for $\infty$-categories.}
 	% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXG9wZXJhdG9ybmFtZXtEaXNrfV57XFxmcn1fe259Il0sWzAsMSwiXFxvcGVyYXRvcm5hbWV7TWZsZH1ee1xcZnJ9X3tufSJdLFsxLDAsIlxcY2F0Il0sWzAsMSwiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMCwyLCJBIl0sWzEsMiwiXFxpbnRfeygtKX1BIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
 	\[\begin{tikzcd}[cramped]
 		{\operatorname{Disk}^{\fr}_{n}} & \cat \\
@@ -3646,8 +3661,9 @@ One way in which it is a homology theory for manifolds is that every homology th
  $n$-manifolds is given by factorization homology with coefficients in the $\E_n$-algebra $H(\R^n)$,
  see \cite{Ayalatopological_2015}.
  \begin{ex}
- 	Hochschild homology is factorization homology over $S^1\in\operatorname{Mfld_{1}^{\fr}}$.
+ 	Hochschild homology is a factorization homology over $S^1\in\operatorname{Mfld_{1}^{\fr}}$.
  \end{ex}
+
  \begin{defn}[Factorization algebra]\label{FactorAlgebra}
  Recall that a partially ordered set can be seen as a category where the arrows are given by the
   $\leq$ relation. The open subsets of a space generally and in particular of a manifold form a poset.
@@ -3660,7 +3676,19 @@ One way in which it is a homology theory for manifolds is that every homology th
  Such objects are also very important for the study of TFTs. For instance, they provide a bridge 
  between topological field theories and a dual approach to the formalization of quantum field theories:
  algebraic quantum field theories. See \ref{AQFT} for a sketch of what this approach is and 
- \cite{costello2023factorization} for more on factorization algebras.
+ \cite{costello2023factorization} for more on factorization algebras in other areas of
+ mathematics and physics and in particular as a connection between AQFTs and 
+ TFTs.
+ 
+  To see how it can define an extended TFT, note that $\Bord_n$ is just a special category of manifolds 
+ and that the factorization homology of an $\E_n$-algebra $A\in\Alg_{\E_{n}}(\cat)$ is a functor 
+ $$ \int_{(-)}A:\operatorname{Mfld}^{\fr}_{n}\to \operatorname{Fact}_n\subset \cat$$
+ where $\operatorname{Fact}_n$ denotes the subcategory of factorization algebras in $\cat$. 
+ Hence, one can intuit that there is a way to construct a factorization homology of an $\E_n$-algebra
+ as a symmetric monoidal $\infty$-functor 
+ $$ \int_{(-)}A:\operatorname{Bord}^{\fr}_{n}\to \operatorname{Fact}_n\subset \cat$$
+ where $\Bord_n$ is the extended category of bordisms (see \ref{RemarkExtendedTFTs}) and thus 
+ a TFT! Check out \cite{Scheimbauer:2014zty} for a detailed treatment.
 \subsection{Interlude on Bicategories \extra} % (fold)
 \label{sub:outlook_interlude_on_bicategories}
 %I hope the order here is not confusing, in the sense that why not define before a bicategory and subsequently the delooping, however this sequence where one first pictures the delooping and then they picture a bicategory made sense in my mind. Feel free to change /Andrea
