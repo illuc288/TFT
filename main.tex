@@ -2087,7 +2087,7 @@ A few examples of categories are the following:
  	\noindent  Then, $(\Hom_{\mathscr{C}}(\ast,\ast),\circ)$ is a monoid since composition is associative and unital with neutral element given by the identity morphism $id_\ast$.
   %TODO I think the notation is usually just BM, not bold--You are probably right but I prefer to put it bold because sometimes it can be confusing, e.g. a bicategory is often denoted by 'B' and then the delooping of a bicategory becomes a one-object tricategory BB. There was also a case I can't remember where one couldn't discern Bs in a topology class. It is true that we'll probably not encounter any such confusing cases but I still prefer it because it shows that it is something "special". having said this, not a big issue for me however, if we change it to just nonbold B /Andrea
 	Conversely, every monoid $(M,\cdot)$ defines a category $\mathbf{B}M$ with 
-	$$\ob(\mathbf{B}M)=\{\ast\},\Hom_{\mathbf{B}M}(\ast,\ast)=M,m\circ_{\mathbf{B}M} m'=m\cdot m',id_{\ast}=1_{M}$$ 
+	$$\ob(\mathbf{B}M)=\{\ast\}, \ \ \Hom_{\mathbf{B}M}(\ast,\ast)=M, \ \ m\circ_{\mathbf{B}M} m'=m\cdot m', \ \ id_{\ast}=1_{M}$$ 
 	$\mathbf{B}M$ is called the delooping of the monoid $(M,\cdot)$
     \footnote{We will see a generalization of such deloopings for certain categories, monoidal categories (see \ref{MonCat}) where any monoidal category $\cat$, will be a one-object \emph{bi}category $\mathbf{B}\cat$ called the delooping $\cat$ (see \ref{DeloopingMonCat}).}.
     The same holds for groups and one-object groupoids: every group $(G,\cdot)$ defines a one-object groupoid $\mathbf{B}G$ and vice versa
@@ -2155,7 +2155,8 @@ Some more examples related to topological spaces.
     
     \end{itemize} 
     Units are constant paths, i.e. $c:[0,1]\to X$ such that $\forall t\in[0,1], c(t)=x$. Additionally, this is indeed a groupoid since inverses are given by the same paths run in the opposite direction. We have a functor 
-    $$\pi_{\leq 1}:\Top\to \Gpd$$ 
+    $$\pi_{\leq 1}:\Top\to \Gpd.$$
+    In this context, the Seifert–Van Kampen theorem can be formulated as follows: $\pi_{\leq1}$ preserves pushouts\footnote{Pushouts are certain objects in a category defined, up to isomorphism, by a certain universal property. An example of pushout is the gluing of two spaces along a common other, as we have already seen numerous times in this course. The resulting space is a pushout in $Top$}.
     
     \item Let $X$ be a topological space and $x\in X$ an arbitrary basepoint. The assignement of a fundamental group of $X$ at $x$, $\pi_1(X,x)$\footnote{\textit{Reminder}: $\pi_1(X,x)=\pi_0(\Omega_x(X))$, where $\Omega_x(X)$ is the based loop space of $X$ at $x$} is a functor $\pi_1:\Top\to \Grp$
     \end{enumerate}
@@ -2269,7 +2270,7 @@ We did not cover this topic in the lecture, but the concept of equivalence of ca
         \item conservative, if for $f:X\rightarrow Y$ in $\mathscr{C}$ such that if $F(f)$ is an isomorphism, then $f$ is an isomorphism,
         \item an isomorphism if $\exists G:\mathscr{D}\rightarrow\mathscr{C}$ such that $G\circ F=id_{\mathscr{C}}$ and $F\circ G=id_{\mathscr{D}}$,
         \item an equivalence if $\exists G:\mathscr{D}\rightarrow\mathscr{C}$ and natural isomorphisms $G\circ F\overset{\epsilon}{\cong}id_{\mathscr{C}}$ and $F\circ G\overset{\eta}{\cong}id_{\mathscr{D}}$,
-        \item essentially surjective if $\forall Z\in\mathscr{D}, \exists Z'\in\mathscr{D}, X\in\mathscr{C}$ and an isomorphsim $F(X)\overset{f}{\cong}Z'$.
+        \item essentially surjective if $\forall Z\in\mathscr{D}, \exists X\in\mathscr{C}$ and an isomorphsim $F(X)\cong Z'$ (isomorphism in $\mathscr{D}$).
     \end{enumerate}
 \end{defn}
 % realized only writing down the definition of adjunction that I swapped unit and counit in the case of equivalence, will fix it, sorry! :/ /Andrea 
@@ -2470,7 +2471,7 @@ Having loosely characterized enriched categores We can provide a definition of s
 \noindent We will later encounter a notion of weak 2-category (see \ref{Bicategory}).
 
 \section{Monoidal categories}\label{MonCat}
-Recall that a monoid is a group where not necessarily every element is invertible: a set $M$ with a distinguished object $e\in M$ called unit, also known as neutral element, and a map of sets $m: M\times M \to M$ such that $m$ is:
+Recall that a monoid is a group where elements are not required to be invertible: a set $M$ with a distinguished object $e\in M$ called unit, also known as neutral element, and a map of sets $m: M\times M \to M$ such that $m$ is:
 \begin{itemize}
     \item associative $$
     \forall a,b,c\in M, \quad m(m(a,b),c)=m(a,m(b,c))
