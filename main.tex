@@ -3845,7 +3845,7 @@ We now list some examples of 2-categories, to convey a more concrete intuition o
 Now we sketch how one could define monoidal bicategories and in particular symmetric monoidal ones.
  The latter are important in the study
 of TFTs because a once-extended TFT (see \ref{RemarkExtendedTFTs}) is a symmetric monoidal
- bifunctor from a category of bordisms $\Bord_{n,n-1,n-2}$.
+ weak 2-functor from a category of bordisms $\Bord_{n,n-1,n-2}$.
  Generally, symmetric monoidal bicategories are a pain to define because a bicategory already needs
  to satisfy many coherence diagrams and a symmetric monoidal structure on it even more! Take a look
  at \cite[Definition 2.3]{schommerpries2014classification} and skim through
@@ -3860,14 +3860,15 @@ of TFTs because a once-extended TFT (see \ref{RemarkExtendedTFTs}) is a symmetri
   	 monoidal ones that rely on the $\E_n$-algebras we previously talked about, see \ref{EAlg}.
   	 
   	 In order to achieve this we first need to talk about the tricategory of bicategories Bicat.
-\begin{defn}[Bifunctor]
-A bifunctor, aka pseudofunctor, is the right notion of functor between bicategories.
+\begin{defn}[Weak 2-functor]\label{Weak2Fun}
+A weak 2-functor, aka pseudofunctor, is the right notion of functor between bicategories.
 
-Given two bicategories $\bat$ and $\cat$. A bifunctor $P:\bat \to\cat$ consists of 
+Given two bicategories $\bat$ and $\cat$. A weak 2-functor $P:\bat \to\cat$ consists of 
 \begin{itemize}
 	\item an assignment, a function, $\operatorname{Ob}(\bat)\to\operatorname{Ob}(\cat)$
 	\item for each hom-category $\Hom_\bat(X,Y)$, a functor $P_{x,y}\Hom_\bat(X,Y)\to \Hom_\cat(P(X),P(Y))$
-	\item two invertible 2-morphisms pinning down the compositionality and unitality of the bifunctor
+	\item two invertible 2-morphisms pinning down the compositionality and unitality of the weak 
+	2-functor
 	\item and three commutative diagrams that make the interaction between the composition of
 	 bifunctors and the objects and morphisms in the bicategory reasonable
 \end{itemize}
@@ -3878,7 +3879,8 @@ points.
 A pseudonatural transformation is a natural transformation but where the naturality is given by a diagram
 that commutes via a homotopy and not strictly.
 
-Given bicategories $\bat$ and $\cat$ and bifunctors $F,G:\bat\to\cat$ a pseudonatural transformation
+Given bicategories $\bat$ and $\cat$ and weak 2-functor
+ $F,G:\bat\to\cat$ a pseudonatural transformation
 $\alpha:F\Rightarrow G$ is consists of:
 \begin{itemize}
 	\item for each $X\in\bat$ a 1-morphism in $\cat$ $\alpha_X:F(X)\to G(X)$
@@ -3910,7 +3912,8 @@ You can picture a modification $\Xi$ with the following diagram:
 	\arrow[""{name=3, anchor=center, inner sep=0}, "\alpha"', curve={height=18pt}, shorten <=11pt, shorten >=11pt, Rightarrow, from=0, to=1]
 	\arrow["\Xi", shorten <=8pt, shorten >=8pt, Rightarrow, from=3, to=2]
 \end{tikzcd}\]
-Given bifunctors $F,G:\bat\to\cat$, pseudonaturaltransformations $\alpha,\beta:F\Rightarrow G$,
+Given weak 2-functors $F,G:\bat\to\cat$, pseudonaturaltransformations
+ $\alpha,\beta:F\Rightarrow G$,
 a modification $\Xi:\alpha\Rightarrow\beta$ consists of components for any object $X\in\bat$ that are
  2-morphisms working as follows
 \begin{itemize}
@@ -3944,7 +3947,7 @@ it can be argued that $(\infty,n)$-categories are the \textbf{right} context to 
 The tricategory of bicategories consists of
 \begin{itemize}
 	\item bicategories as objects
-	\item bifunctors as 1-morphisms
+	\item weak 2-functors as 1-morphisms
 	\item pseudonatural transformations as 2-morphisms
 	\item modifications as 3-morphisms
 \end{itemize}
@@ -6974,10 +6977,14 @@ An abelian category is semisimple if it only has semisimple objects.
 		\label{CUTTORUS}
 	\end{figure}
 	
-	Treating a TFT as a functor\footnote{To be rigorous, one would need to precisify what is an appropriate notion of functor between bicategories.} from a symmetric monoidal bicategory
-	(see \ref{SymmMonBicategory} for a definition), instead of from a symmetric monoidal category is
-	 sometimes
-	 named 'once-extended TFT', e.g. \cite{SchwHopfQuantumTFT}. There are two important results
+	Treating a TFT as a symmetric monoidal weak 2-functor (see \ref{Weak2Fun} for a definition)
+	 from
+	 a symmetric monoidal bicategory 
+	$\Bord_{n,n-1,n-2}$
+	(see \ref{SymmMonBicategory} for a definition), instead of from a symmetric monoidal category
+	 is
+	 named 'once-extended TFT', e.g. see \cite{SchwHopfQuantumTFT}. There are two important
+	  results
 	  regarding once-extended TFTs: 
 	\begin{enumerate}
 \item One regards the classification of 2d-TFTs down to a point and is due to Christopher Schommer Pries who
