@@ -2671,7 +2671,8 @@ Thus, since both $(A\times\ast,pr_1,pr_2)$ and $(A,id_A,\phi_A)$ are products of
 \noindent In the previous paragraph, we have talked about cartesian monoidal categories and left out some examples of \emph{noncartesian} monoidal categories like $(\AbGrp,\otimes)$ and $(\Vect_k,\otimes)$. We now encounter some examples of noncartesian monoidal categories, which will be central in this class. They will be all similar to $(\AbGrp,\otimes)$, so we will first explain this category and then draw parallels with the others. To introduce the tensor product between abelian groups we first have to define what is a bilinear map:
 
 \begin{defn}[Bilinear Map]
-    For $A,B,C\in \Ab$, a bilinear map, aka group bihomomorphism, is a function $$f:A\times B\to C$$ which is a group homomorphism, aka linear map, in both arguments.
+    For $A,B,C\in \Ab$, a bilinear map, that is a group bihomomorphism, is a function 
+    $$f:A\times B\to C$$ which is a group homomorphism, aka linear map, in both arguments.
 \end{defn}
 \noindent An explanation of what happens to the elements of $A,B$ might be clearer. Note that a cartesian product $A\times B$ in Ab is an abelian group where the operation is 
 $$(a_1,b_1)+(a_2,b_2)=(a_1+a_2,b_1+b_2).$$
@@ -2987,7 +2988,7 @@ We leave the case of the counit for the reader.
 %I don't think it's a bimonoid, i think it's just monoid and comonoid, without the additional property /William You are very right!!!!!!
 \begin{defn}[Frobenius Algebra]\label{FrobAlg}
     A Frobenius algebra in an arbitrary monoidal category $\cat$ is simultaneously a monoid and a comonoid object in $\cat$ with a compatibility condition different from the one above: 
-    $$(\mathbb{1}_\cat\otimes\mu)\circ(\Delta\otimes\mathbb{1}_\cat)=\Delta\circ\mu=(\mu\otimes\unit_\cat)\circ(\unit_\cat\otimes\Delta)$$
+    $$(id\otimes\mu)\circ(\Delta\otimes id)=\Delta\circ\mu=(\mu\otimes id)\circ(id\otimes\Delta)$$
     called the Frobenius relation. 
 \end{defn}
 
@@ -3076,7 +3077,9 @@ However, this does not characterize an actually symmetric structure, but rather 
 \noindent A braided monoidal category is \textit{not} the category corresponding to an abelian monoid. A special type of braided monoidal category is: the symmetric monoidal category.
 \begin{defn}
 \label{SymmMonCat}
-    A symmetric monoidal category is a braided monoidal category $(C, \otimes, 1, \alpha, \lambda, \rho,\beta)$ such that $\beta^2 = id$ (i.e. $\beta_{y,x} \circ \beta_{x,y} = id$).
+    A symmetric monoidal category is a braided monoidal category 
+    $(\cat, \otimes, \unit_\cat, \alpha, \lambda, \rho,\beta)$ such that $\beta^2 = id$ 
+    (i.e. $\beta_{y,x} \circ \beta_{x,y} = id$).
 \end{defn}
 \begin{ex}
 \hfill
@@ -3747,7 +3750,7 @@ One way in which it is a homology theory for manifolds is that every homology th
  $$ \int_{(-)}A:\operatorname{Mfld}^{\fr}_{n}\to \operatorname{Fact}_n\subset \cat$$
  where $\operatorname{Fact}_n$ denotes the subcategory of factorization algebras in $\cat$. 
  Hence, one can intuit that there is a way to construct a factorization homology of an $\E_n$-algebra
- as a symmetric monoidal $\infty$-functor 
+ as a symmetric monoidal functor 
  $$ \int_{(-)}A:\operatorname{Bord}^{\fr}_{n}\to \operatorname{Fact}_n\subset \cat$$
  where $\Bord_n$ is the extended category of bordisms (see \ref{RemarkExtendedTFTs}) and thus 
  a TFT! Check out \cite{Scheimbauer:2014zty} for a detailed treatment.
