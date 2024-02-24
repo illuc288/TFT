@@ -272,7 +272,7 @@ These are the lecture notes of the course \textit{``Bordism and Topological Fiel
 	regarding simplicial homotopy theory and $\infty$-categories at LMU. If you are interested or 
 	have any questions regarding this, contact Prof. Land
 	 (\href{mailto:Markus.land@math.lmu.de}{Markus.land@math.lmu.de}) and check
-	 \href{https://www.markus-land.de}{his website}}). They have been written by Andrea Sittoni.
+	 \href{https://www.markus-land.de}{his website}.}). They have been written by Andrea Sittoni.
 	Please send corrections, suggestions and comments.
 \end{notat}
 In this kind of sections we have the following conventions.
@@ -3534,9 +3534,17 @@ in which higher algebra takes place.
 	\end{itemize}
 \end{notat}
 \begin{notat}
-	Synonyms for $\mathbb{E}_1$-space are $A_\infty$-space and monoidal $\infty$-groupoid. A synonym for $\mathbb{E}_\infty$-space is
+	Synonyms for $\mathbb{E}_1$-space are $A_\infty$-space and monoidal $\infty$-groupoid. A
+	 synonym for $\mathbb{E}_\infty$-space is
 	symmetric monoidal $\infty$-groupoid. 
 \end{notat}
+\begin{rem}\label{SymmMoninftycat}
+A symmetric monoidal $\infty$-category is fortunately not only definable as an $\E_\infty$-algebra in
+ $\Cat_\infty$, else our definition of $\E_n$-algebras would have been circular!
+One can define them as cartesian opfibrations, see \cite[Section 4]{groth2015short}, or as 
+contravariant functors from Segal's gamma category (something similar to finite pointed sets),
+see \cite[II.15]{KtheoryHebestreitWagner}.
+\end{rem}
 \begin{ex}
 	$\Omega X$ is an $\mathbb{E}_1$-space: composition of loops induces an operation which is not
 	strictly unital or associative, but only via homotopies. See
@@ -3743,7 +3751,7 @@ One way in which it is a homology theory for manifolds is that every homology th
         \item For each objects $X,Y$, a 1-category $\Hom_\bat(X,Y)$, whose objects $f,g,\dots$ are called 1-cells or 1-morphisms and whose morphisms $\alpha,\beta,\dots$ are called 2-cells or 2-morphisms; composition of (2-)morphisms in this category is also called vertical composition
         \item For any three objects $X,Y,Z$ there are composition functors, also called horizontal composition $$\circ_{X,Y,Z}:\Hom(Y,Z)\times \Hom(X,Y)\to \Hom(X,Z)$$
         $$(f,g)\mapsto f\circ g$$
-        $$(\alpha,\beta)\mapsto \alpha\circ\beta$$ in the context of bicategories we denote composition of functors with $\bigcirc$ instead of the usual $\circ$ in order to not get confused between a composition functor and a composition of functors
+        $$(\alpha,\beta)\mapsto \alpha\circ\beta$$ in the context of bicategories we denote composition of functors with $\bigcirc$ instead of the usual $\circ$ in order to not get confused between a composition functor and a composition \emph{of} functors
         \item  For every object $X$ there is an identity functor from the one-object category\footnote{This is the terminal object of Cat and thereby monoidal unit of the cartesian monoidal category $(\Cat,\times,\unit_{\Cat})$ with the cartesian product as the tensor product. With $\ob(\unit_{\Cat})=\{\ast\}$ and $\Hom_{\Cat}(\ast,\ast)=id_{\ast}$.} $\unit_{\Cat}$
         $$identity_X:\unit_{\text{Cat}}\to \Hom(X,X)$$ $$\ast\mapsto id_X$$ we name the image of the single object the identity 1-morphism, i.e. $identity_{X}(\ast)=id_X$
         \item There are natural isomorphisms $a,r,l$ expressing associativity and unitality of the composition functor: \begin{itemize}
@@ -3809,10 +3817,156 @@ We now list some examples of 2-categories, to convey a more concrete intuition o
         \item There is a bicategory Alg$_k^2$ where objects are algebras over a vector space, 1-morphisms are bimodules (see \ref{CatOfBimodules}) and 2-morphisms are maps between bimodules, also known as intertwiners 
     \end{enumerate}
 \end{ex}
+\subsubsection{Symmetric monoidal bicategories \extra}
+Now we sketch how one could define monoidal bicategories and in particular symmetric monoidal ones.
+ The latter are important in the study
+of TFTs because a once-extended TFT (see \ref{RemarkExtendedTFTs}) is a symmetric monoidal
+ bifunctor from a category of bordisms $\Bord_{n,n-1,n-2}$.
+ Generally, symmetric monoidal bicategories are a pain to define because a bicategory already needs
+ to satisfy many coherence diagrams and a symmetric monoidal structure on it even more! Take a look
+ at \cite[Definition 2.3]{schommerpries2014classification} and skim through
+  \cite[Section 2.3]{schommerpries2014classification}. For this reason, some try to provide other smart 
+  ways to define what is a symmetric monoidal bicategory. For instance, Mike Shulman defined them 
+  in terms of symmetric monoidal double categories \cite{shulman2010constructing} or one could try to
+   define them 
+  in terms of particular functors $\Gamma^{\operatorname{op}}\to \operatorname{Bicat}$ as one
+  does with symmetric monoidal $\infty$-categories\footnote{A master student of Prof. Scheimbauer is
+  	 working on this.} (see \ref{SymmMoninftycat}).% what is the name of the master student? I want to give credit!!! /Andrea
+  	 In this chapter we provide definitions for monoidal bicategories and symmetric
+  	 monoidal ones that rely on the $\E_n$-algebras we previously talked about, see \ref{EAlg}.
+  	 
+  	 In order to achieve this we first need to talk about the tricategory of bicategories Bicat.
+\begin{defn}[Bifunctor]
+A bifunctor, aka pseudofunctor, is the right notion of functor between bicategories.
 
+Given two bicategories $\bat$ and $\cat$. A bifunctor $P:\bat \to\cat$ consists of 
+\begin{itemize}
+	\item an assignment, a function, $\operatorname{Ob}(\bat)\to\operatorname{Ob}(\cat)$
+	\item for each hom-category $\Hom_\bat(X,Y)$, a functor $P_{x,y}\Hom_\bat(X,Y)\to \Hom_\cat(P(X),P(Y))$
+	\item two invertible 2-morphisms pinning down the compositionality and unitality of the bifunctor
+	\item and three commutative diagrams that make the interaction between the composition of
+	 bifunctors and the objects and morphisms in the bicategory reasonable
+\end{itemize}
+See \url{https://ncatlab.org/nlab/show/pseudofunctor} for a complete definition expliciting the last two
+points.
+\end{defn}
+\begin{defn}[Psuedonatural transformation]
+A pseudonatural transformation is a natural transformation but where the naturality is given by a diagram
+that commutes via a homotopy and not strictly.
 
+Given bicategories $\bat$ and $\cat$ and bifunctors $F,G:\bat\to\cat$ a pseudonatural transformation
+$\alpha:F\Rightarrow G$ is consists of:
+\begin{itemize}
+	\item for each $X\in\bat$ a 1-morphism in $\cat$ $\alpha_X:F(X)\to G(X)$
+	\item for each $f:X\to Y$ in $\bat$ an invertible 2-morphism in $\cat$,
+	 $\alpha_f:G(f)\circ\alpha_X\simeq \alpha_Y\circ F(f)$ making the following diagram commute
+	 % https://q.uiver.app/#q=WzAsNCxbMCwwLCJGKFgpIl0sWzEsMCwiRihZKSJdLFswLDEsIkcoWCkiXSxbMSwxLCJHKFkpIl0sWzAsMSwiRihmKSJdLFswLDIsIlxcYWxwaGFfWCIsMl0sWzIsMywiRyhmKSIsMl0sWzEsMywiXFxhbHBoYV9ZIl0sWzIsMSwiXFxhbHBoYV9mIiwwLHsibGV2ZWwiOjIsInN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9fX1dXQ==
+	 \[\begin{tikzcd}[cramped]
+	 	{F(X)} & {F(Y)} \\
+	 	{G(X)} & {G(Y)}
+	 	\arrow["{F(f)}", from=1-1, to=1-2]
+	 	\arrow["{\alpha_X}"', from=1-1, to=2-1]
+	 	\arrow["{G(f)}"', from=2-1, to=2-2]
+	 	\arrow["{\alpha_Y}", from=1-2, to=2-2]
+	 	\arrow["{\alpha_f}", Rightarrow, 2tail reversed, from=2-1, to=1-2]
+	 \end{tikzcd}\]
+	 \item such that coherence conditions for the associators and unitors in $\cat$ are satisfied,
+	 see \url{https://ncatlab.org/nlab/show/pseudonatural+transformation} 
+\end{itemize}
+\end{defn}
+\begin{defn}[Modification]
+A modification is a sort of natural transformation between pseudonatural transformations.
+You can picture a modification $\Xi$ with the following diagram: 
+% https://q.uiver.app/#q=WzAsMixbMCwwLCJcXGJhdCJdLFs0LDAsIlxcY2F0Il0sWzAsMSwiRiIsMCx7ImN1cnZlIjotNX1dLFswLDEsIkciLDIseyJjdXJ2ZSI6NX1dLFsyLDMsIlxcYmV0YSIsMCx7ImN1cnZlIjotNCwic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfX1dLFsyLDMsIlxcYWxwaGEiLDIseyJjdXJ2ZSI6Mywic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfX1dLFs1LDQsIlxcWGkiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJsZXZlbCI6Mn1dXQ==
+\[\begin{tikzcd}[cramped]
+	\bat &&&& \cat
+	\arrow[""{name=0, anchor=center, inner sep=0}, "F", curve={height=-30pt}, from=1-1, to=1-5]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "G"', curve={height=30pt}, from=1-1, to=1-5]
+	\arrow[""{name=2, anchor=center, inner sep=0}, "\beta", curve={height=-24pt}, shorten <=12pt, shorten >=12pt, Rightarrow, from=0, to=1]
+	\arrow[""{name=3, anchor=center, inner sep=0}, "\alpha"', curve={height=18pt}, shorten <=11pt, shorten >=11pt, Rightarrow, from=0, to=1]
+	\arrow["\Xi", shorten <=8pt, shorten >=8pt, Rightarrow, from=3, to=2]
+\end{tikzcd}\]
+Given bifunctors $F,G:\bat\to\cat$, pseudonaturaltransformations $\alpha,\beta:F\Rightarrow G$,
+a modification $\Xi:\alpha\Rightarrow\beta$ consists of components for any object $X\in\bat$ that are
+ 2-morphisms working as follows
+\begin{itemize}
+	\item for any components of $\alpha$ $\beta$, i.e. 1-morphisms in
+	 $\cat$ $\alpha_X,\beta_X:F(X)\to G(X)$, there is a component of $\Xi$, a 2-morphism in $\cat$,
+	  $\Xi_X:\alpha_X\Rightarrow \beta_X$. You can picture it like this: 
+	 % https://q.uiver.app/#q=WzAsMixbMCwwLCJGKFgpIl0sWzIsMCwiRyhYKSJdLFswLDEsIlxcYWxwaGFfWCIsMCx7ImN1cnZlIjotM31dLFswLDEsIlxcYmV0YV9YIiwyLHsiY3VydmUiOjN9XSxbMiwzLCJcXFhpX1giLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV1d
+	 \[\begin{tikzcd}[cramped]
+	 	{F(X)} && {G(X)}
+	 	\arrow[""{name=0, anchor=center, inner sep=0}, "{\alpha_X}", curve={height=-18pt}, from=1-1, to=1-3]
+	 	\arrow[""{name=1, anchor=center, inner sep=0}, "{\beta_X}"', curve={height=18pt}, from=1-1, to=1-3]
+	 	\arrow["{\Xi_X}", shorten <=5pt, shorten >=5pt, Rightarrow, from=0, to=1]
+	 \end{tikzcd}\]
+\end{itemize}
+Such components must satisfy a naturality condition. The following diagram commutes strictly\footnote{
+In some contexts, e.g. in fully extended TFTs (meaning downwards to the point and upward to 
+infinitely many invertible morphisms), this strictness is undesirable. This is why 
+it can be argued that $(\infty,n)$-categories are the \textbf{right} context to do higherer(/higher higher)
+ category theory, meaning studying or working with $n$-categories.}
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJHKGYpXFxjaXJjXFxhbHBoYV9YIl0sWzAsMSwiXFxhbHBoYV9ZXFxjaXJjIEYoZikiXSxbMywxLCJcXGJldGFfWVxcY2lyYyBHKGYpIl0sWzMsMCwiRyhmKVxcY2lyYyBcXGJldGFfeCJdLFswLDEsIlxcYWxwaGFfZiIsMix7ImxldmVsIjoyfV0sWzEsMiwiXFxYaV9ZXFxiaWdjaXJjIGlkZW50aXR5X3tGKGYpfSIsMix7ImxldmVsIjoyfV0sWzAsMywiIGlkZW50aXR5X3tHKGYpfVxcYmlnY2lyY1xcWGlfWCIsMCx7ImxldmVsIjoyfV0sWzMsMiwiXFxiZXRhX2YiLDAseyJsZXZlbCI6Mn1dXQ==
+\[\begin{tikzcd}[cramped]
+	{G(f)\circ\alpha_X} &&& {G(f)\circ \beta_x} \\
+	{\alpha_Y\circ F(f)} &&& {\beta_Y\circ G(f)}
+	\arrow["{\alpha_f}"', Rightarrow, from=1-1, to=2-1]
+	\arrow["{\Xi_Y\bigcirc identity_{F(f)}}"', Rightarrow, from=2-1, to=2-4]
+	\arrow["{ identity_{G(f)}\bigcirc\Xi_X}", Rightarrow, from=1-1, to=1-4]
+	\arrow["{\beta_f}", Rightarrow, from=1-4, to=2-4]
+\end{tikzcd}\]
+\end{defn}
+  	 \begin{defn}[The tricategory of bicategories]
+The tricategory of bicategories consists of
+\begin{itemize}
+	\item bicategories as objects
+	\item bifunctors as 1-morphisms
+	\item pseudonatural transformations as 2-morphisms
+	\item modifications as 3-morphisms
+\end{itemize}
+As any category of categories, it is cartesian monoidal via the product of bicategories and hence
+ symmetric monoidal\footnote{Recall that any cartesian product is commutative \ref{CartProd}.}
+
+We denote it with Bicat.
+  	 \end{defn}
+  	 Having defined the tricategory of bicategories we can now provide the definitions for 
+  	 monoidal bicategories and symmetric monoidal ones.
+  	 \begin{defn}[Monoidal bicategory]
+  	 	A monoidal bicategory is an $\E_1$-algebra in Bicat, i.e. a symmetric monoidal functor
+  	 	$$\Disk_{1}^{\fr}\to\operatorname{Bicat}$$
+  	 \end{defn}
+\begin{defn}[Symmetric monoidal bicategory]\label{SymmMonBicategory}
+A symmetric monoidal bicategory is an $\E_{\infty\geq n\geq 4}$-algebra in Bicat, i.e. a symmetric monoidal
+functor
+$$\Disk_{\infty\geq n\geq 4}^{\fr}\to\operatorname{Bicat}$$
+This is equivalent to \cite[Theorem 2.8]{Gurski_2013}.
+\end{defn}
+Since Bicat is a \textbf{tri}category and has one higher level of morphisms than Cat, we do not just have
+braided and symmetric
+ monoidality, but a new shade of commutativity, called sylleptic.
+ 
+As we did for Cat in \ref{EAlg} we can summarize the situation with the following table
+\begin{center}
+	\begin{tabular}{|c||c|}
+		\hline
+		\phantom{h} & Bicat \\ [0.5ex]
+		\hline\hline
+		$\mathbb{E}_1$-algebra & monoidal bicategory \\
+		\hline
+		$\E_2$-algebra & braided monoidal bicategory \\
+		\hline
+		$\E_3$-algebra & sylleptic monoidal bicategory \\
+		\hline
+		$\E_4$-algebra & symmetric monoidal bicategory \\
+		\hline 
+		$\E_\infty$-algebra & symmetric monoidal bicategory \\
+		\hline
+	\end{tabular}
+\end{center}
 \chapter{The cobordism category}\label{CobCat}
-We now get to the most important example of symmetric monoidal category in this course: the symmetric monoidal category of cobordisms\footnote{See chapter 14 of \cite{FreedBordism}.}. This is what will allow us to define a topological field theory.
+We now get to the most important example of symmetric monoidal category in this course: the
+ symmetric monoidal category of cobordisms\footnote{See chapter 14 of \cite{FreedBordism}.}. This is
+ what will allow us to define a topological field theory.
 \begin{notat}
    Note that, if not explicitly stated we will mean \emph{smooth} manifold when we write manifold.
 \end{notat}
@@ -5580,7 +5734,8 @@ From now on the main reference will be \cite{KasselRossoTuraev97}.
 For classifying TFTs in 1 and 2 dimensions the procedure we have been following is to find an algebraic category which is equivalent with such TFTs evaluated on some object. 
 In particular, in order to classify 1d TFTs we established an equivalence with the evaluation functor of 1TFTs on a point and finite dimensional vector spaces and for 2d TFTs evaluated on the circle $S^1$ are equivalent to commutative Frobenius algebras in some symmetric monoidal category and to finite-dimensional Frobenius $k$-algebras when considering $\Vect_k$ as the target category. 
 These equivalences of categories allow us to reconstruct 1d and 2d TFTs (up to some reasonable form of equivalence) from this purely algebraic data. One can ask themselves if a classification of this kind is possible also for higher dimension, such as 3d TFTs. 
-First, 3d-TFTs can be constructed from algebraic data, although a bit more sophisticated than what we got in lower dimensions, we will find out that every \textit{modular tensor category} gives a 3d TFT\footnote{So-called once-extended 3d TFTs, i.e. TFTs of the sort $\Bord_{3,2,1}\xrightarrow{\Zf}\cat$, can be classified by modular tensor categories. As we previously sketched, once-extended 2d TFTs have $\Bord_{2,1,0}$ as source and $\Bord_{2,1,0}$ is a symmetric monoidal bicategory (see \ref{Bicategory} and \ref{RemarkExtendedTFTs}). Also $\Bord_{3,2,1}$ is a symmetric monoidal bicategory with disjoint unions of $S^1$ as objects. In short, there is an equivalence between once-extended 3d-TFTs evaluated on the circle $S^1$ and modular tensor categories (see \cite{JordanTFTs} for more). This is a very difficult result, the details of which are not fully available yet, despite being expected/``known'' for a decade}. 
+First, 3d-TFTs can be constructed from algebraic data, although a bit more sophisticated than what we got in lower dimensions, we will find out that every \textit{modular tensor category} gives a 3d TFT\footnote{So-called once-extended 3d TFTs, i.e. TFTs of the sort $\Bord_{3,2,1}\xrightarrow{\Zf}\cat$, can be classified by modular tensor categories. As we previously sketched, once-extended 2d TFTs have $\Bord_{2,1,0}$ as source and $\Bord_{2,1,0}$ is a symmetric monoidal bicategory (see \ref{SymmMonBicategory} and \ref{RemarkExtendedTFTs}
+	). Also $\Bord_{3,2,1}$ is a symmetric monoidal bicategory with disjoint unions of $S^1$ as objects. In short, there is an equivalence between once-extended 3d-TFTs evaluated on the circle $S^1$ and modular tensor categories (see \cite{JordanTFTs} for more). This is a very difficult result, the details of which are not fully available yet, despite being expected/``known'' for a decade}. 
 The algebraic data can be summarized diagramatically as follows
 % https://q.uiver.app/#q=WzAsNixbMCwwLCJcXG9wZXJhdG9ybmFtZXtGaW5WZWN0fVxcbmkgWCJdLFswLDEsIlxcb3BlcmF0b3JuYW1le0NvbW1Gcm9ifVxcbmkgQSJdLFswLDIsIlxcb3BlcmF0b3JuYW1le01vZFRlbnNvcn1cXG5pXFxjYXQiXSxbMiwwLCJcXFpmXFxpblxcb3BlcmF0b3JuYW1lezEtVEZUfSJdLFsyLDEsIlxcWmZcXGluXFxvcGVyYXRvcm5hbWV7Mi1URlR9Il0sWzIsMiwiXFxaZlxcaW5cXG9wZXJhdG9ybmFtZXsxLVRGVH0iXSxbMCwzLCJcXHRleHR7XFx0aW55e3VuaXF1ZWx5IGRldGVybWluZXN9fSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6InNxdWlnZ2x5In19fV0sWzEsNCwiXFx0ZXh0e1xcdGlueXt1bmlxdWVseSBkZXRlcm1pbmVzfX0iLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJzcXVpZ2dseSJ9fX1dLFsyLDUsIlxcdGV4dHtcXHRpbnl7dW5pcXVlbHkgZGV0ZXJtaW5lc319IiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoic3F1aWdnbHkifX19XV0=
 \[\begin{tikzcd}[cramped]
@@ -6785,7 +6940,8 @@ An abelian category is semisimple if it only has semisimple objects.
 \begin{rem}[Remark on Extended TFTs]\label{RemarkExtendedTFTs}
 	After defining the cobordism hypothesis in this manner, a natural question is: how can TFTs of any dimension greater than 1 be classified by evaluating them at a point? If we stick to our definition, there are no points in any category of bordisms of dimension greater than 1. Fortunately, one can \emph{extend} the bordism category, and consequently TFTs, and also talk about lower dimensions. Take as an example $\Bord^{or}_{2,1}$. As we defined the bordism category, in this case the lowest dimension is 1, the objects are lines, not points. Nevertheless, one could treat the category of 2 dimensional bordisms as a 2-category, more specifically as a bicategory (see \ref{Bicategory})\footnote{Since 1-morphisms do not compose strictly, but up to an appropriate notion of isomorphism.}, $\Bord_{2,1,0}$ where objects are disjoint unions of points, 1-morphisms are oriented cobordisms between points and 2-morphisms are cobordisms between the 1-morphisms; and then define 2d-TFTs as an
 	 appropriate notion of symmetric monoidal functor between symmetric monoidal bicategories\footnote{A detailed
-		 treatment of the 2d case is found in \cite{schommerpries2014classification}.}.  However, to this we need to allow manifolds with corners, as the illustration of the downward extension of the torus shows (\ref{CUTTORUS}).
+		 treatment of the 2d case is found in \cite{schommerpries2014classification}.} (see \ref{SymmMonBicategory} for a definition).  
+		 However, to this we need to allow manifolds with corners, as the illustration of the downward extension of the torus shows (\ref{CUTTORUS}).
 	\begin{figure}
 		\centering
 		\captionsetup{format = hang}
@@ -6794,7 +6950,11 @@ An abelian category is semisimple if it only has semisimple objects.
 		\label{CUTTORUS}
 	\end{figure}
 	
-	Treating a TFT as a functor\footnote{To be rigorous, one would need to precisify what is an appropriate notion of functor between bicategories.} from a symmetric monoidal\footnote{Although we did not define a symmetric monoidal bicategory, there is indeed a way to do this, see the appendix C of \cite{schommerpries2014classification} for a definition and chapter 2 for an exposition.} bicategory (instead of from a symmetric monoidal category) is sometimes named 'once-extended TFT', e.g. \cite{SchwHopfQuantumTFT}. There are two important results regarding once-extended TFTs: 
+	Treating a TFT as a functor\footnote{To be rigorous, one would need to precisify what is an appropriate notion of functor between bicategories.} from a symmetric monoidal bicategory
+	(see \ref{SymmMonBicategory} for a definition), instead of from a symmetric monoidal category is
+	 sometimes
+	 named 'once-extended TFT', e.g. \cite{SchwHopfQuantumTFT}. There are two important results
+	  regarding once-extended TFTs: 
 	\begin{enumerate}
 \item One regards the classification of 2d-TFTs down to a point and is due to Christopher Schommer Pries who
  proved it in his PhD thesis 
