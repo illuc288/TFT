@@ -2514,7 +2514,7 @@ A monoidal category generalizes this structure with respect to objects \emph{and
             	\arrow[shorten <=5pt, shorten >=5pt, Rightarrow, from=1, to=0]
             \end{tikzcd}\]
             \hfill the \textit{associator}
-        \item (U) natural isomorphisms $\lambda:\mathbb{1}_\cat \otimes(-)\Rightarrow\id_\cat=(-)$ and $\rho:- \otimes\mathbb{1}_\cat\Rightarrow\id\cat=(-)$ witnessing unitality: % https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXG1hdGhzY3J7Q30iXSxbMSwwLCJcXG1hdGhzY3J7Q30iXSxbMiwwLCJcXG1hdGhzY3J7Q30iXSxbMywwLCJcXG1hdGhzY3J7Q30iXSxbMCwxLCJcXG1hdGhiYnsxfVxcb3RpbWVzIC0iLDAseyJjdXJ2ZSI6LTJ9XSxbMCwxLCJpZF9cXG1hdGhzY3J7Q309KC0pIiwyLHsiY3VydmUiOjJ9XSxbMiwzLCJpZF9cXG1hdGhzY3J7Q309KC0pIiwyLHsiY3VydmUiOjJ9XSxbMiwzLCItXFxvdGltZXMgXFxtYXRoYmJ7MX0iLDAseyJjdXJ2ZSI6LTJ9XSxbNCw1LCJcXGxhbWJkYSIsMix7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XSxbNyw2LCJcXHJobyIsMix7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XV0=
+        \item (U) natural isomorphisms $\lambda:\mathbb{1}_\cat \otimes(-)\Rightarrow\id_\cat=(-)$ and $\rho:- \otimes\mathbb{1}_\cat\Rightarrow\id_\cat=(-)$ witnessing unitality: % https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXG1hdGhzY3J7Q30iXSxbMSwwLCJcXG1hdGhzY3J7Q30iXSxbMiwwLCJcXG1hdGhzY3J7Q30iXSxbMywwLCJcXG1hdGhzY3J7Q30iXSxbMCwxLCJcXG1hdGhiYnsxfVxcb3RpbWVzIC0iLDAseyJjdXJ2ZSI6LTJ9XSxbMCwxLCJpZF9cXG1hdGhzY3J7Q309KC0pIiwyLHsiY3VydmUiOjJ9XSxbMiwzLCJpZF9cXG1hdGhzY3J7Q309KC0pIiwyLHsiY3VydmUiOjJ9XSxbMiwzLCItXFxvdGltZXMgXFxtYXRoYmJ7MX0iLDAseyJjdXJ2ZSI6LTJ9XSxbNCw1LCJcXGxhbWJkYSIsMix7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XSxbNyw2LCJcXHJobyIsMix7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XV0=
             \[\begin{tikzcd}
             	{\mathscr{C}} & {\mathscr{C}} & {\mathscr{C}} & {\mathscr{C}}
             	\arrow[""{name=0, anchor=center, inner sep=0}, "{\mathbb{1}\otimes -}", curve={height=-12pt}, from=1-1, to=1-2]
@@ -2639,8 +2639,10 @@ Since everything commutes $f=f\circ u'\circ u$ and $g=g\circ u'\circ u$. Therefo
     Same reasoning as in the proof of the commutativity of the cartesian product.
 \end{proof}
 In a cartesian monoidal category $\cat$ the unit is a terminal object, i.e. an object $\ast\in\cat$ such that every object $X\in\cat$ has a unique morphism to it: $\exists !\phi_X:X\to\ast$. 
-This is the case because given an arbitrary object $A\in\cat$ and a product with the terminal one $(A\times\ast,pr_1,pr_2)$ the units $\rho:A\times\ast\to A$ and $\lambda:\ast\times A\to A$ are the same projection $pr_1:A\times\ast\to A$ since the cartesian product is commutative. 
-Such projection is indeed an isomorphism because $(A,id_A,\phi_A)$ is also a product of $\ast,A\in\cat$: any object $Y\in\cat$ with morphisms $f:Y\to A$ and $\phi_Y\to\ast$ has indeed a unique morphism into $A$ such that the diagram of the product commutes, namely $f$ itself. 
+
+\noindent Now, suppose such element exists, consider an arbitrary object $A\in\cat$ and a product with the terminal object $(A\times\ast,pr_1,pr_2)$, define the units $\rho_A:A\times\ast\to A$ and $\lambda_A:\ast\times A\to A$ as the projection $pr_1:A\times\ast\to A$ since the cartesian product is commutative ($\rho_A=pr_1$ while $\lambda_A$ is the same as $pr_1$ up to a isomorphism of $A\times\ast$ and $\ast\times A$). 
+
+\noindent Such projection is indeed an isomorphism because $(A,id_A,\phi_A)$ is also a product of $\ast,A\in\cat$: any object $Y\in\cat$ with morphisms $f:Y\to A$ and $\phi_Y\to\ast$ has indeed a unique morphism into $A$ such that the diagram of the product commutes, namely $f$ itself. 
 Thus, since both $(A\times\ast,pr_1,pr_2)$ and $(A,id_A,\phi_A)$ are products of the same two elements, they must be isomorphic because of \ref{UptoIsoProds}.
 
 \noindent Hence, we see how any category with finite cartesian products is a monoidal category. Cartesian monoidal categories are in a sense special because they have some maps which are not possessed by every monoidal category, notably the diagonal map $\Delta_X:X\to X\times X$ and $\phi_X:X\to\mathbb{1}_\cat$ giving every object a comonoid structure. Moreover, they are all symmetric (defined later, \ref{SymmMonCat}) because the cartesian product is symmetric. 
