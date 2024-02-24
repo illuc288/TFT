@@ -2764,7 +2764,7 @@ Ab is very important as an enriching category. Before, we gave a loose character
     definition of an enriched category:
 \begin{defn}[Enriched Category]\label{FullEnrichedCat}
 	Given a \emph{monoidal} category $\dat$, a $\dat$-enriched category $\cat$, aka $\dat$-category or category enriched over $\dat$, is a category $\cat$ such that \begin{enumerate}
-		\item $\forall X,Y\in\cat, \Hom_{\cat}(X,Y)\in\dat$. eW call $\Hom_\cat(X,Y)$ a Hom-object
+		\item $\forall X,Y\in\cat, \Hom_{\cat}(X,Y)\in\dat$. We call $\Hom_\cat(X,Y)$ a Hom-object
 		\item Composition is a morphism in $\dat$: $$\circ:\Hom_\cat(Y,Z)\otimes \Hom_\cat(X,Y)\to\Hom_\cat(X,Z)$$ 
 		\item For any $X\in\cat$ there is 
 		$$id_X:\unit_\dat\to \Hom_\cat(X,X)$$
@@ -3019,7 +3019,7 @@ We leave the case of the counit for the reader.
 \label{sub:symmetric_monoidal_categories}
 
 In order to get the categorical parallel of a commutative monoid, we need to define a \emph{symmetric} monoidal category. We want to achieve something similar to $a \cdot b = b \cdot a$ in a monoid. However, we will not characterize this behavior with strict identities, but with a natural isomorphism\footnote{Just as we did for associativity and unitality.}. Given the functor 
-$$swap:\cat\to\cat$$
+$$swap:\cat\times\cat\to\cat\times\cat$$
 $$swap:(X,Y)\mapsto (Y,X)$$
 $$swap:(f,g)\mapsto (g,f)$$
 we could try to achieve our objective with a natural isomorphism $\beta:\otimes\to\otimes\circ swap$ that can be visualized in the category of all categories Cat with the following diagram
@@ -3132,7 +3132,7 @@ We need a notion of homomorphism between symmetric monoidal categories, a suitab
 \label{SymmMonFun}
     Let $\mathscr{B},\cat$ be symmetric monoidal categories. A symmetric monoidal functor is a functor $F: \mathscr{B} \to \cat$ compatible with all of the structure:
     \begin{itemize}
-        \item an isomorphism taking the monoidal unit in $\cat$ to the monoidal unit in $\mathscr{B}$: $\phi:\mathbb{1}_\cat \xrightarrow{1_F} F(\mathbb{1}_\mathscr{B})$
+        \item an isomorphism taking the monoidal unit in $\cat$ to the monoidal unit in $\mathscr{B}$: $\mathbb{1}_\cat \xrightarrow{1_F} F(\mathbb{1}_\mathscr{B})$
         \item a natural isomorphism respecting the tensor product:% https://q.uiver.app/#q=WzAsMixbMCwwLCJcXG1hdGhzY3J7Qn1cXHRpbWVzXFxtYXRoc2Nye0J9Il0sWzIsMCwiXFxjYXQiXSxbMCwxLCJGKC1cXG90aW1lcyAtKSIsMCx7ImN1cnZlIjotNH1dLFswLDEsIkYoLSlcXG90aW1lcyBGKC0pIiwyLHsiY3VydmUiOjR9XSxbMywyLCJcXHBzaSIsMix7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XV0=
 \[\begin{tikzcd}[ampersand replacement=\&,cramped]
 	{\mathscr{B}\times\mathscr{B}} \&\& \cat
