@@ -21,7 +21,7 @@
 \usepackage{dsfont}				% special S for sphere spectrum
 \usepackage{ stmaryrd }			% to use \mapsfrom
 \usepackage{bbding}			    % For the plane symbol
-\usepackage{fourier}		    % for the danger symbol
+\usepackage{fourier}		    % for the warning symbol
 \usepackage[mathscr]{euscript}	% for cooler curly letters for cats, especially 'S'
 %\usepackage[all,cmtip]{xy}     % don't know what it's for
 %\usepackage{upgreek}           % don't know what it's for
@@ -237,7 +237,7 @@ These are the lecture notes of the course \textit{``Bordism and Topological Fiel
 
 \vspace{1cm}
 
-{\LARGE \danger These notes have not been proofread by Prof. Scheimbauer, use at your own risk}.
+{\LARGE \warning These notes have not been proofread by Prof. Scheimbauer, use at your own risk}.
 
 \updateinfo
 \thispagestyle{empty}
@@ -1073,6 +1073,8 @@ This is an equivalence relation which we call ``being oriented cobordant'', whic
 \begin{rem}
 	Note that $\emptyset$ is an oriented $n$ manifold with a unique orientation.
 \end{rem}
+
+%TODO missing example of first oriented cobordism group
 
 \subsection{Framings} % (fold) 
 \label{sub:framings}
@@ -2164,7 +2166,13 @@ Some more examples related to topological spaces.
     \end{itemize} 
     Units are constant paths, i.e. $c:[0,1]\to X$ such that $\forall t\in[0,1], c(t)=x$. Additionally, this is indeed a groupoid since inverses are given by the same paths run in the opposite direction. We have a functor 
     $$\pi_{\leq 1}:\Top\to \Gpd.$$
-    In this context, the Seifert–Van Kampen theorem can be formulated as follows: $\pi_{\leq1}$ preserves pushouts\footnote{Pushouts are certain objects in a category defined, up to isomorphism, by a certain universal property. An example of pushout is the gluing of two spaces along a common other, as we have already seen numerous times in this course. The resulting space is a pushout in $Top$}.
+    In this context, the Seifert–Van Kampen theorem can be formulated as follows: $\pi_{\leq1}$
+     preserves pushouts\footnote{Pushouts are certain colimits, that is objects in a category
+     	 defined, up to
+     	 isomorphism, by a certain universal property, see \ref{WhatSpectra} for a fast paced 
+     	 introduction to co/limits. An example of pushout is the gluing of two
+     	  spaces along a common other, as we have already seen numerous times in this course. 
+     	  The resulting space is a pushout in $Top$}.
     
     \item Let $X$ be a topological space and $x\in X$ an arbitrary basepoint. The assignement of a fundamental group of $X$ at $x$, $\pi_1(X,x)$\footnote{\textit{Reminder}: $\pi_1(X,x)=\pi_0(\Omega_x(X))$, where $\Omega_x(X)$ is the based loop space of $X$ at $x$} is a functor $\pi_1:\Top\to \Grp$
     \end{enumerate}
@@ -2587,7 +2595,7 @@ A monoidal category generalizes this structure with respect to objects \emph{and
 \label{sub:cartesian_categories}
 
 In particular,
- $(\AbGrp, \oplus), (\Vect_k, \oplus), (\Set, \times), (\Top, \times), (Cat, \times)$ are all examples of special monoidal categories: cartesian monoidal categories. A cartesian monoidal category is a monoidal category where the monoidal structure is given by a suitable notion of cartesian product in such category. We give a definition via a \textit{universal property} which is therefore valid for every category (although \textit{existance} must then be checked in the categories of interest).
+ $(\AbGrp, \oplus), (\Vect_k, \oplus), (\Set, \times), (\Top, \times), (Cat, \times)$ are all examples of special monoidal categories: cartesian monoidal categories. A cartesian monoidal category is a monoidal category where the monoidal structure is given by a suitable notion of cartesian product in such category. We give a definition via a \textit{universal property} which is therefore valid for every category (although \textit{existence} must then be checked in the categories of interest).
 \begin{defn}[Cartesian product]\label{CartProd}
     Given $A,B\in\cat$, their cartesian product, if it exists, is the tuple $(A\times B,pr_1,pr_2)$, where $A\times B\in \ob(\cat)$ and $pr_1:A\times B\to A$  $pr_2:A\times B\to B$ such that for every other object $Y$ with morphisms $f:Y\to A$ and $g:Y\to B$ there is a unique morphism $u:Y\to A\times B$. This definition is summarised by the fact that the following commuting diagram 
     % https://q.uiver.app/#q=WzAsNSxbMSwwLCJZIl0sWzIsMSwiQiJdLFswLDBdLFswLDEsIkEiXSxbMSwxLCJBXFx0aW1lcyBCIl0sWzAsMSwiZyJdLFs0LDMsInByXzEiXSxbMCwzLCJmIiwyXSxbNCwxLCJwcl8yIiwyXSxbMCw0LCJcXGV4aXN0cyEgdSIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
@@ -2640,12 +2648,17 @@ Since everything commutes $f=f\circ u'\circ u$ and $g=g\circ u'\circ u$. Therefo
 \end{proof}
 In a cartesian monoidal category $\cat$ the unit is a terminal object, i.e. an object $\ast\in\cat$ such that every object $X\in\cat$ has a unique morphism to it: $\exists !\phi_X:X\to\ast$. 
 
-\noindent Now, suppose such element exists, consider an arbitrary object $A\in\cat$ and a product with the terminal object $(A\times\ast,pr_1,pr_2)$, define the units $\rho_A:A\times\ast\to A$ and $\lambda_A:\ast\times A\to A$ as the projection $pr_1:A\times\ast\to A$ since the cartesian product is commutative ($\rho_A=pr_1$ while $\lambda_A$ is the same as $pr_1$ up to a isomorphism of $A\times\ast$ and $\ast\times A$). 
+\noindent Now, suppose such element exists, consider an arbitrary object $A\in\cat$ and a product with the terminal object $(A\times\ast,pr_1,pr_2)$. Define the units $\rho_A:A\times\ast\to A$ and $\lambda_A:\ast\times A\to A$ as the projection $pr_1:A\times\ast\to A$ 
+(this can be done because the cartesian product is commutative: clearly $\rho_A=pr_1$, while
+ $\lambda_A$ is
+ the same as $pr_1$
+up to an isomorphism from  $\ast\times A$ to $A\times\ast$). 
 
 \noindent Such projection is indeed an isomorphism because $(A,id_A,\phi_A)$ is also a product of $\ast,A\in\cat$: any object $Y\in\cat$ with morphisms $f:Y\to A$ and $\phi_Y\to\ast$ has indeed a unique morphism into $A$ such that the diagram of the product commutes, namely $f$ itself. 
 Thus, since both $(A\times\ast,pr_1,pr_2)$ and $(A,id_A,\phi_A)$ are products of the same two elements, they must be isomorphic because of \ref{UptoIsoProds}.
 
-\noindent Hence, we see how any category with finite cartesian products is a monoidal category. Cartesian monoidal categories are in a sense special because they have some maps which are not possessed by every monoidal category, notably the diagonal map $\Delta_X:X\to X\times X$ and $\phi_X:X\to\mathbb{1}_\cat$ giving every object a comonoid structure. Moreover, they are all symmetric (defined later, \ref{SymmMonCat}) because the cartesian product is symmetric. 
+\noindent Hence, we see how any category with finite cartesian products is a monoidal category.
+ Cartesian monoidal categories are in a sense special because they have some maps which are not possessed by every monoidal category, notably the diagonal map $\Delta_X:X\to X\times X$ and $\phi_X:X\to\mathbb{1}_\cat$ giving every object a comonoid structure. Moreover, they are all symmetric (defined later, \ref{SymmMonCat}) because the cartesian product is symmetric. 
 
 \subsection{Noncartesian monoidal categories \extra} % (fold)
 \label{sub:noncartesian_monoidal_categories}
@@ -2658,7 +2671,8 @@ Thus, since both $(A\times\ast,pr_1,pr_2)$ and $(A,id_A,\phi_A)$ are products of
 \noindent In the previous paragraph, we have talked about cartesian monoidal categories and left out some examples of \emph{noncartesian} monoidal categories like $(\AbGrp,\otimes)$ and $(\Vect_k,\otimes)$. We now encounter some examples of noncartesian monoidal categories, which will be central in this class. They will be all similar to $(\AbGrp,\otimes)$, so we will first explain this category and then draw parallels with the others. To introduce the tensor product between abelian groups we first have to define what is a bilinear map:
 
 \begin{defn}[Bilinear Map]
-    For $A,B,C\in \Ab$, a bilinear map, that is a group bihomomorphism, is a function $$f:A\times B\to C$$ which is a group homomorphism in both arguments.
+    For $A,B,C\in \Ab$, a bilinear map, that is a group bihomomorphism, is a function 
+    $$f:A\times B\to C$$ which is a group homomorphism, aka linear map, in both arguments.
 \end{defn}
 \noindent An explanation of what happens to the elements of $A,B$ might be clearer. Note that a cartesian product $A\times B$ in Ab is an abelian group where the operation is 
 $$(a_1,b_1)+(a_2,b_2)=(a_1+a_2,b_1+b_2).$$
@@ -2693,74 +2707,7 @@ Having defined what a bilinear map is, we can arrive at the definition of tensor
     We denote such group by $R$. $A\otimes B$ is then the following  quotient: $A\otimes B=\frac{A\times B}{R}$.
 \end{defn}
 
-\section{Enriched categories \extra} % (fold)
-\label{sub:Enriched categories}
 
-Ab is very important as an enriching category. Before, we gave a loose characterization of what an enriched category is by just stating that the $\Hom$s are objects of whatever category we are enriching over. However, we glossed over an essential requirement: the category we are enriching on must be monoidal in order to define composition. We now give a fully satisfactory definition of an enriched category:
-\begin{defn}[Enriched Category]\label{FullEnrichedCat}
-    Given a \emph{monoidal} category $\dat$, a $\dat$-enriched category $\cat$ (or $\dat$-category or category enriched over $\dat$), is a category $\cat$ such that \begin{enumerate}
-        \item $\forall X,Y\in\cat, \Hom_{\cat}(X,Y)\in\dat$. We call $\Hom_\cat(X,Y)$ a Hom-object
-        \item Composition is a morphism in $\dat$: $$\circ:\Hom_\cat(Y,Z)\otimes \Hom_\cat(X,Y)\to\Hom_\cat(X,Z)$$ 
-        \item For any $X\in\cat$ there is 
-        $$id_X:\unit_\dat\to \Hom_\cat(X,X)$$
-        \item There is a Mac-Lane pentagon for Hom-objects in order to specify how $\circ$ is associative and two triangle diagrams in order to pin down how $\circ$ is left and right unital with respect to composable identity morphisms. One can check the spelled out diagram at definition 1.2.34 of \cite{land2021introduction} 
-    \end{enumerate}
-\end{defn}
-\begin{ex}
-	\hfill
-	%TODO some examples already done before... /William True, did not notice, now I added that we are just recalling some, is it okay or better just \ref? /Andre
-	We recall some examples spelled out before and provide a new one coming from topology (the last one):
-    \begin{enumerate}\label{Examples of enriched categories (Simplicially)}
-        \item A locally small category is a category enriched over Set. Set is a category enriched over itself.
-        \item A $2$-category is a category enriched over Cat. Cat is a category enriched over itself, since Cat is a 2-category because $\Hom$s are functor \emph{categories}.
-        \item A strict $n$-category is a category enriched over a strict $(n-1)$-category.
-        \item A strict $(2,1)$-category is a category in which 2-morphisms are invertible and 1-morphisms not necessarily. It is a Grpd-enriched category. An example of (2,1)-category is Grpd itself, since all $\Hom_{\operatorname{Grpd}}$ are indeed  groupoids (see \ref{2,1Grpd} for an explanation). 
-        \item A topologically enriched category is a category enriched over Top. The category of compactly generated Hausdorff spaces CGHaus, i.e. a category containing all $CW$-complexes, is a topologically enriched category, since one can take the mapping space $Map(X,Y)$ with the compact-open topology for any $X,Y\in \operatorname{CGHaus}$. Such categories can be used to model $(\infty,1)$-categories see \ref{HomotopyHypothesis} for a sketch of how this might work.
-    \end{enumerate}
-\end{ex}
-There is an interesting example of strict (2,1)-category from topology and it will let us rigorously show in which sense a homotopy is a natural transformations and why one might want to talk
- about $\infty$-categories. Take a look at the following subsection for more on this \ref{ooHomotopyHypothesis}.
-
-Having characterized satisfactorily enriched categories we can now define what is an Ab-enriched category.
-\begin{defn}[Ab-Category]\label{Ab-Enriched Cat}
-	An Ab-category, aka ringoid, Ab-enriched, $\cat$ is a category $\cat$ enriched over Ab. This is equivalent
-	to saying that
-	\begin{enumerate}
-        \item $\forall X,Y\in\cat.\Hom_{\cat}(X,Y)\in\Ab$
-        \item Composition is a morphism in $\Ab$: $$+:\Hom_\cat(Y,Z)\otimes_{\Ab} \Hom_\cat(X,Y)\to\Hom_\cat(X,Z)$$ such that it is associative and unital with respect to composable identity morphisms; in short $\Hom$-objects of $\cat$ posses an abelian structure with + as a binary operation
-        \item The composition of the underlying $\Hom$-\underline{sets} is bilinear with respect to $+$, meaning that $\circ$ of $\Hom$-sets distributes over $+$ of $\Hom$-abelian groups i.e. $$f\circ(g+h)=(f\circ g)+(f\circ h)$$ $$(f+g)\circ h=(f\circ h)+(f\circ h)$$
-    \end{enumerate}
-\end{defn}
-\begin{rem}
-Note that in Ab-enriched categories there is an object $0$ such that it for any $X\in\cat$ there is a unique
- morphism $0\to X$ and a unique morphism $X\to 0$. This means that 0 is an initial and final object,
- such objects are usually called zero objects.
-\end{rem}
-\begin{ex}
-\hfill
-    \begin{itemize}
-        \item A ring is a one object ringoid. More explicitly, a ring $(R,\cdot,+)=(\Hom_{\mathbf{B}R}(\ast,\ast),\circ,+)$  
-        \item Ab is an Ab-category.
-    \end{itemize}
-\end{ex}
-
-\begin{defn}[Additive category]
-A category $\cat$ is additive if it is an Ab-enriched category such that it has finite coproducts.
-\end{defn}
-Note that in an Ab-enriched category, finite coproducts coincide with finite products, any finite product is a
-finite coproduct and viceversa.
-\begin{defn}[Abelian category]\label{AbelianCat}
-A category $\cat$ is abelian if it is an additive category such that 
-\begin{itemize}
-	\item every morphism has kernel and cokernel
-	\item every monomorphism is a kernel and every epimorphism is a cokernel, or equivalently,
-	the evident map $\operatorname{Coim}(f)\to \operatorname{Im}(f)$ is an isomorphism
-\end{itemize}
-\end{defn}
-\begin{rem}
-    The category of abelian groups is very important for homological algebra, 
-    a field with important applications to many fields, e.g. algebraic geometry (in particular intersection theory) and algebraic topology. The standard reference is \cite{weibel1994introduction}, check out part I of \cite{Mazel-Gee2024} for a modern introduction to the subject geared towards higher categorical generalizations. Such higher categorical generalizations are of major interest to us in the context of TFTs, we will later sketch for example how they can be used to calculate topological phases of matter (\ref{Spectra Phases of Matter}). 
-\end{rem}
 Another very important example for us of noncartesian\footnote{Interestingly, the fact that $\Vect_k$ is not cartesian and in particular $\operatorname{Hilb}_\mathbb{C}$ (the category of complex Hilbert spaces) is the main reason behind the no-cloning theorem from quantum information theory, more on this in \cite{baez2004quantum}. This characterizing non-cartesian aspect is nicely summarized by Freed in \cite{freed2012cobordism}, "We will see that a characteristic property of quantum systems is that disjoint unions map to tensor products. The passage from classical to quantum is (poetically) a passage from addition to multiplication, a kind of exponentiation."} monoidal category is $(\Vect_k,\otimes)$.
 \begin{defn}[Tensor Product between Vector Spaces]
     The tensor product is usually defined from bases (see \hyperlink{https://en.wikipedia.org/wiki/Tensor_product}{wikipedia entry on tensor product}) or via quotient spaces\footnote{We use the definition via quotient spaces because it is easier to see that it fulfills the equivalent one via universal properties and the cartesian product.} along these lines: let $V,W\in \Vect_K$. Consider $L$, a vector space that has $V\times W$ as basis. Let $R$ be the subspace whose elements are linear combinations of one of the following forms
@@ -2783,42 +2730,117 @@ Another very important example for us of noncartesian\footnote{Interestingly, th
 		\end{tikzcd}\]
    \end{enumerate}
 \end{defn}
+More generally the category of modules is also a very important example of noncartesian monoidal category.
+\begin{defn}[Module]\label{CatOfModules}
+	
+\end{defn}
+\begin{ex}
+	The category of bimodules is an example of symmetric monoidal category
+	\begin{defn}[Bimodule]\label{CatOfBimodules}
+		
+	\end{defn}
+\end{ex}
+Another example of non-cartesian monoidal category is the category of disks. Interestingly, it 
+is not of algebraic nature as the examples we gave before.
+
+\begin{ex}\label{CatOfDisks}
+	The category of oriented 1-dimensional open disks Disk$^{\fr}_{1}$ is also an important example of symmetric monoidal category for us in the context of TFTs. Recall that $D^1\cong (0,1)\cong\R$. 
+	\begin{itemize}
+		\item Its objects are finite disjoint unions of 1-dimensional open disks $$\emptyset,\qquad\R,\qquad\R\amalg\R,\qquad\dots,\qquad\R^{\amalg k}$$ with $k\in\N$ arbitrary.
+		\item $\Hom_{\text{Disk}^{\fr}_{1,0}}(X,Y)$ consists of all smooth embeddings $j:X\hookrightarrow Y$ respecting orientations, i.e. there is an orientation preserving diffeomorphism from $X$ onto its image, .
+		\item The tensor product is given by the disjoint union: given $X$ a disjoint union of $n$ oriented 1-disks and $Y$ a disjoint union of $m$ oriented 1-disks, $X\amalg Y$ is a disjoint union of $n+m$ oriented disks.
+		\item The unit is the empty set since given an arbitrary disjoint union of disks $X$, $\emptyset\amalg X\cong X\cong X\amalg\emptyset$.
+		\item There is a diffeomorphism $X\amalg Y\cong Y\amalg X$ making Disk$^{\fr}_{1,0}$ a \emph{symmetric} monoidal category.
+	\end{itemize}  
+	We will use it to give the \textbf{morally right} definition of monoid object (see \ref{EAlg}), i.e. 
+	homotopy coherent.
+\end{ex}
+\subsection{Enriched categories \extra} % (fold)
+\label{sub:Enriched categories}
+
+Ab is very important as an enriching category. Before, we gave a loose characterization of what an
+ enriched category is by just stating that the $\Hom$s are objects of whatever category we are
+  enriching over. However, we glossed over an essential requirement: the category we are
+   enriching on must be monoidal in order to define composition. We now give a fully satisfactory
+    definition of an enriched category:
+\begin{defn}[Enriched Category]\label{FullEnrichedCat}
+	Given a \emph{monoidal} category $\dat$, a $\dat$-enriched category $\cat$, aka $\dat$-category or category enriched over $\dat$, is a category $\cat$ such that \begin{enumerate}
+		\item $\forall X,Y\in\cat, \Hom_{\cat}(X,Y)\in\dat$. We call $\Hom_\cat(X,Y)$ a Hom-object
+		\item Composition is a morphism in $\dat$: $$\circ:\Hom_\cat(Y,Z)\otimes \Hom_\cat(X,Y)\to\Hom_\cat(X,Z)$$ 
+		\item For any $X\in\cat$ there is 
+		$$id_X:\unit_\dat\to \Hom_\cat(X,X)$$
+		\item There is a Mac-Lane pentagon for Hom-objects in order to specify how $\circ$ is associative and two triangle diagrams in order to pin down how $\circ$ is left and right unital with respect to composable identity morphisms. One can check the spelled out diagram at definition 1.2.34 of \cite{land2021introduction} 
+	\end{enumerate}
+\end{defn}
+\begin{ex}
+	\hfill
+	%TODO some examples already done before... /William True, did not notice, now I added that we are just recalling some, is it okay or better just \ref? /Andre
+	We recall some examples spelled out before and provide a new one coming from topology (the last one):
+	\begin{enumerate}\label{Examples of enriched categories (Simplicially)}
+		\item A locally small category is a category enriched over Set. Set is a category enriched over itself.
+		\item A $2$-category is a category enriched over Cat. Cat is a category enriched over itself, since Cat is a 2-category because $\Hom$s are functor \emph{categories}.
+		\item A strict $n$-category is a category enriched over a strict $(n-1)$-category.
+		\item A strict $(2,1)$-category is a category in which 2-morphisms are invertible and 1-morphisms not necessarily. It is a Grpd-enriched category. An example of (2,1)-category is Grpd itself, since all $\Hom_{\operatorname{Grpd}}$ are indeed  groupoids (see \ref{2,1Grpd} for an explanation). 
+		\item A topologically enriched category is a category enriched over Top. The category of compactly generated Hausdorff spaces CGHaus, i.e. a category containing all $CW$-complexes, is a topologically enriched category, since one can take the mapping space $Map(X,Y)$ with the compact-open topology for any $X,Y\in \operatorname{CGHaus}$. Such categories can be used to model $(\infty,1)$-categories see \ref{HomotopyHypothesis} for a sketch of how this might work.
+	\end{enumerate}
+\end{ex}
+There is an interesting example of strict (2,1)-category from topology and it will let us rigorously show in which sense a homotopy is a natural transformations and why one might want to talk
+about $\infty$-categories. Take a look at the following subsection for more on this \ref{ooHomotopyHypothesis}.
+
+Having characterized satisfactorily enriched categories we can now define what is an Ab-enriched category.
+\begin{defn}[Ab-Category]\label{Ab-Enriched Cat}
+	An Ab-category, aka ringoid, Ab-enriched, $\cat$ is a category $\cat$ enriched over Ab. This is equivalent
+	to saying that
+	\begin{enumerate}
+		\item $\forall X,Y\in\cat.\Hom_{\cat}(X,Y)\in\Ab$
+		\item Composition is a morphism in $\Ab$: $$+:\Hom_\cat(Y,Z)\otimes_{\Ab} \Hom_\cat(X,Y)\to\Hom_\cat(X,Z)$$ such that it is associative and unital with respect to composable identity morphisms; in short $\Hom$-objects of $\cat$ posses an abelian structure with + as a binary operation
+		\item The composition of the underlying $\Hom$-\underline{sets} is bilinear with respect to $+$, meaning that $\circ$ of $\Hom$-sets distributes over $+$ of $\Hom$-abelian groups i.e. $$f\circ(g+h)=(f\circ g)+(f\circ h)$$ $$(f+g)\circ h=(f\circ h)+(f\circ h)$$
+	\end{enumerate}
+\end{defn}
+\begin{rem}
+	Note that in Ab-enriched categories there is an object $0$ such that it for any $X\in\cat$ there is a unique
+	morphism $0\to X$ and a unique morphism $X\to 0$. This means that 0 is an initial and final object,
+	such objects are usually called zero objects.
+\end{rem}
+\begin{ex}
+	\hfill
+	\begin{itemize}
+		\item A ring is a one object ringoid. More explicitly, a ring $(R,\cdot,+)=(\Hom_{\mathbf{B}R}(\ast,\ast),\circ,+)$  
+		\item Ab is an Ab-category.
+	\end{itemize}
+\end{ex}
+
+\begin{defn}[Additive category]
+	A category $\cat$ is additive if it is an Ab-enriched category such that it has finite coproducts.
+\end{defn}
+Note that in an Ab-enriched category, finite coproducts coincide with finite products, any finite product is a
+finite coproduct and viceversa.
+\begin{defn}[Abelian category]\label{AbelianCat}
+	A category $\cat$ is abelian if it is an additive category such that 
+	\begin{itemize}
+		\item every morphism has kernel and cokernel
+		\item every monomorphism is a kernel and every epimorphism is a cokernel, or equivalently,
+		the evident map $\operatorname{Coim}(f)\to \operatorname{Im}(f)$ is an isomorphism
+	\end{itemize}
+\end{defn}
+\begin{rem}
+	The category of abelian groups is very important for homological algebra, 
+	a field with important applications to many fields, e.g. algebraic geometry (in particular intersection theory) and algebraic topology. The standard reference is \cite{weibel1994introduction}, check out part I of \cite{Mazel-Gee2024} for a modern introduction to the subject geared towards higher categorical generalizations. Such higher categorical generalizations are of major interest to us in the context of TFTs, we will later sketch for example how they can be used to calculate topological phases of matter (\ref{Spectra Phases of Matter}). 
+\end{rem}
+
 
 As with Ab, $\Vect_k$ can also be used as enriching category.
 \begin{defn}
      A linear category $\cat$, or algebroid, is a category enriched over $\Vect_k$.
 \end{defn}
-   
 \begin{ex}
 \hfill
     \begin{itemize}
         \item A $k$-algebra is a one object algebroid.
-        \item $\Vect_k$ is a linear category, since also $\Hom_{\Vect_{k}}(X,Y)$ is a vector space
+        \item $\Vect_k$ is a linear category, since $\Hom_{\Vect_{k}}(X,Y)$ is a vector space
     \end{itemize}
 \end{ex}
 
-More generally the category of modules is also a very important example of noncartesian monoidal category.
-\begin{defn}[Module]\label{CatOfModules}
-    
-\end{defn}
-\begin{ex}
-    The category of bimodules is an example of symmetric monoidal category
-    \begin{defn}[Bimodule]\label{CatOfBimodules}
-        
-    \end{defn}
-\end{ex}
-Another example of non-cartesian monoidal category, which is not algebraic in nature but topological and will be useful for an outlook in the next section is the category of disks.
-\begin{ex}\label{CatOfDisks}
-    The category of oriented 1-dimensional open disks Disk$^{\fr}_{1}$ is also an important example of symmetric monoidal category for us in the context of TFTs. Recall that $D^1\cong (0,1)\cong\R$. 
-    \begin{itemize}
-        \item Its objects are finite disjoint unions of 1-dimensional open disks $$\emptyset,\qquad\R,\qquad\R\amalg\R,\qquad\dots,\qquad\R^{\amalg k}$$ with $k\in\N$ arbitrary.
-        \item $\Hom_{\text{Disk}^{\fr}_{1,0}}(X,Y)$ consists of all smooth embeddings $j:X\hookrightarrow Y$ respecting orientations, i.e. there is an orientation preserving diffeomorphism from $X$ onto its image, .
-        \item The tensor product is given by the disjoint union: given $X$ a disjoint union of $n$ oriented 1-disks and $Y$ a disjoint union of $m$ oriented 1-disks, $X\amalg Y$ is a disjoint union of $n+m$ oriented disks.
-        \item The unit is the empty set since given an arbitrary disjoint union of disks $X$, $\emptyset\amalg X\cong X\cong X\amalg\emptyset$.
-        \item There is a diffeomorphism $X\amalg Y\cong Y\amalg X$ making Disk$^{\fr}_{1,0}$ a \emph{symmetric} monoidal category.
-    \end{itemize}  
-    We will use it to give an equivalent definition of $k$-algebra (see \ref{EAlg}), but in general they can be used to define factorization algebras, a very important tool in the field of TFTs, see \cite{Tanaka_2020}.
-\end{ex}
 \subsection{Grothendieck's Homotopy Hypothesis and \texorpdfstring{$\infty$}{infinity}-categories \extra}\label{ooHomotopyHypothesis}
 \begin{ex}\label{Homotopy2Top}
 	We previously spelled out an analogue formulation of the natural transformation (see \ref{Homotopy}). This shows that the notion of homotopy and natural transformation are related. A way to more rigorously pin down that a homotopy is some kind of natural transformation is via the the homotopy 2-category of topological spaces. Instead of taking paths up to homotopies between paths, as in the more famous hTop, we take homotopies between paths up to homotopies between homotopies between paths. This results in a strict (2,1)-category h$_2$Top where objects are topological spaces, 1-morphisms are continuous maps and 2-morphisms are homotopies between continuous maps up to higher homotopies, i.e. homotopies between homotopies between continuous maps. A homotopy between a homotopy between continuous maps is defined in the following manner: given continuous functions $f,g:X\to Y$ and homotopies between them $k,h:X\times [0,1]\to Y$, a homotopy $L$ between these two homotopies $k$ and $h$ is a continuous function $L:X\times [0,1]\times[0,1]\to Y$ such that 
@@ -3055,7 +3077,9 @@ However, this does not characterize an actually symmetric structure, but rather 
 \noindent A braided monoidal category is \textit{not} the category corresponding to an abelian monoid. A special type of braided monoidal category is: the symmetric monoidal category.
 \begin{defn}
 \label{SymmMonCat}
-    A symmetric monoidal category is a braided monoidal category $(\cat, \otimes, \mathbb{1}_\cat, \alpha, \lambda, \rho,\beta)$ such that $\beta^2 = id$ (i.e. $\beta_{y,x} \circ \beta_{x,y} = id$).
+    A symmetric monoidal category is a braided monoidal category 
+    $(\cat, \otimes, \unit_\cat, \alpha, \lambda, \rho,\beta)$ such that $\beta^2 = id$ 
+    (i.e. $\beta_{y,x} \circ \beta_{x,y} = id$).
 \end{defn}
 \begin{ex}
 \hfill
@@ -3726,7 +3750,7 @@ One way in which it is a homology theory for manifolds is that every homology th
  $$ \int_{(-)}A:\operatorname{Mfld}^{\fr}_{n}\to \operatorname{Fact}_n\subset \cat$$
  where $\operatorname{Fact}_n$ denotes the subcategory of factorization algebras in $\cat$. 
  Hence, one can intuit that there is a way to construct a factorization homology of an $\E_n$-algebra
- as a symmetric monoidal $\infty$-functor 
+ as a symmetric monoidal functor 
  $$ \int_{(-)}A:\operatorname{Bord}^{\fr}_{n}\to \operatorname{Fact}_n\subset \cat$$
  where $\Bord_n$ is the extended category of bordisms (see \ref{RemarkExtendedTFTs}) and thus 
  a TFT! Check out \cite{Scheimbauer:2014zty} for a detailed treatment.
@@ -3821,7 +3845,7 @@ We now list some examples of 2-categories, to convey a more concrete intuition o
 Now we sketch how one could define monoidal bicategories and in particular symmetric monoidal ones.
  The latter are important in the study
 of TFTs because a once-extended TFT (see \ref{RemarkExtendedTFTs}) is a symmetric monoidal
- bifunctor from a category of bordisms $\Bord_{n,n-1,n-2}$.
+ weak 2-functor from a category of bordisms $\Bord_{n,n-1,n-2}$.
  Generally, symmetric monoidal bicategories are a pain to define because a bicategory already needs
  to satisfy many coherence diagrams and a symmetric monoidal structure on it even more! Take a look
  at \cite[Definition 2.3]{schommerpries2014classification} and skim through
@@ -3836,14 +3860,15 @@ of TFTs because a once-extended TFT (see \ref{RemarkExtendedTFTs}) is a symmetri
   	 monoidal ones that rely on the $\E_n$-algebras we previously talked about, see \ref{EAlg}.
   	 
   	 In order to achieve this we first need to talk about the tricategory of bicategories Bicat.
-\begin{defn}[Bifunctor]
-A bifunctor, aka pseudofunctor, is the right notion of functor between bicategories.
+\begin{defn}[Weak 2-functor]\label{Weak2Fun}
+A weak 2-functor, aka pseudofunctor, is the right notion of functor between bicategories.
 
-Given two bicategories $\bat$ and $\cat$. A bifunctor $P:\bat \to\cat$ consists of 
+Given two bicategories $\bat$ and $\cat$. A weak 2-functor $P:\bat \to\cat$ consists of 
 \begin{itemize}
 	\item an assignment, a function, $\operatorname{Ob}(\bat)\to\operatorname{Ob}(\cat)$
 	\item for each hom-category $\Hom_\bat(X,Y)$, a functor $P_{x,y}\Hom_\bat(X,Y)\to \Hom_\cat(P(X),P(Y))$
-	\item two invertible 2-morphisms pinning down the compositionality and unitality of the bifunctor
+	\item two invertible 2-morphisms pinning down the compositionality and unitality of the weak 
+	2-functor
 	\item and three commutative diagrams that make the interaction between the composition of
 	 bifunctors and the objects and morphisms in the bicategory reasonable
 \end{itemize}
@@ -3854,7 +3879,8 @@ points.
 A pseudonatural transformation is a natural transformation but where the naturality is given by a diagram
 that commutes via a homotopy and not strictly.
 
-Given bicategories $\bat$ and $\cat$ and bifunctors $F,G:\bat\to\cat$ a pseudonatural transformation
+Given bicategories $\bat$ and $\cat$ and weak 2-functor
+ $F,G:\bat\to\cat$ a pseudonatural transformation
 $\alpha:F\Rightarrow G$ is consists of:
 \begin{itemize}
 	\item for each $X\in\bat$ a 1-morphism in $\cat$ $\alpha_X:F(X)\to G(X)$
@@ -3886,7 +3912,8 @@ You can picture a modification $\Xi$ with the following diagram:
 	\arrow[""{name=3, anchor=center, inner sep=0}, "\alpha"', curve={height=18pt}, shorten <=11pt, shorten >=11pt, Rightarrow, from=0, to=1]
 	\arrow["\Xi", shorten <=8pt, shorten >=8pt, Rightarrow, from=3, to=2]
 \end{tikzcd}\]
-Given bifunctors $F,G:\bat\to\cat$, pseudonaturaltransformations $\alpha,\beta:F\Rightarrow G$,
+Given weak 2-functors $F,G:\bat\to\cat$, pseudonaturaltransformations
+ $\alpha,\beta:F\Rightarrow G$,
 a modification $\Xi:\alpha\Rightarrow\beta$ consists of components for any object $X\in\bat$ that are
  2-morphisms working as follows
 \begin{itemize}
@@ -3911,8 +3938,8 @@ it can be argued that $(\infty,n)$-categories are the \textbf{right} context to 
 	{G(f)\circ\alpha_X} &&& {G(f)\circ \beta_x} \\
 	{\alpha_Y\circ F(f)} &&& {\beta_Y\circ G(f)}
 	\arrow["{\alpha_f}"', Rightarrow, from=1-1, to=2-1]
-	\arrow["{\Xi_Y\bigcirc identity_{F(f)}}"', Rightarrow, from=2-1, to=2-4]
-	\arrow["{ identity_{G(f)}\bigcirc\Xi_X}", Rightarrow, from=1-1, to=1-4]
+	\arrow["{\Xi_Y\bigcirc id_{F(f)}}"', Rightarrow, from=2-1, to=2-4]
+	\arrow["{ id_{G(f)}\bigcirc\Xi_X}", Rightarrow, from=1-1, to=1-4]
 	\arrow["{\beta_f}", Rightarrow, from=1-4, to=2-4]
 \end{tikzcd}\]
 \end{defn}
@@ -3920,7 +3947,7 @@ it can be argued that $(\infty,n)$-categories are the \textbf{right} context to 
 The tricategory of bicategories consists of
 \begin{itemize}
 	\item bicategories as objects
-	\item bifunctors as 1-morphisms
+	\item weak 2-functors as 1-morphisms
 	\item pseudonatural transformations as 2-morphisms
 	\item modifications as 3-morphisms
 \end{itemize}
@@ -6951,10 +6978,14 @@ An abelian category is semisimple if it only has semisimple objects.
 		\label{CUTTORUS}
 	\end{figure}
 	
-	Treating a TFT as a functor\footnote{To be rigorous, one would need to precisify what is an appropriate notion of functor between bicategories.} from a symmetric monoidal bicategory
-	(see \ref{SymmMonBicategory} for a definition), instead of from a symmetric monoidal category is
-	 sometimes
-	 named 'once-extended TFT', e.g. \cite{SchwHopfQuantumTFT}. There are two important results
+	Treating a TFT as a symmetric monoidal weak 2-functor (see \ref{Weak2Fun} for a definition)
+	 from
+	 a symmetric monoidal bicategory 
+	$\Bord_{n,n-1,n-2}$
+	(see \ref{SymmMonBicategory} for a definition), instead of from a symmetric monoidal category
+	 is
+	 named 'once-extended TFT', e.g. see \cite{SchwHopfQuantumTFT}. There are two important
+	  results
 	  regarding once-extended TFTs: 
 	\begin{enumerate}
 \item One regards the classification of 2d-TFTs down to a point and is due to Christopher Schommer Pries who
@@ -6968,9 +6999,10 @@ hence $\Zf(S^1)=\cat$ where $\cat$ is a modular tensor category, i.e. a special 
 	\end{enumerate}
 	
 	However, as one can infer from the aforementioned cobordism hypothesis, one can also extended downward to dimension $0$ any $n$-dimensional TFT and it was first proposed by Daniel Freed in \cite{Freed_1994}. To be precise, one nowadays does not want to restrict themselves just to $n$-categories but wants to work with$(\infty,n)$-categories, i.e. categories where morphisms of dimension strictly greater than $n$ are invertible, because of technical reasons\footnote{For example, the argument sketched in \cite{lurie2009classification} is crucially a proof by induction on $n$ and in order to understand the $n+1$-morphisms of $\Bord_{n+1}$ one must understand such $n+1$-morphisms in $\Bord_{n}$ which are absent if we treat $\Bord_{n}$ as an $n$-category and not $(\infty,n)$-category. In short, that would just not be possible without such $\infty$-categorical machinery.}. Sketchily, the $(\infty,n)$ category of bordisms will have points as objects, bordisms between points as 1-morphisms, bordisms between bordisms between points as 2-morphisms,..., bordisms between bordisms between bordisms...\footnote{There is exactly $n-1$ times 'between bordisms' after the first instance of 'bordisms', $n$-morphisms are morphisms between $(n-1)$-morphisms.} as $n$-morphisms, diffeomorphisms between $n$-dimensional bordisms as $n+1$-morphisms, isotopies between diffeomorphisms as $n+2$-morphisms, isotopies between isotopies between diffeomorphsims as $n+3$-morphisms, ... and so on infinitely many times. This is an example of a $(\infty,n)$-category, since isotopies of diffeomorphisms and diffeomorphisms are in fact invertible, whereas oriented bordisms not necessarily. One can find more on this higher category of bordisms in \cite{Calaque_2019}. 
+
 \end{rem}
 
-
+We're finished!
 
 
 \newpage
