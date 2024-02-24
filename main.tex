@@ -232,7 +232,8 @@ $-$H. Poincaré}\\
 \chapter*{\huge{\textcolor{black}{For the reader}}}
 \hfill
 \vspace{0.50cm}\\
-These are the lecture notes of the course \textit{``Bordism and Topological Field Theory''} held by Prof.\hspace{1mm}Dr. Claudia Scheimbauer (\href{mailto:scheimbauer@ma.tum.de}{scheimbauer@ma.tum.de}) during the Wintersemester 2023/2024 at the \textit{Technische Universität München}. The tutorial sessions are held by Anja \v{S}vraka (\href{mailto:svr@ma.tum.de}{svr@ma.tum.de}).\hspace{1.5mm}The notes are typed by Luca Ipsale (\href{mailto:luca.ipsale@campus.lmu.de}{luca.ipsale@campus.lmu.de}), William Luciani (\href{mailto:w.luciani@campus.lmu.de}{w.luciani@campus.lmu.de}), Andrea Sittoni (\href{mailto:sittoniandrea@gmail.com}{sittoniandrea@gmail.com}) and Üzeyir Sa\c{c}{\i}kay (\href{mailto:uzeyirsacikay@gmail.com}{uzeyirsacikay@gmail.com}). Exercises are also implemented in the notes by Jacob Skarby (\href{mailto:jacob.skarby@tum.de}{jacob.skarby@tum.de}). If you find errors or if you have suggestions of any kind, please write us an e-mail.
+These are the lecture notes of the course \textit{``Bordism and Topological Field Theory''} held by Prof.\hspace{1mm}Dr. Claudia Scheimbauer (\href{mailto:scheimbauer@ma.tum.de}{scheimbauer@ma.tum.de}) during the Wintersemester 2023/2024 at the \textit{Technische Universität München}. The tutorial sessions are held by Anja \v{S}vraka (\href{mailto:svr@ma.tum.de}{svr@ma.tum.de}).\hspace{1.5mm}The notes are typed by Luca Ipsale (\href{mailto:luca.ipsale@campus.lmu.de}{luca.ipsale@campus.lmu.de}), William Luciani (\href{mailto:w.luciani@campus.lmu.de}{w.luciani@campus.lmu.de}), Andrea Sittoni (\href{mailto:sittoniandrea@gmail.com}{sittoniandrea@gmail.com}) and Üzeyir Sa\c{c}{\i}kay (\href{mailto:uzeyirsacikay@gmail.com}{uzeyirsacikay@gmail.com}). Exercises are also implemented in the notes by Jacob Skarby (\href{mailto:jacob.skarby@tum.de}{jacob.skarby@tum.de}). If you find
+ errors or have suggestions of any kind, please write us an e-mail.
 
 \vspace{1cm}
 
@@ -247,26 +248,47 @@ These are the lecture notes of the course \textit{``Bordism and Topological Fiel
 \thispagestyle{empty}
 \cleardoublepage
 \section*{Notational Conventions}
-We use the symbol '\extra' at the end of titles of sections, definitions or theorems that depart from the content of the lecture and deepen some aspect on a topic with an outlook towards research topics.
-
 \begin{notat}
-	Throughout these notes we will abuse notation indicating a collection with some structure on it just by writing down the collection, e.g. denoting a monoid $(M,\cdot)$ by $M$, a metric space $(X,d)$ by $X$ etc...
+	Throughout these notes we will abuse notation indicating a collection with some structure on it just by
+	 writing down the collection, e.g. denoting a monoid $(M,\cdot)$ by $M$, a metric space $(X,d)$ by
+	  $X$ etc...
 \end{notat}
 \begin{notat}
-	$n$-manifold and $n$-bordism mean respectively $n$ dimensional manifold and $n$ dimensional bordism.
+	By '$n$-manifold' and '$n$-bordism', we mean respectively a manifold of dimension $n$
+	 and bordism a bordism of dimension $n$.
 \end{notat}
 \begin{notat}
 	We often denote equivalence classes just with a representative thereof. 
 \end{notat}
+
+\begin{notat}[\extra]
+	We use the symbol '\extra' at the end of titles of sections, definitions or theorems that depart from the
+	content of the class and deepen some aspects of topics we did not cover in the lectures.
+	
+	They are often sketchy. Their aim is to convey the intuition behind exciting topics in the field of TFTs
+	 or neighouring ones (and often
+	convince you that $\infty$-categories are cool and useful\footnote{Regarding this, we are very 
+	happy and excited to communicate that the next semester (SoSe2024) there will be a seminar
+	regarding simplicial homotopy theory and $\infty$-categories at LMU. If you are interested or 
+	have any questions regarding this, contact Prof. Land
+	 (\href{mailto:Markus.land@math.lmu.de}{Markus.land@math.lmu.de}) and check
+	 \href{https://www.markus-land.de}{his website}.}). They have been written by Andrea Sittoni.
+	Please send corrections, suggestions and comments.
+\end{notat}
+In this kind of sections we have the following conventions.
 \begin{notat}
-We denote the category of spaces/$\infty$-groupoids both with $\mathscr{S}$, $\operatorname{Grpd}_\infty$ and with $\infty\operatorname{-Grpd}$. This is motivated by the homotopy hypothesis \ref{HomotopyHypothesis}.
+We denote the $(\infty,1)$-category of spaces/$\infty$-groupoids both with $\mathscr{S}$,
+ $\operatorname{Grpd}_\infty$ and with $\infty\operatorname{-Grpd}$. $\mathscr{S}$ stands for 
+ $\mathscr{S}$paces. This is motivated by the
+  homotopy hypothesis, see \ref{HomotopyHypothesis}.
 \end{notat}
 \begin{notat}
-When there is no ambiguity, we denote $(\infty,1)$-categories as $\infty$-categories.
+When there is no ambiguity, we denote $(\infty,1)$-categories as $\infty$-categories. We denote the
+$(\infty,2)$-category of all $(\infty,1)$-categories with $\Cat_\infty$ or $\infty$-Cat.
 \end{notat}
 \section*{Prerequisites}
 The notes strive to be as self-contained as possible. We do assume however knowledge of linear algebra,
-basic notions from analysis, e.g. $C^{\infty}$ differentiability, and basic notions of topology, e.g. 
+basic notions from analysis, e.g. smoothness, and basic notions of topology, e.g. 
 paracompactness. Knowledge of algebraic topology is helpful but not necessary to understand the
 most important parts.
 \section*{Acknowledgements}
@@ -294,10 +316,10 @@ on algebraic topology by Prof. Land (available on \url{https://www.mathematik.un
 
 \chapter{Why should you care? An informal introduction}
 %As the name suggests, this subject is two-sided: we have a physics part, namely Quantum Field Theory, and a mathematics part, more specifically topology and in particular (Co)Bordism. Let us explore the motivations and ideas behind these two subjects and how they come together. Do not worry if everything is not immediately clear, it will become so during the semester... hopefully. /// Andre: there is nothing wrong with this, just liked more the alternative I wrote down, feel free to change it back /AAndre
-There are two ways one can approach topological field theories:
+There are two ways one can see topological field theories:
 \begin{enumerate}
 	\item As a way to make (some\footnote{Sadly, TFTs cannot axiomatize many quantum field theories that are particularly useful in physics, e.g. the quantum field theory behind the standard model.}) quantum field theories more mathematically rigorous
-	\item As a way to refine bordism invariants, or, roughly, as a kind of homology for smooth manifolds of a certain dimension, instead of general topological spaces.
+	\item As a way to refine bordism invariants
 \end{enumerate}
 We now sketch how these two approaches work.
 \section{QFT}
@@ -345,7 +367,7 @@ Therefore, axiomatizations have been developed exploiting new tools from geometr
 If someone is into mathematics for the money or the prestige\footnote{If not already sufficiently clear, we explicitly state that this is a joke.}, the field of topological field theories is the one to specialize in:
  \begin{itemize}
     \item René Thom, the mathematician who laid the foundation of cobordism theory\footnote{Which is at the root of TFTs: TFTs can be seen as a refinement of his work.} in his PhD thesis, received the Fields Medal for this.
-    % TODO is secondary here correct? What does it mean? Also, I would write Chern classes instead of Chern-Simons forms/William 
+    
     \item Shiing-Shen Chern and Jim Simons discovered geometric invariants of 3-dimensional Riemannian manifolds called (classical) Chern-Simons invariants. They are a generalization of the total geodesic curvature, which is in turn a generalization of the curvature of a plane curve that $=0$ when the curve is a geodesic. Such invariants are the basic building blocks Witten used to define the earliest example we have of a TFT: 3d Chern-Simons theory\footnote{One can find more on this in \cite{freed2008remarks}}. Simons  then went on to found an incredibily successful hedge fund and became a billionaire. Chern continued to do groundbreaking work in differential geometry and topology; so much that some years ago the International Congress of Mathematicians named a prize after him: the \hyperlink{https://en.wikipedia.org/wiki/Chern_Medal}{Chern Medal}.
     \item Edward Witten received his Fields medal mainly because he found a link between 3d-TFTs, in particular Chern-Simons theory, and knot theory, in particular with the Jones polynomial. See \cite{Witten1989} for details.
 \end{itemize} 
@@ -478,7 +500,7 @@ But are all these notions are actually useful? Well, classifying manifolds up to
 \part{Classical cobordism theory}
 \chapter{Manifolds and bordisms}
 
-\section{Some definitions} % (fold)
+\section{What are manifolds?} % (fold)
 \label{sec:some_definitions}
 
 Before venturing into a definition of cobordism, let us recall some useful definitions.
@@ -640,7 +662,7 @@ In some contexts, it can be interesting to do calculus on a manifold. In order t
 	Come up with the natural notion of smooth map between manifolds \emph{with} boundary. 
 \end{exercise}
 
-\section{What is a Bordism?}
+\section{What is a bordism?}
 
 \begin{defn}[$1^{st}$ variant of the definition of bordism: via \emph{strict equalities}]
 \label{Define Bordism}
@@ -825,302 +847,6 @@ We need to show that the relation satisfies the properties of reflexivity, symme
 \end{itemize}
 \end{proof}
 
-\section{Cobordism groups}\label{Cob Groups}
-\begin{defn}
-\label{Defn n-th cob group}
-The set underlying the $n$-th cobordism group is
-$$\Omega_n = \frac{\{\text{closed $n$ manifolds}\}}{\{\text{$n+1$ cobordisms}\}}$$
-$(\Omega_n, \amalg)$ is an abelian group with operation given by the disjoint union $\amalg$.
-	\begin{enumerate}
-		\item the disjoint union is associative and commutative
-		\item the identity element\footnote{We will
-			sometimes write $0=[\emptyset]$ or more often $\emptyset=[\emptyset]$}
-			 is the cobordism class of the empty set\footnote{Reminder: $\emptyset$ is an $n$-manifold for every $n$.}
-			  $[\emptyset]$, i.e. the set of $n$-manifolds which are bordant with the empty set
-		\item every element has an inverse:
-		$[M]\amalg [M]=[\emptyset]$ since $M\amalg M=(\de(M\times[0,1]))$ and such a cylinder can be bent into a
-		 macaroni, which is bordant to the empty set:
-		 \[\includegraphics[width=6.5cm]{images/Lecture 2/MACARONI.png}\]
-	\end{enumerate}
-\end{defn}
-\begin{rem}
-There is an insidious set-theoretic issue when we define the $n$-th cobordism group $\Omega_n$ (\ref{Defn n-th cob group}): is the collection of all closed $n$-manifolds a set? And what about the collection of all $(n+1)$-bordisms? It could be the case that it is something bigger than a usual set, thus not a set and problematic since we would not know how to treat them\footnote{We are assuming to be working in ZFC. There are other set theories in which one can define collections greater than sets, e.g. Von Neumann–Bernays–Gödel set theory.}. For example, we know that the collection of all sets is strictly greater than any set\footnote{Because of famous set-theoretic paradoxes like Cantor's paradox.} and thus not a set. Similarly, also the collection of topological spaces is not a set because we can regard any set as a topological space via the discrete topology\footnote{The topology where the set of open sets is the powerset of the set in question, or in other words where any subset is open.}. One could wonder if the collection of all manifolds of a certain dimension $n$ is likewise not a set. This is fortunately for us not the case. The following theorem allows us to happily treat \{\text{closed $n$ manifolds}\} and \{\text{$n+1$ cobordisms}\} as sets by replacing abstract manifolds and cobordism by manifolds and cobordisms embedded in $\R^{\infty}$.
-\end{rem}
-\begin{thm}[Whitney Embedding theorem\footnote{This result is not important only in this case, but notably for the interest of this class it was used to construct an apt category of bordisms \ref{CobCat} in order to sketch a partial proof of the most important conjecture in the field of TFTs: the cobordism hypothesis; see for details on this \cite{lurie2009classification} and \cite{Calaque_2019}.}]
-    Any $n$ manifold can be embedded in $\R^{\infty}(=\bigcup_{n\in\N}\R^n)$. The space of such embeddings is contractible.\footnote{Note that there are refinements of the latter result.}
-\end{thm}
-
-\begin{rem}
-    Actually $(\Omega_n,\amalg)$ is a finitely generated abelian group, but this is a hard theorem. In particular, it is a finite product of cyclic groups of order $2$ (from 2.)
-\end{rem}
-
-\begin{defn}[Bordism invariant]
-	A bordism invariant is a homomorphism of abelian groups $$(\Omega_n,\amalg,\emptyset) \to (A,\cdot,e)$$ 
-	the abelian group $A$ can be $\Z$, $\R$ or $\C$ for instance.
-\end{defn}
-\begin{rem}
-	Many important manifold invariants are also bordism invariants.
-\end{rem}
-
-\begin{ex}
-\hfill
-\begin{itemize}%TODO complete
-    \item $\chi$ mod 2 (the Euler characteristic)
-    \item signature
-    \item characteristic classes such as Pontrjagin, Stiefel-Whitney or Chern classes 
-\end{itemize}
-\end{ex}
-%TODO add definition of characteristic class or maybe just some additional comment
-\subsection{The 0-th Cobordism Group, \texorpdfstring{$\Omega_{0}$}{Omega 0}}
-Consider
- $$\Omega_0 = \{\text{finite disjoint unions of points}\} / \{\text{$1$-dimensional cobordisms}\}.$$
-To compute this, consider the following classification of $1$ manifolds:
-
-\begin{prop}\label{prop:classification_1d}
-Any $1$ dimensional compact manifold with boundary is diffeomorphic to a finite disjoint union of closed intervals $[0,1]$ and circles $S^1$.
-\end{prop}
-%TODO add proof, it should not be hard, and useful also for classification of 1TFT
-\begin{ex}
-An example of a $1$-dimensional cobordism is $W=[0,1]$. Here are the 3 different way of seeing it as a bordism: from $Y_0 = \{0,1\}$ to $Y_1 = \emptyset$, from $Y_0 = \{0\}$ to $Y_1 = \{1\}$ and from $Y_0 = \emptyset$ to $Y_1 = \{0,1\}$.
-\begin{figure}[H]
-    \centering
-    \begin{tikzpicture}
-        % Line segment
-        \draw[line width=1pt] (0,0.5) arc (90:270:-0.5 and 0.5);
-  
-        % Filled dots at the ends
-        \fill (0,0.5) circle (2pt);
-        \fill (0,-0.5) circle (2pt);
-
-        \draw[line width=1pt] (3.5,0) -- (4.5,0);
-  
-        % Filled dots at the ends
-        \fill (3.5,0) circle (2pt);
-        \fill (4.5,0) circle (2pt);
-
-        \draw[line width=1pt] (8,0.5) arc (90:270:0.5 and 0.5);
-  
-        % Filled dots at the ends
-        \fill (8,0.5) circle (2pt);
-        \fill (8,-0.5) circle (2pt);
-    \end{tikzpicture}
-    %\caption{}
-\end{figure}
-\end{ex}
-
-\begin{ex} Here is a list of various finite disjoint unions of points with different cardinalities. Can you see a pattern emerging?
-\begin{figure}[H]
-    \captionsetup[subfigure]{labelformat=empty}
-    \centering
-    \begin{subfigure}[t]{.3\textwidth}
-        \centering
-        \begin{tikzpicture}
-            \draw[line width=1pt] (0,0) -- (1,0);
-      
-            \fill (0,0) circle (2pt);
-            \fill (1,0) circle (2pt);
-        \end{tikzpicture}
-        \caption{1 point}
-    \end{subfigure}
-    %
-    \begin{subfigure}[t]{.3\textwidth}
-        \centering
-        \begin{tikzpicture}
-            \draw[line width=1pt] (0,0.5) arc (90:270:-0.5 and 0.5);
-      
-            \fill (0,0.5) circle (2pt);
-            \fill (0,-0.5) circle (2pt);
-        \end{tikzpicture}
-        \caption{2 points}
-    \end{subfigure}
-    %
-    \begin{subfigure}[t]{.3\textwidth}
-        \centering
-        \begin{tikzpicture}
-            \draw[line width=1pt] (0,0.5) arc (90:270:-0.5 and 0.5);
-      
-            \fill (0,0.5) circle (2pt);
-            \fill (0,-0.5) circle (2pt);
-    
-            \draw[line width=1pt] (0,-1) -- (1,-1);
-      
-            \fill (0,-1) circle (2pt);
-            \fill (1,-1) circle (2pt);
-        \end{tikzpicture}
-        \caption{3 points}
-    \end{subfigure}
-
-    \bigskip
-    
-    \begin{subfigure}[t]{.3\textwidth}
-        \centering
-        \begin{tikzpicture}
-            % Line segment
-            \draw[line width=1pt] (0,0.5) arc (90:270:-0.5 and 0.5);
-      
-            % Filled dots at the ends
-            \fill (0,0.5) circle (2pt);
-            \fill (0,-0.5) circle (2pt);
-
-            % Line segment
-            \draw[line width=1pt] (0,-1) arc (90:270:-0.5 and 0.5);
-      
-            % Filled dots at the ends
-            \fill (0,-1) circle (2pt);
-            \fill (0,-2) circle (2pt);
-        \end{tikzpicture}
-        \caption{4 points}
-    \end{subfigure}
-    %
-    \begin{subfigure}[t]{.3\textwidth}
-        \centering
-        \begin{tikzpicture}
-            % Line segment
-            \draw[line width=1pt] (0,0.5) arc (90:270:-0.5 and 0.5);
-      
-            % Filled dots at the ends
-            \fill (0,0.5) circle (2pt);
-            \fill (0,-0.5) circle (2pt);
-
-            % Line segment
-            \draw[line width=1pt] (0,-1) arc (90:270:-0.5 and 0.5);
-      
-            % Filled dots at the ends
-            \fill (0,-1) circle (2pt);
-            \fill (0,-2) circle (2pt);
-
-            % Line segment
-            \draw[line width=1pt] (0,-2.5) -- (1,-2.5);
-      
-            % Filled dots at the ends
-            \fill (0,-2.5) circle (2pt);
-            \fill (1,-2.5) circle (2pt);
-        \end{tikzpicture}
-        \caption{5 points}
-    \end{subfigure}
-    %
-    \begin{subfigure}[t]{.3\textwidth}
-        \centering
-        \begin{tikzpicture}
-            % Line segment
-            \draw[line width=1pt] (0,0.5) arc (90:270:-0.5 and 0.5);
-      
-            % Filled dots at the ends
-            \fill (0,0.5) circle (2pt);
-            \fill (0,-0.5) circle (2pt);
-
-            % Line segment
-            \draw[line width=1pt] (0,-1) arc (90:270:-0.5 and 0.5);
-      
-            % Filled dots at the ends
-            \fill (0,-1) circle (2pt);
-            \fill (0,-2) circle (2pt);
-
-            % Line segment
-            \draw[line width=1pt] (0,-2.5) arc (90:270:-0.5 and 0.5);
-      
-            % Filled dots at the ends
-            \fill (0,-2.5) circle (2pt);
-            \fill (0,-3.5) circle (2pt);
-        \end{tikzpicture}
-        \caption{6 points}
-    \end{subfigure}
-\end{figure}
-\end{ex}
-
-\noindent Keeping this pattern in mind, consider collection of $k$ points, with $k$ finite (i.e. the only closed 0 manifolds):
-
-\begin{itemize}
-	\item If $k$ is even, we can find a bordism to $\emptyset$
-	\item If $k$ is odd, we can find a bordism to $\{*\}$
-\end{itemize}
-
-\noindent We then have 
-\begin{equation*}
-    2k \text{ points} \sim \emptyset, \quad\quad 2k+1 \text{ points} \sim \text{1 point}
-\end{equation*}
-Therefore, the 0-th cobordism group is given by
-\begin{equation}
-    \Omega_0 = \{ \emptyset, \{*\}\} \cong \Z_2.
-\end{equation}
-A possible variation is: add a ``decoration'', called \textit{orientation} (will be made more precise later), so we now have:
-$$\Omega_0^{\textit{or}} = \big\{\text{finite sets of points $S$ with a map } S \to \{+,-\}\big\} /\{\text{oriented cobordism}\}$$
-
-An oriented cobordism in $1$ dimension is given by $[0,1]$ or $S^1$ which comes with an orientation. Here are some
-examples
-
-\[ \includegraphics[width=9cm]{images/Lecture 11/1dBORDISM.png}\]
-
-\begin{exercise}
-    What is $\Omega_0^{or}$? Try to think about it! 
-\end{exercise}
-
-\subsection{The 1st cobordism group, \texorpdfstring{$\Omega_{1}$}{Omega 1}}
-Now we have
-$$\Omega_1= \{\text{closed $1$-dimensional manifolds}\} / \{\text{$2$-dimensional cobordisms}\}.$$
-In studying this group, the following result, which is a restriction of \ref{prop:classification_1d}:
-\begin{thm}
-    Any closed $1$-dimensional manifold is a finite disjoint union of circles
-\end{thm}
-\noindent However, a circle is the boundary of a 2-disk, which gives a cobordism from $S^1$ to $\emptyset$, we then have $S^1 \sim \emptyset$. Hence, also finite disjoint unions of $S^1$ are cobordant to the empty set. Therefore, the $1$st cobordism group is trivial:
-\begin{equation}
-    \Omega_1 = 0
-\end{equation}
-
-\subsection{The 2nd cobordism group, \texorpdfstring{$\Omega_{2}$}{Omega 2}}
-In order to find the $2$nd cobordism group, we first need a classification of $2$ manifolds. %(Introduced before) In order to state the result we need to introduce the concept of \textit{connected sum}
-%\begin{defn}[Connected Sum]
-	%Given $n$ manifolds $M,N$, their connected sum $M\# N$ is given by
-	%%M\# N = M \setminus (D^n)^\circ \cup_{\de D^n \times [0,1]} N \setminus (D^n)^\circ
-	%\end{equation}
-%\end{defn}
-%DRAWING
-\begin{prop}[Classification of $2$-dimensional manifolds]\label{Classification of 2 manifolds}
-Every connected closed $2$ manifold is diffeomorphic to
-\begin{enumerate}
-    \item $S^2$, orientable
-    \begin{figure}[!ht]
-        \centering
-        \includegraphics[width=3cm]{images/Lecture 3/sphere.png}
-        \caption{2-sphere, $S^2$}
-    \end{figure}
-    \item $\Sigma_g = \underbrace{T \# \dots \# T}_{g-\text{times}}$ , orientable
-    \begin{figure}[!ht]
-        \centering
-        \includegraphics[width=10cm]{images/Lecture 3/surface_of_genus_g.png}
-        \caption{Surface of genus g, $\Sigma_g$}
-    \end{figure}
-    \item $P_k = \underbrace{\R\P^2 \# \dots \# \R\P^2}_{k-\text{times}}$ , non-orientable
-    \begin{figure}[!ht]
-        \centering
-        \begin{subfigure}[t]{.4\textwidth}
-            \centering
-            \includegraphics[width=6cm]{images/Lecture 3/sigma_g_rp2.png}
-            \caption{$P_{2g+1} \cong \Sigma_g \# \R\P^2$}
-        \end{subfigure}\hspace{10mm}
-        \begin{subfigure}[t]{.4\textwidth}
-            \centering
-            \includegraphics[width=6cm]{images/Lecture 3/sigma_g_klein_bottle.png}
-            \caption{$P_{2g+2} \cong \Sigma_g \# K$}
-        \end{subfigure}
-    \end{figure}
-\end{enumerate}
-\end{prop}
-
-\noindent We can now use this knowledge to compute
-$$
-	\Omega_2^{\text{or}} = \{\text{closed oriented $2$ manifolds} \} /\{\text{$3$-dimensional oriented cobordisms}\}
-$$
-by observing that $S^2$ and $\Sigma_g$ are both cobordant to $\emptyset$ since they can simply be ``filled'' to a $3$ dimensional manifold with boundary, we get
-\begin{equation}
-    \Omega_2^{or} = 0.
-\end{equation} 
-%DRAWING
-\begin{exercise}
-    What about the non-oriented part $\Omega_2$?
-\end{exercise}
-
-
 % -------------------------------------------------------------
 % --------------------- LECTURE 3 30/10 -----------------------
 % -------------------------------------------------------------
@@ -1285,7 +1011,7 @@ This is actually an atlas with smooth structure. Transition functions $g_{ij} = 
 \begin{defn}[Opposite orientation]
 	$M$ oriented with charts $\{(U_i, \phi_i)\}$. The opposite orientation on $M$ is given by: $\{(U_i, \bar \phi_i)\}$ in which $\bar \phi_i$ is given by the following composition
 	\begin{equation}
-		U_i \xrightarrow{\phi_i} \R^n \to \R^n %TODO write better
+		U_i \xrightarrow{\phi_i} \R^n \xrightarrow{ \ x_1\mapsto-x_1 \ } \R^n %TODO write better
 	\end{equation}
 	We will indicate $M$ with opposite orientation by $\bbar M$.
 \end{defn}
@@ -1293,9 +1019,9 @@ This is actually an atlas with smooth structure. Transition functions $g_{ij} = 
 \begin{ex}
 	$S^1$ %DRAWING
 \end{ex}
-
+Note that a diffeomorphism between two orientable manifolds can induce orientations: if we have $f:M\to N$ and choose an orientation on $M$ i.e. a proper choice of trivialization $(U_\alpha, \phi_\alpha)$, then on $N$ we can define a trivialization $(V_\alpha,\psi_\alpha)$ with $V_\alpha:=f(U_\alpha)$ and $\psi_\alpha:=\phi_\alpha\circ f^{-1}$. First note that, being $f$ a diffeomorphism, everything in perfectly well defined. Then note: $\psi_\alpha\circ\psi_\beta^{-1}=(\phi_\alpha\circ f^{-1})\circ (f\circ \phi_\beta^{-1})=\phi_\alpha\circ\phi_{\beta}^{-1}$ and thus the determinand of the transition functions on $N$ is the same as the ones of $M$!
 \begin{defn}[Orientation preserving and reversing diffeomorphism]
-	A diffeomorphism $\psi: M \to N$ between oriented manifolds is orientation preserving (reversing) if the orientation on $N$ induced by the one on $M$ is the (opposite) orientation on $N$.
+	A diffeomorphism $f: M \to N$ between oriented manifolds is orientation preserving (reversing) if the orientation on $N$ induced by the one on $M$ is the (opposite) orientation on $N$ $\iff \text{det}(df_p)>0$ (or $<0$) for all $p\in M$.
 \end{defn}
 \begin{ex}
 	Consider maps $S^1 \to S^1$ (implicitly using the same orientation on each $S^1$). The identity is an orientation preserving map, while the map $x \mapsto \bar x$ is orientation reversing (considering $S^1 \subset \C$).
@@ -1303,24 +1029,23 @@ This is actually an atlas with smooth structure. Transition functions $g_{ij} = 
 	\noindent We could instead consider maps $S^1 \to \bbar{S^1}$. In this case the identity is orientation reversing.
 \end{ex}
 
-Given a manifold $M$ with boundary, its tangent bundle (how is it defined?) contains a copy of $T(\de M)$.
+Consider a oriented manidold $M$ with boundary. By a previous theorem we know that $\de M$ is a manifold itself and thus we can talk of it's tangent bundle $T\de M$. At the same time, we can ``glue another collar'' $[0,\epsilon)$ onto the boundary so that the points of the boundary are now in the interior of the new extended manifold thus allowing us to define the tangent space $T_p M$ for $p\in \de M$ (this construction is independent from the extension). Now, we can consider $T\de M$ as a subspace of $TM|_{\de M}$ via the inclusion $i: \de M \to M$ which induces $i_*: T(\de M)\to TM$.
 %DRAWING
-This is because we can "glue another collar" $[0,\epsilon]$ onto the boundary so that the points that were on the boundary are now interior points. This allows us to define $T_x M$ for $x \in \de M$, the tangent bundle for boundary points. Instead, considering $\de M$ as its own manifold we have $T_x \de M$ and we have that $T_x \de M \subset T_x M$ and it has codimension 1. We can then define the quotient
+We can then define the quotient
 $$
-	\nu_x = T_x M /T_x \de M
+	\nu_p = T_p M /i_*T_p \de M \cong \R
 $$
 and we can write the following short exact sequence of bundles on $\de M$.
 \begin{equation}
-	0 \to T(\de M) \to i^* TM \to \nu \to 0
+	0 \to i_*T(\de M) \to TM \to \nu \to 0
 \end{equation}
-in which $i: \de M \to M$ is the inclusion and $i^*: TM$ (bundle over $M$) $\to TM$ (bundle over $\de M$) is its pullback. 
-%TODO did I understand this correctly?
-If we fix a local chart with coordinates $x_1, \dots, x_n$ we have a basis $\frac{\de}{\de x_1}$ for $\nu$.
+This is saying that the tangent bundle over $M$ on a boudary point is the tangent bundle of the boundary plus an extra ``normal'' direction $\nu$.\\
+We can fix a local chart on $M$ with coordinates $x_1, \dots, x_n$ so that we have a positive oriented basis of $TM$ with $\frac{\de}{\de x_1}$ basis for $\nu$ and so that it's ``pointing outword'' (i.e. under pushforward of the chart $(\phi_{\alpha})_*(\de/\de x_1)$ has positive first component, $x_1$), so that removing it from the basis of $TM$ we have an induced orientation on the boundary.
 
-\noindent This has the following consequences:
+\noindent From this, we can infer the following consequences:
 \begin{enumerate}
+	\item $\nu$ has ``two orientations'' ($\cong$ normal directions, $\pi_0(\R\setminus0)$)
 	\item an orientation on $M$ induces one on $\de M$
-	\item $\nu$ has two "orientations" ($\cong$ normal directions)
 	\item an orientation on $\de M$ induces one on $\de M \times (0,1)$ (if I choose an orientation on $(0,1)$) but in general we can't extend this construction to all of $M$.
 
 	\noindent More generally, note that if $M$ and $N$ are oriented, then $M\times N$ is oriented. \cite{FreedBordism}
@@ -1334,12 +1059,11 @@ If we fix a local chart with coordinates $x_1, \dots, x_n$ we have a basis $\fra
 \end{defn}
 
 \begin{defn}[Oriented bordism]
-	Let  $Y_0$ and $Y_1$ be oriented closed $n$ manifolds.
-	An oriented bordism from $Y_0$ to $Y_1$ is an oriented $n+1$ manifold $X$ together with $p: \de X \to \{0,1\}$ and $\psi: \de X \to \bbar Y_0 \amalg Y_1$ an orientation preserving diffeomorphism.
-	(Note: now $p$ is actually too much data $\dots$, since it basically tells us which of the $Y_i$ we're reversing, so we can get rid of it.)
-	%TODO make this comment clearer
+	Let  $Y_0$ and $Y_1$ be oriented closed $n$-manifolds.
+	An oriented bordism from $Y_0$ to $Y_1$ is an oriented $(n+1)$-manifold $X$ together with $p: \de X \to \{0,1\}$ and $\psi: \de X \to \bbar Y_0 \amalg Y_1$ an orientation preserving diffeomorphism.
 \end{defn}
-\noindent Again this is an equivalence relation which we call "being oriented cobordant", which allows us to give the following definition.
+\noindent Note: the choice of $\psi$ already clarifies what is the incoming boundary, i.e. $\bbar Y_0$, and the outgoing one, i.e. $Y_1$, so that $p$ is actually too much data and so it can be dropped.\\
+This is an equivalence relation which we call ``being oriented cobordant'', which allows us to give the following definition.
 \begin{defn}
 	The oriented bordism group is:
 	\begin{equation}
@@ -1386,31 +1110,59 @@ Some examples of frameable manifolds are the following:
 % -------------------------------------------------------------
 % --------------------- LECTURE 5 6/11 ------------------------
 % -------------------------------------------------------------
+\section{Classifications of 1- and 2-manifolds}
+In this section we classify 1- and 2-manifolds up to diffeomorphism. This will make our life much easier 
+when we will later classify such manifolds up to cobordism, via cobordism invariants.
 
-\section{Classification of 2 manifolds with boundary} % (fold) // what do you mean by '(fold)'? /andrea
+Note that any manifold, of any dimension, is diffeomorphic to the disjoint union of its connected
+ components. Hence, two manifolds are diffeomorphic if and only if there is a 1-to-1 correpsondence 
+  between their connected components such that the correpsonding components are diffeomorphic.
+  For this reason, when classifying $n$-manifolds it is sufficient to classify connected ones. 
+  
+  In the next two subsections we aim at doing this: classifying connected 1- and 2-manifolds,
+  so that we classify all 1- and 2-manifolds.
+\subsection{Classification of 1-manifolds}
+\begin{thm}[Classification of (connected) 1-manifolds]
+Any connected 1-manifold is diffeomorphic to:
+\begin{itemize}
+	\item $[0,1]$
+	\item $(0,1]$
+	\item $(0,1)$
+	\item $S^1$
+\end{itemize}
+\end{thm}
+\subsection{Classification of 2-manifolds with boundary}
 \label{sub:classification_of_2_manifolds_with_boundary}
 
-The aim of this chapter is to prove the aforementioned classification of compact 2-dimensional manifolds with the use of Morse theory (see \ref{Classification of 2 manifolds}). We remind the reader: let $M$ be a 2 manifold with genus $g$, then \begin{itemize}
-    \item if $M$ is oriented, $M$ is classified by its genus $g$. In particular $M$ it is diffeomorphic to $\Sigma_g:=T\,\# \dots\#\,T$, the connected sum of $g$-tori, where in particular $\Sigma_0=S^2$.
+The aim of this chapter is to prove the aforementioned classification of compact 2-dimensional manifolds with the use of Morse theory (see \ref{Classification of 2 manifolds}). We remind the reader: let $M$ be a compact 2-manifold with genus $g$, then \begin{itemize}
+    \item if $M$ is oriented, $M$ is classified by its genus $g$. In particular $M$ it is diffeomorphic to $\Sigma_g:=T\,\# \dots\#\,T$, the connected sum of $g$ tori, and where we define $\Sigma_0:=S^2$.
     \item Instead if $M$ is non orientable\footnote{see \url{https://en.wikipedia.org/wiki/Genus_(mathematics)} for what is meant by genus of a non orientable surface}, $M$ is diffeomorphic to $g$ copies of the real projective plane, i.e.  $\R P^2\,\# \dots \#\,\R P^2$.
 \end{itemize} 
 
-One can find a thorough covering of this result in \cite{Hirsch1976}.
+One can find a thorough covering of this result in \cite[Chapter 3, page 200]{Hirsch1976}.
 
-\noindent In addition, we will also find a classification of compact 2 manifolds with boundary (which we will simply call \textit{surfaces}). To do it we will need Morse theory. What is the idea? Given a surface $M$ (it works in greater generality but now we're only interested in surfaces), find a map $f: M \to \R$ which is "nice" is a way we'll specify later on.
+\noindent In addition, we will also find a classification of compact 2-manifolds with boundary (which we will simply call \textit{surfaces}). To do it we will need Morse theory. What is the idea? Given a surface $M$ (it works in greater generality but now we're only interested in surfaces), find a map $f: M \to \R$ which is ``nice''.
 Then by analizing properties of $f$ we can recover the topology of the surface (i.e. the surface up to diffeomorphism). 
 
 \noindent This section is based on \cite{Hirsch1976} and \cite{kosinski2013differential}.
 
 \subsection{Introduction to Morse Theory}
-%TODO specify somewhere that we mainly concentrate on 2d but Morse theory is more general.
-\begin{figure}
-    \centering
-    \includegraphics[width=9.3cm]{images/Lecture on Morse Theory/TORUS MORSE THEORY.png}
-    \caption{Image of the Morse function of a torus from \cite{HiroLee2022}}
-    \label{TORUS MORSE}
-\end{figure}
-Take as an example the projection map from the torus, see \ref{TORUS MORSE}. Here we have 4 special points: the top and bottom, and then the two points in the middle. What happens in these points is that the shape of the preimage changes:
+Morse theory is a way to extract informations on a manifold $M$ from smartly chosen functions 
+$$f:M\to \R$$
+Such smart functions are called Morse functions. It is very powerful, for instance, it plays a major role 
+in the sketch of the proof of the cobordism hypothesis, see \cite{lurie2009classification}, and
+in symplectic topology, see \cite{HiroLee2022}. 
+Thus, it is very useful to have an idea of how it works!
+
+However, we will only use it to classify 2-dimensional manifolds. Now, we introduce the fundamental tool
+of Morse theory: the Morse function.
+
+
+Take as an example the projection map from the torus (stolen from \cite{HiroLee2022}):
+\begin{center}
+	\includegraphics[width=9.3cm]{images/Lecture on Morse Theory/TORUS MORSE THEORY.png}
+\end{center}
+ Here we have 4 special points: the top and bottom, and then the two points in the middle. What happens in these points is that the shape of the preimage changes:
 \begin{itemize}
 	\item the preimage of the top (and bottom) is a point
 	\item the preimage of points between the top and middle point is a circle
@@ -1421,18 +1173,20 @@ Note that at the special points the preimage is generally not a smooth manifold.
 %TODO add what the strategy is
 
 \begin{defn}[Critical point and critical value]
-	Let $M$ be a closed $n$ manifold. A critical point of $f: M \to \R$ is a point $p \in M$ such that $(df)_p: T_p M \to T_{f(p)} \R \cong \R$ is \textit{not} surjective. 
+	Let $M$ be a closed $n$-manifold and $f:M\to\R$ a smooth map. A critical point of $f$ is a point $p \in M$ such that $(df)_p: T_p M \to T_{f(p)} \R \cong \R$ is \textit{not} surjective. 
 	A critical value is the image of a critical point.
 \end{defn}
 
-\noindent The main goal then is to recover (up to diffeomorphism) $M$ from knowing the critical points and the behaviour in a neighborhood thereof. 
+\noindent So a critical point is a point of $M$ with tangent bundle ``vertical'' with respect to $\R$ (thinking of $f$ as some kind of projection).
+
+The main goal then is to recover (up to diffeomorphism) $M$ from knowing the critical points and the behaviour in a neighborhood thereof. 
 
 
-\noindent Firstly we can define what we mean by a "nice" function:
+\noindent Firstly we can define what we mean by a ``nice'' function:
 \begin{defn}
-	A Morse function is a smooth map $f: M \to \R$ such that all critical points are nondegenerate, that is 
+	A Morse function is a smooth map $f: M \to \R$ such that all critical points are nondegenerate, that is if $p$ is a critical point of $f$, then 
 	$\Hess(f)_p := \left( \frac{\de^2 f}{\de x_i \de x_j}(p)\right)_{i,j}$
-	is non-singular.
+	is non-singular (i.e. $\text{det}(\Hess(f)_p)\neq 0$).
 \end{defn}
 \begin{rem}
 	This is independent of the choice of chart. 
@@ -1505,8 +1259,8 @@ Note that at the special points the preimage is generally not a smooth manifold.
 
 \noindent Given a Morse function $f: M \to \R$, $p \in M$, then we have the following immediate consequences of the lemma:
 \begin{itemize}
-    \item if $p$ is critical (non degenerate because of the \textit{Morse} function), because of the lemma we have a chart as above. Then the level sets $f^{-1} (f(p))$ look like a neighborhood of 0 in a quadric (locally).
-    \item if $p$ is not critical (it's regular), by the implicit function theorem there are coordinates such that $f(x_1, \dots, x_n) = x_1$. So the level sets $f^{-1} (f(p))$ look like hyperplanes in $\R^n$ (locally).
+    \item if $p$ is critical ( and nondegenerate since is a \textit{Morse} function), because of the lemma we have a chart as above. Then the level sets $f^{-1} (f(p))$ look like a neighborhood of 0 in a quadric (locally).
+    \item if $p$ is regular (that is, non-singular), by the implicit function theorem there are coordinates such that $f(x_1, \dots, x_n) = x_1$. So the level sets $f^{-1} (f(p))$ look like a submanifold in $\R^n$ (locally).
 \end{itemize}
 This explains what we noticed initially for the example of the torus, that the level set changes when passing a critical point. In particular it always changes in one of the ways shown in \ref{ex:quadric}. This observation will be more complete after Morse Lemma II and Theorem \ref{thm:handle_attachment_morse} below.
 
@@ -1529,11 +1283,11 @@ Example of something we can prove with Morse functions:
 
 The following theorem also seems very plausible from the drawings:
 \begin{lem}[Morse Lemma II]
-    Let $f: M \to \R$, $a< b \in \R$ such that $f$ does not have a critical value in $[a,b]$. Then
+    Let $f: M \to \R$ be a Morse function, $a< b \in \R$ such that $f$ does not have a critical value in $[a,b]$. Then
     \begin{equation}
         M_a = f^{-1} ((-\infty, a]) \hookrightarrow M_b = f^{-1} ((-\infty, b])
     \end{equation}
-    is a deformation retract. In particular, it induces a diffeomorphism $f^{-1}(a) \cong f^{-1}(b)$.
+    is a (smooth) deformation retract. In particular, it induces a diffeomorphism $f^{-1}(a) \cong f^{-1}(b)$.
 \end{lem}
 \noindent Concretely this tells us that the level set \textit{only} changes when crossing a critical point.
 \begin{rem}
@@ -1556,7 +1310,7 @@ We will restrict to the following class of Morse functions:
 %tells us how the level set changes before and after the critical point
 We would now like to know \textit{how} the level set changes before and after the critical point. In order to do this we first introduce the concept of handle attachment.
 \begin{defn}[Handle attachment]
-	Let $M^n$ be an $n$ manifold and let $H^j \coloneq D^j \times D^{n-j}$ for $j=0,1,\dots, n$. In addition let $f: \de D^j \times D^{n-j} \hookrightarrow \de M^n$ be an embedding and note that $\de D^j \times D^{n-j}$ also embeds into $H^j$. We can then \textit{attach a j-handle} to $M^n$ by gluing along $f$ to obtain the manifold 
+	Let $M^n$ be an $n$-manifold and let $H^j \coloneqq D^j \times D^{n-j}$ for $j=0,1,\dots, n$. In addition let $f: \de D^j \times D^{n-j} \hookrightarrow \de M^n$ be an embedding and note that $\de D^j \times D^{n-j}$ also embeds into $H^j$. We can then \textit{attach a j-handle} to $M^n$ by gluing along $f$ to obtain the manifold 
 	$M^n \amalg_f H^j$.
 \end{defn}
 \noindent This concept will be studied in one of the exercises. The following claim makes the definition meaningful:
@@ -1752,8 +1506,312 @@ We now consider the case with boundary:
 	Now $ \de M \neq \emptyset$, then $\de M = S^1 \amalg \dots \amalg S^1$. If $f$ is an admissible Morse function $f$ onto $[a,b]$ with $f^{-1}(a) \cong (S^1)^{\amalg m}$ and $f^{-1}(b) \cong (S^1)^{\amalg n}$. Now one can prove that we need neither 0-handles (if $m \neq 0$) nor 2-handles (if $n \neq 0$).
 \end{proof}
 
+\chapter{Cobordism groups}\label{Cob Groups}
+We now define the most fundamental object in cobordism theory: the cobordism group.
+ It is an algebraic structure characterizig if two manifolds are cobordant and how this relates to the
+  disjoint 
+ union of manifolds. From this one can establish cobordism invariants, i.e. homomorphisms 
+ from a certain cobordism group to another abelian group. To do this, we will exploit
+ the classifications of 1- and 2-manifolds up to diffeomorphism we proved in the previous chapters.
+  To be diffeomorphic is a much 
+ stricter and finer relation then being cobordant, that is why it is much harder to classify manifolds
+ up to diffeomorphism, but it also will make our life much easier when establishing cobordism invariants.
+\begin{defn}
+	\label{Defn n-th cob group}
+	The set underlying the $n$-th cobordism group is
+	$$\Omega_n = \frac{\{\text{closed $n$ manifolds}\}}{\{\text{$n+1$ cobordisms}\}}$$
+	$(\Omega_n, \amalg)$ is an abelian group with operation given by the disjoint union $\amalg$.
+	\begin{enumerate}
+		\item the disjoint union is associative and commutative
+		\item the identity element\footnote{We will
+			sometimes write $0=[\emptyset]$ or more often $\emptyset=[\emptyset]$}
+		is the cobordism class of the empty set\footnote{Reminder: $\emptyset$ is an $n$-manifold for every $n$.}
+		$[\emptyset]$, i.e. the set of $n$-manifolds which are bordant with the empty set
+		\item every element has an inverse:
+		$[M]\amalg [M]=[\emptyset]$ since $M\amalg M=(\de(M\times[0,1]))$ and such a cylinder can be bent into a
+		macaroni, which is bordant to the empty set:
+		\[\includegraphics[width=6.5cm]{images/Lecture 2/MACARONI.png}\]
+	\end{enumerate}
+\end{defn}
+\begin{rem}
+	There is an insidious set-theoretic issue when we define the $n$-th cobordism group $\Omega_n$ (\ref{Defn n-th cob group}): is the collection of all closed $n$-manifolds a set? And what about the collection of all $(n+1)$-bordisms? It could be the case that it is something bigger than a usual set, thus not a set and problematic since we would not know how to treat them\footnote{We are assuming to be working in ZFC. There are other set theories in which one can define collections greater than sets, e.g. Von Neumann–Bernays–Gödel set theory.}. For example, we know that the collection of all sets is strictly greater than any set\footnote{Because of famous set-theoretic paradoxes like Cantor's paradox.} and thus not a set. Similarly, also the collection of topological spaces is not a set because we can regard any set as a topological space via the discrete topology\footnote{The topology where the set of open sets is the powerset of the set in question, or in other words where any subset is open.}. One could wonder if the collection of all manifolds of a certain dimension $n$ is likewise not a set. This is fortunately for us not the case. The following theorem allows us to happily treat \{\text{closed $n$ manifolds}\} and \{\text{$n+1$ cobordisms}\} as sets by replacing abstract manifolds and cobordism by manifolds and cobordisms embedded in $\R^{\infty}$.
+\end{rem}
+\begin{thm}[Whitney Embedding theorem\footnote{This result is not important only in this case, but notably for the interest of this class it was used to construct an apt category of bordisms \ref{CobCat} in order to sketch a partial proof of the most important conjecture in the field of TFTs: the cobordism hypothesis; see for details on this \cite{lurie2009classification} and \cite{Calaque_2019}.}]
+	Any $n$ manifold can be embedded in $\R^{\infty}(=\bigcup_{n\in\N}\R^n)$. The space of such embeddings is contractible.\footnote{Note that there are refinements of the latter result.}
+\end{thm}
 
-%Can this go with the cobordism part? /William
+\begin{rem}
+	Actually $(\Omega_n,\amalg)$ is a finitely generated abelian group, but this is a hard theorem. In particular, it is a finite product of cyclic groups of order $2$ (from 2.)
+\end{rem}
+
+\begin{defn}[Bordism invariant]
+	A bordism invariant is a homomorphism of abelian groups $$(\Omega_n,\amalg,\emptyset) \to (A,\cdot,e)$$ 
+	the abelian group $A$ can be $\Z$, $\R$ or $\C$ for instance.
+\end{defn}
+\begin{rem}
+	Many important manifold invariants are also bordism invariants.
+\end{rem}
+
+\begin{ex}
+	\hfill
+	\begin{itemize}%TODO complete
+		\item $\chi$ mod 2 (the Euler characteristic)
+		\item signature
+		\item characteristic classes such as Pontrjagin, Stiefel-Whitney or Chern classes 
+	\end{itemize}
+\end{ex}
+%TODO add definition of characteristic class or maybe just some additional comment
+\section{The 0-th Cobordism Group, \texorpdfstring{$\Omega_{0}$}{Omega 0}}
+Consider
+$$\Omega_0 = \{\text{finite disjoint unions of points}\} / \{\text{$1$-dimensional cobordisms}\}.$$
+To compute this, consider the following classification of $1$ manifolds:
+
+\begin{prop}\label{prop:classification_1d}
+	Any $1$ dimensional compact manifold with boundary is diffeomorphic to a finite disjoint union of closed intervals $[0,1]$ and circles $S^1$.
+\end{prop}
+%TODO add proof, it should not be hard, and useful also for classification of 1TFT
+\begin{ex}
+	An example of a $1$-dimensional cobordism is $W=[0,1]$. Here are the 3 different way of seeing it as a bordism: from $Y_0 = \{0,1\}$ to $Y_1 = \emptyset$, from $Y_0 = \{0\}$ to $Y_1 = \{1\}$ and from $Y_0 = \emptyset$ to $Y_1 = \{0,1\}$.
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}
+			% Line segment
+			\draw[line width=1pt] (0,0.5) arc (90:270:-0.5 and 0.5);
+			
+			% Filled dots at the ends
+			\fill (0,0.5) circle (2pt);
+			\fill (0,-0.5) circle (2pt);
+			
+			\draw[line width=1pt] (3.5,0) -- (4.5,0);
+			
+			% Filled dots at the ends
+			\fill (3.5,0) circle (2pt);
+			\fill (4.5,0) circle (2pt);
+			
+			\draw[line width=1pt] (8,0.5) arc (90:270:0.5 and 0.5);
+			
+			% Filled dots at the ends
+			\fill (8,0.5) circle (2pt);
+			\fill (8,-0.5) circle (2pt);
+		\end{tikzpicture}
+		%\caption{}
+	\end{figure}
+\end{ex}
+
+\begin{ex} Here is a list of various finite disjoint unions of points with different cardinalities. Can you see a pattern emerging?
+	\begin{figure}[H]
+		\captionsetup[subfigure]{labelformat=empty}
+		\centering
+		\begin{subfigure}[t]{.3\textwidth}
+			\centering
+			\begin{tikzpicture}
+				\draw[line width=1pt] (0,0) -- (1,0);
+				
+				\fill (0,0) circle (2pt);
+				\fill (1,0) circle (2pt);
+			\end{tikzpicture}
+			\caption{1 point}
+		\end{subfigure}
+		%
+		\begin{subfigure}[t]{.3\textwidth}
+			\centering
+			\begin{tikzpicture}
+				\draw[line width=1pt] (0,0.5) arc (90:270:-0.5 and 0.5);
+				
+				\fill (0,0.5) circle (2pt);
+				\fill (0,-0.5) circle (2pt);
+			\end{tikzpicture}
+			\caption{2 points}
+		\end{subfigure}
+		%
+		\begin{subfigure}[t]{.3\textwidth}
+			\centering
+			\begin{tikzpicture}
+				\draw[line width=1pt] (0,0.5) arc (90:270:-0.5 and 0.5);
+				
+				\fill (0,0.5) circle (2pt);
+				\fill (0,-0.5) circle (2pt);
+				
+				\draw[line width=1pt] (0,-1) -- (1,-1);
+				
+				\fill (0,-1) circle (2pt);
+				\fill (1,-1) circle (2pt);
+			\end{tikzpicture}
+			\caption{3 points}
+		\end{subfigure}
+		
+		\bigskip
+		
+		\begin{subfigure}[t]{.3\textwidth}
+			\centering
+			\begin{tikzpicture}
+				% Line segment
+				\draw[line width=1pt] (0,0.5) arc (90:270:-0.5 and 0.5);
+				
+				% Filled dots at the ends
+				\fill (0,0.5) circle (2pt);
+				\fill (0,-0.5) circle (2pt);
+				
+				% Line segment
+				\draw[line width=1pt] (0,-1) arc (90:270:-0.5 and 0.5);
+				
+				% Filled dots at the ends
+				\fill (0,-1) circle (2pt);
+				\fill (0,-2) circle (2pt);
+			\end{tikzpicture}
+			\caption{4 points}
+		\end{subfigure}
+		%
+		\begin{subfigure}[t]{.3\textwidth}
+			\centering
+			\begin{tikzpicture}
+				% Line segment
+				\draw[line width=1pt] (0,0.5) arc (90:270:-0.5 and 0.5);
+				
+				% Filled dots at the ends
+				\fill (0,0.5) circle (2pt);
+				\fill (0,-0.5) circle (2pt);
+				
+				% Line segment
+				\draw[line width=1pt] (0,-1) arc (90:270:-0.5 and 0.5);
+				
+				% Filled dots at the ends
+				\fill (0,-1) circle (2pt);
+				\fill (0,-2) circle (2pt);
+				
+				% Line segment
+				\draw[line width=1pt] (0,-2.5) -- (1,-2.5);
+				
+				% Filled dots at the ends
+				\fill (0,-2.5) circle (2pt);
+				\fill (1,-2.5) circle (2pt);
+			\end{tikzpicture}
+			\caption{5 points}
+		\end{subfigure}
+		%
+		\begin{subfigure}[t]{.3\textwidth}
+			\centering
+			\begin{tikzpicture}
+				% Line segment
+				\draw[line width=1pt] (0,0.5) arc (90:270:-0.5 and 0.5);
+				
+				% Filled dots at the ends
+				\fill (0,0.5) circle (2pt);
+				\fill (0,-0.5) circle (2pt);
+				
+				% Line segment
+				\draw[line width=1pt] (0,-1) arc (90:270:-0.5 and 0.5);
+				
+				% Filled dots at the ends
+				\fill (0,-1) circle (2pt);
+				\fill (0,-2) circle (2pt);
+				
+				% Line segment
+				\draw[line width=1pt] (0,-2.5) arc (90:270:-0.5 and 0.5);
+				
+				% Filled dots at the ends
+				\fill (0,-2.5) circle (2pt);
+				\fill (0,-3.5) circle (2pt);
+			\end{tikzpicture}
+			\caption{6 points}
+		\end{subfigure}
+	\end{figure}
+\end{ex}
+
+\noindent Keeping this pattern in mind, consider collection of $k$ points, with $k$ finite (i.e. the only closed 0 manifolds):
+
+\begin{itemize}
+	\item If $k$ is even, we can find a bordism to $\emptyset$
+	\item If $k$ is odd, we can find a bordism to $\{*\}$
+\end{itemize}
+
+\noindent We then have 
+\begin{equation*}
+	2k \text{ points} \sim \emptyset, \quad\quad 2k+1 \text{ points} \sim \text{1 point}
+\end{equation*}
+Therefore, the 0-th cobordism group is given by
+\begin{equation}
+	\Omega_0 = \{ \emptyset, \{*\}\} \cong \Z_2.
+\end{equation}
+A possible variation is: add a ``decoration'', called \textit{orientation} (will be made more precise later), so we now have:
+$$\Omega_0^{\textit{or}} = \big\{\text{finite sets of points $S$ with a map } S \to \{+,-\}\big\} /\{\text{oriented cobordism}\}$$
+
+An oriented cobordism in $1$ dimension is given by $[0,1]$ or $S^1$ which comes with an orientation. Here are some
+examples
+
+\[ \includegraphics[width=9cm]{images/Lecture 11/1dBORDISM.png}\]
+
+\begin{exercise}
+	What is $\Omega_0^{or}$? Try to think about it! 
+\end{exercise}
+
+\subsection{The 1st cobordism group, \texorpdfstring{$\Omega_{1}$}{Omega 1}}
+Now we have
+$$\Omega_1= \{\text{closed $1$-dimensional manifolds}\} / \{\text{$2$-dimensional cobordisms}\}.$$
+In studying this group, the following result, which is a restriction of \ref{prop:classification_1d}:
+\begin{thm}
+	
+	Any closed $1$-dimensional manifold is a finite disjoint union of circles
+\end{thm}
+\noindent However, a circle is the boundary of a 2-disk, which gives a cobordism from $S^1$ to $\emptyset$, we then have $S^1 \sim \emptyset$. Hence, also finite disjoint unions of $S^1$ are cobordant to the empty set. Therefore, the $1$st cobordism group is trivial:
+\begin{equation}
+	\Omega_1 = 0
+\end{equation}
+
+\section{The 2nd cobordism group, \texorpdfstring{$\Omega_{2}$}{Omega 2}}
+In order to find the $2$nd cobordism group, we first need a classification of $2$ manifolds. %(Introduced before) In order to state the result we need to introduce the concept of \textit{connected sum}
+%\begin{defn}[Connected Sum]
+%Given $n$ manifolds $M,N$, their connected sum $M\# N$ is given by
+%%M\# N = M \setminus (D^n)^\circ \cup_{\de D^n \times [0,1]} N \setminus (D^n)^\circ
+%\end{equation}
+%\end{defn}
+%DRAWING
+\begin{prop}[Classification of $2$-dimensional manifolds]\label{Classification of 2 manifolds}
+	Every connected closed $2$ manifold is diffeomorphic to
+	\begin{enumerate}
+		\item $S^2$, orientable
+		\begin{figure}[!ht]
+			\centering
+			\includegraphics[width=3cm]{images/Lecture 3/sphere.png}
+			\caption{2-sphere, $S^2$}
+		\end{figure}
+		\item $\Sigma_g = \underbrace{T \# \dots \# T}_{g-\text{times}}$ , orientable
+		\begin{figure}[!ht]
+			\centering
+			\includegraphics[width=10cm]{images/Lecture 3/surface_of_genus_g.png}
+			\caption{Surface of genus g, $\Sigma_g$}
+		\end{figure}
+		\item $P_k = \underbrace{\R\P^2 \# \dots \# \R\P^2}_{k-\text{times}}$ , non-orientable
+		\begin{figure}[!ht]
+			\centering
+			\begin{subfigure}[t]{.4\textwidth}
+				\centering
+				\includegraphics[width=6cm]{images/Lecture 3/sigma_g_rp2.png}
+				\caption{$P_{2g+1} \cong \Sigma_g \# \R\P^2$}
+			\end{subfigure}\hspace{10mm}
+			\begin{subfigure}[t]{.4\textwidth}
+				\centering
+				\includegraphics[width=6cm]{images/Lecture 3/sigma_g_klein_bottle.png}
+				\caption{$P_{2g+2} \cong \Sigma_g \# K$}
+			\end{subfigure}
+		\end{figure}
+	\end{enumerate}
+\end{prop}
+
+\noindent We can now use this knowledge to compute
+$$
+\Omega_2^{\text{or}} = \{\text{closed oriented $2$ manifolds} \} /\{\text{$3$-dimensional oriented cobordisms}\}
+$$
+by observing that $S^2$ and $\Sigma_g$ are both cobordant to $\emptyset$ since they can simply be ``filled'' to a $3$ dimensional manifold with boundary, we get
+\begin{equation}
+	\Omega_2^{or} = 0.
+\end{equation} 
+%DRAWING
+\begin{exercise}
+	What about the non-oriented part $\Omega_2$?
+\end{exercise}
+
+%Can this go with the cobordism part? /William YES, I agree that it makes much more sense and that is why I am restructuring some stuff /Andrea
 \section{More on cobordism groups}
 \label{sec:more_on_cobordism_groups}
 
@@ -1832,12 +1890,23 @@ For the last result see \cite[p. 203]{MilnorS05}.
 %TODO maybe torsion comments
 \end{ex}
 %would be cool to write something why these are the case, but mysterious to me for now TBD /ANdrea
-\subsection{Cobordism groups and the sphere spectrum \extra}\label{homotopyCob}
+\section{Cobordism theory and stable homotopy theory \extra}
+When establishing bordism invariants, we cheated and relied on stronger classification theorems.
+However, the intuition of cobordism theory is that is much easier to classify manifolds up to cobordism
+then up to diffeomorphism.
+The natural question is: how? Thom's brilliant idea in his PhD thesis is to reduce such problem to 
+a problem in stable homotopy theory. This is very convenient because stable homotopy theory is much
+easier than ordinary differential topology. His strategy was to first define the Thom spectrum, i.e.
+roughly a spectrum for cobordisms, and then establish an isomorphism between the homotopy groups
+ of this spectrum and the cobordism ring via the Pontryagin-Thom construnction.
+ 
+ In this section we sketch how this works. \danger \textbf{THIS IS WORK IN PROGRESS}
+ \subsection{Cobordism groups and the sphere spectrum \extra}\label{homotopyCob}
 Very interestingly, the (stable) framed version is isomorphic to the stable homotopy groups of the sphere and it is \textit{not} computed to all degrees. This is one way to phrase a theorem named after Thom. It is fascinating because the stable homotopy groups of the sphere are central objects in stable homotopy theory. They are equivalently the homotopy groups of the sphere spectrum.
 
 Now characterize spectra the bare minimum in order to talk about the sphere spectrum. Later,
 after some detours in the magical world of $\infty$-categories, we will 
-give a deeper sketch of what they are \ref{WhatSpectra}.
+give a more comprehensive sketch of what they are \ref{WhatSpectra}.
 \begin{defn}[Suspension]
 	Let $X$ be a pointed topological space. The suspension $\Sigma X$ of $X$ is the smash product of $X$
 	 with $S^1$, i.e.
@@ -1891,14 +1960,14 @@ $$\pi_{\bullet}(\mathds{S})=\bigoplus_{n\geq 0}\pi_{n}(\mathds{S})$$
 % --------------------- LECTURE 9 22/11 -----------------------
 % -------------------------------------------------------------
 \part{Topological field theories}
-\chapter{A summary of category theory}
-\section{A modern perspective on cobordisms}
+
+\chapter{Preamble: a modern perspective on cobordisms}
 
 A bordism invariant was characterized as a homomorphism from the cobordism group to some other abelian group. 
 To extract the cobordism group from bordism we took the following steps:
 \begin{enumerate}
 	\item observed that being cobordant is an equivalence relation,
-	\item considered the equivalence classes of closed $n$ manifolds up to $n+1$ cobordisms, obtaining the \textit{sets} $\Omega_n$,
+	\item considered the equivalence classes of closed $n$ manifolds up to $n+1$ cobordisms, obtaining the sets $\Omega_n$,
 	\item took such equivalence classes together with disjoint unions, resulting in an abelian group\footnote{And eventually in a \Z graded commutative ring, but this will not be as important for us from now on.}.
 \end{enumerate} 
 This strategy was the key for classifying manifolds up to cobordism. 
@@ -1951,6 +2020,7 @@ We make both these comparisons more rigorous by later (\ref{MonObj}) showing tha
 The same holds for the commutative case, commutative monoids, commutative algebras and (\emph{strict}\footnote{We will also sketch a way how to get general symmetric monoidal categories, i.e. not necessarily strict, in an analogous way. See \ref{EAlg}.}) 
 symmetric monoidal categories are all examples of commutative monoid objects (see \ref{CommMonObj}).
 
+\chapter{A summary of category theory}
 \section{Category theory: basic definitions} % (fold)
 \label{sub:cathegory_theory_language}
 
@@ -2027,7 +2097,7 @@ A few examples of categories are the following:
  	\noindent  Then, $(\Hom_{\mathscr{C}}(\ast,\ast),\circ)$ is a monoid since composition is associative and unital with neutral element given by the identity morphism $id_\ast$.
   %TODO I think the notation is usually just BM, not bold--You are probably right but I prefer to put it bold because sometimes it can be confusing, e.g. a bicategory is often denoted by 'B' and then the delooping of a bicategory becomes a one-object tricategory BB. There was also a case I can't remember where one couldn't discern Bs in a topology class. It is true that we'll probably not encounter any such confusing cases but I still prefer it because it shows that it is something "special". having said this, not a big issue for me however, if we change it to just nonbold B /Andrea
 	Conversely, every monoid $(M,\cdot)$ defines a category $\mathbf{B}M$ with 
-	$$\ob(\mathbf{B}M)=\{\ast\},\Hom_{\mathbf{B}M}(\ast,\ast)=M,m\circ_{\mathbf{B}M} m'=m\cdot m',id_{\ast}=1_{M}$$ 
+	$$\ob(\mathbf{B}M)=\{\ast\}, \ \ \Hom_{\mathbf{B}M}(\ast,\ast)=M, \ \ m\circ_{\mathbf{B}M} m'=m\cdot m', \ \ id_{\ast}=1_{M}$$ 
 	$\mathbf{B}M$ is called the delooping of the monoid $(M,\cdot)$
     \footnote{We will see a generalization of such deloopings for certain categories, monoidal categories (see \ref{MonCat}) where any monoidal category $\cat$, will be a one-object \emph{bi}category $\mathbf{B}\cat$ called the delooping $\cat$ (see \ref{DeloopingMonCat}).}.
     The same holds for groups and one-object groupoids: every group $(G,\cdot)$ defines a one-object groupoid $\mathbf{B}G$ and vice versa
@@ -2095,7 +2165,8 @@ Some more examples related to topological spaces.
     
     \end{itemize} 
     Units are constant paths, i.e. $c:[0,1]\to X$ such that $\forall t\in[0,1], c(t)=x$. Additionally, this is indeed a groupoid since inverses are given by the same paths run in the opposite direction. We have a functor 
-    $$\pi_{\leq 1}:\Top\to \Gpd$$ 
+    $$\pi_{\leq 1}:\Top\to \Gpd.$$
+    In this context, the Seifert–Van Kampen theorem can be formulated as follows: $\pi_{\leq1}$ preserves pushouts\footnote{Pushouts are certain objects in a category defined, up to isomorphism, by a certain universal property. An example of pushout is the gluing of two spaces along a common other, as we have already seen numerous times in this course. The resulting space is a pushout in $Top$}.
     
     \item Let $X$ be a topological space and $x\in X$ an arbitrary basepoint. The assignement of a fundamental group of $X$ at $x$, $\pi_1(X,x)$\footnote{\textit{Reminder}: $\pi_1(X,x)=\pi_0(\Omega_x(X))$, where $\Omega_x(X)$ is the based loop space of $X$ at $x$} is a functor $\pi_1:\Top\to \Grp$
     \end{enumerate}
@@ -2209,7 +2280,7 @@ We did not cover this topic in the lecture, but the concept of equivalence of ca
         \item conservative, if for $f:X\rightarrow Y$ in $\mathscr{C}$ such that if $F(f)$ is an isomorphism, then $f$ is an isomorphism,
         \item an isomorphism if $\exists G:\mathscr{D}\rightarrow\mathscr{C}$ such that $G\circ F=id_{\mathscr{C}}$ and $F\circ G=id_{\mathscr{D}}$,
         \item an equivalence if $\exists G:\mathscr{D}\rightarrow\mathscr{C}$ and natural isomorphisms $G\circ F\overset{\epsilon}{\cong}id_{\mathscr{C}}$ and $F\circ G\overset{\eta}{\cong}id_{\mathscr{D}}$,
-        \item essentially surjective if $\forall Z\in\mathscr{D}, \exists Z'\in\mathscr{D}, X\in\mathscr{C}$ and an isomorphsim $F(X)\overset{f}{\cong}Z'$.
+        \item essentially surjective if $\forall Z\in\mathscr{D}, \exists X\in\mathscr{C}$ and an isomorphsim $F(X)\cong Z'$ (isomorphism in $\mathscr{D}$).
     \end{enumerate}
 \end{defn}
 % realized only writing down the definition of adjunction that I swapped unit and counit in the case of equivalence, will fix it, sorry! :/ /Andrea 
@@ -2356,8 +2427,9 @@ The right hand square commutes because of the naturality of $\eta$. Since the ri
 \begin{ex}
 	A trivial example is given by any functor that is an isomorphism. In that case the natural transformations are actually identities. 
 
-	\noindent An equivalence of categories instead is an adjunction.
-    %I had found written "An equivalence of categories instead is in general \textit{not} an adjunction, however it can always be made into one by appropriately changing the natural isomorphisms.", which is correct? /William
+	\noindent An equivalence of categories can always be promoted to an adjunction where the 
+	unit and the counit are natural isomorphisms. Such an adjunction is called adjoint equivalence.
+	See for a proof \cite[4.4.5]{riehl2017category}.
 
 	\noindent The more typical examples are instead related to forgetful functors.
 	%TODO add examples
@@ -2409,7 +2481,7 @@ Having loosely characterized enriched categores We can provide a definition of s
 \noindent We will later encounter a notion of weak 2-category (see \ref{Bicategory}).
 
 \section{Monoidal categories}\label{MonCat}
-Recall that a monoid is a group where not necessarily every element is invertible: a set $M$ with a distinguished object $e\in M$ called unit, also known as neutral element, and a map of sets $m: M\times M \to M$ such that $m$ is:
+Recall that a monoid is a group where elements are not required to be invertible: a set $M$ with a distinguished object $e\in M$ called unit, also known as neutral element, and a map of sets $m: M\times M \to M$ such that $m$ is:
 \begin{itemize}
     \item associative $$
     \forall a,b,c\in M, \quad m(m(a,b),c)=m(a,m(b,c))
@@ -2444,7 +2516,7 @@ A monoidal category generalizes this structure with respect to objects \emph{and
             	\arrow[shorten <=5pt, shorten >=5pt, Rightarrow, from=1, to=0]
             \end{tikzcd}\]
             \hfill the \textit{associator}
-        \item (U) natural isomorphisms $\lambda:\mathbb{1}_\cat \otimes(-)\Rightarrow\id_\cat=(-)$ and $\rho:- \otimes\mathbb{1}_\cat\Rightarrow\id\cat=(-)$ witnessing unitality: % https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXG1hdGhzY3J7Q30iXSxbMSwwLCJcXG1hdGhzY3J7Q30iXSxbMiwwLCJcXG1hdGhzY3J7Q30iXSxbMywwLCJcXG1hdGhzY3J7Q30iXSxbMCwxLCJcXG1hdGhiYnsxfVxcb3RpbWVzIC0iLDAseyJjdXJ2ZSI6LTJ9XSxbMCwxLCJpZF9cXG1hdGhzY3J7Q309KC0pIiwyLHsiY3VydmUiOjJ9XSxbMiwzLCJpZF9cXG1hdGhzY3J7Q309KC0pIiwyLHsiY3VydmUiOjJ9XSxbMiwzLCItXFxvdGltZXMgXFxtYXRoYmJ7MX0iLDAseyJjdXJ2ZSI6LTJ9XSxbNCw1LCJcXGxhbWJkYSIsMix7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XSxbNyw2LCJcXHJobyIsMix7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XV0=
+        \item (U) natural isomorphisms $\lambda:\mathbb{1}_\cat \otimes(-)\Rightarrow\id_\cat=(-)$ and $\rho:- \otimes\mathbb{1}_\cat\Rightarrow\id_\cat=(-)$ witnessing unitality: % https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXG1hdGhzY3J7Q30iXSxbMSwwLCJcXG1hdGhzY3J7Q30iXSxbMiwwLCJcXG1hdGhzY3J7Q30iXSxbMywwLCJcXG1hdGhzY3J7Q30iXSxbMCwxLCJcXG1hdGhiYnsxfVxcb3RpbWVzIC0iLDAseyJjdXJ2ZSI6LTJ9XSxbMCwxLCJpZF9cXG1hdGhzY3J7Q309KC0pIiwyLHsiY3VydmUiOjJ9XSxbMiwzLCJpZF9cXG1hdGhzY3J7Q309KC0pIiwyLHsiY3VydmUiOjJ9XSxbMiwzLCItXFxvdGltZXMgXFxtYXRoYmJ7MX0iLDAseyJjdXJ2ZSI6LTJ9XSxbNCw1LCJcXGxhbWJkYSIsMix7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XSxbNyw2LCJcXHJobyIsMix7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XV0=
             \[\begin{tikzcd}
             	{\mathscr{C}} & {\mathscr{C}} & {\mathscr{C}} & {\mathscr{C}}
             	\arrow[""{name=0, anchor=center, inner sep=0}, "{\mathbb{1}\otimes -}", curve={height=-12pt}, from=1-1, to=1-2]
@@ -2513,11 +2585,11 @@ A monoidal category generalizes this structure with respect to objects \emph{and
     \end{itemize}
 \end{ex}
 
-\subsection{Cartesian categories: cartesian product \extra} 
+\subsection{Cartesian monoidal categories \extra} 
 \label{sub:cartesian_categories}
 
 In particular,
- $(\AbGrp, \oplus), (\Vect_k, \oplus), (\Set, \times), (\Top, \times), (Cat, \times)$ are all examples of special monoidal categories: cartesian monoidal categories. A cartesian monoidal category is a monoidal category where the monoidal structure is given by a suitable notion of cartesian product in such category. We give a definition via a \textit{universal property} which is therefore valid for every category (although \textit{existance} must then be checked in the categories of interest).
+ $(\AbGrp, \oplus), (\Vect_k, \oplus), (\Set, \times), (\Top, \times), (Cat, \times)$ are all examples of special monoidal categories: cartesian monoidal categories. A cartesian monoidal category is a monoidal category where the monoidal structure is given by a suitable notion of cartesian product in such category. We give a definition via a \textit{universal property} which is therefore valid for every category (although \textit{existence} must then be checked in the categories of interest).
 \begin{defn}[Cartesian product]\label{CartProd}
     Given $A,B\in\cat$, their cartesian product, if it exists, is the tuple $(A\times B,pr_1,pr_2)$, where $A\times B\in \ob(\cat)$ and $pr_1:A\times B\to A$  $pr_2:A\times B\to B$ such that for every other object $Y$ with morphisms $f:Y\to A$ and $g:Y\to B$ there is a unique morphism $u:Y\to A\times B$. This definition is summarised by the fact that the following commuting diagram 
     % https://q.uiver.app/#q=WzAsNSxbMSwwLCJZIl0sWzIsMSwiQiJdLFswLDBdLFswLDEsIkEiXSxbMSwxLCJBXFx0aW1lcyBCIl0sWzAsMSwiZyJdLFs0LDMsInByXzEiXSxbMCwzLCJmIiwyXSxbNCwxLCJwcl8yIiwyXSxbMCw0LCJcXGV4aXN0cyEgdSIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
@@ -2569,11 +2641,18 @@ Since everything commutes $f=f\circ u'\circ u$ and $g=g\circ u'\circ u$. Therefo
     Same reasoning as in the proof of the commutativity of the cartesian product.
 \end{proof}
 In a cartesian monoidal category $\cat$ the unit is a terminal object, i.e. an object $\ast\in\cat$ such that every object $X\in\cat$ has a unique morphism to it: $\exists !\phi_X:X\to\ast$. 
-This is the case because given an arbitrary object $A\in\cat$ and a product with the terminal one $(A\times\ast,pr_1,pr_2)$ the units $\rho:A\times\ast\to A$ and $\lambda:\ast\times A\to A$ are the same projection $pr_1:A\times\ast\to A$ since the cartesian product is commutative. 
-Such projection is indeed an isomorphism because $(A,id_A,\phi_A)$ is also a product of $\ast,A\in\cat$: any object $Y\in\cat$ with morphisms $f:Y\to A$ and $\phi_Y\to\ast$ has indeed a unique morphism into $A$ such that the diagram of the product commutes, namely $f$ itself. 
+
+\noindent Now, suppose such element exists, consider an arbitrary object $A\in\cat$ and a product with the terminal object $(A\times\ast,pr_1,pr_2)$. Define the units $\rho_A:A\times\ast\to A$ and $\lambda_A:\ast\times A\to A$ as the projection $pr_1:A\times\ast\to A$ 
+(this can be done because the cartesian product is commutative: clearly $\rho_A=pr_1$, while
+ $\lambda_A$ is
+ the same as $pr_1$
+up to an isomorphism from  $\ast\times A$ to $A\times\ast$). 
+
+\noindent Such projection is indeed an isomorphism because $(A,id_A,\phi_A)$ is also a product of $\ast,A\in\cat$: any object $Y\in\cat$ with morphisms $f:Y\to A$ and $\phi_Y\to\ast$ has indeed a unique morphism into $A$ such that the diagram of the product commutes, namely $f$ itself. 
 Thus, since both $(A\times\ast,pr_1,pr_2)$ and $(A,id_A,\phi_A)$ are products of the same two elements, they must be isomorphic because of \ref{UptoIsoProds}.
 
-\noindent Hence, we see how any category with finite cartesian products is a monoidal category. Cartesian monoidal categories are in a sense special because they have some maps which are not possessed by every monoidal category, notably the diagonal map $\Delta_X:X\to X\times X$ and $\phi_X:X\to\mathbb{1}_\cat$ giving every object a comonoid structure. Moreover, they are all symmetric (defined later, \ref{SymmMonCat}) because the cartesian product is symmetric. 
+\noindent Hence, we see how any category with finite cartesian products is a monoidal category.
+ Cartesian monoidal categories are in a sense special because they have some maps which are not possessed by every monoidal category, notably the diagonal map $\Delta_X:X\to X\times X$ and $\phi_X:X\to\mathbb{1}_\cat$ giving every object a comonoid structure. Moreover, they are all symmetric (defined later, \ref{SymmMonCat}) because the cartesian product is symmetric. 
 
 \subsection{Noncartesian monoidal categories \extra} % (fold)
 \label{sub:noncartesian_monoidal_categories}
@@ -2586,7 +2665,7 @@ Thus, since both $(A\times\ast,pr_1,pr_2)$ and $(A,id_A,\phi_A)$ are products of
 \noindent In the previous paragraph, we have talked about cartesian monoidal categories and left out some examples of \emph{noncartesian} monoidal categories like $(\AbGrp,\otimes)$ and $(\Vect_k,\otimes)$. We now encounter some examples of noncartesian monoidal categories, which will be central in this class. They will be all similar to $(\AbGrp,\otimes)$, so we will first explain this category and then draw parallels with the others. To introduce the tensor product between abelian groups we first have to define what is a bilinear map:
 
 \begin{defn}[Bilinear Map]
-    For $A,B,C\in \Ab$, a bilinear map, aka group bihomomorphism, is a function $$f:A\times B\to C$$ which is a group homomorphism, aka linear map, in both arguments.
+    For $A,B,C\in \Ab$, a bilinear map, that is a group bihomomorphism, is a function $$f:A\times B\to C$$ which is a group homomorphism in both arguments.
 \end{defn}
 \noindent An explanation of what happens to the elements of $A,B$ might be clearer. Note that a cartesian product $A\times B$ in Ab is an abelian group where the operation is 
 $$(a_1,b_1)+(a_2,b_2)=(a_1+a_2,b_1+b_2).$$
@@ -2621,13 +2700,13 @@ Having defined what a bilinear map is, we can arrive at the definition of tensor
     We denote such group by $R$. $A\otimes B$ is then the following  quotient: $A\otimes B=\frac{A\times B}{R}$.
 \end{defn}
 
-\section{Enriched categories \extra} % (fold)
-\label{sub:Enriched categories}
 
+<<<<<<< HEAD
+=======
 Ab is very important as an enriching category. Before, we gave a loose characterization of what an enriched category is by just stating that the $\Hom$s are objects of whatever category we are enriching over. However, we glossed over an essential requirement: the category we are enriching on must be monoidal in order to define composition. We now give a fully satisfactory definition of an enriched category:
 \begin{defn}[Enriched Category]\label{FullEnrichedCat}
-    Given a \emph{monoidal} category $\dat$, a $\dat$-enriched category $\cat$, aka $\dat$-category or category enriched over $\dat$, is a category $\cat$ such that \begin{enumerate}
-        \item $\forall X,Y\in\cat, \Hom_{\cat}(X,Y)\in\dat$. eW call $\Hom_\cat(X,Y)$ a Hom-object
+    Given a \emph{monoidal} category $\dat$, a $\dat$-enriched category $\cat$ (or $\dat$-category or category enriched over $\dat$), is a category $\cat$ such that \begin{enumerate}
+        \item $\forall X,Y\in\cat, \Hom_{\cat}(X,Y)\in\dat$. We call $\Hom_\cat(X,Y)$ a Hom-object
         \item Composition is a morphism in $\dat$: $$\circ:\Hom_\cat(Y,Z)\otimes \Hom_\cat(X,Y)\to\Hom_\cat(X,Z)$$ 
         \item For any $X\in\cat$ there is 
         $$id_X:\unit_\dat\to \Hom_\cat(X,X)$$
@@ -2689,6 +2768,7 @@ A category $\cat$ is abelian if it is an additive category such that
     The category of abelian groups is very important for homological algebra, 
     a field with important applications to many fields, e.g. algebraic geometry (in particular intersection theory) and algebraic topology. The standard reference is \cite{weibel1994introduction}, check out part I of \cite{Mazel-Gee2024} for a modern introduction to the subject geared towards higher categorical generalizations. Such higher categorical generalizations are of major interest to us in the context of TFTs, we will later sketch for example how they can be used to calculate topological phases of matter (\ref{Spectra Phases of Matter}). 
 \end{rem}
+>>>>>>> refs/remotes/origin/main
 Another very important example for us of noncartesian\footnote{Interestingly, the fact that $\Vect_k$ is not cartesian and in particular $\operatorname{Hilb}_\mathbb{C}$ (the category of complex Hilbert spaces) is the main reason behind the no-cloning theorem from quantum information theory, more on this in \cite{baez2004quantum}. This characterizing non-cartesian aspect is nicely summarized by Freed in \cite{freed2012cobordism}, "We will see that a characteristic property of quantum systems is that disjoint unions map to tensor products. The passage from classical to quantum is (poetically) a passage from addition to multiplication, a kind of exponentiation."} monoidal category is $(\Vect_k,\otimes)$.
 \begin{defn}[Tensor Product between Vector Spaces]
     The tensor product is usually defined from bases (see \hyperlink{https://en.wikipedia.org/wiki/Tensor_product}{wikipedia entry on tensor product}) or via quotient spaces\footnote{We use the definition via quotient spaces because it is easier to see that it fulfills the equivalent one via universal properties and the cartesian product.} along these lines: let $V,W\in \Vect_K$. Consider $L$, a vector space that has $V\times W$ as basis. Let $R$ be the subspace whose elements are linear combinations of one of the following forms
@@ -2711,42 +2791,117 @@ Another very important example for us of noncartesian\footnote{Interestingly, th
 		\end{tikzcd}\]
    \end{enumerate}
 \end{defn}
+More generally the category of modules is also a very important example of noncartesian monoidal category.
+\begin{defn}[Module]\label{CatOfModules}
+	
+\end{defn}
+\begin{ex}
+	The category of bimodules is an example of symmetric monoidal category
+	\begin{defn}[Bimodule]\label{CatOfBimodules}
+		
+	\end{defn}
+\end{ex}
+Another example of non-cartesian monoidal category is the category of disks. Interestingly, it 
+is not of algebraic nature as the examples we gave before.
+
+\begin{ex}\label{CatOfDisks}
+	The category of oriented 1-dimensional open disks Disk$^{\fr}_{1}$ is also an important example of symmetric monoidal category for us in the context of TFTs. Recall that $D^1\cong (0,1)\cong\R$. 
+	\begin{itemize}
+		\item Its objects are finite disjoint unions of 1-dimensional open disks $$\emptyset,\qquad\R,\qquad\R\amalg\R,\qquad\dots,\qquad\R^{\amalg k}$$ with $k\in\N$ arbitrary.
+		\item $\Hom_{\text{Disk}^{\fr}_{1,0}}(X,Y)$ consists of all smooth embeddings $j:X\hookrightarrow Y$ respecting orientations, i.e. there is an orientation preserving diffeomorphism from $X$ onto its image, .
+		\item The tensor product is given by the disjoint union: given $X$ a disjoint union of $n$ oriented 1-disks and $Y$ a disjoint union of $m$ oriented 1-disks, $X\amalg Y$ is a disjoint union of $n+m$ oriented disks.
+		\item The unit is the empty set since given an arbitrary disjoint union of disks $X$, $\emptyset\amalg X\cong X\cong X\amalg\emptyset$.
+		\item There is a diffeomorphism $X\amalg Y\cong Y\amalg X$ making Disk$^{\fr}_{1,0}$ a \emph{symmetric} monoidal category.
+	\end{itemize}  
+	We will use it to give the \textbf{morally right} definition of monoid object (see \ref{EAlg}), i.e. 
+	homotopy coherent.
+\end{ex}
+\subsection{Enriched categories \extra} % (fold)
+\label{sub:Enriched categories}
+
+Ab is very important as an enriching category. Before, we gave a loose characterization of what an
+ enriched category is by just stating that the $\Hom$s are objects of whatever category we are
+  enriching over. However, we glossed over an essential requirement: the category we are
+   enriching on must be monoidal in order to define composition. We now give a fully satisfactory
+    definition of an enriched category:
+\begin{defn}[Enriched Category]\label{FullEnrichedCat}
+	Given a \emph{monoidal} category $\dat$, a $\dat$-enriched category $\cat$, aka $\dat$-category or category enriched over $\dat$, is a category $\cat$ such that \begin{enumerate}
+		\item $\forall X,Y\in\cat, \Hom_{\cat}(X,Y)\in\dat$. eW call $\Hom_\cat(X,Y)$ a Hom-object
+		\item Composition is a morphism in $\dat$: $$\circ:\Hom_\cat(Y,Z)\otimes \Hom_\cat(X,Y)\to\Hom_\cat(X,Z)$$ 
+		\item For any $X\in\cat$ there is 
+		$$id_X:\unit_\dat\to \Hom_\cat(X,X)$$
+		\item There is a Mac-Lane pentagon for Hom-objects in order to specify how $\circ$ is associative and two triangle diagrams in order to pin down how $\circ$ is left and right unital with respect to composable identity morphisms. One can check the spelled out diagram at definition 1.2.34 of \cite{land2021introduction} 
+	\end{enumerate}
+\end{defn}
+\begin{ex}
+	\hfill
+	%TODO some examples already done before... /William True, did not notice, now I added that we are just recalling some, is it okay or better just \ref? /Andre
+	We recall some examples spelled out before and provide a new one coming from topology (the last one):
+	\begin{enumerate}\label{Examples of enriched categories (Simplicially)}
+		\item A locally small category is a category enriched over Set. Set is a category enriched over itself.
+		\item A $2$-category is a category enriched over Cat. Cat is a category enriched over itself, since Cat is a 2-category because $\Hom$s are functor \emph{categories}.
+		\item A strict $n$-category is a category enriched over a strict $(n-1)$-category.
+		\item A strict $(2,1)$-category is a category in which 2-morphisms are invertible and 1-morphisms not necessarily. It is a Grpd-enriched category. An example of (2,1)-category is Grpd itself, since all $\Hom_{\operatorname{Grpd}}$ are indeed  groupoids (see \ref{2,1Grpd} for an explanation). 
+		\item A topologically enriched category is a category enriched over Top. The category of compactly generated Hausdorff spaces CGHaus, i.e. a category containing all $CW$-complexes, is a topologically enriched category, since one can take the mapping space $Map(X,Y)$ with the compact-open topology for any $X,Y\in \operatorname{CGHaus}$. Such categories can be used to model $(\infty,1)$-categories see \ref{HomotopyHypothesis} for a sketch of how this might work.
+	\end{enumerate}
+\end{ex}
+There is an interesting example of strict (2,1)-category from topology and it will let us rigorously show in which sense a homotopy is a natural transformations and why one might want to talk
+about $\infty$-categories. Take a look at the following subsection for more on this \ref{ooHomotopyHypothesis}.
+
+Having characterized satisfactorily enriched categories we can now define what is an Ab-enriched category.
+\begin{defn}[Ab-Category]\label{Ab-Enriched Cat}
+	An Ab-category, aka ringoid, Ab-enriched, $\cat$ is a category $\cat$ enriched over Ab. This is equivalent
+	to saying that
+	\begin{enumerate}
+		\item $\forall X,Y\in\cat.\Hom_{\cat}(X,Y)\in\Ab$
+		\item Composition is a morphism in $\Ab$: $$+:\Hom_\cat(Y,Z)\otimes_{\Ab} \Hom_\cat(X,Y)\to\Hom_\cat(X,Z)$$ such that it is associative and unital with respect to composable identity morphisms; in short $\Hom$-objects of $\cat$ posses an abelian structure with + as a binary operation
+		\item The composition of the underlying $\Hom$-\underline{sets} is bilinear with respect to $+$, meaning that $\circ$ of $\Hom$-sets distributes over $+$ of $\Hom$-abelian groups i.e. $$f\circ(g+h)=(f\circ g)+(f\circ h)$$ $$(f+g)\circ h=(f\circ h)+(f\circ h)$$
+	\end{enumerate}
+\end{defn}
+\begin{rem}
+	Note that in Ab-enriched categories there is an object $0$ such that it for any $X\in\cat$ there is a unique
+	morphism $0\to X$ and a unique morphism $X\to 0$. This means that 0 is an initial and final object,
+	such objects are usually called zero objects.
+\end{rem}
+\begin{ex}
+	\hfill
+	\begin{itemize}
+		\item A ring is a one object ringoid. More explicitly, a ring $(R,\cdot,+)=(\Hom_{\mathbf{B}R}(\ast,\ast),\circ,+)$  
+		\item Ab is an Ab-category.
+	\end{itemize}
+\end{ex}
+
+\begin{defn}[Additive category]
+	A category $\cat$ is additive if it is an Ab-enriched category such that it has finite coproducts.
+\end{defn}
+Note that in an Ab-enriched category, finite coproducts coincide with finite products, any finite product is a
+finite coproduct and viceversa.
+\begin{defn}[Abelian category]\label{AbelianCat}
+	A category $\cat$ is abelian if it is an additive category such that 
+	\begin{itemize}
+		\item every morphism has kernel and cokernel
+		\item every monomorphism is a kernel and every epimorphism is a cokernel, or equivalently,
+		the evident map $\operatorname{Coim}(f)\to \operatorname{Im}(f)$ is an isomorphism
+	\end{itemize}
+\end{defn}
+\begin{rem}
+	The category of abelian groups is very important for homological algebra, 
+	a field with important applications to many fields, e.g. algebraic geometry (in particular intersection theory) and algebraic topology. The standard reference is \cite{weibel1994introduction}, check out part I of \cite{Mazel-Gee2024} for a modern introduction to the subject geared towards higher categorical generalizations. Such higher categorical generalizations are of major interest to us in the context of TFTs, we will later sketch for example how they can be used to calculate topological phases of matter (\ref{Spectra Phases of Matter}). 
+\end{rem}
+
 
 As with Ab, $\Vect_k$ can also be used as enriching category.
 \begin{defn}
      A linear category $\cat$, or algebroid, is a category enriched over $\Vect_k$.
 \end{defn}
-   
 \begin{ex}
 \hfill
     \begin{itemize}
         \item A $k$-algebra is a one object algebroid.
-        \item $\Vect_k$ is a linear category, since also $\Hom_{\Vect_{k}}(X,Y)$ is a vector space
+        \item $\Vect_k$ is a linear category, since $\Hom_{\Vect_{k}}(X,Y)$ is a vector space
     \end{itemize}
 \end{ex}
 
-More generally the category of modules is also a very important example of noncartesian monoidal category.
-\begin{defn}[Module]\label{CatOfModules}
-    
-\end{defn}
-\begin{ex}
-    The category of bimodules is an example of symmetric monoidal category
-    \begin{defn}[Bimodule]\label{CatOfBimodules}
-        
-    \end{defn}
-\end{ex}
-Another example of non-cartesian monoidal category, which is not algebraic in nature but topological and will be useful for an outlook in the next section is the category of disks.
-\begin{ex}\label{CatOfDisks}
-    The category of oriented 1-dimensional open disks Disk$^{\fr}_{1}$ is also an important example of symmetric monoidal category for us in the context of TFTs. Recall that $D^1\cong (0,1)\cong\R$. 
-    \begin{itemize}
-        \item Its objects are finite disjoint unions of 1-dimensional open disks $$\emptyset,\qquad\R,\qquad\R\amalg\R,\qquad\dots,\qquad\R^{\amalg k}$$ with $k\in\N$ arbitrary.
-        \item $\Hom_{\text{Disk}^{\fr}_{1,0}}(X,Y)$ consists of all smooth embeddings $j:X\hookrightarrow Y$ respecting orientations, i.e. there is an orientation preserving diffeomorphism from $X$ onto its image, .
-        \item The tensor product is given by the disjoint union: given $X$ a disjoint union of $n$ oriented 1-disks and $Y$ a disjoint union of $m$ oriented 1-disks, $X\amalg Y$ is a disjoint union of $n+m$ oriented disks.
-        \item The unit is the empty set since given an arbitrary disjoint union of disks $X$, $\emptyset\amalg X\cong X\cong X\amalg\emptyset$.
-        \item There is a diffeomorphism $X\amalg Y\cong Y\amalg X$ making Disk$^{\fr}_{1,0}$ a \emph{symmetric} monoidal category.
-    \end{itemize}  
-    We will use it to give an equivalent definition of $k$-algebra (see \ref{EAlg}), but in general they can be used to define factorization algebras, a very important tool in the field of TFTs, see \cite{Tanaka_2020}.
-\end{ex}
 \subsection{Grothendieck's Homotopy Hypothesis and \texorpdfstring{$\infty$}{infinity}-categories \extra}\label{ooHomotopyHypothesis}
 \begin{ex}\label{Homotopy2Top}
 	We previously spelled out an analogue formulation of the natural transformation (see \ref{Homotopy}). This shows that the notion of homotopy and natural transformation are related. A way to more rigorously pin down that a homotopy is some kind of natural transformation is via the the homotopy 2-category of topological spaces. Instead of taking paths up to homotopies between paths, as in the more famous hTop, we take homotopies between paths up to homotopies between homotopies between paths. This results in a strict (2,1)-category h$_2$Top where objects are topological spaces, 1-morphisms are continuous maps and 2-morphisms are homotopies between continuous maps up to higher homotopies, i.e. homotopies between homotopies between continuous maps. A homotopy between a homotopy between continuous maps is defined in the following manner: given continuous functions $f,g:X\to Y$ and homotopies between them $k,h:X\times [0,1]\to Y$, a homotopy $L$ between these two homotopies $k$ and $h$ is a continuous function $L:X\times [0,1]\times[0,1]\to Y$ such that 
@@ -2758,12 +2913,20 @@ Another example of non-cartesian monoidal category, which is not algebraic in na
 	\end{itemize}
 	If one takes topological spaces as objects, continuous maps between them as 1-morphisms, and homotopies between continuous maps \emph{up to} homotopies between homotopies one gets the homotopy 2-category of topological spaces h$_2$Top and is an example of a strict $(2,1)$-category. If one restricts themselves to spaces admitting the structure of CW-complexes, i.e. something like weakly Hausdorff compactly generated spaces, and then take the homotopy 1-types thereof, we get a subcategory of  h$_2$Top called 2-1Type. Via the Eilenberg-MacLane space of a groupoid one can establish an equivalence of categories 
 	$$2\operatorname{-}1Type\simeq Grpd$$
-	This is Grothendieck's infamous homotopy hypothesis in dimension 1. It was formulated in \emph{Pursuing Stacks} in full generality for $\infty$-groupoids. We now sketch how this works in full glory.
+	This is Grothendieck's infamous homotopy hypothesis in dimension 1. It was formulated in
+	 \emph{Pursuing Stacks} (\cite{grothendieck2021pursuing}) in general for $n$-groupoids. We now
+	  sketch how this might work in full glory, i.e. for $\infty$-groupoids.
 \end{ex}
 \begin{notat}
 	By $\infty$-category we mean $(\infty,1)$-category.
 \end{notat}
-\begin{ex}\label{HomotopyHypothesis} Regarding the last example, one could ask why stop at homotopies between homotopies and not go all the way to homotopies between homotopies between homotopies, homotopies between ... for $\infty$ many times? This is a great question and also the way to provide a universal properties for constructions similar to the already seen cartesian product called homotopy co/limits (for more on this see chapters 1 and 2 of \cite{HarpazAlgebras}). In the end, one would get an $(\infty,1)$-category, a category in which the only morphisms that are not necessarily (weakly\footnote{To be precise, higher
+\begin{ex}\label{HomotopyHypothesis} Regarding the last example, one could ask why stop at homotopies between homotopies and not go all the way to homotopies between homotopies between
+	 homotopies, homotopies between ... for $\infty$ many times? This is a great question and also the way
+	 to provide universal properties for
+	 homotopy co/limits (for more on this see chapters 1 and 2 of \cite{HarpazAlgebras} and 
+	 the start of \ref{WhatSpectra}) and 
+	 homotopy coherent diagrams more generally. In the end, one
+	 would get an $(\infty,1)$-category, a category in which the only morphisms that are not necessarily (weakly\footnote{To be precise, higher
 		 morphisms in such a category are weakly invertible and not strictly. Weakly invertible means
 		 that it is not the case the sense that $f\circ g=id$, but $f\circ g\simeq id$. This is not at all
 		 negative. That things are not strict but up to homotopy/equivalence is exactly what one desires in this context.}) invertible are morphisms between objects, all other morphisms between morphisms are invertible; in other words, a category in which all $n>1$-morphisms are invertible and 1-morphisms not necessarily. 
@@ -2776,25 +2939,40 @@ Another example of non-cartesian monoidal category, which is not algebraic in na
 	More concretely, one way to model this kind of categories with infinitely many invertible morphisms is with topologically enriched categories (which we previously described \ref{Examples of enriched categories (Simplicially)}), since mapping spaces are Hom-objects, 2-morphisms are paths 
 	in such mapping spaces and higher morphisms are given by the homotopies between homotopies. 
 	
-	A further way is via some specific simplicially enriched categories, i.e. categories enriched with the cartesian monoidal category of simplicial sets sSet (sometimes denoted Set$_\Delta$). A synonym of simplicially enriched category is simplicial category. 
+	A further way is via some specific simplicially enriched categories, i.e. categories enriched with the
+	 cartesian monoidal category of simplicial sets sSet (sometimes denoted Set$_\Delta$). A synonym
+	 of simplicially enriched category is simplicial category. 
 \end{ex}
 \begin{defn}[The Simplex Category]
-	We call simplex category, the category with all linearly ordered sets $[n]$ as objects and weakly monotonic maps as morphisms. We denote such category with $\Delta$.
+	We call simplex category, the category with all linearly ordered sets $[n]$ as objects and weakly
+	 monotonic maps as morphisms. We denote such category with $\Delta$.
 \end{defn}
 \begin{defn}[Simplicial Set]
-	A simplicial set is a Set-valued presheaf on $\Delta$, i.e. a functor $X:\Delta^{\operatorname{op}}\to \Set$. Simplicial sets form a functor category where morphisms are natural transformations denoted sSet. It is bicomplete, see the proof in \cite[1.1.24]{land2021introduction}
+	A simplicial set is a Set-valued presheaf on $\Delta$, i.e. a functor 
+	$X:\Delta^{\operatorname{op}}\to \Set$. Simplicial sets form a functor category where morphisms are
+	 natural transformations denoted
+	 sSet. It is bicomplete, see the proof in \cite[1.1.24]{land2021introduction}
 \end{defn}
-However, we do not want simplicial sets in general, but simplicial sets that are Kan complexes\footnote{See \url{https://ncatlab.org/nlab/show/Kan+complex}.}. This is because these special simplicial sets give a geometric model of $\infty$-groupoids and hence by enriching a category via such simplicial sets we get the desired $(\infty,1)$-category, similarly to getting (2,1)-categories by enriching with ordinary groupoids.
+However, for simplicial categories,
+ we do not want simplicial sets in general, but simplicial sets that are Kan
+ complexes\footnote{See \url{https://ncatlab.org/nlab/show/Kan+complex}.}. This is because these special simplicial sets give a geometric model of $\infty$-groupoids and hence by enriching a category via such simplicial sets we get the desired $(\infty,1)$-category, similarly to getting (2,1)-categories by enriching with ordinary groupoids.
 
-Quasi-categories are another construction to model $\infty$-categories that has been proven very useful and apt to create useful constructions. It also relies heavily on simplicial sets and there is strong connection to simplicially enriched categories (see \cite{land2021introduction}).
+Quasicategories are another construction to model $\infty$-categories that has been proven very
+ useful and apt to create useful constructions, see for instance \cite{lurie2008higher} and
+  \cite{Luriealgebra}. Quasicategories are simplicial sets similar to Kan complexes\footnote{In fact, a 
+  synonym for quasicategories is weak Kan complexes.} and there is strong connection to
+   simplicially enriched categories (see \cite{land2021introduction}).
 
-These three different ways to model $\infty$-categories are equivalent in some apt sense (see \cite{LurieGoodwillieEquivalent} and \cite{bergner2006survey}).
+These three different ways to model $\infty$-categories are equivalent in some apt sense (see
+ \cite{LurieGoodwillieEquivalent} and \cite{bergner2006survey}).
 
 \begin{rem}
-	Another important example of $(\infty,1)$-category is the category of spectra, a category similar\footnote{Abelian Groups:Algebra$\sim$Spectra:Higher Algebra, for more on this check out \cite{Mazel-Gee2024}.} to the category of abelian groups which we will encounter later (see \ref{Spectra Phases of Matter}).
+	Another important example of $(\infty,1)$-category is the category of spectra, a category
+	 similar\footnote{Abelian Groups:Algebra$\sim$Spectra:Higher Algebra, for more on this check out \cite{Mazel-Gee2024}.} to the category of abelian groups which we will encounter later (see
+	 \ref{WhatSpectra}).
 \end{rem} 
 
-\section{Objects Internal to a Monoidal Category}
+\section{Objects internal to a monoidal category}
 \begin{defn}[Monoid Object]
     A monoid object in a monoidal category $\cat$ is an object $M\in\cat$ equipped with two distinguished morphisms, $\mu:M\otimes M\to M$ and $\eta:\mathbb{1}_\cat\to M$ called respectively multiplication and unit such that the following diagram commutes, so that the binary operation is associative 
     % https://q.uiver.app/#q=WzAsNSxbMCwwLCIoTVxcb3RpbWVzIE0pXFxvdGltZXMgTSJdLFsxLDAsIk1cXG90aW1lcyhNXFxvdGltZXMgTSkiXSxbMiwwLCJNXFxvdGltZXMgTSJdLFswLDEsIk1cXG90aW1lcyBNIl0sWzIsMSwiTSJdLFswLDEsIlxcYWxwaGFfe00sTSxNfSJdLFsxLDIsImlkX01cXG90aW1lc1xcbXUiXSxbMCwzLCJcXG11XFxvdGltZXMgaWRfTSIsMl0sWzMsNCwiXFxtdSIsMl0sWzIsNCwiXFxtdSJdXQ==
@@ -2871,7 +3049,7 @@ We leave the case of the counit for the reader.
 %I don't think it's a bimonoid, i think it's just monoid and comonoid, without the additional property /William You are very right!!!!!!
 \begin{defn}[Frobenius Algebra]\label{FrobAlg}
     A Frobenius algebra in an arbitrary monoidal category $\cat$ is simultaneously a monoid and a comonoid object in $\cat$ with a compatibility condition different from the one above: 
-    $$(\mathbb{1}_\cat\otimes\mu)\circ(\Delta\otimes\mathbb{1}_\cat)=\Delta\circ\mu=(\mu\otimes\unit_\cat)\circ(\unit_\cat\otimes\Delta)$$
+    $$(id\otimes\mu)\circ(\Delta\otimes id)=\Delta\circ\mu=(\mu\otimes id)\circ(id\otimes\Delta)$$
     called the Frobenius relation. 
 \end{defn}
 
@@ -2899,11 +3077,11 @@ We leave the case of the counit for the reader.
 % -------------------------------------------------------------
 % --------------------- LECTURE 10 27/11 -----------------------
 % -------------------------------------------------------------
-\section{Symmetric Monoidal Categories} % (fold)
+\section{Symmetric monoidal categories} % (fold)
 \label{sub:symmetric_monoidal_categories}
 
 In order to get the categorical parallel of a commutative monoid, we need to define a \emph{symmetric} monoidal category. We want to achieve something similar to $a \cdot b = b \cdot a$ in a monoid. However, we will not characterize this behavior with strict identities, but with a natural isomorphism\footnote{Just as we did for associativity and unitality.}. Given the functor 
-$$swap:\cat\to\cat$$
+$$swap:\cat\times\cat\to\cat\times\cat$$
 $$swap:(X,Y)\mapsto (Y,X)$$
 $$swap:(f,g)\mapsto (g,f)$$
 we could try to achieve our objective with a natural isomorphism $\beta:\otimes\to\otimes\circ swap$ that can be visualized in the category of all categories Cat with the following diagram
@@ -2960,7 +3138,7 @@ However, this does not characterize an actually symmetric structure, but rather 
 \noindent A braided monoidal category is \textit{not} the category corresponding to an abelian monoid. A special type of braided monoidal category is: the symmetric monoidal category.
 \begin{defn}
 \label{SymmMonCat}
-    A symmetric monoidal category is a braided monoidal category $(C, \otimes, 1, \alpha, \lambda, \rho,\beta)$ such that $\beta^2 = id$ (i.e. $\beta_{y,x} \circ \beta_{x,y} = id$).
+    A symmetric monoidal category is a braided monoidal category $(\cat, \otimes, \mathbb{1}_\cat, \alpha, \lambda, \rho,\beta)$ such that $\beta^2 = id$ (i.e. $\beta_{y,x} \circ \beta_{x,y} = id$).
 \end{defn}
 \begin{ex}
 \hfill
@@ -3016,7 +3194,7 @@ We need a notion of homomorphism between symmetric monoidal categories, a suitab
 \label{SymmMonFun}
     Let $\mathscr{B},\cat$ be symmetric monoidal categories. A symmetric monoidal functor is a functor $F: \mathscr{B} \to \cat$ compatible with all of the structure:
     \begin{itemize}
-        \item an isomorphism taking the monoidal unit in $\cat$ to the monoidal unit in $\mathscr{B}$: $\phi:\mathbb{1}_\cat \xrightarrow{1_F} F(\mathbb{1}_\mathscr{B})$
+        \item an isomorphism taking the monoidal unit in $\cat$ to the monoidal unit in $\mathscr{B}$: $\mathbb{1}_\cat \xrightarrow{1_F} F(\mathbb{1}_\mathscr{B})$
         \item a natural isomorphism respecting the tensor product:% https://q.uiver.app/#q=WzAsMixbMCwwLCJcXG1hdGhzY3J7Qn1cXHRpbWVzXFxtYXRoc2Nye0J9Il0sWzIsMCwiXFxjYXQiXSxbMCwxLCJGKC1cXG90aW1lcyAtKSIsMCx7ImN1cnZlIjotNH1dLFswLDEsIkYoLSlcXG90aW1lcyBGKC0pIiwyLHsiY3VydmUiOjR9XSxbMywyLCJcXHBzaSIsMix7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XV0=
 \[\begin{tikzcd}[ampersand replacement=\&,cramped]
 	{\mathscr{B}\times\mathscr{B}} \&\& \cat
@@ -3115,7 +3293,7 @@ We have previously seen (\ref{Representations of Groups}) that a linear represen
     \end{equation}
 \end{defn}
 
-\subsection{Outlook towards \texorpdfstring{$\mathbb{E}_n$}{En}-Algebras \extra} 
+\subsection{Homotopy coherent monoid objects: \texorpdfstring{$\mathbb{E}_n$}{En}-Algebras \extra} 
 \label{EAlg}
 This outlook is based on \cite{HiroLee2022}, \cite{Mazel-Gee2024} and \cite{CalleInfiniteLoops}. It has two motivations:
 \begin{enumerate}
@@ -3187,8 +3365,10 @@ as $\cdot:\mathcal{A}\otimes\mathcal{A}\to\mathcal{A}$. Then,
 	between the two possible compositions of 3-associators. The next diagram is stolen from Luke Trujillo's
 	undergraduate thesis (\cite{TrujilloCoherence}). It depicts from one point of view,
 	the 2-associators and the objects of the 
-	coherence diagram for 3-associators that commutes via the 4-associator. Here the 3-associators
-	should be arrows on the faces of this polyhedron\footnote{Such polyhedra are called associahedra.} and 
+	coherence diagram for 3-associators that commutes via the 4-associator. In this image, the
+	 3-associators
+	should be arrows on the faces of the polyhedron\footnote{Such polyhedra are called associahedra.}
+	 and 
 	the 4-associator should be a 4-morphism inside the polyhedron going from one possible composition of 3-associators to the other.
 	
 	\begin{center}
@@ -3303,7 +3483,8 @@ as $\cdot:\mathcal{A}\otimes\mathcal{A}\to\mathcal{A}$. Then,
 \item the higher homotopies making everything homotopy coherently associative and unital coincide
 	 \end{itemize}
 \end{ex}
-One can tell a similar story for homotopy coherent commutativity:
+As we sketched what is homotopy coherent associativity, one can tell a similar story for homotopy
+ coherent commutativity:
 \begin{enumerate}
 	\item An $\E_1$-algebra is just a homotopy coherent monoid object, it is not commutative in any sense
 	\item An $\E_2$-algebra is a homotopy coherent monoid with a 2-commutator $X\cdot Y\to Y\cdot X$
@@ -3314,7 +3495,8 @@ One can tell a similar story for homotopy coherent commutativity:
 \end{enumerate}
 
 
-We recall now what an isotopy is since this will be the information in the source category of disks that we will
+We recall now what an isotopy is since this will be the information in the source category of disks that
+ we will
 stamp onto the category where the desired monoid object lives. 
 
 \begin{defn}[Isotopy]\label{Isotopy}
@@ -3424,18 +3606,28 @@ in which higher algebra takes place.
 \end{notat}
 \begin{notat}
 	Under the homotopy hypothesis $\infty$-Grpd corresponds to a nice category of spaces, hence it is 
-	sometimes denoted as $\mathds{S}$ for $\mathds{S}$paces.
-	Other synonyms nowadays are: \begin{itemize}
+	sometimes denoted as $\mathscr{S}$ for $\mathscr{S}$paces.
+	Other synonyms nowadays are: 
+	\begin{itemize}
 		\item $\infty$-Set, because it is the category one enriches over to get $\infty$-categories,
-		similarly to ordinary sets and locally small categories, and it plays a parallel role in higher algebra to set in 
+		similarly to ordinary sets and locally small categories, and it plays a parallel role in higher algebra to
+		 set in 
 		ordinary algebra (see the table in \ref{WhatSpectra})
 		\item An, standing for anima, terminology coming from condensed mathematics
 	\end{itemize}
 \end{notat}
 \begin{notat}
-	Synonyms for $\mathbb{E}_1$-space are $A_\infty$-space and monoidal $\infty$-groupoid. A synonym for $\mathbb{E}_\infty$-space is
+	Synonyms for $\mathbb{E}_1$-space are $A_\infty$-space and monoidal $\infty$-groupoid. A
+	 synonym for $\mathbb{E}_\infty$-space is
 	symmetric monoidal $\infty$-groupoid. 
 \end{notat}
+\begin{rem}\label{SymmMoninftycat}
+A symmetric monoidal $\infty$-category is fortunately not only definable as an $\E_\infty$-algebra in
+ $\Cat_\infty$, else our definition of $\E_n$-algebras would have been circular!
+One can define them as cartesian opfibrations, see \cite[Section 4]{groth2015short}, or as 
+contravariant functors from Segal's gamma category (something similar to finite pointed sets),
+see \cite[II.15]{KtheoryHebestreitWagner}.
+\end{rem}
 \begin{ex}
 	$\Omega X$ is an $\mathbb{E}_1$-space: composition of loops induces an operation which is not
 	strictly unital or associative, but only via homotopies. See
@@ -3445,9 +3637,13 @@ in which higher algebra takes place.
 	The Dunn additivity theorem is a higher categorical refinement of the Eckmann-Hilton argument.
 	The Eckmann-Hilton argument states that if there are two monoid multiplications on the same set, then
 	they coincide and the operation is commutative. However, in categories with morphisms higher than 1,
-	we do not just have commutativity or non-commutativity of monoid objects but an infinite sequence of
+	we do not just have commutativity or non-commutativity of monoid objects but
 	 shades of
-	commutativity. The Dunn additivity theorem states
+	commutativity, and possibly infinitely many (in $\infty$-categories). This result roughly states that
+	 when we have two monoidal structures on an object
+	internal to a symmetric monoidal category, they coincide and the outcome is more commutative then
+	 the two alone. More
+	 precisely, the Dunn additivity theorem states
 	that for $0< n,m\leq \infty$
 	$$\Alg_{\mathbb{E}_n}(\Alg_{\mathbb{E}_m}(\cat))\simeq \Alg_{\mathbb{E}_{m+n}}(\cat)$$
 \end{thm}
@@ -3500,7 +3696,7 @@ between certain spectra. See \cite[5.2.6.6]{Luriealgebra}\footnote{Note that the
 \begin{ex}
 	$\Omega X$ is not just an $\mathbb{E}_1$-space, but also a grouplike $\mathbb{E}_1$-space since
 	the inversion of based loops is homotopy equivalent to the costant map on the point, or more
-	rigorously, recall that $\pi_0(\Omega X)=\pi_1(X)$ and that the fundamental group obviously
+	rigorously, recall that $\pi_0(\Omega X)=\pi_1(X)$ and that the fundamental group is indeed a group,
 	 $\pi_i(X)\in\Grp$. Moreover, $n$-iterated loop spaces are grouplike $\mathbb{E}_{n}$-spaces and in
 	  particular infinite loop spaces
 	 are grouplike $\mathbb{E}_{\infty}$-spaces for the same reason that $\Omega X$ a grouplike
@@ -3535,7 +3731,7 @@ between certain spectra. See \cite[5.2.6.6]{Luriealgebra}\footnote{Note that the
 \end{rem}
 \subsubsection{Factorization homology \extra}
 This outlook is based mainly on \cite[10.5]{Mazel-Gee2024} and secondarly on
- \cite{ayala2019factorization} and
+ \cite{ayala2019factorization},\cite{Scheimbauer:2014zty} and
  \cite{Tanaka_2020}.
 
 We now briefly sketch what is factorization homology because it is a
@@ -3557,15 +3753,16 @@ Roughly, it can be seen as
  \cite{ayalacategories2020factorization}.} over a manifold in the same sense that ordinary
  homology $H(M,A)$ is given by integrating an abelian group $A$ over a space $M$
   (see \cite{Ayalatopological_2015})
- \item an extended topological field theory (see \cite{Scheimbauer:2014zty}, \cite[4.1]{lurie2009classification} and
+ \item an extended\footnote{If you do not know what an extended TFT is, it might be helpful
+ to check out \ref{RemarkExtendedTFTs}.} topological field theory (see \cite{Scheimbauer:2014zty},
+  \cite[4.1]{lurie2009classification} and
   \cite{Ayalatopological_2015})
 \end{itemize}
 
 \begin{defn}[Factorization homology]\label{FactorHomology}
 	Given an $\E_n$-algebra $A\in\Alg_{\E_{n}}(\cat)$, its factorization homology is the left Kan
-	 extension\footnote{We spell out the definition but see \cite[Section 3.6.1]{Tanaka_2020} for a better
-	 	 paced explanation of what is a left
-	 	 Kan extension for $\infty$-categoires.}
+	 extension\footnote{We spell out the definition but see \cite[Section 3.6.1]{Tanaka_2020} for a better explanation of what is a left
+	 	 Kan extension for $\infty$-categories.}
 	% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXG9wZXJhdG9ybmFtZXtEaXNrfV57XFxmcn1fe259Il0sWzAsMSwiXFxvcGVyYXRvcm5hbWV7TWZsZH1ee1xcZnJ9X3tufSJdLFsxLDAsIlxcY2F0Il0sWzAsMSwiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMCwyLCJBIl0sWzEsMiwiXFxpbnRfeygtKX1BIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
 	\[\begin{tikzcd}[cramped]
 		{\operatorname{Disk}^{\fr}_{n}} & \cat \\
@@ -3588,8 +3785,9 @@ One way in which it is a homology theory for manifolds is that every homology th
  $n$-manifolds is given by factorization homology with coefficients in the $\E_n$-algebra $H(\R^n)$,
  see \cite{Ayalatopological_2015}.
  \begin{ex}
- 	Hochschild homology is factorization homology over $S^1\in\operatorname{Mfld_{1}^{\fr}}$.
+ 	Hochschild homology is a factorization homology over $S^1\in\operatorname{Mfld_{1}^{\fr}}$.
  \end{ex}
+
  \begin{defn}[Factorization algebra]\label{FactorAlgebra}
  Recall that a partially ordered set can be seen as a category where the arrows are given by the
   $\leq$ relation. The open subsets of a space generally and in particular of a manifold form a poset.
@@ -3602,8 +3800,20 @@ One way in which it is a homology theory for manifolds is that every homology th
  Such objects are also very important for the study of TFTs. For instance, they provide a bridge 
  between topological field theories and a dual approach to the formalization of quantum field theories:
  algebraic quantum field theories. See \ref{AQFT} for a sketch of what this approach is and 
- \cite{costello2023factorization} for more on factorization algebras.
-\subsection{Interlude on Bicategories \extra} % (fold)
+ \cite{costello2023factorization} for more on factorization algebras in other areas of
+ mathematics and physics and in particular as a connection between AQFTs and 
+ TFTs.
+ 
+  To see how it can define an extended TFT, note that $\Bord_n$ is just a special category of manifolds 
+ and that the factorization homology of an $\E_n$-algebra $A\in\Alg_{\E_{n}}(\cat)$ is a functor 
+ $$ \int_{(-)}A:\operatorname{Mfld}^{\fr}_{n}\to \operatorname{Fact}_n\subset \cat$$
+ where $\operatorname{Fact}_n$ denotes the subcategory of factorization algebras in $\cat$. 
+ Hence, one can intuit that there is a way to construct a factorization homology of an $\E_n$-algebra
+ as a symmetric monoidal $\infty$-functor 
+ $$ \int_{(-)}A:\operatorname{Bord}^{\fr}_{n}\to \operatorname{Fact}_n\subset \cat$$
+ where $\Bord_n$ is the extended category of bordisms (see \ref{RemarkExtendedTFTs}) and thus 
+ a TFT! Check out \cite{Scheimbauer:2014zty} for a detailed treatment.
+\subsection{Interlude on bicategories \extra} % (fold)
 \label{sub:outlook_interlude_on_bicategories}
 %I hope the order here is not confusing, in the sense that why not define before a bicategory and subsequently the delooping, however this sequence where one first pictures the delooping and then they picture a bicategory made sense in my mind. Feel free to change /Andrea
 %Also I hope it is not overkill, it all started because I wanted to define dual objects of a monoidal cat as adjunctions of 1-morphisms in the delooping, then realized that bicategory would be useful also for 2 reasons: 1-understanding better why Cat is strict and not weak, and in general picturing what weak n-categories are and 2-the extended 2-category of 2 dimensional bordisms is a bicategory. I'll ask the professor if it makes sense or it is just confusing
@@ -3624,7 +3834,7 @@ One way in which it is a homology theory for manifolds is that every homology th
         \item For each objects $X,Y$, a 1-category $\Hom_\bat(X,Y)$, whose objects $f,g,\dots$ are called 1-cells or 1-morphisms and whose morphisms $\alpha,\beta,\dots$ are called 2-cells or 2-morphisms; composition of (2-)morphisms in this category is also called vertical composition
         \item For any three objects $X,Y,Z$ there are composition functors, also called horizontal composition $$\circ_{X,Y,Z}:\Hom(Y,Z)\times \Hom(X,Y)\to \Hom(X,Z)$$
         $$(f,g)\mapsto f\circ g$$
-        $$(\alpha,\beta)\mapsto \alpha\circ\beta$$ in the context of bicategories we denote composition of functors with $\bigcirc$ instead of the usual $\circ$ in order to not get confused between a composition functor and a composition of functors
+        $$(\alpha,\beta)\mapsto \alpha\circ\beta$$ in the context of bicategories we denote composition of functors with $\bigcirc$ instead of the usual $\circ$ in order to not get confused between a composition functor and a composition \emph{of} functors
         \item  For every object $X$ there is an identity functor from the one-object category\footnote{This is the terminal object of Cat and thereby monoidal unit of the cartesian monoidal category $(\Cat,\times,\unit_{\Cat})$ with the cartesian product as the tensor product. With $\ob(\unit_{\Cat})=\{\ast\}$ and $\Hom_{\Cat}(\ast,\ast)=id_{\ast}$.} $\unit_{\Cat}$
         $$identity_X:\unit_{\text{Cat}}\to \Hom(X,X)$$ $$\ast\mapsto id_X$$ we name the image of the single object the identity 1-morphism, i.e. $identity_{X}(\ast)=id_X$
         \item There are natural isomorphisms $a,r,l$ expressing associativity and unitality of the composition functor: \begin{itemize}
@@ -3690,10 +3900,156 @@ We now list some examples of 2-categories, to convey a more concrete intuition o
         \item There is a bicategory Alg$_k^2$ where objects are algebras over a vector space, 1-morphisms are bimodules (see \ref{CatOfBimodules}) and 2-morphisms are maps between bimodules, also known as intertwiners 
     \end{enumerate}
 \end{ex}
+\subsubsection{Symmetric monoidal bicategories \extra}
+Now we sketch how one could define monoidal bicategories and in particular symmetric monoidal ones.
+ The latter are important in the study
+of TFTs because a once-extended TFT (see \ref{RemarkExtendedTFTs}) is a symmetric monoidal
+ bifunctor from a category of bordisms $\Bord_{n,n-1,n-2}$.
+ Generally, symmetric monoidal bicategories are a pain to define because a bicategory already needs
+ to satisfy many coherence diagrams and a symmetric monoidal structure on it even more! Take a look
+ at \cite[Definition 2.3]{schommerpries2014classification} and skim through
+  \cite[Section 2.3]{schommerpries2014classification}. For this reason, some try to provide other smart 
+  ways to define what is a symmetric monoidal bicategory. For instance, Mike Shulman defined them 
+  in terms of symmetric monoidal double categories \cite{shulman2010constructing} or one could try to
+   define them 
+  in terms of particular functors $\Gamma^{\operatorname{op}}\to \operatorname{Bicat}$ as one
+  does with symmetric monoidal $\infty$-categories\footnote{A master student of Prof. Scheimbauer is
+  	 working on this.} (see \ref{SymmMoninftycat}).% what is the name of the master student? I want to give credit!!! /Andrea
+  	 In this chapter we provide definitions for monoidal bicategories and symmetric
+  	 monoidal ones that rely on the $\E_n$-algebras we previously talked about, see \ref{EAlg}.
+  	 
+  	 In order to achieve this we first need to talk about the tricategory of bicategories Bicat.
+\begin{defn}[Bifunctor]
+A bifunctor, aka pseudofunctor, is the right notion of functor between bicategories.
 
+Given two bicategories $\bat$ and $\cat$. A bifunctor $P:\bat \to\cat$ consists of 
+\begin{itemize}
+	\item an assignment, a function, $\operatorname{Ob}(\bat)\to\operatorname{Ob}(\cat)$
+	\item for each hom-category $\Hom_\bat(X,Y)$, a functor $P_{x,y}\Hom_\bat(X,Y)\to \Hom_\cat(P(X),P(Y))$
+	\item two invertible 2-morphisms pinning down the compositionality and unitality of the bifunctor
+	\item and three commutative diagrams that make the interaction between the composition of
+	 bifunctors and the objects and morphisms in the bicategory reasonable
+\end{itemize}
+See \url{https://ncatlab.org/nlab/show/pseudofunctor} for a complete definition expliciting the last two
+points.
+\end{defn}
+\begin{defn}[Psuedonatural transformation]
+A pseudonatural transformation is a natural transformation but where the naturality is given by a diagram
+that commutes via a homotopy and not strictly.
 
+Given bicategories $\bat$ and $\cat$ and bifunctors $F,G:\bat\to\cat$ a pseudonatural transformation
+$\alpha:F\Rightarrow G$ is consists of:
+\begin{itemize}
+	\item for each $X\in\bat$ a 1-morphism in $\cat$ $\alpha_X:F(X)\to G(X)$
+	\item for each $f:X\to Y$ in $\bat$ an invertible 2-morphism in $\cat$,
+	 $\alpha_f:G(f)\circ\alpha_X\simeq \alpha_Y\circ F(f)$ making the following diagram commute
+	 % https://q.uiver.app/#q=WzAsNCxbMCwwLCJGKFgpIl0sWzEsMCwiRihZKSJdLFswLDEsIkcoWCkiXSxbMSwxLCJHKFkpIl0sWzAsMSwiRihmKSJdLFswLDIsIlxcYWxwaGFfWCIsMl0sWzIsMywiRyhmKSIsMl0sWzEsMywiXFxhbHBoYV9ZIl0sWzIsMSwiXFxhbHBoYV9mIiwwLHsibGV2ZWwiOjIsInN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9fX1dXQ==
+	 \[\begin{tikzcd}[cramped]
+	 	{F(X)} & {F(Y)} \\
+	 	{G(X)} & {G(Y)}
+	 	\arrow["{F(f)}", from=1-1, to=1-2]
+	 	\arrow["{\alpha_X}"', from=1-1, to=2-1]
+	 	\arrow["{G(f)}"', from=2-1, to=2-2]
+	 	\arrow["{\alpha_Y}", from=1-2, to=2-2]
+	 	\arrow["{\alpha_f}", Rightarrow, 2tail reversed, from=2-1, to=1-2]
+	 \end{tikzcd}\]
+	 \item such that coherence conditions for the associators and unitors in $\cat$ are satisfied,
+	 see \url{https://ncatlab.org/nlab/show/pseudonatural+transformation} 
+\end{itemize}
+\end{defn}
+\begin{defn}[Modification]
+A modification is a sort of natural transformation between pseudonatural transformations.
+You can picture a modification $\Xi$ with the following diagram: 
+% https://q.uiver.app/#q=WzAsMixbMCwwLCJcXGJhdCJdLFs0LDAsIlxcY2F0Il0sWzAsMSwiRiIsMCx7ImN1cnZlIjotNX1dLFswLDEsIkciLDIseyJjdXJ2ZSI6NX1dLFsyLDMsIlxcYmV0YSIsMCx7ImN1cnZlIjotNCwic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfX1dLFsyLDMsIlxcYWxwaGEiLDIseyJjdXJ2ZSI6Mywic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfX1dLFs1LDQsIlxcWGkiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJsZXZlbCI6Mn1dXQ==
+\[\begin{tikzcd}[cramped]
+	\bat &&&& \cat
+	\arrow[""{name=0, anchor=center, inner sep=0}, "F", curve={height=-30pt}, from=1-1, to=1-5]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "G"', curve={height=30pt}, from=1-1, to=1-5]
+	\arrow[""{name=2, anchor=center, inner sep=0}, "\beta", curve={height=-24pt}, shorten <=12pt, shorten >=12pt, Rightarrow, from=0, to=1]
+	\arrow[""{name=3, anchor=center, inner sep=0}, "\alpha"', curve={height=18pt}, shorten <=11pt, shorten >=11pt, Rightarrow, from=0, to=1]
+	\arrow["\Xi", shorten <=8pt, shorten >=8pt, Rightarrow, from=3, to=2]
+\end{tikzcd}\]
+Given bifunctors $F,G:\bat\to\cat$, pseudonaturaltransformations $\alpha,\beta:F\Rightarrow G$,
+a modification $\Xi:\alpha\Rightarrow\beta$ consists of components for any object $X\in\bat$ that are
+ 2-morphisms working as follows
+\begin{itemize}
+	\item for any components of $\alpha$ $\beta$, i.e. 1-morphisms in
+	 $\cat$ $\alpha_X,\beta_X:F(X)\to G(X)$, there is a component of $\Xi$, a 2-morphism in $\cat$,
+	  $\Xi_X:\alpha_X\Rightarrow \beta_X$. You can picture it like this: 
+	 % https://q.uiver.app/#q=WzAsMixbMCwwLCJGKFgpIl0sWzIsMCwiRyhYKSJdLFswLDEsIlxcYWxwaGFfWCIsMCx7ImN1cnZlIjotM31dLFswLDEsIlxcYmV0YV9YIiwyLHsiY3VydmUiOjN9XSxbMiwzLCJcXFhpX1giLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV1d
+	 \[\begin{tikzcd}[cramped]
+	 	{F(X)} && {G(X)}
+	 	\arrow[""{name=0, anchor=center, inner sep=0}, "{\alpha_X}", curve={height=-18pt}, from=1-1, to=1-3]
+	 	\arrow[""{name=1, anchor=center, inner sep=0}, "{\beta_X}"', curve={height=18pt}, from=1-1, to=1-3]
+	 	\arrow["{\Xi_X}", shorten <=5pt, shorten >=5pt, Rightarrow, from=0, to=1]
+	 \end{tikzcd}\]
+\end{itemize}
+Such components must satisfy a naturality condition. The following diagram commutes strictly\footnote{
+In some contexts, e.g. in fully extended TFTs (meaning downwards to the point and upward to 
+infinitely many invertible morphisms), this strictness is undesirable. This is why 
+it can be argued that $(\infty,n)$-categories are the \textbf{right} context to do higherer(/higher higher)
+ category theory, meaning studying or working with $n$-categories.}
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJHKGYpXFxjaXJjXFxhbHBoYV9YIl0sWzAsMSwiXFxhbHBoYV9ZXFxjaXJjIEYoZikiXSxbMywxLCJcXGJldGFfWVxcY2lyYyBHKGYpIl0sWzMsMCwiRyhmKVxcY2lyYyBcXGJldGFfeCJdLFswLDEsIlxcYWxwaGFfZiIsMix7ImxldmVsIjoyfV0sWzEsMiwiXFxYaV9ZXFxiaWdjaXJjIGlkZW50aXR5X3tGKGYpfSIsMix7ImxldmVsIjoyfV0sWzAsMywiIGlkZW50aXR5X3tHKGYpfVxcYmlnY2lyY1xcWGlfWCIsMCx7ImxldmVsIjoyfV0sWzMsMiwiXFxiZXRhX2YiLDAseyJsZXZlbCI6Mn1dXQ==
+\[\begin{tikzcd}[cramped]
+	{G(f)\circ\alpha_X} &&& {G(f)\circ \beta_x} \\
+	{\alpha_Y\circ F(f)} &&& {\beta_Y\circ G(f)}
+	\arrow["{\alpha_f}"', Rightarrow, from=1-1, to=2-1]
+	\arrow["{\Xi_Y\bigcirc id_{F(f)}}"', Rightarrow, from=2-1, to=2-4]
+	\arrow["{ id_{G(f)}\bigcirc\Xi_X}", Rightarrow, from=1-1, to=1-4]
+	\arrow["{\beta_f}", Rightarrow, from=1-4, to=2-4]
+\end{tikzcd}\]
+\end{defn}
+  	 \begin{defn}[The tricategory of bicategories]
+The tricategory of bicategories consists of
+\begin{itemize}
+	\item bicategories as objects
+	\item bifunctors as 1-morphisms
+	\item pseudonatural transformations as 2-morphisms
+	\item modifications as 3-morphisms
+\end{itemize}
+As any category of categories, it is cartesian monoidal via the product of bicategories and hence
+ symmetric monoidal\footnote{Recall that any cartesian product is commutative \ref{CartProd}.}
+
+We denote it with Bicat.
+  	 \end{defn}
+  	 Having defined the tricategory of bicategories we can now provide the definitions for 
+  	 monoidal bicategories and symmetric monoidal ones.
+  	 \begin{defn}[Monoidal bicategory]
+  	 	A monoidal bicategory is an $\E_1$-algebra in Bicat, i.e. a symmetric monoidal functor
+  	 	$$\Disk_{1}^{\fr}\to\operatorname{Bicat}$$
+  	 \end{defn}
+\begin{defn}[Symmetric monoidal bicategory]\label{SymmMonBicategory}
+A symmetric monoidal bicategory is an $\E_{\infty\geq n\geq 4}$-algebra in Bicat, i.e. a symmetric monoidal
+functor
+$$\Disk_{\infty\geq n\geq 4}^{\fr}\to\operatorname{Bicat}$$
+This is equivalent to \cite[Theorem 2.8]{Gurski_2013}.
+\end{defn}
+Since Bicat is a \textbf{tri}category and has one higher level of morphisms than Cat, we do not just have
+braided and symmetric
+ monoidality, but a new shade of commutativity, called sylleptic.
+ 
+As we did for Cat in \ref{EAlg} we can summarize the situation with the following table
+\begin{center}
+	\begin{tabular}{|c||c|}
+		\hline
+		\phantom{h} & Bicat \\ [0.5ex]
+		\hline\hline
+		$\mathbb{E}_1$-algebra & monoidal bicategory \\
+		\hline
+		$\E_2$-algebra & braided monoidal bicategory \\
+		\hline
+		$\E_3$-algebra & sylleptic monoidal bicategory \\
+		\hline
+		$\E_4$-algebra & symmetric monoidal bicategory \\
+		\hline 
+		$\E_\infty$-algebra & symmetric monoidal bicategory \\
+		\hline
+	\end{tabular}
+\end{center}
 \chapter{The cobordism category}\label{CobCat}
-We now get to the most important example of symmetric monoidal category in this course: the symmetric monoidal category of cobordisms\footnote{See chapter 14 of \cite{FreedBordism}.}. This is what will allow us to define a topological field theory.
+We now get to the most important example of symmetric monoidal category in this course: the
+ symmetric monoidal category of cobordisms\footnote{See chapter 14 of \cite{FreedBordism}.}. This is
+ what will allow us to define a topological field theory.
 \begin{notat}
    Note that, if not explicitly stated we will mean \emph{smooth} manifold when we write manifold.
 \end{notat}
@@ -4360,6 +4716,13 @@ spectra that only have positive non-trivial homotopy groups: let $\{ X_i\}_{i\in
  
  Connective spectra form a subcategory of Sp denoted $\operatorname{Sp}_{\geq 0}$.
 \end{defn}
+\begin{ex}
+	Many of the spectra one uses are connective:
+	\begin{itemize}
+\item suspension spectra,and thus remarkably the sphere spectrum $\mathds{S}$
+\item the Thom spectrum MO
+	\end{itemize}
+\end{ex}
 
 \begin{rem}[Connective spectra=infinite loop spaces]
 	An infinite loop space is a 0-connective pointed space (since it is non-empty), hence it does not have
@@ -4870,7 +5233,7 @@ This means that any 1-dimensional bordism (i.e. including disconnected ones)
  Hence, we now know the generators of $\Bord_{1,0}$, i.e. $\bullet_{+}$ and $\bullet_-$, and the relations, 
  i.e. the possible connected 1-dimensional bordisms. Since we also know that $\Zf$ is a 
  \emph{symmetric monoidal} functor, it means that we shall just check where such generators and relations are sent,
- see \ref{AlternativeProof1d}.
+ see \ref{GeneratorsClass1TFT}.
  
 
 \begin{rem}
@@ -5454,7 +5817,8 @@ From now on the main reference will be \cite{KasselRossoTuraev97}.
 For classifying TFTs in 1 and 2 dimensions the procedure we have been following is to find an algebraic category which is equivalent with such TFTs evaluated on some object. 
 In particular, in order to classify 1d TFTs we established an equivalence with the evaluation functor of 1TFTs on a point and finite dimensional vector spaces and for 2d TFTs evaluated on the circle $S^1$ are equivalent to commutative Frobenius algebras in some symmetric monoidal category and to finite-dimensional Frobenius $k$-algebras when considering $\Vect_k$ as the target category. 
 These equivalences of categories allow us to reconstruct 1d and 2d TFTs (up to some reasonable form of equivalence) from this purely algebraic data. One can ask themselves if a classification of this kind is possible also for higher dimension, such as 3d TFTs. 
-First, 3d-TFTs can be constructed from algebraic data, although a bit more sophisticated than what we got in lower dimensions, we will find out that every \textit{modular tensor category} gives a 3d TFT\footnote{So-called once-extended 3d TFTs, i.e. TFTs of the sort $\Bord_{3,2,1}\xrightarrow{\Zf}\cat$, can be classified by modular tensor categories. As we previously sketched, once-extended 2d TFTs have $\Bord_{2,1,0}$ as source and $\Bord_{2,1,0}$ is a symmetric monoidal bicategory (see \ref{Bicategory} and \ref{RemarkExtendedTFTs}). Also $\Bord_{3,2,1}$ is a symmetric monoidal bicategory with disjoint unions of $S^1$ as objects. In short, there is an equivalence between once-extended 3d-TFTs evaluated on the circle $S^1$ and modular tensor categories (see \cite{JordanTFTs} for more). This is a very difficult result, the details of which are not fully available yet, despite being expected/``known'' for a decade}. 
+First, 3d-TFTs can be constructed from algebraic data, although a bit more sophisticated than what we got in lower dimensions, we will find out that every \textit{modular tensor category} gives a 3d TFT\footnote{So-called once-extended 3d TFTs, i.e. TFTs of the sort $\Bord_{3,2,1}\xrightarrow{\Zf}\cat$, can be classified by modular tensor categories. As we previously sketched, once-extended 2d TFTs have $\Bord_{2,1,0}$ as source and $\Bord_{2,1,0}$ is a symmetric monoidal bicategory (see \ref{SymmMonBicategory} and \ref{RemarkExtendedTFTs}
+	). Also $\Bord_{3,2,1}$ is a symmetric monoidal bicategory with disjoint unions of $S^1$ as objects. In short, there is an equivalence between once-extended 3d-TFTs evaluated on the circle $S^1$ and modular tensor categories (see \cite{JordanTFTs} for more). This is a very difficult result, the details of which are not fully available yet, despite being expected/``known'' for a decade}. 
 The algebraic data can be summarized diagramatically as follows
 % https://q.uiver.app/#q=WzAsNixbMCwwLCJcXG9wZXJhdG9ybmFtZXtGaW5WZWN0fVxcbmkgWCJdLFswLDEsIlxcb3BlcmF0b3JuYW1le0NvbW1Gcm9ifVxcbmkgQSJdLFswLDIsIlxcb3BlcmF0b3JuYW1le01vZFRlbnNvcn1cXG5pXFxjYXQiXSxbMiwwLCJcXFpmXFxpblxcb3BlcmF0b3JuYW1lezEtVEZUfSJdLFsyLDEsIlxcWmZcXGluXFxvcGVyYXRvcm5hbWV7Mi1URlR9Il0sWzIsMiwiXFxaZlxcaW5cXG9wZXJhdG9ybmFtZXsxLVRGVH0iXSxbMCwzLCJcXHRleHR7XFx0aW55e3VuaXF1ZWx5IGRldGVybWluZXN9fSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6InNxdWlnZ2x5In19fV0sWzEsNCwiXFx0ZXh0e1xcdGlueXt1bmlxdWVseSBkZXRlcm1pbmVzfX0iLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJzcXVpZ2dseSJ9fX1dLFsyLDUsIlxcdGV4dHtcXHRpbnl7dW5pcXVlbHkgZGV0ZXJtaW5lc319IiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoic3F1aWdnbHkifX19XV0=
 \[\begin{tikzcd}[cramped]
@@ -6659,7 +7023,8 @@ An abelian category is semisimple if it only has semisimple objects.
 \begin{rem}[Remark on Extended TFTs]\label{RemarkExtendedTFTs}
 	After defining the cobordism hypothesis in this manner, a natural question is: how can TFTs of any dimension greater than 1 be classified by evaluating them at a point? If we stick to our definition, there are no points in any category of bordisms of dimension greater than 1. Fortunately, one can \emph{extend} the bordism category, and consequently TFTs, and also talk about lower dimensions. Take as an example $\Bord^{or}_{2,1}$. As we defined the bordism category, in this case the lowest dimension is 1, the objects are lines, not points. Nevertheless, one could treat the category of 2 dimensional bordisms as a 2-category, more specifically as a bicategory (see \ref{Bicategory})\footnote{Since 1-morphisms do not compose strictly, but up to an appropriate notion of isomorphism.}, $\Bord_{2,1,0}$ where objects are disjoint unions of points, 1-morphisms are oriented cobordisms between points and 2-morphisms are cobordisms between the 1-morphisms; and then define 2d-TFTs as an
 	 appropriate notion of symmetric monoidal functor between symmetric monoidal bicategories\footnote{A detailed
-		 treatment of the 2d case is found in \cite{schommerpries2014classification}.}.  However, to this we need to allow manifolds with corners, as the illustration of the downward extension of the torus shows (\ref{CUTTORUS}).
+		 treatment of the 2d case is found in \cite{schommerpries2014classification}.} (see \ref{SymmMonBicategory} for a definition).  
+		 However, to this we need to allow manifolds with corners, as the illustration of the downward extension of the torus shows (\ref{CUTTORUS}).
 	\begin{figure}
 		\centering
 		\captionsetup{format = hang}
@@ -6668,7 +7033,11 @@ An abelian category is semisimple if it only has semisimple objects.
 		\label{CUTTORUS}
 	\end{figure}
 	
-	Treating a TFT as a functor\footnote{To be rigorous, one would need to precisify what is an appropriate notion of functor between bicategories.} from a symmetric monoidal\footnote{Although we did not define a symmetric monoidal bicategory, there is indeed a way to do this, see the appendix C of \cite{schommerpries2014classification} for a definition and chapter 2 for an exposition.} bicategory (instead of from a symmetric monoidal category) is sometimes named 'once-extended TFT', e.g. \cite{SchwHopfQuantumTFT}. There are two important results regarding once-extended TFTs: 
+	Treating a TFT as a functor\footnote{To be rigorous, one would need to precisify what is an appropriate notion of functor between bicategories.} from a symmetric monoidal bicategory
+	(see \ref{SymmMonBicategory} for a definition), instead of from a symmetric monoidal category is
+	 sometimes
+	 named 'once-extended TFT', e.g. \cite{SchwHopfQuantumTFT}. There are two important results
+	  regarding once-extended TFTs: 
 	\begin{enumerate}
 \item One regards the classification of 2d-TFTs down to a point and is due to Christopher Schommer Pries who
  proved it in his PhD thesis 
