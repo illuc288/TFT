@@ -3846,7 +3846,7 @@ We now list some examples of 2-categories, to convey a more concrete intuition o
 Now we sketch how one could define monoidal bicategories and in particular symmetric monoidal ones.
  The latter are important in the study
 of TFTs because a once-extended TFT (see \ref{RemarkExtendedTFTs}) is a symmetric monoidal
- bifunctor from a category of bordisms $\Bord_{n,n-1,n-2}$.
+ weak 2-functor from a category of bordisms $\Bord_{n,n-1,n-2}$.
  Generally, symmetric monoidal bicategories are a pain to define because a bicategory already needs
  to satisfy many coherence diagrams and a symmetric monoidal structure on it even more! Take a look
  at \cite[Definition 2.3]{schommerpries2014classification} and skim through
@@ -3861,14 +3861,15 @@ of TFTs because a once-extended TFT (see \ref{RemarkExtendedTFTs}) is a symmetri
   	 monoidal ones that rely on the $\E_n$-algebras we previously talked about, see \ref{EAlg}.
   	 
   	 In order to achieve this we first need to talk about the tricategory of bicategories Bicat.
-\begin{defn}[Bifunctor]
-A bifunctor, aka pseudofunctor, is the right notion of functor between bicategories.
+\begin{defn}[Weak 2-functor]\label{Weak2Fun}
+A weak 2-functor, aka pseudofunctor, is the right notion of functor between bicategories.
 
-Given two bicategories $\bat$ and $\cat$. A bifunctor $P:\bat \to\cat$ consists of 
+Given two bicategories $\bat$ and $\cat$. A weak 2-functor $P:\bat \to\cat$ consists of 
 \begin{itemize}
 	\item an assignment, a function, $\operatorname{Ob}(\bat)\to\operatorname{Ob}(\cat)$
 	\item for each hom-category $\Hom_\bat(X,Y)$, a functor $P_{x,y}\Hom_\bat(X,Y)\to \Hom_\cat(P(X),P(Y))$
-	\item two invertible 2-morphisms pinning down the compositionality and unitality of the bifunctor
+	\item two invertible 2-morphisms pinning down the compositionality and unitality of the weak 
+	2-functor
 	\item and three commutative diagrams that make the interaction between the composition of
 	 bifunctors and the objects and morphisms in the bicategory reasonable
 \end{itemize}
@@ -3879,7 +3880,8 @@ points.
 A pseudonatural transformation is a natural transformation but where the naturality is given by a diagram
 that commutes via a homotopy and not strictly.
 
-Given bicategories $\bat$ and $\cat$ and bifunctors $F,G:\bat\to\cat$ a pseudonatural transformation
+Given bicategories $\bat$ and $\cat$ and weak 2-functor
+ $F,G:\bat\to\cat$ a pseudonatural transformation
 $\alpha:F\Rightarrow G$ is consists of:
 \begin{itemize}
 	\item for each $X\in\bat$ a 1-morphism in $\cat$ $\alpha_X:F(X)\to G(X)$
@@ -3911,7 +3913,8 @@ You can picture a modification $\Xi$ with the following diagram:
 	\arrow[""{name=3, anchor=center, inner sep=0}, "\alpha"', curve={height=18pt}, shorten <=11pt, shorten >=11pt, Rightarrow, from=0, to=1]
 	\arrow["\Xi", shorten <=8pt, shorten >=8pt, Rightarrow, from=3, to=2]
 \end{tikzcd}\]
-Given bifunctors $F,G:\bat\to\cat$, pseudonaturaltransformations $\alpha,\beta:F\Rightarrow G$,
+Given weak 2-functors $F,G:\bat\to\cat$, pseudonaturaltransformations
+ $\alpha,\beta:F\Rightarrow G$,
 a modification $\Xi:\alpha\Rightarrow\beta$ consists of components for any object $X\in\bat$ that are
  2-morphisms working as follows
 \begin{itemize}
@@ -3945,7 +3948,7 @@ it can be argued that $(\infty,n)$-categories are the \textbf{right} context to 
 The tricategory of bicategories consists of
 \begin{itemize}
 	\item bicategories as objects
-	\item bifunctors as 1-morphisms
+	\item weak 2-functors as 1-morphisms
 	\item pseudonatural transformations as 2-morphisms
 	\item modifications as 3-morphisms
 \end{itemize}
@@ -3988,6 +3991,7 @@ As we did for Cat in \ref{EAlg} we can summarize the situation with the followin
 		\hline
 	\end{tabular}
 \end{center}
+
 \chapter{The cobordism category}\label{CobCat}
 We now get to the most important example of symmetric monoidal category in this course: the
  symmetric monoidal category of cobordisms\footnote{See chapter 14 of \cite{FreedBordism}.}. This is
@@ -3996,13 +4000,13 @@ We now get to the most important example of symmetric monoidal category in this 
    Note that, if not explicitly stated we will mean \emph{smooth} manifold when we write manifold.
 \end{notat}
 \begin{defn}[Bordism Category]\label{Bordism Cat Defn}
-    The objects are closed $(n-1)$-dimensional manifolds. A morphism from $M$ to $N$ is a \textit{diffeomorphism class of} bordisms from $M$ (\textit{source}) to $N$ (\textit{target}), that is, a compact manifold with boundary $\Sigma$ together with embeddings
+    The objects are closed $(n-1)$-dimensional manifolds. A morphism from $M$ to $N$ is a \textit{diffeomorphism class of} bordisms (to be soon defined) from $M$ (\textit{source}) to $N$ (\textit{target}), that is, a compact manifold with boundary $\Sigma$ together with embeddings
     $$\theta_0: [0,1) \times M \hookrightarrow \Sigma$$
     $$\theta_1: (-1,0] \times N \hookrightarrow \Sigma$$
-    with a partition $p: \de \Sigma \to {0,1}$ such that
+    with a partition $p: \de \Sigma \to \{0,1\}$ such that
        $$\theta_0(0,M)= (\de\Sigma)_0 := p^{-1}(0)$$
        $$\theta_1(0,N)= (\de\Sigma)_1 := p^{-1}(1)$$
-     Composition is given by gluing\footnote{We define bordisms with the definition with collars because it is easier to see how to glue them.} bordisms together along a common boundary for $\Sigma$ from $M$ to $N1$ and $\Sigma'$ from $N$ to $P$ we have $\Sigma' \circ \Sigma=\Sigma\cup_N\Sigma'$. 
+     Composition is given by gluing\footnote{We define bordisms with the definition with collars because it is easier to see how to glue them.} bordisms together along a common boundary: if $\Sigma$ is a morphism from $M$ to $N$ and $\Sigma'$ from $N$ to $P$ we can define $\Sigma' \circ \Sigma:=\Sigma\cup_N\Sigma'$ as (a rappresentative of) the composition morphism. 
      \begin{figure}
          \centering
          \includegraphics[width=70mm,scale=0.5]{images/Lecture 10/GlueBord.png}
@@ -4010,13 +4014,14 @@ We now get to the most important example of symmetric monoidal category in this 
          \label{Gluing Bordisms}
      \end{figure}
     The gluing of manifolds is associative. 
-    In order for this to actually be a category there must be unital identity morphisms. For an object $M$ it is given by $M \times [0,1]$. 
-    However, one could also take $M \times [0,2]$ which is diffeomorphic to $M \times [0,1]$ but \textit{not} strictly identical, on the nose. 
-    That is why we took a \textit{diffeomorphism class} of bordisms. 
-    In particular, the identity morphisms for any closed manifold $X\in\Bordn$, $X\xrightarrow{id_X}X$ is given by $[X\times [0,1]]_{_{\cong}}$ where $\cong$ denotes isomorphisms between smooth manifolds, i.e. diffeomorphisms.
+
+    \noindent In order for this to actually be a category there must be a identity morphisms for each object: take $M$ to be a suitable manifold, we can then take $M \times [0,1]$ to be the identity morphism. 
+    However, one could also take $M \times [0,2]$ which is diffeomorphic to $M \times [0,1]$ but \textit{not} strictly identical, on the nose.
+
+    \noindent That is why we took a \textit{diffeomorphism class} of bordisms. 
 \end{defn}
 \begin{notat}
-    $\nCob=\Bordn$, meaning that objects are closed $n-1$-dimensional manifolds and morphisms are diffeomorphism classes of bordisms. Moreover, we indicate that the closed manifolds are oriented and the bordisms orientation preserving with $\Bordnor$ or equivalently $\nCob^{\orient}$.
+    $\nCob=\Bordn$, meaning that objects are closed $(n-1)$-dimensional manifolds and morphisms are diffeomorphism classes of bordisms. Moreover, we indicate that the closed manifolds are oriented and the bordisms orientation preserving with $\Bordnor$ or equivalently $\nCob^{\orient}$.
 \end{notat}
 Let us explicitly state what is meant by diffeomorphism of bordisms:
 \begin{defn}
@@ -4046,7 +4051,7 @@ Let us explicitly state what is meant by diffeomorphism of bordisms:
 
 \begin{ex}
     We have that 
-        $$\Hom_{\nCob} (\emptyset, \emptyset) = \text{ \{closed $n$ manifolds\}}/\text{\{diffeomorphism\}}.$$
+        $$\Hom_{\nCob} (\emptyset, \emptyset) = \text{ \{closed $n$-manifolds\}}/\text{\{diffeomorphism\}}.$$
     For $n=2$, $\Sigma = S^2$ is a composition of
     %DRAWING
 
@@ -4108,28 +4113,28 @@ After skimming through \cite{Atiyah1988} one might wonder why we defined the tar
     $$\Hom_{\SymmMonCat}(\nCob,\cat)=\Fun^\otimes(\nCob,\cat)=\TFT_n(\cat)=\operatorname{nTFT}(\cat).$$ 
     This functor category is symmetric monoidal by defining the tensor product between TFTs pointwise: for $\Zf_1,\Zf_2\in\TFT_n(\cat)$ and $M\in\nCob$ $$(\Zf_1\otimes\Zf_2)(M):=\Zf_1(M)\otimes\Zf_2(M)$$
 \end{notat}
-TFTs were originally defined with Vect as the target category, $\Zf: (\nCob, \amalg) \to (\Vect, \otimes) $), see \cite{Atiyah1988}. In this case we can use the notation in equation \ref{eq:rep_of_cat} and write $\TFT_n(\Vect_k) = \Rep(\Bord_{n,n-1}$.
+TFTs were originally defined with Vect as the target category, $\Zf: (\nCob, \amalg) \to (\Vect, \otimes) $), see \cite{Atiyah1988}. In this case we can use the notation in equation \ref{eq:rep_of_cat} and write $\TFT_n(\Vect_k) = \Rep(\Bord_{n,n-1})$.
 We can infer a few things about such TFTs:
 \begin{enumerate}
-    \item $\Sigma$ closed $n$ manifold, we can then view it as a bordism $\emptyset \xrightarrow{\Sigma} \emptyset$ and then we can apply $Z$ and we get $Z(\emptyset) \xrightarrow{Z(\Sigma)} Z(\emptyset)$ but $Z(\emptyset) = k$, since that's the unit in $\Vect$. So $\Zf(\Sigma)$ is a linear map from $k$ to $k$, which is entirely determined by where it sends one element. We then get that $\Zf(\Sigma)(\unit)$ is a diffeomorphism invariant.
+    \item $\Sigma$ closed $n$-manifold, we can then view it as a bordism $\emptyset \xrightarrow{\Sigma} \emptyset$ and then we can apply $Z$ and we get $Z(\emptyset) \xrightarrow{Z(\Sigma)} Z(\emptyset)$ but $Z(\emptyset) = k$, since that's the unit in $\Vect$. So $\Zf(\Sigma)$ is a linear map from $k$ to $k$, which is entirely determined by where it sends one element. We then get that $\Zf(\Sigma)(1)$ is a diffeomorphism invariant.
 
     In fact, the original hope was to use TFTs to find new diffeomorphism invariants.
-    \item There is a "trivial" TFT which on objects acts as $\Zf(M) = k$ and on morphisms as $\Zf(\Sigma) = id_k$ and we write $Z = 1$.
+    \item There is a ``trivial'' TFT which on objects acts as $\Zf(M) = k$ and on morphisms as $\Zf(\Sigma) = id_k$ and we write $Z = 1$.
     \item An \emph{invertible} TFT is a TFT in which $Z(M) \cong k$ and $Z(\Sigma)$ is an isomorphism. Which is very similar but in the trivial TFT we have chosen not only $Z(M) \cong k$ but specifically $Z(M) = k$.
-    This is related to "anomalies" in physics\footnote{To precisely see how, one needs to work with \emph{extended} TFTs, a higher categorical refinement of what we are working with now. See \cite{muller2020extended}.}.
+    This is related to ``anomalies'' in physics\footnote{To precisely see how, one needs to work with \emph{extended} TFTs, a higher categorical refinement of what we are working with now. See \cite{muller2020extended}.}.
 \end{enumerate}
 
 %TODO fix and write better, as in the exercises. Or maybe remove since it's in the exercises
 \begin{ex}
     Euler characteristic ($\to$ Euler theory)
 
-    \noindent Fix $\lambda \in \C^*$
+    \noindent Fix $\lambda \in \C^*$. If $M\xrightarrow{\Sigma}N$, then
     \begin{equation}
-        Z_\lambda (\Sigma) := \lambda^{\chi(\Sigma)}, \quad Z(M) = \C
+        Z_\lambda (\Sigma) := \lambda^{\chi(\Sigma)-\chi(M)}, \quad Z(M)=Z(N) = \C
     \end{equation}
-    Here functoriality follows from additivity
+    Here functoriality follows from the following: if are open subsets of $\Sigma$ and $\Sigma=int(X)\cup int(Y)$, then
     \begin{equation}
-        \chi(X \cup Y) = \chi(X) + \chi(Y) - \chi(X \cap Y)
+        \chi(\Sigma) = \chi(X) + \chi(Y) - \chi(X \cap Y)
     \end{equation}
 \end{ex}
 
@@ -4149,7 +4154,7 @@ We can infer a few things about such TFTs:
 \end{notat}
 %dim(X \otimes Y) =  dim(X)dim (Y) = dim X = 1....?
 \begin{notat}
-    For some symmetric monoidal category $(\cat,\otimes,\unit_\cat)$ we sometimes explicitly denote its tensor product by $\cat^\otimes$. For example, $\Set^\times$, $\Set^\amalg$, $\Vect^\oplus$, $\Vect^\otimes$.
+    For some symmetric monoidal category $(\cat,\otimes,\unit_\cat)$ we sometimes abreviate that the category $\cat$ is a monoidal category with tensor product $\otimes$ by writing $\cat^\otimes$. For example, $\Set^\times$, $\Set^\amalg$, $\Vect^\oplus$, $\Vect^\otimes$.
 \end{notat}
 
 We can now rigorously define what we previously called an invertible TFT: 
@@ -4164,6 +4169,8 @@ We can now rigorously define what we previously called an invertible TFT:
 	\arrow[hook, from=2-2, to=1-3]
 \end{tikzcd}\]
 \end{defn}
+
+\noindent Indeed if $\cat^\otimes=\Vect_k^\otimes$, invertible objects in $\Vect_k^\otimes$ are just $k$ (up to isomorphism), so an invertible TFT $Z$ must be such that for all $M\in\Bordn$, $Z(M)\otimes Z'(M)\cong k$ and so $Z(M)\cong k\cong Z'(M)$ and so is clear why they must factor through $\cat^\times$. This definition of invertible TFT is then equivalent to the one given above.
 \begin{defn}[Groupoid Completion]
     Let $\cat$ be a category. A groupoid completion $(|\cat|,i)$ is a groupoid $|\cat|$ with a functor %Reminder: ask claudia hom of monoids in freed old new instead of functor
     $i:\cat\to|\cat|$ such that if $\dat$ is a groupoid and $f:\cat\to\dat$ a functor, then there is a unique map $\tilde{f}:|\cat|\to\dat$ such that the following diagram commutes 
@@ -4188,9 +4195,6 @@ From the universal property of the groupoid completion, there is a further facto
 \end{tikzcd}\]
 \begin{rem}
     Note that the groupoid completion of the bordism category $|\Bordn^\amalg|$ is a Picard groupoid, see \ref{PicardDualizable}.
-\end{rem}
-\begin{rem}
-    A nTFT is invertible if the TFT is itself an invertible (see \ref{InvertibleObject}) object in the category of nTFTs.
 \end{rem}
 
 \subsection{Invertible field theories and stable homotopy theory \extra}\label{Spectra Phases of Matter}
@@ -4846,8 +4850,8 @@ Given $\Zf:\Bordn\to\Vect$ and $M\in\Bordn$, one can prove that $\Zf(M)$ is a fi
 \begin{defn}
     Let $\Bordnor$ be the category with:
     \begin{itemize}
-        \item objects: closed $(n-1)$ dimensional manifolds
-        \item morphisms: $\Hom_{\Bordnor} (M,N) = $ orientation preserving diffeomorphism classes of oriented bordisms. i.e. for a bordism $(\Sigma, p, \theta_0, \theta_1)$ $\Sigma$ has an orientation and $\de \Sigma \cong \bbar M \amalg N$ is an orientation preserving diffeomorphism.
+        \item objects: closed and oriented $(n-1)$-manifolds
+        \item morphisms: $\Hom_{\Bordnor} (M,N) = $ orientation preserving diffeomorphism classes of oriented bordisms. i.e. a bordism $(\Sigma, p, \theta_0, \theta_1)$ where $\Sigma$ has an orientation and the diffeomorphism $\de \Sigma \cong \bbar M \amalg N$ is an orientation preserving one.
     \end{itemize}
 \end{defn}
 
@@ -6975,10 +6979,14 @@ An abelian category is semisimple if it only has semisimple objects.
 		\label{CUTTORUS}
 	\end{figure}
 	
-	Treating a TFT as a functor\footnote{To be rigorous, one would need to precisify what is an appropriate notion of functor between bicategories.} from a symmetric monoidal bicategory
-	(see \ref{SymmMonBicategory} for a definition), instead of from a symmetric monoidal category is
-	 sometimes
-	 named 'once-extended TFT', e.g. \cite{SchwHopfQuantumTFT}. There are two important results
+	Treating a TFT as a symmetric monoidal weak 2-functor (see \ref{Weak2Fun} for a definition)
+	 from
+	 a symmetric monoidal bicategory 
+	$\Bord_{n,n-1,n-2}$
+	(see \ref{SymmMonBicategory} for a definition), instead of from a symmetric monoidal category
+	 is
+	 named 'once-extended TFT', e.g. see \cite{SchwHopfQuantumTFT}. There are two important
+	  results
 	  regarding once-extended TFTs: 
 	\begin{enumerate}
 \item One regards the classification of 2d-TFTs down to a point and is due to Christopher Schommer Pries who
