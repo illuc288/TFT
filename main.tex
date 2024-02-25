@@ -343,7 +343,9 @@ Now we can ``define'' a Quantum Field Theory on $M$ via a list of ingredients:
         \includegraphics[width=8cm]{images/Lecture 1/penrose.png}
     \end{figure}
     %
-    \item \textbf{\textit{Partition Function}}. We need a measure against which we can compute ``correlation functions'' of fields $\psi_1,\psi_2$ i.e. the ``likelihood of $\psi_1$ given $\psi_2$''. We thus define a Partition Function
+    \item \textbf{\textit{Partition Function}}. We need a measure against which we can compute
+     ``correlation functions'' of fields $\psi_1,\psi_2$ i.e. the ``likelihood of $\psi_1$ given
+      $\psi_2$''. We thus define a Partition Function
     $$Z(M)=\int_{\psi\in\mathcal{F}}\ e^{iS(\psi)}\mathcal{D}\psi,$$
     with
     $$S(\psi)=\int_M \mathcal{L}(\psi),$$
@@ -1122,6 +1124,9 @@ Note that any manifold, of any dimension, is diffeomorphic to the disjoint union
   In the next two subsections we aim at doing this: classifying connected 1- and 2-manifolds,
   so that we classify all 1- and 2-manifolds.
 \subsection{Classification of 1-manifolds}
+We took the proof from \cite[Appendix]{Milnor1997topology} and
+ \url{https://math.mit.edu/classes/18.966/2014SP/965/class.pdf}, which is essentially the proof in
+ Milnor's book but rephrased without explicitly using the concept of 'arc-length'.
 \begin{thm}[Classification of (connected) 1-manifolds]
 Any connected 1-manifold is diffeomorphic to:
 \begin{itemize}
@@ -1131,6 +1136,32 @@ Any connected 1-manifold is diffeomorphic to:
 	\item $S^1$
 \end{itemize}
 \end{thm}
+In order to prove this, we make use of parametrizations.
+\begin{defn}[Parametrization]
+Let $M$ be an $n$-manifold, $U_x\subseteq M$ a neighbourhood of $x$ and 
+$V\subseteq \R^n$. 
+Any diffeomorphism $g:V\to U_x$ is a parametrization of $U_x$.
+
+The inverse map $U_x\to V$ is called a system of coordinates on $U_x$.
+\end{defn}
+Now, we can state the following lemma, which is the key to our proof of the classification of
+ 1-manifolds 
+\begin{lem}
+	Let $M$ be a 1-manifold, and let $f,g:(0,1)\to M$ be two parametrizations. Then
+	 $f(0,1)\cap g(0,1)$ has at most two components. If it has one component, then there is 
+	 a parametrization $h:(0,1)\to M$ so that $h(0,1)=f(0,1)\cap g(0,1)$. If it has two components,
+	 then $f(0,1)\cup g(0,1)$
+\end{lem}
+\begin{proof}
+Let $\Gamma =\{(s,t)\mid f(s)=g(t)\}\subseteq (0,1)\times (0,1)$. $\Gamma$ is closed, since 
+it is the preimage of the continuous function $f\times g:(0,1)\times (0,1)\to  M\times M$, which is
+in sometimes called diagonal map and denoted $\Delta $.
+Let $s_0$ be a point contained in the topological boundary of 
+$f^{-1}(g(0,1))\subseteq (0,1)\subseteq [0,1]$. Since $f^{-1}(g(0,1))$ is open,
+ $s_0\notin f^{-1}(g(0,1))$. Let $s_k$ be a sequence in $f^{-1}(g(0,1))$ that converges to $s_0$.
+ Then 
+
+\end{proof}
 \subsection{Classification of 2-manifolds with boundary}
 \label{sub:classification_of_2_manifolds_with_boundary}
 
@@ -2167,7 +2198,7 @@ Some more examples related to topological spaces.
     \end{itemize} 
     Units are constant paths, i.e. $c:[0,1]\to X$ such that $\forall t\in[0,1], c(t)=x$. Additionally, this is indeed a groupoid since inverses are given by the same paths run in the opposite direction. We have a functor 
     $$\pi_{\leq 1}:\Top\to \Gpd.$$
-    In this context, the Seifert–Van Kampen theorem can be formulated as follows: $\pi_{\leq1}$
+    In this language, the Seifert–Van Kampen theorem can be formulated as follows: $\pi_{\leq1}$
      preserves pushouts\footnote{Pushouts are certain colimits, that is objects in a category
      	 defined, up to
      	 isomorphism, by a certain universal property, see \ref{WhatSpectra} for a fast paced 
@@ -3235,7 +3266,7 @@ We have previously seen (\ref{Representations of Groups}) that a linear represen
     \end{equation}
 \end{defn}
 
-\subsection{Homotopy coherent monoid objects: \texorpdfstring{$\mathbb{E}_n$}{En}-Algebras \extra} 
+\subsection{Homotopy coherent monoid objects: \texorpdfstring{$\mathbb{E}_n$}{En}-algebras \extra} 
 \label{EAlg}
 This outlook is based on \cite{HiroLee2022}, \cite{Mazel-Gee2024} and \cite{CalleInfiniteLoops}. It has two motivations:
 \begin{enumerate}
@@ -3732,7 +3763,8 @@ One way in which it is a homology theory for manifolds is that every homology th
 
  \begin{defn}[Factorization algebra]\label{FactorAlgebra}
  Recall that a partially ordered set can be seen as a category where the arrows are given by the
-  $\leq$ relation. The open subsets of a space generally and in particular of a manifold form a poset.
+  $\leq$ relation. The open subsets of a space generally and in particular of a manifold form a
+   poset with respect to the inclusion relation.
    Given an $\E_n$-algebra $A\in\Alg_{\E_{n}}(\cat)$, a manifold $M$ and an open set
     $U\in\operatorname{Opens(M)}$ we can define what 
    a factorization algebra is, it is a functor
@@ -3754,7 +3786,9 @@ One way in which it is a homology theory for manifolds is that every homology th
  as a symmetric monoidal functor 
  $$ \int_{(-)}A:\operatorname{Bord}^{\fr}_{n}\to \operatorname{Fact}_n\subset \cat$$
  where $\Bord_n$ is the extended category of bordisms (see \ref{RemarkExtendedTFTs}) and thus 
- a TFT! Check out \cite{Scheimbauer:2014zty} for a detailed treatment.
+ a TFT! 
+ 
+ Check out \cite{Scheimbauer:2014zty} for a detailed treatment.
 \subsection{Interlude on bicategories \extra} % (fold)
 \label{sub:outlook_interlude_on_bicategories}
 %I hope the order here is not confusing, in the sense that why not define before a bicategory and subsequently the delooping, however this sequence where one first pictures the delooping and then they picture a bicategory made sense in my mind. Feel free to change /Andrea
@@ -3860,7 +3894,10 @@ of TFTs because a once-extended TFT (see \ref{RemarkExtendedTFTs}) is a symmetri
   	 In this chapter we provide definitions for monoidal bicategories and symmetric
   	 monoidal ones that rely on the $\E_n$-algebras we previously talked about, see \ref{EAlg}.
   	 
-  	 In order to achieve this we first need to talk about the tricategory of bicategories Bicat.
+  	 In order to achieve this we first need to talk about the tricategory of bicategories Bicat. 
+  	 To talk about Bicat, we first need to talk about its 1-, 2- and 3-morphisms, so we start
+  	 with that.
+  	 
 \begin{defn}[Weak 2-functor]\label{Weak2Fun}
 A weak 2-functor, aka pseudofunctor, is the right notion of functor between bicategories.
 
@@ -6952,9 +6989,9 @@ An abelian category is semisimple if it only has semisimple objects.
  \end{itemize} 
  From the point of view of mathematics one might ask if we classify TFTs as we did for dimension 1 and 2 for any dimension $n$. From the point of view of physics one might ask if a TFT describing a certain physical system can be determined by the behavior of the system around a point, i.e. if it is fully local. The answer to these questions is yes and is called the cobordism hypothesis.
 
-\begin{rem}\label{RemarkOnCobHypo}
+\begin{rem}[What is the cobordism hypothesis?]\label{RemarkOnCobHypo}
  The cobordism hypothesis informally states that any TFT, at any dimension, can be classified/constructed just by observing where the TFT in question sends the point\footnote{We will soon see a proof of the 1-dimensional case \ref{ClassificationOf1dTFTs}.}, i.e. a bit more rigorously
-	\begin{thm}[Cobordism Hypothesis]
+	\begin{thm}[Cobordism hypothesis]
 		Let $\cat$ be a monoidal $(\infty,n)$-category with duals\footnote{We later give a definition of $(\infty,n)$-category with duals, see \ref{HigherMonCatDuals}.}. Then the evaluation functor on a point, i.e. the functor sending $\Zf\mapsto \Zf(\ast)$, induces an equivalence 
 		$$ev_{\ast}:\Fun^{\otimes}(\Bord_{n},\cat)\to (\cat^{\operatorname{fd}})^{\cong}$$
 		where $\cat^{\operatorname{fd}}$ is the full\footnote{i.e. there are all morphisms between the objects of the subcategory, i.e. no morphism from the category is forgotten.} monoidal $(\infty,n)$-category with duals\footnote{We gave a definition of $(\infty,n)$-category with duals, see \ref{HigherMonCatDuals}.}, i.e. we
@@ -6966,7 +7003,7 @@ An abelian category is semisimple if it only has semisimple objects.
 	  Francis relies has a different strategy to the first sketch by Lurie and relies on an unproved conjecture regarding
 	   factorization homology, see \ref{FactorHomology} for a definition of factorization homology.
 	\end{rem}
-\begin{rem}[Remark on Extended TFTs]\label{RemarkExtendedTFTs}
+\begin{rem}[What are extended TFTs?]\label{RemarkExtendedTFTs}
 	After defining the cobordism hypothesis in this manner, a natural question is: how can TFTs of any dimension greater than 1 be classified by evaluating them at a point? If we stick to our definition, there are no points in any category of bordisms of dimension greater than 1. Fortunately, one can \emph{extend} the bordism category, and consequently TFTs, and also talk about lower dimensions. Take as an example $\Bord^{or}_{2,1}$. As we defined the bordism category, in this case the lowest dimension is 1, the objects are lines, not points. Nevertheless, one could treat the category of 2 dimensional bordisms as a 2-category, more specifically as a bicategory (see \ref{Bicategory})\footnote{Since 1-morphisms do not compose strictly, but up to an appropriate notion of isomorphism.}, $\Bord_{2,1,0}$ where objects are disjoint unions of points, 1-morphisms are oriented cobordisms between points and 2-morphisms are cobordisms between the 1-morphisms; and then define 2d-TFTs as an
 	 appropriate notion of symmetric monoidal functor between symmetric monoidal bicategories\footnote{A detailed
 		 treatment of the 2d case is found in \cite{schommerpries2014classification}.} (see \ref{SymmMonBicategory} for a definition).  
@@ -6999,7 +7036,26 @@ $$	ev_{S^1}:\Fun^\otimes (\Bord_{3,2,1}^{\fr}, \operatorname{ModTensor}) \xright
 hence $\Zf(S^1)=\cat$ where $\cat$ is a modular tensor category, i.e. a special ribbon category which can be seen as a categorified commutative Frobenius algebra.
 	\end{enumerate}
 	
-	However, as one can infer from the aforementioned cobordism hypothesis, one can also extended downward to dimension $0$ any $n$-dimensional TFT and it was first proposed by Daniel Freed in \cite{Freed_1994}. To be precise, one nowadays does not want to restrict themselves just to $n$-categories but wants to work with$(\infty,n)$-categories, i.e. categories where morphisms of dimension strictly greater than $n$ are invertible, because of technical reasons\footnote{For example, the argument sketched in \cite{lurie2009classification} is crucially a proof by induction on $n$ and in order to understand the $n+1$-morphisms of $\Bord_{n+1}$ one must understand such $n+1$-morphisms in $\Bord_{n}$ which are absent if we treat $\Bord_{n}$ as an $n$-category and not $(\infty,n)$-category. In short, that would just not be possible without such $\infty$-categorical machinery.}. Sketchily, the $(\infty,n)$ category of bordisms will have points as objects, bordisms between points as 1-morphisms, bordisms between bordisms between points as 2-morphisms,..., bordisms between bordisms between bordisms...\footnote{There is exactly $n-1$ times 'between bordisms' after the first instance of 'bordisms', $n$-morphisms are morphisms between $(n-1)$-morphisms.} as $n$-morphisms, diffeomorphisms between $n$-dimensional bordisms as $n+1$-morphisms, isotopies between diffeomorphisms as $n+2$-morphisms, isotopies between isotopies between diffeomorphsims as $n+3$-morphisms, ... and so on infinitely many times. This is an example of a $(\infty,n)$-category, since isotopies of diffeomorphisms and diffeomorphisms are in fact invertible, whereas oriented bordisms not necessarily. One can find more on this higher category of bordisms in \cite{Calaque_2019}. 
+	However, as one can infer from the aforementioned cobordism hypothesis, one can also extend downward to dimension $0$ any $n$-dimensional TFT and it was first proposed by Daniel Freed in \cite{Freed_1994}. To be precise, one nowadays does not want to only extend 
+	downwards but also upwards, i.e. to not work wirh $n$-categories, i.e. $(n,n)$-categories,
+	 but wants to work with$(\infty,n)$-categories, i.e. categories where morphisms of dimension
+	  strictly greater than $n$ are invertible, because of technical reasons\footnote{For example, the
+	  	 argument sketched in \cite{lurie2009classification} is crucially a proof by induction on $n$
+	  	  and in order to understand the $n+1$-morphisms of $\Bord_{n+1}$ one must understand
+	  	   such $n+1$-morphisms in $\Bord_{n}$ which are absent if we treat $\Bord_{n}$ as an
+	  	    $n$-category and not $(\infty,n)$-category. In short, that would just not be possible
+	  	     without such $\infty$-categorical machinery.}. 
+	 Sketchily, the $(\infty,n)$ category of bordisms will have points as objects, bordisms between
+	  points as 1-morphisms, bordisms between bordisms between points as 2-morphisms,...,
+	   bordisms between bordisms between bordisms...\footnote{There is exactly $n-1$ times
+	   	 'between bordisms' after the first instance of 'bordisms', $n$-morphisms are morphisms
+	   	  between $(n-1)$-morphisms.} as $n$-morphisms, diffeomorphisms between
+	   	   $n$-dimensional bordisms as $n+1$-morphisms, isotopies between diffeomorphisms as
+	   	    $n+2$-morphisms, isotopies between isotopies between diffeomorphsims as
+	   	     $n+3$-morphisms, ... and so on infinitely many times.
+	   	      This is an example of a $(\infty,n)$-category, since isotopies of diffeomorphisms and
+	   	       diffeomorphisms are in fact invertible, whereas oriented bordisms not necessarily.
+	   	        One can find more on this higher category of bordisms in \cite{Calaque_2019}. 
 
 \end{rem}
 
