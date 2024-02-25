@@ -899,7 +899,7 @@ Given $M\xrightarrow{\cong}N$, take the gluing $(M\times I)\underset{M\times\{1\
 \noindent Now we prove the transitivity of the relation 'being cobordant'. We do that by showing that given $X$ from $Y_0$ to $Y_1$ and $X'$ from $Y_1$ to $Y_2$, we can glue them along the boundary in common, $Y_1$, to obtain a bordism from $Y_0$ to $Y_2$. %add diagram here (?) later works as well
 In order to achieve this, we need to introduce the following notion:
 \begin{defn}[Collar of a boundary]
-    Let $X$ be a manifold with boundary. A collar of the boundary is an open set  $U\subseteq X$ containing $\de X$ together with a diffeomorphism  $(-\epsilon,0]\times\partial M \to U$ for some $\epsilon>0$.
+    Let $X$ be a manifold with boundary. A collar of the boundary is an open set  $U\subseteq X$ containing $\de X$ together with a diffeomorphism  $(-\epsilon,0]\times\partial X \to U$ for some $\epsilon>0$.
 \end{defn}
 \begin{thm}
 	The boundary of a manifold with boundary always has a collar.
@@ -1134,7 +1134,7 @@ Any connected 1-manifold is diffeomorphic to:
 \subsection{Classification of 2-manifolds with boundary}
 \label{sub:classification_of_2_manifolds_with_boundary}
 
-The aim of this chapter is to prove the aforementioned classification of compact 2-dimensional manifolds with the use of Morse theory (see \ref{Classification of 2 manifolds}). We remind the reader: let $M$ be a compact 2-manifold with genus $g$, then \begin{itemize}
+The aim of this chapter is to prove the aforementioned classification of compact 2-dimensional manifolds with the use of Morse theory (see \ref{Classification of 2 manifolds}). We remind the reader: let $M$ be a compact (and connected) 2-manifold with genus $g$, then \begin{itemize}
     \item if $M$ is oriented, $M$ is classified by its genus $g$. In particular $M$ it is diffeomorphic to $\Sigma_g:=T\,\# \dots\#\,T$, the connected sum of $g$ tori, and where we define $\Sigma_0:=S^2$.
     \item Instead if $M$ is non orientable\footnote{see \url{https://en.wikipedia.org/wiki/Genus_(mathematics)} for what is meant by genus of a non orientable surface}, $M$ is diffeomorphic to $g$ copies of the real projective plane, i.e.  $\R P^2\,\# \dots \#\,\R P^2$.
 \end{itemize} 
@@ -5602,7 +5602,7 @@ and $\Zf(S^1, or_-) \mapsto A^\vee$. This is enough because objects in $\Bord_{2
     Let $X\in \SmoothMfld$. $\Diff(X)$ denotes the automorphism group of $X$, i.e. the group of diffeomorphisms $X\xrightarrow{\phi}X$.
 \end{defn}
 
-Note that the diffeomorphism group can be considered a topological group (see \ref{TopologicalGroup}) if we use an apt topology, for example one can consider Diff$(X)$ a subspace of $(C^\infty(X,X),Whitney)$, where $Whitney$ denotes the \href{https://en.wikipedia.org/wiki/Whitney_topologies}{Whitney $C^\infty$ topology}, and endow it with the subspace topology.
+Note that the diffeomorphism group can be considered a topological group (see \ref{TopologicalGroup}) if we use an appropriate topology, for example one can consider Diff$(X)$ a subspace of $(C^\infty(X,X),Whitney)$, where $Whitney$ denotes the \href{https://en.wikipedia.org/wiki/Whitney_topologies}{Whitney $C^\infty$ topology}, and endow it with the subspace topology.
 \begin{rem}
     An isotopy (see \ref{Isotopy} for the definition) is equivalently a path in $\Diff(X)$.
 \end{rem}
