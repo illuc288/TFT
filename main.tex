@@ -2330,7 +2330,7 @@ From the definition above we can see that equivalence of categories is a \textit
 \begin{notat}
     We denote that two categories $\cat,\dat$ are equivalent by $\cat\simeq\dat$. Whereas, we write down $\cat\cong\dat$ if they are naturally isomorphic, i.e. there is a natural isomorphism between them. 
 \end{notat}
-\begin{thm}[Fundamental Theorem of Category Theory\footnote{We call it fundamental theorem of category theory following \cite{RezkQuasiCat} to emphasize how important it is. It is central to category theory because it is often very interesting to prove that two categories are equivalent and virtually always one uses the "fully faithful and essentially surjective criterion". This is however an unorthodox denomination because usually such theorem just lacks a name.}]
+\begin{thm}[Fundamental Theorem of Category Theory\footnote{We call it fundamental theorem of category theory following \cite{RezkQuasiCat} to emphasize how important it is. It is central to category theory because it is often very interesting to prove that two categories are equivalent and virtually always one uses the "fully faithful and essentially surjective criterion". This is however an unorthodox denomination because usually such theorem just lacks a name.}]\label{fundamentalequivalence}
     Two categories $\cat$ and $\dat$ are equivalent if and only if it there is a fully faithful and essentially surjective functor $F:\cat\to\dat$.
 \end{thm}
 \begin{proof}
@@ -4671,7 +4671,11 @@ This means that any 1-dimensional bordism (i.e. including disconnected ones)
     By $(\cat^{{\operatorname{fd}}})^{\cong}$ we denote the restriction of a symmetric monoidal category on its dualizable objects and its isomorphisms, said briefly: a restriction on the underlying Picard groupoid because in any symmetric monoidal groupoid an object is dualizable if and only if it is invertible (see \ref{PicardDualizable}).
 \end{rem}
 \begin{thm}\label{thm:classif_of_1dtft}
-    Let $\cat$ be a symmetric monoidal category. Then the map\footnote{There is unfortunately a notational clash between what we called the evaluation map for dualizable objects, denoted by $ev$, and what we also call in this case evaluation map, denoted by $\mathcal{E} V$. In the latter case, we are referring to a similar convention we use for example in topology when we call a map of this genre $Map(\ast,X)\to X$ an evaluation map. The intuition is that we feed an element of the domain into a map, a functor in our case, and see what happens, "evaluate it".} 
+    Let $\cat$ be a symmetric monoidal category. Then the map\footnote{There is unfortunately a notational clash between
+    	 what we called the evaluation map for dualizable objects, denoted by $ev$, and what we also call in this case
+    	 evaluation map, denoted by $\mathcal{E} V$. In the latter case, we are referring to a similar convention we use for
+    	  example in topology when we call a map of this genre $Map(\ast,X)\to X$ an evaluation map. The intuition is that we
+    	   feed an element of the domain into a map, a functor in our case, and see what happens, "evaluate it".} 
     \begin{align}
     	\TFT_{1,0}^{or}=\Fun^{\otimes}(\Bord_{1,0}^{or},\cat)&\xrightarrow{\mathcal{E} v_{\bullet_{+}}}(\cat^{\operatorname{fd}})^{\cong} \\
     	\Zf&\mapsto \Zf(\bullet_+)
@@ -4694,14 +4698,141 @@ This means that any 1-dimensional bordism (i.e. including disconnected ones)
     \item $\TFT_{1,0}^{\orient}$ is a groupoid, and functors preserve isomorphisms
     \item Every object in $\Bord_{1,0}^{\orient}$ is dualizable and, because of functoriality, the image of a dualizable object remains a dualizable object.
 \end{enumerate}
+This categorical equivalence means that 
+\begin{thm}[Alternative formulation of the classification of 1TFTs]
+	Let $X\in\cat$ be a dualizable object. Specifying $\Zf(\bullet_{+})=X$ determines a 1d-TFT.
+\end{thm}
+Firstly, we prove this alternative formulation, later we show that one can infer that the evaluation on a point is an
+ equivalence.
 %Note that there's nothing special about dimension 1 here. We then have such an evaluation functor into $(\cat^{\operatorname{fd}})^{\cong}$ in every dimension, i.e. from all $\TFT_{1,0}^{or}$. Dimension 1 is then special because this map is actually an equivalence. %%% Can't understand what is meant here /Andrea
+Note some important characteristics of symmetric monoidal functors in general.
+\begin{lem}
+Given a symmetric monoidal
+functor $F:\cat\to\dat$ it holds that
+\begin{enumerate}
+	\item identity morphisms are sent to identity morphisms because of functoriality, for any $X\in\cat$ holds that 
+	$F(id_X)=id_{F(X)}$
+	\item dual objects are sent to dual objects because the functor preserves the tensor product and composition
+	of morphisms; take for instance a look at the image of one of the triangle identities
+	% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXG1hdGhiYnsxfV9cXGRhdFxcb3RpbWVzIEYoWClcXGNvbmcgRihYKSJdLFsxLDEsIkYoWClcXG90aW1lcyBGKFkpXFxvdGltZXMgRihYKSJdLFsyLDAsIkYoWClcXG90aW1lc1xcbWF0aGJiezF9X1xcZGF0XFxjb25nIEYoWCkiXSxbMCwxLCJGKGNvZXZfWClcXG90aW1lcyBpZF97RihYKX0iLDJdLFsxLDIsImlkX0YoWClcXG90aW1lcyBGKGV2X1gpIiwyXSxbMCwyLCJpZF97RihYKX0iXV0=
+	\[\begin{tikzcd}[cramped]
+		{\mathbb{1}_\dat\otimes F(X)\cong F(X)} && {F(X)\otimes\mathbb{1}_\dat\cong F(X)} \\
+		& {F(X)\otimes F(Y)\otimes F(X)}
+		\arrow["{F(coev_X)\otimes id_{F(X)}}"', from=1-1, to=2-2]
+		\arrow["{id_{F(X)}\otimes F(ev_X)}"', from=2-2, to=1-3]
+		\arrow["{id_{F(X)}}", from=1-1, to=1-3]
+	\end{tikzcd}\]
+	this must commute because of the functoriality of $F$: $F(id_X)=F((coev_X\otimes id_X)\circ(id_X\otimes ev_X))$ and
+	thus $id_F(X)=F(coev_X\otimes id_X)\circ(id_{F(X)}\otimes F(ev_X))$; thereby the co/evaluation
+	maps in $\cat$, $ev_X$ and $coev_X$, are sent to co/evaluation maps in $\dat$, $ev_{F(X)}$ and $coev_{F(X)}$
+	\item the components of the braiding of $\cat$ are sent to components of the braiding in $\dat$ since the following
+	 diagram 
+	composed of isomorphisms commutes for any $X,Y\in \cat$
+	 \[\begin{tikzcd}
+		{F(X)\otimes F(Y)} & {F(Y)\otimes F(X)} \\
+		{F(X\otimes Y)} & {F(Y\otimes X)}
+		\arrow["{\psi_{X,Y}}"', from=1-1, to=2-1]
+		\arrow["{\beta_{F(X),F(Y)}}", from=1-1, to=1-2]
+		\arrow["{\psi_{Y,X}}", from=1-2, to=2-2]
+		\arrow["{F(\beta_{X,Y})}"', from=2-1, to=2-2]
+	\end{tikzcd}\]
+\end{enumerate}
+
+\end{lem} 
+Note that also the following lemma is true
+\begin{lem}
+	All 1-dimensional bordisms are generated by the generators: 
+	\[\includegraphics[width=7cm]{images/Lecture 12/generators.png} \]
+	
+	and the relation 
+	
+	\[\includegraphics[width=3cm]{images/Lecture 12/relations.png} \]	
+\end{lem}
 \begin{proof}
-	The following proof is the closest to what we did in class and is from \cite[Theorem 16.10]{FreedBordism}.
+	We need to show that there is a way of gluing our generators and the braiding relation to get the other 4 manifolds of \ref{class1dBord}.
+	
+	\begin{enumerate}
+		\item 	\includegraphics[width=3cm]{images/Lecture 12/circle1.png} 
+		\item \includegraphics[width=3cm]{images/Lecture 12/coevaluationbraiding.png} 
+		\item  \includegraphics[width=3cm]{images/Lecture 12/evaluationbraiding.png} 
+		\item \includegraphics[width=3cm]{images/Lecture 12/circle2.png} 
+	\end{enumerate}
+\end{proof}
+\begin{proof}[Proof of the classification of 1-TFTs]
+The moral of the latter lemma is that identity morphisms of $\bullet_{+}$ and $\bullet_{-}$, coevaluation and evaluation
+	maps
+	$coev_{\bullet_{+}}$ and $ev_{\bullet_{+}}$,
+	and the braiding are enough to generate all the 1-dimensional bordisms.
+	Thus, to determine what a TFT does, 
+	we need to only determine what it does on these morphisms, i.e. 1-dimensional bordisms. In the previous lemma 
+	on some properties of symmetric monoidal functors, we proved that identity morphisms are sent
+	to identity morphisms,
+	the co/evaluation maps are sent to co/evaluation maps and components of the braiding are sent to
+	components of the braiding. Moreover, in that lemma we also proved that dual objects are sent to dual objects and
+	$\bullet_{+}$ is a dual object, so for an arbitrary symmetric monoidal category $\cat$, a 1-TFT sends it to a dual object.
+	From a dual object $X$ one can infer the co/evaluation maps and its dual. The braiding of a symmetric monoidal
+	 category is already given. 
+	So we can conclude that a one dimensional TFT is fully determined by where $\bullet_{+}$ is sent to.
+\end{proof}
+
+This proof mainly relies on abstract nonsense. So we now provide an alternative proof.
+ 
+\begin{proof}\label{GeneratorsClass1TFT}
+Also this proof relies on the fact that since the functor
+	is \emph{symmetric} monoidal one can just check what the TFT does only for 5 of all the possible 
+	connected 1-dimensional bordisms (\ref{class1dBord}), not considering what happens for the other 3 ones with the
+	reversed orientations without loss of generality because $\Bord_{1,0}$ is symmetric monoidal.
+	
+	First we need to determine where $\bullet_+,\bullet_-\in\Bord_{1,0}$ are sent. Since they are duals of one another,
+	they are dualizable objects and thus they are sent to $X,X^{\vee}\in\cat^{\operatorname{fd}}$,
+	e.g. finite dimensional vector spaces in the case of $\Vect_{k}$. An arbitrary objects of $M\in\Bord_{1,0}$
+	is a finite disjoint union of $\bullet_+,\bullet_-$, i.e. 
+	$$M=(\amalg_{I}\bullet_+)\amalg(\amalg_{J}\bullet_-)$$
+	where $I,J\subseteq\N$. Thanks to the symmetric monoidal functoriality of $\Zf$ we have that 
+	$$\Zf(M)=(\bigotimes_{I}X)\otimes(\bigotimes_{J}X^\vee)$$
+	Now we need to understand where the 5 possible 1-bordisms are sent.
+	\begin{enumerate}
+		\item $\Zf(\includegraphics[scale=0.18]{images/Classification 1TFT/identityplus.png})=id_{X}$
+		\item$\Zf(\includegraphics[scale=0.18]{images/Classification 1TFT/identityminus.png})=id_{X^\vee}$
+		\item $\Zf(\includegraphics[scale=0.17]{images/Classification 1TFT/evaluation.png})=ev_{X}$, hence $X\amalg X^\vee\xrightarrow{ev_{X}} \unit_{\cat}$ and more precisely for $v\in X\in\Vect_{k}$: $ev_{X}:(X,\lambda)\mapsto \lambda(v)$
+		\item $\Zf(\includegraphics[scale=0.15]{images/Classification 1TFT/coevaluation.png})=coev_{X}$, hence $\unit_{\cat}\xrightarrow{coev_{X}}X\otimes X^\vee$ and more precisely for $\lambda\in k\in\Vect_{k}$, via the canonical isomorphism $X\otimes X^\vee\cong\operatorname{End}(X)$, $coev_X$ corresponds to taking the trace
+		\item $\Zf(\includegraphics[scale=0.15]{images/Classification 1TFT/circle.png})=coev_X \circ ev_{X}$, hence $\unit_{\cat}\xrightarrow{coev_X \circ ev_{X}}\unit_{\cat}$, and, following the cases for $\Vect_{k}$ treated in the previous two points, to taking the trace of the identity matrix, i.e. the dimension of $X$
+	\end{enumerate}
+	
+	The moral of the story is that a TFT is uniquely
+	determined, up to isomorphism, once one knows $X\in\cat^{\operatorname{fd}}$ since then one knows 
+	\begin{itemize}
+		\item what $X^\vee$ is, what finite sequences of tensored $X$ and $X^\vee$ are, which will
+		be sent to finite
+		disjoint unions of $\bullet_{+}$ and $\bullet_-$ (aka all the objects of $\Bord_{1,0}$);
+		\item what $id_X$ and $id_{X^\vee}$ are
+		\item what $ev_X$ and $coev_X$ are and hence also $coev_X\circ ev_X$
+	\end{itemize}
+	
+\end{proof}
+\begin{rem}
+	This proof considers 5 possible
+	bordisms and not all 8, thereby excluding some possible orientations. However, Lurie's
+	argument is without loss of
+	generality because it implicitly relies 
+	on the \emph{symmetric} monoidality of $\Bord_{1,0}$ since, for instance, one can get
+	\includegraphics[width=0.7cm]{images/Lecture 12/coevminusplus.png}  by composing
+	\includegraphics[width=0.7cm]{images/Lecture 12/coevplusminus.png} with a
+	braiding. 
+\end{rem}
+
+We stated that these two proofs by generators and relations 
+ prove the equivalence of categories in the classification of 1-TFTs. However, it might seem mysterious why this is the
+  case. We now prove that the evaluation on a point is actually an equivalence of categories, a fully faithful essentially
+  surjective functor by the fundamental theorem of category theory \ref{fundamentalequivalence}.
+
+\begin{proof}
+This is from \cite[Theorem 16.10]{FreedBordism}.
 	
     We need to prove three things to demonstrate that $\mathcal{E}V_{\bullet_{+}}$ is an equivalence: that it is full, faithful and essentially surjective:
     \begin{enumerate}
         \item Trivially, note that since $\mathcal{E}V_{\bullet_{+}}$ lands in $(\cat^{\operatorname{fd}})^{\cong}$
-        then it must be essentially surjective since any two objects are isomorphic.
+        for any $A\in\cat^{\operatorname{fd}})^{\cong}$ one can define a TFT such that $\Zf(\bullet_{+})=A$
         \item It is faithful: let $\Zf,\Zf'\in \TFT_{1,0}^{or}$ and $\alpha,\beta:\Zf\Rightarrow\Zf'$ be natural
          transformations between them and hence isomorphisms (see \ref{TFTsareGRPDS}). Suppose that
           $\mathcal{E}V_{\bullet_{+}}(\alpha)=\mathcal{E}V(\beta)$, i.e. $\alpha^{1}_{\bullet_+}=\alpha^{2}_{\bullet_+}$ since $\mathcal{E}V_{\bullet_{+}}$ evaluates on the point.
@@ -4744,9 +4875,6 @@ This means that any 1-dimensional bordism (i.e. including disconnected ones)
          	\arrow["{\Zf(coev_X)}", from=2-2, to=1-1]
          	\arrow["{\Zf'(coev_X)}"', from=2-2, to=1-3]
          \end{tikzcd}\]
-         %aren't we just checking if the coevaluation makes sense now? But before Freed said we want to check if they are isomorphisms arghhh! 
-         
-          %very confused by Freed's proof, I just shut off my brain and copied it, I could not else, please check A/andrea  
           The commutativity of this diagram follows from the fact that the following diagram commutes
         % https://q.uiver.app/#q=WzAsNixbMCwwLCJcXHVuaXRfXFxjYXQiXSxbMCwyLCJcXFpmJyhcXGJ1bGxldF8tKVxcb3RpbWVzXFxaZicoXFxidWxsZXRfKykiXSxbMCw0LCJcXFpmKFxcYnVsbGV0Xy0pXFxvdGltZXNcXFpmKFxcYnVsbGV0XyspXFxvdGltZXMgXFxaZicoXFxidWxsZXRfLSlcXG90aW1lc1xcWmYnKFxcYnVsbGV0XyspIl0sWzIsMCwiXFxaZihcXGJ1bGxldF8tKVxcb3RpbWVzXFxaZihcXGJ1bGxldF8rKSJdLFsyLDIsIlxcWmYoXFxidWxsZXRfLSlcXG90aW1lc1xcWmYnKFxcYnVsbGV0XyspIl0sWzIsNCwiXFxaZihcXGJ1bGxldF8tKVxcb3RpbWVzXFxaZicoXFxidWxsZXRfKylcXG90aW1lcyBcXFpmJyhcXGJ1bGxldF8tKVxcb3RpbWVzXFxaZicoXFxidWxsZXRfKykiXSxbMCwxLCJcXFpmJyhjb2V2X1gpIiwyXSxbMSwyLCJcXFpmKGNvZXZfeClcXG90aW1lcyBpZF97XFxaZicoXFxidWxsZXRfLSl9XFxvdGltZXMgaWRfe1xcWmYnKFxcYnVsbGV0XyspfSIsMV0sWzAsMywiXFxaZihjb2V2X1gpIl0sWzMsMiwiaWRfe1xcWmYoXFxidWxsZXRfLSl9XFxvdGltZXMgaWRfe1xcWmYoXFxidWxsZXRfKyl9XFxvdGltZXMgXFxaZihjb2V2X3gpIiwxXSxbMyw0LCJpZF97XFxaZihcXGJ1bGxldF97LX0pfVxcb3RpbWVzIGYiXSxbMiw1LCJpZF97XFxaZihcXGJ1bGxldF8tKX1cXG90aW1lcyBmXFxvdGltZXMgaWRfe1xcWmYnKFxcYnVsbGV0Xy0pfVxcb3RpbWVzIGlkX3tcXFpmJyhcXGJ1bGxldF8rKX0iLDJdLFs0LDUsImlkX3tcXFpmKFxcYnVsbGV0Xy0pfVxcb3RpbWVzXFxaZicoY29ldl94KVxcb3RpbWVzIGlkX3tcXFpmKFxcYnVsbGV0XyspfSIsMV1d
         \[\begin{tikzcd}[cramped]
@@ -4768,17 +4896,8 @@ This means that any 1-dimensional bordism (i.e. including disconnected ones)
     the circle is just a composition of evaluation and a coevaluation with a braiding in between. Note that
     the commutativity of the circle means that $\Zf(S^1)=\Zf'(S^1)$.
 \end{proof}
-\begin{rem}
-	The author of this part of the notes was very confused for a long time 
-	by the proof just provided. They cannot understand 
-	Freed's line of argument when it comes to the proof of the fullness of $\mathcal{E}V_{\bullet_{+}}$, probably 
-	because of	notational choices and some typos. Hence, we now give 2 alternative proofs, in order to make it 
-	as clear as possible.
-\end{rem}
-%modified a bit from the lecture, but I am confident it makes sense /andrea
-\begin{thm}[Alternative formulation of the classification of 1TFTs]
-	Let $X\in\cat$ be a dualizable object. Specifying $\Zf(\bullet_{+})=X$ determines a 1d-TFT.
-\end{thm}
+
+
 %\begin{proof}[Proof of the classification of 1-TFTs 2.0]
 	
 %	Set $\Zf( \bullet_{+})=X$ where $X\in\cat^{\operatorname{fd}}$ and $\Zf(\bullet_{-})=Y$ 
@@ -4799,85 +4918,6 @@ This means that any 1-dimensional bordism (i.e. including disconnected ones)
 %	of the manifolds in \ref{class1dBord}. Since $\Zf$ is symmetric monoidal, it is sufficient to determine
 %\end{proof}
 
-\begin{proof}[Proof of the classification of 1-TFTs 2.0]\label{GeneratorsClass1TFT}
-An alternative proof relies proves the equivalence in the other direction and relies on the fact that since the functor
- is \emph{symmetric} monoidal one can just check what the TFT does only for 5 of all the possible 
- connected 1-dimensional bordisms (\ref{class1dBord}), not considering what happens for the other 3 ones with the
-  reversed orientations without loss of generality because $\Bord_{1,0}$ is symmetric monoidal.
-   We took it from \cite[Example 1.1.9]{lurie2009classification}
-  
-  First we need to determine where $\bullet_+,\bullet_-\in\Bord_{1,0}$ are sent. Since they are duals of one another,
-  they are dualizable objects and thus they are sent to $X,X^{\vee}\in\cat^{\operatorname{fd}}$,
-   e.g. finite dimensional vector spaces in the case of $\Vect_{k}$. An arbitrary objects of $M\in\Bord_{1,0}$
-   is a finite disjoint union of $\bullet_+,\bullet_-$, i.e. 
-   $$M=(\amalg_{I}\bullet_+)\amalg(\amalg_{J}\bullet_-)$$
-    where $I,J\subseteq\N$. Thanks to the symmetric monoidal functoriality of $\Zf$ we have that 
-    $$\Zf(M)=(\bigotimes_{I}X)\otimes(\bigotimes_{J}X^\vee)$$
-     Now we need to understand where the 5 possible 1-bordisms are sent.
-  \begin{enumerate}
-  	\item $\Zf(\includegraphics[scale=0.18]{images/Classification 1TFT/identityplus.png})=id_{X}$
-  	\item$\Zf(\includegraphics[scale=0.18]{images/Classification 1TFT/identityminus.png})=id_{X^\vee}$
-  	\item $\Zf(\includegraphics[scale=0.17]{images/Classification 1TFT/evaluation.png})=ev_{X}$, hence $X\amalg X^\vee\xrightarrow{ev_{X}} \unit_{\cat}$ and more precisely for $v\in X\in\Vect_{k}$: $ev_{X}:(X,\lambda)\mapsto \lambda(v)$
-  	\item $\Zf(\includegraphics[scale=0.15]{images/Classification 1TFT/coevaluation.png})=coev_{X}$, hence $\unit_{\cat}\xrightarrow{coev_{X}}X\otimes X^\vee$ and more precisely for $\lambda\in k\in\Vect_{k}$, via the canonical isomorphism $X\otimes X^\vee\cong\operatorname{End}(X)$, $coev_X$ corresponds to taking the trace
-  	\item $\Zf(\includegraphics[scale=0.15]{images/Classification 1TFT/circle.png})=coev_X \circ ev_{X}$, hence $\unit_{\cat}\xrightarrow{coev_X \circ ev_{X}}\unit_{\cat}$, and, following the cases for $\Vect_{k}$ treated in the previous two points, to taking the trace of the identity matrix, i.e. the dimension of $X$
-  \end{enumerate}
-  
-  The moral of the story is that a TFT is uniquely
-  determined, up to isomorphism, once one knows $X\in\cat^{\operatorname{fd}}$ since then one knows 
-  \begin{itemize}
-  	\item what $X^\vee$ is, what finite sequences of tensored $X$ and $X^\vee$ are, which will
-  	 be sent to finite
-  	 disjoint unions of $\bullet_{+}$ and $\bullet_-$ (aka all the objects of $\Bord_{1,0}$);
-  	 \item what $id_X$ and $id_{X^\vee}$ are
-  	 \item what $ev_X$ and $coev_X$ are and hence also $coev_X\circ ev_X$
-  \end{itemize}
-  
-\end{proof}
-\begin{rem}
-Lurie considers 5 possible
-bordisms and not all 8, thereby excluding some possible orientations. However, Lurie's
- argument is without loss of
-generality because it implicitly relies 
-on the \emph{symmetric} monoidality of $\Bord_{1,0}$ since, for instance, one can get
- \includegraphics[width=0.7cm]{images/Lecture 12/coevminusplus.png}  by composing
-  \includegraphics[width=0.7cm]{images/Lecture 12/coevplusminus.png} with a
-braiding. 
-
-Anyways, we hold that there is a clearer way to demonstrate this result in a similar vein, which
- relies on the following
- result.
-\end{rem}
-\begin{lem}
-All 1-dimensional bordisms are generated by the generators: 
-\[\includegraphics[width=7cm]{images/Lecture 12/generators.png} \]
-
-and the relation 
-
-\[\includegraphics[width=3cm]{images/Lecture 12/relations.png} \]	
-		\end{lem}
-\begin{proof}
-We need to show that there is a way of gluing our generators and the braiding relation to get the other 4 manifolds of \ref{class1dBord}.
-
-\begin{enumerate}
-\item 	\includegraphics[width=3cm]{images/Lecture 12/circle1.png} 
-\item \includegraphics[width=3cm]{images/Lecture 12/coevaluationbraiding.png} 
-\item  \includegraphics[width=3cm]{images/Lecture 12/evaluationbraiding.png} 
-\item \includegraphics[width=3cm]{images/Lecture 12/circle2.png} 
-\end{enumerate}
-\end{proof}
-
-\begin{proof}[Proof of the classification of 1-TFTs 2.1 ]
- In this proof we rely on the lemma we just proved. We need to show where the objects, the
-  generators and the relation
-  are sent to. Fortunately, we showed already in the proof took from Lurie's paper
-   (\ref{GeneratorsClass1TFT}) where
-   the objects and our generators are sent to. It remains to show where the braiding relation
-    \includegraphics[width=0.54cm]{images/Lecture 12/relations.png} is sent to.
-    Since $\Zf$ is a symmetric monoidal functor, the braiding in $\Bord_{1,0}$ is sent to the
-     braiding in the target
-     category $\cat$.
- \end{proof}
-
 The classification of 1-dimensional topological field theories is the simplest case of an
  important guiding hypothesis
  in the field of TFTs, the cobordism hypothesis, see \ref{RemarkOnCobHypo}. It is the only
@@ -4886,10 +4926,11 @@ The classification of 1-dimensional topological field theories is the simplest c
   simple symmetric 
  monoidal functor we are using.
 
-Recap: $\TFT_{1,0}^{or}(\cat) \xrightarrow{\mathscr Ev_{\bullet+}} (\cat^{\fd})^{\simeq} \hookrightarrow \cat$. The map is the following: $\Zf \mapsto \Zf(\bullet_+)$.
+%Recap: $\TFT_{1,0}^{or}(\cat) \xrightarrow{\mathscr Ev_{\bullet+}} (\cat^{\fd})^{\simeq} \hookrightarrow \cat$. The map is the following: $\Zf \mapsto \Zf(\bullet_+)$.
 
 Now we classified 1 dimensional TFTs, we would now like to do the same for 2 dimensional TFTs.
-We will find out that there is an equivalence between $\TFT_{2,1}^{or}(\cat)$ and commutative Frobenius algebras.
+We will find out that there is an equivalence between $\TFT_{2,1}^{or}(\cat)$ and commutative Frobenius algebra objects
+in $\cat$.
 
 \section{Classification of 2d-TFTs}
 As we have done for the 1-dimensional case, we now try to classify 2-dimensional TFTs. For a more detailed proof see Kock \cite{kock_2003} or the lecture notes from Schweigert \cite{SchwHopfQuantumTFT}. 
@@ -5812,7 +5853,7 @@ In which smoothness is to exclude some pathological situations. For instance the
  \[\includegraphics[width=6.6cm]{images/Lecture 19/pathological.png}\]
  This is pathological because it should be intuitively be equivalent to the unknot and to show this we would need 
  infinitely many Reidemeister moves of type 1 (see \ref{moves}) to deform it to the unknot. 
- However, one the fundamental theorem of knot theory \ref{ReidemeisterTHM}
+ However, the fundamental theorem of knot theory \ref{ReidemeisterTHM}
  manages to prove that two knots are equal if one can be deformed into the other with \emph{finitely} many 
  Reidemeister moves.
 \begin{defn}
