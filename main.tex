@@ -901,7 +901,7 @@ Given $M\xrightarrow{\cong}N$, take the gluing $(M\times I)\underset{M\times\{1\
 \noindent Now we prove the transitivity of the relation 'being cobordant'. We do that by showing that given $X$ from $Y_0$ to $Y_1$ and $X'$ from $Y_1$ to $Y_2$, we can glue them along the boundary in common, $Y_1$, to obtain a bordism from $Y_0$ to $Y_2$. %add diagram here (?) later works as well
 In order to achieve this, we need to introduce the following notion:
 \begin{defn}[Collar of a boundary]
-    Let $X$ be a manifold with boundary. A collar of the boundary is an open set  $U\subseteq X$ containing $\de X$ together with a diffeomorphism  $(-\epsilon,0]\times\partial X \to U$ for some $\epsilon>0$.
+    Let $X$ be a manifold with boundary. A collar of the boundary is an open set  $U\subseteq X$ containing $\de X$ together with a diffeomorphism  $(-\epsilon,0]\times\partial M \to U$ for some $\epsilon>0$.
 \end{defn}
 \begin{thm}
 	The boundary of a manifold with boundary always has a collar.
@@ -1165,7 +1165,7 @@ $f^{-1}(g(0,1))\subseteq (0,1)\subseteq [0,1]$. Since $f^{-1}(g(0,1))$ is open,
 \subsection{Classification of 2-manifolds with boundary}
 \label{sub:classification_of_2_manifolds_with_boundary}
 
-The aim of this chapter is to prove the aforementioned classification of compact 2-dimensional manifolds with the use of Morse theory (see \ref{Classification of 2 manifolds}). We remind the reader: let $M$ be a compact (and connected) 2-manifold with genus $g$, then \begin{itemize}
+The aim of this chapter is to prove the aforementioned classification of compact 2-dimensional manifolds with the use of Morse theory (see \ref{Classification of 2 manifolds}). We remind the reader: let $M$ be a compact 2-manifold with genus $g$, then \begin{itemize}
     \item if $M$ is oriented, $M$ is classified by its genus $g$. In particular $M$ it is diffeomorphic to $\Sigma_g:=T\,\# \dots\#\,T$, the connected sum of $g$ tori, and where we define $\Sigma_0:=S^2$.
     \item Instead if $M$ is non orientable\footnote{see \url{https://en.wikipedia.org/wiki/Genus_(mathematics)} for what is meant by genus of a non orientable surface}, $M$ is diffeomorphic to $g$ copies of the real projective plane, i.e.  $\R P^2\,\# \dots \#\,\R P^2$.
 \end{itemize} 
@@ -1931,7 +1931,7 @@ easier than ordinary differential topology. His strategy was to first define the
 roughly a spectrum for cobordisms, and then establish an isomorphism between the homotopy groups
  of this spectrum and the cobordism ring via the Pontryagin-Thom construnction.
  
- In this section we sketch how this works. \danger \textbf{THIS IS WORK IN PROGRESS}
+ In this section we sketch how this works. \warning \textbf{THIS IS WORK IN PROGRESS}
  \subsection{Cobordism groups and the sphere spectrum \extra}\label{homotopyCob}
 Very interestingly, the (stable) framed version is isomorphic to the stable homotopy groups of the sphere and it is \textit{not} computed to all degrees. This is one way to phrase a theorem named after Thom. It is fascinating because the stable homotopy groups of the sphere are central objects in stable homotopy theory. They are equivalently the homotopy groups of the sphere spectrum.
 
@@ -3845,7 +3845,7 @@ One way in which it is a homology theory for manifolds is that every homology th
 	\arrow["{\circ_{X,Y,Y}}"', from=3-1, to=3-3]
 	\arrow[""{name=0, anchor=center, inner sep=0}, "\cong", from=1-1, to=3-3]
 	\arrow["{r_{X,Y}}"{description}, shorten <=4pt, shorten >=8pt, Rightarrow, from=3-1, to=0]
-\end{tikzcd}\]
+wh\end{tikzcd}\]
 % https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXHVuaXRfXFxDYXRcXHRpbWVzIEhvbShYLFkpIl0sWzAsMiwiSG9tKFgsWClcXHRpbWVzIEhvbShYLFkpIl0sWzIsMiwiSG9tKFgsWSkiXSxbMCwxLCJpZGVudGl0eV9YXFx0aW1lcyBpZF97SG9tKFgsWSl9IiwyXSxbMSwyLCJcXGNpcmNfe1gsWCxZfSIsMl0sWzAsMiwiXFxjb25nIl0sWzEsNSwibF97WCxZfSIsMSx7InNob3J0ZW4iOnsic291cmNlIjoxMCwidGFyZ2V0IjoyMH19XV0=
 \[\begin{tikzcd}
 	{\unit_{\Cat}\times \Hom(X,Y)} \\
@@ -4236,608 +4236,56 @@ From the universal property of the groupoid completion, there is a further facto
 
 \subsection{Invertible field theories and stable homotopy theory \extra}\label{Spectra Phases of Matter}
 
-These theories can be studied with stable homotopy theory. Stable homotopy homotopy theory is the branch
+These theories can be studied with stable homotopy theory, in the sense that they are maps of spectra.
+
+ Stable homotopy homotopy theory is the branch
 of homotopy theory that studies phenomena and structures that are stable, i.e. that can occur in any 
 dimension, or in any sufficiently large dimension independently of the exact dimension. The tool used to
-reach higher dimensions is very often suspension\footnote{We define it in the next subsection.}, this is 
+reach higher dimensions is very often suspension\footnote{We define it in the appendix \ref{WhatSpectra}.}, this is 
 why sometimes stable homotopy theory is characterized as the phenomena that are stable under
  suspension.
- 
-The paradigmatic example of stable phenomena are
-the stable homotopy groups of the sphere are the homotopy groups of the sphere $\pi_{n+i}(S^n)$ such
- that $n>i+1$. They are stable because thanks to Freudenthal's suspension theorem implies that the 
- suspension functor\footnote{Do not fear if you do not know what it is yet, we define it in the next
- 	 subsection.}
-  $S^n\xrightarrow{\Sigma} S^{n+1}$
-induces
- an isomorphism on certain homotopy groups of the sphere: the stable ones, i.e. where $n>i+1$
- $$ \pi_{n+i}(S^n)\cong  \pi_{n+i+1}(S^{n+1})$$
 
 The investigation of stable phenomena is achieved via spectra, i.e. sequence of pointed spaces with maps
 relating them one another. For instance the stable homotopy group of the sphere are exactly the
- homotopy groups of the sphere spectrum. This begs the question: what are spectra?
+ homotopy groups of the sphere spectrum. See in the appendix \ref{WhatSpectra} for a fast paced 
+modern introduction to spectra.
 
-\subsubsection[And how do they relate to grouplike $\E_\infty$-spaces?]{What are spectra? \extra}\label{WhatSpectra}
-This subsection is based off \cite{Luriealgebra}, \cite{AdamsLoops}, \cite{GregoricSpectra},
- \cite{Mazel-Gee2024}, \cite{NardinStable} and \cite{CalleInfiniteLoops}.
+In what follows we sketch why invertible field theories are maps of spectra, this is however very
+handwavy, for a more detailed sketch, look in the appendix.
 
-We already have seen some spectra and definitions of some kinds of spectra in \ref{homotopyCob}, e.g. the 
-sphere spectrum and the suspension spectrum. In that section, we defined suspension as a quotient.
- However, one can define a suspension in full generality, i.e. for any pointed $\infty$-category, via certain homotopy
-  colimits. Moreover, via such homotopy co/limits one can define other fundamental notions for spectra,
-   so in what follows, we try to convey an idea for how they work.
-  
-   Homotopy co/limits are objects making certain diagrams commute via homotopies and with certain
-   universal properties. Such diagrams commute in a very similar sense to how $\mathbb{E}_n$-algebras 
-   are associative via homotopies of every order up to $\infty$. Every co/limit in an $\infty$-category works as a homotopy
-   co/limit\footnote{Being able to define homotopy co/limits via usual universal properties is indeed one
-   of the motivations for $\infty$-categories, as said in \ref{HomotopyHypothesis}.}, see \cite[Section
-    4]{land2021introduction} for a thorough introduction to how that works.
-    
-    We now provide a rough sketch of what are homotopy co/limits. To do this, we first need to define 
-    what are co/limits in ordinary categories.
-       \begin{defn}[Terminal, initial, zero objects]
-A terminal object in a category $\cat$ is an object $\ast\in\cat$ such that for every
-$X\in\cat$ there is a unique morphism $X\to\ast$
-
-An initial object in a category $\cat$ is an object $\emptyset\in\cat$ such that for every
-$X\in\cat$ there is a unique morphism $\emptyset\to X$
-
-A zero object is an object that is both initial and final. A category is called pointed if it has a zero object.
-    \end{defn}
-    
-    \begin{defn}[Diagram]
-    	Until now, we spoke of diagrams informally, there is however a precise definition. Given a
-    	 small\footnote{This means that the collection of objects and morphisms are both sets}
-    	category $\mathscr{J}$, a diagram of 
-    	shape $\mathscr{J}$ in $\cat$ is a functor $D:\mathscr{J}\to \cat$
-    \end{defn}
-    \begin{defn}[Co/limits]
-    	Given a category $\mathscr{J}$ we can construct 
-    	\begin{itemize}
-    		\item the cone\footnote{Aka left cone} of $\mathscr{J}$: $\mathscr{J}^{\lhd}$ by adding an initial object to $\mathscr{J}$
-    		\item the cocone\footnote{Aka right cone} of $\mathscr{J}$: $\mathscr{J}^{\rhd}$ by adding a terminal object to $\mathscr{J}$
-    	\end{itemize}
-    	Given a diagram $D$ of shape $\mathscr{J}$ in $\cat$ and $X\in\cat$ we have 
-    	
-    	\begin{itemize}
-    		\item a cone over $D$ that is a natural transformation $\gamma: X\Rightarrow D$, where $X$ denotes the functor sending every object in $\mathscr{J}$ to $X$. So, because of naturality
-    		of $\gamma$ for $M\xrightarrow{f}N$ in $\mathscr{J}$ there is the following commutative diagram:
-    	% https://q.uiver.app/#q=WzAsMyxbMSwwLCJYKE4pPVg9WChNKSJdLFswLDEsIkQoTikiXSxbMiwxLCJEKE0pIl0sWzAsMSwiXFxnYW1tYV97Tn0iLDJdLFswLDIsIlxcZ2FtbWFfe019Il0sWzEsMiwiRChmKSIsMl1d
-    	\[\begin{tikzcd}[cramped]
-    		& {X(N)=X=X(M)} \\
-    		{D(N)} && {D(M)}
-    		\arrow["{\gamma_{N}}"', from=1-2, to=2-1]
-    		\arrow["{\gamma_{M}}", from=1-2, to=2-3]
-    		\arrow["{D(f)}"', from=2-1, to=2-3]
-    	\end{tikzcd}\]
-    		We have then also the category of cones over $D$. 
-    		An equivalent description of a cone over $D$ is a functor $\mathscr{J}^{\lhd}\to\cat$
-    		hence the category of cones is the functor category
-    		$\Fun_D(\mathscr{J}^{\lhd},\cat)$.
-    		
-    		\item a cocone over $D$ that is a natural transformation $\eta: D\Rightarrow X$ and because of naturality
-    		of $\gamma$ for $M\xrightarrow{f}N$ in $\mathscr{J}$ there is the following commutative diagram:
-    		% https://q.uiver.app/#q=WzAsMyxbMSwxLCJYKE4pPVg9WChNKSJdLFswLDAsIkQoTikiXSxbMiwwLCJEKE0pIl0sWzEsMCwiXFxldGFfe059IiwyXSxbMiwwLCJcXGV0YV97TX0iXSxbMSwyLCJEKGYpIl1d
-    		\[\begin{tikzcd}[cramped]
-    			{D(N)} && {D(M)} \\
-    			& {X(N)=X=X(M)}
-    			\arrow["{\eta_{N}}"', from=1-1, to=2-2]
-    			\arrow["{\eta_{M}}", from=1-3, to=2-2]
-    			\arrow["{D(f)}", from=1-1, to=1-3]
-    		\end{tikzcd}\]
-    		We have then also the category of cocones over $D$. An equivalent description of a cocone over $D$ is a functor $\mathscr{J}^{\rhd}\to\cat$
-    		hence the category of cocones is the functor category
-    		$\Fun_D(\mathscr{J}^{\rhd},\cat)$
-    	\end{itemize}
-    	Then, 
- \begin{itemize}
-	\item the limit of the diagram $D$ is a terminal object in the category of cones over $\mathscr{J}$, i.e. $\Fun_D(\mathscr{J}^{\lhd},\cat)$
-	\item the colimit of the diagram $D$ is an initial object in the category of cocones over $\mathscr{J}$, i.e. $\Fun_D(\mathscr{J}^{\rhd},\cat)$
-\end{itemize}
-In order to get a definition of homotopy co/limit or $(\infty,1)$-co/limit, just substitute your favourite
- model of $\infty$-category with 'category' in this definition. 
-    \end{defn}
-    \begin{ex}[Cartesian product]
- We previously defined the cartesian product of two objects by saying that some diagram commutes and the product  has a certain universal property (\ref{CartProd}). 
- Such cartesian product is a limit over a diagram shaped as a discrete category with two objects.
- Let us name this discrete category with two different objects $\mathscr{J}=\{0,1\}$, discrete means that
- there are only the identity morphisms $id_0$ and $id_1$. 
- Given $\cat$ an arbitrary category, observe a diagram 
- $$D:\mathscr{J}\to \cat $$ 
- $$0\mapsto A$$
- $$1\mapsto B$$
- Then, a cartesian product $A\times B$ is the limit over $D$
-    % https://q.uiver.app/#q=WzAsNSxbMSwwLCJZIl0sWzIsMSwiQiJdLFswLDBdLFswLDEsIkEiXSxbMSwxLCJBXFx0aW1lcyBCIl0sWzAsMSwiZyJdLFs0LDMsInByXzEiXSxbMCwzLCJmIiwyXSxbNCwxLCJwcl8yIiwyXSxbMCw0LCJcXGV4aXN0cyEgdSIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
-\[\begin{tikzcd}
-	{} & Y \\
-	A & {A\times B} & B
-	\arrow["g", from=1-2, to=2-3]
-	\arrow["{pr_1}", from=2-2, to=2-1]
-	\arrow["f"', from=1-2, to=2-1]
-	\arrow["{pr_2}"', from=2-2, to=2-3]
-	\arrow["{\exists! u}"{description}, dashed, from=1-2, to=2-2]
-\end{tikzcd}\]
-The two projections exist because $A\times B$ is a cone: a cone is an initial object in the shape category $\mathscr{J}$ and $D$ is a functor, so it imports the unique morphisms from the initial object to where $0$ and $1$ are mapped, i.e. to $A$ and $B$.
-
-\noindent $u$ exists and is unique because $A\times B$ is the terminal object in the category of cones.
-
- \noindent The two smaller triangles commute because of the naturality of the morphism $u$: recall that
- the category of cones is a functor category hence morphisms between cones 
- are natural transformations and note that $pr_1$ and $f$ for instance are images of morphisms in
-  $\mathscr{J}^{\lhd}$
-    \end{ex}
-    We already sketched what might mean that a diagram is homotopy coherently commutative in the
-     case of an $\mathbb{E}_1$-algebra (\ref{EAlg}). For the sake of clarity we sketch it here again,
-     in a more general setting. Recall that all morphisms higher than 1 in an $\infty$-category are weakly invertible.
-% https://q.uiver.app/#q=WzAsNSxbMCwwLCJBIl0sWzAsMiwiQiJdLFsyLDIsIkQiXSxbMiwwLCJDIl0sWzEsMSwiLi4uIl0sWzAsMywiZyJdLFswLDEsImYiLDJdLFsxLDIsInEiLDJdLFszLDIsInIiXSxbMSwzLCJoIiwwLHsiY3VydmUiOi0zLCJzaG9ydGVuIjp7InNvdXJjZSI6MTAsInRhcmdldCI6MTB9LCJsZXZlbCI6Mn1dLFszLDEsImsiLDAseyJjdXJ2ZSI6LTMsInNob3J0ZW4iOnsic291cmNlIjoxMCwidGFyZ2V0IjoxMH0sImxldmVsIjoyfV0sWzksMTAsIm0iLDIseyJjdXJ2ZSI6Mywic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfX1dLFsxMCw5LCJsIiwyLHsiY3VydmUiOjMsInNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XV0=
-\[\begin{tikzcd}[cramped]
-	A && C \\
-	& {...} \\
-	B && D
-	\arrow["g", from=1-1, to=1-3]
-	\arrow["f"', from=1-1, to=3-1]
-	\arrow["q"', from=3-1, to=3-3]
-	\arrow["r", from=1-3, to=3-3]
-	\arrow[""{name=0, anchor=center, inner sep=0}, "h", curve={height=-18pt}, shorten <=7pt, shorten >=7pt, Rightarrow, from=3-1, to=1-3]
-	\arrow[""{name=1, anchor=center, inner sep=0}, "k", curve={height=-18pt}, shorten <=7pt, shorten >=7pt, Rightarrow, from=1-3, to=3-1]
-	\arrow["m"', curve={height=18pt}, shorten <=8pt, shorten >=8pt, Rightarrow, from=0, to=1]
-	\arrow["l"', curve={height=18pt}, shorten <=8pt, shorten >=8pt, Rightarrow, from=1, to=0]
-\end{tikzcd}\]
-     This diagram does not commute strictly, but via homotopies.
-     This means that $h:q\circ f\simeq r\circ g:k$, instead of what we are used to: $q\circ f= r\circ g$.
-     Not only this however, it is the case that $k\circ h\simeq id_{q\circ f}$ and $h\circ k\simeq id_{r\circ g}$
-     , instead of the usual strict invertibility, and thus via the 3-morphisms $l$ and $m$, the 2-morphisms 
-     $k$ and $h$ are homotopic, i.e. $l:k\simeq h:m$. Then there
-     will be some explicit 4-morphisms witnessing that $m\simeq l$, and so on to $\infty$.
-    
-   %I am unsure about the sketch above!!!! Please check /Andrea
-   
-      
-   \begin{ex}[Homotopy pullback/$(\infty,1)$-pullback]
-   	Let  $\mathscr{J}$ be an $\infty$-category with objects and 1-morphisms $0\to1\leftarrow2$ and
-   	 $D:\mathscr{J}\to \cat$ be a diagram. To be rigorous, we would need to define what is an
-   	 $\infty$-functor. However, since this necessitates getting our hands dirty with a model,
-   	 we prefer to remain loose: an $\infty$-functor is an assignment that respects composition and identity
-   	  morphisms\footnote{i.e. is functorial.} not only on 1-morphisms, but for also all higher invertible morphisms.
-   	  Then, an $\infty$-pullback of 
-   	is the homotopy limit of $D$.
-   	
-   	We now unpack what this means. A cone of $\mathscr{J}$, where $\emptyset$ is the new initial object
-   	 looks like this:
-   	% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXGVtcHR5c2V0Il0sWzAsMSwiMCJdLFsxLDEsIjEiXSxbMSwwLCIyIl0sWzAsMV0sWzEsMl0sWzAsM10sWzMsMl0sWzAsMl0sWzgsMSwiIiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwfSwic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiYXJyb3doZWFkIn19fV0sWzgsMywiIiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwfSwic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiYXJyb3doZWFkIn19fV1d
-   	\[\begin{tikzcd}[cramped]
-   		\emptyset & 2 \\
-   		0 & 1
-   		\arrow[from=1-1, to=2-1]
-   		\arrow[from=2-1, to=2-2]
-   		\arrow[from=1-1, to=1-2]
-   		\arrow[from=1-2, to=2-2]
-   		\arrow[""{name=0, anchor=center, inner sep=0}, from=1-1, to=2-2]
-   		\arrow[shorten <=2pt, Rightarrow, 2tail reversed, from=0, to=2-1]
-   		\arrow[shorten <=2pt, Rightarrow, 2tail reversed, from=0, to=1-2]
-   	\end{tikzcd}\]
-   	Where the two small triangles commute via higher morphisms denoted with $\Leftrightarrow$.
-   	
-   	Let $D(1)=X$, $D(2)=Y$ and $D(0)=Z$. Then, the $\infty$-pullback of $D$ is the terminal object 
-   	in the $\infty$-functor $\infty$-category $\Fun_D(\mathscr{J},\cat)$. Denote the image of $\emptyset$ of such pullback with $Y\times_X Z$. Then there is the following homotopy coherent diagram
-   % https://q.uiver.app/#q=WzAsNCxbMCwwLCJZXFx0aW1lc19YIFoiXSxbMCwxLCJZIl0sWzEsMSwiWiJdLFsxLDAsIlgiXSxbMCwxXSxbMSwyXSxbMCwzXSxbMywyXSxbMCwyXSxbOCwxLCIiLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MzAsInRhcmdldCI6MTB9LCJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJhcnJvd2hlYWQifX19XSxbOCwzLCIiLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MzAsInRhcmdldCI6MTB9LCJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJhcnJvd2hlYWQifX19XV0=
-   \[\begin{tikzcd}[cramped]
-   	{Y\times_X Z} & X \\
-   	Y & Z
-   	\arrow[from=1-1, to=2-1]
-   	\arrow[from=2-1, to=2-2]
-   	\arrow[from=1-1, to=1-2]
-   	\arrow[from=1-2, to=2-2]
-   	\arrow[""{name=0, anchor=center, inner sep=0}, from=1-1, to=2-2]
-   	\arrow[shorten <=4pt, shorten >=1pt, Rightarrow, 2tail reversed, from=0, to=2-1]
-   	\arrow[shorten <=4pt, shorten >=1pt, Rightarrow, 2tail reversed, from=0, to=1-2]
-   \end{tikzcd}\]
-   	Because the $\infty$-pullback is a functor and thus preserves the homotopy-coherent commutativity
-   	of diagrams in the shape $\mathscr{J}$, by preserving compositionality for all $n$-morphisms.
-   	Since it is the terminal object in the category of cones over the diagram $D$ for every other cone
-   	mapping $\emptyset$ to an object $Q\in\cat$, then there is a unique morphism $Q\to Y\times_X Z$
-   	making the following diagram commute homotopy coherently
-   	
-   	% https://q.uiver.app/#q=WzAsNSxbMSwxLCJZXFx0aW1lc19YIFoiXSxbMSwyLCJZIl0sWzIsMiwiWiJdLFsyLDEsIlgiXSxbMCwwLCJRIl0sWzAsMV0sWzEsMl0sWzAsM10sWzMsMl0sWzAsMl0sWzQsMF0sWzQsMV0sWzQsM10sWzksMSwiIiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjMwLCJ0YXJnZXQiOjEwfSwic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiYXJyb3doZWFkIn19fV0sWzksMywiIiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjMwLCJ0YXJnZXQiOjEwfSwic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiYXJyb3doZWFkIn19fV0sWzEwLDExLCIiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJhcnJvd2hlYWQifX19XSxbMTAsMTIsIiIsMix7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH0sInN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9fX1dXQ==
-   	\[\begin{tikzcd}[cramped]
-   		Q \\
-   		& {Y\times_X Z} & X \\
-   		& Y & Z
-   		\arrow[from=2-2, to=3-2]
-   		\arrow[from=3-2, to=3-3]
-   		\arrow[from=2-2, to=2-3]
-   		\arrow[from=2-3, to=3-3]
-   		\arrow[""{name=0, anchor=center, inner sep=0}, from=2-2, to=3-3]
-   		\arrow[""{name=1, anchor=center, inner sep=0}, from=1-1, to=2-2]
-   		\arrow[""{name=2, anchor=center, inner sep=0}, from=1-1, to=3-2]
-   		\arrow[""{name=3, anchor=center, inner sep=0}, from=1-1, to=2-3]
-   		\arrow[shorten <=4pt, shorten >=1pt, Rightarrow, 2tail reversed, from=0, to=3-2]
-   		\arrow[shorten <=4pt, shorten >=1pt, Rightarrow, 2tail reversed, from=0, to=2-3]
-   		\arrow[shorten <=2pt, shorten >=2pt, Rightarrow, 2tail reversed, from=1, to=2]
-   		\arrow[shorten <=4pt, shorten >=4pt, Rightarrow, 2tail reversed, from=1, to=3]
-   	\end{tikzcd}\]
-   	The two small triangles formed by morphisms that have $Q$ as source and by the projections of $Y\times_X Z$ (the ones on the upper left) commute because of the naturality of morphisms in 
-   	 $\Fun_D(\mathscr{J}^{\lhd},\cat)$
-   \end{ex}
- \begin{notat}
-From now on, when we are talking about commutative diagrams in an $\infty$-category, we do not write the double arrows $\Leftrightarrow$ symbolizing the 
-higher morphisms that make the diagram commute.
- \end{notat}
-   
-
-   
-   There is the dual notion of homotopy pullback: the homotopy pushout, which we now use to define
-    suspensions.
-
-    \begin{defn}[Suspension]
-   	Let $\cat$ be a pointed\footnote{A category with a zero object: an object that is both initial and final.} 
-   	 $\infty$-category with the zero object denoted by 0 
-   	 and let $X\in\cat$. Then the suspension $\Sigma X$ of $X$ is the pushout 
-  % https://q.uiver.app/#q=WzAsNCxbMCwwLCJYIl0sWzAsMSwiMCJdLFsxLDAsIjAiXSxbMSwxLCJcXFNpZ21hIFgiXSxbMCwxXSxbMCwyXSxbMSwzXSxbMiwzXSxbMywwLCIiLDEseyJzdHlsZSI6eyJuYW1lIjoiY29ybmVyIn19XV0=
-  \[\begin{tikzcd}[cramped]
-  	X & 0 \\
-  	0 & {\Sigma X}
-  	\arrow[from=1-1, to=2-1]
-  	\arrow[from=1-1, to=1-2]
-  	\arrow[from=2-1, to=2-2]
-  	\arrow[from=1-2, to=2-2]
-  	\arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=1-1]
-  \end{tikzcd}\]
-   \end{defn}
-
-   \begin{defn}[Suspension functor]
-Given a pointed $\infty$-category $\cat$ the assignment $X\mapsto \Sigma X$ gives rise to a functor
- $\Sigma:\cat\to\cat$
-   \end{defn}
-   Dually, one can define the loop space of an object
-\begin{defn}[Loop space]
-   	Let $\cat$ be a pointed
-$\infty$-category and let $X\in\cat$. Then the loop space $\Omega X$ is the pullback 
-% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXE9tZWdhIFgiXSxbMCwxLCIwIl0sWzEsMCwiMCJdLFsxLDEsIlgiXSxbMCwxXSxbMCwyXSxbMSwzXSxbMiwzXSxbMCwzLCIiLDEseyJzdHlsZSI6eyJuYW1lIjoiY29ybmVyIn19XV0=
-\[\begin{tikzcd}[cramped]
-	{\Omega X} & 0 \\
-	0 & X
-	\arrow[from=1-1, to=2-1]
-	\arrow[from=1-1, to=1-2]
-	\arrow[from=2-1, to=2-2]
-	\arrow[from=1-2, to=2-2]
-	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
-\end{tikzcd}\]
-\end{defn}
-\begin{defn}[Loop space functor]
-	Given a pointed $\infty$-category $\cat$ the assignment $X\mapsto \Omega X$ gives rise to a functor $\Omega:\cat\to\cat$
-\end{defn}
-\begin{rem}
-One very important property of the loop space functor is the shift in homotopy groups:
-$$ \pi_n(\Omega X)=\pi_{n+1}(X)$$
-If you took a class on algebraic topology, you most probably already witnessed this phenomenon, 
-the fundamental group is defined as
-$$ \pi_0(\Omega X)=\pi_1(X)$$
-\end{rem}
-\begin{rem}
-	As already mentioned in \ref{EAlg}, a loop space is an example of $\mathbb{E}_1$-space and 
-	$n$-iterated loop spaces are $\mathbb{E}_n$-spaces by the Dunn additivity theorem.
-\end{rem}
-\begin{defn}[Alternative definition of adjunction]\label{HigherAdjFun}
-We defined adjoint functors via the natural tranformations unit and counit (\ref{AdjFun}). There is however an equivalent
-formulation:
-two $\infty$-functors $\cat\underset{L}{\overset{R}{\leftrightarrows}}\dat$ form an adjunction $L\dashv R$, i.e. where $L$ is the left adjoint
-and $R$ is the right adjoint, if between the two Hom-$\infty$-functors 
-$$\Hom_\cat(L(-),-):\cat^{\operatorname{op}}\times\cat \to \operatorname{Grpd}_\infty$$
-and
-$$\Hom_\dat(-,R(-)):\dat^{\operatorname{op}}\times\dat\to \operatorname{Grpd}_\infty$$
-there is a natural isomorphism $\Hom_\cat(L(-),-)\simeq \Hom_\dat(-,R(-))$
-
-This definition is easily derivable from the one with units we gave previously, given 
-the unit $\epsilon:id_{\dat}\Rightarrow R\circ L$ and $X\in\cat$ and $Y\in\dat$, 
-the following holds because of one of the triangle identities: 
-% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXEhvbV97XFxjYXR9KEwoWSksWCkiXSxbMSwxLCJcXEhvbV9cXGRhdChSKEwoWSkpLFIoWCkpIl0sWzIsMCwiXFxIb21fXFxkYXQoWSxSKFgpKSJdLFswLDFdLFsxLDJdLFswLDIsIlxcc2ltZXEiXV0=
-\[\begin{tikzcd}[cramped]
-	{\Hom_{\cat}(L(Y),X)} && {\Hom_\dat(Y,R(X))} \\
-	& {\Hom_\dat(R(L(Y)),R(X))}
-	\arrow[from=1-1, to=2-2]
-	\arrow[from=2-2, to=1-3]
-	\arrow["\simeq", from=1-1, to=1-3]
-\end{tikzcd}\]
-\end{defn}
-\begin{rem}[Suspension-loop adjunction]
-There is an adjunction $\Sigma\dashv\Omega$ and thus for any pointed $\infty$-category
-$\cat$ it holds that $\Hom_{\cat}(\Sigma-,-)\simeq \Hom_{\cat}(-,\Omega-)$. If it is not sufficiently clear from
-the fact that 
-$\Omega X=0\times_X 0$ and $\Sigma X=0\amalg_X 0$, do not worry. In the case that it interests us the most
-it can be seen from another perspective. Recall that for $X\in \Top_\ast$
-$\Sigma X= X\land S^1$ and $\Omega_x=\operatorname{Map}_{\ast}(S^1,X)$ and that $\Top_\ast$ is cartesian
- monoidal closed, i.e. for any $A,B,C\in\Top_\ast$ it holds that $\Hom_{\Top_{\ast}}(A\land B, C)\cong\Hom_{\Top_{\ast}}(A,\operatorname{Map}_{\ast}(B,C))$ and hence 
- $\Hom_{\Top_{\ast}}(-\land S^1,-)\cong\Hom_{\Top_{\ast}}(-,\operatorname{Map}_{\ast}(S^1,-))$
-\end{rem}
-\begin{defn}[($\Omega$-)Spectrum\footnote{It is denoted $\Omega$-spectrum in the older literature, e.g. books or 
-	articles by May or Adams like \cite{AdamsLoops}.}]
-	A spectrum is a collection of 
-	pointed spaces $\{E_n\}_{n\in\Z}$ with equivalences $\delta_n:E_n\simeq \Omega E_{n+1}$
-\end{defn}
-\begin{rem}
-Note that via the adjunction $\Sigma\dashv\Omega$ we can get a prespectrum from a spectrum:
-given $X_i,X_{i+1}\in\sat_\ast$ it holds that 
-$\Hom_{\sat_{\ast}}(X_i,\Omega X_{i+1})\simeq \Hom_{\sat_{\ast}}(\Sigma X_i,X_{i+1})$ and thus we can 
-get the pointed maps we need in order to define a prespectrum. This means that every spectrum
-is a prespectrum, i.e. the category of spectra is a subcategory of the category of prespectra. This is the
- reason why the synonym of prespectra 'sequential spectra' is counterintuitive.
-\end{rem}
-
-
-\begin{defn}[$\infty$-category of spectra]
-The $\infty$-category of spectra is the category where the objects are spectra. %The fact that there
-%are equivalences $X_i\simeq\Omega X_{i+1}$ 
-
-
-This is equivalent to saying that the category of spectra is the sequential homotopy limit 
-$$\operatorname{lim}(...\leftarrow\sat_\ast\leftarrow\sat_\ast\leftarrow\sat_\ast\leftarrow ...)$$
-where we can see the diagram we are taking the limit over as a functor 
-$D:\Z^{\operatorname{op}}\to\infty\operatorname{-Cat}$ where $\Z$ is considered as a category
-via its ordering ($\leq$ corresponds to a morphism $\to$) and for each $i\in\Z$ $D(i)=\sat_\ast$. 
- %Sometimes 
-%such diagrams are called towers. %TBD
-
-From this it follows that a map of spectra $f:\{X_i\}_{i\in\Z}\to\{Y_i\}_{i\in\Z}$ is given by components 
-that are pointed maps $f_i:X_i\to Y_i$ such that the following square commutes homotopy coherently
-% https://q.uiver.app/#q=WzAsNCxbMCwwLCJYX2kiXSxbMSwwLCJZX2kiXSxbMCwxLCJcXE9tZWdhIFhfe2krMX0iXSxbMSwxLCJcXE9tZWdhIFlfe2krMX0iXSxbMCwxLCJmX2kiXSxbMCwyLCJcXHNpbWVxIiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxLDMsIlxcc2ltZXEiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsMywiXFxPbWVnYSBmX3tpKzF9IiwyXV0=
-\[\begin{tikzcd}[cramped]
-	{X_i} & {Y_i} \\
-	{\Omega X_{i+1}} & {\Omega Y_{i+1}}
-	\arrow["{f_i}", from=1-1, to=1-2]
-	\arrow["\simeq"', no head, from=1-1, to=2-1]
-	\arrow["\simeq", no head, from=1-2, to=2-2]
-	\arrow["{\Omega f_{i+1}}"', from=2-1, to=2-2]
-\end{tikzcd}\] %UNSURE ABOUT THIS; PLEAASE CHECK /ANDREA
-\end{defn}
-The initial object of the $\infty$-category of spectra is the sphere spectrum $\mathds{S}$.
-\begin{notat}
-	An $n$-connective space is a space with trivial homotopy groups for
-	all $k< n$. An $n$-connective space is an $n-1$-connected space. A space is 0-connective if and only
-	if it is non-empty.
-\end{notat}
-\begin{defn}[Infinite loop space]\label{InfiniteLoop}
-	An infinite loop space is a non-empty pointed space $X_0$ with an infinite sequence of pointed
-	 spaces
-	 $X_0,X_1,X_2,...$ with weak equivalences for $n\geq 0$
-	 $$X_n\simeq \Omega X_{n+1}$$
-	
-		 %\footnote{The loop space object is an inverse operation to the delooping, meaning that that given some monoidal category $\cat$, $\cat$ is the loop space object of the delooping of $\cat$. The name comes from the topological notion, see \url{https://en.wikipedia.org/wiki/Loop_space}
-		
-		%In general, loop space objects inherit the monoidal structure from the composition of loops. We would need to talk about homotopy pullbacks in order to strictly define what a loop space object is.}
-
-\end{defn}
-
-Infinite loop spaces seem very similar to what we defined as spectra ($\Omega$-spectra). 
-
-% However, there is a crucial 
-%difference: there is no space to start from in a spectrum, since there are deloopings for all spaces, i.e. $ X_{-1}\simeq \Omega X_{0}$, 
-%$ X_{-2}\simeq \Omega X_{-1}$ and so on, while in an infinite loop space there are not.
-
-\noindent In fact, we will soon see that infinite loop spaces coincide with a particular kind of spectra:
- connective spectra.
-\begin{defn}[Underlying (infinite loop) space functor]
-	Given a spectrum, the assignment of a spectrum $ \{X_i\}_{i\in\Z}$ to its underlying
-	infinite loop space, aka 0-th space, is a functor.
-	$$\Omega^{\infty}:\operatorname{Sp}\to\sat_\ast$$	
-	$$ \{X_i\}_{i\in\Z}\mapsto X_0$$
-\end{defn}
-Such assignment has a left adjoint.
-\begin{defn}[Suspension spectrum functor]
-$$\Sigma^{\infty}:\sat_\ast\to\operatorname{Sp}$$
-$$X\mapsto \{\Sigma^i X\}_i$$
-sending pointed spaces to suspension spectra, i.e. sequences of spaces  $\{\Sigma^i X\}_i$ with pointed
-maps $\Sigma(\Sigma^i X)=\Sigma^{i+1} X$. Such suspension spectra are indeed spectra las we defined
-then (aka $\Omega$-spectra) thanks to the adjunction $\Sigma\dashv\Omega$.
-
-An example of such spectra is the sphere spectrum we already encountered in \ref{homotopyCob}. 
-\end{defn}
-%\begin{defn}[Classifying spectrum]
-	%Let $M$ be an $\mathbb{E}_\infty$-space, i.e. an $\mathbb{E}_\infty$-algebra in $\sat_\ast$ (see
-	% \ref{EAlg}). Then we define the classifying spectrum of $M$
-%$$\mathbf{B}^{\infty}(M):=\{\mathbf{B}^n\}$$ %TBD
-%It might be useful to check out what is a classifying space of a topological
- %group\footnote{\url{https://en.wikipedia.org/wiki/Classifying_space}}.
-%\end{defn}
-%\begin{defn}[
-%\end{defn}
-
-
-\begin{thm}[Recognition theorem for $n$-iterated loop spaces, Boardman-Vogt, May]\label{RecognitionNLOOPS}
-For any $n> 0$, $n$-iterated loop spaces coincide with grouplike $\E_n$-spaces. 
-More rigorously: the 
-$n$-iterated loop space functor $\Omega^{n}:\sat_\ast \to\sat_\ast$ restricts to an equivalence of
- $\infty$-categories between $n$-connective pointed spaces and grouplike $\E_n$-spaces
-$$\Omega^n:\sat^{\geq n}_{\ast}\simeq \Alg_{\mathbb{E}_n}^{\operatorname{gp}}(\sat) $$
+The key to realizing why invertible field theories are maps of spectra
+and thus computable via stable homotopy theory is the following theorem, due to May, which roughly
+ says\footnote{See\ref{RecognitionConnectiveSpectra} for a precise statement.}
+\begin{thm}[Recognition theorem for connective spectra]\label{RecognitionConnective2}
+Connective spectra and Picard $\infty$-groupoids coincide, they are the same thing.
 \end{thm}
-
-See \cite[5.2.6.10]{Luriealgebra} for a rigorous proof. Note anyway that it follows from an easier fact
-to prove (see \cite[Theorem 3.9]{NardinStable}):
-\begin{thm}[Recognition theorem for loop spaces]
-Loop spaces coincide with grouplike $\E_1$-spaces. 
-	More rigorously: the 
-	loop space functor $\Omega:\sat_\ast \to\sat_\ast$ restricts to an equivalence of
-	$\infty$-categories between 0-connective pointed spaces and grouplike $\E_1$-spaces
-	
-	$$\sat^{\geq 0}_{\ast}\overset{\Omega}{\simeq}\Alg_{\mathbb{E}_1}^{\operatorname{gp}}(\sat) $$
-\end{thm}
-Combining this with the Dunn additivity theorem (\ref{DunnAdds}) allows to prove the recognition theorem
-for $n$-iterated loop spaces by induction. The base case: $n=1$ is the recognition theorem for loop
- spaces and the inductive step holds via the Dunn additivity theorem.
- 
- As said in the preamble of this section, stable homotopy groups of a space $A\in\sat$, denoted 
- $\pi^{s}_{i}(A)$, are exactly the homotopy groups of the spectrum of $A$, $\Sigma^{\infty}A$. Thus,
- $\pi^{s}_{i}(A)\cong \pi_{i}(\Sigma^{\infty}A)$. There is however a natural question: what are the
-  homotopy groups of a spectrum? One interesting fact is that
- while the degree homotopy groups for usual topological spaces are defined to be positive, homotopy
- groups of spectra can be defined and be non-trivial also for negative degrees.
- \begin{defn}[Homotopy groups of spectra]
- 	Given a prespectrum $\{ E_i\}_{i\in\Z}$ with pointed maps $\sigma_i:\Sigma E_i\to E_{i+1}$,
- 	 for $n,k\in\Z$, the $n$th homotopy group of 
- 	$\{ E_i\}_{i\in\Z}$ is 
- 	$$\pi_n(\{ E_i\}_{i\in\Z}):=\underset{\rightarrow}{\operatorname{lim}}(...\to \pi_{n+k}(E_k)\xrightarrow{\Sigma} \pi_{n+k+1}(\Sigma E_{k})\xrightarrow{\pi_{n+k+1}(\sigma_k)}\pi_{n+k+1}(E_{k+1})\to ...)$$
- 	where all the $\pi_\ast$ inside the parentheses indicate the homotopy groups of the various pointed
- 	spaces $E_k\in \{ E_i\}_{i\in\Z}$. Since $k\in\Z$, there are indeed also homotopy groups with negative 
- 	degrees.
- 	
- 	If a prespectrum $\{ X_i\}_{i\in\Z}$ is also a spectrum, then from the definition we just provided
- 	 it
- 	follows that for 
- 	$$ \pi_n(\{ X_i\}_{i\in\Z})
- 	\begin{cases}
-\pi_{n+k}(X_k) & k+n\geq 0 \\
-\pi_{n}(X_0) & n\geq 0 \\
-\pi_{0}X_{|n|} & n<0
- 	\end{cases}$$
- \end{defn}
-\begin{defn}[Connective spectra]
-Connective spectra are
-spectra that only have positive non-trivial homotopy groups: let $\{ X_i\}_{i\in\Z}$ be a connective
- spectra, then for all
- $n<0$ it holds that $\pi_n(\{ X_i\}_{i\in\Z})=0$. 
- 
- Connective spectra form a subcategory of Sp denoted $\operatorname{Sp}_{\geq 0}$.
-\end{defn}
-\begin{ex}
-	Many of the spectra one uses are connective:
-	\begin{itemize}
-\item suspension spectra,and thus remarkably the sphere spectrum $\mathds{S}$
-\item the Thom spectrum MO
-	\end{itemize}
-\end{ex}
-
-\begin{rem}[Connective spectra=infinite loop spaces]
-	An infinite loop space is a 0-connective pointed space (since it is non-empty), hence it does not have
-	 any negative
-	 homotopy groups and it has exactly the same structure $X_n\simeq \Omega X_{n+1}$ as a spectrum.
-	 
-	 Thus, infinite loop spaces coincide with connective spectra.
-\end{rem}
-\begin{rem}[Grouplike $\E_\infty$-spaces=Picard groupoids]\label{InfLoopsPicard}
-
-	Recall (\ref{EAlg}) that grouplike
-	$\mathbb{E}_\infty$-spaces coincide with
-	Picard $\infty$-groupoids:
-	\begin{itemize}
-		\item the $\E_\infty$ makes them homotopy coherent commutative
-		monoid objects in $\operatorname{Grpd}_\infty$, i.e. symmetric monoidal $\infty$-groupoids
-		\item since they are grouplike, they have inverses because if we first
-		apply $\pi_0$, then forget about the commutative structure, and land in the category of groups, that
-		means that the inverses must have been there from the start
-	\end{itemize} 
-\end{rem}
-
-The following result proves the that all grouplike $\E_\infty$-spaces (aka Picard
-$\infty$-groupoids) 
-are connective spectra (aka infinite loop spaces). Hence, we will be able to conclude that Picard
- $\infty$-groupoids coincide with infinite
- loop spaces.  However, what is really important for us is that Picard groupoids coincide with connective
- spectra since this is the fact that will allow us to recognize that invertible field theories are maps of 
- spectra.
-
-Roughly, passing to the limit $n\to\infty$ in the recognition theorem for $n$-iterated loop spaces with
- some abstract nonsense regarding 
-the definition of the category of spectra as the sequential homotopy limit
-$\operatorname{lim}(...\leftarrow\sat_\ast\leftarrow\sat_\ast\leftarrow\sat_\ast\leftarrow ...)$ leads to the 
-following result.
-\begin{thm}[Recognition theorem for connective spectra/infinite loop
-	 spaces]\label{RecognitionConnectiveSpectra}
-	Connective spectra coincide with grouplike $\E_\infty$-spaces.
-	
-	There is an equivalence: 
-	$$\mathbf{B}^{\infty}:\Alg_{\mathbb{E}_{\infty}}^{\operatorname{gp}}(\mathscr{S})\leftrightarrows\operatorname{Sp}_{\geq 0}:\Omega^{\infty}$$
-	
-where $\mathbf{B}^{\infty}$ denotes the classifying spectrum functor.
-\end{thm}
- See \cite[7.2.2.11]{lurie2008higher},
- \cite[Corollary II.24]{KtheoryHebestreitWagner} or
- \cite[3.29]{NardinStable} for proofs.
-
-We can conclude this fast-paced introduction to spectra with the following slogan:
-
-$$\textit{Picard $\infty$-groupoids are connective spectra! }$$
-
-\subsubsection{Spectra and higher algebra \extra}
-In sum, spectra are a higher categorical analog of abelian groups (see \ref{Ab-Enriched Cat}), they have been in fact called “the abelian groups of the 21st century” \cite{Mazel-Gee2024}
-because they provide very powerful techniques for many areas of mathematics
-where there is currently much progress, e.g. in algebraic K-theory. One can do algebra with 
-spectra as one does ordinary algebra with abelian groups and rings, this subject is usually called 
-'higher algebra'\footnote{A
-	funny synonym for higher algebra is brave new algebra, referring to Huxley's dystopian
-	novel \textit{Brave New World}. It was coined by Waldhausen, one of
-	the pioneers of this discipline, hinting at the fact that it seems to have myriads of intriguing
-	opportunities but at the same could lead into a world of pure abstractions detached from mathematics
-	 with actual content. Examples of successful applications of such machinery
-	to concrete problems, e.g. the counterexamples to Ravenel's telescope conjecture
-	\cite{burklund2023ktheoretic}, convince the author of this section that this nightmare was avoided,
-	 although 
-	it must be said that they are clearly biased.}. This is not just a vague analogy, 
-but something that can be motivated formally, for instance, abelian groups are discrete spectra:
- $$\pi_0:\operatorname{Sp}\to\operatorname{Ab}$$
- where in particular $\pi_0(\mathds{S})=\Z$
- %In a certain sense, $\mathds{S}$ is analgous to $\Z$ but in another category: \Z is the unit in Ab, while $\mathds{S}$ is the unit in the category of spectra. 
-
-We make the comparison clearer via the following table\footnote{his table was inspired by a table in Thomas
-	Nikolaus' talk: \url{https://www.youtube.com/watch?v=SJNKs1PxT9g}. } :
-
-\begin{center}
-	\begin{tabular}{||c|c||}
-		\hline
-		algebra & higher algebra\\ [0.5ex]
-		\hline\hline
-		set & $\infty$-groupoid\\
-		\hline
-		abelian group & spectrum \\
-		\hline
-		Ab & Sp \\
-		\hline
-		\Z &  $\mathds{S}$ \\
-		\hline
-		ring & $\E_1$-ring spectrum \\
-		\hline
-		commutative ring & $\mathbb{E}_\infty$-ring spectrum \\
-		\hline
-		Ab-enriched category & Sp-enriched category \\
-		\hline
-		abelian category & stable category \\
-		\hline
-	\end{tabular}
-\end{center}
-See \ref{Ab-Enriched Cat} and \ref{AbelianCat} for the definitions of Ab-enriched category and
-abelian category. See \ref{EAlg} for the definitions of $\E_1$-ring spectrum and of
- $\mathbb{E}_\infty$-ring spectrum. A stable
- category is a pointed $\infty$-category with finite limits and colimits where $\Sigma\dashv\Omega$ do
-  not just form an adjunction,
-  but are equivalent. 
- There is an equivalent definition of stable category that more closely resembles the definition of abelian
-  category, i.e. an additive $\infty$-category with further conditions, see \cite[Section 1]{Luriealgebra}.
-
-\subsubsection{Invertible field theories are maps of spectra \extra}
- In order to allow the application of stable homotopy theory, one must fully extend topological field theories (see \ref{RemarkExtendedTFTs}), i.e. with $(\infty,n)$-categories of bordisms as a source, because
- only with the homotopy coherent additional structure of such categories one gets that $|\Bord|$ and
-  $\cat^\times$ are particular kinds of spectra.
-  
-  In the case of extended TFTs, $|\Bord|$ and $\cat^\times$ both are $\infty$-groupoids since
+Since stable homotopy theory involves $\infty$-categorical machinery, one must fully extend topological field theories
+ (see \ref{RemarkExtendedTFTs}), i.e. with $(\infty,n)$-categories of bordisms as a source.
+With the homotopy coherent additional structure of $(\infty,n)$-categories one gets that $|\Bord|$ and
+  $\cat^\times$ are $\infty$-groupoids since
 \begin{enumerate}
 	\item we get $|\Bord|$ by adjoining all inverses for all morphisms and thus all morphisms become invertible
 	\item  $\cat^\times$ is obtained by forgetting about non-invertible morphisms (and objects) of $\cat$ and thus we are left only with invertible morphisms
 \end{enumerate} 
 
-%We previously talked about the fundamental $\infty$-groupoid of a space while sketching the
- %homotopy hypothesis (see \ref{HomotopyHypothesis}) and told a story about how spaces are
- %equivalent to $\infty$-groupoids. Following this line of thinking, $\tilde\Zf$ corresponds to a
- %map of spaces via this equivalence.
-
 However, we do not have just $\infty$-groupoids but also a symmetric monoidal structure with
  duals on both $|\Bord|$ and $\cat^\times$. In short, they are Picard $\infty$-groupoid. Thanks to 
- \ref{InfLoopsPicard}, we know that they are thereby grouplike $\E_\infty$-spaces. Via the recognition
- principle for connective spectra \ref{RecognitionConnectiveSpectra}, we know that they are connective
+ \ref{RecognitionConnective2} we know that they are connective
   spectra.
  
  This is why $\tilde\Zf$ is not just a map of spaces but a map of spectra, and this enables the application of stable homotopy theory, making life easier. We can conclude this interlude on stable homotopy theory and invertible TFTs with the following motto
 $$\text{\textit{Invertible TFTs are maps of connective spectra!}}$$
-This is not only of theoretical interest but it also allows the application of topological field theories to condensed matter theory! Classical phases of matter are governed by Landau
+The inquiring reader might rightly ask: why is this good news? 
+%THIS IS HOW I made sense of this, not sure if this is the reason, please correct!!! /ANDRE
+The answer is that sadly we do not know much stuff about $(\infty,n)$-categories, e.g. we do not
+ know well how co/limits 
+work\footnote{However, some people are fortunately working on this, see \cite{moser2023inftynlimits}.}, but in turn
+stable homotopy theory has been much more investigated and so we can understand them better than the usual
+extended TFT.
+
+This is not only of pure mathematical interest but it also allows the application of topological field theories to condensed
+ matter
+ theory! Classical phases of matter are governed by Landau
  theory of phase transition. However, the phases of a quantum material do not behave in the
   same manner. Fortunately, there are ways to describe them, or at least specific types of quantum
    matter (with gapped Hamiltonians for instance)\footnote{Kitaev for instance proposed in
@@ -5183,8 +4631,8 @@ A natural question
 is: how is this a \emph{classification}? This sort of statement certainly looks different 
 from other classifications, for example the one of 2-dimensional manifolds we have seen in this course
  (\ref{Classification of 2 manifolds}). Such an equivalence of categories classifies TFTs because every $n$-TFT is
-  determined by where it sends an object in $\Bord_{n,n-1}$ and thus TFTs are classified by where they send
-   such $(n-1)$-manifold, without specifying how the functor acts on morphism, i.e. the bordisms. Moreover,
+  determined by where it sends an object in $\Bord_{n}$ and thus TFTs are classified by where they send
+   such $n-1$-manifold, without specifying how the functor acts on morphism, i.e. the bordisms. Moreover,
    given a dualizable object of $\cat$ one can construct a TFT since the equivalence goes also 
    in the other direction, so one can say that TFTs are classified by the dualizable objects (up to isomorphism)
     of their target category.
@@ -5198,8 +4646,8 @@ The main goal of this subsection is to prove that given an oriented 1d-TFT
  $\Zf:\Bord_{1,0}\to\cat$, $\Zf(\bullet)$ has a dual and conversely, given an object $X\in\cat$
   in the target category of the TFT we can reconstruct a 1d-TFT.
 \begin{thm}[Classification of 1-dimensional bordisms]\label{class1dBord}
-Any connected oriented 1-dimensional bordism is diffeomorphic to one of 
-the following: 
+Any connected oriented 1-dimensional manifold with boundaries is diffeomorphic to one of 
+the following manifolds: 
 
 \[\includegraphics[width=8cm]{images/Lecture 12/All1Bordisms.png} \]
 	
@@ -5564,7 +5012,7 @@ The left $A-$module part again gives us the compatibility with the algebra struc
 \end{ex}
 
 \begin{defn}[Third definition]
-    A $(\Delta, \epsilon)-$ Frobenius algebra is a finite dimensional algebra $(A,\mu,\nu)$ together with a coalgebra structure $(A,\Delta, \epsilon)$ such that the \textit{Frobenius relation} $$(id\otimes\mu)\circ(\Delta\otimes id)=\Delta\circ\mu=(\mu\otimes id)\circ(id\otimes\Delta)$$ holds. This means that the following diagram commutes
+    A $(\Delta, \epsilon)-$ Frobenius algebra is a finite dimensional algebra $(A,\mu,\nu)$ together with a coalgebra structure $(A,\Delta, \epsilon)$ such that the \textit{Frobenius relation} $$(\mathbb{1}_\cat\otimes\mu)\circ(\Delta\otimes\mathbb{1}_\cat)=\Delta\circ\mu=(\mu\otimes\unit_\cat)\circ(\unit_\cat itimes\Delta)$$ holds. This means that the following diagram commutes
     % https://q.uiver.app/#q=WzAsNSxbMCwxLCJBXFxvdGltZXMgQSJdLFsxLDEsIkEiXSxbMiwxLCJBXFxvdGltZXMgQSJdLFsxLDIsIkFcXG90aW1lcyBBIFxcb3RpbWVzIEEiXSxbMSwwLCJBXFxvdGltZXMgQSBcXG90aW1lcyBBIl0sWzAsMSwiXFxtdSJdLFsxLDIsIlxcRGVsdGEiXSxbMCwzLCJcXERlbHRhXFxvdGltZXMgaWRfQSIsMl0sWzMsMiwiaWRfQVxcb3RpbWVzXFxtdSIsMl0sWzAsNCwiaWRfQVxcb3RpbWVzXFxEZWx0YSJdLFs0LDIsIlxcbXVcXG90aW1lcyBpZF9BIl1d
 \[\begin{tikzcd}
 	& {A\otimes A \otimes A} \\
@@ -5639,7 +5087,7 @@ and $\Zf(S^1, or_-) \mapsto A^\vee$. This is enough because objects in $\Bord_{2
     Let $X\in \SmoothMfld$. $\Diff(X)$ denotes the automorphism group of $X$, i.e. the group of diffeomorphisms $X\xrightarrow{\phi}X$.
 \end{defn}
 
-Note that the diffeomorphism group can be considered a topological group (see \ref{TopologicalGroup}) if we use an appropriate topology, for example one can consider Diff$(X)$ a subspace of $(C^\infty(X,X),Whitney)$, where $Whitney$ denotes the \href{https://en.wikipedia.org/wiki/Whitney_topologies}{Whitney $C^\infty$ topology}, and endow it with the subspace topology.
+Note that the diffeomorphism group can be considered a topological group (see \ref{TopologicalGroup}) if we use an apt topology, for example one can consider Diff$(X)$ a subspace of $(C^\infty(X,X),Whitney)$, where $Whitney$ denotes the \href{https://en.wikipedia.org/wiki/Whitney_topologies}{Whitney $C^\infty$ topology}, and endow it with the subspace topology.
 \begin{rem}
     An isotopy (see \ref{Isotopy} for the definition) is equivalently a path in $\Diff(X)$.
 \end{rem}
@@ -6218,7 +5666,7 @@ Considering framed tangles leads to the \textit{framed} tangle category $\Tang_1
         \end{equation}
         This satisfies 
         \begin{equation}
-            (\vartheta_X)^\vee  = \vartheta_{X^\vee}
+            ((\vartheta_X)^\vee  = \vartheta_{X^\vee}
         \end{equation}
         %this an extra condition right? not just a fact /William
     \end{enumerate}
@@ -7061,9 +6509,620 @@ hence $\Zf(S^1)=\cat$ where $\cat$ is a modular tensor category, i.e. a special 
 
 
 \newpage
+\appendix
+ \chapter{Infinity categories \extra}
+\warning This is WIP, but the section on homotopy co/limits should already make sense.
+% I plan to sketch how \infty-categories work, probably via a synthetic viewpoint
+%Moreover, via such homotopy co/limits one can define other fundamental notions for spectra,
+%so in what follows, we try to convey an idea for how they work.
+\section{Homotopy co/limits \extra}
+This preamble is based on \cite{HarpazAlgebras}.
+
+An adoptable perspective
+ to do (topological\footnote{Topology is the motherland of homotopy theory, however it is travelling
+to other places such as representation theory, e.g. \cite{stroppel2022categorification} or Gaitsgory-Rozenblyum's
+work,
+ or algebraic geometry, e.g. derived algebraic geometry of Toen, Vezzosi and Lurie.}) homotopy theory is working
+in the homotopy category of topological spaces\footnote{By 'topological spaces' we mean nice ones, i.e. CW-complexes
+or similar ones, for instance compactly genereated weakly Hausdorff.}
+ $\operatorname{hTop}$, that is the category of topological
+spaces and continuous maps between them up to homotopy. 
+This has however
+several drawbacks:
+\begin{itemize}
+	\item we can intuit that some information gets lost, where are all the higher homotopies between homotopies?
+	\item it is not bicomplete, i.e. it does not have all co/limits, oppositely to Top, the not-homotopy-category of topological
+	spaces
+	\item the co/limits that interest us, i.e. homotopy co/limits, are not determined by universal properties
+\end{itemize}
+A revolutionary way to do homotopy theory
+ is to avoid working in the hTop and work in the $\infty$-category of topological spaces.
+This category is bicomplete and we can phrase the desired homotopy co/limits via the universal properties 
+phrasable with the underlying categorical structure. 
+This strategy to pass to $\infty$-categories generalize in 2 ways:
+\begin{itemize}
+	\item one can talk about homotopy co/limits also in other categories
+	\item all diagrams commute homotopy coherently, not only the ones describing co/limits
+\end{itemize}
+Thanks to this new version of commutativity, we can do powerful stuff, for instance defining $\E_n$-algebras, as
+we did in \ref{EAlg}. 
+
+Now we sketch more precisely how such homotopy and non-homotopy co/limits work, but see 
+\cite[2.6]{HarpazAlgebras} for a much more detailed summary and
+\cite[Section 4]{land2021introduction} for a thorough introduction.
+Very generally, homotopy co/limits are objects making certain diagrams commute via homotopies, i.e. homotopy
+ coherently and with certain
+universal properties.  Every co/limit in an $\infty$-category works as a homotopy
+co/limit.
+To sensibly talk about this, we first need to define 
+what are co/limits in ordinary categories. Fortunately, they work similarly.
+\begin{defn}[Terminal, initial, zero objects]
+	A terminal object in a category $\cat$ is an object $\ast\in\cat$ such that for every
+	$X\in\cat$ there is a unique morphism $X\to\ast$
+	
+	An initial object in a category $\cat$ is an object $\emptyset\in\cat$ such that for every
+	$X\in\cat$ there is a unique morphism $\emptyset\to X$
+	
+	A zero object is an object that is both initial and final. A category is called pointed if it has a zero object.
+\end{defn}
+
+\begin{defn}[Diagram]
+	Until now, we spoke of diagrams informally, there is however a precise definition. Given a
+	small\footnote{This means that the collection of objects and morphisms are both sets}
+	category $\mathscr{J}$, a diagram of 
+	shape $\mathscr{J}$ in $\cat$ is a functor $D:\mathscr{J}\to \cat$
+\end{defn}
+\begin{defn}[Co/limits]
+	Given a category $\mathscr{J}$ we can construct 
+	\begin{itemize}
+		\item the cone\footnote{Aka left cone} of $\mathscr{J}$: $\mathscr{J}^{\lhd}$ by adding an initial object to $\mathscr{J}$
+		\item the cocone\footnote{Aka right cone} of $\mathscr{J}$: $\mathscr{J}^{\rhd}$ by adding a terminal object to $\mathscr{J}$
+	\end{itemize}
+	Given a diagram $D$ of shape $\mathscr{J}$ in $\cat$ and $X\in\cat$ we have 
+	
+	\begin{itemize}
+		\item a cone over $D$ that is a natural transformation $\gamma: X\Rightarrow D$, where $X$ denotes the functor sending every object in $\mathscr{J}$ to $X$. So, because of naturality
+		of $\gamma$ for $M\xrightarrow{f}N$ in $\mathscr{J}$ there is the following commutative diagram:
+		% https://q.uiver.app/#q=WzAsMyxbMSwwLCJYKE4pPVg9WChNKSJdLFswLDEsIkQoTikiXSxbMiwxLCJEKE0pIl0sWzAsMSwiXFxnYW1tYV97Tn0iLDJdLFswLDIsIlxcZ2FtbWFfe019Il0sWzEsMiwiRChmKSIsMl1d
+		\[\begin{tikzcd}[cramped]
+			& {X(N)=X=X(M)} \\
+			{D(N)} && {D(M)}
+			\arrow["{\gamma_{N}}"', from=1-2, to=2-1]
+			\arrow["{\gamma_{M}}", from=1-2, to=2-3]
+			\arrow["{D(f)}"', from=2-1, to=2-3]
+		\end{tikzcd}\]
+		We have then also the category of cones over $D$. 
+		An equivalent description of a cone over $D$ is a functor $\mathscr{J}^{\lhd}\to\cat$
+		hence the category of cones is the functor category
+		$\Fun_D(\mathscr{J}^{\lhd},\cat)$.
+		
+		\item a cocone over $D$ that is a natural transformation $\eta: D\Rightarrow X$ and because of naturality
+		of $\gamma$ for $M\xrightarrow{f}N$ in $\mathscr{J}$ there is the following commutative diagram:
+		% https://q.uiver.app/#q=WzAsMyxbMSwxLCJYKE4pPVg9WChNKSJdLFswLDAsIkQoTikiXSxbMiwwLCJEKE0pIl0sWzEsMCwiXFxldGFfe059IiwyXSxbMiwwLCJcXGV0YV97TX0iXSxbMSwyLCJEKGYpIl1d
+		\[\begin{tikzcd}[cramped]
+			{D(N)} && {D(M)} \\
+			& {X(N)=X=X(M)}
+			\arrow["{\eta_{N}}"', from=1-1, to=2-2]
+			\arrow["{\eta_{M}}", from=1-3, to=2-2]
+			\arrow["{D(f)}", from=1-1, to=1-3]
+		\end{tikzcd}\]
+		We have then also the category of cocones over $D$. An equivalent description of a cocone over $D$ is a functor $\mathscr{J}^{\rhd}\to\cat$
+		hence the category of cocones is the functor category
+		$\Fun_D(\mathscr{J}^{\rhd},\cat)$
+	\end{itemize}
+	Then, 
+	\begin{itemize}
+		\item the limit of the diagram $D$ is a terminal object in the category of cones over $\mathscr{J}$, i.e. $\Fun_D(\mathscr{J}^{\lhd},\cat)$
+		\item the colimit of the diagram $D$ is an initial object in the category of cocones over $\mathscr{J}$, i.e. $\Fun_D(\mathscr{J}^{\rhd},\cat)$
+	\end{itemize}
+	In order to get a definition of homotopy co/limit or $(\infty,1)$-co/limit, just substitute your favourite
+	model of $\infty$-category with 'category' in this definition. 
+\end{defn}
+\begin{ex}[Cartesian product]
+	We previously defined the cartesian product of two objects by saying that some diagram commutes and the product  has a certain universal property (\ref{CartProd}). 
+	Such cartesian product is a limit over a diagram shaped as a discrete category with two objects.
+	Let us name this discrete category with two different objects $\mathscr{J}=\{0,1\}$, discrete means that
+	there are only the identity morphisms $id_0$ and $id_1$. 
+	Given $\cat$ an arbitrary category, observe a diagram 
+	$$D:\mathscr{J}\to \cat $$ 
+	$$0\mapsto A$$
+	$$1\mapsto B$$
+	Then, a cartesian product $A\times B$ is the limit over $D$
+	% https://q.uiver.app/#q=WzAsNSxbMSwwLCJZIl0sWzIsMSwiQiJdLFswLDBdLFswLDEsIkEiXSxbMSwxLCJBXFx0aW1lcyBCIl0sWzAsMSwiZyJdLFs0LDMsInByXzEiXSxbMCwzLCJmIiwyXSxbNCwxLCJwcl8yIiwyXSxbMCw0LCJcXGV4aXN0cyEgdSIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
+	\[\begin{tikzcd}
+		{} & Y \\
+		A & {A\times B} & B
+		\arrow["g", from=1-2, to=2-3]
+		\arrow["{pr_1}", from=2-2, to=2-1]
+		\arrow["f"', from=1-2, to=2-1]
+		\arrow["{pr_2}"', from=2-2, to=2-3]
+		\arrow["{\exists! u}"{description}, dashed, from=1-2, to=2-2]
+	\end{tikzcd}\]
+	The two projections exist because $A\times B$ is a cone: a cone is an initial object in the shape category $\mathscr{J}$ and $D$ is a functor, so it imports the unique morphisms from the initial object to where $0$ and $1$ are mapped, i.e. to $A$ and $B$.
+	
+	\noindent $u$ exists and is unique because $A\times B$ is the terminal object in the category of cones.
+	
+	\noindent The two smaller triangles commute because of the naturality of the morphism $u$: recall that
+	the category of cones is a functor category hence morphisms between cones 
+	are natural transformations and note that $pr_1$ and $f$ for instance are images of morphisms in
+	$\mathscr{J}^{\lhd}$
+\end{ex}
+We already sketched what might mean that a diagram is homotopy coherently commutative in the
+case of an $\mathbb{E}_1$-algebra (\ref{EAlg}). For the sake of clarity we sketch it here again,
+in a more general setting. Recall that all morphisms higher than 1 in an $\infty$-category are weakly invertible.
+% https://q.uiver.app/#q=WzAsNSxbMCwwLCJBIl0sWzAsMiwiQiJdLFsyLDIsIkQiXSxbMiwwLCJDIl0sWzEsMSwiLi4uIl0sWzAsMywiZyJdLFswLDEsImYiLDJdLFsxLDIsInEiLDJdLFszLDIsInIiXSxbMSwzLCJoIiwwLHsiY3VydmUiOi0zLCJzaG9ydGVuIjp7InNvdXJjZSI6MTAsInRhcmdldCI6MTB9LCJsZXZlbCI6Mn1dLFszLDEsImsiLDAseyJjdXJ2ZSI6LTMsInNob3J0ZW4iOnsic291cmNlIjoxMCwidGFyZ2V0IjoxMH0sImxldmVsIjoyfV0sWzksMTAsIm0iLDIseyJjdXJ2ZSI6Mywic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfX1dLFsxMCw5LCJsIiwyLHsiY3VydmUiOjMsInNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XV0=
+\[\begin{tikzcd}[cramped]
+	A && C \\
+	& {...} \\
+	B && D
+	\arrow["g", from=1-1, to=1-3]
+	\arrow["f"', from=1-1, to=3-1]
+	\arrow["q"', from=3-1, to=3-3]
+	\arrow["r", from=1-3, to=3-3]
+	\arrow[""{name=0, anchor=center, inner sep=0}, "h", curve={height=-18pt}, shorten <=7pt, shorten >=7pt, Rightarrow, from=3-1, to=1-3]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "k", curve={height=-18pt}, shorten <=7pt, shorten >=7pt, Rightarrow, from=1-3, to=3-1]
+	\arrow["m"', curve={height=18pt}, shorten <=8pt, shorten >=8pt, Rightarrow, from=0, to=1]
+	\arrow["l"', curve={height=18pt}, shorten <=8pt, shorten >=8pt, Rightarrow, from=1, to=0]
+\end{tikzcd}\]
+This diagram does not commute strictly, but via homotopies.
+This means that $h:q\circ f\simeq r\circ g:k$, instead of what we are used to: $q\circ f= r\circ g$.
+Not only this however, it is the case that $k\circ h\simeq id_{q\circ f}$ and $h\circ k\simeq id_{r\circ g}$
+, instead of the usual strict invertibility, and thus via the 3-morphisms $l$ and $m$, the 2-morphisms 
+$k$ and $h$ are homotopic, i.e. $l:k\simeq h:m$. Then there
+will be some explicit 4-morphisms witnessing that $m\simeq l$, and so on to $\infty$.
+
+%I am unsure about the sketch above!!!! Please check /Andrea
+
+
+\begin{ex}[Homotopy pullback/$(\infty,1)$-pullback]
+	Let  $\mathscr{J}$ be an $\infty$-category with objects and 1-morphisms $0\to1\leftarrow2$ and
+	$D:\mathscr{J}\to \cat$ be a diagram. To be rigorous, we would need to define what is an
+	$\infty$-functor. However, since this necessitates getting our hands dirty with a model,
+	we prefer to remain loose: an $\infty$-functor is an assignment that respects composition and identity
+	morphisms\footnote{i.e. is functorial.} not only on 1-morphisms, but for also all higher invertible morphisms.
+	Then, an $\infty$-pullback of 
+	is the homotopy limit of $D$.
+	
+	We now unpack what this means. A cone of $\mathscr{J}$, where $\emptyset$ is the new initial object
+	looks like this:
+	% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXGVtcHR5c2V0Il0sWzAsMSwiMCJdLFsxLDEsIjEiXSxbMSwwLCIyIl0sWzAsMV0sWzEsMl0sWzAsM10sWzMsMl0sWzAsMl0sWzgsMSwiIiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwfSwic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiYXJyb3doZWFkIn19fV0sWzgsMywiIiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwfSwic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiYXJyb3doZWFkIn19fV1d
+	\[\begin{tikzcd}[cramped]
+		\emptyset & 2 \\
+		0 & 1
+		\arrow[from=1-1, to=2-1]
+		\arrow[from=2-1, to=2-2]
+		\arrow[from=1-1, to=1-2]
+		\arrow[from=1-2, to=2-2]
+		\arrow[""{name=0, anchor=center, inner sep=0}, from=1-1, to=2-2]
+		\arrow[shorten <=2pt, Rightarrow, 2tail reversed, from=0, to=2-1]
+		\arrow[shorten <=2pt, Rightarrow, 2tail reversed, from=0, to=1-2]
+	\end{tikzcd}\]
+	Where the two small triangles commute via higher morphisms denoted with $\Leftrightarrow$.
+	
+	Let $D(1)=X$, $D(2)=Y$ and $D(0)=Z$. Then, the $\infty$-pullback of $D$ is the terminal object 
+	in the $\infty$-functor $\infty$-category $\Fun_D(\mathscr{J},\cat)$. Denote the image of $\emptyset$ of such pullback with $Y\times_X Z$. Then there is the following homotopy coherent diagram
+	% https://q.uiver.app/#q=WzAsNCxbMCwwLCJZXFx0aW1lc19YIFoiXSxbMCwxLCJZIl0sWzEsMSwiWiJdLFsxLDAsIlgiXSxbMCwxXSxbMSwyXSxbMCwzXSxbMywyXSxbMCwyXSxbOCwxLCIiLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MzAsInRhcmdldCI6MTB9LCJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJhcnJvd2hlYWQifX19XSxbOCwzLCIiLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MzAsInRhcmdldCI6MTB9LCJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJhcnJvd2hlYWQifX19XV0=
+	\[\begin{tikzcd}[cramped]
+		{Y\times_X Z} & X \\
+		Y & Z
+		\arrow[from=1-1, to=2-1]
+		\arrow[from=2-1, to=2-2]
+		\arrow[from=1-1, to=1-2]
+		\arrow[from=1-2, to=2-2]
+		\arrow[""{name=0, anchor=center, inner sep=0}, from=1-1, to=2-2]
+		\arrow[shorten <=4pt, shorten >=1pt, Rightarrow, 2tail reversed, from=0, to=2-1]
+		\arrow[shorten <=4pt, shorten >=1pt, Rightarrow, 2tail reversed, from=0, to=1-2]
+	\end{tikzcd}\]
+	Because the $\infty$-pullback is a functor and thus preserves the homotopy-coherent commutativity
+	of diagrams in the shape $\mathscr{J}$, by preserving compositionality for all $n$-morphisms.
+	Since it is the terminal object in the category of cones over the diagram $D$ for every other cone
+	mapping $\emptyset$ to an object $Q\in\cat$, then there is a unique morphism $Q\to Y\times_X Z$
+	making the following diagram commute homotopy coherently
+	
+	% https://q.uiver.app/#q=WzAsNSxbMSwxLCJZXFx0aW1lc19YIFoiXSxbMSwyLCJZIl0sWzIsMiwiWiJdLFsyLDEsIlgiXSxbMCwwLCJRIl0sWzAsMV0sWzEsMl0sWzAsM10sWzMsMl0sWzAsMl0sWzQsMF0sWzQsMV0sWzQsM10sWzksMSwiIiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjMwLCJ0YXJnZXQiOjEwfSwic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiYXJyb3doZWFkIn19fV0sWzksMywiIiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjMwLCJ0YXJnZXQiOjEwfSwic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiYXJyb3doZWFkIn19fV0sWzEwLDExLCIiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJhcnJvd2hlYWQifX19XSxbMTAsMTIsIiIsMix7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH0sInN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9fX1dXQ==
+	\[\begin{tikzcd}[cramped]
+		Q \\
+		& {Y\times_X Z} & X \\
+		& Y & Z
+		\arrow[from=2-2, to=3-2]
+		\arrow[from=3-2, to=3-3]
+		\arrow[from=2-2, to=2-3]
+		\arrow[from=2-3, to=3-3]
+		\arrow[""{name=0, anchor=center, inner sep=0}, from=2-2, to=3-3]
+		\arrow[""{name=1, anchor=center, inner sep=0}, from=1-1, to=2-2]
+		\arrow[""{name=2, anchor=center, inner sep=0}, from=1-1, to=3-2]
+		\arrow[""{name=3, anchor=center, inner sep=0}, from=1-1, to=2-3]
+		\arrow[shorten <=4pt, shorten >=1pt, Rightarrow, 2tail reversed, from=0, to=3-2]
+		\arrow[shorten <=4pt, shorten >=1pt, Rightarrow, 2tail reversed, from=0, to=2-3]
+		\arrow[shorten <=2pt, shorten >=2pt, Rightarrow, 2tail reversed, from=1, to=2]
+		\arrow[shorten <=4pt, shorten >=4pt, Rightarrow, 2tail reversed, from=1, to=3]
+	\end{tikzcd}\]
+	The two small triangles formed by morphisms that have $Q$ as source and by the projections of $Y\times_X Z$ (the ones on the upper left) commute because of the naturality of morphisms in 
+	$\Fun_D(\mathscr{J}^{\lhd},\cat)$
+\end{ex}
+\begin{notat}
+	From now on, when we are talking about commutative diagrams in an $\infty$-category, we do not write the double arrows $\Leftrightarrow$ symbolizing the 
+	higher morphisms that make the diagram commute.
+\end{notat}
+There is the dual notion of homotopy pullback: the homotopy pushout, which we now use to define
+suspensions in the next chapter of the appendix.
+\chapter{What are spectra? \extra}\label{WhatSpectra}
+This subsection is based off \cite{Luriealgebra}, \cite{AdamsLoops}, \cite{GregoricSpectra},
+\cite{Mazel-Gee2024}, \cite{NardinStable} and \cite{CalleInfiniteLoops}.
+
+Stable homotopy homotopy theory is the branch
+of homotopy theory that studies phenomena and structures that are stable, i.e. that can occur in any 
+dimension, or in any sufficiently large dimension independently of the exact dimension. The tool used to
+reach higher dimensions is very often suspension\footnote{We define it in the next subsection.}, this is 
+why sometimes stable homotopy theory is characterized as the phenomena that are stable under
+suspension.
+
+The paradigmatic example of stable phenomena are
+the stable homotopy groups of the sphere are the homotopy groups of the sphere $\pi_{n+i}(S^n)$ such
+that $n>i+1$. They are stable because thanks to Freudenthal's suspension theorem implies that the 
+suspension functor\footnote{Do not fear if you do not know what it is yet, we define it in the next
+	subsection.}
+$S^n\xrightarrow{\Sigma} S^{n+1}$
+induces
+an isomorphism on certain homotopy groups of the sphere: the stable ones, i.e. where $n>i+1$
+$$ \pi_{n+i}(S^n)\cong  \pi_{n+i+1}(S^{n+1})$$
+
+The investigation of stable phenomena is achieved via spectra, i.e. sequence of pointed spaces with maps
+relating them one another. For instance the stable homotopy group of the sphere are exactly the
+homotopy groups of the sphere spectrum. This begs the question: what are spectra?
+
+We already have seen some spectra and definitions of some kinds of spectra in \ref{homotopyCob}, e.g. the 
+sphere spectrum and the suspension spectrum. In that section, we defined suspension as a quotient.
+However, one can define a suspension in full generality, i.e. for any pointed $\infty$-category, via certain homotopy
+colimits. 
+
+\begin{defn}[Suspension]
+	Let $\cat$ be a pointed\footnote{A category with a zero object: an object that is both initial and final.} 
+	$\infty$-category with the zero object denoted by 0 
+	and let $X\in\cat$. Then the suspension $\Sigma X$ of $X$ is the pushout 
+	% https://q.uiver.app/#q=WzAsNCxbMCwwLCJYIl0sWzAsMSwiMCJdLFsxLDAsIjAiXSxbMSwxLCJcXFNpZ21hIFgiXSxbMCwxXSxbMCwyXSxbMSwzXSxbMiwzXSxbMywwLCIiLDEseyJzdHlsZSI6eyJuYW1lIjoiY29ybmVyIn19XV0=
+	\[\begin{tikzcd}[cramped]
+		X & 0 \\
+		0 & {\Sigma X}
+		\arrow[from=1-1, to=2-1]
+		\arrow[from=1-1, to=1-2]
+		\arrow[from=2-1, to=2-2]
+		\arrow[from=1-2, to=2-2]
+		\arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=1-1]
+	\end{tikzcd}\]
+\end{defn}
+
+\begin{defn}[Suspension functor]
+	Given a pointed $\infty$-category $\cat$ the assignment $X\mapsto \Sigma X$ gives rise to a functor
+	$\Sigma:\cat\to\cat$
+\end{defn}
+Dually, one can define the loop space of an object
+\begin{defn}[Loop space]
+	Let $\cat$ be a pointed
+	$\infty$-category and let $X\in\cat$. Then the loop space $\Omega X$ is the pullback 
+	% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXE9tZWdhIFgiXSxbMCwxLCIwIl0sWzEsMCwiMCJdLFsxLDEsIlgiXSxbMCwxXSxbMCwyXSxbMSwzXSxbMiwzXSxbMCwzLCIiLDEseyJzdHlsZSI6eyJuYW1lIjoiY29ybmVyIn19XV0=
+	\[\begin{tikzcd}[cramped]
+		{\Omega X} & 0 \\
+		0 & X
+		\arrow[from=1-1, to=2-1]
+		\arrow[from=1-1, to=1-2]
+		\arrow[from=2-1, to=2-2]
+		\arrow[from=1-2, to=2-2]
+		\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
+	\end{tikzcd}\]
+\end{defn}
+\begin{defn}[Loop space functor]
+	Given a pointed $\infty$-category $\cat$ the assignment $X\mapsto \Omega X$ gives rise to a functor $\Omega:\cat\to\cat$
+\end{defn}
+\begin{rem}
+	One very important property of the loop space functor is the shift in homotopy groups:
+	$$ \pi_n(\Omega X)=\pi_{n+1}(X)$$
+	If you took a class on algebraic topology, you most probably already witnessed this phenomenon, 
+	the fundamental group is defined as
+	$$ \pi_0(\Omega X)=\pi_1(X)$$
+\end{rem}
+\begin{rem}
+	As already mentioned in \ref{EAlg}, a loop space is an example of $\mathbb{E}_1$-space and 
+	$n$-iterated loop spaces are $\mathbb{E}_n$-spaces by the Dunn additivity theorem.
+\end{rem}
+\begin{defn}[Alternative definition of adjunction]\label{HigherAdjFun}
+	We defined adjoint functors via the natural tranformations unit and counit (\ref{AdjFun}). There is however an equivalent
+	formulation:
+	two $\infty$-functors $\cat\underset{L}{\overset{R}{\leftrightarrows}}\dat$ form an adjunction $L\dashv R$, i.e. where $L$ is the left adjoint
+	and $R$ is the right adjoint, if between the two Hom-$\infty$-functors 
+	$$\Hom_\cat(L(-),-):\cat^{\operatorname{op}}\times\cat \to \operatorname{Grpd}_\infty$$
+	and
+	$$\Hom_\dat(-,R(-)):\dat^{\operatorname{op}}\times\dat\to \operatorname{Grpd}_\infty$$
+	there is a natural isomorphism $\Hom_\cat(L(-),-)\simeq \Hom_\dat(-,R(-))$
+	
+	This definition is easily derivable from the one with units we gave previously, given 
+	the unit $\epsilon:id_{\dat}\Rightarrow R\circ L$ and $X\in\cat$ and $Y\in\dat$, 
+	the following holds because of one of the triangle identities: 
+	% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXEhvbV97XFxjYXR9KEwoWSksWCkiXSxbMSwxLCJcXEhvbV9cXGRhdChSKEwoWSkpLFIoWCkpIl0sWzIsMCwiXFxIb21fXFxkYXQoWSxSKFgpKSJdLFswLDFdLFsxLDJdLFswLDIsIlxcc2ltZXEiXV0=
+	\[\begin{tikzcd}[cramped]
+		{\Hom_{\cat}(L(Y),X)} && {\Hom_\dat(Y,R(X))} \\
+		& {\Hom_\dat(R(L(Y)),R(X))}
+		\arrow[from=1-1, to=2-2]
+		\arrow[from=2-2, to=1-3]
+		\arrow["\simeq", from=1-1, to=1-3]
+	\end{tikzcd}\]
+\end{defn}
+\begin{rem}[Suspension-loop adjunction]
+	There is an adjunction $\Sigma\dashv\Omega$ and thus for any pointed $\infty$-category
+	$\cat$ it holds that $\Hom_{\cat}(\Sigma-,-)\simeq \Hom_{\cat}(-,\Omega-)$. If it is not sufficiently clear from
+	the fact that 
+	$\Omega X=0\times_X 0$ and $\Sigma X=0\amalg_X 0$, do not worry. In the case that it interests us the most
+	it can be seen from another perspective. Recall that for $X\in \Top_\ast$
+	$\Sigma X= X\land S^1$ and $\Omega_x=\operatorname{Map}_{\ast}(S^1,X)$ and that $\Top_\ast$ is cartesian
+	monoidal closed, i.e. for any $A,B,C\in\Top_\ast$ it holds that $\Hom_{\Top_{\ast}}(A\land B, C)\cong\Hom_{\Top_{\ast}}(A,\operatorname{Map}_{\ast}(B,C))$ and hence 
+	$\Hom_{\Top_{\ast}}(-\land S^1,-)\cong\Hom_{\Top_{\ast}}(-,\operatorname{Map}_{\ast}(S^1,-))$
+\end{rem}
+\begin{defn}[($\Omega$-)Spectrum\footnote{It is denoted $\Omega$-spectrum in the older literature, e.g. books or 
+		articles by May or Adams like \cite{AdamsLoops}.}]
+	A spectrum is a collection of 
+	pointed spaces $\{E_n\}_{n\in\Z}$ with equivalences $\delta_n:E_n\simeq \Omega E_{n+1}$
+\end{defn}
+\begin{rem}
+	Note that via the adjunction $\Sigma\dashv\Omega$ we can get a prespectrum from a spectrum:
+	given $X_i,X_{i+1}\in\sat_\ast$ it holds that 
+	$\Hom_{\sat_{\ast}}(X_i,\Omega X_{i+1})\simeq \Hom_{\sat_{\ast}}(\Sigma X_i,X_{i+1})$ and thus we can 
+	get the pointed maps we need in order to define a prespectrum. This means that every spectrum
+	is a prespectrum, i.e. the category of spectra is a subcategory of the category of prespectra. This is the
+	reason why the synonym of prespectra 'sequential spectra' is counterintuitive.
+\end{rem}
+
+
+\begin{defn}[$\infty$-category of spectra]
+	The $\infty$-category of spectra is the category where the objects are spectra. %The fact that there
+	%are equivalences $X_i\simeq\Omega X_{i+1}$ 
+	
+	
+	This is equivalent to saying that the category of spectra is the sequential homotopy limit 
+	$$\operatorname{lim}(...\leftarrow\sat_\ast\leftarrow\sat_\ast\leftarrow\sat_\ast\leftarrow ...)$$
+	where we can see the diagram we are taking the limit over as a functor 
+	$D:\Z^{\operatorname{op}}\to\infty\operatorname{-Cat}$ where $\Z$ is considered as a category
+	via its ordering ($\leq$ corresponds to a morphism $\to$) and for each $i\in\Z$ $D(i)=\sat_\ast$. 
+	%Sometimes 
+	%such diagrams are called towers. %TBD
+	
+	From this it follows that a map of spectra $f:\{X_i\}_{i\in\Z}\to\{Y_i\}_{i\in\Z}$ is given by components 
+	that are pointed maps $f_i:X_i\to Y_i$ such that the following square commutes homotopy coherently
+	% https://q.uiver.app/#q=WzAsNCxbMCwwLCJYX2kiXSxbMSwwLCJZX2kiXSxbMCwxLCJcXE9tZWdhIFhfe2krMX0iXSxbMSwxLCJcXE9tZWdhIFlfe2krMX0iXSxbMCwxLCJmX2kiXSxbMCwyLCJcXHNpbWVxIiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxLDMsIlxcc2ltZXEiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsMywiXFxPbWVnYSBmX3tpKzF9IiwyXV0=
+	\[\begin{tikzcd}[cramped]
+		{X_i} & {Y_i} \\
+		{\Omega X_{i+1}} & {\Omega Y_{i+1}}
+		\arrow["{f_i}", from=1-1, to=1-2]
+		\arrow["\simeq"', no head, from=1-1, to=2-1]
+		\arrow["\simeq", no head, from=1-2, to=2-2]
+		\arrow["{\Omega f_{i+1}}"', from=2-1, to=2-2]
+	\end{tikzcd}\] %UNSURE ABOUT THIS; PLEAASE CHECK /ANDREA
+\end{defn}
+The initial object of the $\infty$-category of spectra is the sphere spectrum $\mathds{S}$.
+\begin{notat}
+	An $n$-connective space is a space with trivial homotopy groups for
+	all $k< n$. An $n$-connective space is an $n-1$-connected space. A space is 0-connective if and only
+	if it is non-empty.
+\end{notat}
+\begin{defn}[Infinite loop space]\label{InfiniteLoop}
+	An infinite loop space is a non-empty pointed space $X_0$ with an infinite sequence of pointed
+	spaces
+	$X_0,X_1,X_2,...$ with weak equivalences for $n\geq 0$
+	$$X_n\simeq \Omega X_{n+1}$$
+	
+	%\footnote{The loop space object is an inverse operation to the delooping, meaning that that given some monoidal category $\cat$, $\cat$ is the loop space object of the delooping of $\cat$. The name comes from the topological notion, see \url{https://en.wikipedia.org/wiki/Loop_space}
+		
+		%In general, loop space objects inherit the monoidal structure from the composition of loops. We would need to talk about homotopy pullbacks in order to strictly define what a loop space object is.}
+	
+\end{defn}
+
+Infinite loop spaces seem very similar to what we defined as spectra ($\Omega$-spectra). 
+
+% However, there is a crucial 
+%difference: there is no space to start from in a spectrum, since there are deloopings for all spaces, i.e. $ X_{-1}\simeq \Omega X_{0}$, 
+%$ X_{-2}\simeq \Omega X_{-1}$ and so on, while in an infinite loop space there are not.
+
+\noindent In fact, we will soon see that infinite loop spaces coincide with a particular kind of spectra:
+connective spectra.
+\begin{defn}[Underlying (infinite loop) space functor]
+	Given a spectrum, the assignment of a spectrum $ \{X_i\}_{i\in\Z}$ to its underlying
+	infinite loop space, aka 0-th space, is a functor.
+	$$\Omega^{\infty}:\operatorname{Sp}\to\sat_\ast$$	
+	$$ \{X_i\}_{i\in\Z}\mapsto X_0$$
+\end{defn}
+Such assignment has a left adjoint.
+\begin{defn}[Suspension spectrum functor]
+	$$\Sigma^{\infty}:\sat_\ast\to\operatorname{Sp}$$
+	$$X\mapsto \{\Sigma^i X\}_i$$
+	sending pointed spaces to suspension spectra, i.e. sequences of spaces  $\{\Sigma^i X\}_i$ with pointed
+	maps $\Sigma(\Sigma^i X)=\Sigma^{i+1} X$. Such suspension spectra are indeed spectra las we defined
+	then (aka $\Omega$-spectra) thanks to the adjunction $\Sigma\dashv\Omega$.
+	
+	An example of such spectra is the sphere spectrum we already encountered in \ref{homotopyCob}. 
+\end{defn}
+%\begin{defn}[Classifying spectrum]
+%Let $M$ be an $\mathbb{E}_\infty$-space, i.e. an $\mathbb{E}_\infty$-algebra in $\sat_\ast$ (see
+% \ref{EAlg}). Then we define the classifying spectrum of $M$
+%$$\mathbf{B}^{\infty}(M):=\{\mathbf{B}^n\}$$ %TBD
+%It might be useful to check out what is a classifying space of a topological
+%group\footnote{\url{https://en.wikipedia.org/wiki/Classifying_space}}.
+%\end{defn}
+%\begin{defn}[
+%\end{defn}
+
+
+\begin{thm}[Recognition theorem for $n$-iterated loop spaces, Boardman-Vogt, May]\label{RecognitionNLOOPS}
+	For any $n> 0$, $n$-iterated loop spaces coincide with grouplike $\E_n$-spaces. 
+	More rigorously: the 
+	$n$-iterated loop space functor $\Omega^{n}:\sat_\ast \to\sat_\ast$ restricts to an equivalence of
+	$\infty$-categories between $n$-connective pointed spaces and grouplike $\E_n$-spaces
+	$$\Omega^n:\sat^{\geq n}_{\ast}\simeq \Alg_{\mathbb{E}_n}^{\operatorname{gp}}(\sat) $$
+\end{thm}
+
+See \cite[5.2.6.10]{Luriealgebra} for a rigorous proof. Note anyway that it follows from an easier fact
+to prove (see \cite[Theorem 3.9]{NardinStable}):
+\begin{thm}[Recognition theorem for loop spaces]
+	Loop spaces coincide with grouplike $\E_1$-spaces. 
+	More rigorously: the 
+	loop space functor $\Omega:\sat_\ast \to\sat_\ast$ restricts to an equivalence of
+	$\infty$-categories between 0-connective pointed spaces and grouplike $\E_1$-spaces
+	
+	$$\sat^{\geq 0}_{\ast}\overset{\Omega}{\simeq}\Alg_{\mathbb{E}_1}^{\operatorname{gp}}(\sat) $$
+\end{thm}
+Combining this with the Dunn additivity theorem (\ref{DunnAdds}) allows to prove the recognition theorem
+for $n$-iterated loop spaces by induction. The base case: $n=1$ is the recognition theorem for loop
+spaces and the inductive step holds via the Dunn additivity theorem.
+
+As said in the preamble of this section, stable homotopy groups of a space $A\in\sat$, denoted 
+$\pi^{s}_{i}(A)$, are exactly the homotopy groups of the spectrum of $A$, $\Sigma^{\infty}A$. Thus,
+$\pi^{s}_{i}(A)\cong \pi_{i}(\Sigma^{\infty}A)$. There is however a natural question: what are the
+homotopy groups of a spectrum? One interesting fact is that
+while the degree homotopy groups for usual topological spaces are defined to be positive, homotopy
+groups of spectra can be defined and be non-trivial also for negative degrees.
+\begin{defn}[Homotopy groups of spectra]
+	Given a prespectrum $\{ E_i\}_{i\in\Z}$ with pointed maps $\sigma_i:\Sigma E_i\to E_{i+1}$,
+	for $n,k\in\Z$, the $n$th homotopy group of 
+	$\{ E_i\}_{i\in\Z}$ is 
+	$$\pi_n(\{ E_i\}_{i\in\Z}):=\underset{\rightarrow}{\operatorname{lim}}(...\to \pi_{n+k}(E_k)\xrightarrow{\Sigma} \pi_{n+k+1}(\Sigma E_{k})\xrightarrow{\pi_{n+k+1}(\sigma_k)}\pi_{n+k+1}(E_{k+1})\to ...)$$
+	where all the $\pi_\ast$ inside the parentheses indicate the homotopy groups of the various pointed
+	spaces $E_k\in \{ E_i\}_{i\in\Z}$. Since $k\in\Z$, there are indeed also homotopy groups with negative 
+	degrees.
+	
+	If a prespectrum $\{ X_i\}_{i\in\Z}$ is also a spectrum, then from the definition we just provided
+	it
+	follows that for 
+	$$ \pi_n(\{ X_i\}_{i\in\Z})
+	\begin{cases}
+		\pi_{n+k}(X_k) & k+n\geq 0 \\
+		\pi_{n}(X_0) & n\geq 0 \\
+		\pi_{0}X_{|n|} & n<0
+	\end{cases}$$
+\end{defn}
+\begin{defn}[Connective spectra]
+	Connective spectra are
+	spectra that only have positive non-trivial homotopy groups: let $\{ X_i\}_{i\in\Z}$ be a connective
+	spectra, then for all
+	$n<0$ it holds that $\pi_n(\{ X_i\}_{i\in\Z})=0$. 
+	
+	Connective spectra form a subcategory of Sp denoted $\operatorname{Sp}_{\geq 0}$.
+\end{defn}
+\begin{ex}
+	Many of the spectra one uses are connective:
+	\begin{itemize}
+		\item suspension spectra,and thus remarkably the sphere spectrum $\mathds{S}$
+		\item the Thom spectrum MO
+	\end{itemize}
+\end{ex}
+
+\begin{rem}[Connective spectra=infinite loop spaces]
+	An infinite loop space is a 0-connective pointed space (since it is non-empty), hence it does not have
+	any negative
+	homotopy groups and it has exactly the same structure $X_n\simeq \Omega X_{n+1}$ as a spectrum.
+	
+	Thus, infinite loop spaces coincide with connective spectra.
+\end{rem}
+\begin{rem}[Grouplike $\E_\infty$-spaces=Picard groupoids]\label{InfLoopsPicard}
+	
+	Recall (\ref{EAlg}) that grouplike
+	$\mathbb{E}_\infty$-spaces coincide with
+	Picard $\infty$-groupoids:
+	\begin{itemize}
+		\item the $\E_\infty$ makes them homotopy coherent commutative
+		monoid objects in $\operatorname{Grpd}_\infty$, i.e. symmetric monoidal $\infty$-groupoids
+		\item since they are grouplike, they have inverses because if we first
+		apply $\pi_0$, then forget about the commutative structure, and land in the category of groups, that
+		means that the inverses must have been there from the start
+	\end{itemize} 
+\end{rem}
+
+The following result proves the that all grouplike $\E_\infty$-spaces (aka Picard
+$\infty$-groupoids) 
+are connective spectra (aka infinite loop spaces). Hence, we will be able to conclude that Picard
+$\infty$-groupoids coincide with infinite
+loop spaces.  However, what is really important for us
+is that Picard groupoids coincide with connective
+spectra since this is the fact that will allow us to recognize that invertible field theories are maps of 
+spectra.
+
+Roughly, passing to the limit $n\to\infty$ in the recognition theorem for $n$-iterated loop spaces with
+some abstract nonsense regarding 
+the definition of the category of spectra as the sequential homotopy limit
+$\operatorname{lim}(...\leftarrow\sat_\ast\leftarrow\sat_\ast\leftarrow\sat_\ast\leftarrow ...)$ leads to the 
+following result.
+\begin{thm}[Recognition theorem for connective spectra/infinite loop
+	spaces]\label{RecognitionConnectiveSpectra}
+	Connective spectra coincide with grouplike $\E_\infty$-spaces.
+	
+	There is an equivalence: 
+	$$\mathbf{B}^{\infty}:\Alg_{\mathbb{E}_{\infty}}^{\operatorname{gp}}(\mathscr{S})\leftrightarrows\operatorname{Sp}_{\geq 0}:\Omega^{\infty}$$
+	
+	where $\mathbf{B}^{\infty}$ denotes the classifying spectrum functor.
+\end{thm}
+See \cite[7.2.2.11]{lurie2008higher},
+\cite[Corollary II.24]{KtheoryHebestreitWagner} or
+\cite[3.29]{NardinStable} for proofs.
+
+We can conclude this fast-paced introduction to spectra with the following slogan:
+
+$$\textbf{infinite loop spaces=connective spectra=Picard $\infty$-groupoids=grouplike }\E_\infty\textbf{-spaces}$$
+
+\section{Spectra and higher algebra \extra}
+In sum, spectra are a higher categorical analog of abelian groups (see \ref{Ab-Enriched Cat}), they have been in fact called “the abelian groups of the 21st century” \cite{Mazel-Gee2024}
+because they provide very powerful techniques for many areas of mathematics
+where there is currently much progress, e.g. in algebraic K-theory. One can do algebra with 
+spectra as one does ordinary algebra with abelian groups and rings, this subject is usually called 
+'higher algebra'\footnote{A
+	funny synonym for higher algebra is brave new algebra, referring to Huxley's dystopian
+	novel \textit{Brave New World}. It was coined by Waldhausen, one of
+	the pioneers of this discipline, hinting at the fact that it seems to have myriads of intriguing
+	opportunities but at the same could lead into a world of pure abstractions detached from mathematics
+	with actual content. Examples of successful applications of such machinery
+	to concrete problems, e.g. the counterexamples to Ravenel's telescope conjecture
+	\cite{burklund2023ktheoretic}, convince the author of this section that this nightmare was avoided,
+	although 
+	it must be said that they are clearly biased.}. This is not just a vague analogy, 
+but something that can be motivated formally, for instance, abelian groups are discrete spectra:
+$$\pi_0:\operatorname{Sp}\to\operatorname{Ab}$$
+where in particular $\pi_0(\mathds{S})=\Z$
+%In a certain sense, $\mathds{S}$ is analgous to $\Z$ but in another category: \Z is the unit in Ab, while $\mathds{S}$ is the unit in the category of spectra. 
+
+We make the comparison clearer via the following table\footnote{his table was inspired by a table in Thomas
+	Nikolaus' talk: \url{https://www.youtube.com/watch?v=SJNKs1PxT9g}. } :
+
+\begin{center}
+	\begin{tabular}{||c|c||}
+		\hline
+		algebra & higher algebra\\ [0.5ex]
+		\hline\hline
+		set & $\infty$-groupoid\\
+		\hline
+		abelian group & spectrum \\
+		\hline
+		Ab & Sp \\
+		\hline
+		\Z &  $\mathds{S}$ \\
+		\hline
+		ring & $\E_1$-ring spectrum \\
+		\hline
+		commutative ring & $\mathbb{E}_\infty$-ring spectrum \\
+		\hline
+		Ab-enriched category & Sp-enriched category \\
+		\hline
+		abelian category & stable category \\
+		\hline
+	\end{tabular}
+\end{center}
+See \ref{Ab-Enriched Cat} and \ref{AbelianCat} for the definitions of Ab-enriched category and
+abelian category. See \ref{EAlg} for the definitions of $\E_1$-ring spectrum and of
+$\mathbb{E}_\infty$-ring spectrum. A stable
+category is a pointed $\infty$-category with finite limits and colimits where $\Sigma\dashv\Omega$ do
+not just form an adjunction,
+but are equivalent. 
+There is an equivalent definition of stable category that more closely resembles the definition of abelian
+category, i.e. an additive $\infty$-category with further conditions, see \cite[Section 1]{Luriealgebra}.
+
+
+\newpage
 \input{exercises} % note - this is just a working interjection of the first sheet in these lecture notes (later on it might be nice to redistribute them to appear right after the concepts you need to solve them have been introduced) /Jacob
-
-
 
 \newpage
 \bibliographystyle{alpha}
