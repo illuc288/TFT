@@ -7,3 +7,7 @@ and Üzeyir Saçıkay. Exercises are also implemented in
 the notes by Jacob Skarby.
 
 The site of the course can be found [here](http://www.scheimbauer.at/TFT/TFTcourse.html), and the exercises [here](http://www.scheimbauer.at/TFT/TFTexercises.html).
+
+There are two versions of the notes: one with outlooks towards related topics and one without.
+The latter is the more faithful representation of what we did in class and the pdf
+is named TFT FAITHFUL.
