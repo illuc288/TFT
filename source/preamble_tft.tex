@@ -1,0 +1,62 @@
+% -------------------------------------------------------------
+% --------------------- LECTURE 9 22/11 -----------------------
+% -------------------------------------------------------------
+\chapter*{Preamble: a modern perspective on cobordisms}
+\addcontentsline{toc}{chapter}{\protect\numberline{}Preamble: a modern perspective on cobordisms}
+
+A bordism invariant was characterized as a homomorphism from the cobordism group to some other abelian group. 
+To extract the cobordism group from bordism we took the following steps:
+\begin{enumerate}
+    \item observed that being cobordant is an equivalence relation,
+    \item considered the equivalence classes of closed $n$ manifolds up to $n+1$ cobordisms, obtaining the sets $\Omega_n$,
+    \item took such equivalence classes together with disjoint unions, resulting in an abelian group\footnote{And eventually in a \Z graded commutative ring, but this will not be as important for us from now on.}.
+\end{enumerate} 
+This strategy was the key for classifying manifolds up to cobordism. 
+However, the cobordism groups merely record that \emph{there is} a bordism between two manifolds (since two manifolds are equivalent just if there is a bordism, independently of what kind of bordism it is), 
+thereby forgetting other properties of the bordism itself. 
+We swich now perspective and analyze a more sophisticated structure remembering \underline{how} two manifolds are cobordant, 
+e.g. indicating the manifold that bounds them and the direction of the bordism: the symmetric monoidal category $\Bord_{n,n-1}$ where objects are $(n-1)$ manifolds and morphisms are $n$-cobordisms. This is an instance of a process called categorification\footnote{Sometimes, e.g. in the nLab, also called vertical categorification.}: adding categorical structure to things, 
+e.g.\footnote{Note that although this way of categorifying is the most prominent one, it is strictly speaking not the only way to categorify, one could also go from category theory to higher category theory.} 
+passing from set-theoretic notions like set or function  categorical ones like category or functor. 
+The invariants will become in turn functors from $\Bord_{n,n-1}$ to categories of algebraic nature like $\Vect_k$, the category of vector spaces on a field $k$. 
+Such categorified cobordism invariants are exactly topological field theories (TFTs). 
+
+The following table summarizes the comparison between additional structures in the two perspectives:
+
+\begin{center}
+    \begin{tabular}{||c|c||}
+    \hline
+        $\Omega_n$ & $\Bord_{n,n-1}$ \\ [0.5ex]
+         \hline\hline
+         set & category \\
+         \hline
+         monoid & monoidal category \\
+         \hline
+         commutative monoid & symmetric monoidal category \\
+         \hline
+         abelian group & Picard groupoid \\
+         \hline
+    \end{tabular}
+\end{center}
+Analogous to the comparison between the set-theoretic and category-theoretic perspective, we could also have a linear-algebraic perspective. Since an associative algebra on a vector space is the parallel construction to a monoid with set, and a commutative algebra corresponds to a commutative monoid. The following table adds this perspective.
+\begin{center}
+    \begin{tabular}{||c|c||}
+    \hline
+        $\Omega_n$ & $\Vect_k$ \\ [0.5ex]
+         \hline\hline
+         set & vector space\\
+         \hline
+         monoid & associative algebra \\
+         \hline
+         commutative monoid & commutative algebra \\
+         \hline
+    \end{tabular}
+\end{center}
+We make both these comparisons more rigorous by later (\ref{MonObj}) showing that
+\begin{enumerate}
+    \item a monoid is a monoid object in the category of sets.
+    \item an associative algebra is a monoid object in the category of $k$-vector spaces $Vect_k$
+    \item a (\emph{strict}) monoidal category is a monoid object in the category of small categories Cat
+\end{enumerate} 
+The same holds for the commutative case, commutative monoids, commutative algebras and (\emph{strict}\footnote{We will also sketch a way how to get general symmetric monoidal categories, i.e. not necessarily strict, in an analogous way. See \ref{EAlg}.}) 
+symmetric monoidal categories are all examples of commutative monoid objects (see \ref{CommMonObj}).

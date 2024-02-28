@@ -1,0 +1,104 @@
+\section{Monoidal categories}\label{MonCat}
+Recall that a monoid is a group where elements are not required to be invertible: a set $M$ with a distinguished object $e\in M$ called unit, also known as neutral element, and a map of sets $m: M\times M \to M$ such that $m$ is:
+\begin{itemize}
+    \item associative $$
+    \forall a,b,c\in M, \quad m(m(a,b),c)=m(a,m(b,c))
+$$
+usually written
+$$
+   \forall a,b,c\in M, \quad (a \cdot b) \cdot c = a\cdot (b \cdot c)
+$$
+\item and unital with respect to $e$:
+$$
+     m(e, -) =\id(-), \quad m(-, e) =\id(-)
+$$
+where $\forall x\in M, id(x)=x$. The latter equation is usually written $$
+\forall x\in M, \quad e\cdot x=x=x\cdot e
+$$
+\end{itemize}
+A monoidal category generalizes this structure with respect to objects \emph{and} morphisms of a category.
+\begin{defn}
+    Let $\cat$ be a category. A monoidal structure on $\cat$ is
+    \begin{itemize}
+            \item (O) an object $\mathbb{1}_\cat \in \cat$,
+            \hfill the \textit{unit}
+        \item (M) bifunctor $\otimes: \cat \times \cat \to \cat$, 
+            \hfill the \textit{tensor product}
+        
+        \item (A) a natural isomorphism $\alpha:- \otimes (- \otimes -)\Rightarrow(- \otimes -) \otimes -$ that witnesses associativity:
+        % % https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXG1hdGhzY3J7Q31cXHRpbWVzXFxtYXRoc2Nye0N9XFx0aW1lc1xcbWF0aHNjcntDfSJdLFsxLDAsIlxcYWxwaGEiXSxbMiwwLCJcXG1hdGhzY3J7Q30iXSxbMCwyLCIoLVxcb3RpbWVzLSlcXG90aW1lcy0iLDIseyJjdXJ2ZSI6M31dLFswLDIsIi1cXG90aW1lcygtXFxvdGltZXMtKSIsMCx7ImN1cnZlIjotM31dLFs0LDMsIiIsMix7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XV0=
+            \[\begin{tikzcd}
+                {\mathscr{C}\times\mathscr{C}\times\mathscr{C}} & \alpha & {\mathscr{C}}
+                \arrow[""{name=0, anchor=center, inner sep=0}, "{(-\otimes-)\otimes-}"', curve={height=18pt}, from=1-1, to=1-3]
+                \arrow[""{name=1, anchor=center, inner sep=0}, "{-\otimes(-\otimes-)}", curve={height=-18pt}, from=1-1, to=1-3]
+                \arrow[shorten <=5pt, shorten >=5pt, Rightarrow, from=1, to=0]
+            \end{tikzcd}\]
+            \hfill the \textit{associator}
+        \item (U) natural isomorphisms $\lambda:\mathbb{1}_\cat \otimes(-)\Rightarrow\id_\cat=(-)$ and $\rho:- \otimes\mathbb{1}_\cat\Rightarrow\id_\cat=(-)$ witnessing unitality: % https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXG1hdGhzY3J7Q30iXSxbMSwwLCJcXG1hdGhzY3J7Q30iXSxbMiwwLCJcXG1hdGhzY3J7Q30iXSxbMywwLCJcXG1hdGhzY3J7Q30iXSxbMCwxLCJcXG1hdGhiYnsxfVxcb3RpbWVzIC0iLDAseyJjdXJ2ZSI6LTJ9XSxbMCwxLCJpZF9cXG1hdGhzY3J7Q309KC0pIiwyLHsiY3VydmUiOjJ9XSxbMiwzLCJpZF9cXG1hdGhzY3J7Q309KC0pIiwyLHsiY3VydmUiOjJ9XSxbMiwzLCItXFxvdGltZXMgXFxtYXRoYmJ7MX0iLDAseyJjdXJ2ZSI6LTJ9XSxbNCw1LCJcXGxhbWJkYSIsMix7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XSxbNyw2LCJcXHJobyIsMix7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XV0=
+            \[\begin{tikzcd}
+                {\mathscr{C}} & {\mathscr{C}} & {\mathscr{C}} & {\mathscr{C}}
+                \arrow[""{name=0, anchor=center, inner sep=0}, "{\mathbb{1}\otimes -}", curve={height=-12pt}, from=1-1, to=1-2]
+                \arrow[""{name=1, anchor=center, inner sep=0}, "{id_\mathscr{C}=(-)}"', curve={height=12pt}, from=1-1, to=1-2]
+                \arrow[""{name=2, anchor=center, inner sep=0}, "{id_\mathscr{C}=(-)}"', curve={height=12pt}, from=1-3, to=1-4]
+                \arrow[""{name=3, anchor=center, inner sep=0}, "{-\otimes \mathbb{1}}", curve={height=-12pt}, from=1-3, to=1-4]
+                \arrow["\lambda"', shorten <=3pt, shorten >=3pt, Rightarrow, from=0, to=1]
+                \arrow["\rho"', shorten <=3pt, shorten >=3pt, Rightarrow, from=3, to=2]
+            \end{tikzcd}\]
+            \hfill respectively the \textit{left and right unitors}
+    \end{itemize}
+    such that
+    \begin{itemize}
+        \item $\forall X,Y$ the following diagram commutes
+        \[\begin{tikzcd}
+    {(X\otimes\mathbb{1})\otimes Y} & {} & {X\otimes(\mathbb{1}\otimes Y)} \\
+    & {X\otimes Y}
+    \arrow["{\alpha_{X,\mathbb{1},\otimes Y}}", from=1-1, to=1-3]
+    \arrow["{\rho_X\otimes id_Y}"', from=1-1, to=2-2]
+    \arrow["{id_X\otimes\lambda_Y}", from=1-3, to=2-2]
+\end{tikzcd}\]
+        This diagram is called the triangle identity. It explains how the associator and the two unitors interact.
+        \item $\forall W,X,Y,Z$ the following diagram commutes
+       \[\begin{tikzcd}[cramped]
+    && {((W\otimes X)\otimes Y)\otimes Z} \\
+    {} & {(W\otimes (X\otimes Y))\otimes Z} & {} & {(W\otimes X)\otimes (Y\otimes Z)} & {} \\
+    & {W\otimes ((X\otimes Y)\otimes Z)} && {W\otimes (X\otimes (Y\otimes Z))}
+    \arrow["{id_W\otimes \alpha_{X,Y,Z}}"', from=3-2, to=3-4]
+    \arrow["{\alpha_{W,X,Y}\otimes id_Z}"', from=1-3, to=2-2]
+    \arrow["{\alpha_{W,X\otimes Y,Z}}"', from=2-2, to=3-2]
+    \arrow["{\alpha_{W\otimes X,Y,Z}}", from=1-3, to=2-4]
+    \arrow["{\alpha_{W,X,Y\otimes Z}}", from=2-4, to=3-4]
+\end{tikzcd}\]
+        The latter diagram is called Mac Lane's pentagon. Thanks to \ref{thm:maclane_coherence} it pins down the associativity of more than 3 objects.
+    \end{itemize}
+\end{defn}
+\begin{notat}
+    As we usually abuse notation and denote monoids $(M,\cdot)$ just with $M$, although a monoid is a set \emph{equipped with} a binary operation; we will denote monoidal categories $(\cat,\otimes,\unit_\cat)$ just with $\cat$, although a monoidal category is a category \emph{equipped with} a monoidal structure.
+\end{notat}
+\begin{defn}[Strict Monoidal Category]
+    A strict monoidal category is a monoidal category where objects and morphisms are associative and unital strictly, not up to specific natural isomorphisms, i.e. the associator and the left/right unitors are the identity. This means that for every $f:A,B,C\in\cat$ and every $f:A\to B, g:B\to C, h:C\to D\in\cat$ where $\cat$ is a strict monoidal category: \begin{itemize}
+        \item $A\otimes(B\otimes C)=(A\otimes B)\otimes C$
+        \item $A\otimes \mathbb{1}_\cat=A=\mathbb{1}_\cat\otimes A$
+        \item $f\otimes(g\otimes h)=(f\otimes g)\otimes h$
+        \item $f\otimes id_\mathbb{1_cat}=f=id_\mathbb{1_cat}\otimes f$
+    \end{itemize}
+\end{defn}
+\begin{ex}[Examples of \emph{strict} monoidal categories]
+\hfill
+    \begin{itemize}
+        \item Given an arbitrary category $\cat$, the set\footnote{A set and not a larger collection since we defined categories to be locally small.} of its endofunctors $\End(\cat,\cat)=\Hom_{\Cat}(\cat,\cat)$ are the objects of a monoidal category with morphisms given by natural transformations between them. The tensor product is given by composition and it is associative since composition of functors is associative. The monoidal unit is $id_\cat$ and is indeed left and right unital. Note however that this is an example of \emph{strict} monoidal category since functors compose strictly and not up to some associator and unitors.
+        \item A monoid $(M,\cdot,e)$, seen as a category with objects $m \in M$ and only the identity morphisms, is a discrete strict monoidal category. The monoidal structure is simply given by multiplication of the elements of the monoid, which is clearly (strictly) associative and unital. A discrete category is a category where there are only identity morphisms. 
+        %So, $(M,\cdot,e)=(\mathcal{M},\otimes,\mathbb{1}_\mathcal{M})$ where $\ob(\mathcal{M})=M$ and $\mathbb{1}_\mathcal{M}=e$.
+    \end{itemize} 
+\end{ex}
+\begin{ex}[Examples of monoidal categories]
+    Examples of monoidal categories are \begin{itemize}
+        \item $(\AbGrp, \otimes)$
+        \item $(\AbGrp, \oplus)$
+        \item $(\Vect_k, \otimes)$
+        \item $(\Vect_k, \oplus)$
+        \item $(\Set, \coprod)$
+        \item $(\Set, \times)$
+        \item $(\Top, \times)$
+        \item $(\Cat, \times)$
+    \end{itemize}
+\end{ex}

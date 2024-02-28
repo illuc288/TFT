@@ -1,0 +1,211 @@
+\section{Equivalence of categories \extra} % (fold)
+\label{sub:equivalence_of_categories}
+
+We did not cover this topic in the lecture, but the concept of equivalence of categories is important for results such as \ref{thm:classif_of_1dtft}.
+\begin{defn}
+    Let $F:\mathscr{C}\rightarrow\mathscr{D}$ be a functor. $F$ is named \begin{enumerate}
+        \item faithful if $\forall X,Y\in\mathscr{C}$ the map $\Hom_{\mathscr{C}}(X,Y)\rightarrow \Hom_{\mathscr{D}}(F(X),F(Y))$ is injective,
+        \item full if $\forall X,Y\in\mathscr{C}$ the map $\Hom_{\mathscr{C}}(X,Y)\rightarrow \Hom_{\mathscr{D}}(F(X),F(Y))$ is surjective,
+        \item fully faithful, if $F$ is full and faithful,
+        \item conservative, if for $f:X\rightarrow Y$ in $\mathscr{C}$ such that if $F(f)$ is an isomorphism, then $f$ is an isomorphism,
+        \item an isomorphism if $\exists G:\mathscr{D}\rightarrow\mathscr{C}$ such that $G\circ F=id_{\mathscr{C}}$ and $F\circ G=id_{\mathscr{D}}$,
+        \item an equivalence if $\exists G:\mathscr{D}\rightarrow\mathscr{C}$ and natural isomorphisms $G\circ F\overset{\epsilon}{\cong}id_{\mathscr{C}}$ and $F\circ G\overset{\eta}{\cong}id_{\mathscr{D}}$,
+        \item essentially surjective if $\forall Z\in\mathscr{D}, \exists X\in\mathscr{C}$ and an isomorphsim $F(X)\cong Z'$ (isomorphism in $\mathscr{D}$).
+    \end{enumerate}
+\end{defn}
+% realized only writing down the definition of adjunction that I swapped unit and counit in the case of equivalence, will fix it, sorry! :/ /Andrea 
+%what? /William
+\begin{defn}[Equivalence and isomorphism of Categories]
+    Two categories $\cat$ and $\dat$ are equivalent (isomorphic) if and only if there is an equivalence (isomorphism) between them.
+\end{defn}
+From the definition above we can see that equivalence of categories is a \textit{weaker} notion than that of being isomorphic. However finding naturally isomorphic categories is very rare, so the notion of equivalence is often more useful. Here we also use the term \textit{weak} which in category theory often refers to the substitution of an equality by an appropriate natural isomorphism.
+\begin{notat}
+    We denote that two categories $\cat,\dat$ are equivalent by $\cat\simeq\dat$. Whereas, we write down $\cat\cong\dat$ if they are naturally isomorphic, i.e. there is a natural isomorphism between them. 
+\end{notat}
+\begin{thm}[Fundamental Theorem of Category Theory\footnote{We call it fundamental theorem of category theory following \cite{RezkQuasiCat} to emphasize how important it is. It is central to category theory because it is often very interesting to prove that two categories are equivalent and virtually always one uses the "fully faithful and essentially surjective criterion". This is however an unorthodox denomination because usually such theorem just lacks a name.}]\label{fundamentalequivalence}
+    Two categories $\cat$ and $\dat$ are equivalent if and only if it there is a fully faithful and essentially surjective functor $F:\cat\to\dat$.
+\end{thm}
+\begin{proof}
+$\implies$
+Suppose that there is an equivalence between $\cat\xrightarrow{F}\dat$. Since it is an equivalence, there must be a functor $\dat\xrightarrow{G}\cat$ such that their compositions are naturally isomorphic to the identities on $\cat$ and $\dat$ thanks respectively to natural isomorphisms $\epsilon$ and $\eta$. Thus, for any $Y\in\dat$ there is an object $G(Y)\in\cat$ and an isomorphism $\epsilon_Y:(F\circ G)(Y)\to Y$ making $F$ essentially surjective. To prove the faithfulness of $F$ suppose that there is a pair of parallel arrows $f,g:X\to X'$ in $\cat$ that are mapped by $F$ to the same arrow in $\dat$, i.e. $F(f)=F(g)$, and hence having the following commuting diagram in $\cat$ because of the naturality of $\epsilon$
+% https://q.uiver.app/#q=WzAsNixbMSwwLCJGKEcoWCkpIl0sWzEsMSwiRihHKFgnKSkiXSxbMCwwLCJYIl0sWzAsMSwiWCciXSxbMiwwLCJYIl0sWzIsMSwiWCciXSxbMCwxLCJGKEcoZikpPUYoRyhnKSkiLDFdLFsyLDAsIlxcZXRhX1giXSxbMiwzLCJmIiwyXSxbMywxLCJcXGV0YV97WCd9IiwyXSxbNCwwLCJcXGV0YV9YIiwyXSxbNCw1LCJnIl0sWzUsMSwiXFxldGFfe1gnfSJdXQ==
+\[\begin{tikzcd}
+    X & {G(F(X))} & X \\
+    {X'} & {G(F((X'))} & {X'}
+    \arrow["{G(F(f))=G(F(g))}"{description}, from=1-2, to=2-2]
+    \arrow["{\epsilon_X}", from=1-1, to=1-2]
+    \arrow["f"', from=1-1, to=2-1]
+    \arrow["{\epsilon_{X'}}"', from=2-1, to=2-2]
+    \arrow["{\epsilon_X}"', from=1-3, to=1-2]
+    \arrow["g", from=1-3, to=2-3]
+    \arrow["{\epsilon_{X'}}", from=2-3, to=2-2]
+\end{tikzcd}\]
+Note that $G\circ F\overset{\epsilon}{\cong}id_{\mathscr{D}}$, and so $\epsilon_X=id_X$, $\epsilon_{X'}\cong id_{X'}$. We can conclude that  $f=g$: $id_{X'}\circ f=G(F(g))\circ id_X$ and $id_{X'}\circ g=G(F(g))\circ id_X$ because of the commutativity of the latter diagram, thanks to unitality $f=G(F(g))=g$. To prove that $F$ is full take an arbitrary $g:F(X)\to F(X')$ in $\dat$ and consider the following diagram:
+%https://q.uiver.app/#q=WzAsNCxbMSwwLCJHKEYoWCkpIl0sWzAsMCwiWCJdLFswLDEsIlgnIl0sWzEsMSwiRyhGKFgnKSkiXSxbMiwzLCJcXGVwc2lsb25fe1gnfSIsMl0sWzAsMywiRyhnKSIsMCx7Im9mZnNldCI6LTR9XSxbMSwwLCJcXGVwc2lsb25fWCJdLFsyLDMsIlxcY29uZyJdLFsxLDAsIlxcY29uZyIsMl0sWzEsMiwiZ157XFxhc3R9IiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzAsMywiRyhGKGd7XFxhc3R9KSkiLDIseyJvZmZzZXQiOjN9XV0=
+\[\begin{tikzcd}
+    X & {G(F(X))} \\
+    {X'} & {G(F(X'))}
+    \arrow["{\epsilon_{X'}}"', from=2-1, to=2-2]
+    \arrow["{G(g)}", shift left=4, from=1-2, to=2-2]
+    \arrow["{\epsilon_X}", from=1-1, to=1-2]
+    \arrow["\cong", from=2-1, to=2-2]
+    \arrow["\cong"', from=1-1, to=1-2]
+    \arrow["{g^{\ast}}"', dashed, from=1-1, to=2-1]
+    \arrow["{G(F(g{\ast}))}"', shift right=3, from=1-2, to=2-2]
+\end{tikzcd}\]
+Since we can compose $\epsilon^{-1}_{X'}\circ G(g)\circ \epsilon_X$ there is an arrow $X\to X'$ and it is unique since the diagram commutes by naturality of $\epsilon$, we denote it by $g^{\ast}$. Also because of the commutativity of the latter diagram it must be the case that $G(F(g^{\ast}))=G(g)$ since $G(F(g^{\ast}))=\epsilon^{-1}_{X'}\circ G(g)\circ \epsilon_X=G(g)$. In the first part of the proof we proved the faithfulness of $F$ but by a specular argument, we could have proven the faithfulness of $G$. So, $g=F(g^{\ast})$ and thus $F$ is full. 
+
+\noindent $\impliedby$ For every $Y\in\dat$ there is an isomorphic $F(X)$ because $F$ is essentially surjective and for every $X\in\cat$ there is an isomorphic $G(Y)$ because $G$ is essentially surjective, thus for every $Y\in\dat$ we can \emph{choose} an object $G(Y)\in\cat$ and an isomorphism between them. We denote the isomorphism by $\epsilon_Y:Y\cong F(G(Y))$. In order for $\epsilon_Y$ to be a natural transformation there must be a unique arrow such that for any $f:Y\to Y'$ in  $\dat$ the following diagram commutes 
+    % https://q.uiver.app/#q=WzAsNCxbMCwwLCJGKEcoWSkpIl0sWzEsMCwiRihHKFknKSkiXSxbMCwxLCJZIl0sWzEsMSwiWSciXSxbMCwxLCJGKEcoZikpIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzAsMiwiXFxlcHNpbG9uX1kiLDJdLFsyLDMsImYiLDJdLFsxLDMsIlxcZXBzaWxvbl97WSd9Il1d
+\[\begin{tikzcd}
+    {F(G(Y))} & {F(G(Y'))} \\
+    Y & {Y'}
+    \arrow["{F(G(f))}", dashed, from=1-1, to=1-2]
+    \arrow["{\eta_Y}"', from=1-1, to=2-1]
+    \arrow["f"', from=2-1, to=2-2]
+    \arrow["{\eta_{Y'}}", from=1-2, to=2-2]
+\end{tikzcd}\]
+ Then, we get an arrow $\eta_{Y'}^{-1}\circ f\circ\eta_Y:F(G(Y))\to F(G(Y'))$ making the the diagram commute, such an arrow exists because $F$ is full and is unique because $F$ is faithful. We denote it with $F(G(f))$. Now we prove that $G$ is actually a functor. Both $F(G(id_Y))$ and $F(id_{G(Y)})$ make the following diagram commute 
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJGKEcoWSkpIl0sWzEsMCwiRihHKFkpKSJdLFswLDEsIlkiXSxbMSwxLCJZIl0sWzAsMSwiRihpZF97RyhZKX0pIiwwLHsib2Zmc2V0IjotMn1dLFswLDIsIlxcZXRhX1kiLDJdLFsyLDMsImlkX1kiLDJdLFsxLDMsIlxcZXRhX3tZfSJdLFswLDEsIkYoRyhpZF9ZKSkiLDIseyJvZmZzZXQiOjJ9XV0=
+\[\begin{tikzcd}
+    {F(G(Y))} & {F(G(Y))} \\
+    Y & Y
+    \arrow["{F(id_{G(Y)})}", shift left=2, from=1-1, to=1-2]
+    \arrow["{\eta_Y}"', from=1-1, to=2-1]
+    \arrow["{id_Y}"', from=2-1, to=2-2]
+    \arrow["{\eta_{Y}}", from=1-2, to=2-2]
+    \arrow["{F(G(id_Y))}"', shift right=2, from=1-1, to=1-2]
+\end{tikzcd}\]
+Since the diagram commutes $F(G(id_Y))=\eta_{Y}^{-1}\circ id_Y\circ\eta_{Y}=F(id_{G(Y)}$. Moreover, given $f:Y\to Y'$ and $f':Y'\to Y'$ consider the following commutative diagram 
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJGKEcoWSkpIl0sWzEsMCwiRihHKFkpKSJdLFswLDEsIlkiXSxbMSwxLCJZJyciXSxbMCwxLCJGKEcoZidcXGNpcmMgZikpIiwwLHsib2Zmc2V0IjotMn1dLFswLDIsIlxcZXRhX1kiLDJdLFsyLDMsImYnXFxjaXJjIGYiLDJdLFsxLDMsIlxcZXRhX3tZJyd9Il0sWzAsMSwiRihHKGYnKVxcY2lyYyBHKGYpKSIsMix7Im9mZnNldCI6Mn1dXQ==
+\[\begin{tikzcd}
+    {F(G(Y))} & {F(G(Y''))} \\
+    Y & {Y''}
+    \arrow["{F(G(f'\circ f))}", shift left=2, from=1-1, to=1-2]
+    \arrow["{\eta_Y}"', from=1-1, to=2-1]
+    \arrow["{f'\circ f}"', from=2-1, to=2-2]
+    \arrow["{\eta_{Y''}}", from=1-2, to=2-2]
+    \arrow["{F(G(f')\circ G(f))}"', shift right=2, from=1-1, to=1-2]
+\end{tikzcd}\]
+By essentially the same argument we just provided for the functoriality of $F$ on the identities we get $F(G(f')\circ G(f))=\eta_{Y''}^{-1}\circ (f'\circ f)\circ\eta_Y=F(G(f'\circ f))$.
+
+Now we just need to prove that there is a natural isomorphism $\epsilon:id_\cat\cong G\circ F$. Since $F$ is full and faithful we can find the components of $\epsilon$ by looking at their image under $F$. We denote $\eta^{-1}_F(X)$ by $F(\epsilon_X)$ and take into consideration a morphism $f:X\to X'$ from $\cat$ and the following commuting outer rectangle
+% https://q.uiver.app/#q=WzAsNixbMCwwLCJGKFgpIl0sWzEsMCwiRihHKEYoWCkpKSJdLFswLDEsIkYoWCcpIl0sWzEsMSwiRihHKEYoWCcpKSkiXSxbMiwwLCJGKFgpIl0sWzIsMSwiRihYJykiXSxbMCwxLCJGKFxcZXBzaWxvbl9YKSJdLFswLDIsIkYoZikiLDJdLFsyLDMsIkYoXFxlcHNpbG9uX1gnKSIsMl0sWzEsMywiRihHKEYoZikpKSJdLFsxLDQsIlxcZXRhX3tGKFgpfSJdLFs0LDUsIkYoZikiXSxbMyw1LCJcXGV0YV97RihYJyl9IiwyXSxbMyw1LCJcXGNvbmciXSxbMSw0LCJcXGNvbmciLDJdXQ==
+\[\begin{tikzcd}
+    {F(X)} & {F(G(F(X)))} & {F(X)} \\
+    {F(X')} & {F(G(F(X')))} & {F(X')}
+    \arrow["{F(\epsilon_X)}", from=1-1, to=1-2]
+    \arrow["{F(f)}"', from=1-1, to=2-1]
+    \arrow["{F(\epsilon_{X'})}"', from=2-1, to=2-2]
+    \arrow["{F(G(F(f)))}", from=1-2, to=2-2]
+    \arrow["{\eta_{F(X)}}", from=1-2, to=1-3]
+    \arrow["{F(f)}", from=1-3, to=2-3]
+    \arrow["{\eta_{F(X')}}"', from=2-2, to=2-3]
+    \arrow["\cong", from=2-2, to=2-3]
+    \arrow["\cong"', from=1-2, to=1-3]
+\end{tikzcd}\]
+The right hand square commutes because of the naturality of $\eta$. Since the right hand square commutes $F(G(F(f)))=\eta^{-1}_{F(X')}\circ F(f)\circ \eta_{F(X)}$. Since the outer square commmutes $F(\epsilon_{X'})\circ F(f)=\eta^{-1}_{F(X')}\circ F(f)\circ \eta_{F(X)}\circ F(\epsilon_X)$. Thus, the left hand square commutes because $F(\epsilon_{X'})\circ F(f)=F(G(F(f)))\circ F(\epsilon_X)$ and thereby $\epsilon$ is natural because $\epsilon_{X'}\circ f=G(F(f))\circ \epsilon_X$ thanks to the faithfulness of $F$.
+\end{proof}
+
+\section{Adjunction \extra} % (fold)
+\label{sub:adjunction}
+
+\begin{defn}[Adjunction]\label{AdjFun}
+    Let $F:\cat\to\dat$ and $G:\dat\to\cat$ be functors. We say that $F$ and $G$ form an adjunction if there are natural transformations $$\eta:id_{\cat}\Rightarrow G\circ F$$
+    $$\epsilon:G\circ F\Rightarrow id_\dat$$
+    that make the following two diagrams commute, $\forall X\in\cat$ for the first one and $\forall Y\in\dat$ for the second one 
+    % https://q.uiver.app/#q=WzAsNCxbMCwwLCJGKFgpXFxjb25nIEYoaWRfe1xcY2F0fShYKSkiXSxbMSwxLCJGKEcoRihYKSkpIl0sWzIsMCwiaWRfXFxkYXQoRihYKSlcXGNvbmcgRihYKSJdLFsxLDMsIlxcYnVsbGV0Il0sWzAsMSwiRihcXGV0YV9YKSIsMl0sWzEsMiwiXFxlcHNpbG9uX3tGKFgpfSIsMl0sWzAsMiwiaWRfe0YoWCl9Il1d
+    \[\begin{tikzcd}
+        {F(X)= F(id_{\cat}(X))} && {id_\dat(F(X))= F(X)} \\
+        & {F(G(F(X)))} \\
+        \arrow["{F(\eta_X)}"', from=1-1, to=2-2]
+        \arrow["{\epsilon_{F(X)}}"', from=2-2, to=1-3]
+        \arrow["{id_{F(X)}}", from=1-1, to=1-3]
+    \end{tikzcd}\]
+    % https://q.uiver.app/#q=WzAsMyxbMCwwLCJHKFkpXFxjb25nIGlkX1xcY2F0KEcoWSkpIl0sWzEsMSwiRyhGKEcoWSkpKSJdLFsyLDAsIkcoaWRfXFxkYXQoWSkpXFxjb25nIEcoWSkiXSxbMCwxLCJcXGV0YV97RyhZKX0iLDJdLFsxLDIsIkcoXFxlcHNpbG9uX3tZfSkiLDJdLFswLDIsImlkX3tHKFkpfSJdXQ==
+    \[\begin{tikzcd}
+        {G(Y)= id_\cat(G(Y))} && {G(id_\dat(Y))= G(Y)} \\
+        & {G(F(G(Y)))}
+        \arrow["{\eta_{G(Y)}}"', from=1-1, to=2-2]
+        \arrow["{G(\epsilon_{Y})}"', from=2-2, to=1-3]
+        \arrow["{id_{G(Y)}}", from=1-1, to=1-3]
+    \end{tikzcd}\]
+    Equivalently, we could have asked that the following two diagrams commute, the first in $\Fun(\cat,\dat)$ and the second in $\Fun(\dat,\cat)$.
+    % https://q.uiver.app/#q=WzAsNCxbMCwwLCJGXFxzaW1lcSBGXFxjaXJjIGlkX3tcXGNhdH0iXSxbMSwxLCJGXFxjaXJjIEdcXGNpcmMgRiJdLFsyLDAsImlkX1xcZGF0XFxjaXJjIEZcXHNpbWVxIEYoWCkiXSxbMSwzLCJcXGJ1bGxldCJdLFswLDEsIkYoXFxldGEpIiwyLHsibGV2ZWwiOjJ9XSxbMSwyLCJcXGVwc2lsb25fe0Z9IiwyLHsibGV2ZWwiOjJ9XSxbMCwyLCJpZF9GIiwwLHsibGV2ZWwiOjJ9XV0=
+    \[\begin{tikzcd}
+        {F= F\circ id_{\cat}} && {id_\dat\circ F= F} \\
+        & {F\circ G\circ F} \\
+        \arrow["{F(\eta)}"', Rightarrow, from=1-1, to=2-2]
+        \arrow["{\epsilon_{F}}"', Rightarrow, from=2-2, to=1-3]
+        \arrow["{id_F}", Rightarrow, from=1-1, to=1-3]
+    \end{tikzcd}\]
+    % https://q.uiver.app/#q=WzAsNCxbMCwwLCJHXFxzaW1lcSBpZF9cXGNhdFxcY2lyYyBHIl0sWzEsMSwiR1xcY2lyYyBGXFxjaXJjIEciXSxbMiwwLCJHXFxjaXJjIGlkX1xcZGF0XFxzaW1lcSBHIl0sWzIsMywiXFxidWxsZXQiXSxbMCwxLCJcXGV0YV97R30iLDIseyJsZXZlbCI6Mn1dLFsxLDIsIkcoXFxlcHNpbG9uKSIsMix7ImxldmVsIjoyfV0sWzAsMiwiaWRfe0d9IiwwLHsibGV2ZWwiOjJ9XV0=
+    \[\begin{tikzcd}
+        {G= id_\cat\circ G} && {G\circ id_\dat= G} \\
+        & {G\circ F\circ G} \\
+        \arrow["{\eta_{G}}"', Rightarrow, from=1-1, to=2-2]
+        \arrow["{G(\epsilon)}"', Rightarrow, from=2-2, to=1-3]
+        \arrow["{id_{G}}", Rightarrow, from=1-1, to=1-3]
+    \end{tikzcd}\]
+    We say that $F$ is left adjoint to $G$ denoted by $F\dashv G$, and reciprocally $G$ is right adjoint to $F$ denoted by $G\vdash F$.
+    
+    See \ref{HigherAdjFun} for an equivalent formulation\footnote{Although in the $\infty$-categorical 
+    context, it is easily tranlatable by forgetting about the $\infty$s and substituting 'set' for
+    '$\infty$-groupoid'.}
+\end{defn}
+
+\begin{ex}
+    A trivial example is given by any functor that is an isomorphism. In that case the natural transformations are actually identities. 
+
+    \noindent An equivalence of categories can always be promoted to an adjunction where the 
+    unit and the counit are natural isomorphisms. Such an adjunction is called adjoint equivalence.
+    See for a proof \cite[4.4.5]{riehl2017category}.
+
+    \noindent The more typical examples are instead related to forgetful functors.
+    %TODO add examples
+\end{ex}
+
+
+\section{Higher categories \extra}
+\label{sub:higher_categories}
+
+\begin{rem}
+    We previously remarked that there is a category of all categories with functors as morphisms (\ref{1CatOfAllCats}). That was however not the end of the story since we also defined a morphism between functors, the natural transformation. Cat is in fact not just a "normal" category, also called a 1-category, but a strict 2-category, a category that also has morphisms between morphisms between objects and morphisms between objects compose up to strict equality\footnote{We remark soon after (see \ref{STRICT}) in which sense Cat is a \emph{strict} 2-category. See also for comparison the definition of Bicategory, a weak 2-category, \ref{Bicategory}.}. Morphisms between objects are called 1-morphisms and are functors in the case of $\Cat$. Morphisms between morphisms between objects are called $2$-morphisms and are natural transformations in the case of Cat. 
+\end{rem}
+\begin{notat}
+    An $(n,k)$-category is a category in which all $m$-morphisms with $n\geq m>k$ are invertible and all $j$-morphisms with $j\leq k$ are not necessarily invertible.
+\end{notat}
+\noindent Following this convention an ordinary category is a strict $(1,1)$-category, a strict 2-category is a strict (2,2)-category, a groupoid is a strict (1,0) groupoid, and more generally an $n$-groupoid is an $(n,0)$-category. In order to make this more rigorous we need to loosely characterize enriched categories.
+\begin{defn}[Loose definition of enriched category]\label{loose enriched Cat}
+    Given a category $\dat$ a category $\cat$ enriched over $\dat$ is a category such that for every $X,Y\in\cat$ $$\Hom_{\cat}(X,Y)\in\dat$$
+\end{defn}
+\begin{rem}
+    Note that this is just a loose characterization of what an enriched category is! For instance, one might wonder, how could we define the composition map, since for ordinary categories we defined it as a map of sets out of apt \emph{products} of Hom-sets. There is a way to sensibly talk about products of objects in many several other categories. We spell out the rigorous definition later on, see \ref{FullEnrichedCat}. We gave this loose characterization just to be able to characterize higher strict categories.
+\end{rem}
+\begin{ex}
+    \hfill
+    \begin{itemize}
+        \item A locally small category is a category enriched over Set
+        \item Cat is enriched over Cat, since instead of Hom-sets one has functor categories, which are themselves categories and hence in Cat. More generally categories with Hom-categories/functor categories instead of Hom-sets are called strict 2-categories, or (2,2)-categories following the convention we just stated.
+        \item\label{2,1Grpd} Grpd is enriched over groupoid, since (as we previously remarked, see \ref{FunctorGroupoids}) all natural transformations between functors with a groupoid in the codomain are natural isomorphisms and therefore all functor categories (i.e. the Hom-objects of Grpd) are groupoids and hence in Grpd. One calls categories enriched over Grpd strict (2,1)-categories by the notational convention we just spelled out.
+    \end{itemize}
+\end{ex}
+    
+Having loosely characterized enriched categores We can provide a definition of strict $n$-categories. Following the notational convention we previously spelled out in a previous example, they amount to $(n,n)$-categories.
+\begin{defn}\label{strict nCat}
+    We define strict n-categories inductively. A 0-category is a set. A strict $n$-category is a category $\cat$ enriched in a (small\footnote{Because of size issues, as we remarked before, we work with locally small categories and the size of the $\Hom$ of any two objects cannot be greater than a set.}) strict $(n-1)$-category. This means that for any two $X,Y\in\cat$, $\Hom_{\cat}(X,Y)$ is not a set as usual, but a small strict $(n-1)$-category.
+\end{defn}
+\begin{ex}
+    \hfill
+    \begin{itemize} 
+        \item In the case that $n=1$ we end up with our usual definition of a (locally small) category (see \ref{Cat}).
+        \item  $\Cat$ is a $2$-category, in fact for any two $\cat,\dat\in \Cat$, $\Hom_{\Cat}(\cat,\dat)$ is a $1-$category, more specifically a functor category, i.e. a category where objects are functors and morphisms are natural transformations. Specifically:
+        $$\Hom_{\Cat}(\cat,\dat)=Fun(\cat,\dat)$$
+    \end{itemize}
+\end{ex}
+
+\begin{rem}\label{STRICT}
+    We call such categories, \emph{strict} n-categories because $(n-1)$-morphisms are strictly associative and unital, associativity and unitality hold with strict identities, on the nose. For example in Cat it holds that $\forall F:\cat\to\dat, id_\dat\circ F=F=F\circ id_\cat$ and $\forall F:\cat\to\dat, G:\dat\to\eat, H:\eat\to\bat$
+    $$H\circ(G\circ F)=(H\circ G)\circ F.$$
+\end{rem}
+\noindent We will later encounter a notion of weak 2-category (see \ref{Bicategory}).

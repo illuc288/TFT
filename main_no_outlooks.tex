@@ -1,0 +1,219 @@
+\documentclass[12pt, oneside]{book}
+\usepackage{geometry}           % to change size of margins
+\geometry{tmargin=0.70in, bmargin=0.70in, lmargin=1.2in, rmargin = 1.2in}
+%TODO feels a bit too full with these settings /William
+\usepackage{amsthm}             % for all the theorem-like environments
+\usepackage{tikz-cd}            % for commutative diagrams
+\usetikzlibrary{math}           % for some stuff with tikz drawings
+%\usepackage{newpxtext,newpxmath}   % font, but it causes a problem with \bigcup and all big operators
+\usepackage{mathpazo}           % math font
+
+\usepackage[hidelinks]{hyperref}% for hyperlinks
+\usepackage{float}              % for the H position modifier for figures
+\usepackage{threeparttable}     % for measuredfigure but I don't know why it's used
+\usepackage{subcaption}         % for the subfigure environment
+\usepackage{mathrsfs}           % for the nice letters for categories
+\usepackage{mathtools}          % for coloneq (:=) and xRightarrow (\implies with writings over or under)
+\usepackage{quiver}             % for commutative diagrams from q.uiver.app
+\usepackage{epigraph}           % for epigraphs, the quotes at the beginning of sections
+\usepackage{microtype}          % reduces the number of overfull/underfull boxes
+\usepackage{pdfpages}           % to include other pdfs (for titlepage)
+\usepackage{dsfont}				% special S for sphere spectrum
+\usepackage{ stmaryrd }			% to use \mapsfrom
+\usepackage{bbding}			    % For the plane symbol
+\usepackage{fourier}		    % for the warning symbol
+\usepackage[mathscr]{euscript}	% for cooler curly letters for cats, especially 'S'
+%\usepackage[all,cmtip]{xy}     % don't know what it's for
+%\usepackage{upgreek}           % don't know what it's for
+%\usepackage[normalem]{ulem}    % don't know what it's for
+%\usepackage{graphics}          % don't know what it's for
+%\usepackage{graphicx}          % don't know what it's for
+%\usepackage{blindtext}         % don't know what it's for
+%\usepackage{caption}           % don't know what it's for
+%\usepackage{amsmath}           % don't know what it's for
+%\usepackage{amssymb}           % don't know what it's for
+%\usepackage{calrsfs}           % don't know what it's for
+%\usepackage{wasysym}           % don't know what it's for
+%\usepackage{verbatim}          % don't know what it's for
+%\usepackage{bbm}               % don't know what it's for
+%\usepackage{color}             % don't know what it's for
+%\usepackage{xcolor}            % don't know what it's for
+
+%I don't think having the "back to" sections /William
+%TODO decide how to indicate interior, in some points there's the dot and in other int /William
+%I think we never comment on bordism or CObordism, maybe add a comment somewhere /William
+
+\makeatletter %adjusting the color of the entire document
+\newcommand{\globalcolor}[1]{%
+  \color{#1}\global\let\default@color\current@color
+}
+\makeatother
+
+\AtBeginDocument{\globalcolor{magenta!10!black}}
+
+\newcommand{\updateinfo}[1][\today]{\par\vfill\hfill{\scriptsize\color{red}Last updated on #1}}
+
+\newcommand{\extra}{\texorpdfstring{\textmd{\Plane}\;\,}{plane}}
+
+% \ensuremath to be able to write \R instead of $\R$
+\newcommand{\R}{\ensuremath{\mathbb{R}} }
+\renewcommand{\H}{\ensuremath{\mathbb{H}} }
+\renewcommand{\P}{\ensuremath{\mathbb{P}} }
+\newcommand{\C}{\ensuremath{\mathbb{C}} }
+\newcommand{\Z}{\ensuremath{\mathbb{Z}} }
+\newcommand{\N}{\ensuremath{\mathbb{N}} }
+\newcommand{\Q}{\ensuremath{\mathbb{Q}} }
+\newcommand{\E}{\ensuremath{\mathbb{E}} }
+\newcommand{\F}{\ensuremath{\mathbb{F}} }
+\newcommand{\K}{\ensuremath{\mathbb{K}} }
+\newcommand{\T}{\ensuremath{\mathcal{T}} }
+\newcommand{\A}{\ensuremath{\mathcal{A}} }
+\newcommand{\Zf}{\ensuremath{\mathcal{Z}} }
+\newcommand{\bat}{\ensuremath{\mathscr{B}} }
+\newcommand{\cat}{\ensuremath{\mathscr{C}} }
+\newcommand{\dat}{\ensuremath{\mathscr{D}} }
+\newcommand{\eat}{\ensuremath{\mathscr{E}} }
+\newcommand{\sat}{\ensuremath{\mathscr{S}} }
+\newcommand{\unit}{\ensuremath{\mathbb{1}} }
+\newcommand{\g}{\ensuremath{\mathfrak{g}} }
+\newcommand{\gl}{\ensuremath{\mathfrak{gl}} }
+\renewcommand{\sl}{\ensuremath{\mathfrak{sl}} }
+
+\newcommand{\bbar}[1]{\overline{#1}} % a bar that covers the entire expression
+\newcommand{\de}{\partial}
+\newcommand{\acts}{\,\rotatebox[origin=c]{-90}{$\circlearrowright$}\,}
+
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\Hess}{Hess}
+\DeclareMathOperator{\Bord}{Bord}
+\DeclareMathOperator{\ind}{ind}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\orient}{or}
+\DeclareMathOperator{\fr}{fr}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\fd}{fd}
+
+% CATEGORY STUFF
+\DeclareMathOperator{\ob}{ob}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Alg}{Alg}
+\DeclareMathOperator{\Set}{Set}
+\DeclareMathOperator{\Top}{Top}
+\DeclareMathOperator{\Vect}{Vect}
+\DeclareMathOperator{\Ab}{Ab}
+\DeclareMathOperator{\Mon}{Mon}
+\DeclareMathOperator{\Grp}{Grp}
+\DeclareMathOperator{\AbGrp}{AbGrp}
+\DeclareMathOperator{\Ring}{Ring}
+\DeclareMathOperator{\Cat}{Cat}
+\DeclareMathOperator{\Gpd}{Gpd}
+\DeclareMathOperator{\SymmMonCat}{SymmMonCat}
+\DeclareMathOperator{\nCob}{nCob}
+\DeclareMathOperator{\Bordn}{Bord_{n,n-1}}
+\DeclareMathOperator{\Bordnor}{Bord^{or}_{n,n-1}}
+\DeclareMathOperator{\TFT}{TFT}
+\DeclareMathOperator{\Mat}{Mat}
+\DeclareMathOperator{\cFrob}{cFrob}
+\DeclareMathOperator{\Diff}{Diff}
+\DeclareMathOperator{\Conf}{Conf}
+\DeclareMathOperator{\uConf}{uConf}
+\DeclareMathOperator{\Braid}{Braid}
+\DeclareMathOperator{\Tang}{Tang}
+\DeclareMathOperator{\Mod}{Mod}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Fun}{Fun}
+\DeclareMathOperator{\Link}{Link}
+\DeclareMathOperator{\Rep}{Rep}
+\DeclareMathOperator{\Lie}{Lie}
+\DeclareMathOperator{\Der}{Der}
+\DeclareMathOperator{\Disk}{Disk}
+\DeclareMathOperator{\SmoothMfld}{SmoothMfld}
+
+
+% ready made Torus drawing
+\tikzset{
+  pics/torus/.style n args={3}{
+    code = {
+      \providecolor{pgffillcolor}{rgb}{1,1,1}
+      \begin{scope}[
+          yscale=cos(#3),
+          outer torus/.style = {draw,line width/.expanded={\the\dimexpr2\pgflinewidth+#2*2},line join=round},
+          inner torus/.style = {draw=pgffillcolor,line width={#2*2}}
+        ]
+        \draw[outer torus] circle(#1);\draw[inner torus] circle(#1);
+        \draw[outer torus] (180:#1) arc (180:360:#1);\draw[inner torus,line cap=round] (180:#1) arc (180:360:#1);
+      \end{scope}
+    }
+  }
+}
+% ``
+
+
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem*{clm}{Claim}
+\newtheorem*{fct}{Fact}
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem*{conv}{Convention}
+\newtheorem*{rmnd}{Reminder}
+\newtheorem*{notat}{Notation}
+\newtheorem{ex}[thm]{Example}
+
+%-----> packages for integrating the exercsises 
+\usepackage{enumitem}
+\theoremstyle{definition}
+\newtheorem{exercise}[thm]{Exercise}
+
+
+\title{\textcolor{black}{Bordism \& Topological Field Theory}}
+\author{\Large{\textit{\textcolor{black}{Claudia Scheimbauer}}}}
+\date{\textcolor{black}{Wintersemester 2023}}
+
+
+\begin{document}
+
+\include{source/setup}
+\include{source/introduction}
+
+\part{Classical cobordism theory}
+\include{source/manifolds_bordisms}
+\include{source/cobordism_groups}
+
+\part{Topological field theories}
+\include{source/preamble_tft}
+
+%category theory chapter
+\include{source/category_theory}
+\include{source/monoidal_category}
+\include{source/more_category}
+
+%cobordism category chapter
+\include{source/cobordism_category}
+\include{source/dualisability}
+
+% classification of tfts chapter
+\include{source/tft_classification}
+
+\newpage
+\appendix
+\include{source/appendix}
+
+
+\newpage
+\input{source/exercises} % note - this is just a working interjection of the first sheet in these lecture notes (later on it might be nice to redistribute them to appear right after the concepts you need to solve them have been introduced) /Jacob
+
+\newpage
+\bibliographystyle{alpha}
+\bibliography{refs}
+
+
+\end{document}
