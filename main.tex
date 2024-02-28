@@ -1137,7 +1137,7 @@ Any connected 1-manifold is diffeomorphic to:
 \end{itemize}
 \end{thm}
 In order to prove this, we make use of parametrizations.
-\begin{defn}[Parametrization]
+\begin{defn}[Parametrization \extra]
 Let $M$ be an $n$-manifold, $U_x\subseteq M$ a neighbourhood of $x$ and 
 $V\subseteq \R^n$. 
 Any diffeomorphism $g:V\to U_x$ is a parametrization of $U_x$.
@@ -1146,7 +1146,7 @@ The inverse map $U_x\to V$ is called a system of coordinates on $U_x$.
 \end{defn}
 Now, we can state the following lemma, which is the key to our proof of the classification of
  1-manifolds 
-\begin{lem}
+\begin{lem}[\extra]
 	Let $M$ be a 1-manifold, and let $f,g:(0,1)\to M$ be two parametrizations. Then
 	 $f(0,1)\cap g(0,1)$ has at most two components. If it has one component, then there is 
 	 a parametrization $h:(0,1)\to M$ so that $h(0,1)=f(0,1)\cap g(0,1)$. If it has two components,
@@ -1158,7 +1158,8 @@ it is the preimage of the continuous function $f\times g:(0,1)\times (0,1)\to  M
 in sometimes called diagonal map and denoted $\Delta $.
 Let $s_0$ be a point contained in the topological boundary of 
 $f^{-1}(g(0,1))\subseteq (0,1)\subseteq [0,1]$. Since $f^{-1}(g(0,1))$ is open,
- $s_0\notin f^{-1}(g(0,1))$. Let $s_k$ be a sequence in $f^{-1}(g(0,1))$ that converges to $s_0$.
+ $s_0\notin f^{-1}(g(0,1))$. Let $s_k$ be a sequence in $f^{-1}(g(0,1))$ that converges to $s_0$ and
+ a sequence $(s_k)$.
  Then 
 
 \end{proof}
@@ -4794,8 +4795,10 @@ Also this proof relies on the fact that since the functor
 	\begin{enumerate}
 		\item $\Zf(\includegraphics[scale=0.18]{images/Classification 1TFT/identityplus.png})=id_{X}$
 		\item$\Zf(\includegraphics[scale=0.18]{images/Classification 1TFT/identityminus.png})=id_{X^\vee}$
-		\item $\Zf(\includegraphics[scale=0.17]{images/Classification 1TFT/evaluation.png})=ev_{X}$, hence $X\amalg X^\vee\xrightarrow{ev_{X}} \unit_{\cat}$ and more precisely for $v\in X\in\Vect_{k}$: $ev_{X}:(X,\lambda)\mapsto \lambda(v)$
-		\item $\Zf(\includegraphics[scale=0.15]{images/Classification 1TFT/coevaluation.png})=coev_{X}$, hence $\unit_{\cat}\xrightarrow{coev_{X}}X\otimes X^\vee$ and more precisely for $\lambda\in k\in\Vect_{k}$, via the canonical isomorphism $X\otimes X^\vee\cong\operatorname{End}(X)$, $coev_X$ corresponds to taking the trace
+		\item $\Zf(\includegraphics[scale=0.17]{images/Classification 1TFT/evaluation.png})=ev_{X}$, hence
+		 $X^\vee\otimes X\xrightarrow{ev_{X}} \unit_{\cat}$ and more precisely for $v\in X\in\Vect_{k}$: $ev_{X}:(X,\lambda)\mapsto \lambda(v)$
+		\item $\Zf(\includegraphics[scale=0.15]{images/Classification 1TFT/coevaluation.png})=coev_{X}$,
+		 hence $\unit_{\cat}\xrightarrow{coev_{X}}X\otimes X^\vee$ and more precisely for $\lambda\in k\in\Vect_{k}$, via the canonical isomorphism $X\otimes X^\vee\cong\operatorname{End}(X)$, $coev_X$ corresponds to taking the trace
 		\item $\Zf(\includegraphics[scale=0.15]{images/Classification 1TFT/circle.png})=coev_X \circ ev_{X}$, hence $\unit_{\cat}\xrightarrow{coev_X \circ ev_{X}}\unit_{\cat}$, and, following the cases for $\Vect_{k}$ treated in the previous two points, to taking the trace of the identity matrix, i.e. the dimension of $X$
 	\end{enumerate}
 	
@@ -5095,15 +5098,14 @@ Note that the the only way in which we exploited the fact that we are working wi
     $$\Zf \mapsto \Zf(S^1)$$
     is an equivalence of groupoids\footnote{We soon prove that also the category of Frobenius algebras is a groupoid.}.
 \end{thm}
-The category $\cFrob_\cat$ has as objects commutative Frobenius algebras on an arbitrary symmetric monoidal category $\cat$, i.e. Frobenius algebras that are also commutative bimonoid objects (\ref{CommBim}), as morphisms it has Frobenius homomorphisms, i.e. morphisms of monoids that are also morphisms of comonoids and preserve all the structure of a Frobenius algebra. One could have also proven a statement with $\Vect_k$ as the target category and proven that $\TFT_{2,1}^{or} (\Vect_k) \simeq \cFrob_{k}$. Note that the category of commutative Frobenius algebras in an arbitrary symmetric monoidal category is indeed a groupoid: 
+The category $\cFrob_\cat$ has as objects commutative Frobenius algebras on an arbitrary symmetric monoidal category $\cat$, i.e. Frobenius algebras that are also commutative bimonoid objects (\ref{CommBim}), as morphisms it has Frobenius homomorphisms, i.e. morphisms of monoids that are also morphisms of comonoids and preserve all the structure of a Frobenius algebra. One could have also proven a statement with $\Vect_k$ as the target category and proven that $\TFT_{2,1}^{or} (\Vect_k) \simeq \cFrob_{k}$. 
+Note that from this classification it follows that the category of commutative Frobenius algebras in an arbitrary
+ symmetric monoidal category is indeed a groupoid: 
 \begin{thm}
     The category of Frobenius algebras on an arbitrary symmetric monoidal category $\cat$ is a groupoid.
 \end{thm}
-%have to think about a proof for arbitrary symm mon cats, Kock just proves it for Vectk TODO
-\begin{proof}
-    Let $(A,\epsilon,\eta,\Delta,\mu),(A',\epsilon',\eta',\Delta',\mu')\in\cFrob_\cat$ and $\phi:A\to A'$ be a Frobenius homomorphism. Then ...
-\end{proof}
-Take a look at \cite{kock_2003} for a proof for Frobenius $k$-algebras, i.e. Frobenius algebras in $\Vect_k$.
+If curious for a proof indipendent from this classification, take a look at \cite{kock_2003} for a proof for Frobenius
+ $k$-algebras, i.e. Frobenius algebras in $\Vect_k$.
 
 \begin{proof}
     (1) We need to prove that $\Zf(S^1) =:A$ is a commutative Frobenius algebra. We get the product from the pair of pants and the coproduct from the copants. The unit and counit maps are simply given by the cup and cocup. Showing that this is actually a Frobenius algebra now just amounts to drawing the commutative diagram for a Frobenius algebra in the category of bordisms, i.e. all maps are simply bordisms.
@@ -6798,7 +6800,7 @@ will be some explicit 4-morphisms witnessing that $m\simeq l$, and so on to $\in
 \end{notat}
 There is the dual notion of homotopy pullback: the homotopy pushout, which we now use to define
 suspensions in the next chapter of the appendix.
-\chapter{What are spectra? \extra}\label{WhatSpectra}
+\chapter{Spectra \extra}\label{WhatSpectra}
 This subsection is based off \cite{Luriealgebra}, \cite{AdamsLoops}, \cite{GregoricSpectra},
 \cite{Mazel-Gee2024}, \cite{NardinStable} and \cite{CalleInfiniteLoops}.
 
