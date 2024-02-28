@@ -1,0 +1,322 @@
+\section{Objects internal to a monoidal category}
+\begin{defn}[Monoid Object]
+    A monoid object in a monoidal category $\cat$ is an object $M\in\cat$ equipped with two distinguished morphisms, $\mu:M\otimes M\to M$ and $\eta:\mathbb{1}_\cat\to M$ called respectively multiplication and unit such that the following diagram commutes, so that the binary operation is associative 
+    % https://q.uiver.app/#q=WzAsNSxbMCwwLCIoTVxcb3RpbWVzIE0pXFxvdGltZXMgTSJdLFsxLDAsIk1cXG90aW1lcyhNXFxvdGltZXMgTSkiXSxbMiwwLCJNXFxvdGltZXMgTSJdLFswLDEsIk1cXG90aW1lcyBNIl0sWzIsMSwiTSJdLFswLDEsIlxcYWxwaGFfe00sTSxNfSJdLFsxLDIsImlkX01cXG90aW1lc1xcbXUiXSxbMCwzLCJcXG11XFxvdGltZXMgaWRfTSIsMl0sWzMsNCwiXFxtdSIsMl0sWzIsNCwiXFxtdSJdXQ==
+    \[\begin{tikzcd}
+        {(M\otimes M)\otimes M} & {M\otimes(M\otimes M)} & {M\otimes M} \\
+        {M\otimes M} && M
+        \arrow["{\alpha_{M,M,M}}", from=1-1, to=1-2]
+        \arrow["{id_M\otimes\mu}", from=1-2, to=1-3]
+        \arrow["{\mu\otimes id_M}"', from=1-1, to=2-1]
+        \arrow["\mu"', from=2-1, to=2-3]
+        \arrow["\mu", from=1-3, to=2-3]
+    \end{tikzcd}\]
+    and the following also commutes, so that the binary operation is left and right unital
+    % https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXG1hdGhiYnsxfV9cXGNhdFxcb3RpbWVzIE0iXSxbMSwwLCJNXFxvdGltZXMgTSJdLFsyLDAsIk1cXG90aW1lc1xcbWF0aGJiezF9X1xcY2F0Il0sWzEsMSwiTSJdLFswLDEsIlxcZXRhXFxvdGltZXMgaWRfTSJdLFsyLDEsImlkX01cXG90aW1lc1xcZXRhIiwyXSxbMCwzLCJcXGxhbWJkYV9NIiwyXSxbMiwzLCJcXHJob19NIl0sWzEsMywiXFxtdSIsMV1d
+    \[\begin{tikzcd}
+        {\mathbb{1}_\cat\otimes M} & {M\otimes M} & {M\otimes\mathbb{1}_\cat} \\
+        & M
+        \arrow["{\eta\otimes id_M}", from=1-1, to=1-2]
+        \arrow["{id_M\otimes\eta}"', from=1-3, to=1-2]
+        \arrow["{\lambda_M}"', from=1-1, to=2-2]
+        \arrow["{\rho_M}", from=1-3, to=2-2]
+        \arrow["\mu"{description}, from=1-2, to=2-2]
+    \end{tikzcd}\]
+    Making multiplication associative and unital.
+\end{defn}
+\begin{ex}\label{MonObj}
+    A monoid object is a 
+    \begin{itemize}
+        \item Monoid when in $(\Set,\times)$
+        \item Algebra when in $(\Vect_k,\otimes)$
+        \item Algebra when in $(BMod,\otimes)$
+        %What is BMod /William
+        \item \emph{Strict} monoidal category when in $(Cat,\times)$
+        \item Topological monoids in $(\Top,\times)$
+    \end{itemize}
+\end{ex}
+This example clarifies the parallel between monoids, algebras and monoidal categories we made at the start of this section. However, one could be bothered by the fact that we do not actually get a general monoidal category (i.e. not necessarily strict). To do this we will briefly talk about $\mathbb E_1$-algebras in section \ref{EAlg}.
+
+\begin{defn}[Morphism of Monoids]
+    Let $M,M'\in\cat$ be monoid objects $(M,\mu,\eta)$ and $(M',\mu',\eta')$. A morphism of monoids is a morphism $f:M\to M'$ such that both the following two diagrams commute 
+    % https://q.uiver.app/#q=WzAsNyxbMCwwLCJNXFxvdGltZXMgTSJdLFswLDEsIk0iXSxbMSwxLCJNJyJdLFsxLDAsIk0nXFxvdGltZXMgTSciXSxbMiwwLCJcXG1hdGhiYnsxfV9cXGNhdCJdLFszLDEsIk0nIl0sWzMsMCwiTSJdLFswLDEsIlxcbXUiLDJdLFsxLDIsImYiLDJdLFswLDMsImZcXG90aW1lcyBmIl0sWzMsMiwiXFxtdSJdLFs0LDUsIlxcZXRhJyIsMl0sWzQsNiwiXFxldGEiXSxbNiw1LCJmIl1d
+\[\begin{tikzcd}
+    {M\otimes M} & {M'\otimes M'} & {\mathbb{1}_\cat} & M \\
+    M & {M'} && {M'}
+    \arrow["\mu"', from=1-1, to=2-1]
+    \arrow["f"', from=2-1, to=2-2]
+    \arrow["{f\otimes f}", from=1-1, to=1-2]
+    \arrow["\mu'", from=1-2, to=2-2]
+    \arrow["{\eta'}"', from=1-3, to=2-4]
+    \arrow["\eta", from=1-3, to=1-4]
+    \arrow["f", from=1-4, to=2-4]
+\end{tikzcd}\]
+\end{defn}
+\begin{defn}[Comonoid Object]\label{ComonObj}
+    Let $M\in\cat$, $M$ together with a comultiplication $\Delta$ and a counit $\epsilon$ is a comonoid object iff $(M,\mu,\eta)$ a monoid object in $\cat^{op}$ (see \ref{CatOP}) such that $\mu=\Delta^{op}$ and $\eta=\epsilon^{op}$. Straightforwardly, the definition we gave for monoid object, but with all the arrows inverted. 
+\end{defn}
+
+\begin{defn}[Bimonoid Object]\label{BimonObj}
+    A bimonoid object in a monoidal category $\cat$ is simultaneously a monoid and a comonoid object in $\cat$ in a compatible way. It has a unit $\eta:\mathbb{1}_\cat\to M$ and a counit $\epsilon:\cat\to\mathbb{1}_\cat$, a multiplication $\mu:M\otimes M\to M$ and and a comultiplication $\Delta:M\to M\otimes M$ such that comultiplication and multiplication are morphisms of monoids. In the case of comultiplication, this means that given a monoid object $(M\otimes M,\mu',\eta')$ with $\mu':(M\otimes M)\otimes(M\otimes M)\to M\otimes M$ and $\eta':M\otimes M\to \mathbb{1}_\cat$  both the following diagrams commute 
+    % https://q.uiver.app/#q=WzAsNyxbMCwwLCJNXFxvdGltZXMgTSJdLFswLDEsIk0iXSxbMSwxLCJNXFxvdGltZXMgTSJdLFsxLDAsIihNXFxvdGltZXMgTSlcXG90aW1lcyhNXFxvdGltZXMgTSkiXSxbMiwwLCJcXG1hdGhiYnsxfV9cXGNhdCJdLFszLDEsIk1cXG90aW1lcyBNIl0sWzMsMCwiTSJdLFswLDEsIlxcbXUiLDJdLFsxLDIsIlxcRGVsdGEiLDJdLFswLDMsIlxcRGVsdGFcXG90aW1lcyBcXERlbHRhIl0sWzMsMiwiXFxtdSciXSxbNCw1LCJcXGV0YSciLDJdLFs0LDYsIlxcZXRhIl0sWzYsNSwiXFxEZWx0YSJdXQ==
+\[\begin{tikzcd}
+    {M\otimes M} & {(M\otimes M)\otimes(M\otimes M)} & {\mathbb{1}_\cat} & M \\
+    M & {M\otimes M} && {M\otimes M}
+    \arrow["\mu"', from=1-1, to=2-1]
+    \arrow["\Delta"', from=2-1, to=2-2]
+    \arrow["{\Delta\otimes \Delta}", from=1-1, to=1-2]
+    \arrow["{\mu'}", from=1-2, to=2-2]
+    \arrow["{\eta'}"', from=1-3, to=2-4]
+    \arrow["\eta", from=1-3, to=1-4]
+    \arrow["\Delta", from=1-4, to=2-4]
+\end{tikzcd}\]
+We leave the case of the counit for the reader.
+\end{defn}
+%I don't think it's a bimonoid, i think it's just monoid and comonoid, without the additional property /William You are very right!!!!!!
+\begin{defn}[Frobenius Algebra]\label{FrobAlg}
+    A Frobenius algebra in an arbitrary monoidal category $\cat$ is simultaneously a monoid and a comonoid object in $\cat$ with a compatibility condition different from the one above: 
+    $$(id\otimes\mu)\circ(\Delta\otimes id)=\Delta\circ\mu=(\mu\otimes id)\circ(id\otimes\Delta)$$
+    called the Frobenius relation. 
+\end{defn}
+
+\begin{defn}[Group Object]\label{GroupObj}
+    A group object in a cartesian monoidal category $\cat$ is a monoid object $M$ that also has an inverse map $(-)^{-1}:M\to M$ such that the following diagram commutes, meaning that the inverse behave as expected 
+    % https://q.uiver.app/#q=WzAsNCxbMCwwLCJNIl0sWzEsMCwiTVxcdGltZXMgTSJdLFswLDEsIk1cXHRpbWVzIE0iXSxbMSwxLCJNIl0sWzAsMSwiKC0pXnstMX1cXHRpbWVzIGlkX00iXSxbMCwyLCJpZF9NXFx0aW1lcyAoLSleey0xfSIsMl0sWzIsMywiXFxtdSIsMl0sWzEsMywiXFxtdSJdLFswLDMsImlkX00iLDFdXQ==
+\[\begin{tikzcd}
+    M & {M\times M} \\
+    {M\times M} & M
+    \arrow["{(-)^{-1}\times id_M}", from=1-1, to=1-2]
+    \arrow["{id_M\times (-)^{-1}}"', from=1-1, to=2-1]
+    \arrow["\mu"', from=2-1, to=2-2]
+    \arrow["\mu", from=1-2, to=2-2]
+    \arrow["{id_M}"{description}, from=1-1, to=2-2]
+\end{tikzcd}\]
+\end{defn}
+\begin{ex}\label{TopologicalGroup}
+    \begin{itemize}
+\item A topological group is a group object in Top
+\item   A Lie group is a group object in $\SmoothMfld$
+\item A group is a group object in Set
+    \end{itemize}
+\end{ex}
+
+% -------------------------------------------------------------
+% --------------------- LECTURE 10 27/11 -----------------------
+% -------------------------------------------------------------
+\section{Symmetric monoidal categories} % (fold)
+\label{sub:symmetric_monoidal_categories}
+
+In order to get the categorical parallel of a commutative monoid, we need to define a \emph{symmetric} monoidal category. We want to achieve something similar to $a \cdot b = b \cdot a$ in a monoid. However, we will not characterize this behavior with strict identities, but with a natural isomorphism\footnote{Just as we did for associativity and unitality.}. Given the functor 
+$$swap:\cat\times\cat\to\cat\times\cat$$
+$$swap:(X,Y)\mapsto (Y,X)$$
+$$swap:(f,g)\mapsto (g,f)$$
+we could try to achieve our objective with a natural isomorphism $\beta:\otimes\to\otimes\circ swap$ that can be visualized in the category of all categories Cat with the following diagram
+
+% https://q.uiver.app/#q=WzAsMixbMCwwLCJcXGNhdFxcdGltZXNcXGNhdCJdLFsxLDAsIlxcY2F0Il0sWzAsMSwiXFxvdGltZXMiLDAseyJjdXJ2ZSI6LTN9XSxbMCwxLCJcXG90aW1lc1xcY2lyYyBzd2FwIiwyLHsiY3VydmUiOjN9XSxbMiwzLCJcXGJldGEiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV1d
+\[\begin{tikzcd}
+    \cat\times\cat & \cat
+    \arrow[""{name=0, anchor=center, inner sep=0}, "\otimes", curve={height=-18pt}, from=1-1, to=1-2]
+    \arrow[""{name=1, anchor=center, inner sep=0}, "{\otimes\circ\, swap}"', curve={height=18pt}, from=1-1, to=1-2]
+    \arrow["\beta", shorten <=5pt, shorten >=5pt, Rightarrow, from=0, to=1]
+\end{tikzcd}\]
+
+However, this does not characterize an actually symmetric structure, but rather a \textit{braiding}, meaning that inverting two times the order of two tensor multiplied elements, i.e. objects or morphisms, does not necessarily equal the original tensor product. What this means will become clearer with the example of the braid group and the definition of symmetric monoidal category.
+\begin{defn}
+    A braiding on a monoidal category is a natural transformation $\beta$ with components $\beta_{X,Y}:X\otimes Y\Rightarrow Y\otimes X$
+    % https://q.uiver.app/#q=WzAsMixbMCwwLCJcXGNhdFxcdGltZXNcXGNhdCJdLFsxLDAsIlxcY2F0Il0sWzAsMSwiLV9pXFxvdGltZXMtX2oiLDAseyJjdXJ2ZSI6LTN9XSxbMCwxLCItX2pcXG90aW1lcy1faSIsMix7ImN1cnZlIjozfV0sWzIsMywiXFxiZXRhIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfX1dXQ==
+\[\begin{tikzcd}
+    \cat\times\cat & \cat
+    \arrow[""{name=0, anchor=center, inner sep=0}, "{-_i\otimes-_j}", curve={height=-18pt}, from=1-1, to=1-2]
+    \arrow[""{name=1, anchor=center, inner sep=0}, "{-_j\otimes-_i}"', curve={height=18pt}, from=1-1, to=1-2]
+    \arrow["\beta", shorten <=5pt, shorten >=5pt, Rightarrow, from=0, to=1]
+\end{tikzcd}\]
+
+    \noindent In addition, we need to impose some compatibility conditions with the associator:
+    % https://q.uiver.app/#q=WzAsNixbMSwwLCIoWFxcb3RpbWVzIFkpXFxvdGltZXMgWiJdLFswLDEsIlhcXG90aW1lcyhZXFxvdGltZXMgWikiXSxbMCwyLCIoWVxcb3RpbWVzIFopXFxvdGltZXMgWCJdLFsxLDMsIllcXG90aW1lcyhaXFxvdGltZXMgWCkiXSxbMiwyLCJZXFxvdGltZXMoWFxcb3RpbWVzIFopIl0sWzIsMSwiKFlcXG90aW1lcyBYKVxcb3RpbWVzIFoiXSxbMSwwLCJcXGFscGhhX3tYLFksWn1eey0xfSJdLFsxLDIsIlxcYmV0YV97WCxZXFxvdGltZXMgWn0iLDJdLFsyLDMsIlxcYWxwaGFfe1ksWixYfSIsMl0sWzMsNCwiaWRfWVxcb3RpbWVzXFxiZXRhX3taLFh9IiwyXSxbMCw1LCJcXGJldGFfe1gsWX1cXG90aW1lcyBpZF9aIl0sWzUsNCwiXFxhbHBoYV97WSxYLFp9Il1d
+\[\begin{tikzcd}
+    & {(X\otimes Y)\otimes Z} \\
+    {X\otimes(Y\otimes Z)} && {(Y\otimes X)\otimes Z} \\
+    {(Y\otimes Z)\otimes X} && {Y\otimes(X\otimes Z)} \\
+    & {Y\otimes(Z\otimes X)}
+    \arrow["{\alpha_{X,Y,Z}^{-1}}", from=2-1, to=1-2]
+    \arrow["{\beta_{X,Y\otimes Z}}"', from=2-1, to=3-1]
+    \arrow["{\alpha_{Y,Z,X}}"', from=3-1, to=4-2]
+    \arrow["{id_Y\otimes\beta_{Z,X}}"', from=4-2, to=3-3]
+    \arrow["{\beta_{X,Y}\otimes id_Z}", from=1-2, to=2-3]
+    \arrow["{\alpha_{Y,X,Z}}", from=2-3, to=3-3]
+\end{tikzcd}\]
+% https://q.uiver.app/#q=WzAsNixbMSwwLCJYXFxvdGltZXMgKFlcXG90aW1lcyBaKSJdLFswLDEsIihYXFxvdGltZXMgWSlcXG90aW1lcyBaIl0sWzAsMiwiWlxcb3RpbWVzIChYXFxvdGltZXMgWSkiXSxbMSwzLCIoWlxcb3RpbWVzIFgpXFxvdGltZXMgWSJdLFsyLDIsIihYXFxvdGltZXMgWilcXG90aW1lcyBZIl0sWzIsMSwiWFxcb3RpbWVzIChaXFxvdGltZXMgWSkiXSxbMSwwLCJcXGFscGhhX3tYLFksWn0iXSxbMSwyLCJcXGJldGFfe1hcXG90aW1lcyBZLCBafSIsMl0sWzIsMywiXFxhbHBoYV57LTF9X3taLFgsWX0iLDJdLFszLDQsIlxcYmV0YV97WixYfVxcb3RpbWVzIGlkX1kiLDJdLFswLDUsImlkX1hcXG90aW1lc1xcYmV0YV97WSxafSJdLFs1LDQsIlxcYWxwaGFfe1ksWCxafV57LTF9Il1d
+\[\begin{tikzcd}
+    & {X\otimes (Y\otimes Z)} \\
+    {(X\otimes Y)\otimes Z} && {X\otimes (Z\otimes Y)} \\
+    {Z\otimes (X\otimes Y)} && {(X\otimes Z)\otimes Y} \\
+    & {(Z\otimes X)\otimes Y}
+    \arrow["{\alpha_{X,Y,Z}}", from=2-1, to=1-2]
+    \arrow["{\beta_{X\otimes Y, Z}}"', from=2-1, to=3-1]
+    \arrow["{\alpha^{-1}_{Z,X,Y}}"', from=3-1, to=4-2]
+    \arrow["{\beta_{Z,X}\otimes id_Y}"', from=4-2, to=3-3]
+    \arrow["{id_X\otimes\beta_{Y,Z}}", from=1-2, to=2-3]
+    \arrow["{\alpha_{Y,X,Z}^{-1}}", from=2-3, to=3-3]
+\end{tikzcd}\]
+    The latter two diagrams are known as the hexagon diagrams. We call such categories braided monoidal.
+\end{defn}
+
+\noindent A braided monoidal category is \textit{not} the category corresponding to an abelian monoid. A special type of braided monoidal category is: the symmetric monoidal category.
+\begin{defn}
+\label{SymmMonCat}
+    A symmetric monoidal category is a braided monoidal category 
+    $(\cat, \otimes, \unit_\cat, \alpha, \lambda, \rho,\beta)$ such that $\beta^2 = id$ 
+    (i.e. $\beta_{y,x} \circ \beta_{x,y} = id$).
+\end{defn}
+\begin{ex}
+\hfill
+    \begin{itemize} 
+        \item All the previous examples of monoidal categories! $(\Vect, \oplus), (\AbGrp, \otimes), \dots$
+        \item Importantly for us the category of bimodules $BMod$.
+        \item The category of algebras over a module.
+    \end{itemize}
+\end{ex}
+
+\noindent The following theorem assures us of the associativity of higher products that we had mentioned and also generalizes this result to braided and symmetric categories.
+\begin{thm}[MacLane's coherence theorem]\label{thm:maclane_coherence}
+    In any monoidal category, any formal diagram, i.e. a diagram made up just of associators, unitors (and braidings, in the case of braided and symmetric monoidal categories) commutes.
+\end{thm}
+\noindent We do not provide the proof here but refer to chapter 7 of \cite{Lane1971}.
+The analogy in a monoid is that it does not make a difference however I put my parentheses:
+    $$(a_1 a_2) ((a_3 a_4) a_5) = ((a_1 (a_2 a_3)) a_4) a_5$$
+but instead of an equality we have objects equivalent up to isomorphisms given by associators, unitors, etc... note that we could have more than one way to compose unitors, e.g. in the diagram we previously imposed as conditions, but these will all form a commutative diagram and hence be equivalent.
+
+Earlier on we defined a monoid object (\ref{MonObj}) in a monoidal category, now in a symmetric monoidal category we can also define a commutative monoid object.
+%why symmetric category and not just braided? /William
+\begin{defn}[Commutative Monoid Object]\label{CommMonObj}
+    A commutative monoid object, is a monoid object in a symmetric monoidal category for which additionally the following diagram commutes
+    % https://q.uiver.app/#q=WzAsMyxbMCwwLCJNXFxvdGltZXMgTSJdLFsyLDAsIk1cXG90aW1lcyBNIl0sWzEsMSwiTSJdLFswLDEsIlxcYmV0YV97TSxNfSJdLFswLDIsIlxcbXUiLDJdLFsxLDIsIlxcbXUiXV0=
+\[\begin{tikzcd}
+    {M\otimes M} && {M\otimes M} \\
+    & M
+    \arrow["{\beta_{M,M}}", from=1-1, to=1-3]
+    \arrow["\mu"', from=1-1, to=2-2]
+    \arrow["\mu", from=1-3, to=2-2]
+\end{tikzcd}\]
+\end{defn}
+\begin{ex}
+A commutative monoid object is a 
+    \begin{itemize}
+        \item commutative monoid when in $(\Set,\times)$,
+        \item commutative algebra when in $(\Vect_k,\otimes)$,
+        \item \emph{strict} symmetric monodial category when in $(Cat,\times)$,
+        \item commutative topological monoids in $(\Top,\times)$.
+    \end{itemize}
+\end{ex}
+\begin{defn}[Cocommutative Comonoid Object]\label{CocommComonObj}
+    Let $(M,\Delta,\epsilon)$ be a comonoid object (\ref{ComonObj}) in a symmetric monoidal category $\cat$. It is cocommutative iff $(M,\mu,\eta,\beta_{M,M})$ a commutative monoid object in $\cat^{op}$ (see \ref{CatOP}) such that $\mu=\Delta^{op}$, $\eta=\epsilon^{op}$ and $\beta_{M,M}^{op}=\beta_{M,M}$. Straightforwardly, the definition we gave for commutative monoid object, but with all the arrows inverted. 
+\end{defn}
+\begin{defn}[Commutative Bimonoid Object]\label{CommBim}
+    A commutative bimonoid object in a symmetric monoidal category $\cat$ is a bimonoid object (\ref{BimonObj}) such that the underlying monoid object is  commutative. Note that the underlying comonoid object is cocommutative if and only if the underlying monoid object is commutative.
+\end{defn}
+\begin{defn}[Commutative Frobenius Algebra]\label{CommFrobAlg}
+    A commutative Frobenius algebra in a symmetric monoidal category $\cat$ is a Frobenius algebra whose monoid structures is commutative (this also implies that the comonoid structure is cocommutative).
+\end{defn}
+We need a notion of homomorphism between symmetric monoidal categories, a suitable definition of functor. 
+\begin{defn}[Symmetric monoidal functor]
+\label{SymmMonFun}
+    Let $\mathscr{B},\cat$ be symmetric monoidal categories. A symmetric monoidal functor is a functor $F: \mathscr{B} \to \cat$ compatible with all of the structure:
+    \begin{itemize}
+        \item an isomorphism taking the monoidal unit in $\cat$ to the monoidal unit in $\mathscr{B}$: $\mathbb{1}_\cat \xrightarrow{1_F} F(\mathbb{1}_\mathscr{B})$
+        \item a natural isomorphism respecting the tensor product:% https://q.uiver.app/#q=WzAsMixbMCwwLCJcXG1hdGhzY3J7Qn1cXHRpbWVzXFxtYXRoc2Nye0J9Il0sWzIsMCwiXFxjYXQiXSxbMCwxLCJGKC1cXG90aW1lcyAtKSIsMCx7ImN1cnZlIjotNH1dLFswLDEsIkYoLSlcXG90aW1lcyBGKC0pIiwyLHsiY3VydmUiOjR9XSxbMywyLCJcXHBzaSIsMix7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XV0=
+\[\begin{tikzcd}[ampersand replacement=\&,cramped]
+    {\mathscr{B}\times\mathscr{B}} \&\& \cat
+    \arrow[""{name=0, anchor=center, inner sep=0}, "{F(-\otimes -)}", curve={height=-24pt}, from=1-1, to=1-3]
+    \arrow[""{name=1, anchor=center, inner sep=0}, "{F(-)\otimes F(-)}"', curve={height=24pt}, from=1-1, to=1-3]
+    \arrow["\psi"', shorten <=6pt, shorten >=6pt, Rightarrow, from=1, to=0]
+\end{tikzcd}\]
+    \end{itemize}
+    such that it interacts reasonably with the associator by making the following diagram commute for every $X,Y,Z\in \cat$
+    % https://q.uiver.app/#q=WzAsNixbMCwwLCIoRihYKVxcb3RpbWVzIEYoWSkpXFxvdGltZXMgRihaKSJdLFsxLDAsIkYoWFxcb3RpbWVzIFkpXFxvdGltZXMgRihaKSJdLFsyLDAsIkYoKFhcXG90aW1lcyBZKVxcb3RpbWVzIFopIl0sWzIsMiwiRihYXFxvdGltZXMoWSBcXG90aW1lcyBaKSkiXSxbMSwyLCJGKFgpXFxvdGltZXMgRihZXFxvdGltZXMgWikiXSxbMCwyLCJGKFgpXFxvdGltZXMoRihZKVxcb3RpbWVzIEYoWikpIl0sWzAsMSwiXFxwc2lfe3gseX1cXG90aW1lcyBpZF97RihaKX0iXSxbMSwyLCJcXHBzaV97WFxcb3RpbWVzIFl9LFoiXSxbMiwzLCJGKFxcYWxwaGFfe1gsWSxafSkiXSxbNCwzLCJcXHBzaV97WCxZXFxvdGltZXMgWn0iLDJdLFs1LDQsImlkX3tGKFgpfVxcb3RpbWVzIFxccHNpX3tZLFp9IiwyXSxbMCw1LCJcXGFscGhhX3tGKFgpLEYoWSksRihaKX0iLDJdXQ==
+\[\begin{tikzcd}
+    {(F(X)\otimes F(Y))\otimes F(Z)} & {F(X\otimes Y)\otimes F(Z)} & {F((X\otimes Y)\otimes Z)} \\
+    \\
+    {F(X)\otimes(F(Y)\otimes F(Z))} & {F(X)\otimes F(Y\otimes Z)} & {F(X\otimes(Y \otimes Z))}
+    \arrow["{\psi_{X,Y}\otimes id_{F(Z)}}", from=1-1, to=1-2]
+    \arrow["{\psi_{X\otimes Y,Z}}", from=1-2, to=1-3]
+    \arrow["{F(\alpha_{X,Y,Z})}", from=1-3, to=3-3]
+    \arrow["{\psi_{X,Y\otimes Z}}"', from=3-2, to=3-3]
+    \arrow["{id_{F(X)}\otimes \psi_{Y,Z}}"', from=3-1, to=3-2]
+    \arrow["{\alpha_{F(X),F(Y),F(Z)}}"', from=1-1, to=3-1]
+\end{tikzcd}\]
+it interacts well with the unit\footnote{We just need the diagram for one unit since in a symmetric monoidal category $\lambda=\rho$. We chose arbitrarily to give the diagram for the left unit } by making the following diagram also commute for every $X\in\cat $% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXG1hdGhiYnsxfV9cXGNhdFxcb3RpbWVzIEYoWCkiXSxbMCwxLCJGKFxcbWF0aGJiezF9X1xcbWF0aHNjcntCfSlcXG90aW1lcyBGKFgpIl0sWzEsMCwiRihYKSJdLFsxLDEsIkYoXFxtYXRoYmJ7MX1fXFxtYXRoc2Nye0J9XFxvdGltZXMgWCkiXSxbMCwxLCJcXHBoaVxcb3RpbWVzIGlkX3tGKFgpfSIsMl0sWzAsMiwiXFxsYW1iZGFfe0YoWCl9Il0sWzMsMiwiRihcXGxhbWJkYV9YKSIsMl0sWzEsMywiXFxwc2lfe1xcbWF0aGJiezF9LFh9IiwyXV0=
+\[\begin{tikzcd}
+    {\mathbb{1}_\cat\otimes F(X)} & {F(X)} \\
+    {F(\mathbb{1}_\mathscr{B})\otimes F(X)} & {F(\mathbb{1}_\mathscr{B}\otimes X)}
+    \arrow["{\phi\otimes id_{F(X)}}"', from=1-1, to=2-1]
+    \arrow["{\lambda_{F(X)}}", from=1-1, to=1-2]
+    \arrow["{F(\lambda_X)}"', from=2-2, to=1-2]
+    \arrow["{\psi_{\mathbb{1},X}}"', from=2-1, to=2-2]
+\end{tikzcd}\]
+finally we just need a commutative diagram for all $X,Y\in\cat$ specifying how it interacts with the braiding
+\[\begin{tikzcd}
+    {F(X)\otimes F(Y)} & {F(Y)\otimes F(X)} \\
+    {F(X\otimes Y)} & {F(Y\otimes X)}
+    \arrow["{\psi_{X,Y}}"', from=1-1, to=2-1]
+    \arrow["{\beta_{F(X),F(Y)}}", from=1-1, to=1-2]
+    \arrow["{\psi_{Y,X}}", from=1-2, to=2-2]
+    \arrow["{F(\beta_{X,Y})}"', from=2-1, to=2-2]
+\end{tikzcd}\]
+\end{defn}
+This notion will be central in this course since a TFT is just a symmetric monoidal functor with a special domain: the cobordism category.
+\begin{ex}
+\hfill
+\begin{enumerate}
+    \item The path-connected component functor (\ref{PathConnFunct}) $\pi_0: (\Top,\times)\to (\Set,\times)$ is a symmetric monoidal functor.
+    \item ... %TODO more?
+\end{enumerate}
+\end{ex}
+We also need a suitable notion of natural transformation between symmetric monoidal functors.
+\begin{defn}[(Symmetric) Monoidal Natural Transformation]\label{SymmMonNat}
+Given monoidal functors $(F,\psi,\phi)$ and $(G,\xi,\gamma)$ from monoidal categories $\cat$ to $\dat$, a natural transformation $\eta:F\Rightarrow G$ is monoidal if and only if the two following diagrams commute    % https://q.uiver.app/#q=WzAsNCxbMCwwLCJGKFgpXFxvdGltZXMgRihZKSJdLFswLDEsIkYoWFxcb3RpbWVzIFkpIl0sWzEsMSwiRyhYXFxvdGltZXMgWSkiXSxbMSwwLCJHKFgpXFxvdGltZXMgRyhZKSJdLFswLDEsIlxccHNpX3tYLFl9IiwyXSxbMSwyLCJcXGV0YV97WFxcb3RpbWVzIFl9IiwyXSxbMCwzLCJcXGV0YV9YXFxvdGltZXNcXGV0YV9ZIl0sWzMsMiwiXFx4aV97WCxZfSJdXQ==
+\[\begin{tikzcd}
+    {F(X)\otimes F(Y)} & {G(X)\otimes G(Y)} \\
+    {F(X\otimes Y)} & {G(X\otimes Y)}
+    \arrow["{\psi_{X,Y}}"', from=1-1, to=2-1]
+    \arrow["{\eta_{X\otimes Y}}"', from=2-1, to=2-2]
+    \arrow["{\eta_X\otimes\eta_Y}", from=1-1, to=1-2]
+    \arrow["{\xi_{X,Y}}", from=1-2, to=2-2]
+\end{tikzcd}\]
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXG1hdGhiYnsxfV9cXGRhdCJdLFswLDEsIkYoXFxtYXRoYmJ7MX1fXFxjYXQpIl0sWzEsMSwiRyhcXG1hdGhiYnsxfV9cXGNhdCkiXSxbMCwxLCJcXHBoaSIsMl0sWzEsMiwiXFxldGFfe1xcbWF0aGJiezF9X1xcY2F0fSIsMl0sWzAsMiwiXFxnYW1tYSJdXQ==
+\[\begin{tikzcd}
+    {\mathbb{1}_\dat} \\
+    {F(\mathbb{1}_\cat)} & {G(\mathbb{1}_\cat)}
+    \arrow["\phi"', from=1-1, to=2-1]
+    \arrow["{\eta_{\mathbb{1}_\cat}}"', from=2-1, to=2-2]
+    \arrow["\gamma", from=1-1, to=2-2]
+\end{tikzcd}\]
+\end{defn}
+No other conditions are needed to be specified for a symmetric monoidal natural transformation, a monoidal natural transformation between symmetric monoidal functors. 
+\begin{ex}
+\hfill
+\begin{itemize}
+    \item Let $\Z[-]:\Set\to \AbGrp$ be the free functor\footnote{A free functor is a left adjoint to the forgetful functor.} generating free groups from sets. Define $\Z[-\times-]:\Set\to \AbGrp$, the free functor generating free groups out of cartesian products in $\Set$, and $\Z[-]\otimes\Z[-]$, the free functor first generating free groups and then tensor-multiply them with the tensor product in $\AbGrp$.  There is a monoidal natural isomorphism $\alpha$ between them, $\forall A,B\in \Set, \Z[A\times B]\cong\Z[A]\otimes\Z[B]$. The notation $\Z[-]$ comes from the fact that abelian groups are exactly modules on the integers, the categories of abelian groups and of modules on the integers are not just equivalent categories, but isomorphic, something very rare.
+    \item Let $V\in\Vect_k$. Then $V\to V^{\ast\ast}$ are the components of...
+    \item The determinant... %TODO complete
+    \item There is a monoidal natural isomorphism between $id_{\Grp}$ and $\Grp\xrightarrow{op} \Grp$, $G\mapsto G^{op}$, the functor sending every group $(G,\ast)$ to its opposite group, i.e. $(G^{op},\ast^{op})$, where $a\ast^{op}b=b\ast a$.
+\end{itemize}
+\end{ex}
+\begin{rem}
+    One way in which (symmetric) monoidal natural transfomations are important is that they let us define a suitable notion of equivalence between (symmetric) monoidal categories. This will be fundamental in a forthcoming section (\ref{ClassificationOfTFTs}).
+\end{rem}
+\begin{defn}[Monoidal Equivalence]
+    There is a (symmetric) monoidal equivalence between (symmetric) monoidal categories $\cat$ and $\dat$ if and only if there are (symmetric) monoidal functors $F, G:\mathscr{D}\rightarrow\mathscr{C}$ and (symmetric) monoidal natural isomorphisms $G\circ F\overset{\epsilon}{\cong}id_{\mathscr{C}}$ and $F\circ G\overset{\eta}{\cong}id_{\mathscr{D}}$.
+\end{defn}
+\begin{rem}\label{CatSymmMonCat}
+    There is a strict 2-category SymmMonCat similar to Cat (see section \ref{sub:higher_categories}), where 1-morphisms are symmetric monoidal functors and 2-morphisms are symmetric monoidal natural transformations. 
+\end{rem}
+\begin{notat}
+    Note that then $\Hom_{\SymmMonCat}(\cat,\dat)$ is a special functor category. A functor category where objects are symmetric monoidal functors. An alternative way to denote $\Hom_{\SymmMonCat}(\cat,\dat)$ is $\Fun^{\otimes}(\cat,\dat)$.
+\end{notat}
+We have previously seen (\ref{Representations of Groups}) that a linear representation of a group $G$ is just a functor $\mathbf{B}G\rightarrow \Vect_k$. More generally, some, e.g. \cite[p. 34 ]{kock_2003}, give a definition of linear representation for symmetric monoidal categories: 
+\begin{defn}[Linear Representation]\label{LinReprCat}
+    Let $\cat$ be a symmetric monoidal category. A linear representation of such category is a symmetric monoidal functor $$\cat\to\Vect_k$$ Such functors are the objects of the category of representation of $\cat$ whereas symmetric monoidal natural transformations are the morphisms, 
+    \begin{equation}\label{eq:rep_of_cat}
+      \Rep(\cat)=\Fun^{\otimes}(\cat,\Vect_k)
+    \end{equation}
+\end{defn}

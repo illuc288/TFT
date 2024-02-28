@@ -1,0 +1,252 @@
+\chapter{A summary of category theory}
+\section{Category theory: basic definitions} % (fold)
+\label{sub:cathegory_theory_language}
+
+\begin{defn}
+\label{Cat}
+    A locally small\footnote{A category is locally small if every hom $\Hom_{\mathscr{C}}(X,Y)$ is not bigger than a set. A locally small category is small if the collection of objects is also a set. A large category is a category which is not small. A category is essentially small if it is locally small and the collection of isomorphism classes (collections of isomorphic objects, i.e. objects with a morphism between them which has a left- and right-inverse) is a set. Questions of size of collections play an important role in category theory. For example, one cannot naively take the set of all sets as the collection of objects of the category of sets because of famous set-theoretic paradoxes like Cantor's, Burali-Forti's or Russell's. See \cite{shulman2008set} for an account on possible set-theoretic foundations for category theory.} category $\mathscr{C}$ consists of the following data:
+    \begin{itemize}
+        \item A class $\ob(\mathscr{C})$ whose elements are called the \underline{objects of $\mathscr{C}$},
+        \item For any $X, Y \in \ob(\mathscr{C})$ a set $Hom_{\mathscr{C}}(X,Y)$ whose elements are called \underline{morphisms} \underline{from $X$ to $Y$},
+        \item For any objects $X,Y,Z\in \ob(\mathscr{C})$ a map\footnote{Note that we can simply define composition as a map between sets because we are working with a locally small category.}
+        
+        \begin{gather*}
+            \Hom_{\mathscr{C}}(Y,Z)\times \Hom_{\mathscr{C}}(X,Y)\xrightarrow{\circ} \Hom_{\mathscr{C}}(X,Z) \\
+            (g,f)\mapsto g\circ f
+        \end{gather*}
+        which is called \underline{composition} of morpisms,
+        \item For every object $X\in \ob(\mathscr{C})$ an element $id_{X}\in \Hom_{\mathscr{C}}(X,X)$ called the \underline{identity} of $X$.
+    \end{itemize}
+    Such data must fulfill the following axioms: \begin{itemize}
+        \item $\forall f\in \Hom_{\mathscr{C}}(X,Y), f\circ id_{X}=f=id_{Y}\circ f$ \hfill (unitality)
+        
+        \item $\forall f\in \Hom_{\mathscr{C}}(X,Y), g\in \Hom_{\mathscr{C}}(Y,Z), h\in \Hom_{\mathscr{C}}(W,Z)$:
+        \begin{equation}
+            (h\circ g)\circ f=h\circ (g\circ f) \tag{associativity}
+        \end{equation}
+        \end{itemize}
+\end{defn}
+
+\begin{ex}
+A few examples of categories are the following:
+\begin{center}
+    \begin{tabular}{l|l|l}
+    category & objects & morphisms \\ \hline \hline
+    Set & class of all sets & functions between sets \\ \hline 
+    Mon & class of all monoids & monoid homomorphisms \\ \hline
+    Grp & class of all groups & group homomorphisms \\ \hline
+    AbGrp & class of all abelian groups & group homomorphisms \\ \hline
+    Ring & class of all rings & ring homomorphisms \\ \hline
+    Vect${}_k$ & class of all $k$ vector spaces & linear maps \\ \hline
+    Alg${}_k$ & class of all algebras over $k$ & algebra homomorphisms \\ \hline
+    Top & class of all topological spaces & continuous functions \\ \hline
+    FinSet & class of all finite sets & functions between sets \\ \hline
+    SmoothMfld & set of all smooth manifolds & smooth functions \\ 
+    \end{tabular}
+\end{center}
+    \begin{enumerate}
+        \item Let $(P,\leq)$ be  a set with a transitive and reflexive relation $\leq$ (a preordered set).
+        Define a category $\mathbf{P}$ with: 
+        $$\ob(\mathbf{P})=P$$
+        $$ \Hom_{\mathbf{P}}(X,Y)=\begin{cases}
+            \{\ast\} & \text{if } x\leq y \\
+            \emptyset & \text{else}
+        \end{cases}$$
+        \item Given categories $\mathscr{C},\mathscr{D}$ we can define a category $\mathscr{C}\times\mathscr{D}$ (the product category) by:
+        $$\ob(\mathscr{C}\times\mathscr{D})=\ob(\mathscr{C})\times \ob(\mathscr{D})$$
+        $$\Hom_{\mathscr{C}\times\mathscr{D}}((X,Y),(X',Y'))=\Hom_{\mathscr{C}}(X,X')\times \Hom_{\mathscr{D}}(Y,Y')$$ 
+        
+        \item\label{CatOP}
+        Given a category $\mathscr{C}$, define a category $\mathscr{C}^{op}$ by:
+        $$\ob(\mathscr{C}^{op})=\ob(\mathscr{C})$$ 
+        $$\Hom_{\mathscr{C}^{op}}(X,Y)=\Hom_{\mathscr{C}}(Y,X)$$ $$g\circ_{\mathscr{C}^{op}}f=f\circ_{\mathscr{C}}g$$  
+        this is called the opposite category of $\mathscr{C}$.
+    \end{enumerate}
+\end{ex}
+\begin{defn}
+    An isomorphism $f\in \Hom(X,Y)$ is a morphism such that $\exists g \in \Hom(Y,X)$ with $g\circ f=id_{X}, f\circ g=id_{Y}$.
+\end{defn}
+\begin{defn}
+    A groupoid is a category where each morphism is an isomorphism.
+\end{defn}
+\begin{ex}\label{Delooping Monoid}
+    Let $\mathscr{C}$ be a category with $\ob(\mathscr{C})=\{\ast\}$. 
+   
+    \noindent  Then, $(\Hom_{\mathscr{C}}(\ast,\ast),\circ)$ is a monoid since composition is associative and unital with neutral element given by the identity morphism $id_\ast$.
+  %TODO I think the notation is usually just BM, not bold--You are probably right but I prefer to put it bold because sometimes it can be confusing, e.g. a bicategory is often denoted by 'B' and then the delooping of a bicategory becomes a one-object tricategory BB. There was also a case I can't remember where one couldn't discern Bs in a topology class. It is true that we'll probably not encounter any such confusing cases but I still prefer it because it shows that it is something "special". having said this, not a big issue for me however, if we change it to just nonbold B /Andrea
+    Conversely, every monoid $(M,\cdot)$ defines a category $\mathbf{B}M$ with 
+    $$\ob(\mathbf{B}M)=\{\ast\}, \ \ \Hom_{\mathbf{B}M}(\ast,\ast)=M, \ \ m\circ_{\mathbf{B}M} m'=m\cdot m', \ \ id_{\ast}=1_{M}$$ 
+    $\mathbf{B}M$ is called the delooping of the monoid $(M,\cdot)$
+    \footnote{We will see a generalization of such deloopings for certain categories, monoidal categories (see \ref{MonCat}) where any monoidal category $\cat$, will be a one-object \emph{bi}category $\mathbf{B}\cat$ called the delooping $\cat$ (see \ref{DeloopingMonCat}).}.
+    The same holds for groups and one-object groupoids: every group $(G,\cdot)$ defines a one-object groupoid $\mathbf{B}G$ and vice versa
+
+    More generally, monoids of the form $(\Hom_\cat(X,X),\circ)$ are called endomorphism monoids and an interesting example thereof is endomorphism monoids in the category $\Top\!\Vect_k$ of topological vector spaces and continuous linear operators. Such endomorphism monoids $(\Hom_{\Top\!\Vect_{k}}(X,X),\circ)$ and submonoids thereof are called operator algebras. They are important in functional analysis and in quantum theory.
+\end{ex}
+
+\begin{defn}
+        Let $\mathscr{C}$ and $\mathscr{D}$ be categories. A functor $F:\mathscr{C}\rightarrow\mathscr{D}$ consists of the following data: \begin{itemize}
+        \item an assignment 
+        \begin{align}
+            F:\ob(\mathscr{C})&\rightarrow \ob(\mathscr{D})\\
+            X&\mapsto F(X)
+        \end{align}
+        \item for every two objects $X,Y\in \ob(\mathscr{C})$ a map 
+        \begin{align}
+            \Hom_{\mathscr{C}}(X,Y)&\rightarrow \Hom_{\mathscr{D}}(F(X),F(Y))\\
+            f&\mapsto F(f)
+        \end{align}
+    \end{itemize} 
+    such that 
+    \begin{itemize}
+        \item $F(id_{X})=id_{F(X)}$
+        \item $F(g\circ f)=F(g)\circ F(f)$
+    \end{itemize}
+\end{defn}
+
+\begin{ex}
+\label{ex:functor}
+Some examples of functors:
+    \begin{enumerate}
+        \item\label{ForgetfulFunctors} There are forgetful functors \begin{itemize}
+            \item $\Ring\rightarrow \Grp\rightarrow\ \Set$
+            
+            \noindent $(R,+,\cdot)\mapsto(R,+)\mapsto R$
+            \item $\Ring\rightarrow \Mon$ 
+            
+            \noindent $(R,+,\cdot)\mapsto(R,\cdot)$
+            \item $\Vect_{k}\rightarrow \AbGrp\rightarrow \Set$
+
+            \item $\Alg_k\to \Vect_k$ where the multiplicative structure on algebras is forgotten
+        \end{itemize}
+        \item\label{Representations of Groups} An action of a group $(G,\cdot)$ on a set $X$ is a functor $A: \mathbf{B}G\xrightarrow{\rho} \Set$ where $A(\ast)=X$ and every $g\in \Hom_{\mathbf{B}G}(\ast,\ast)$ is mapped to an automorphism\footnote{It is an automorphism and not a simple endomorphism because of a very important property of functors: they preserve isomorphisms: given a functor $F:\cat\to\dat$, if $f\in \Hom_\cat(X,Y)$ is an isomorphism, then $F(f)\in \Hom_\dat(F(X),F(Y))$ is an isomorphism as well because $F(f^{-1})\circ F(f)=F(f^{-1}\circ f)=F(id_X)=id_{F(X)}$ and simmetrically, $F(f)\circ F(f^{-1})=id_{F(Y)}$. For example, this can be used in the converse direction to show that two topological spaces are not homeomorphic by sending them (with a functor) to their non-isomorphic fundamental group(oid)s.} on $X$, $\Hom_{\mathbf{B}G}(\ast,\ast)\rightarrow \Hom_{\Set}(X,X)$. By the same reasoning, a linear representation of a group $(G,\cdot)$ is a functor $\mathbf{B}G\rightarrow \Vect_k$ .
+        \item Given functors $F:\mathscr{C}\rightarrow\mathscr{D}$ and $G:\mathscr{D}\rightarrow\mathscr{E}$, their composite $G\circ F:\mathscr{C}\rightarrow\mathscr{E}$ is also a functor: $G\circ F(X)=G(F(X)), G\circ F(f)=G(F(f))$.
+        \item $id_{\mathscr{C}}:\mathscr{C}\rightarrow\mathscr{C}$  with $id_{\mathscr{C}}(X)=X, id_{\mathscr{C}}(f)=f$ is also a functor.
+    \end{enumerate}
+\end{ex}
+\begin{rem}\label{1CatOfAllCats}
+      Since the composition of functors is associative\footnote{Try to convince yourself that it is so!} and unital there is a category of all (small\footnote{Let $\mathscr{C},\mathscr{D}$ be categories, the collection of all functors $F:\mathscr{C}\rightarrow\mathscr{D}$ is generally a class. Hence the category of all categories without any restriction would not be a locally small category and thereby not a category according to our definition \ref{Cat}.  However, if $\mathscr{C}$ is small, then the collection of all functors $F:\mathscr{C}\rightarrow\mathscr{D}$ is a set. Therefore, the category of all small categories is indeed a category according to our definition of category.}) categories $\Cat$ whose objects are (small) categories and whose morphisms are functors. For the same reason we also have a category Gpd of (small) groupoids.
+\end{rem}
+\begin{ex}\extra
+Some more examples related to topological spaces.
+    \begin{enumerate}
+    \item \label{PathConnFunct} Let $X$ be a topological space. Observe the following equivalence relation: $x\sim x'$ if and only if there is a continuous map $f:[0,1]\to X$, also known as "path", such that $f(x)=0$ and $f(x')=1$. Denote with $\pi_0(X)$ the set of equivalence classes of path-connected points, also known as the set of path-connected components, in $X$. This gives a functor\footnote{There is also a functor $\pi:\Top\to \Set$ sending topological spaces to the sets of their connected components.} $\pi_0:\Top\to \Set$
+    \item Let $X$ be a topological space. Its fundamental groupoid $\pi_{\leq 1}$ is the groupoid having:
+    \begin{itemize}
+        \item the points of $X$ as objects, $\ob(\pi_{\leq 1}(X))=X$;
+        \item $\Hom_{\pi_{\leq 1}(X)}(x,y)$ is given by equivalence classes of continuous paths from $x$ to $y$ that are homotopic\footnote{We later define a homotopy, see Example \ref{Homotopy} below.} relative to their endpoints. We can spell out what this means in the following way
+    
+        $$\Hom_{\pi_{\leq 1}(X)}(x,y)= \frac{\{\gamma\in \Hom_{\Top}([0,1],X)|\gamma(0)=x,\gamma(1)=y\}}{\text{homotopy relative to }\de[0,1]}$$
+
+        \item For $x,y,z\in X$, composition of $[\gamma]\in \Hom_{\pi_{\leq 1}(X)}(x,y)$ and $[\eta]\in \Hom_{\pi_{\leq 1}(X)}(y,z)$ is given by the concatenation of paths with appropriate reparametrization, 
+    
+        $$[\eta]\circ[\gamma]=[\gamma\ast\eta]$$
+    
+    \end{itemize} 
+    Units are constant paths, i.e. $c:[0,1]\to X$ such that $\forall t\in[0,1], c(t)=x$. Additionally, this is indeed a groupoid since inverses are given by the same paths run in the opposite direction. We have a functor 
+    $$\pi_{\leq 1}:\Top\to \Gpd.$$
+    In this language, the Seifert–Van Kampen theorem can be formulated as follows: $\pi_{\leq1}$
+     preserves pushouts\footnote{Pushouts are certain colimits, that is objects in a category
+         defined, up to
+         isomorphism, by a certain universal property, see \ref{WhatSpectra} for a fast paced 
+         introduction to co/limits. An example of pushout is the gluing of two
+          spaces along a common other, as we have already seen numerous times in this course. 
+          The resulting space is a pushout in $Top$}.
+    
+    \item Let $X$ be a topological space and $x\in X$ an arbitrary basepoint. The assignement of a fundamental group of $X$ at $x$, $\pi_1(X,x)$\footnote{\textit{Reminder}: $\pi_1(X,x)=\pi_0(\Omega_x(X))$, where $\Omega_x(X)$ is the based loop space of $X$ at $x$} is a functor $\pi_1:\Top\to \Grp$
+    \end{enumerate}
+\end{ex}
+
+\section{Natural transformations} % (fold)
+\label{sub:natural_transformations}
+
+%Topological field theory as a categorification of a symmetric monoid. Should we explain coincisely what categorifying is and tell a story about how TFTs are categorified? /Andrea
+\begin{defn}
+    Given two functors $F,G: \cat \to \mathscr{D}$ a natural transformation from $F$ to $G$, $\alpha : F \Rightarrow G$ is a collection of morphisms indexed by objects in $\cat$, $\alpha_x: F(X) \to G(X)$ such that $\forall f: X\to Y$ in $\cat$ the following diagram commutes
+    \[ \begin{tikzcd}
+        {F(X)} & {G(X)} \\
+        {F(Y)} & {G(Y)}
+        \arrow["{F(f)}"', from=1-1, to=2-1]
+        \arrow["{\alpha_X}", from=1-1, to=1-2]
+        \arrow["{\alpha_Y}", from=2-1, to=2-2]
+        \arrow["{G(f)}", from=1-2, to=2-2]
+    \end{tikzcd}\]
+    If for every $ X\in \ob(\cat)$, $\alpha_X$ is an isomorphism, then $\alpha$ is a natural isomorphism.
+\end{defn}
+\begin{rem}\label{FunctorsPreserveCommut}
+    Note that because of functoriality, if a diagram commutes in $\cat$, then its image under a functor $F:\cat\to\dat$ also commutes in $\dat$. Let for example $g\circ f=h\circ l$, then $F(g)\circ F(f)=F(g\circ f)=F(h\circ l)=F(h)\circ F(l)$
+\end{rem}
+\begin{notat}\label{FunCat}
+    Let $\cat$ and $\dat$ be categories. We denote with $\Fun(\cat,\dat)$ the functor category where objects are functors $\cat\to\dat$ and morphisms are natural transformations between such functors. We encounter soon an example of functor category, the category of $G$-linear representations, see Example \ref{Cat of representations} below.
+\end{notat}
+\begin{rem}\label{FunctorGroupoids}
+    Note that given a category $\cat$ and a \emph{groupoid} $\dat$, then $\Fun(\cat,\dat)$ is a groupoid since every component of any natural transformation is invertible because they are morphisms in $\dat$ and therefore any natural transformation is a natural isomorphism.
+\end{rem}
+\begin{ex}%TODO complete examples
+\label{ex:natural_trafos}
+\hfill
+\begin{enumerate}
+    \item
+    \label{Cat of representations}
+    As we have seen in Example \ref{Representations of Groups} in \ref{ex:functor}, a linear representation of a group $G$ is a functor $\mathbf{B}G\to \Vect_k$. A morphism between $G-$representations $V$ and $W$, $f:V\to W$ is a $k-$linear map which is equivariant, i.e. $\forall g\in G, \forall v\in V$ we have $f(gv)=gf(v)$. Since linear representations are functors, one might wonder if a morphism between functors $V,W:\mathbf{B}G\to \Vect_k$, i.e. a natural transformation, is an equivariant map. Let $f:V\Rightarrow W$ be a natural transformation. Then, for any $g\in \Hom_{\mathbf{B}G}(\ast,\ast)$ the following diagram commutes
+    \[ \begin{tikzcd}
+        V(*) \ar[r, "f(*)"] \ar[d, "V(g) = g\cdot"'] & W(*) \ar[d, "W(g) = g\cdot"]\\
+        V(*) \ar[r, "f(*)"] & W(*) 
+    \end{tikzcd}\]
+    and hence the map is equivariant, it does not matter if we first act on the vector space and subsequently apply the map or viceversa. 
+    
+    Since one can compose unitally and associatively natural transformations\footnote{By composining their components.}, if we take the collection of all functors $\mathbf{B}G\to \Vect_k$ and the natural transformations between them we get the category of linear representations of the group $G$. Such categories where the objects are functors are called functor categories. 
+    %TODO is this next example correct?
+    \item The determinant can also be seen as a natural transformation. Let $\Mat$ be the functor $\Ring \to \Mon$ taking a commutative ring $R$ to the monoid $\Mat(R)$ of matrices with coefficients in the ring $R$. Another such functor is the forgetful functor which forgets addition in the ring and forgets that the product is commutative $U: \Ring \to \Mon$. The determinant is then the following map of monoids:
+    \begin{equation}
+        \begin{tikzcd}[row sep=small]
+            \Mat(R) \ar[r, "\det"] & R \\
+            M \ar[r, mapsto] & \det M
+        \end{tikzcd}
+    \end{equation}
+    The product rule for the determinant makes the map into a monoid homomorphism.
+    The naturality diagram for rings $R,S$ for a map $f:R\to S$ is then the following:
+    \begin{equation}
+        \begin{tikzcd}
+            \Mat(R) \ar[r, "\det"] \ar[d, "\Mat(f)"']& R \ar[d, "f"]\\
+            \Mat(S) \ar[r, "\det"] & S 
+        \end{tikzcd}
+    \end{equation}
+    In words, this means that to calculate the determinant with coefficients in $S$ we can proceed in two equivalent ways:
+    \begin{itemize}
+        \item change coefficients from $R$ to $S$ and then calculate the determinant,
+        \item calculate the determinant using the matrix with $R$ coefficients and then map into $S$.
+    \end{itemize}
+    Instead of taking \textit{all} matrices we could take the general linear group $GL(-): \Ring \to \Grp$. In that case det is a natural transformation between $GL(-)$ and the functor $(-)^\times: \Ring \to \Grp$ taking the units in the ring.
+    \item
+    \label{Homotopy}
+        Let $X,Y\in \Top$ and $f,g\in \Hom_{\Top}(X,Y)$. A homotopy from $f$ to $g$ is a continuous map 
+        $$h:[0,1]\times X\to Y$$ 
+        such that for every $x\in X, h(0,x)=f(x)$ and $h(1,x)=g(x)$. Two maps are homotopic if there is a homotopy between them. 
+        Although the homotopy seems intuitively like a map between maps, like the natural transformation is, this seems still very far from a natural transformation. However, there is an equivalent formulation of natural transformation, given below, which shows that homotopies and natural transformations are related. We will later show a way to make this comparison more rigorous, see \ref{Homotopy2Top}. 
+\end{enumerate}
+\end{ex}
+
+\begin{defn}\extra\textmd{(Homotopy Analogue of Natural Transformation).}
+    Let $\Delta^{1}$ be the category with two objects $0,1$ and one nonidentity morphism $u:0\to1$. Given two functors $F,G:\cat\to\dat$ we can see a natural transformation $\tau:F\Rightarrow G$ as a functor $N:\cat\times\Delta^{1}\to\dat$ where $N|_{\cat\times\{0\}}=F$ and $N|_{\cat\times\{1\}}=G$ and thus for every $X\in\cat$, $N(X,0)=F(X)$ and $N(X,1)=G(X)$. 
+\end{defn}
+\noindent This is equivalent to the previous definition for the following reason: let $X\xrightarrow{f} Y$ be an arbitrary arrow in $\cat$ and consider this commutative\footnote{It commutes because of unitality in both categories: $f\circ id_X=id_Y\circ f$ and $u\circ id_0=id_1\circ u$.} diagram in $\cat\times\Delta^1$
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCIoWCwwKSJdLFswLDEsIihZLDApIl0sWzEsMSwiKFksMSkiXSxbMSwwLCIoWCwxKSJdLFswLDMsIihpZF9YLHUpIl0sWzAsMSwiKGYsaWRfMCkiLDJdLFszLDIsIihmLGlkXzEpIl0sWzEsMiwiKGlkX1ksdSkiLDJdXQ==
+\[\begin{tikzcd}
+    {(X,0)} & {(X,1)} \\
+    {(Y,0)} & {(Y,1)}
+    \arrow["{(id_X,u)}", from=1-1, to=1-2]
+    \arrow["{(f,id_0)}"', from=1-1, to=2-1]
+    \arrow["{(f,id_1)}", from=1-2, to=2-2]
+    \arrow["{(id_Y,u)}"', from=2-1, to=2-2]
+\end{tikzcd}\]
+The image of the latter diagram under $N$ is the following commutative diagram in $\dat$
+% https://q.uiver.app/#q=WzAsNSxbMCwwLCJGKFgpIl0sWzAsMSwiRihZKSJdLFsxLDEsIkcoWSkiXSxbMSwwLCJHKFgpIl0sWzIsNF0sWzAsMywiTihpZF9YLHUpIl0sWzAsMSwiRihmKSIsMl0sWzMsMiwiRyhmKSJdLFsxLDIsIk4oaWRfWSx1KSIsMl1d
+\[\begin{tikzcd}
+    {F(X)} & {G(X)} \\
+    {F(Y)} & {G(Y)} 
+    \arrow["{N(id_X,u)}", from=1-1, to=1-2]
+    \arrow["{F(f)}"', from=1-1, to=2-1]
+    \arrow["{G(f)}", from=1-2, to=2-2]
+    \arrow["{N(id_Y,u)}"', from=2-1, to=2-2]
+\end{tikzcd}\]
+Hence the components of $\tau$ are just the image under $N$ of the pairs of maps $(id,u)$, i.e. $\forall X\in\cat, \tau_X=N(id_X,u)$

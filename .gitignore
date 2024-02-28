@@ -7,6 +7,7 @@
 *.log
 *.out
 main.pdf
+main no outlooks.pdf
 *.synctex.gz
 *.toc
 credentials.txt

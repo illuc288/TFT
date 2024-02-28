@@ -1,0 +1,78 @@
+\subsection{Dualizability in higher categories \extra} % (fold)
+\label{ssub:left_and_right_duals_in_higher_categories}
+Equivalently, a left/right dual object $X$ in a monoidal category $\cat$ can also be
+ characterized as a left/right adjoint
+ when considered as a 1-morphism in the delooping (see
+  \ref{DeloopingMonCat}) bicategory (see \ref{Bicategory}) $\mathbf{B}\cat$ of $\cat$.
+  This
+   makes sense because:
+\begin{itemize}
+    \item the evaluation map $ev_X$ corresponds to the counit $\epsilon$ of the adjunction 
+    \item the coevaluation map $coev_X$ to the unit $\eta$ of the adjunction
+    \item the two diagrams (\ref{DUAL1} and \ref{DUAL2}) to the triangle identities of the adjunction.
+\end{itemize} 
+A natural question is: what is an adjoint 1-morphism?
+We defined only adjoint functors (see \ref{AdjFun})! 
+Fortunately the definition we gave for functors, i.e.
+1-morphisms in Cat, is easily generalizable to 1-morphisms in an arbitrary bicategory,
+meaning that it is virtually the same: one just has to substitute '1-morphisms' for 'functors'
+and substitute '2-morphisms' for 'natural
+transformations' (when talking about the co/evaluation and the identity on the functors).
+
+A sane individual, i.e. not a homo categoriens\footnote{A subspecies of homo sapiens.
+     Exemplars usually say stuff like 
+     '\href{https://ncatlab.org/nlab/show/differential+equation}{I understand differential equations as sub-$\infty$-groupoids of tangent and jet bundles}'
+      and have posters of Grothendieck or Lawvere in their bedroom.}
+, might ask why this is remotely useful. The answer is that one needs this intuition to talk about
+ monoidal ($\infty,n$)-categories with duals. This is interesting for us because, for 
+ instance,  these objects are used in the cobordism hypothesis, stating that their objects
+  classify fully extended TFTs,
+  see \ref{RemarkOnCobHypo}.
+\begin{rem}
+    The notion of delooping of a monoidal category as a one-object bicategory can be
+     generalized to monoidal $(\infty,n)$-categories. The delooping of a monoidal
+      $(\infty,n)$-category $\cat$ is a one-object $(\infty,n+1)$-category $\mathbf{B}\cat$ where the objects of $\cat$ are the 1-morphisms of $\mathbf{B}\cat$ and the tensor product of $\cat$ is the composition $\circ$ of 1-morphisms.
+\end{rem}
+\begin{defn}[($\infty,n$)-monoidal categories with duals]\label{HigherMonCatDuals}
+    Let $\cat$ be a monoidal ($\infty,n$)-category. Then $\cat$ has duals if and only if its delooping $\mathbf{B}\cat$ has adjoints\footnote{In the usual jargon, an $(\infty,n)$-category has adjoints if it has adjoints
+         for any $k$-morphism with $0<k<n$. We spelled what it means anyway for the sake of clarity.} for any $k$-morphism with $0<k<n+1$ . We say that any object in such a
+          category is fully $n$-dualizable. 
+\end{defn}
+We have a vague idea of what are monoidal ($\infty,n$)-categories and deloopings
+thereof. However, we did not sketch what it means that an ($\infty,n+1$)-category has
+ adjoints, but it is essential to understand this definition
+  since we characterized the duals of a monoidal
+  ($\infty,n$)-category in terms of the adjoints of its delooping.
+  The idea is to trace this back to adjoints of 1-morphisms in bicategories.
+  \begin{defn}[Homotopy 2-category of an $(\infty,n)$-category]
+A homotopy 2-category of an $(\infty,n)$-category $\cat$ with $n\geq 2$ is a bicategory h$_{2}\cat$
+with 
+\begin{itemize}
+\item  the objects of $\cat$ as objects $$\operatorname{ob}(\cat)=\operatorname{ob}(\operatorname{h}_2\cat)$$
+\item the 1-morphisms of $\cat$ as 1-morphisms 
+$$1\operatorname{-mor}(\cat)=1\operatorname{-mor}(\operatorname{h}_2\cat)$$ 
+\item isomorphism classes of 2-morphisms in $\cat$ as 2-morphisms, i.e. given
+1-morphisms $f,g:X\to Y$ a 2-morphism in $\operatorname{h}_2\cat$ is a 2-morphism in $\cat$
+up to 3-isomorphism
+ $$2\operatorname{-mor}(\cat)/_{\cong}=2\operatorname{-mor}(\operatorname{h}_2\cat)$$ 
+\end{itemize}
+  \end{defn}
+  \begin{defn}[Adjoints in $(\infty,n)$-categories]
+We define adjoints for $k$-morphisms by recursion.
+An $(\infty,n)$-category $\cat$ has adjoints for 1-morphisms if its homotopy 2-category 
+$\operatorname{h}_2\cat$ has adjoints for 1-morphisms, i.e. if all 1-morphisms of
+ $\operatorname{h}_2\cat$ are part of an adjunction. An $(\infty,n)$-category $\cat$ has
+  adjoints for $k$-morphisms if, for every pair $X,Y\in\operatorname{ob}(\cat)$, the 
+  $(\infty,n-1)$-category $\Hom_{\cat}(X,Y)$ has adjoints for $k-1$-morphisms.
+  \end{defn}
+  We say that an $(\infty,n)$-category has adjoints if it has adjoints for any $k$-morphism 
+  with $0<k<n$. 
+  
+  Having defined adjoints of morphisms of an $(\infty,n)$-category, we now have all the
+  necessary pieces of the puzzle constituiting the sketch
+   of what it means that a monoidal $(\infty,n)$-category
+  has duals.
+\begin{rem}
+There is an equivalent definition of monoidal $(\infty,n)$-category with duals, see \cite{lurie2009classification} and
+\cite{gwilliam2018duals}. This intuition about adjoints is very useful also in this case.
+\end{rem}

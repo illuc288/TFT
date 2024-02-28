@@ -1,0 +1,762 @@
+\subsection{Homotopy coherent monoid objects: \texorpdfstring{$\mathbb{E}_n$}{En}-algebras \extra} 
+\label{EAlg}
+This outlook is based on \cite{HiroLee2022}, \cite{Mazel-Gee2024} and \cite{CalleInfiniteLoops}. It has two motivations:
+\begin{enumerate}
+    \item understand how we can define (symmetric/braided) monoidal categories internally to Cat
+    \item provide the necessary machinery to sensibly talk about spectra and $\mathbb{E}_n$ spaces
+    in \ref{WhatSpectra}
+\end{enumerate}
+
+A monoid object in Cat\footnote{Recall that the monoidal structure on Cat is given by the product of
+    categories, i.e. a cartesian product in Cat.} is a strict monoidal category. Take a look at associativity for
+instance:
+a monoid object $\cat\in\Cat$ makes the following diagram commute strictly
+% https://q.uiver.app/#q=WzAsNSxbMCwwLCIoTVxcb3RpbWVzIE0pXFxvdGltZXMgTSJdLFsxLDAsIk1cXG90aW1lcyhNXFxvdGltZXMgTSkiXSxbMiwwLCJNXFxvdGltZXMgTSJdLFswLDEsIk1cXG90aW1lcyBNIl0sWzIsMSwiTSJdLFswLDEsIlxcYWxwaGFfe00sTSxNfSJdLFsxLDIsImlkX01cXG90aW1lc1xcbXUiXSxbMCwzLCJcXG11XFxvdGltZXMgaWRfTSIsMl0sWzMsNCwiXFxtdSIsMl0sWzIsNCwiXFxtdSJdXQ==
+\[\begin{tikzcd}
+    {(\cat\times \cat)\times \cat} & {\cat\times(\cat\times \cat)} & {\cat\times \cat} \\
+    {\cat\times \cat} && \cat
+    \arrow["{\alpha_{\cat,\cat,\cat}}", from=1-1, to=1-2]
+    \arrow["{id_{\cat}\times\mu}", from=1-2, to=1-3]
+    \arrow["{\mu\times id_M}"', from=1-1, to=2-1]
+    \arrow["\mu"', from=2-1, to=2-3]
+    \arrow["\mu", from=1-3, to=2-3]
+\end{tikzcd}\]
+This means that if we take $X,Y,Z\in\cat$, then $(X\otimes Y)\otimes Z=X\otimes (Y\otimes Z)$, but the
+tensor product in general monoidal categories
+is associative and unital via some specific natural isomorphisms, the associator and the two unitors!
+So, this definition of monoid object does not work well with our initial comparison 
+between monoids, algebras and monoidal categories. The issue is that the definition of monoid object is
+tailored for 1-categories, and thus cannot
+regard morphisms higher than 1 and makes everything commute strictly.
+There is however a way to have the \textbf{morally right} notion of monoid object, meaning a monoid object
+that yields monoidal categories in the case of cats and more generally 
+monoids that cohere via higher morphisms (including the ones higher than 2, given that the category in
+question has them). The idea is to exploit the homotopical information of the category of $n$-disks\footnote{
+    Using disks is not the only way to do it, but it is arguably the simplest. Historically, it is done via things called
+    operads.}, i.e. the isotopies between embeddings from disjoint unions of $\R^n$, and import it to the monoidal
+category we want our monoid object to be defined in via a symmetric monoidal functor. This notion is called 
+$\mathbb{E}_1$-algebra for monoid objects, and $\mathbb{E}_\infty$-algebra for commutative ones.
+We can summarize the idea with the following mottos 
+$$\mathbb{E}_1\textit{-algebras are homotopy coherently associative and unital monoid objects }$$
+$$\mathbb{E}_\infty\textit{-algebras are homotopy coherently commutative, associative and unital monoid objects}$$
+And generally:
+$$ \mathbb{E}_n\textit{-algebras are homotopy-coherent monoid objects } $$
+$$  \textit{that are commutative via homotopies up to the $n$-th order}$$
+Now we try to sketch what being homotopy coherent means by means of an example:
+homotopy coherent associativity.
+Let $\mathcal{A}$ be an $\mathbb{E}_1$-algebra in an arbitrary symmetric monoidal $\infty$-category
+$\cat$, let $W,X,Y,Z\in \mathcal{A}$ and let us denote the multiplication of such algebra 
+as $\cdot:\mathcal{A}\otimes\mathcal{A}\to\mathcal{A}$. Then, 
+\begin{itemize}
+    \item there are two ways one can bracket three elements, for any $X,Y,Z\in \mathcal{A}$ there is a
+    2-associator\footnote{We say '$n$-associators' to make explicit that they are $n$-morphisms.} $\alpha:X\cdot(Y\cdot Z)\simeq(X\cdot Y)\cdot Z$ 
+    instead of the usual strict equality $X\cdot(Y\cdot Z)\simeq(X\cdot Y)\cdot Z$
+    \item there are five ways one can bracket 4 elements, for any $W,X,Y,Z\in \mathcal{A}$ there is a
+    3-associator between two compositions of 2-associators making the following pentagon cohere 
+    % https://q.uiver.app/#q=WzAsNSxbMiwwLCIoWFxcY2RvdCBZKVxcY2RvdChaXFxjZG90IFcpICJdLFswLDEsIigoWFxcY2RvdCBZKVxcY2RvdCBaKVxcY2RvdCBXIl0sWzEsMywiKFhcXGNkb3QgKFlcXGNkb3QgWikpXFxjZG90IFciXSxbMywzLCJYXFxjZG90KChZXFxjZG90IFopXFxjZG90IFcpIl0sWzQsMSwiWFxcY2RvdCAoWVxcY2RvdCAoWlxcY2RvdCBXKSkiXSxbMSwwXSxbMSwyXSxbMiwzXSxbMCw0XSxbMyw0XSxbNywwLCIiLDIseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV1d
+    \[\begin{tikzcd}[cramped, column sep=tiny]
+        && {(X\cdot Y)\cdot(Z\cdot W) } \\
+        {((X\cdot Y)\cdot Z)\cdot W} &&&& {X\cdot (Y\cdot (Z\cdot W))} \\
+        \\
+        & {(X\cdot (Y\cdot Z))\cdot W} && {X\cdot((Y\cdot Z)\cdot W)}
+        \arrow[from=2-1, to=1-3]
+        \arrow[from=2-1, to=4-2]
+        \arrow[""{name=0, anchor=center, inner sep=0}, from=4-2, to=4-4]
+        \arrow[from=1-3, to=2-5]
+        \arrow[from=4-4, to=2-5]
+        \arrow[shorten <=12pt, shorten >=12pt, Rightarrow, from=0, to=1-3]
+    \end{tikzcd}\]
+    \item there are 14 ways to bracket 5 elements, for any $A,B,C,D,E\in\mathcal{A}$ there is a 4-associator
+    between the two possible compositions of 3-associators. The next diagram is stolen from Luke Trujillo's
+    undergraduate thesis (\cite{TrujilloCoherence}). It depicts from one point of view,
+    the 2-associators and the objects of the 
+    coherence diagram for 3-associators that commutes via the 4-associator. In this image, the
+     3-associators
+    should be arrows on the faces of the polyhedron\footnote{Such polyhedra are called associahedra.}
+     and 
+    the 4-associator should be a 4-morphism inside the polyhedron going from one possible composition of 3-associators to the other.
+    
+    \begin{center}
+        \begin{tikzcd}
+            &[-2cm]
+            &[-2.5cm]
+            &[-1cm]
+            A ((B  C)  (D  E))
+            \arrow[dll, swap, "1_{A}\otimes \alpha_{B C,D,E}"]
+            \arrow[drr, "\alpha_{A,B C,D E}"]
+            &[-1cm]
+            &[-2.5cm]
+            &[-2cm]
+            \\[0.2cm] % 1
+            &
+            A((( B  C ) D)  E)
+            \arrow[dddr, "\alpha_{A, B (C D), E}"]
+            &
+            &
+            \bullet
+            \arrow[<-, dashed,u]
+            &
+            &
+            (A (B  C))  (D  E)
+            \arrow[dr, "\alpha_{A,B,C}\otimes (1_{D} \otimes 1_{E})"]
+            \arrow[dddl, swap, "\alpha_{A (B C), D, E}"]
+            &
+            \\[0.4cm] % 2
+            A ((B  (C  D)) E)
+            \arrow[ur, "(1_{A} \otimes \alpha_{B,C,D})\otimes 1_{E}"]
+            \arrow[ddddr, swap, "\alpha_{A,B C D, E}"]
+            \arrow[<-, drr, dashed]
+            &
+            &
+            &
+            &
+            &
+            &
+            ((A B)  C)  (D  E)
+            \arrow[<-, dashed, dll]
+            \arrow[ddddl, "\alpha_{(A B) C, D, E}"]
+            \\[-0.7cm] %2.5
+            &
+            &
+            \bullet
+            \arrow[<-, dashed, uur]
+            &
+            &
+            \bullet
+            \arrow[<-, dashed, uul]
+            &
+            &
+            \\[0.2cm] % 3
+            &
+            &
+            (A ((B  C)  D))  E
+            \arrow[rr, "\alpha_{A, B C, D}\otimes 1_{E}"]
+            &
+            &
+            ((A (B  C)) D)  E
+            \arrow[ddr, swap, "(\alpha_{A,B,C}\otimes 1_{D})\otimes 1_{E}"]
+            &
+            &
+            \\[-0.7cm] %3.5
+            &
+            &
+            &
+            \bullet
+            \arrow[<-, dashed, uur]
+            \arrow[<-, dashed, uul]
+            &
+            &
+            &
+            \\[0.4cm] % 4
+            &
+            (A (B  (C  D)))  E
+            \arrow[uur, swap, "(1_{A} \otimes \alpha_{B,C,D}) \otimes 1_{E}"]
+            \arrow[drr, swap, "\alpha_{A, B, C D} \otimes 1_{E}"]
+            &
+            &
+            &
+            &
+            (((A B)  C)  D)  E
+            &
+            \\[0.2cm] % 5
+            &
+            &
+            &
+            ((A B)  (C  D))  E
+            \arrow[urr, swap, "\alpha_{A B, C, D}\otimes 1_{E}"]
+            \arrow[<-, uu, dashed]
+            &
+            &
+            &
+        \end{tikzcd}
+    \end{center}
+    \item the story then goes on and on to $\infty$-associators
+\end{itemize}
+\begin{notat}
+    A synonym for $\E_1$-algebra is $A_\infty$-algebra. An $A_n$-algebra more generally is an object
+     internal to a category where it controls how associative is the algebra, meaning up to how many
+     $n$-associators. For instance, an $A_3$ algebra would be an algebra with 3-associators.
+\end{notat}
+\begin{ex}
+    Like a one object 1-category can be seen as a monoid, a one object $\infty$-category 
+     can be seen as a homotopy coherent monoid
+     $(\mathcal{A},\cdot, e)$, where 
+     \begin{itemize}
+\item $\operatorname{1-Mor}=\mathcal{A}$
+\item $\cdot =\circ$ where $\circ$ refers to composition of 1-morphisms
+\item $e=id_\ast$
+\item the higher homotopies making everything homotopy coherently associative and unital coincide
+     \end{itemize}
+\end{ex}
+As we sketched what is homotopy coherent associativity, one can tell a similar story for homotopy
+ coherent commutativity:
+\begin{enumerate}
+    \item An $\E_1$-algebra is just a homotopy coherent monoid object, it is not commutative in any sense
+    \item An $\E_2$-algebra is a homotopy coherent monoid with a 2-commutator $X\cdot Y\to Y\cdot X$
+    \item An $\E_3$-algebra is a homotopy coherent monoid with a 3-commmutator between the two
+     ways one can compose 2-commutators in order to get from $X\cdot Y\cdot Z$ to $Z\cdot X\cdot Y$
+     \item[$\infty$] An $\E_\infty$ algebra is a  homotopy coherent monoid object that is homotopy coherently
+      commutative all the way up to $\infty$
+\end{enumerate}
+
+
+We recall now what an isotopy is since this will be the information in the source category of disks that
+ we will
+stamp onto the category where the desired monoid object lives. 
+
+\begin{defn}[Isotopy]\label{Isotopy}
+    An isotopy is a stricter form of homotopy. Let $f,g:X\to Y$ be embeddings. Then $H:X\times [0,1]\to Y$ is an isotopy if 
+    \begin{itemize}
+        \item $H(0,-)=f$
+        \item $H(1,-)=g$
+    \end{itemize}
+    thereby making an isotopy a homotopy and
+    \begin{itemize}
+        \item $\forall t\in[0,1], H(t,-)\hookrightarrow Y$ is an embedding.
+    \end{itemize}
+    Moreover, if $f,g$ are \emph{smooth} embeddings and $\forall t\in[0,1], H(t,-)\hookrightarrow Y$ is also a smooth embedding, then $H$ is a \emph{smooth} isotopy.
+\end{defn}
+
+\begin{defn}[$\mathbb{E}_1$-Algebra]
+    Let $\Disk_{1,0}^{\fr}$ be the category of 1-disks (see \ref{CatOfDisks}). Then a $\mathbb{E}_1$-algebra is a symmetric monoidal functor $$\Disk_{1}^{\fr}\to \cat$$ such that if $j,i\in \Hom_{\Disk_{1}^{\fr}}(X,Y)$ are smoothly isotopic embeddings, then  $F(j)=F(i)$, i.e. they are sent to the same morphism in $\cat$. More generally.
+\end{defn}
+\begin{notat}
+    A synonym for $\mathbb{E}_1$-algebra is $A_\infty$-algebra.
+\end{notat}
+\begin{thm}
+    $\mathbb{E}_1$-algebras with $\Vect_k$ as a target category correspond to $k$-algebras. Look into \cite{Tanaka_2020} for a sketch of the proof.
+\end{thm}
+\begin{thm}
+    $\mathbb{E}_1$-algebras with $\Cat$ as a target category are monoidal categories.
+\end{thm}
+\begin{proof}
+    %TBD /Andre
+\end{proof}
+We summarize the correspondence with the following table
+\begin{center}
+    \begin{tabular}{|c||c|c|c|}
+        \hline
+        \phantom{h} & Set & $\Vect_k$ & Cat \\ [0.5ex]
+        \hline\hline
+        $\mathbb{E}_1$-algebra & monoid & $k$-algebra & monoidal category  \\
+        \hline
+    \end{tabular}
+\end{center}
+\begin{rem}
+    Remember that a monoid object in Cat is a \emph{strict} monoidal category. Via $\mathbb{E}_1$-algebras is instead the way to precisely pin down the correspondence we laid down at the start of the section between monoidal categories, $k$-algebras and monoids, without collapsing monoidal categories to \emph{strict} monoidal category, as we did with the monoid object.
+\end{rem}
+We now start to define the necessary tools we need to define monoid objects that are (more) commutative.
+\begin{defn}[Category of $n$-disks]
+    Let $\Disk_{n}^{\fr}$ be the $\infty$-category with finite disjoint
+    unions of framed $n$-dimensional disks as objects, i.e. $(\R^{n})^{\amalg_{i}}$ for $i\geq 0$, and spaces of
+    framed smooth embeddings (with the compact-open topology) as Hom-objects, e.g. $\Hom_{\Disk_{n}^{\fr}}(\R^n\amalg\R^n,\R^n)$.
+\end{defn}
+\begin{defn}[$\mathbb{E}_n$ algebra]
+    Fix a symmetric monoidal $\infty$-category $\cat$. For any
+    $n\geq 1$, an $\mathbb{E}_n$-algebra in $\cat$ is a symmetric monoidal
+    functor 
+    $$\Disk_{n}^{\fr}\xrightarrow{A} \cat$$
+    
+    This is actually an algebra because it induces a parametrized family of $i$-ary multiplications 
+    $$\Hom_{\Disk_{n}^{\fr}}((\R^{n})^{\amalg_{i}},\R^n)\xrightarrow{A}\Hom_{\cat}(A(\R^n)^{\otimes_{i}},A(\R^n))$$
+    Which do not compose strictly! But up to the higher isotopies of the mappig space in $\Disk_{n}^{\fr}$!
+\end{defn}
+
+In short, such $\mathbb{E}_n$-algebras allow us to define objects internal to categories up to coherent 
+homotopies. 
+
+$\mathbb{E}_n$-algebras in a symmetric monoidal $\infty$-category $\cat$ form an $\infty$-category 
+$$\Alg_{\mathbb{E}_n}:=\Fun^{\otimes} (\Disk_{n}^{\fr},\cat)$$
+Similarly to how monoid objects internal to a category $\cat$ form a category $\operatorname{Mon}(\cat)$, e.g. $\operatorname{Mon}(\Set)=\operatorname{Mon}$ (the usual category of monoids).
+
+\begin{center}
+    \begin{tabular}{|c||c|c|c|}
+        \hline
+        \phantom{h} & Set & $\Vect_k$ & Cat \\ [0.5ex]
+        \hline\hline
+        $\mathbb{E}_1$-algebra & monoid & $k$-algebra & monoidal category  \\
+        \hline
+        $\mathbb{E}_2$-algebra & commutative monoid &  commutative $k$-algebra & braided monoidal category \\
+        \hline 
+        $\mathbb{E}_3$-algebra & commutative monoid &  commutative $k$-algebra & symmetric monoidal category \\
+        \hline
+        $\mathbb{E}_4$-algebra & commutative monoid &  commutative $k$-algebra & symmetric monoidal category \\
+        \hline 
+        ... & ... & ... & ... \\
+        \hline 
+        $\mathbb{E}_\infty$-algebra & commutative monoid &  commutative $k$-algebra & symmetric monoidal category \\
+        \hline
+    \end{tabular}
+\end{center}
+Set and $\Vect_{k}$ cannot detect the difference between $\mathbb{E}_n$-algebras for $n\geq 2$ while 
+Cat can go one step further. This is because Cat is a 2-category, and so has the necessary homotopies 
+in order to express more fine grained notions of commutativity like braided and symmetric.
+
+However, some categories have more homotopical information and hence 
+are even more refined. This is one of the reasons they are the categories
+in which higher algebra takes place.
+\begin{center}
+    \begin{tabular}{|c||c|c|c|}
+        \hline
+        \phantom{h} & $\infty$-Grpd & $\infty$-Cat & Sp \\ [0.5ex]
+        \hline\hline
+        $\mathbb{E}_1$-algebra & $\mathbb{E}_1$-space &  monoidal $\infty$-category &  $\mathbb{E}_1$-ring spectrum  \\
+        \hline
+        $\mathbb{E}_\infty$-algebra & $\mathbb{E}_\infty$-space & symmetric monoidal $\infty$-category &  $\mathbb{E}_\infty$-ring spectrum \\
+        \hline
+    \end{tabular}
+\end{center}
+\begin{notat}
+    Sp denotes the category of spectra, see \ref{WhatSpectra} for a definition.
+\end{notat}
+\begin{notat}
+    Under the homotopy hypothesis $\infty$-Grpd corresponds to a nice category of spaces, hence it is 
+    sometimes denoted as $\mathscr{S}$ for $\mathscr{S}$paces.
+    Other synonyms nowadays are: 
+    \begin{itemize}
+        \item $\infty$-Set, because it is the category one enriches over to get $\infty$-categories,
+        similarly to ordinary sets and locally small categories, and it plays a parallel role in higher algebra to
+         set in 
+        ordinary algebra (see the table in \ref{WhatSpectra})
+        \item An, standing for anima, terminology coming from condensed mathematics
+    \end{itemize}
+\end{notat}
+\begin{notat}
+    Synonyms for $\mathbb{E}_1$-space are $A_\infty$-space and monoidal $\infty$-groupoid. A
+     synonym for $\mathbb{E}_\infty$-space is
+    symmetric monoidal $\infty$-groupoid. 
+\end{notat}
+\begin{rem}\label{SymmMoninftycat}
+A symmetric monoidal $\infty$-category is fortunately not only definable as an $\E_\infty$-algebra in
+ $\Cat_\infty$, else our definition of $\E_n$-algebras would have been circular!
+One can define them as cartesian opfibrations, see \cite[Section 4]{groth2015short}, or as 
+contravariant functors from Segal's gamma category (something similar to finite pointed sets),
+see \cite[II.15]{KtheoryHebestreitWagner}.
+\end{rem}
+\begin{ex}
+    $\Omega X$ is an $\mathbb{E}_1$-space: composition of loops induces an operation which is not
+    strictly unital or associative, but only via homotopies. See
+    \ref{WhatSpectra} for a definition of loop spaces.
+\end{ex}
+\begin{thm}[Dunn additivity theorem]\label{DunnAdds}
+    The Dunn additivity theorem is a higher categorical refinement of the Eckmann-Hilton argument.
+    The Eckmann-Hilton argument states that if there are two monoid multiplications on the same set, then
+    they coincide and the operation is commutative. However, in categories with morphisms higher than 1,
+    we do not just have commutativity or non-commutativity of monoid objects but
+     shades of
+    commutativity, and possibly infinitely many (in $\infty$-categories). This result roughly states that
+     when we have two monoidal structures on an object
+    internal to a symmetric monoidal category, they coincide and the outcome is more commutative then
+     the two alone. More
+     precisely, the Dunn additivity theorem states
+    that for $0< n,m\leq \infty$
+    $$\Alg_{\mathbb{E}_n}(\Alg_{\mathbb{E}_m}(\cat))\simeq \Alg_{\mathbb{E}_{m+n}}(\cat)$$
+\end{thm}
+See \cite[5.1.2.2]{Luriealgebra} for a proof.
+\begin{ex}
+    By the Dunn additivity argument, $n$-iterated loop spaces are $\Alg_{\mathbb{E}_n}(\sat)$.
+    In particular, loop spaces which are iterated infinitely many times are 
+    $\Alg_{\mathbb{E}_\infty}(\sat)$. Such $\infty$-iterated loop spaces are called infinite loop spaces, 
+    see \ref{InfiniteLoop} for a definition.
+    
+  Later we will state a result that shows that grouplike $\E_n$-spaces and $n$-iterated loop spaces
+   coincide:
+  not only every $n$-iterated loop space is an $\E_n$-space, but also viceversa,
+  every $\E_n$-space is an $n$-iterated loop space. See \ref{RecognitionNLOOPS}.
+\end{ex}
+As one can expect, there is a way to define homotopy coherent group objects in a cartesian monoidal
+$\infty$-category, as there is a way to define group objects in a cartesian monoidal 1-category.
+Nonetheless, we concentrate solely on such homotopy coherent group objects in the category of spaces because it is 
+what we will later need in \ref{Spectra Phases of Matter} to prove that invertible field theories are maps
+between certain spectra. See \cite[5.2.6.6]{Luriealgebra}\footnote{Note that there
+     is a typo, instead of 'Let \cat be an $\infty$-category which admits finite products.' there should be
+    'Let $\mathscr{X}$ be  an $\infty$-category which admits finite products.'.} for a definition of homotopy coherent group objects in full generality,
+    i.e. in any cartesian monoidal $\infty$-category.
+\begin{defn}[Grouplike $\mathbb{E}_n$-space]\label{grouplikeEspace}
+    An $\mathbb{E}_n$-algebra in the category of spaces $A\in\Alg_{\mathbb{E}_n}(\mathscr{S})$, i.e. an $\mathbb{E}_{n}$-space,
+    is grouplike, if it lands in the category of groups
+    $\operatorname{Grp}\subset\operatorname{Mon}$ when sent via the composition of
+    \begin{itemize}
+        \item the functor $\pi_0:\mathscr{C}\to\Set$, sending objects in groupoids
+        to their isomorphism classes\footnote{The notation is no coincidence: under the homotopy hypothesis
+            this functor in the category of spaces 
+            and the one sending points to their path-connected components are the same.}
+        \item and the one forgetting
+        all the commutative structure, but just remembering the homotopy-coherent
+        associativity\footnote{Similarly to a forgetful functor 
+            from the category of commutative monoids to the category of monoids.}
+    \end{itemize} 
+    such composition of morphisms can be visualized with the following diagram 
+    % https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXEFsZ197XFxtYXRoYmJ7RX1fbn0oXFxtYXRoc2Nye1N9KSJdLFsxLDEsIlxcQWxnX3tcXG1hdGhiYntFfV9ufShcXFNldCkiXSxbMiwwLCJcXG9wZXJhdG9ybmFtZXtHcnB9XFxzdWJzZXRcXEFsZ197XFxtYXRoYmJ7RX1fMX0oXFxTZXQpXFxzaW1lcVxcb3BlcmF0b3JuYW1le01vbn0iXSxbMCwxLCJcXEFsZ197XFxtYXRoYmJ7RX1fbn0oXFxwaV8wKSIsMl0sWzEsMiwiXFxvcGVyYXRvcm5hbWV7Zm9yZ2V0fSIsMl0sWzAsMl1d
+    \[\begin{tikzcd}[cramped]
+        {\Alg_{\mathbb{E}_n}(\mathscr{S})} && {\Alg_{\mathbb{E}_1}(\Set)\simeq\operatorname{Mon}} \\
+        & {\Alg_{\mathbb{E}_n}(\Set)}
+        \arrow["{\Alg_{\mathbb{E}_n}(\pi_0)}"', from=1-1, to=2-2]
+        \arrow["{\operatorname{forget}}"', from=2-2, to=1-3]
+        \arrow[from=1-1, to=1-3]
+    \end{tikzcd}\]
+    One may denote the subcategory of grouplike $\mathbb{E}_n$-spaces with
+    $\Alg^{\operatorname{gp}}_{\mathbb{E}_n}(\mathscr{S})\subset\Alg_{\mathbb{E}_n}(\mathscr{S})$
+\end{defn}
+\begin{ex}
+    $\Omega X$ is not just an $\mathbb{E}_1$-space, but also a grouplike $\mathbb{E}_1$-space since
+    the inversion of based loops is homotopy equivalent to the costant map on the point, or more
+    rigorously, recall that $\pi_0(\Omega X)=\pi_1(X)$ and that the fundamental group is indeed a group,
+     $\pi_i(X)\in\Grp$. Moreover, $n$-iterated loop spaces are grouplike $\mathbb{E}_{n}$-spaces and in
+      particular infinite loop spaces
+     are grouplike $\mathbb{E}_{\infty}$-spaces for the same reason that $\Omega X$ a grouplike
+      $\mathbb{E}_1$-space, since after applying $\pi_0$ we forget all the homotopy-coherent 
+      commutativity. Alternatively, this holds also
+    by the Dunn additivity theorem (\ref{DunnAdds}).
+\end{ex}
+
+
+\begin{rem}
+    Grouplike $\mathbb{E}_\infty$-spaces in the category of spaces are
+    Picard $\infty$-groupoids! The intuition is that the $\mathbb{E}_\infty$ provides
+    the symmetric monoidal structure and being grouplike provides the invertibility
+    objects. 
+    \begin{notat}
+        Sometimes grouplike $\mathbb{E}_\infty$-spaces are called abelian $\infty$-groups 
+        because:
+        \begin{itemize}
+            \item $\infty$-groupoids are also known as $\infty$-sets 
+            \item group objects in Set are
+            groups
+            \item group objects (in the morally right sense, i.e. grouplike $\mathbb{E}_1$-algebras) in $\infty-\Set$,
+            aka $\infty$-Grpd,
+            are monoidal groupoids with invertible objects, which are usually called $\infty$-groups
+            \item abelian groups are groups where the operation is commutative and grouplike
+            $\mathbb{E}_\infty$-spaces are $\infty$-groups where the operation is homotopy coherently  commutative
+        \end{itemize}
+    \end{notat}
+    
+    Such objects are interesting for us because invertible field theories are equivalently
+    maps of such grouplike $\mathbb{E}_\infty$-spaces! See \ref{Spectra Phases of Matter}.
+\end{rem}
+\subsubsection{Factorization homology \extra}
+This outlook is based mainly on \cite[10.5]{Mazel-Gee2024} and secondarly on
+ \cite{ayala2019factorization},\cite{Scheimbauer:2014zty} and
+ \cite{Tanaka_2020}.
+
+We now briefly sketch what is factorization homology because it is a
+central tool in the investigation of topological field theories.
+Factorization homology in general is a bridge\footnote{This metaphor is not original. We stole it from the
+     abstract of
+Hiro Lee Tanaka's talk \url{https://www.mpim-bonn.mpg.de/node/6147}.} between differential topology
+and higher algebra. It takes a geometric input, i.e. an $n$-manifold, and higher algebraic data from 
+a symmetric monoidal $\infty$-category
+, i.e. 
+an $\E_n$-algebra or a stack over $\E_n$-algebra\footnote{Or more general values, see
+     \cite{ayalacategories2020factorization}}.
+
+Roughly, it can be seen as 
+\begin{itemize}
+\item a homology theory for (framed) manifolds with coefficients in $\E_n$-algebras (see
+ \cite{Ayalatopological_2015})
+\item a way of integrating $\E_n$-algebras\footnote{Or $(\infty,n)$-categories, see
+ \cite{ayalacategories2020factorization}.} over a manifold in the same sense that ordinary
+ homology $H(M,A)$ is given by integrating an abelian group $A$ over a space $M$
+  (see \cite{Ayalatopological_2015})
+ \item an extended\footnote{If you do not know what an extended TFT is, it might be helpful
+ to check out \ref{RemarkExtendedTFTs}.} topological field theory (see \cite{Scheimbauer:2014zty},
+  \cite[4.1]{lurie2009classification} and
+  \cite{Ayalatopological_2015})
+\end{itemize}
+
+\begin{defn}[Factorization homology]\label{FactorHomology}
+    Given an $\E_n$-algebra $A\in\Alg_{\E_{n}}(\cat)$, its factorization homology is the left Kan
+     extension\footnote{We spell out the definition but see \cite[Section 3.6.1]{Tanaka_2020} for a better explanation of what is a left
+         Kan extension for $\infty$-categories.}
+    % https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXG9wZXJhdG9ybmFtZXtEaXNrfV57XFxmcn1fe259Il0sWzAsMSwiXFxvcGVyYXRvcm5hbWV7TWZsZH1ee1xcZnJ9X3tufSJdLFsxLDAsIlxcY2F0Il0sWzAsMSwiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMCwyLCJBIl0sWzEsMiwiXFxpbnRfeygtKX1BIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
+    \[\begin{tikzcd}[cramped]
+        {\operatorname{Disk}^{\fr}_{n}} & \cat \\
+        {\operatorname{Mfld}^{\fr}_{n}}
+        \arrow[hook, from=1-1, to=2-1]
+        \arrow["A", from=1-1, to=1-2]
+        \arrow["{\int_{(-)}A}"', dashed, from=2-1, to=1-2]
+    \end{tikzcd}\]
+    This means that the factorization homology of $A$ over a manifold
+     $M\in\operatorname{Mfld}_{n}^{\fr}$ is given by 
+     $$\int_M A:=\operatorname{colim}((\Disk_{n}^{\fr})_{/M}\xrightarrow{\operatorname{forget}}\Disk_{n}^{\fr}\xrightarrow{A}\cat)$$
+     Where $(\Disk_{n}^{\fr})_{/M}$ denotes the slice category over $M$, meaning where the objects are
+     morphisms from objects in $\Disk_{n}^{\fr}$ into $M$ and the morphisms are morphisms
+     between sources of morphisms into $M$ with reasonable commutativity conditions. More
+     precisely: given $X,Y\in\Disk_{n}^{\fr}$, $f:X\to M$ and $g:Y\to M$, then a morphism from
+     $f$ to $g$ is a morphism $h:X\to Y$ such that $f=h\circ g$. The forgetful functor forgets the slice 
+     structure.
+\end{defn}
+One way in which it is a homology theory for manifolds is that every homology theory $H$ for framed
+ $n$-manifolds is given by factorization homology with coefficients in the $\E_n$-algebra $H(\R^n)$,
+ see \cite{Ayalatopological_2015}.
+ \begin{ex}
+    Hochschild homology is a factorization homology over $S^1\in\operatorname{Mfld_{1}^{\fr}}$.
+ \end{ex}
+
+ \begin{defn}[Factorization algebra]\label{FactorAlgebra}
+ Recall that a partially ordered set can be seen as a category where the arrows are given by the
+  $\leq$ relation. The open subsets of a space generally and in particular of a manifold form a
+   poset with respect to the inclusion relation.
+   Given an $\E_n$-algebra $A\in\Alg_{\E_{n}}(\cat)$, a manifold $M$ and an open set
+    $U\in\operatorname{Opens(M)}$ we can define what 
+   a factorization algebra is, it is a functor
+   $$\operatorname{Opens(M)}\to \cat$$
+   $$U\mapsto\int_U A$$
+ \end{defn}
+ Such objects are also very important for the study of TFTs. For instance, they provide a bridge 
+ between topological field theories and a dual approach to the formalization of quantum field theories:
+ algebraic quantum field theories. See \ref{AQFT} for a sketch of what this approach is and 
+ \cite{costello2023factorization} for more on factorization algebras in other areas of
+ mathematics and physics and in particular as a connection between AQFTs and 
+ TFTs.
+ 
+  To see how it can define an extended TFT, note that $\Bord_n$ is just a special category of manifolds 
+ and that the factorization homology of an $\E_n$-algebra $A\in\Alg_{\E_{n}}(\cat)$ is a functor 
+ $$ \int_{(-)}A:\operatorname{Mfld}^{\fr}_{n}\to \operatorname{Fact}_n\subset \cat$$
+ where $\operatorname{Fact}_n$ denotes the subcategory of factorization algebras in $\cat$. 
+ Hence, one can intuit that there is a way to construct a factorization homology of an $\E_n$-algebra
+ as a symmetric monoidal functor 
+ $$ \int_{(-)}A:\operatorname{Bord}^{\fr}_{n}\to \operatorname{Fact}_n\subset \cat$$
+ where $\Bord_n$ is the extended category of bordisms (see \ref{RemarkExtendedTFTs}) and thus 
+ a TFT! 
+ 
+ Check out \cite{Scheimbauer:2014zty} for a detailed treatment.
+\subsection{Interlude on bicategories \extra} % (fold)
+\label{sub:outlook_interlude_on_bicategories}
+%I hope the order here is not confusing, in the sense that why not define before a bicategory and subsequently the delooping, however this sequence where one first pictures the delooping and then they picture a bicategory made sense in my mind. Feel free to change /Andrea
+%Also I hope it is not overkill, it all started because I wanted to define dual objects of a monoidal cat as adjunctions of 1-morphisms in the delooping, then realized that bicategory would be useful also for 2 reasons: 1-understanding better why Cat is strict and not weak, and in general picturing what weak n-categories are and 2-the extended 2-category of 2 dimensional bordisms is a bicategory. I'll ask the professor if it makes sense or it is just confusing
+\begin{defn}[Delooping of a Monoidal Category]\label{DeloopingMonCat}
+    Let $\cat$ be a monoidal category. The delooping category $\mathbf{B}\cat$ is a one object $2$-category with: \begin{itemize}
+        \item $\ob(\mathbf{B}\cat)=\ast$
+        \item $1\operatorname{-}mor(\mathbf{B}\cat)=\ob(\cat)$
+        \item $2\operatorname{-}mor(\mathbf{B}\cat)=mor(\cat)$
+    \end{itemize}
+    Composition of $2$-morphisms is given by the usual composition of morphisms between objects in $\cat$. The composition of $1$-morphisms is given by the tensor product. This makes sense since there is a monoidal unit $\mathbb{1}_\cat$ that works as the identity arrow for any object, since it is left and right unital for any object and the tensor product is associative. However, in monoidal categories associativity and unitality hold up to isomorphism and this is witnessed by the associator and left/right unitors!
+\end{defn}
+\begin{rem}
+    Notice that the delooping $\mathbf{B}\cat$ is generally not a $2$-category in the same sense that Cat and SymmMonCat are. $1$-morphisms compose strictly in $\Cat$, "on the nose", i.e. $F\circ(G\circ H)=(F\circ G)\circ H$ and $F\circ id_\cat =F=id_\dat\circ F$; whereas $1$-morphisms in $\mathbf{B}\cat$ compose up to natural isomorphism, more precisely up to the associator and left/right unitors.
+\end{rem}
+\begin{defn}[Bicategory]\label{Bicategory}
+    A bicategory $\bat$ consists of \begin{itemize}
+        \item A collection of objects $\ob(\bat)$, whose elements $X,Y,Z$ are also called 0-cells
+        \item For each objects $X,Y$, a 1-category $\Hom_\bat(X,Y)$, whose objects $f,g,\dots$ are called 1-cells or 1-morphisms and whose morphisms $\alpha,\beta,\dots$ are called 2-cells or 2-morphisms; composition of (2-)morphisms in this category is also called vertical composition
+        \item For any three objects $X,Y,Z$ there are composition functors, also called horizontal composition $$\circ_{X,Y,Z}:\Hom(Y,Z)\times \Hom(X,Y)\to \Hom(X,Z)$$
+        $$(f,g)\mapsto f\circ g$$
+        $$(\alpha,\beta)\mapsto \alpha\circ\beta$$ in the context of bicategories we denote composition of functors with $\bigcirc$ instead of the usual $\circ$ in order to not get confused between a composition functor and a composition \emph{of} functors
+        \item  For every object $X$ there is an identity functor from the one-object category\footnote{This is the terminal object of Cat and thereby monoidal unit of the cartesian monoidal category $(\Cat,\times,\unit_{\Cat})$ with the cartesian product as the tensor product. With $\ob(\unit_{\Cat})=\{\ast\}$ and $\Hom_{\Cat}(\ast,\ast)=id_{\ast}$.} $\unit_{\Cat}$
+        $$identity_X:\unit_{\text{Cat}}\to \Hom(X,X)$$ $$\ast\mapsto id_X$$ we name the image of the single object the identity 1-morphism, i.e. $identity_{X}(\ast)=id_X$
+        \item There are natural isomorphisms $a,r,l$ expressing associativity and unitality of the composition functor: \begin{itemize}
+            \item associativity, as a natural isomorphism in Cat $$a:\circ_{W,X,Y}\bigcirc(\circ_{X,Y,Z}\times id_{\Hom(W,X)})\xRightarrow{\cong}(id_{\Hom(Y,Z)}\times id_{W,X,Y})\bigcirc \circ_{W,Y,Z}$$
+            given $h:W\to X$, $f:X\to Y$ and $g:Y\to Z$, $a$ is a 2-isomorphism in $\bat$
+            $$a_{g,f,h}:g\circ(f\circ h)\xRightarrow{\cong} (g\circ f)\circ h$$
+            \item right unitality, as a natural isomorphism in Cat\footnote{Note that $\rho^{\Cat}_{\Hom(X,Y)}$ is the component of the right unitor of the monoidal category $(\Cat,\times,\unit_{\Cat})$ at $\Hom(X,Y)$.} $$r:\circ_{X,Y,Y}\bigcirc(id_{\Hom(X,Y)}\times identity_Y)\xRightarrow{\cong}\rho^{\Cat}_{\Hom(X,Y)}$$
+            and as a 2-isomorphism in $\bat$
+            $$r_f:f\circ id_Y\xRightarrow{\cong} f$$
+            \item left unitality, as a natural isomorphism in Cat\footnote{Note that $\lambda^{\Cat}_{\Hom(X,Y)}$ is the component of the left unitor of the monoidal category $(\Cat,\times,\unit_{\Cat})$ at $\Hom(X,Y)$.}  $$l:\circ_{X,X,Y}\bigcirc(identity_X\times id_{\Hom(X,Y)})\xRightarrow{\cong}\lambda^{\Cat}_{\Hom(X,Y)}$$
+            and as a 2-isomorphism in $\bat$
+            $$l_f:id_X\circ f\xRightarrow{\cong} f$$
+        \end{itemize}
+        
+        Such natural isomorphisms can be more clearly visualized with the following diagrams\footnote{Note that these are homotopy coherent diagrams, meaning that they \textbf{do not} commute strictly necessarily, but only up to the indicated 2-morphisms!}
+        % https://q.uiver.app/#q=WzAsNCxbMCwwLCJIb20oWSxaKVxcdGltZXMgSG9tKFgsWSlcXHRpbWVzIEhvbShXLFgpIl0sWzAsMSwiSG9tKFgsWilcXHRpbWVzIEhvbShXLFgpIl0sWzIsMSwiSG9tKFcsWikiXSxbMiwwLCJIb20oWSxaKVxcdGltZXMgSG9tKFcsWSkiXSxbMCwxLCJcXGNpcmNfe1gsWSxafVxcdGltZXMgaWRfe0hvbSgsWCl9IiwxXSxbMSwyLCJcXGNpcmNfe1csWCxafSIsMl0sWzAsMywiaWRfe0hvbShZLFopfVxcdGltZXMgaWRfe1csWCxZfSJdLFszLDIsIlxcY2lyY197VyxZLFp9Il0sWzEsMywiYV97VyxYLFksWn0iLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MTAsInRhcmdldCI6MTB9LCJsZXZlbCI6Mn1dXQ==
+\[\begin{tikzcd}
+    {\Hom(Y,Z)\times \Hom(X,Y)\times \Hom(W,X)} && {\Hom(Y,Z)\times \Hom(W,Y)} \\
+    {\Hom(X,Z)\times \Hom(W,X)} && {\Hom(W,Z)}
+    \arrow["{\circ_{X,Y,Z}\times id_{\Hom(W,X)}}"{description}, from=1-1, to=2-1]
+    \arrow["{\circ_{W,X,Z}}"', from=2-1, to=2-3]
+    \arrow["{id_{\Hom(Y,Z)}\times id_{W,X,Y}}", from=1-1, to=1-3]
+    \arrow["{\circ_{W,Y,Z}}", from=1-3, to=2-3]
+    \arrow["{a_{W,X,Y,Z}}"{description}, shorten <=8pt, shorten >=8pt, Rightarrow, from=2-1, to=1-3]
+\end{tikzcd}\]
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJIb20oWCxZKVxcdGltZXMgXFx1bml0X1xcQ2F0Il0sWzAsMiwiSG9tKFgsWSlcXHRpbWVzIEhvbShZLFkpIl0sWzIsMiwiSG9tKFgsWSkiXSxbMCwxLCJpZF97SG9tKFgsWSl9XFx0aW1lcyBpZGVudGl0eV9ZIiwyXSxbMSwyLCJcXGNpcmNfe1gsWSxZfSIsMl0sWzAsMiwiXFxjb25nIl0sWzEsNSwicl97WCxZfSIsMSx7InNob3J0ZW4iOnsic291cmNlIjoxMCwidGFyZ2V0IjoyMH19XV0=
+\[\begin{tikzcd}
+    {\Hom(X,Y)\times \unit_{\Cat}} \\
+    \\
+    {\Hom(X,Y)\times \Hom(Y,Y)} && {\Hom(X,Y)}
+    \arrow["{id_{\Hom(X,Y)}\times identity_Y}"', from=1-1, to=3-1]
+    \arrow["{\circ_{X,Y,Y}}"', from=3-1, to=3-3]
+    \arrow[""{name=0, anchor=center, inner sep=0}, "\cong", from=1-1, to=3-3]
+    \arrow["{r_{X,Y}}"{description}, shorten <=4pt, shorten >=8pt, Rightarrow, from=3-1, to=0]
+wh\end{tikzcd}\]
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXHVuaXRfXFxDYXRcXHRpbWVzIEhvbShYLFkpIl0sWzAsMiwiSG9tKFgsWClcXHRpbWVzIEhvbShYLFkpIl0sWzIsMiwiSG9tKFgsWSkiXSxbMCwxLCJpZGVudGl0eV9YXFx0aW1lcyBpZF97SG9tKFgsWSl9IiwyXSxbMSwyLCJcXGNpcmNfe1gsWCxZfSIsMl0sWzAsMiwiXFxjb25nIl0sWzEsNSwibF97WCxZfSIsMSx7InNob3J0ZW4iOnsic291cmNlIjoxMCwidGFyZ2V0IjoyMH19XV0=
+\[\begin{tikzcd}
+    {\unit_{\Cat}\times \Hom(X,Y)} \\
+    \\
+    {\Hom(X,X)\times \Hom(X,Y)} && {\Hom(X,Y)}
+    \arrow["{identity_X\times id_{\Hom(X,Y)}}"', from=1-1, to=3-1]
+    \arrow["{\circ_{X,X,Y}}"', from=3-1, to=3-3]
+    \arrow[""{name=0, anchor=center, inner sep=0}, "\cong", from=1-1, to=3-3]
+    \arrow["{l_{X,Y}}"{description}, shorten <=4pt, shorten >=9pt, Rightarrow, from=3-1, to=0]
+\end{tikzcd}\]
+     \end{itemize}
+     These data must satisfy the following axioms: an apt version of the Mac Lane's pentagon for the associator and the triangle identity for the unitors must commute so that the associator and left/right unitors behave reasonably (see \ref{MonCat} for such diagrams for monoidal categories and see \cite{SchwHopfQuantumTFT} for the spelled out diagrams for bicategories). %could also draw the diagrams for completeness TBD /ANdrea
+\end{defn}
+Note that in $\unit_{\Cat}$ there is also an identity morphism of $\ast$, $id_\ast$, that gets mapped to a 2-morphism $id_{id_{X}}$ $$identity_X(id_\ast)=id_{id_{X}}:id_X\to id_X$$ The fact that $id_\ast$ is unital in $\ast$ ensures that $d_{id_{X}}$ is unital with respect to vertical composition thanks to the functoriality of $identity_X$. 
+
+Bicategories are also known as weak 2-categories. Note that every strict 2-category is a bicategory where 1-morphisms compose strictly instead of up to associatiors and unitors; similarly to monoidal categories and strict monoidal categories
+\begin{ex}
+    A monoidal category $\cat$ is a one-object bicategory $\mathbf{B}\cat$ where $\cat=\Hom(\mathbf{B}\cat)$. A strict monoidal category is a one-object strict 2-category.
+\end{ex}
+We now list some examples of 2-categories, to convey a more concrete intuition of the difference between bicategories and strict 2-categories. More generally, try to think how this difference between weak and strict categories carries on in higher dimensions.
+\begin{ex}
+\hfill
+    \begin{enumerate}
+    \item Any strict 2-category is a bicategory but not viceversa.
+        \item Cat and SymmMonCat are both \emph{strict} since functors compose strictly
+        \item The fundamental 2-groupoid of a topological space $X$ is a \emph{strict} 2-category where objects are the points in $X$, 1-morphisms are paths and homotopy classes of homotopies between paths are 2-morphisms.
+        \item Every 1-category is a strict 2-category where the only 2-morphisms are identities on 1-morphisms
+        \item There is a bicategory Alg$_k^2$ where objects are algebras over a vector space, 1-morphisms are bimodules (see \ref{CatOfBimodules}) and 2-morphisms are maps between bimodules, also known as intertwiners 
+    \end{enumerate}
+\end{ex}
+\subsubsection{Symmetric monoidal bicategories \extra}
+Now we sketch how one could define monoidal bicategories and in particular symmetric monoidal ones.
+ The latter are important in the study
+of TFTs because a once-extended TFT (see \ref{RemarkExtendedTFTs}) is a symmetric monoidal
+ weak 2-functor from a category of bordisms $\Bord_{n,n-1,n-2}$.
+ Generally, symmetric monoidal bicategories are a pain to define because a bicategory already needs
+ to satisfy many coherence diagrams and a symmetric monoidal structure on it even more! Take a look
+ at \cite[Definition 2.3]{schommerpries2014classification} and skim through
+  \cite[Section 2.3]{schommerpries2014classification}. For this reason, some try to provide other smart 
+  ways to define what is a symmetric monoidal bicategory. For instance, Mike Shulman defined them 
+  in terms of symmetric monoidal double categories \cite{shulman2010constructing} or one could try to
+   define them 
+  in terms of particular functors $\Gamma^{\operatorname{op}}\to \operatorname{Bicat}$ as one
+  does with symmetric monoidal $\infty$-categories\footnote{A master student of Prof. Scheimbauer is
+     working on this.} (see \ref{SymmMoninftycat}).% what is the name of the master student? I want to give credit!!! /Andrea
+     In this chapter we provide definitions for monoidal bicategories and symmetric
+     monoidal ones that rely on the $\E_n$-algebras we previously talked about, see \ref{EAlg}.
+     
+     In order to achieve this we first need to talk about the tricategory of bicategories Bicat. 
+     To talk about Bicat, we first need to talk about its 1-, 2- and 3-morphisms, so we start
+     with that.
+     
+\begin{defn}[Weak 2-functor]\label{Weak2Fun}
+A weak 2-functor, aka pseudofunctor, is the right notion of functor between bicategories.
+
+Given two bicategories $\bat$ and $\cat$. A weak 2-functor $P:\bat \to\cat$ consists of 
+\begin{itemize}
+    \item an assignment, a function, $\operatorname{Ob}(\bat)\to\operatorname{Ob}(\cat)$
+    \item for each hom-category $\Hom_\bat(X,Y)$, a functor $P_{x,y}\Hom_\bat(X,Y)\to \Hom_\cat(P(X),P(Y))$
+    \item two invertible 2-morphisms pinning down the compositionality and unitality of the weak 
+    2-functor
+    \item and three commutative diagrams that make the interaction between the composition of
+     bifunctors and the objects and morphisms in the bicategory reasonable
+\end{itemize}
+See \url{https://ncatlab.org/nlab/show/pseudofunctor} for a complete definition expliciting the last two
+points.
+\end{defn}
+\begin{defn}[Psuedonatural transformation]
+A pseudonatural transformation is a natural transformation but where the naturality is given by a diagram
+that commutes via a homotopy and not strictly.
+
+Given bicategories $\bat$ and $\cat$ and weak 2-functor
+ $F,G:\bat\to\cat$ a pseudonatural transformation
+$\alpha:F\Rightarrow G$ is consists of:
+\begin{itemize}
+    \item for each $X\in\bat$ a 1-morphism in $\cat$ $\alpha_X:F(X)\to G(X)$
+    \item for each $f:X\to Y$ in $\bat$ an invertible 2-morphism in $\cat$,
+     $\alpha_f:G(f)\circ\alpha_X\simeq \alpha_Y\circ F(f)$ making the following diagram commute
+     % https://q.uiver.app/#q=WzAsNCxbMCwwLCJGKFgpIl0sWzEsMCwiRihZKSJdLFswLDEsIkcoWCkiXSxbMSwxLCJHKFkpIl0sWzAsMSwiRihmKSJdLFswLDIsIlxcYWxwaGFfWCIsMl0sWzIsMywiRyhmKSIsMl0sWzEsMywiXFxhbHBoYV9ZIl0sWzIsMSwiXFxhbHBoYV9mIiwwLHsibGV2ZWwiOjIsInN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9fX1dXQ==
+     \[\begin{tikzcd}[cramped]
+        {F(X)} & {F(Y)} \\
+        {G(X)} & {G(Y)}
+        \arrow["{F(f)}", from=1-1, to=1-2]
+        \arrow["{\alpha_X}"', from=1-1, to=2-1]
+        \arrow["{G(f)}"', from=2-1, to=2-2]
+        \arrow["{\alpha_Y}", from=1-2, to=2-2]
+        \arrow["{\alpha_f}", Rightarrow, 2tail reversed, from=2-1, to=1-2]
+     \end{tikzcd}\]
+     \item such that coherence conditions for the associators and unitors in $\cat$ are satisfied,
+     see \url{https://ncatlab.org/nlab/show/pseudonatural+transformation} 
+\end{itemize}
+\end{defn}
+\begin{defn}[Modification]
+A modification is a sort of natural transformation between pseudonatural transformations.
+You can picture a modification $\Xi$ with the following diagram: 
+% https://q.uiver.app/#q=WzAsMixbMCwwLCJcXGJhdCJdLFs0LDAsIlxcY2F0Il0sWzAsMSwiRiIsMCx7ImN1cnZlIjotNX1dLFswLDEsIkciLDIseyJjdXJ2ZSI6NX1dLFsyLDMsIlxcYmV0YSIsMCx7ImN1cnZlIjotNCwic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfX1dLFsyLDMsIlxcYWxwaGEiLDIseyJjdXJ2ZSI6Mywic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfX1dLFs1LDQsIlxcWGkiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJsZXZlbCI6Mn1dXQ==
+\[\begin{tikzcd}[cramped]
+    \bat &&&& \cat
+    \arrow[""{name=0, anchor=center, inner sep=0}, "F", curve={height=-30pt}, from=1-1, to=1-5]
+    \arrow[""{name=1, anchor=center, inner sep=0}, "G"', curve={height=30pt}, from=1-1, to=1-5]
+    \arrow[""{name=2, anchor=center, inner sep=0}, "\beta", curve={height=-24pt}, shorten <=12pt, shorten >=12pt, Rightarrow, from=0, to=1]
+    \arrow[""{name=3, anchor=center, inner sep=0}, "\alpha"', curve={height=18pt}, shorten <=11pt, shorten >=11pt, Rightarrow, from=0, to=1]
+    \arrow["\Xi", shorten <=8pt, shorten >=8pt, Rightarrow, from=3, to=2]
+\end{tikzcd}\]
+Given weak 2-functors $F,G:\bat\to\cat$, pseudonaturaltransformations
+ $\alpha,\beta:F\Rightarrow G$,
+a modification $\Xi:\alpha\Rightarrow\beta$ consists of components for any object $X\in\bat$ that are
+ 2-morphisms working as follows
+\begin{itemize}
+    \item for any components of $\alpha$ $\beta$, i.e. 1-morphisms in
+     $\cat$ $\alpha_X,\beta_X:F(X)\to G(X)$, there is a component of $\Xi$, a 2-morphism in $\cat$,
+      $\Xi_X:\alpha_X\Rightarrow \beta_X$. You can picture it like this: 
+     % https://q.uiver.app/#q=WzAsMixbMCwwLCJGKFgpIl0sWzIsMCwiRyhYKSJdLFswLDEsIlxcYWxwaGFfWCIsMCx7ImN1cnZlIjotM31dLFswLDEsIlxcYmV0YV9YIiwyLHsiY3VydmUiOjN9XSxbMiwzLCJcXFhpX1giLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV1d
+     \[\begin{tikzcd}[cramped]
+        {F(X)} && {G(X)}
+        \arrow[""{name=0, anchor=center, inner sep=0}, "{\alpha_X}", curve={height=-18pt}, from=1-1, to=1-3]
+        \arrow[""{name=1, anchor=center, inner sep=0}, "{\beta_X}"', curve={height=18pt}, from=1-1, to=1-3]
+        \arrow["{\Xi_X}", shorten <=5pt, shorten >=5pt, Rightarrow, from=0, to=1]
+     \end{tikzcd}\]
+\end{itemize}
+Such components must satisfy a naturality condition. The following diagram commutes strictly\footnote{
+In some contexts, e.g. in fully extended TFTs (meaning downwards to the point and upward to 
+infinitely many invertible morphisms), this strictness is undesirable. This is why 
+it can be argued that $(\infty,n)$-categories are the \textbf{right} context to do higherer(/higher higher)
+ category theory, meaning studying or working with $n$-categories.}
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJHKGYpXFxjaXJjXFxhbHBoYV9YIl0sWzAsMSwiXFxhbHBoYV9ZXFxjaXJjIEYoZikiXSxbMywxLCJcXGJldGFfWVxcY2lyYyBHKGYpIl0sWzMsMCwiRyhmKVxcY2lyYyBcXGJldGFfeCJdLFswLDEsIlxcYWxwaGFfZiIsMix7ImxldmVsIjoyfV0sWzEsMiwiXFxYaV9ZXFxiaWdjaXJjIGlkZW50aXR5X3tGKGYpfSIsMix7ImxldmVsIjoyfV0sWzAsMywiIGlkZW50aXR5X3tHKGYpfVxcYmlnY2lyY1xcWGlfWCIsMCx7ImxldmVsIjoyfV0sWzMsMiwiXFxiZXRhX2YiLDAseyJsZXZlbCI6Mn1dXQ==
+\[\begin{tikzcd}[cramped]
+    {G(f)\circ\alpha_X} &&& {G(f)\circ \beta_x} \\
+    {\alpha_Y\circ F(f)} &&& {\beta_Y\circ G(f)}
+    \arrow["{\alpha_f}"', Rightarrow, from=1-1, to=2-1]
+    \arrow["{\Xi_Y\bigcirc id_{F(f)}}"', Rightarrow, from=2-1, to=2-4]
+    \arrow["{ id_{G(f)}\bigcirc\Xi_X}", Rightarrow, from=1-1, to=1-4]
+    \arrow["{\beta_f}", Rightarrow, from=1-4, to=2-4]
+\end{tikzcd}\]
+\end{defn}
+     \begin{defn}[The tricategory of bicategories]
+The tricategory of bicategories consists of
+\begin{itemize}
+    \item bicategories as objects
+    \item weak 2-functors as 1-morphisms
+    \item pseudonatural transformations as 2-morphisms
+    \item modifications as 3-morphisms
+\end{itemize}
+As any category of categories, it is cartesian monoidal via the product of bicategories and hence
+ symmetric monoidal\footnote{Recall that any cartesian product is commutative \ref{CartProd}.}
+
+We denote it with Bicat.
+     \end{defn}
+     Having defined the tricategory of bicategories we can now provide the definitions for 
+     monoidal bicategories and symmetric monoidal ones.
+     \begin{defn}[Monoidal bicategory]
+        A monoidal bicategory is an $\E_1$-algebra in Bicat, i.e. a symmetric monoidal functor
+        $$\Disk_{1}^{\fr}\to\operatorname{Bicat}$$
+     \end{defn}
+\begin{defn}[Symmetric monoidal bicategory]\label{SymmMonBicategory}
+A symmetric monoidal bicategory is an $\E_{\infty\geq n\geq 4}$-algebra in Bicat, i.e. a symmetric monoidal
+functor
+$$\Disk_{\infty\geq n\geq 4}^{\fr}\to\operatorname{Bicat}$$
+This is equivalent to \cite[Theorem 2.8]{Gurski_2013}.
+\end{defn}
+Since Bicat is a \textbf{tri}category and has one higher level of morphisms than Cat, we do not just have
+braided and symmetric
+ monoidality, but a new shade of commutativity, called sylleptic.
+ 
+As we did for Cat in \ref{EAlg} we can summarize the situation with the following table
+\begin{center}
+    \begin{tabular}{|c||c|}
+        \hline
+        \phantom{h} & Bicat \\ [0.5ex]
+        \hline\hline
+        $\mathbb{E}_1$-algebra & monoidal bicategory \\
+        \hline
+        $\E_2$-algebra & braided monoidal bicategory \\
+        \hline
+        $\E_3$-algebra & sylleptic monoidal bicategory \\
+        \hline
+        $\E_4$-algebra & symmetric monoidal bicategory \\
+        \hline 
+        $\E_\infty$-algebra & symmetric monoidal bicategory \\
+        \hline
+    \end{tabular}
+\end{center}
