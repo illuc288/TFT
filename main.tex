@@ -7,7 +7,6 @@
 \usetikzlibrary{math}           % for some stuff with tikz drawings
 %\usepackage{newpxtext,newpxmath}   % font, but it causes a problem with \bigcup and all big operators
 \usepackage{mathpazo}           % math font
-
 \usepackage[hidelinks]{hyperref}% for hyperlinks
 \usepackage{float}              % for the H position modifier for figures
 \usepackage{threeparttable}     % for measuredfigure but I don't know why it's used
@@ -18,11 +17,12 @@
 \usepackage{epigraph}           % for epigraphs, the quotes at the beginning of sections
 \usepackage{microtype}          % reduces the number of overfull/underfull boxes
 \usepackage{pdfpages}           % to include other pdfs (for titlepage)
-\usepackage{dsfont}				% special S for sphere spectrum
-\usepackage{ stmaryrd }			% to use \mapsfrom
-\usepackage{bbding}			    % For the plane symbol
-\usepackage{fourier}		    % for the warning symbol
+\usepackage{dsfont}				      % special S for sphere spectrum
+\usepackage{ stmaryrd }			    % to use \mapsfrom
+\usepackage{bbding}			        % For the plane symbol
+\usepackage{fourier}		        % for the warning symbol
 \usepackage[mathscr]{euscript}	% for cooler curly letters for cats, especially 'S'
+\usepackage{enumitem}           % was for something for the exercises
 %\usepackage[all,cmtip]{xy}     % don't know what it's for
 %\usepackage{upgreek}           % don't know what it's for
 %\usepackage[normalem]{ulem}    % don't know what it's for
@@ -39,7 +39,6 @@
 %\usepackage{color}             % don't know what it's for
 %\usepackage{xcolor}            % don't know what it's for
 
-%I don't think having the "back to" sections /William
 %TODO decide how to indicate interior, in some points there's the dot and in other int /William
 %I think we never comment on bordism or CObordism, maybe add a comment somewhere /William
 
@@ -159,63 +158,60 @@
 \newtheorem{cor}[thm]{Corollary}
 \newtheorem*{clm}{Claim}
 \newtheorem*{fct}{Fact}
+
 \theoremstyle{remark}
 \newtheorem*{rem}{Remark}
+
 \theoremstyle{definition}
 \newtheorem{defn}[thm]{Definition}
 \newtheorem*{conv}{Convention}
 \newtheorem*{rmnd}{Reminder}
 \newtheorem*{notat}{Notation}
 \newtheorem{ex}[thm]{Example}
-
-%-----> packages for integrating the exercsises 
-\usepackage{enumitem}
-\theoremstyle{definition}
 \newtheorem{exercise}[thm]{Exercise}
-
 
 \title{\textcolor{black}{Bordism \& Topological Field Theory}}
 \author{\Large{\textit{\textcolor{black}{Claudia Scheimbauer}}}}
 \date{\textcolor{black}{Wintersemester 2023}}
 
-
+% COMMENT OUT OUTLOOKS (and "extra") FOR JUST COURSE CONTENTS
 \begin{document}
 
-\include{source/setup}
-\include{source/introduction}
+\include{source/0_setup}
+\include{source/1_introduction}
 
 \part{Classical cobordism theory}
-\include{source/manifolds_bordisms}
-\include{source/cobordism_groups}
+\include{source/2_manifolds_bordisms}
+\include{source/3_cobordism_groups}
 
 \part{Topological field theories}
-\include{source/preamble_tft}
+\include{source/3_preamble_tft}
 
 %category theory chapter
-\include{source/category_theory}
-\include{source/category_theory_extra}
-\include{source/monoidal_category}
-\include{source/monoidal_category_outlook}
-\include{source/more_category}
-\include{source/more_category_outlook}
+\include{source/4_category_theory}
+\include{source/4_category_theory_extra}
+\include{source/4_monoidal_category}
+\include{source/4_monoidal_category_outlook}
+\include{source/4_more_category}
+\include{source/4_more_category_outlook}
 
 %cobordism category chapter
-\include{source/cobordism_category}
-\include{source/cobordism_category_outlook}
-\include{source/dualisability}
-\include{source/dualisability_outlook}
+\include{source/5_cobordism_category}
+\include{source/5_cobordism_category_outlook}
+\include{source/5_dualisability}
+\include{source/5_dualisability_outlook}
 
 % classification of tfts chapter
-\include{source/tft_classification}
-\include{source/tft_classification_outlook}
+\include{source/6_tft_classification}
+\include{source/6_tft_classification_outlook}
 
 \newpage
 \appendix
-\include{source/appendix}
+\include{source/7_appendix}
 
 
 \newpage
-\input{source/exercises} % note - this is just a working interjection of the first sheet in these lecture notes (later on it might be nice to redistribute them to appear right after the concepts you need to solve them have been introduced) /Jacob
+\input{source/8_exercises} % note - this is just a working interjection of the first sheet in these lecture notes (later on it might be nice to redistribute them to appear right after the concepts you need to solve them have been introduced) /Jacob
 
 \newpage
 \bibliographystyle{alpha}
