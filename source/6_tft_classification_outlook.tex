@@ -99,7 +99,11 @@ $\Bord_{n}^{\fr}$ is equivalent to the free symmetric monoidal $(\infty,n)$-cate
   The cobordism hypothesis
   can be formulated in dimension 1 as follows 
   \begin{thm}[Cobordism hypothesis for $n=1$]
-$\Bord_{1,0}^{\fr}$ is equivalent to the free symmetric monoidal category with duals on one object.
+$\Bord_{1,0}^{\fr}$ is equivalent to the free symmetric monoidal category with duals on one object. More precisely,
+$\Bord_{1,0}^{\fr}$ is equivalent to the image of the free functor $DFree:\Cat\to\operatorname{SymmMonwDuals}$
+on the trivial category $\unit_{\Cat}$, where SymmMonwDuals denotes the category of symmetric monoidal categories
+with duals. 
+$$\Bord_{1,0}^{\fr}\simeq DFree(\unit_{\Cat})$$
   \end{thm}
 This is equivalent to the classification of 1TFTs, the theorem we proved stating that 
 \begin{thm}[Classification of 1TFTs]
@@ -117,14 +121,15 @@ We denote as SymmMonwDuals the category of symmetric monoidal categories with du
 Now we prove the following theorem in three steps
 \begin{thm}
 	For a symmetric monoidal category with duals $\cat$ it holds that
-	$$\Fun^{\otimes}(\Bord_{1,0}^{\operatorname{or}},\cat)\overset{1}{\simeq}\Fun^{\otimes}(DFree(\unit_{\Cat}),\cat)\overset{2}{\simeq}\Fun(\unit_\cat,\cat)\overset{3}{\simeq} \cat$$
+	$$\Fun^{\otimes}(\Bord_{1,0}^{\operatorname{or}},\cat)\overset{1}{\simeq}\Fun^{\otimes}(DFree(\unit_{\Cat}),\cat^{\cong})\overset{2}{\simeq}\Fun(\unit_{\Cat},DForget(\cat^{\cong}))\overset{3}{\simeq} \cat^{\cong}$$
 \end{thm}
 \begin{proof}
-	Note first that for any three symmetric monoidal categories $\sat$, $\dat$ and $\eat$ it holds that if $\dat\simeq\eat$, then
-	$\Fun^{\otimes}(\dat,\sat)\simeq\Fun^{\otimes}(\eat,\sat)$.
+	%Note first that for any three symmetric monoidal categories $\sat$, $\dat$ and $\eat$ it holds that if $\dat\simeq\eat$, then
+%	$\Fun^{\otimes}(\dat,\sat)\simeq\Fun^{\otimes}(\eat,\sat)$. MIght be false
 \begin{enumerate}
-\item Consider the forgetful functor $\operatorname{SymmMonwDuals}\to\Cat$. Like all forgetful functors it has 
-a left adjoint $\Cat\to\operatorname{SymmMonwDuals}$, we denote it with $DFree$.
+\item Consider the forgetful functor $DForget:\operatorname{SymmMonwDuals}\to\Cat$. 
+ Like all forgetful functors it has 
+a left adjoint $DFree:\Cat\to\operatorname{SymmMonwDuals}$.
 The application of this functor to the trivial category\footnote{i.e. the category just with one-object and its
 	identity morphism.} $\unit_{\Cat}$ is the free symmetric monoidal category on one object.
 
@@ -133,22 +138,26 @@ one can easily infer that $\Bord_{1}^{\fr}$ is equivalent to the free symmetric 
 on one object,
 $\Bord_{1}^{\fr}\simeq DFree(\unit_{\Cat})$
 and thereby proving the alternative formulation of the cobordism hypothesis in dimension 1 we just provided. Moreover,
-it follows that $\Fun^{\otimes}(\Bord_{1,0}^{\operatorname{or}},\cat)\overset{1}{\simeq}\Fun^{\otimes}(DFree(\unit_{\Cat}),\cat)$
+reacall that $\Fun^{\otimes}(\Bord_{1,0}^{\operatorname{or}},\cat)$ is a groupoid and hence
+the functor
+$$\Fun^{\otimes}(\Bord_{1,0}^{\operatorname{or}},\cat)\to\Fun^{\otimes}(DFree(\unit_{\Cat}),\cat)$$
+can be restricted to the equivalence
+ $$\Fun^{\otimes}(\Bord_{1,0}^{\operatorname{or}},\cat)\overset{1}{\simeq}\Fun^{\otimes}(DFree(\unit_{\Cat}),\cat^{\cong})$$
 
 \item Note that there is another way to phrase adjunctions, which we formulated in the appendix, \ref{HigherAdjFun}, and
 also that the functor in SymmMonwDuals are just symmetric monoidal functors, since functors preserve dual
 objects, as we proved in \ref{ClassificationOf1dTFTs}.
 From the free-forgetful adjunction, one can infer that for an arbitrary symmetric monoidal category with duals $\cat$
-$$\Fun^\otimes (DFree(\unit_{\Cat}),\cat)\overset{2}{\simeq}\Fun(\unit_{\Cat},\cat)$$
+$$\Fun^\otimes (DFree(\unit_{\Cat}),\cat^{\cong})\overset{2}{\simeq}\Fun(\unit_{\Cat},\cat^{\cong})$$
 where on the right hand side $\cat$ has forgotten about its duals and its monoidal structure generally. 
 
 
-\item Now we prove that $\Fun(\unit_{\Cat},\cat)\overset{3}{\simeq} \cat$.
+\item Now we prove that $\Fun(\unit_{\Cat},DForget(\cat^{\cong}))\overset{3}{\simeq} \cat^{\cong}$.
 $\Fun(\unit_{\Cat},\cat)$ consists of functors $$F(\ast)=X$$ $$F(id_\ast)=id_X$$ for all $X\in\cat$
 The morphisms of $\Fun(\unit_{\Cat},\cat)$ are exactly given by the morphisms in $\cat$:  given two functors
  $F,G\in\Fun(\unit_{\Cat},\cat)$ such that $F(\ast)=X$ and $G(\ast)=Y$,
  there is a natural transformation $F\Rightarrow G$, if and only if
-there is a morphism $f:X\to Y$ in $\cat$ because so the square 
+there is a morphism $f:X\to Y$ in $\cat^{\cong}$ because so the square 
 % https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXGFzdCJdLFswLDEsIlxcYXN0Il0sWzEsMCwiWCJdLFsxLDEsIlkiXSxbMCwxLCJpZF9cXGFzdCIsMl0sWzAsMiwiRiJdLFsxLDMsIkciLDJdLFsyLDMsImYiXV0=
 \[\begin{tikzcd}[cramped]
 	\ast & X \\
@@ -158,13 +167,25 @@ there is a morphism $f:X\to Y$ in $\cat$ because so the square
 	\arrow["G"', from=2-1, to=2-2]
 	\arrow["f", from=1-2, to=2-2]
 \end{tikzcd}\]
-commutes.
+commutes. Clearly the functor $\Fun(\unit_{\Cat},DForget(\cat^{\cong})\to \cat^{\cong}$ is essentially surjective
+since for every object $X\in\cat^{\cong}$ there is a functor $F\in\Fun(\unit_{\Cat},DForget(\cat^{\cong})$ such that
+$F(\ast)=X$. Moreover, since any natural transformation in $\Fun(\unit_{\Cat},DForget(\cat^{\cong})$ is given by
+a morphism in $\cat^{\cong}$, $\Fun(\unit_{\Cat},DForget(\cat^{\cong})\to \cat^{\cong}$ is fully faithful.
+Thus, we can conclude that 
+$$\Fun(\unit_{\Cat},DForget(\cat^{\cong}))\overset{3}{\simeq} \cat^{\cong}$$
 \end{enumerate}
 \end{proof}
+
+\begin{rem}
 The assumption that $\cat$ has duals does not imply a loss of generality 
 since the functor 
 $$\Fun^{\otimes}(\Bord_{1,0}^{\operatorname{or}},\cat^{\fd})\to\Fun^{\otimes}(\Bord_{1,0}^{\operatorname{or}},\cat)$$
 is canonically an equivalence since $\Bord_{1,0}^{\operatorname{or}}$ has duals and always lands in
 $\cat^{\fd}$
+\end{rem}
 
-Thus, one can infer the usual formulation as an equivalence, from abstract nonsense.
+
+Thus, one can infer the usual formulation as an equivalence by the
+transitivity of equivalences of categories (a composition of equivalences is an equivalence), from the fact that $\Bord_{1,0}$ is the free
+symmetric monoidal category with duals and 
+ abstract nonsense.

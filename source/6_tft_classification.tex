@@ -167,7 +167,7 @@ Note that also the following lemma is true
 \begin{proof}[Proof of the classification of 1-TFTs]\label{abstractClass1TFT}
 The moral of the latter lemma is that identity morphisms of $\bullet_{+}$ and $\bullet_{-}$, coevaluation and evaluation
     maps
-    $coev_{\bullet_{+}}$ and $ev_{\bullet_{+}}$,
+    $coev_{\bullet_{+}}$ and $ev_{\bullet_{-}}$,
     and the braiding are enough to generate all the 1-dimensional bordisms.
     Thus, to determine what a TFT does, 
     we need to only determine what it does on these morphisms, i.e. 1-dimensional bordisms. In the previous lemma 
@@ -200,7 +200,7 @@ Also this proof relies on the fact that since the functor
     \begin{enumerate}
         \item $\Zf(\includegraphics[scale=0.18]{images/Classification 1TFT/identityplus.png})=id_{X}$
         \item$\Zf(\includegraphics[scale=0.18]{images/Classification 1TFT/identityminus.png})=id_{X^\vee}$
-        \item $\Zf(\includegraphics[scale=0.17]{images/Classification 1TFT/evaluation.png})=ev_{X}$, hence $X\amalg X^\vee\xrightarrow{ev_{X}} \unit_{\cat}$ and more precisely for $v\in X\in\Vect_{k}$: $ev_{X}:(X,\lambda)\mapsto \lambda(v)$
+        \item $\Zf(\includegraphics[scale=0.17]{images/Classification 1TFT/evaluation.png})=ev_{X}$, hence $X^\vee\otimes X\xrightarrow{ev_{X}} \unit_{\cat}$ and more precisely for $v\in X\in\Vect_{k}$: $ev_{X}:(X,\lambda)\mapsto \lambda(v)$
         \item $\Zf(\includegraphics[scale=0.15]{images/Classification 1TFT/coevaluation.png})=coev_{X}$, hence $\unit_{\cat}\xrightarrow{coev_{X}}X\otimes X^\vee$ and more precisely for $\lambda\in k\in\Vect_{k}$, via the canonical isomorphism $X\otimes X^\vee\cong\operatorname{End}(X)$, $coev_X$ corresponds to taking the trace
         \item $\Zf(\includegraphics[scale=0.15]{images/Classification 1TFT/circle.png})=coev_X \circ ev_{X}$, hence $\unit_{\cat}\xrightarrow{coev_X \circ ev_{X}}\unit_{\cat}$, and, following the cases for $\Vect_{k}$ treated in the previous two points, to taking the trace of the identity matrix, i.e. the dimension of $X$
     \end{enumerate}
@@ -231,6 +231,10 @@ We stated that these two proofs by generators and relations
  prove the equivalence of categories in the classification of 1-TFTs. However, it might seem mysterious why this is the
   case. We now prove that the evaluation on a point is actually an equivalence of categories, a fully faithful essentially
   surjective functor by the fundamental theorem of category theory \ref{fundamentalequivalence}.
+  
+  Alternatively, one can check out in a later section why one can neatly (i.e. from abstract nonsense)
+   conclude that $\mathcal{E}V_{\bullet_{+}}$
+  from the other previous two proofs \ref{FREEBORD1}.
 
 \begin{proof}
 This is from \cite[Theorem 16.10]{FreedBordism}.
