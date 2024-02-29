@@ -75,3 +75,96 @@ hence $\Zf(S^1)=\cat$ where $\cat$ is a modular tensor category, i.e. a special 
                 One can find more on this higher category of bordisms in \cite{Calaque_2019}. 
 
 \end{rem}
+
+\subsection{Alternative formulation of the cobordism hypothesis of TFTs \extra}\label{FREEBORD}
+
+It is not evident why the classification of extended TFTs by dualizable objects in the target category
+goes by the name 'cobordism hypothesis'. The reason is that historically (in \cite{Baez_1995}) it was not
+only formulated
+ as the equivalence categories
+ $$ev_{\ast}:\Fun^{\otimes}(\Bord_{n}^{\fr},\cat)\simeq (\cat^{\operatorname{fd}})^{\cong}$$
+ but also in an equivalent way that is a vast generalization of the fact that $\Omega_{0}^{\operatorname{or}}$ is the free
+  abelian group on one generator, i.e. $\Z$. 
+  \begin{thm}[Cobordism Hypothesis]
+$\Bord_{n}^{\fr}$ is equivalent to the free symmetric monoidal $(\infty,n)$-category with duals on one object.
+  \end{thm}
+  This is equivalent to the usual formulation via abstract nonsense. We first show how this works
+   for the cobordism hypothesis
+  in one dimension, which coincides with the classification we already proved, \ref{ClassificationOf1dTFTs}.
+  \subsubsection{Categorification of  \texorpdfstring{$\Omega_{0}^{\operatorname{or}}=\Z$}{0}}\label{FREEBORD1}
+  We already told a story about TFTs being a categorification of bordism invariants, see \ref{ClassificationOfTFTs}.
+  This story fits very well with the cobordism hypothesis in dimension 1 and the fact that 
+  $\Omega_{0}^{\operatorname{or}}$ is the free abelian group on one generator. 
+  
+  The cobordism hypothesis
+  can be formulated in dimension 1 as follows 
+  \begin{thm}[Cobordism hypothesis for $n=1$]
+$\Bord_{1,0}^{\fr}$ is equivalent to the free symmetric monoidal category with duals on one object.
+  \end{thm}
+This is equivalent to the classification of 1TFTs, the theorem we proved stating that 
+\begin{thm}[Classification of 1TFTs]
+$$ev_{\ast}:\Fun^{\otimes}(\Bord_{1}^{\operatorname{or}},\cat)\simeq (\cat^{\operatorname{fd}})^{\cong}$$
+\end{thm}
+ 
+ First, note that there are no non-trivial tangent bundles on 1-bordisms and thus there is no difference between 
+ framed and oriented bordisms. Thus, one can infer from the classification of 1TFTs a version of the cobordism 
+ hypothesis in dimension $n=1$ as we first stated it:
+ $$ev_{\ast}:\Fun^{\otimes}(\Bord_{1}^{\operatorname{fr}},\cat)\simeq (\cat^{\operatorname{fd}})^{\cong}$$
+  Then, we make precise what is a free symmetric monoidal category with duals on one object.
+\begin{notat}
+We denote as SymmMonwDuals the category of symmetric monoidal categories with dual objects.
+\end{notat}
+Now we prove the following theorem in three steps
+\begin{thm}
+	For a symmetric monoidal category with duals $\cat$ it holds that
+	$$\Fun^{\otimes}(\Bord_{1,0}^{\operatorname{or}},\cat)\overset{1}{\simeq}\Fun^{\otimes}(DFree(\unit_{\Cat}),\cat)\overset{2}{\simeq}\Fun(\unit_\cat,\cat)\overset{3}{\simeq} \cat$$
+\end{thm}
+\begin{proof}
+	Note first that for any three symmetric monoidal categories $\sat$, $\dat$ and $\eat$ it holds that if $\dat\simeq\eat$, then
+	$\Fun^{\otimes}(\dat,\sat)\simeq\Fun^{\otimes}(\eat,\sat)$.
+\begin{enumerate}
+\item Consider the forgetful functor $\operatorname{SymmMonwDuals}\to\Cat$. Like all forgetful functors it has 
+a left adjoint $\Cat\to\operatorname{SymmMonwDuals}$, we denote it with $DFree$.
+The application of this functor to the trivial category\footnote{i.e. the category just with one-object and its
+	identity morphism.} $\unit_{\Cat}$ is the free symmetric monoidal category on one object.
+
+From the proofs \ref{abstractClass1TFT} and \ref{GeneratorsClass1TFT} of the classification of 1TFTs
+one can easily infer that $\Bord_{1}^{\fr}$ is equivalent to the free symmetric monoidal category with duals
+on one object,
+$\Bord_{1}^{\fr}\simeq DFree(\unit_{\Cat})$
+and thereby proving the alternative formulation of the cobordism hypothesis in dimension 1 we just provided. Moreover,
+it follows that $\Fun^{\otimes}(\Bord_{1,0}^{\operatorname{or}},\cat)\overset{1}{\simeq}\Fun^{\otimes}(DFree(\unit_{\Cat}),\cat)$
+
+\item Note that there is another way to phrase adjunctions, which we formulated in the appendix, \ref{HigherAdjFun}, and
+also that the functor in SymmMonwDuals are just symmetric monoidal functors, since functors preserve dual
+objects, as we proved in \ref{ClassificationOf1dTFTs}.
+From the free-forgetful adjunction, one can infer that for an arbitrary symmetric monoidal category with duals $\cat$
+$$\Fun^\otimes (DFree(\unit_{\Cat}),\cat)\overset{2}{\simeq}\Fun(\unit_{\Cat},\cat)$$
+where on the right hand side $\cat$ has forgotten about its duals and its monoidal structure generally. 
+
+
+\item Now we prove that $\Fun(\unit_{\Cat},\cat)\overset{3}{\simeq} \cat$.
+$\Fun(\unit_{\Cat},\cat)$ consists of functors $$F(\ast)=X$$ $$F(id_\ast)=id_X$$ for all $X\in\cat$
+The morphisms of $\Fun(\unit_{\Cat},\cat)$ are exactly given by the morphisms in $\cat$:  given two functors
+ $F,G\in\Fun(\unit_{\Cat},\cat)$ such that $F(\ast)=X$ and $G(\ast)=Y$,
+ there is a natural transformation $F\Rightarrow G$, if and only if
+there is a morphism $f:X\to Y$ in $\cat$ because so the square 
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXGFzdCJdLFswLDEsIlxcYXN0Il0sWzEsMCwiWCJdLFsxLDEsIlkiXSxbMCwxLCJpZF9cXGFzdCIsMl0sWzAsMiwiRiJdLFsxLDMsIkciLDJdLFsyLDMsImYiXV0=
+\[\begin{tikzcd}[cramped]
+	\ast & X \\
+	\ast & Y
+	\arrow["{id_\ast}"', from=1-1, to=2-1]
+	\arrow["F", from=1-1, to=1-2]
+	\arrow["G"', from=2-1, to=2-2]
+	\arrow["f", from=1-2, to=2-2]
+\end{tikzcd}\]
+commutes.
+\end{enumerate}
+\end{proof}
+The assumption that $\cat$ has duals does not imply a loss of generality 
+since the functor 
+$$\Fun^{\otimes}(\Bord_{1,0}^{\operatorname{or}},\cat^{\fd})\to\Fun^{\otimes}(\Bord_{1,0}^{\operatorname{or}},\cat)$$
+is canonically an equivalence since $\Bord_{1,0}^{\operatorname{or}}$ has duals and always lands in
+$\cat^{\fd}$
+
+Thus, one can infer the usual formulation as an equivalence, from abstract nonsense.

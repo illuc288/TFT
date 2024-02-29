@@ -32,12 +32,18 @@ To be clear, recall that:
 A natural question
 is: how is this a \emph{classification}? This sort of statement certainly looks different 
 from other classifications, for example the one of 2-dimensional manifolds we have seen in this course
- (\ref{Classification of 2 manifolds}). Such an equivalence of categories classifies TFTs because every $n$-TFT is
-  determined by where it sends an object in $\Bord_{n}$ and thus TFTs are classified by where they send
-   such $n-1$-manifold, without specifying how the functor acts on morphism, i.e. the bordisms. Moreover,
-   given a dualizable object of $\cat$ one can construct a TFT since the equivalence goes also 
-   in the other direction, so one can say that TFTs are classified by the dualizable objects (up to isomorphism)
-    of their target category.
+ (\ref{Classification of 2 manifolds}).  Such an equivalence of categories classifies TFTs because every $n$-TFT is
+ classified by the dualizable objects of its target category since to every TFT correspond a dualizable object
+ (up to isomorphism).
+ Another way of seeing this kind of theorems is that
+ a TFT is determined
+ by where it sends an object in $\Bord_{n}$,
+ without specifying how the functor acts on morphism, i.e. the bordisms. 
+There is a further equivalent way to formulate such classification theorems for TFTs which can be seen
+as the generalization of something
+we have already seen: $\Omega_{0}^{\operatorname{or}}$ is the free abelian group on one generator, i.e. $\Z$.
+We later spell it out prove how this is equivalent to the equivalence of categories via $ev_{X\in\Bord_{n}}$,
+see \ref{FREEBORD}.
    
    Sketchily, our strategy to prove these results will be to find generators and relations for $\Bord_{n}$ and then
     check where they are sent to. It will follow that dualizable objects in $\cat$ already provide all the information
@@ -50,11 +56,7 @@ The main goal of this subsection is to prove that given an oriented 1d-TFT
 \begin{thm}[Classification of 1-dimensional bordisms]\label{class1dBord}
 Any connected oriented 1-dimensional manifold with boundaries is diffeomorphic to one of 
 the following manifolds: 
-
-\[\includegraphics[width=8cm]{images/Lecture 12/All1Bordisms.png} \]
-    
-
-
+\[\includegraphics[width=8cm]{images/Lecture 12/All1Bordisms.png} \] 
 \end{thm}
 For the proof we refer to the appendix of \cite{Milnor1997topology}.
 
@@ -105,8 +107,10 @@ This categorical equivalence means that
     Let $X\in\cat$ be a dualizable object. Specifying $\Zf(\bullet_{+})=X$ determines a 1d-TFT.
 \end{thm}
 Firstly, we prove this alternative formulation, later we show that one can infer that the evaluation on a point is an
- equivalence.
+ equivalence. In a section at the end of the chapter we show another way to neatly relate a proof of a further 
+ alternative formulation of the classification of 1TFTs, see \ref{FREEBORD1}.
 %Note that there's nothing special about dimension 1 here. We then have such an evaluation functor into $(\cat^{\operatorname{fd}})^{\cong}$ in every dimension, i.e. from all $\TFT_{1,0}^{or}$. Dimension 1 is then special because this map is actually an equivalence. %%% Can't understand what is meant here /Andrea
+
 Note some important characteristics of symmetric monoidal functors in general.
 \begin{lem}
 Given a symmetric monoidal
@@ -160,7 +164,7 @@ Note that also the following lemma is true
         \item \includegraphics[width=3cm]{images/Lecture 12/circle2.png} 
     \end{enumerate}
 \end{proof}
-\begin{proof}[Proof of the classification of 1-TFTs]
+\begin{proof}[Proof of the classification of 1-TFTs]\label{abstractClass1TFT}
 The moral of the latter lemma is that identity morphisms of $\bullet_{+}$ and $\bullet_{-}$, coevaluation and evaluation
     maps
     $coev_{\bullet_{+}}$ and $ev_{\bullet_{+}}$,
