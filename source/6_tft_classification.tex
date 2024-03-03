@@ -198,13 +198,18 @@ Also this proof relies on the fact that since the functor
     $$\Zf(M)=(\bigotimes_{I}X)\otimes(\bigotimes_{J}X^\vee)$$
     Now we need to understand where the 5 possible 1-bordisms are sent.
     \begin{enumerate}
-        \item $\Zf(\includegraphics[scale=0.18]{images/Classification 1TFT/identityplus.png})=id_{X}$
-        \item$\Zf(\includegraphics[scale=0.18]{images/Classification 1TFT/identityminus.png})=id_{X^\vee}$
-        \item $\Zf(\includegraphics[scale=0.17]{images/Classification 1TFT/evaluation.png})=ev_{X}$, hence $X^\vee\otimes X\xrightarrow{ev_{X}} \unit_{\cat}$ and more precisely for $v\in X\in\Vect_{k}$: $ev_{X}:(X,\lambda)\mapsto \lambda(v)$
-        \item $\Zf(\includegraphics[scale=0.15]{images/Classification 1TFT/coevaluation.png})=coev_{X}$, hence $\unit_{\cat}\xrightarrow{coev_{X}}X\otimes X^\vee$ and more precisely for $\lambda\in k\in\Vect_{k}$, via the canonical isomorphism $X\otimes X^\vee\cong\operatorname{End}(X)$, $coev_X$ corresponds to taking the trace
-        \item $\Zf(\includegraphics[scale=0.15]{images/Classification 1TFT/circle.png})=coev_X \circ ev_{X}$, hence $\unit_{\cat}\xrightarrow{coev_X \circ ev_{X}}\unit_{\cat}$, and, following the cases for $\Vect_{k}$ treated in the previous two points, to taking the trace of the identity matrix, i.e. the dimension of $X$
+        \item $\Zf(\adjincludegraphics[valign=c, height=0.3cm, raise=0.1\baselineskip,
+    set vsize={1cm}{0cm}]{images/Classification 1TFT/identityplus.png})=id_{X}$
+        \item$\Zf(\adjincludegraphics[valign=c, height=0.3cm, raise=0.1\baselineskip,
+    set vsize={1cm}{0cm}]{images/Classification 1TFT/identityminus.png})=id_{X^\vee}$
+        \item $\Zf(\adjincludegraphics[valign=c, height=0.5cm, raise=0.3\baselineskip,
+    set vsize={1cm}{0cm}]{images/Classification 1TFT/evaluation.png})=ev_{X}$, hence $X^\vee\otimes X\xrightarrow{ev_{X}} \unit_{\cat}$ and more precisely for $v\in X\in\Vect_{k}$: $ev_{X}:(X,\lambda)\mapsto \lambda(v)$
+        \item $\Zf(\adjincludegraphics[valign=c, height=0.5cm, raise=0.3\baselineskip,
+    set vsize={1cm}{0cm}]{images/Classification 1TFT/coevaluation.png})=coev_{X}$, hence $\unit_{\cat}\xrightarrow{coev_{X}}X\otimes X^\vee$ and more precisely for $\lambda\in k\in\Vect_{k}$, via the canonical isomorphism $X\otimes X^\vee\cong\operatorname{End}(X)$, $coev_X$ corresponds to taking the trace
+        \item $\Zf(\adjincludegraphics[valign=c, height=0.6cm, raise=0.2\baselineskip,
+    set vsize={1cm}{0cm}]{images/Classification 1TFT/circle.png})=coev_{X^\vee} \circ ev_{X}$, hence $\unit_{\cat}\xrightarrow{coev_{X^\vee} \circ ev_{X}}\unit_{\cat}$, and, following the cases for $\Vect_{k}$ treated in the previous two points, to taking the trace of the identity matrix, i.e. the dimension of $X$
     \end{enumerate}
-    
+    % \includegraphics[scale=0.15]{images/Classification 1TFT/identityplus.png}, images/Classification 1TFT/coevaluation.png , images/Classification 1TFT/circle.png
     The moral of the story is that a TFT is uniquely
     determined, up to isomorphism, once one knows $X\in\cat^{\operatorname{fd}}$ since then one knows 
     \begin{itemize}
@@ -212,20 +217,11 @@ Also this proof relies on the fact that since the functor
         be sent to finite
         disjoint unions of $\bullet_{+}$ and $\bullet_-$ (aka all the objects of $\Bord_{1,0}$);
         \item what $id_X$ and $id_{X^\vee}$ are
-        \item what $ev_X$ and $coev_X$ are and hence also $coev_X\circ ev_X$
+        \item what $ev_X$, $coev_X$, $ev_X$ and $coev_X$ are and combinations thereof.
     \end{itemize}
     
 \end{proof}
-\begin{rem}
-    This proof considers 5 possible
-    bordisms and not all 8, thereby excluding some possible orientations. However, Lurie's
-    argument is without loss of
-    generality because it implicitly relies 
-    on the \emph{symmetric} monoidality of $\Bord_{1,0}$ since, for instance, one can get
-    \includegraphics[width=0.7cm]{images/Lecture 12/coevminusplus.png}  by composing
-    \includegraphics[width=0.7cm]{images/Lecture 12/coevplusminus.png} with a
-    braiding. 
-\end{rem}
+
 
 We stated that these two proofs by generators and relations 
  prove the equivalence of categories in the classification of 1-TFTs. However, it might seem mysterious why this is the
