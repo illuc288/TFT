@@ -9,12 +9,7 @@
 Before venturing into a definition of cobordism, let us recall some useful definitions.
 This section mainly relies on \cite{Lee2012} and \cite{Hirsch1976}.
 \begin{defn}[\textit{Topological Manifold}]
-    A topological manifold of dimension $n$ is a paracompact Hausdorff topological space $X$ such that every point $x \in X$ has an open neighborhood $U$ which is homeomorphic to an open set\footnote{Equivalently to $\R^n$.} in $\R^n$. The latter property means that for each $x\in X$ there exist:
-    \begin{itemize}
-        \item an open subset $U\subseteq X$ containing $x$, i.e. an open neighbourhood of $x$,
-        \item a corresponding open subset $\tilde{U}\in\R^n$,
-        \item a homeomorphism $\phi_{U} : U \to \tilde{U}=\phi(U) $ called coordinate chart, or just chart (see Fig. \ref{fig:Coordinate_Chart}).
-    \end{itemize} 
+    A topological manifold of dimension $n$ is a paracompact (equivalently, second countable) Hausdorff topological space $X$ such that $X$ has an open cover $\{U_\alpha\}_\alpha$ together with a homeomorphism $\phi_\alpha:U_\alpha\to V_\alpha$ where $V_\alpha$ is an open subset of $\R^n$. The pair $(U_\alpha, \phi_\alpha)$ is called a \textit{chart} (or coordinate chart or coordinate system), the collection of such is called an \textit{Atlats} (see Fig. \ref{fig:Coordinate_Chart}). 
  \end{defn}
 \begin{figure}
     \centering
@@ -23,7 +18,7 @@ This section mainly relies on \cite{Lee2012} and \cite{Hirsch1976}.
     \caption{\small{The visualization of a coordinate chart map from Lee's textbook on smooth manifolds \cite{Lee2012}}}
     \label{fig:Coordinate_Chart}
 \end{figure}
-\noindent If $(U, \phi)$, $(V, \psi)$ are two coordinate charts of a topological manifold $X$ and $U\cap V\neq\emptyset$, then $\psi \circ \phi^{-1} : \phi(U\cap V) \to \psi(U\cap V)$ is a transition function from $\phi$ to $\psi$ (see Fig. \ref{fig:Lee_TransitionMap}).
+\noindent If $(U, \phi)$, $(V, \psi)$ are two coordinate charts of a topological manifold $X$ and $U\cap V\neq\emptyset$, then $\psi \circ \phi^{-1} : \phi(U\cap V) \to \psi(U\cap V)$ is called a \textit{transition function} (see Fig. \ref{fig:Lee_TransitionMap}).
 \begin{figure}
     \centering
     \captionsetup{format = hang}
@@ -38,7 +33,7 @@ From the introduction it's clear that we will also deal with manifolds with boun
     $$\mathbb{H}^n=\{(x_1,...,x_n)\in\mathbb{R}^n|x_1 \leq 0\}$$ 
 \end{notat}
 \begin{defn}[Manifold with Boundary]
-    A manifold with boundary of dimension $n$ is a paracompact Hausdorff topological space $X$ such that every point $p \in X$ has an open neighborhood $U_p$ which is homeomorphic to an open set $V$ in $\H^n$, i.e. the closed\footnote{in topological sense and not in the manifold sense we later define.} half space, via the homeomorphism $\phi$ of the coordinate chart $(U_p,\phi)$.
+    A manifold with boundary of dimension $n$ is a paracompact (equivalently, second countable) Hausdorff topological space $X$ such that $X$ has an open cover $\{U_\alpha\}_\alpha$ together with a homeomorphism $\phi_\alpha:U_\alpha\to V_\alpha$ where $V_\alpha$ is an open subset of $\H^n$.\footnote{Note: a manifold with boundary, in general, is \textit{not} a manofold.}
 \end{defn}
 \begin{figure}
     \centering
@@ -49,74 +44,53 @@ From the introduction it's clear that we will also deal with manifolds with boun
 \end{figure}
 
 \begin{defn}[Boundary of a Manifold]
-    If for $p \in X$ and some chart $\phi$ it is the case that $x_1(\phi (p) )= 0$ (meaning $\phi (p) \in \{(0,x_2, \dots, x_n)\}\subseteq \H^n$), then it does in every chart. We then say that $p$ is in the \textit{boundary} of $X$, 
+    If for $p \in X$ and some chart $(U, \phi)$ it is the case that $x_i(\phi (p) )= 0$ (where $x_i:\R^n\to\R$ is the projection to the $i$-th coordinate), then it does in every chart\footnote{This is not trivial. If you know homology try to prove it.}. We then say that $p$ is in the \textit{boundary} of $X$, 
     $$
-        \de X := \{ p \in X : x_1(p) = 0\}
+        \de X := \{ p \in X : x_i(p) = 0\}.
     $$
-    otherwise, $p$ is in the \textit{interior} of $X$, which we denote with Int $X$. 
+    otherwise, $p$ is in the \textit{interior} of $X$, which we denote with Int$(X)$. 
 
     \noindent An equivalent definition is: $p \in \de X$ if $p$ has neighborhood $V$ that is the domain of a coordinate chart $\psi:V\to\H^n$ such that $\psi(V)\cap\de\H^n\neq\emptyset$ and sending $p$ to $\de \H^n$.
-
-    \noindent Specularly, we could have defined the interior of $X$ to be the set of points $q\in X$ that have a neighourhood $U$ that is the domain of a chart $\psi:U\to\R^n$.
 \end{defn}
+
+
 \begin{lem}
-    If $X$ is an $n$ dimensional manifold with boundary, then $\de X$ is a $n-1$ dimensional manifold.
+    If $X$ is an $n$-dimensional manifold with boundary, then $\de X$ is a $(n-1)$-dimensional manifold.
 \end{lem}
 \begin{proof}
-    Let $p\in\de X$ be an arbitrary point on the boundary of an $n$-manifold with boundary. Hence, there is an open neighbourhood $U_p$ of $p$ which is homeomorphic to an open set $V$ in $\mathbb{H}^n$, $ \phi(U_p)\cong V$. Since $p\in\de X$ we know that $x_1(\phi(p))=0$ and $\phi(p)\in V\cap\mathbb{H}^n$. $\phi:U_p\to V$ can be restricted to a homemorphism $\phi\mid_{\phi^{-1}(V\cap\mathbb{H}^n)}:\phi^{-1}(V\cap\mathbb{H}^n)\xrightarrow{\cong}V\cap\mathbb{H}^n$. Note that $\phi^{-1}(V\cap\mathbb{H}^n)=U_p\cap\de X$ because $p$ is sent to the boundary $\de\mathbb{H}^n$ for every chart. Note also that $\de\mathbb{H}^n=\{(0,x_2, \dots, x_n)\}$ and $\de\mathbb{H}^n\cong\R^{n-1}$. Since $V\cap\mathbb{H}^n\in\de\mathbb{H}^n$ and $V\cap\mathbb{H}^n\cong U_p\cap\de X$, $U_p\cap\de X$ is homeomorphic to an open set in $\R^{n-1}$.
+    Paracompactness and Hausdorff follow from being $\de X\subset X$ closed. Let $p\in\de X$ be an arbitrary point on the boundary of an $n$-manifold with boundary. Consider a chart containing $p$, $\phi:U\to V$. Since $p\in\de X$ we know that, w.l.o.g. $x_1(\phi(p))=0$ and $\phi(p)\in V\cap\de\mathbb{H}^n$. $\phi:U\to V$ can be restricted to a homemorphism $\phi\mid_{\phi^{-1}(V\cap\de\mathbb{H}^n)}:\phi^{-1}(V\cap\de\mathbb{H}^n)\xrightarrow{\cong}V\cap\de\mathbb{H}^n$. Note that $\phi^{-1}(V\cap\de\mathbb{H}^n)=U\cap\de X$. Note also that $\de\mathbb{H}^n\cong\R^{n-1}$. So $(U\cap\de X, \phi\mid_{U\cap\de X})$ is a chart around $p\in\de X$ into $\R^{n-1}$.
 \end{proof}
 \begin{defn}[Closed Manifold]
     A manifold is \textit{closed} if it is compact and without boundary, i.e. $\de X = \emptyset$. Conversely, an \textit{open} manifold is also a manifold without boundary but with no closed components, i.e. it has only non-compact components. 
 \end{defn}
 
-In some contexts, it can be interesting to do calculus on a manifold. In order to make sense of this, one needs to add some extra structure to the topology of the manifold which enables investigating if a map between manifolds is smooth.
+One can also do calculus on a manifold if some extra requirement are added to de definition of manifold. Before proceding in that, let us remind the reader of the following:
 \begin{defn}[Smooth Function]
     Given $X\subseteq\R^n$ and $Y\subseteq\R^m$ a function $f:X\to Y$ is smooth\footnote{Also called infinitely differentiable or $C^\infty$.} if each of its component functions has continuous partial derivatives of all order.
 \end{defn}
-
-\noindent The right notion of isomorphism when talking about smooth functions is that of diffeomorphism:
-\begin{defn}[Diffeomorphism]
-    A smooth map $f:X\rightarrow Y$ is a diffeomorphism when it is bijective and has a smooth inverse map.
-\end{defn}
-
-\begin{defn}[Smooth Manifold Without Boundary]
-    A smooth manifold $X$ is a topological manifold, together with a collection of charts $\phi_i:U_i\to\R^n$, called smooth structure, $(U_i, \phi_i)$ such that:
-    \begin{enumerate}
-        \item $X = \bigcup_{i\in I} U_i$
-        \item the pairwise transition functions are smooth in the usual sense of $\R^n$
-  %what does 'pairwise' transition functions mean? Isn't 'transition functions and their inverses' clearer? /Andrea
-        \item it is maximal with respect to 1. and 2.
-    \end{enumerate}
- Some call a collection of charts $(U_i, \phi_i)$ such that $\{U_i\}_i\in I$ is a cover of the whole manifold $X$ an atlas. A smooth atlas is an atlas where the transition functions and their inverses are smooth. A smooth structure is thus a maximal smooth atlas. We call charts forming the smooth structure smooth charts.
-\end{defn}
-
-\begin{ex}
-    A lot of the spaces we think of are smooth manifolds, such as:
-    \begin{enumerate}
-        \item the circle, a dimension 1 manifold
-        \item a genus $g$ surface, a dimension 2 manifold
-        \item $\emptyset$, a smooth manifold of any dimension
-    \end{enumerate}
-\end{ex}
-\begin{notat}
-    In these lecture notes, manifolds are \textit{always} smooth, unless explicitly specified.
-\end{notat}
-\begin{rem}
-    The definition of smoothness we just provided does not work for manifolds with boundary since to say that the transition functions are smooth we used the notion of smoothness of $\R^n$ and not of $\H^n$, the actual codomain of manifolds \emph{with} boundary. Hence, we characterize now smoothness for $\H^n$.
-\end{rem}
-
-\noindent Recall that a map $f:M\to\R^m$, where $M\subseteq \R^n$ is not necessarily open, is smooth if in a neighbourhood of each $x\in M$ it can be extended to a smooth function defined on an open subset in $\R^n$. 
 
 \begin{defn}[Smoothness in the Half Space]\label{SmoothHalf}
     If $X$ is an open subset of $\H^n$, we define $f:X\to\R^m$ to be smooth for each $x\in X$ if $X$ can be extended to an open subset $\tilde{X}\in\R^n$, and $f$ to a smooth map $\tilde{f}:\tilde{X}\to\R^m$ such that $\tilde{f}|_{\tilde{X}\cap\H^n}=f$. 
 \end{defn}
 
-\begin{defn}[Smooth Manifold with Boundary]
-    A topological manifold with boundary is smooth if it has a maximal smooth atlas where the transition functions and their inverses are smooth according to \ref{SmoothHalf}.
+\begin{defn}[Smooth Manifold Without Boundary]
+    A smooth manifold with boundary $X$ is a topological manifold such that the transition functions $\phi_\beta\circ\phi^{-1}_\alpha$ are smooth in the sense of $\H^n$ (or $\R^n$ if $\de X=\emptyset$).
 \end{defn}
 
+\begin{ex}
+    A lot of the spaces we think of can be equipped with a smooth manifold structure, such as:
+    \begin{enumerate}
+        \item the circle, a dimension $1$ manifold,
+        \item genus $g$ surface, a dimension $2$ manifold,
+        \item $\emptyset$, a smooth manifold of any dimension.
+    \end{enumerate}
+\end{ex}
+\begin{notat}
+    In these lecture notes, we will \textit{only} consider smooth manifolds, unless explicitly specified.
+\end{notat}
+
 \begin{cor}
-    If $X$ is a smooth $n$ dimensional manifold with boundary, then $\de X$ is a smooth $n-1$ dimensional manifold. It follows from the proof for topological manifolds.
+    If $X$ is a \underline{smooth} $n$ dimensional manifold with boundary, then $\de X$ is a \underline{smooth} $(n-1)$ dimensional manifold.
 \end{cor}
      
 \begin{ex}% see how to go on another line for the first item. Solutions: \item[], \leavevmode, \hfill
@@ -124,24 +98,23 @@ In some contexts, it can be interesting to do calculus on a manifold. In order t
 \begin{enumerate}
     \item $D^n = \{x \in \R^n \mid  \ ||x||\leq 1\}$ the $n$ dimensional disk, which has a sphere as boundary: $\de D^n = S^{n-1}$
     \[\includegraphics[width=5cm]{images/Lecture 2/Boundary Disk.png} \]
-    \item Consider 2 dimensional \emph{open} disks, i.e. $D^2=\{x\in\R^2\mid \ ||x||<1\}$. We can remove such shapes
-     from the sphere and get the manifold $S^{2} \setminus D^{2}_{1} \amalg D_2^2 \amalg D^2_3$ which we can
-      visualize in different ways. \[\includegraphics[width=7cm]{images/Lecture 2/Manifold3holes.png} \]
-    \item Let $X, Y$ be $n$ manifolds with boundary, then $X \amalg Y$ is an $n$ manifold with boundary.
+    \item Consider 2 dimensional \emph{open} disks, i.e. Int$(D^2)=\{x\in\R^2\mid \ ||x||<1\}$. Consider now the sphere $S^2$, if we then remove a number of open disks from if, we get the manifold $S^{2} \setminus\text{Int}(D^{2}_{1} \amalg D_2^2 \amalg D^2_3)$ which we can visualize in different ways.
+    \[\includegraphics[width=7cm]{images/Lecture 2/Manifold3holes.png} \]
+    \item Let $X, Y$ be $n$-manifolds with boundary, then $X \amalg Y$ is an $n$-manifold with boundary.
     \[\includegraphics[width=7cm]{images/Lecture 2/Disjoint union of manifolds with boundary.png} \]
-    \item $T= S^1 \times S^1$ is a $2$ manifold with $\de T = \emptyset$ and $T^{\text{solid}} = D^2 \times S^1$ is a $3$-manifold with $\de T^{\text{solid}} = T$.
+    \item $T= S^1 \times S^1$ is a $2$-manifold with $\de T = \emptyset$ and $T^{\text{solid}} = D^2 \times S^1$ is a $3$-manifold with $\de T^{\text{solid}} = T$.
         \[\includegraphics[width=7cm]{images/Lecture 2/Torus Boundary.png} \]
     \end{enumerate}
 \end{ex}
 
-\begin{defn}[Smooth Map to $\R^n$]
-    Let $X$ be a smooth manifold. $f:X\to\R^n$ is smooth if for each $x\in X$ there is a smooth chart $(U,\phi)$ such that $f=f\circ\phi^{-1}$
+\begin{defn}[Smooth Map on a Manifold]
+    Let $X$ be a smooth manifold. $f:X\to\R^n$ is smooth if for each chart $(U,\phi)$ we have that $f\circ\phi^{-1}$ is smooth in the sense of $\R^n$.
 \end{defn}
 
 \noindent This definition can be generalized to maps between smooth manifolds.
 
 \begin{defn}[Smooth Map between Manifolds]
-    Let $X$ and $Y$ be smooth manifolds of dimensions $m$ and $n$ and $f:X\to Y$ a function between them. $f$ is smooth if for every $x\in X$ there is a smooth chart $(U,\phi)$ of $X$ where $x\in U$ and a smooth chart $(V,\psi)$ of $Y$ where $f(x)\in V$ and $f(U)\subseteq V$ such that $\tilde f = \psi \circ f\circ \phi^{-1}$ is smooth. $\tilde f$ can be represented as in the following diagram:
+    Let $X$ and $Y$ be smooth manifolds of dimensions $m$ and $n$ and $f:X\to Y$ a function between them. $f$ is smooth if for every $x\in X$ and chart $(U_x,\phi)$ containing $x$ and for a chart $(V_{f(x)},\psi)$ containing $f(x)\in Y$ then$\tilde f = \psi \circ f\circ \phi^{-1}$ is smooth. This can be represented in the following diagram:
     \begin{equation*}
         \begin{tikzcd}
             {X\supseteq U} &&& {V\subseteq Y} \\
@@ -156,9 +129,9 @@ In some contexts, it can be interesting to do calculus on a manifold. In order t
         \end{tikzcd}
     \end{equation*}
 \end{defn}
-\noindent This also allows to define the natural notion of isomorphism in the category of smooth manifolds:
+\noindent Is this notion well defined? Or, in other words, is it possible that a function is smooth in one chart and not another? No! Check this.
 \begin{defn}[Diffeomorphism of Manifolds]
-    A diffeomorphism is a smooth map with a smooth inverse, i.e. an isomorphism in the category of smooth manifolds.
+    A diffeomorphism is a smooth map with a smooth inverse. This, we will see, defines the notion of an isomorphism in the \textit{category of smooth manifolds}.
 \end{defn}
 
 \begin{exercise}
@@ -167,9 +140,10 @@ In some contexts, it can be interesting to do calculus on a manifold. In order t
 
 \section{What is a bordism?}
 
+The idea of a bordism is to identify (and maybe classify) manifolds that ``differ'' by a manifold. A first definition, that will turn out to be too strict, is the following.
 \begin{defn}[$1^{st}$ variant of the definition of bordism: via \emph{strict equalities}]
 \label{Define Bordism}
-    Let $Y_0, Y_1$ be closed $n$ manifolds. A bordism $(X,p)$ from $Y_0$ to $Y_1$ consists of a compact $(n+1)$-manifold with boundary together with a map $p: \de X \to \{0,1\}$ such that $Y_0 = p^{-1}(0)$ and $Y_1 = p^{-1}(1)$. Thus, $\de X = Y_0 \amalg Y_1$.
+    Let $Y_0, Y_1$ be closed $n$-manifolds. A bordism $(X,p)$ from $Y_0$ to $Y_1$ consists of a compact $(n+1)$-manifold with boundary together with a map $p: \de X \to \{0,1\}$ such that $Y_0 = p^{-1}(0)$ and $Y_1 = p^{-1}(1)$. Thus, $\de X = Y_0 \amalg Y_1$.
 
     \noindent We then say that $Y_0$ and $Y_1$ are \textit{cobordant}.
 \end{defn}

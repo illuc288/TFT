@@ -10,28 +10,37 @@
 
 \chapter{Why should you care? An informal introduction}
 %As the name suggests, this subject is two-sided: we have a physics part, namely Quantum Field Theory, and a mathematics part, more specifically topology and in particular (Co)Bordism. Let us explore the motivations and ideas behind these two subjects and how they come together. Do not worry if everything is not immediately clear, it will become so during the semester... hopefully. /// Andre: there is nothing wrong with this, just liked more the alternative I wrote down, feel free to change it back /AAndre
-There are two ways one can see topological field theories:
-\begin{enumerate}
-    \item As a way to make (some\footnote{Sadly, TFTs cannot axiomatize many quantum field theories that are particularly useful in physics, e.g. the quantum field theory behind the standard model.}) quantum field theories more mathematically rigorous
-    \item As a way to refine bordism invariants
-\end{enumerate}
-We now sketch how these two approaches work.
-\section{QFT}
+Bordism and Topological (Quantum) Field Theories are relatively young theories. The first one having roots in Poincaré original ideas of homology but formally introduced only by Lev Pontryagin in the '40s, and glorified by René Thom in the '50s. 
+
+\noindent While the second one was born as a model for certain classes of Quantum Field Theories (this are, generaly speaking, ill defined physics theories that are none the less \textit{extrimelly} succesfull) topological in nature that have been developed in the '80s and '90s by notable names as Edward Witten (who also drew a connection between knots and such theories) and Graeme Segal, but finally mathematically formalized be Sir Michael Atiyah.
+
+\noindent These beautiful mathematical theories were brought to light by giants who, paraphrasing Newton, dived in the ocean of truth only to unearth \textit{some} of the beauty that lies deep.
+
+\noindent It's now our turn to sit on the shoulders of giants.
+
+
+
+Let us now introduce some more motivations and background to such beauty.
+\section{Quantum Field Theory}
 \epigraph{Physics is very interesting:
 There are many, many interesting theorems.
 Unfortunately, there are no
 definitions.}{David Kazhdan}
+\noindent The theory of quantum fields, often abreviated by \textit{QFT}, is a physics scheme with origin in the '20s. It has been developed as a way to accomodate both the theory in quantum mechanics and the special theory of relativity. To get a better idea of what we are talking about, we have to establish some background:
+
+\bigskip
+
 \noindent Start with a (smooth) manifold $M$ and, generally, some extra structure. For example:
 \begin{itemize}
     \item $M^4=\R^4$ with a metric with signature $(+, +, +, -)$, so that we can distinguish a strictly spatial part and a temporal part $(\R^4=\R^3_{space}\times\R^1_{time})$. This is called \textit{Minkowski Spacetime} and is particularly important in QFT being the geometric foundation of Special Relativity,
     \item $M^3=\R^3$ with the Euclidean metric,
     \item $M^2$ with a conformal structure,
-    \item $M^{11}$ as an ``Elliptic Fibration'', something which \textit{locally} looks like $\left(S^1\times S^1\right)\times \ something$. These things are useful in areas with high-sounding names such as ``M-Theory'' or, more generically, ``String Theory''.
+    \item $M^{11}$ as an ``Elliptic Fibration'', that is something which \textit{locally} looks like $\left(S^1\times S^1\right)\times \ something$. These things are useful in areas with high-sounding names such as ``M-Theory'' or, more generically, ``String Theory''.
 \end{itemize}
-However, in general, these manifolds must be thought of with other structures, like connections, bundles...\\
+However, in general, these manifolds must be thought of with even more structures, like connections, bundles...\\
 Now we can ``define'' a Quantum Field Theory on $M$ via a list of ingredients:
 \begin{enumerate}
-    \item \textbf{\textit{Fields}}. The \underbar{space} of fields $\mathcal{F}$, associated usually to a bundle $E\xrightarrow{p}M$, is defined as sections\footnote{A section of a bundle $E\xrightarrow{p}M$ is a map (in this context, smooth) $s:M\to E$ such that $p\circ s=id_M$.} of $E$ over $M$. In the case the bundle is trivial ($E\cong M\times X$), then $\mathcal{F}=\Gamma(M,E)=\text{Maps}(M\rightarrow X)$. But what mathematical object are we dealing with? What do we mean by ``space'' here? Is it a set, a topological space, a category, a scheme, a stack...?\\
+    \item \textbf{\textit{Fields}}. The \textit{space} of fields $\mathcal{F}$, associated usually to a bundle $E\xrightarrow{p}M$, is defined as sections\footnote{A section of a bundle $E\xrightarrow{p}M$ is a map (in this context, smooth) $s:M\to E$ such that $p\circ s=id_M$.} of $E$ over $M$. In the case the bundle is trivial ($E\cong M\times X$), then $\mathcal{F}=\Gamma(M,E)=\text{Maps}(M\rightarrow X)$. But what mathematical object are we dealing with? What do we mean by ``space'' here? Is it a set, a topological space, a category, a scheme, a stack...?\\
     \begin{figure}[!ht]
         \centering
         \includegraphics[width=8cm]{images/Lecture 1/penrose.png}
@@ -43,20 +52,20 @@ Now we can ``define'' a Quantum Field Theory on $M$ via a list of ingredients:
     $$Z(M)=\int_{\psi\in\mathcal{F}}\ e^{iS(\psi)}\mathcal{D}\psi,$$
     with
     $$S(\psi)=\int_M \mathcal{L}(\psi),$$
-    called the Action Functional. Generally $\mathcal{L}$ is a polynomial in the fields and it has derivatives. From the Partition Function one can obtain the correlation functions. Although physicists use this formula all the time, formally there is a problem: the measure $\mathcal{D}\psi$ is, in most cases, ill defined.
+    called the Action Functional. Generally $\mathcal{L}$ is a polynomial in the fields and their derivatives. Note that the integral in the partition function definition is done over the space of fields. From $Z(M)$ one can obtain the correlation functions. Although physicists use this formula all the time, formally there is a problem: the measure $\mathcal{D}\psi$ is, in most cases, ill defined.
     \begin{figure}[!ht]
         \centering
         \includegraphics[width=9.2cm]{images/Lecture 1/feynman.png}
     \end{figure}
     %
-    \item \textbf{\textit{Quantization}}. Often QFT arises from ``quantizing'' something classical. But what does this mean? And in what way does this thing behave when changing input?
+    \item \textbf{\textit{Quantization}}. Often QFT arises from ``quantizing'' something classical and physicists have a procedure for quantizing, but mathematician are not very happy about it. What does it mean to ``quantize''? And in what way does this thing behave when changing input?
 \end{enumerate}
 Physicists use all sorts of techniques (Feynman Diagrams, renormalization...) to make sense of undefined measures and divergences of all kinds emerging from calculations, dealing with things like $\infty-\infty$ or $\infty/\infty$ and obtaining finite and testable results.
 
-\noindent This black box that physicists have (successfully) developed frustrates mathematicians because they do not understand why it works!
-Therefore, axiomatizations have been developed exploiting new tools from geometry, algebra and topology to develop a formal and rigorous framework\footnote{More specifically to the path integral, see \cite[2.1]{Carqueville_2018} for an introduction on how topological field theories can be seen as a way to axiomatize some properties of the path integral as a tool to compute correlation functions.}.
+\noindent This black box that physicists have (successfully) developed frustrates mathematicians because they do not understand why it works (or even worst, what it is)!
+Therefore, axiomatizations have been developed exploiting new tools from geometry, algebra and topology hoping to develop a formal and rigorous framework in which we might understand at least \textit{some} aspects of QFT\footnote{More specifically to the path integral, see \cite[2.1]{Carqueville_2018} for an introduction on how topological field theories can be seen as a way to axiomatize some properties of the path integral as a tool to compute correlation functions.}.
 
-\noindent The Partition Function $Z$ behaves well when ``smoothly'' changing the metric and is (in most cases) independent of most extra data of the manifold, so $Z(M)$ depends only on the smooth manifold and as such is purely topological!
+\noindent It happends that the Partition Function $Z$ behaves well when ``smoothly'' changing the metric and is (in most cases) independent of most extra data of the manifold, so $Z(M)$ depends only on the smooth manifold and as such is purely topological! This will be the cases of interest for us.
 
 \bigskip
 
@@ -83,7 +92,7 @@ Two mathematicians, Segal and Atiyah, recognized a hidden symmetric monoidal fun
 \begin{flushleft}
 \epigraph{Topology is the science of fundamental patterns and structural relationships of event constellations.}{Fuller}
 \end{flushleft}
-The ideas behind cobordisms were developed already by Poincaré together with homology (and their group structure was discovered and investigated by Emmy Noether) but a proper definition was established by Pontryangin and Thom in the 20$^{\text{th}}$ century.
+The ideas behind cobordisms were developed already by Poincaré while working with homology (and their group structure was discovered and investigated by Emmy Noether) but a proper definition was established by Pontryangin and Thom in the 20$^{\text{th}}$ century.
 
 The strategy in general in (algebraic) topology is to probe a topological space by mapping into it, a way of viewing things very reminiscent of the Yoneda Lemma.
 In the case of (singular) homology, we map simplices into the space of interest $S$. These maps are indexed by the dimension of the simplex as in the following figure.
@@ -95,7 +104,7 @@ We want to construct an algebraic structure around these maps $\sigma^{(n)}:\Del
 $$\sum a_i\sigma^{(n)}_i  ,$$
 with $a_i\in\R$ and call this set $C_n(S)$. This is now an $\R$-Vector Space generated by the simplices. On the set of simplices we can introduce a map $\partial$, often called the differential or boundary, that takes each simplex to the alternating sum of the $n-1$ simplices that make up its boundary:
 $$\partial\sigma^{(n)}:=\sum_{i=0}^{n}(-1)^i\sigma^{(n)}|_{i^{\text{th}}-boundary} \ ,$$
-and then extend it linearly to $C_n(S)$. Calling $\partial_n:=\partial|_{C_n(S)}$, we have $\partial_n:C_n(S)\to C_{n-1}(S)$ and it can also be shown that $\partial_n \circ\partial_{n+1}=0$, a property which is often simply written as $\partial^2=0$. This defines a chain complex structure.
+and then extend it linearly to $C_n(S)$. Calling $\partial_n:=\partial|_{C_n(S)}$, we have $\partial_n:C_n(S)\to C_{n-1}(S)$ and it can also be shown that $\partial_n \circ\partial_{n+1}=0$, a property which is often simply written as $\partial^2=0$. This defines a chain-complex structure.
 Given this property of $\de$, note that $\text{im}(\partial_{n+1})\subset \text{ker}(\partial_n)$ and therefore, we can define the $n^{\text{th}}$ homology of $S$ as
 \begin{equation*}
     H_n(S)=\Big\{c^{(n)}: \ \ \partial_n c^{(n)}=0\Big\}\big{/}\Big\{f^{(n)}: \ \ f^{(n)}=\partial_{n+1} (f'^{(n+1)})\Big\}=\frac{\text{ker}(\partial_n)}{\text{im}(\partial_{n+1})},
