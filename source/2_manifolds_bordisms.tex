@@ -48,7 +48,7 @@ From the introduction it's clear that we will also deal with manifolds with boun
     $$
         \de X := \{ p \in X : x_i(p) = 0\}.
     $$
-    otherwise, $p$ is in the \textit{interior} of $X$, which we denote with Int$(X)$. 
+    otherwise, $p$ is in the \textit{interior} of $X$, which we denote with Int$(X)$ or $X^\circ$. 
 
     \noindent An equivalent definition is: $p \in \de X$ if $p$ has neighborhood $V$ that is the domain of a coordinate chart $\psi:V\to\H^n$ such that $\psi(V)\cap\de\H^n\neq\emptyset$ and sending $p$ to $\de \H^n$.
 \end{defn}
@@ -266,7 +266,7 @@ The idea of a bordism is to identify (and maybe classify) manifolds that ``diffe
         \end{tikzpicture}
     \end{subfigure}
     \end{figure}
-    The latter two are sometimes calles 'macaroni'.
+    The latter two are sometimes calles ``macaroni''.
     
     This shows that different bordisms can arise from the same underlying manifold. We will have a way of differentiating them when we will introduce tangential structures on a manifold, which will enable us to explain in which direction a manifold is oriented.
 
@@ -314,7 +314,7 @@ We need to show that the relation satisfies the properties of reflexivity, symme
     \item Reflexive: $Y_0 \sim Y_0$ since we can take $X = Y_0 \times [0,1]$ as in the previous example. We then have $\de X = Y_0 \times \{0,1\} \xrightarrow{p} \{0,1\}$. 
     %
     \item Symmetric: assume $Y_0 \sim Y_1$. Thus, we have $(X,p)$ from $Y_0$ to $Y_1$. We can use the same manifold and compose $p$ with the $swap$ of 0 and 1 in order to get 
-    $$\tilde{p}=swap \circ p:\de X\xrightarrow{p}\{0,1\}\xrightarrow{swap}\{1,0\}$$ Consequently, $(X, swap \circ p)$ is a bordism from $Y_1$ to $Y_0$.
+    $$\tilde{p}=(swap) \circ p:\de X\xrightarrow{p}\{0,1\}\xrightarrow{swap}\{1,0\}$$ Consequently, $(X, swap \circ p)$ is a bordism from $Y_1$ to $Y_0$.
     %
     \item Transitive: we have $Y_0 \sim Y_1$ via $(X_1, p_1)$ and $Y_1 \sim Y_2$ via $(X_2, p_2)$. 
     Then we can use as a manifold $X = X_1 \cup_{Y_1} X_2$ where $\cup_{Y_1}$ indicates the gluing along $Y_1$. 
