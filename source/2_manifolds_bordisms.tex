@@ -140,10 +140,10 @@ One can also do calculus on a manifold if some extra requirement are added to de
 
 \section{What is a bordism?}
 
-The idea of a bordism is to identify (and maybe classify) manifolds that ``differ'' by a manifold. A first definition, that will turn out to be too strict, is the following.
+The idea of a bordism is to identify (and maybe classify) manifolds that ``differ'' by a manifold. A first definition, that will turn out to be too strict, is the following:
 \begin{defn}[$1^{st}$ variant of the definition of bordism: via \emph{strict equalities}]
 \label{Define Bordism}
-    Let $Y_0, Y_1$ be closed $n$-manifolds. A bordism $(X,p)$ from $Y_0$ to $Y_1$ consists of a compact $(n+1)$-manifold with boundary together with a map $p: \de X \to \{0,1\}$ such that $Y_0 = p^{-1}(0)$ and $Y_1 = p^{-1}(1)$. Thus, $\de X = Y_0 \amalg Y_1$.
+    Let $Y_0, Y_1$ be closed $n$-manifolds. A bordism from $Y_0$ to $Y_1$ is a couple $(X,p)$ consists of a compact $(n+1)$-manifold with boundary together with a continuous map $p: \de X \to \{0,1\}$ such that $Y_0 = p^{-1}(0)$ and $Y_1 = p^{-1}(1)$. Thus, $\de X = Y_0 \amalg Y_1$.
 
     \noindent We then say that $Y_0$ and $Y_1$ are \textit{cobordant}.
 \end{defn}
@@ -164,7 +164,9 @@ The idea of a bordism is to identify (and maybe classify) manifolds that ``diffe
 \begin{ex} 
 \hfill
 \begin{itemize}
-    \item The torus is a bordism from $\emptyset$ to $\emptyset$. ($\de T = \emptyset = Y_0 \amalg Y_1 \implies Y_0 = Y_1 = \emptyset$)
+    \item The torus can be seen as a bordism from $\emptyset$ to $\emptyset$ seen as $1$-manifold.
+
+    \noindent $\de T = \emptyset = Y_0 \amalg Y_1 \implies Y_0 = Y_1 = \emptyset$,
     %\begin{figure}[!ht] % Torus as a bordism: empty -> empty
         %\centering
     \begin{center} % changed it to this so the picture is exactly here
@@ -182,7 +184,7 @@ The idea of a bordism is to identify (and maybe classify) manifolds that ``diffe
     \end{center}
     %\end{figure}\vspace{-6mm}
     %
-    \item   $X = S^1 \times [0,1]$, now $\de X = S_1 \amalg S_1$ and we can view it as a bordism in 4 ways:
+    \item  take the cylinder over the circle, i.e. $X = S^1 \times [0,1]$, now note that $\de X = S_1 \amalg S_1$. We can view this $2$-manifold it as a bordism in 4 ways:
     \begin{figure}[H]
     \centering
     \begin{subfigure}[t]{.4\textwidth}
@@ -266,44 +268,59 @@ The idea of a bordism is to identify (and maybe classify) manifolds that ``diffe
         \end{tikzpicture}
     \end{subfigure}
     \end{figure}
-    The latter two are sometimes calles ``macaroni''.
-    
-    This shows that different bordisms can arise from the same underlying manifold. We will have a way of differentiating them when we will introduce tangential structures on a manifold, which will enable us to explain in which direction a manifold is oriented.
+    So a bordism between $S^1$ to $S^1$, from $S^1\coprod S^1$ to $\emptyset$ or from $\emptyset$ to $S^1\coprod S^1$.
 
-    \item Given two $n$-manifolds $M,N$, their \textit{connected sum} is 
+    \noindent The latter two are sometimes calles ``macaroni''.
+\end{itemize}
+\end{ex}
+
+\noindent A usefull construction, espetially in $2$ dimension is the \textit{connected sum}:
+
+\begin{defn}[Connected Sum] Given two (say closed) $n$-manifolds $M,N$, their connected sum is 
     \begin{equation*}
-         M\# N=M\setminus(D^{n})^{\circ}\coprod_{S^{n-1}} N\setminus(D^{n})^{\circ}
+         M\# N=M\setminus(D^{n})^{\circ}\coprod_{S^{n-1}} N\setminus(D^{n})^{\circ},
      \end{equation*}
-     where ${}^{\circ}$ is for taking the interior and $\coprod_{S^{n-1}}$ is glueing along the new boundaries in $N$ and $M$.
     \begin{figure}[!ht]
     \centering
     \captionsetup{labelformat=empty, format = hang}
         \begin{measuredfigure}
-            \includegraphics[width=9cm]{images/Lecture 2/connected sum.png} \caption{\small{The picture of a connected sum from \href{https://en.wikipedia.org/wiki/Connected_sum]}{Wikipedia}}}
+            \includegraphics[width=5.3cm]{images/Lecture 2/connected sum.png} \caption{\small{From \href{https://en.wikipedia.org/wiki/Connected_sum]}{ \textit{Wikipedia}}}}
         \end{measuredfigure}
-    \end{figure}
-\end{itemize}
-\end{ex}
+    \end{figure}\\
+    \noindent where $\coprod_{S^{n-1}}$ is glueing along the boundaries $\de [ N\setminus (D^{n})^{\circ}]=S^{n-1}$ and $\de [M\setminus (D^{n})^{\circ}]=S^{n-1}$.\\
+\end{defn}
+
+
+\noindent As one can immagine, we have that
+
+
 \begin{prop}
     $M\# N$ is an $n$-manifold.
 \end{prop}
-%proof to be added?
+
+
+\noindent But how is this relevant to bordism?
+
+
 \begin{lem}
     There is a bordism between $M\coprod N$ and $M\# N$.
 \end{lem}
 
 \begin{proof} 
-    A bordism between $M_1\coprod M_2$ and $M_1\#M_2$ may be constructed in the following manner (proof taken from the \href{http://www.map.mpim-bonn.mpg.de/Bordism#Connected_sum_and_bordism}{Manifold Atlas Project}). Consider a cylinder $M_1\times I$, from which we remove an $\epsilon$-neighbourhood $U_{\epsilon}(v_{1}\times 1)$ of the point $v_{1}\times 1$. Similarly, remove the neighbourhood $U_{\epsilon}(v_{2}\times 1)$ from $M_{2}\times I$ (each of these two neighbourhoods can be identified with the half of a standard open $(n+1)$-ball). Now connect the two remainders of cylinders by a "half pipe" $\left(S_{n}\leq 0 \right)\times I$ in such a way that the half-sphere $S_{n}\leq 0$ is identified with the half-sphere on the boundary of $U_{\epsilon}(v_{1}\times 1)$, and $\left(S_{n}\leq 0 \right)\times I$ is identified with the half-sphere on the boundary of $U_{\epsilon}(v_{2}\times 1)$. Smoothening the angles we obtain a manifold with boundary $(M_1\coprod M_2)\coprod(M_1\#M_2)$.
-\begin{figure}[H]
-\centering
-\captionsetup{labelformat=empty, format = hang}
-    \begin{measuredfigure}
-        \includegraphics[width=6cm]{images/Lecture 2/Bordism connected sum to disjoint union.png} 
-        \caption{\small{The illustration by the \href{http://www.map.mpim-bonn.mpg.de/Bordism\#Connected_sum_and_bordism}{Manifold Atlas Project} of the bordism constructed in the proof above}}
-    \end{measuredfigure}
-\end{figure}
+    This will be an informal proof\footnote{A more rigorous proof of this fact can be found at \href{http://www.map.mpim-bonn.mpg.de/Bordism\#Connected_sum_and_bordism }{\textit{Manifold Atlas Project}}.}. We can fill-in the manifold $M\# N$, for example if $M=T^2$ and $N=S^2$ then when we take the solid version of $M\# N$ we get the sodild sphere (i.e. $D^3$) and the solid torus connected by a solid cylinder. Then remove from the solid version a solid copy of $M$ and a solid copy on $N$ as in figure:\\
+    \begin{figure}[!ht]
+    \centering
+    \captionsetup{labelformat=empty, format = hang}
+        \begin{measuredfigure}
+            \includegraphics[width=9cm]{images/Lecture 2/bordism_connected_sum.png}
+        \end{measuredfigure}
+    \end{figure}
+
+    \noindent Thus note that the boundary is $(M\# N) \ \coprod \ (M\coprod N)$ and so we can interpret this manifold as a bordism between $M\# N$ and $M\coprod N$.
 \end{proof}
-%add Drawings inspired by the Prof.'s examples?
+
+Now, what is notion of bordism good for? We would like that this concept actually decomposed the space of $n$-manifolds into nice and distinct components, i.e. \textit{classes} of cobordant manifolds. So the precisely stated mathematical question is: the relation ``being cobordant'' is actually an equivalence relation on the set of closed $n$-manifolds?
+
 \begin{thm}
 \label{Cobordant Equiv}
 Being cobordant is an equivalence relation on closed $n$-manifolds. 
@@ -313,8 +330,7 @@ We need to show that the relation satisfies the properties of reflexivity, symme
 \begin{itemize}
     \item Reflexive: $Y_0 \sim Y_0$ since we can take $X = Y_0 \times [0,1]$ as in the previous example. We then have $\de X = Y_0 \times \{0,1\} \xrightarrow{p} \{0,1\}$. 
     %
-    \item Symmetric: assume $Y_0 \sim Y_1$. Thus, we have $(X,p)$ from $Y_0$ to $Y_1$. We can use the same manifold and compose $p$ with the $swap$ of 0 and 1 in order to get 
-    $$\tilde{p}=(swap) \circ p:\de X\xrightarrow{p}\{0,1\}\xrightarrow{swap}\{1,0\}$$ Consequently, $(X, swap \circ p)$ is a bordism from $Y_1$ to $Y_0$.
+    \item Symmetric: assume $Y_0 \sim Y_1$. Thus, we have $(X,p)$ from $Y_0$ to $Y_1$. We can use the same manifold and the map $\tilde{p}\coloneqq 1-p$.
     %
     \item Transitive: we have $Y_0 \sim Y_1$ via $(X_1, p_1)$ and $Y_1 \sim Y_2$ via $(X_2, p_2)$. 
     Then we can use as a manifold $X = X_1 \cup_{Y_1} X_2$ where $\cup_{Y_1}$ indicates the gluing along $Y_1$. 
